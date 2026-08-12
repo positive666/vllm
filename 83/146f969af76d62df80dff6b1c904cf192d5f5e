@@ -1,0 +1,25 @@
+docs/features/kv_offloading_usage.md
+  s_23deada145cdd4::t_00397281149ccb 75-76
+tests/v1/kv_offload/cpu/test_manager.py
+  s_23deada145cdd4::t_f011ad297902d7 24,923-1064,1077-1080,1084-1087,1091,1093-1097,1101-1104,1107-1108
+vllm/v1/kv_offload/cpu/manager.py
+  s_23deada145cdd4::t_cfa95b89732ac1 5,31-35,76,80-83,122-141,143,145-177,229-237
+vllm/v1/kv_offload/cpu/spec.py
+  s_23deada145cdd4::t_2b6bd78d5d4328 126-127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "83146f969af76d62df80dff6b1c904cf192d5f5e",
+  "prompts": {},
+  "sessions": {
+    "s_23deada145cdd4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcacc-52bf-7391-b911-db9e0ea2e8d1",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "ChengRui <286040359@qq.com>"
+    }
+  }
+}
