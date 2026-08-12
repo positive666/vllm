@@ -8,3 +8,4 @@ server_args: >-
   --data-parallel-size 2
   --enable-expert-parallel
   --max-num-seqs 512
+  --max-num-batched-tokens 8192
