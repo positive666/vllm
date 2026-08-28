@@ -3,6 +3,7 @@
 
 import math
 from types import SimpleNamespace
+from typing import Any
 
 import pytest
 import torch
@@ -24,6 +25,92 @@ requires_qsa_kernels = pytest.mark.skipif(
     not current_platform.is_cuda() or not HAS_TRITON,
     reason="QSA kernels require CUDA and Triton",
 )
+
+
+def _select_qsa_sparse_profile(
+    *,
+    compute_capability: tuple[int, int] | None = (8, 9),
+    device_name: str = "NVIDIA L20",
+    base_programs: int = 128,
+    block_m: int = 8,
+    num_query_heads: int = 6,
+    num_kv_heads: int = 1,
+    head_dim: int = 256,
+    topk: int = 2051,
+) -> qsa_ops.QSAKernelProfile:
+    return qsa_ops.select_qsa_sparse_profile(
+        compute_capability=compute_capability,
+        device_name=device_name,
+        base_programs=base_programs,
+        block_m=block_m,
+        num_query_heads=num_query_heads,
+        num_kv_heads=num_kv_heads,
+        head_dim=head_dim,
+        topk=topk,
+    )
+
+
+@pytest.mark.parametrize(
+    ("base_programs", "block_m", "expected"),
+    [
+        (8, 8, qsa_ops.QSAKernelProfile(16, 64, 4, 2)),
+        (9, 8, qsa_ops.QSAKernelProfile(16, 32, 4, 2)),
+        (31, 8, qsa_ops.QSAKernelProfile(16, 32, 4, 2)),
+        (32, 8, qsa_ops.QSAKernelProfile(64, 8, 2, 2)),
+        (256, 8, qsa_ops.QSAKernelProfile(64, 8, 2, 2)),
+        (257, 8, qsa_ops.QSAKernelProfile(64, 4, 2, 2)),
+        (512, 8, qsa_ops.QSAKernelProfile(64, 4, 2, 2)),
+        (513, 8, qsa_ops.QSAKernelProfile(64, 1, 2, 2)),
+        (4, 16, qsa_ops.QSAKernelProfile(16, 64, 4, 2)),
+        (5, 16, qsa_ops.QSAKernelProfile(16, 32, 4, 2)),
+    ],
+)
+def test_qsa_sparse_default_profile_is_unchanged(
+    base_programs: int,
+    block_m: int,
+    expected: qsa_ops.QSAKernelProfile,
+) -> None:
+    assert qsa_ops._default_qsa_sparse_profile(base_programs, block_m) == expected
+
+
+@pytest.mark.parametrize(
+    ("base_programs", "expected"),
+    [
+        (34, qsa_ops.QSAKernelProfile(64, 8, 2, 2)),
+        (35, qsa_ops.QSAKernelProfile(32, 8, 4, 2)),
+        (112, qsa_ops.QSAKernelProfile(32, 8, 4, 2)),
+        (113, qsa_ops.QSAKernelProfile(16, 8, 2, 2)),
+        (128, qsa_ops.QSAKernelProfile(16, 8, 2, 2)),
+        (129, qsa_ops.QSAKernelProfile(16, 8, 4, 2)),
+        (256, qsa_ops.QSAKernelProfile(16, 8, 4, 2)),
+        (257, qsa_ops.QSAKernelProfile(64, 4, 2, 2)),
+    ],
+)
+def test_qsa_sparse_l20_tp4_profiles(
+    base_programs: int,
+    expected: qsa_ops.QSAKernelProfile,
+) -> None:
+    assert _select_qsa_sparse_profile(base_programs=base_programs) == expected
+
+
+@pytest.mark.parametrize(
+    "override",
+    [
+        {"compute_capability": (9, 0)},
+        {"device_name": "NVIDIA L40S"},
+        {"block_m": 16},
+        {"num_query_heads": 12},
+        {"num_kv_heads": 2},
+        {"head_dim": 128},
+        {"topk": 2048},
+    ],
+)
+def test_qsa_sparse_unknown_devices_and_shapes_use_default(
+    override: dict[str, Any],
+) -> None:
+    selected = _select_qsa_sparse_profile(**override)
+    block_m = int(override.get("block_m", 8))
+    assert selected == qsa_ops._default_qsa_sparse_profile(128, block_m)
 
 
 def test_qsa_mtp_index_share_updates_cache_but_skips_selection(

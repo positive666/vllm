@@ -5,14 +5,96 @@
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass
+from functools import lru_cache
 
 import torch
 
+from vllm.logger import init_logger
 from vllm.platforms import current_platform
 from vllm.triton_utils import HAS_TRITON, tl, triton
 
+logger = init_logger(__name__)
+
 _LOGITS_WORKSPACE_BYTES = 128 * 1024 * 1024
 _TOPK_WORKSPACE_BYTES = 1024 * 1024
+
+
+@dataclass(frozen=True)
+class QSAKernelProfile:
+    """Static launch parameters for the paged sparse-attention kernel."""
+
+    block_n: int
+    target_splits: int
+    partial_warps: int
+    num_stages: int
+
+
+def _default_qsa_sparse_profile(base_programs: int, block_m: int) -> QSAKernelProfile:
+    """Return the existing GB300-tuned launch profile unchanged."""
+
+    small_profile_limit = 8 if block_m <= 8 else 4
+    if base_programs <= small_profile_limit:
+        return QSAKernelProfile(16, 64, 4, 2)
+    if base_programs < 32:
+        return QSAKernelProfile(16, 32, 4, 2)
+    if base_programs <= 256:
+        return QSAKernelProfile(64, 8, 2, 2)
+    if base_programs <= 512:
+        return QSAKernelProfile(64, 4, 2, 2)
+    return QSAKernelProfile(64, 1, 2, 2)
+
+
+def select_qsa_sparse_profile(
+    *,
+    compute_capability: tuple[int, int] | None,
+    device_name: str,
+    base_programs: int,
+    block_m: int,
+    num_query_heads: int,
+    num_kv_heads: int,
+    head_dim: int,
+    topk: int,
+) -> QSAKernelProfile:
+    """Select an offline-benchmarked profile, falling back for unknown shapes."""
+
+    fallback = _default_qsa_sparse_profile(base_programs, block_m)
+    is_l20_tp4_qwen38 = (
+        compute_capability == (8, 9)
+        and device_name == "NVIDIA L20"
+        and block_m == 8
+        and num_query_heads == 6
+        and num_kv_heads == 1
+        and head_dim == 256
+        and topk == 2051
+    )
+    if not is_l20_tp4_qwen38:
+        return fallback
+
+    if 35 <= base_programs <= 112:
+        return QSAKernelProfile(32, 8, 4, 2)
+    if 113 <= base_programs <= 128:
+        return QSAKernelProfile(16, 8, 2, 2)
+    if 129 <= base_programs <= 256:
+        return QSAKernelProfile(16, 8, 4, 2)
+    return fallback
+
+
+@lru_cache(maxsize=1)
+def _qsa_device_identity() -> tuple[tuple[int, int] | None, str]:
+    capability = current_platform.get_device_capability()
+    capability_tuple = (
+        None if capability is None else (capability.major, capability.minor)
+    )
+    return capability_tuple, current_platform.get_device_name()
+
+
+@lru_cache(maxsize=1)
+def _log_l20_qsa_sparse_profile() -> None:
+    logger.info(
+        "Using offline-tuned L20 QSA sparse profiles for TP4 shapes "
+        "(base_programs=35..256)."
+    )
 
 
 @triton.jit
@@ -857,20 +939,21 @@ def qsa_sparse_paged_attention(
     group_size = q.shape[1] // k_cache.shape[2]
     block_m = triton.next_power_of_2(group_size)
     base_programs = q.shape[0] * k_cache.shape[2]
-    small_profile_limit = 8 if block_m <= 8 else 4
-
-    # Tuned on GB300 for the Qwen-Air TP1, TP2, and TP4 attention shapes.
-    # Narrow tiles favor decode; wide tiles improve throughput for prefill.
-    if base_programs <= small_profile_limit:
-        block_n, target_splits, partial_warps = 16, 64, 4
-    elif base_programs < 32:
-        block_n, target_splits, partial_warps = 16, 32, 4
-    elif base_programs <= 256:
-        block_n, target_splits, partial_warps = 64, 8, 2
-    elif base_programs <= 512:
-        block_n, target_splits, partial_warps = 64, 4, 2
-    else:
-        block_n, target_splits, partial_warps = 64, 1, 2
+    compute_capability, device_name = _qsa_device_identity()
+    profile = select_qsa_sparse_profile(
+        compute_capability=compute_capability,
+        device_name=device_name,
+        base_programs=base_programs,
+        block_m=block_m,
+        num_query_heads=q.shape[1],
+        num_kv_heads=k_cache.shape[2],
+        head_dim=head_dim,
+        topk=logical_indices.shape[1],
+    )
+    block_n = profile.block_n
+    target_splits = profile.target_splits
+    if profile != _default_qsa_sparse_profile(base_programs, block_m):
+        _log_l20_qsa_sparse_profile()
 
     num_tiles = triton.cdiv(logical_indices.shape[1], block_n)
     # Avoid empty splits when the selection width is smaller than the profile.
@@ -929,8 +1012,8 @@ def qsa_sparse_paged_attention(
         NUM_TILES=num_tiles,
         BLOCK_M=block_m,
         BLOCK_N=block_n,
-        num_warps=partial_warps,
-        num_stages=2,
+        num_warps=profile.partial_warps,
+        num_stages=profile.num_stages,
     )
     if num_splits == 1:
         return out
