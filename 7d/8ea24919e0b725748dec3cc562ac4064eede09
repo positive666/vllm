@@ -1,0 +1,40 @@
+tests/v1/spec_decode/test_dflash_causality.py
+  s_a1c1152bea1d9a::t_ae8af2f4ced460 15,25-36,40,97-114
+vllm/v1/kv_cache_interface.py
+  s_b2f3199dedf2e0::t_d3f52cb2bfd9ab 699-702
+vllm/model_executor/layers/attention/attention.py
+  s_b2f3199dedf2e0::t_cfef0dfb49c665 331
+  s_b2f3199dedf2e0::t_a4d50b0a761db2 248
+  s_b2f3199dedf2e0::t_77f77c4572c890 634,649
+vllm/model_executor/models/qwen3_dflash.py
+  s_b2f3199dedf2e0::t_c69e7a2dcfc2be 270-271
+  s_a1c1152bea1d9a::t_ae8af2f4ced460 78-88,206,272,355-358
+tests/v1/core/test_kv_cache_utils.py
+  s_a1c1152bea1d9a::t_ae8af2f4ced460 6,27,177,186,3426-3468,3471-3487,3490-3498,3501-3513
+  s_b2f3199dedf2e0::t_34f12f288c9fdf 3470,3488-3489,3499-3500
+  s_a1c1152bea1d9a::t_fddd824a8bdfc0 3469
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7d8ea24919e0b725748dec3cc562ac4064eede09",
+  "prompts": {},
+  "sessions": {
+    "s_a1c1152bea1d9a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a03be5-87cb-70d1-9ddf-ac045edeb7f3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": null
+    },
+    "s_b2f3199dedf2e0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a4116508-b322-45d8-b401-c5654ac331c6",
+        "model": "grok-4.6"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
