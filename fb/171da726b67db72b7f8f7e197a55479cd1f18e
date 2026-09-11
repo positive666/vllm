@@ -1,0 +1,27 @@
+csrc/libtorch_stable/quantization/marlin/kernel.h
+  s_1e6a752c55300c::t_6b8b45eaf32ace 19
+csrc/libtorch_stable/quantization/marlin/marlin.cu
+  s_1e6a752c55300c::t_6b8b45eaf32ace 404-409,415
+tests/kernels/quantization/test_marlin_gemm.py
+  s_1e6a752c55300c::t_6b8b45eaf32ace 481-492,495-496,498-499,501-506
+  s_1e6a752c55300c::t_8f32632f755977 480
+csrc/libtorch_stable/quantization/marlin/marlin_template.h
+  s_1e6a752c55300c::t_6b8b45eaf32ace 241,469-480
+  s_1e6a752c55300c::t_368a40e2c8a479 481-483
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fb171da726b67db72b7f8f7e197a55479cd1f18e",
+  "prompts": {},
+  "sessions": {
+    "s_1e6a752c55300c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a00e9d-9b6d-7b42-a8e4-54eb6705ee76",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
