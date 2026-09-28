@@ -1,0 +1,31 @@
+.buildkite/test_areas/kernels.yaml
+  s_660a452599c1d7::t_dfd40c53b886fe 291-296,302
+tests/kernels/attention/test_fewhead_sparse_prefill.py
+  s_660a452599c1d7::t_5b4668f3473ab9 1-206
+tests/models/test_fewhead_prefill_gate.py
+  s_660a452599c1d7::t_9981f99cb766fa 1-89
+vllm/envs.py
+  s_660a452599c1d7::t_3bb23e61b6fcb5 330-331,373-380,2221-2227
+vllm/models/deepseek_v41/nvidia/fewhead_prefill.py
+  s_660a452599c1d7::t_552e9726bce429 1-125
+vllm/models/deepseek_v41/nvidia/flashmla.py
+  s_660a452599c1d7::t_3464b5150f27ad 16-19,66-73,363-390
+vllm/models/deepseek_v41/nvidia/triton_fewhead_sparse_prefill.py
+  s_660a452599c1d7::t_0ae2f19586855b 1-244
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d970a8c22e44949af59bc37e10d9cea2a7fcfb8d",
+  "prompts": {},
+  "sessions": {
+    "s_660a452599c1d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e357-5c22-7a73-9f5c-2f480e7fd7df",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
