@@ -1,0 +1,30 @@
+vllm/compilation/decorators.py
+  s_660a452599c1d7::t_0793afd51b10d0 266-295,571
+  s_660a452599c1d7::t_acb2ee7a410955 10
+tests/compile/test_aot_compile.py
+  s_57b7c9ef996031::t_731126046884d9 106-132,222-282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c1e4d92772eb01957cb1b1f512bf71376d12ae61",
+  "prompts": {},
+  "sessions": {
+    "s_57b7c9ef996031": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0eb36-ca8c-71a0-bc3f-04917a7cb849",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_660a452599c1d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e357-5c22-7a73-9f5c-2f480e7fd7df",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
