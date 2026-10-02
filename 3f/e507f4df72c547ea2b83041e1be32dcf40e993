@@ -1,0 +1,19 @@
+vllm/models/deepseek_v41/nvidia/model.py
+  s_4950b657d66898::t_e003d2ca75156a 87-89,127-135,242,254
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3fe507f4df72c547ea2b83041e1be32dcf40e993",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
