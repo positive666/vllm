@@ -1,0 +1,19 @@
+vllm/models/deepseek_v41/nvidia/ops/small_head_sparse_decode.py
+  s_530a99824ab6f6::t_4825b19265fd75 1-332
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1bf5511bf0ddc1408df4dd569fc63426fa786d47",
+  "prompts": {},
+  "sessions": {
+    "s_530a99824ab6f6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fa53-b641-7930-a4b3-b86d7b4c6ddc",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
