@@ -1,0 +1,2320 @@
+{
+  "checked_at_utc": "2026-10-07T13:33:37.372881+00:00",
+  "checks": {
+    "issue_context": {
+      "command": [
+        "gh",
+        "issue",
+        "view",
+        "53463",
+        "--repo",
+        "vllm-project/vllm",
+        "--comments",
+        "--json",
+        "number,title,state,comments"
+      ],
+      "exit_code": 0,
+      "data": {
+        "comments": [
+          {
+            "id": "IC_kwDOI7xefs8AAAABXQp8wg",
+            "author": {
+              "login": "gau-nernst"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "Hi @positive666, do you mind picking up this PR again? I will help you review and get it merged. I think there are new changes that the PR requires additional adaptation. Also, I think `_can_use_fused_gdn_nonspec_decode` can be simplified a bit.",
+            "createdAt": "2026-09-27T12:46:02Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5855935682",
+            "viewerDidAuthor": false
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABXV9nZg",
+            "author": {
+              "login": "positive666"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "Thanks @gau-nernst, updated in `09fcbef970`. Adapted to the current GDN interfaces and simplified the non-spec guard. The CUDA 12.9 extension build and all 125 GPU tests passed on L20.\r\n\r\nUpdated performance and GSM8K results, including limitations",
+            "createdAt": "2026-09-28T01:01:18Z",
+            "includesCreatedEdit": true,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5861500774",
+            "viewerDidAuthor": true
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABX9HXzQ",
+            "author": {
+              "login": "gau-nernst"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "Thank you @positive666, I didn't notice you updated your comment and results. I also ran some testing on GB300 with Qwen3.8-Flash-Next\r\n\r\nconc | P50 TPOT base→head | Δ | P99 TPOT Δ | P50 TTFT Δ | out tok/s Δ\r\n-- | -- | -- | -- | -- | --\r\n1 | 4.53 → 4.55 ms | +0.45% | +0.96% | −5.6% (155.5→146.9) | −0.32%\r\n4 | 6.36 → 6.08 ms | −4.35% | −4.41% | −4.6% | +4.52%\r\n16 | 10.15 → 9.78 ms | −3.63% | −4.05% | −4.7% | +3.46%\r\n64 | 19.87 → 19.44 ms | −2.18% | −2.25% | −9.7% (673.5→608.4) | +2.29%\r\n\r\nGood improvement for c=4-64, though it's surprising that c=1 doesn't help much (we would expect c=1 has the most benefits). So I did a microbenchmark (gate computation + QK norm + GDN decode + gated output norm)\r\n\r\nB | rec+norm (Triton) | fused op | path Δ\r\n-- | -- | -- | --\r\n1 | 5.41 | 5.74 | +0.37 (noise)\r\n4 | 6.27 | 5.95 | -0.37\r\n8 | 6.93 | 6.06 | -1.00\r\n16 | 7.99 | 7.67 | -0.25\r\n32 | 13.14 | 9.73 | -3.48\r\n64 | 18.94 | 16.88 | -2.04\r\n128 | 37.82 | 35.84 | -0.60\r\n256 | 70.85 | 71.07 | +2.74 (fused loses)\r\n\r\nIndeed the fused op is only better in medium range of M. Then I remembered about FlashInfer, so I also microbenchmark it\r\n\r\nB | tri rec+norm | fus op | fi rec+norm | best\r\n-- | -- | -- | -- | --\r\n1 | 5.82 | 5.70 | 4.47 | fi\r\n4 | 6.32 | 5.95 | 4.91 | fi\r\n8 | 7.01 | 6.06 | 5.55 | fi\r\n16 | 7.99 | 7.67 | 7.22 | fi\r\n32 | 13.16 | 9.71 | 10.48 | fus\r\n64 | 19.40 | 17.07 | 17.12 | fus\r\n128 | 38.57 | 35.85 | 35.60 | fi\r\n256 | 70.82 | 71.06 | 68.96 | fi\r\n\r\nGiven this result, I think we should prefer FlashInfer integration rather than trying to get this PR merge. What do you think?\r\n\r\n@vadiklyutiy will you continue working on #41966? If not, either I or @positive666 (if you want) can take over.",
+            "createdAt": "2026-09-30T01:57:23Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5902555085",
+            "viewerDidAuthor": false
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABX9YrmQ",
+            "author": {
+              "login": "positive666"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "Thanks @gau-nernst. Agreed on prioritizing FlashInfer. I'm happy to help with #41966 if @vadiklyutiy isn't continuing. I'll mark this PR as draft for now. Should we retain this CUDA path for L20/SM89?\n",
+            "createdAt": "2026-09-30T02:25:08Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5902838681",
+            "viewerDidAuthor": true
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABX9f55A",
+            "author": {
+              "login": "gau-nernst"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "@positive666 Can you do microbenchmark comparing Triton unfused vs CUDA fused vs FlashInfer unfused like I did above? I haven't checked if FlashInfer GDN decode supports L20/SM89. The microbenchmark results will show if it's worth to do fused CUDA for SM89.",
+            "createdAt": "2026-09-30T02:36:10Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5902957028",
+            "viewerDidAuthor": false
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABX9mQTA",
+            "author": {
+              "login": "positive666"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "OK, I’ll update you once I have the results. @gau-nernst  ",
+            "createdAt": "2026-09-30T02:45:58Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [
+              {
+                "content": "THUMBS_UP",
+                "users": {
+                  "totalCount": 1
+                }
+              }
+            ],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5903061068",
+            "viewerDidAuthor": true
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABYSdFcA",
+            "author": {
+              "login": "positive666"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "Hi, @gau-nernst  Completed the L20/SM89 three-way comparison with real Qwen3.8-27B-FP8 inputs, independent repeats, and 512-step replay. Timings below are microseconds (lower is better):\r\n\r\n| dtype | B | cache | Triton | CUDA fused | FlashInfer |\r\n| --- | ---: | --- | ---: | ---: | ---: |\r\n| FP32 | 1 | warm | 6.34 | 5.87 | 4.81 |\r\n| FP32 | 1 | cold | 12.14 | 10.24 | 10.45 |\r\n| FP32 | 8 | warm | 19.15 | 18.19 | 17.10 |\r\n| FP32 | 8 | cold | 74.26 | 76.63 | 74.96 |\r\n| BF16 | 1 | warm | 4.23 | 5.08 | 4.02 |\r\n| BF16 | 1 | cold | 7.82 | 7.12 | 7.16 |\r\n| BF16 | 8 | warm | 11.92 | 14.16 | 15.88 |\r\n| BF16 | 8 | cold | 35.74 | 37.19 | 39.14 |\r\n\r\nFP32 replay passed for all six trajectories. BF16 outputs passed, but CUDA and FlashInfer both show sparse state-tolerance differences on the longest traces, consistent with accumulated numerical differences across backends.\r\n\r\nThe CUDA advantage is therefore limited to a narrow FP32 B=1 cold-state case (~2% over FlashInfer); it does not justify broad default dispatch. Since #41966 already covers the FlashInfer integration, I propose closing #53463 as superseded unless maintainers want to retain this CUDA path as an explicit SM89 opt-in. \r\n",
+            "createdAt": "2026-10-01T04:46:38Z",
+            "includesCreatedEdit": true,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [
+              {
+                "content": "THUMBS_UP",
+                "users": {
+                  "totalCount": 1
+                }
+              }
+            ],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5924930928",
+            "viewerDidAuthor": true
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABYudu-A",
+            "author": {
+              "login": "mergify"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "This pull request has merge conflicts that must be resolved before it can be\nmerged. Please rebase the PR, @positive666.\n\nhttps://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork\n",
+            "createdAt": "2026-10-02T14:09:01Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-5954301688",
+            "viewerDidAuthor": false
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABZgjr8A",
+            "author": {
+              "login": "gau-nernst"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "Closing since FlashInfer is preferred",
+            "createdAt": "2026-10-06T00:47:31Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-6006828016",
+            "viewerDidAuthor": false
+          },
+          {
+            "id": "IC_kwDOI7xefs8AAAABZgsVdA",
+            "author": {
+              "login": "gau-nernst"
+            },
+            "authorAssociation": "CONTRIBUTOR",
+            "body": "@positive666 Vadim doesn't have bandwidth to work on FlashInfer kernel integration now, you can take over the work and open a new PR. As usual, please report microbenchmark and e2e perf improvements. If the FlashInfer kernel is always better, we can make it the default for `auto` too.",
+            "createdAt": "2026-10-06T00:55:23Z",
+            "includesCreatedEdit": false,
+            "isMinimized": false,
+            "minimizedReason": "",
+            "reactionGroups": [],
+            "url": "https://github.com/vllm-project/vllm/pull/53463#issuecomment-6006969716",
+            "viewerDidAuthor": false
+          }
+        ],
+        "number": 53463,
+        "state": "CLOSED",
+        "title": "[Kernel][Perf] Route non-spec GDN decode through the fused CUDA kernel"
+      }
+    },
+    "predecessor": {
+      "command": [
+        "gh",
+        "pr",
+        "view",
+        "41966",
+        "--repo",
+        "vllm-project/vllm",
+        "--json",
+        "number,state,isDraft,headRefOid,updatedAt,title,url"
+      ],
+      "exit_code": 0,
+      "data": {
+        "headRefOid": "866de584641bb99137cbb54b74f2c69b5f1894b2",
+        "isDraft": true,
+        "number": 41966,
+        "state": "OPEN",
+        "title": "[Qwen3.5] Add FlashInfer GDN decode backend",
+        "updatedAt": "2026-09-28T19:20:43Z",
+        "url": "https://github.com/vllm-project/vllm/pull/41966"
+      }
+    },
+    "predecessor_references": {
+      "command": [
+        "gh",
+        "pr",
+        "list",
+        "--repo",
+        "vllm-project/vllm",
+        "--state",
+        "open",
+        "--search",
+        "41966 in:body",
+        "--limit",
+        "500",
+        "--json",
+        "number,title,headRefOid,updatedAt,url"
+      ],
+      "exit_code": 0,
+      "data": []
+    },
+    "invitation_references": {
+      "command": [
+        "gh",
+        "pr",
+        "list",
+        "--repo",
+        "vllm-project/vllm",
+        "--state",
+        "open",
+        "--search",
+        "53463 in:body",
+        "--limit",
+        "500",
+        "--json",
+        "number,title,headRefOid,updatedAt,url"
+      ],
+      "exit_code": 0,
+      "data": []
+    },
+    "area": {
+      "command": [
+        "gh",
+        "pr",
+        "list",
+        "--repo",
+        "vllm-project/vllm",
+        "--state",
+        "open",
+        "--search",
+        "FlashInfer GDN",
+        "--limit",
+        "500",
+        "--json",
+        "number,title,headRefOid,updatedAt,url"
+      ],
+      "exit_code": 0,
+      "data": [
+        {
+          "headRefOid": "21eb1cc3a1800b1d6e91f8dae029fc563ab72d82",
+          "number": 60050,
+          "title": "[Perf][GDN] Internal prefill checkpoints for the FlashInfer GDN prefill backend",
+          "updatedAt": "2026-10-06T08:17:10Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60050"
+        },
+        {
+          "headRefOid": "29f8cedf94c43ebb813d8475cbd089d378b4f4ae",
+          "number": 59025,
+          "title": "[Kernel] Register the cudnn backend for FlashInfer BF16 mm",
+          "updatedAt": "2026-10-02T11:51:22Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59025"
+        },
+        {
+          "headRefOid": "9f50847a9a1fe275b383c9a8d5e1d19818d5d54e",
+          "number": 57318,
+          "title": "[Kernel][GDN] Use flashinfer bf16 mm for the GDN gate projection",
+          "updatedAt": "2026-09-28T07:17:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57318"
+        },
+        {
+          "headRefOid": "6ed041d0e52b316e9c9bbad8e3ebf4508dc10575",
+          "number": 60105,
+          "title": "[Perf][GDN] Reuse prefill lengths and fuse FlashInfer gate conversion",
+          "updatedAt": "2026-10-05T21:25:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60105"
+        },
+        {
+          "headRefOid": "fbd402ef87ad4f0a79a8d18ad17ccc70e1c10a3b",
+          "number": 53645,
+          "title": "Add FlashInfer fused decode for Qwen GDN on sm120",
+          "updatedAt": "2026-09-07T01:24:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53645"
+        },
+        {
+          "headRefOid": "866de584641bb99137cbb54b74f2c69b5f1894b2",
+          "number": 41966,
+          "title": "[Qwen3.5] Add FlashInfer GDN decode backend",
+          "updatedAt": "2026-09-28T19:20:43Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41966"
+        },
+        {
+          "headRefOid": "920bc865762d82140abe3443c0925e9aada940a3",
+          "number": 50233,
+          "title": "[Model][Perf] Overlap mixed GDN decode and prefill recurrent kernels",
+          "updatedAt": "2026-08-14T05:30:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50233"
+        },
+        {
+          "headRefOid": "2d890cc219985eb016f328135507e9feddfe21dc",
+          "number": 57039,
+          "title": "[GDN] Avoid two per-layer copies in the FlashInfer prefill path",
+          "updatedAt": "2026-09-24T09:46:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57039"
+        },
+        {
+          "headRefOid": "ccc280c2ce810aeebc46912f1b02da48db95569b",
+          "number": 50372,
+          "title": "[Kernel] Fuse FlashInfer GDN prefill state I/O",
+          "updatedAt": "2026-08-02T08:11:27Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50372"
+        },
+        {
+          "headRefOid": "00545a8acc220f4c5fa47afad739e3d2baac7310",
+          "number": 46764,
+          "title": "[GDN] Improve UX when FlashInfer JIT compilation is happening",
+          "updatedAt": "2026-10-02T01:50:32Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46764"
+        },
+        {
+          "headRefOid": "b597ed8a514eb757ae807410809980722e679e09",
+          "number": 50380,
+          "title": "Gdn ucache backend",
+          "updatedAt": "2026-07-30T04:52:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50380"
+        },
+        {
+          "headRefOid": "debb4ba43485a3efa41e6c81180e004b81be6a16",
+          "number": 49827,
+          "title": "[Model] Enable batch-invariant mixed decode and prefill for Qwen GDN",
+          "updatedAt": "2026-09-24T00:55:45Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49827"
+        },
+        {
+          "headRefOid": "9fa214e0df12bbd6e810afc4cab4c786676d600c",
+          "number": 45883,
+          "title": "[Feat] Support FlashQLA backend for qwen3.5",
+          "updatedAt": "2026-09-22T07:24:07Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45883"
+        },
+        {
+          "headRefOid": "54dc12db53959c3d95738f535b95becd8074ce5b",
+          "number": 58662,
+          "title": "[Perf][SM100] Use TGV for small-batch BF16 output projections",
+          "updatedAt": "2026-09-25T04:36:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58662"
+        },
+        {
+          "headRefOid": "0752d2c2ffbf6adc8736c75517331b88fa84551e",
+          "number": 41395,
+          "title": "flashinfer gdn decode kernel integration",
+          "updatedAt": "2026-05-23T09:42:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41395"
+        },
+        {
+          "headRefOid": "6062a5d2b8aeaf3259e8d5e2b380f306337aa30d",
+          "number": 57128,
+          "title": "[Bugfix] MambaManager.find_longest_cache_hit ignores drop_eagle_block, silent corruption with prefix caching + MTP/EAGLE",
+          "updatedAt": "2026-10-06T09:33:21Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57128"
+        },
+        {
+          "headRefOid": "10f53819bd60a09a3757b946f66c751ff941f17b",
+          "number": 59746,
+          "title": "[Bugfix][NIXL] Pair P/D blocks by the last token with different block sizes",
+          "updatedAt": "2026-10-02T11:04:23Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59746"
+        },
+        {
+          "headRefOid": "896232028c8c12badfc74af8518548a7e1530ef4",
+          "number": 59414,
+          "title": "[Bugfix][Kernel] Keep batch x heads out of gridDim.z in the shared FLA recurrent kernels",
+          "updatedAt": "2026-10-02T13:44:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59414"
+        },
+        {
+          "headRefOid": "fea7052371a3e4353b5a246c437a9f9759aa959a",
+          "number": 55065,
+          "title": "[Attention] Add FlashInfer SM120 FP8 PRIMS prefill",
+          "updatedAt": "2026-09-17T03:46:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55065"
+        },
+        {
+          "headRefOid": "41df3114407a0305eb877654a5b86d942b1c44dc",
+          "number": 58380,
+          "title": "[Core] Prefer a block-outermost KV cache layout when layers can be packed",
+          "updatedAt": "2026-09-30T16:52:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58380"
+        },
+        {
+          "headRefOid": "367930ede2e61312faed48dfab5da22767f25694",
+          "number": 60186,
+          "title": "[Core] Count V2's KV cache init memory against the KV cache budget",
+          "updatedAt": "2026-10-07T09:09:06Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60186"
+        },
+        {
+          "headRefOid": "cf55f0ae61693c973cf3292a03cec24754d93a39",
+          "number": 47759,
+          "title": "[Model] Support uneven TP3 Qwen3.5/Qwen3Next layouts",
+          "updatedAt": "2026-10-07T09:15:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47759"
+        },
+        {
+          "headRefOid": "eb5c5399545a742ab4b8635d602b2ae0af7b5d9c",
+          "number": 35292,
+          "title": "[Perf] flashinfer gdn decode kernel intergration",
+          "updatedAt": "2026-05-23T06:28:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/35292"
+        },
+        {
+          "headRefOid": "e06f76d42c6254b84748c8e39330cf47f52ec14e",
+          "number": 51134,
+          "title": "[Misc] Remove gdn jit warning from qwen_gdn_linear_attn.py",
+          "updatedAt": "2026-08-05T08:32:38Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51134"
+        },
+        {
+          "headRefOid": "1ccfe71982c9422acc6d51d1d273d6857ae9f33a",
+          "number": 58630,
+          "title": "[Bugfix][Attention] Resolve kernel block-size constraints per KV cache spec",
+          "updatedAt": "2026-10-04T09:40:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58630"
+        },
+        {
+          "headRefOid": "91f9b4a2d88ea895244183fbbe572389c02e6b7b",
+          "number": 57537,
+          "title": "[CI][Test] GLM-5.3-Flash layer-pruned checkpoint tests (e2e, KV offload, NIXL PD)",
+          "updatedAt": "2026-10-05T09:32:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57537"
+        },
+        {
+          "headRefOid": "93c50651529bb4b3b92122fd2f42ad447b65eb36",
+          "number": 57617,
+          "title": "[Perf][GLM-5.3-Flash] Batch paired KDA gate projections (f_b_proj/g_b_proj) into one bmm",
+          "updatedAt": "2026-09-23T12:41:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57617"
+        },
+        {
+          "headRefOid": "7e22f56584af166f649788cb7f720f958ffa9fbf",
+          "number": 50226,
+          "title": "[Kernel] Optimize SM103 GDN causal-conv prefills",
+          "updatedAt": "2026-08-11T00:17:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50226"
+        },
+        {
+          "headRefOid": "4bcd6fff3d53dddd364aed7674ac42527c432f4e",
+          "number": 50279,
+          "title": "[Kernel] Fuse strided GDN RMSNorm gating on SM103",
+          "updatedAt": "2026-09-23T03:30:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50279"
+        },
+        {
+          "headRefOid": "a3304b243f9a74ef1eb2314231203962832ab5a3",
+          "number": 52553,
+          "title": "[Bugfix] Keep GEMM workspace addresses stable once CUDA graphs may have captured them",
+          "updatedAt": "2026-09-01T15:46:10Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52553"
+        },
+        {
+          "headRefOid": "3c7112c0f3f55e40b0a0b6bbcaefb845be57131e",
+          "number": 57560,
+          "title": "[ROCm][Perf] Add AITER FlyDSL GDN prefill backend",
+          "updatedAt": "2026-10-07T13:02:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57560"
+        },
+        {
+          "headRefOid": "a77830311b6413e9aa49d58b69ac0bf72abd5ceb",
+          "number": 58863,
+          "title": "[Spec Decode][Qwen4Exp] RecoverSSM for Qwen GDN and the PLE short conv",
+          "updatedAt": "2026-10-04T22:37:13Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58863"
+        },
+        {
+          "headRefOid": "ae83db26030336d376d921f7e0b2b43a3de5f24f",
+          "number": 50021,
+          "title": "[Bugfix] Bound accepted-token state lookups in GDN/KDA spec decode",
+          "updatedAt": "2026-10-06T01:28:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50021"
+        },
+        {
+          "headRefOid": "ca3b30855060cd0acbc08e2e6a4d5770c04e5de7",
+          "number": 56257,
+          "title": "[Bugfix][Reasoning] Honor prompt-closed Qwen3 reasoning blocks",
+          "updatedAt": "2026-10-06T23:04:55Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56257"
+        },
+        {
+          "headRefOid": "d5721d054fe8c2d45f72730d8f53fffbd15d88f8",
+          "number": 46883,
+          "title": "[Core] Reserve FlashInfer's persistent workspace before KV cache sizing",
+          "updatedAt": "2026-10-03T17:28:20Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46883"
+        },
+        {
+          "headRefOid": "40c9a82e0e878c4a21e0b2310c32db43420f46f0",
+          "number": 46329,
+          "title": "[Attention][Quantization] NVFP4 KV cache on consumer/SoC Blackwell (sm120/sm121) for Gemma 3/4 via FlashInfer FA2",
+          "updatedAt": "2026-10-04T21:20:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46329"
+        },
+        {
+          "headRefOid": "5b96cdbceefcdec6d60d588420ee127d76bd8f97",
+          "number": 49887,
+          "title": "[Kernel] ReplaySSM: cache SSM inputs for faster Gated DeltaNet speculative decode",
+          "updatedAt": "2026-08-31T17:10:25Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49887"
+        },
+        {
+          "headRefOid": "99dcd7600195c3a7ffaa23eb782591d04df1dc65",
+          "number": 47576,
+          "title": "[Kernel] ReplaySSM: cache SSM inputs instead of state for faster standard and speculative decode (Mamba2 + GDN)",
+          "updatedAt": "2026-07-23T00:19:24Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47576"
+        },
+        {
+          "headRefOid": "a1c4e6762d5e08971ab78f9b4de9050ef224160c",
+          "number": 57063,
+          "title": "[CI] Split (B200) V1 Attention into Sparse MLA, MLA, DCP, Dense/SSM, and ROCm jobs",
+          "updatedAt": "2026-09-26T23:39:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57063"
+        },
+        {
+          "headRefOid": "7ad10effcf0e43a6c6ab9af917d0491a6a789e94",
+          "number": 53979,
+          "title": "[Attention][Spec Decode] NVFP4 KV: open the FA2 non-causal prefill wrapper for DFlash-family drafters (sm12x)",
+          "updatedAt": "2026-09-08T19:43:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53979"
+        },
+        {
+          "headRefOid": "d172b7f5ddc52c05cf58c26227d164756544fac1",
+          "number": 53919,
+          "title": "[Bugfix] Await the accepted-token copy before moving batch rows",
+          "updatedAt": "2026-08-28T19:20:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53919"
+        },
+        {
+          "headRefOid": "556f1f79bf3886e959c9c9ff723f7beb048d4f89",
+          "number": 45819,
+          "title": "[Feature] Add batch invariance support to GDN_ATTN backend",
+          "updatedAt": "2026-10-05T20:01:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45819"
+        },
+        {
+          "headRefOid": "450b266580e5f37073f285bb3567337e8f7c7bfb",
+          "number": 43611,
+          "title": "[Frontend] Make DP ZMQ liveness timeout configurable",
+          "updatedAt": "2026-09-07T01:47:29Z",
+          "url": "https://github.com/vllm-project/vllm/pull/43611"
+        },
+        {
+          "headRefOid": "d1742683ac33aedb452b50e5752b7395e89308c8",
+          "number": 55688,
+          "title": "[Mamba] Unify FI ReplaySSM STP/MTP/Prefix Caching Lifecycle",
+          "updatedAt": "2026-10-07T06:25:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55688"
+        },
+        {
+          "headRefOid": "edcec80fcd804d5c416391b4c156670d0f1ae6e8",
+          "number": 50445,
+          "title": "[Bugfix][Compile] Preserve independent input strides in piecewise create_concrete_args",
+          "updatedAt": "2026-08-19T21:55:12Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50445"
+        },
+        {
+          "headRefOid": "dd4cf3b1065086cfbf5e6829024a53ea33c5e015",
+          "number": 56577,
+          "title": "[Spec Decode][Perf] Add opt-in FP8 proposal head for Qwen4Exp MTP",
+          "updatedAt": "2026-10-05T12:27:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56577"
+        },
+        {
+          "headRefOid": "15787522732a833aa8c6a95bdb59e8b3e3ec4f88",
+          "number": 60252,
+          "title": "[Bugfix][Spec Decode] Keep SW draft block a divisor of the primary block",
+          "updatedAt": "2026-10-07T12:10:17Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60252"
+        },
+        {
+          "headRefOid": "8a290deeeba123eabf6f1f8aeae63bbd3b47592c",
+          "number": 60034,
+          "title": "[WIP][Perf] Tune small-M batch-invariant GEMMs on Hopper",
+          "updatedAt": "2026-10-05T09:15:44Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60034"
+        },
+        {
+          "headRefOid": "ffacc1b04159e9ba4833e07f31d65ca718c2deb2",
+          "number": 54495,
+          "title": "[Bugfix][Kimi-K3] Fix two crashes that make --use-replayssm unusable",
+          "updatedAt": "2026-09-16T20:57:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54495"
+        },
+        {
+          "headRefOid": "98d2bfa9e2b206d803e608a783a3fffe7b5bb20f",
+          "number": 51526,
+          "title": "[Perf] Sample in log space in TopKTopPSampler.forward_native, skipping the full-vocab softmax",
+          "updatedAt": "2026-08-09T08:25:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51526"
+        },
+        {
+          "headRefOid": "308d645ff9cba14502dedd5afb2d6d8a2bf912d8",
+          "number": 45717,
+          "title": "[Kernel] Opt-in fused shared-expert gate + GDN in-proj fusion + prefill scan-output copy elision for Qwen3.5-122B-A10B-NVFP4 (Blackwell SM103)",
+          "updatedAt": "2026-06-30T11:07:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45717"
+        },
+        {
+          "headRefOid": "d8d9c7d4ce3b3b9e0dfe903bf2684067bb22a218",
+          "number": 53090,
+          "title": "[Perf][Spec Decode] Fuse target temperature in rejection sampler",
+          "updatedAt": "2026-09-19T05:07:44Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53090"
+        },
+        {
+          "headRefOid": "cf37d936bfdbdb07f0a46763b9b4b4861062e267",
+          "number": 41824,
+          "title": "[Kernel] Enable in-place SSM state access for GDN chunk prefill kernel (Qwen3.5, Qwen3 Next, OLMo-Hybrid)",
+          "updatedAt": "2026-07-16T19:53:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41824"
+        },
+        {
+          "headRefOid": "d8739095850eaa30207e85f1a5fdea744fba674d",
+          "number": 56273,
+          "title": "[Quantization] Support packed NVFP4 Qwen4Exp PLE embeddings",
+          "updatedAt": "2026-10-07T13:03:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56273"
+        },
+        {
+          "headRefOid": "82a5b697484848eb7722e12c6da333bf3dc3f4e0",
+          "number": 59523,
+          "title": "[ROCm] Enable the cuMem CUDA-graph pool offload on ROCm",
+          "updatedAt": "2026-10-07T12:42:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59523"
+        },
+        {
+          "headRefOid": "5c900f259f8876f94b2508be975129c25fce428b",
+          "number": 38315,
+          "title": "[Perf][GDN] Fuse kkt + solve_tril kernels in chunk forward",
+          "updatedAt": "2026-09-09T10:13:33Z",
+          "url": "https://github.com/vllm-project/vllm/pull/38315"
+        },
+        {
+          "headRefOid": "35ef7d584496197460151cacd1cef8fd0bf63dca",
+          "number": 57319,
+          "title": "[Perf][MRV2] Fuse final Gumbel sampler argmax and gather",
+          "updatedAt": "2026-09-17T07:46:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57319"
+        },
+        {
+          "headRefOid": "26445350cc9729f97affe500f225cd11455f1c2b",
+          "number": 55601,
+          "title": "[Bugfix] Seed hybrid mamba state index with mamba_block_size on prefix-cache hits",
+          "updatedAt": "2026-10-07T11:39:32Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55601"
+        },
+        {
+          "headRefOid": "746f6c2e9a06a3d7aac6e8e404ee61521840984b",
+          "number": 42792,
+          "title": "[WIP][Model Runner V2] support spec decode + mamba align prefix caching",
+          "updatedAt": "2026-08-13T22:26:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/42792"
+        },
+        {
+          "headRefOid": "cf5ad62a9898bd0a9fc8188843107afe0646c891",
+          "number": 44106,
+          "title": "fix: prompt logprobs in Model Runner V2",
+          "updatedAt": "2026-07-31T02:50:45Z",
+          "url": "https://github.com/vllm-project/vllm/pull/44106"
+        },
+        {
+          "headRefOid": "1a629ce0d3b61b67dd7a09a8c4a5b4205fe09987",
+          "number": 31740,
+          "title": "feat: Add SM121/GB10 (DGX Spark) Blackwell-class GPU support",
+          "updatedAt": "2026-09-28T01:59:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/31740"
+        },
+        {
+          "headRefOid": "c5b071d48ede75dd75ee50d0ed5b21bdefb0695d",
+          "number": 39033,
+          "title": "[Bugfix][MoE] Fix hardcoded SharedExperts output buffer size for DBO ubatches",
+          "updatedAt": "2026-08-20T19:55:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/39033"
+        },
+        {
+          "headRefOid": "d672b75416eb3a53ba6e66e5453a01de4cd8dee8",
+          "number": 55122,
+          "title": "[Kernel] persistent_topk: deterministic select, faster than the exact-topk workaround",
+          "updatedAt": "2026-10-02T13:54:14Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55122"
+        },
+        {
+          "headRefOid": "848bf2dbdc67917061846ab8f9ede073a5cf934b",
+          "number": 59019,
+          "title": "[Feature][Profiler] Meta-device operator capture",
+          "updatedAt": "2026-09-30T07:34:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59019"
+        },
+        {
+          "headRefOid": "f74c1cb20d7e1eaabdfe3224ff7808a00019aea9",
+          "number": 37429,
+          "title": " [Bugfix] Fix KV cache sizing and allocation for hybrid Mamba/attention models",
+          "updatedAt": "2026-09-05T01:51:16Z",
+          "url": "https://github.com/vllm-project/vllm/pull/37429"
+        },
+        {
+          "headRefOid": "b3fcf7c223306d6f0ba1cec9a82fec23d4ec88b1",
+          "number": 54076,
+          "title": "[Bugfix][V1] Use the Mamba cache group's block size for align-mode chunk splitting",
+          "updatedAt": "2026-09-29T11:59:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54076"
+        },
+        {
+          "headRefOid": "78328b8b8df78dd454567e3aff861d480422ef78",
+          "number": 26807,
+          "title": "[V1][Hybrid] GatedDeltaNet Automatic Prefix Caching (`all`-mode) ",
+          "updatedAt": "2026-07-24T19:50:22Z",
+          "url": "https://github.com/vllm-project/vllm/pull/26807"
+        },
+        {
+          "headRefOid": "a986ac076d750876a93b94c4b31d1d24b1126c3e",
+          "number": 50897,
+          "title": "[Core][Spec Decode] Add lookahead-aware prefix cache hashing for EAGLE-style draft models",
+          "updatedAt": "2026-10-07T06:56:43Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50897"
+        },
+        {
+          "headRefOid": "9ad62027bc84ca0ccbcc40853179312de770220c",
+          "number": 41834,
+          "title": "[New Model][Nvidia] Add SM12x support for DeepSeek V4 Flash with essential fixes",
+          "updatedAt": "2026-09-19T05:54:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41834"
+        },
+        {
+          "headRefOid": "afcd8caa3874e55eb0787251ba4b718e1cc9c621",
+          "number": 37296,
+          "title": "fix marlin fp4 kernel N-dimension alignment",
+          "updatedAt": "2026-09-27T01:54:06Z",
+          "url": "https://github.com/vllm-project/vllm/pull/37296"
+        },
+        {
+          "headRefOid": "d7d689a3efff9fc2aa11efc8e13099f85eec6efc",
+          "number": 56142,
+          "title": "[Bugfix][V1] Bound hybrid shared-prefix checkpoints by all full-attention hits",
+          "updatedAt": "2026-09-13T17:15:48Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56142"
+        },
+        {
+          "headRefOid": "30c5471bb3e46ae211934a20cddb6e7c17e4b5db",
+          "number": 54993,
+          "title": "[Feature][Mamba] Support batch-invariant Mamba2 prefill and recovery",
+          "updatedAt": "2026-09-16T20:48:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54993"
+        },
+        {
+          "headRefOid": "7d9ddebd669dcd0d6a87c5dd3a5bc2f435208973",
+          "number": 55686,
+          "title": "[Quantization] Enable shared expert fusion compatibility with online `shared_expert` quantization (showcase: along Quark MXFP4 routed experts)",
+          "updatedAt": "2026-10-07T13:31:12Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55686"
+        },
+        {
+          "headRefOid": "f69793c76ebf1a8f02bb8252c0db868ecd98c254",
+          "number": 46811,
+          "title": "[Frontend] Add low-overhead /ready GPU health check",
+          "updatedAt": "2026-09-30T03:14:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46811"
+        },
+        {
+          "headRefOid": "1a82dbc758f54c5350675116346abd2ab8f9ee06",
+          "number": 47438,
+          "title": "[BUGFIX] Fix opencua processor on transformers 5",
+          "updatedAt": "2026-07-16T13:02:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47438"
+        },
+        {
+          "headRefOid": "1d405f59fdca2f78d9aec33b86ce7c3c69fd8a46",
+          "number": 52487,
+          "title": "[Bugfix] Reload speculative draft weights after Level 2 sleep wake",
+          "updatedAt": "2026-10-06T17:23:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52487"
+        },
+        {
+          "headRefOid": "f6e2740cdccb382bf025675f5a4dd804e5540bae",
+          "number": 48214,
+          "title": "[Bugfix] Fix pooling input buffer race across chunked prefill steps",
+          "updatedAt": "2026-10-04T14:02:32Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48214"
+        },
+        {
+          "headRefOid": "fb3811026a9a82a3454c1f72961b54f2062b9480",
+          "number": 45288,
+          "title": "[Frontend] Add the p-less Sampling Method for LLM Decoding",
+          "updatedAt": "2026-08-21T08:59:14Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45288"
+        }
+      ]
+    },
+    "decode": {
+      "command": [
+        "gh",
+        "pr",
+        "list",
+        "--repo",
+        "vllm-project/vllm",
+        "--state",
+        "open",
+        "--search",
+        "GDN decode",
+        "--limit",
+        "500",
+        "--json",
+        "number,title,headRefOid,updatedAt,url"
+      ],
+      "exit_code": 0,
+      "data": [
+        {
+          "headRefOid": "739a8c4b249632fa8e40cb4a23a738bb01105071",
+          "number": 55504,
+          "title": "[Bugfix] Bound GDN speculative decode query widths",
+          "updatedAt": "2026-10-06T11:04:27Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55504"
+        },
+        {
+          "headRefOid": "e89528140dee3c84510b95518b26251dee24ed04",
+          "number": 59366,
+          "title": "[Spec Decode][Qwen4Exp] Run GDN RecoverSSM verify in the fused CUDA MTP kernel",
+          "updatedAt": "2026-10-03T11:31:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59366"
+        },
+        {
+          "headRefOid": "a6668014ae251c0698e9d900da59a179d5993aac",
+          "number": 56618,
+          "title": "[Bugfix][GDN] Fall back when the fused kernel image is unavailable",
+          "updatedAt": "2026-09-12T15:20:19Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56618"
+        },
+        {
+          "headRefOid": "9e370fac11bd6fe3a5a92d762318b674e80af827",
+          "number": 60395,
+          "title": "[ROCm][Test] Add Qwen3.5 GDN zero-runtime-JIT regression coverage",
+          "updatedAt": "2026-10-07T13:00:29Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60395"
+        },
+        {
+          "headRefOid": "896232028c8c12badfc74af8518548a7e1530ef4",
+          "number": 59414,
+          "title": "[Bugfix][Kernel] Keep batch x heads out of gridDim.z in the shared FLA recurrent kernels",
+          "updatedAt": "2026-10-02T13:44:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59414"
+        },
+        {
+          "headRefOid": "a77830311b6413e9aa49d58b69ac0bf72abd5ceb",
+          "number": 58863,
+          "title": "[Spec Decode][Qwen4Exp] RecoverSSM for Qwen GDN and the PLE short conv",
+          "updatedAt": "2026-10-04T22:37:13Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58863"
+        },
+        {
+          "headRefOid": "8326abe8b7ea6303bc8e96d9ce7890da81622470",
+          "number": 54181,
+          "title": "[Kernel][GDN] Tune packed decode launch on SM120",
+          "updatedAt": "2026-09-30T14:38:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54181"
+        },
+        {
+          "headRefOid": "758e1594d2c671ec06b8308fffb22373c90ce79d",
+          "number": 59553,
+          "title": "[ROCm][Perf] Fuse the MXFP4 activation quant into the GDN gated RMSNorm",
+          "updatedAt": "2026-10-02T08:03:44Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59553"
+        },
+        {
+          "headRefOid": "1478e9d42a472f58a0543ef8bc202306528d228e",
+          "number": 54034,
+          "title": "[Bugfix][Build] Fix GDN decode declaration guard",
+          "updatedAt": "2026-08-27T10:07:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54034"
+        },
+        {
+          "headRefOid": "2efc0c896555006911b0edf0e0f089e8b2273094",
+          "number": 56466,
+          "title": "[WIP][ReplaySSM] Support prefix caching for GDN speculative decode",
+          "updatedAt": "2026-09-26T10:14:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56466"
+        },
+        {
+          "headRefOid": "a18f100d81c3dc45d5cdb2e1beae24d2126fcdf8",
+          "number": 53807,
+          "title": "[Bugfix][Build] Declare fused_gdn_decode_post_conv_mtp behind the GDN guard, not KDA",
+          "updatedAt": "2026-08-28T06:53:33Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53807"
+        },
+        {
+          "headRefOid": "fbd402ef87ad4f0a79a8d18ad17ccc70e1c10a3b",
+          "number": 53645,
+          "title": "Add FlashInfer fused decode for Qwen GDN on sm120",
+          "updatedAt": "2026-09-07T01:24:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53645"
+        },
+        {
+          "headRefOid": "4955ffdb9cf14d5201c198322ad60c3c932f1cad",
+          "number": 53929,
+          "title": "[Spec Decode] Enable adaptive DSpark verification for Qwen GDN",
+          "updatedAt": "2026-08-31T08:28:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53929"
+        },
+        {
+          "headRefOid": "c4665fef8c90b43370fcf0ad951d5d0601478e7c",
+          "number": 51954,
+          "title": "[Perf][Qwen3.5] Avoid GDN decode gate copies",
+          "updatedAt": "2026-09-27T07:42:48Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51954"
+        },
+        {
+          "headRefOid": "888ec6bb5745e6060fa2d6a424a37bebbbd84cb9",
+          "number": 60229,
+          "title": "[Spec Decode][GLM-5.3-Flash] Support adaptive verification",
+          "updatedAt": "2026-10-06T13:10:12Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60229"
+        },
+        {
+          "headRefOid": "6770257ea6ae5d5e0745d4122c0ebb8b9c917c95",
+          "number": 58802,
+          "title": "[ROCm][Perf] Fuse the GDN gated RMSNorm into out_proj at decode",
+          "updatedAt": "2026-09-26T21:05:23Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58802"
+        },
+        {
+          "headRefOid": "4e0d36dd941e488214d21af19902d57eafc38128",
+          "number": 54637,
+          "title": "[Model Runner V2] Automatic prefix caching for GDN hybrid models (mamba_cache_mode=all) with MTP speculative decoding",
+          "updatedAt": "2026-09-06T06:09:19Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54637"
+        },
+        {
+          "headRefOid": "76161092f0e7bc26264be6223a0e81bd0a9d7cd0",
+          "number": 60033,
+          "title": "[WIP][Model] Share recurrent arithmetic for Qwen GDN batch invariance",
+          "updatedAt": "2026-10-05T09:13:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60033"
+        },
+        {
+          "headRefOid": "6ed041d0e52b316e9c9bbad8e3ebf4508dc10575",
+          "number": 60105,
+          "title": "[Perf][GDN] Reuse prefill lengths and fuse FlashInfer gate conversion",
+          "updatedAt": "2026-10-05T21:25:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60105"
+        },
+        {
+          "headRefOid": "866de584641bb99137cbb54b74f2c69b5f1894b2",
+          "number": 41966,
+          "title": "[Qwen3.5] Add FlashInfer GDN decode backend",
+          "updatedAt": "2026-09-28T19:20:43Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41966"
+        },
+        {
+          "headRefOid": "fa198c9cb2163553d0d6e151a304e78a8c3cb8a0",
+          "number": 50680,
+          "title": "[Bugfix][Attention] Bound batch_size in GDN cudagraph padding branches",
+          "updatedAt": "2026-09-28T10:03:28Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50680"
+        },
+        {
+          "headRefOid": "a53ef24438c3eb6ed1ee9e5aa87cb586317ad1f0",
+          "number": 60051,
+          "title": "[CPU] Support FP16 in the GDN attention kernels",
+          "updatedAt": "2026-10-05T11:42:21Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60051"
+        },
+        {
+          "headRefOid": "a2cf86390ffdce65c1cf6437c2693fa82c713355",
+          "number": 55898,
+          "title": "[Bugfix] Preserve decode ordering for stateful attention",
+          "updatedAt": "2026-09-09T05:33:11Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55898"
+        },
+        {
+          "headRefOid": "97a0b7459fb092660aac3fe5e2f43e85d303b034",
+          "number": 54612,
+          "title": "[Perf] Qwen3-Next (GDN): decode-path kernel optimizations for all-mode prefix caching + MTP",
+          "updatedAt": "2026-09-01T18:25:21Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54612"
+        },
+        {
+          "headRefOid": "ef5e6ef20deafe0b0159b228c5dcc81b4f225a28",
+          "number": 55876,
+          "title": "[3/3][Mamba] Batched two-phase grouped prefill execution for hybrid GDN/Mamba (+7.58x)",
+          "updatedAt": "2026-09-26T23:05:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55876"
+        },
+        {
+          "headRefOid": "e981ca592d9c91a7d28464c6fc7256495bcb8642",
+          "number": 53542,
+          "title": "[Perf][SpecDecode] Preserve active runtime-K width in GDN metadata",
+          "updatedAt": "2026-09-22T03:52:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53542"
+        },
+        {
+          "headRefOid": "2b233dda5658458781f06f31365f43327b83aa0a",
+          "number": 56835,
+          "title": "[XPU] [Feature] Adding triton/sycl GDN toggle",
+          "updatedAt": "2026-10-06T14:43:11Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56835"
+        },
+        {
+          "headRefOid": "9f50847a9a1fe275b383c9a8d5e1d19818d5d54e",
+          "number": 57318,
+          "title": "[Kernel][GDN] Use flashinfer bf16 mm for the GDN gate projection",
+          "updatedAt": "2026-09-28T07:17:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57318"
+        },
+        {
+          "headRefOid": "debb4ba43485a3efa41e6c81180e004b81be6a16",
+          "number": 49827,
+          "title": "[Model] Enable batch-invariant mixed decode and prefill for Qwen GDN",
+          "updatedAt": "2026-09-24T00:55:45Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49827"
+        },
+        {
+          "headRefOid": "61c8271829b0326d7f4bab441e5944a689df73bf",
+          "number": 56529,
+          "title": "[Perf][Qwen] Inline zero padding kernel during MTP decodes (1% decode speedup)",
+          "updatedAt": "2026-09-26T13:04:11Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56529"
+        },
+        {
+          "headRefOid": "1a9595ea8c98a566ae180ff14f30745bfea86799",
+          "number": 54146,
+          "title": "[Bugfix][Kernel] GDN readout: honor fp32 SSM state precision to avoid fp16 overflow → NaN",
+          "updatedAt": "2026-09-26T12:41:45Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54146"
+        },
+        {
+          "headRefOid": "16bf9ba9a185031d92ab1aea09e36cc7118ec8e6",
+          "number": 55868,
+          "title": "[WIP][Kernel] Enable GDN batch-invariant prefix caching",
+          "updatedAt": "2026-09-25T12:03:29Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55868"
+        },
+        {
+          "headRefOid": "1c1618e3420a4458a608d0caf8f68be118125cbd",
+          "number": 59982,
+          "title": "[XPU][Spec Decode] RecoverSSM: route Qwen GDN through the Triton/FLA core on XPU",
+          "updatedAt": "2026-10-05T13:01:52Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59982"
+        },
+        {
+          "headRefOid": "ccd8197ae9818607cb7e904ffbb83a7ce0fe31fa",
+          "number": 48792,
+          "title": "[Kernel] ReplaySSM: cache SSM inputs for faster Gated DeltaNet standard decode",
+          "updatedAt": "2026-09-30T21:04:36Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48792"
+        },
+        {
+          "headRefOid": "ad064af06e8600f12d45829d0d4f1ebe8c69ecde",
+          "number": 58732,
+          "title": "[Perf][Spec Decode] Drop ~11us/step of host dispatch from GDN metadata build",
+          "updatedAt": "2026-10-02T09:27:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58732"
+        },
+        {
+          "headRefOid": "3cc468897fc3476136114b0b8af947260d37f315",
+          "number": 50172,
+          "title": "[Feature] Qwen3-Next (GDN): mamba_cache_mode=\"all\" prefix caching with speculative decoding (MTP) on V1",
+          "updatedAt": "2026-09-06T06:00:16Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50172"
+        },
+        {
+          "headRefOid": "98b358e606611725f502a3cf04dc954383b22a7b",
+          "number": 53070,
+          "title": "[Kernel][Perf] Support DSpark K=8 in fused GDN MTP decode",
+          "updatedAt": "2026-08-31T13:19:29Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53070"
+        },
+        {
+          "headRefOid": "920bc865762d82140abe3443c0925e9aada940a3",
+          "number": 50233,
+          "title": "[Model][Perf] Overlap mixed GDN decode and prefill recurrent kernels",
+          "updatedAt": "2026-08-14T05:30:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50233"
+        },
+        {
+          "headRefOid": "2692092232d03d5f3d4d68a50cbf073d36928360",
+          "number": 58139,
+          "title": "[Bugfix][ROCm] Force Triton MXFP4 for 96-row ASM scale tiles",
+          "updatedAt": "2026-10-07T11:05:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58139"
+        },
+        {
+          "headRefOid": "8e5c5707257d9056bc8457f41c9bd9c095b736d4",
+          "number": 55260,
+          "title": "[Perf][Model Runner V2] GDN all-mode decode-path optimizations: packed QKV, fused index prep, weight de-interleave + GEMM fold",
+          "updatedAt": "2026-09-04T00:35:56Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55260"
+        },
+        {
+          "headRefOid": "ce3b0284b2a3c9a9185ce0998d8cbe44d40d6091",
+          "number": 51598,
+          "title": "[ROCm][RFC] Enable scoped AITER W8A8 support on gfx1100",
+          "updatedAt": "2026-09-03T00:22:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51598"
+        },
+        {
+          "headRefOid": "5b96cdbceefcdec6d60d588420ee127d76bd8f97",
+          "number": 49887,
+          "title": "[Kernel] ReplaySSM: cache SSM inputs for faster Gated DeltaNet speculative decode",
+          "updatedAt": "2026-08-31T17:10:25Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49887"
+        },
+        {
+          "headRefOid": "5d812482e60000f7943bae52a1e44bc4b871b954",
+          "number": 54307,
+          "title": "[KV Connector] Support heterogeneous TP sharing for hybrid KV cache in Mooncake Store",
+          "updatedAt": "2026-10-05T00:49:43Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54307"
+        },
+        {
+          "headRefOid": "54b69f5dd5e802983815af2c58479076e32aaf36",
+          "number": 51508,
+          "title": "[BugFix] GDN/KDA: silent recurrent-state corruption (and CUDA crash) for stale zero-accept spec rows",
+          "updatedAt": "2026-09-18T02:45:17Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51508"
+        },
+        {
+          "headRefOid": "8d14d511de56aa6617277cbb4b0f03c1a1db25cd",
+          "number": 59824,
+          "title": "[ROCm][Kimi-K3] Support DSpark adaptive verification on MI355X",
+          "updatedAt": "2026-10-02T22:57:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59824"
+        },
+        {
+          "headRefOid": "5ae33817182b61cf2b3ec346b784b83b4f8f1d7a",
+          "number": 52297,
+          "title": "[Attention] Move GDN common metadata compute out of per-group build",
+          "updatedAt": "2026-10-01T08:41:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52297"
+        },
+        {
+          "headRefOid": "3462586be8f1f6d8c9535b1fd41e26c676fe2e75",
+          "number": 53059,
+          "title": "[Bugfix] Reject shape-aliased prefills in uniform-decode classification",
+          "updatedAt": "2026-09-13T04:27:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53059"
+        },
+        {
+          "headRefOid": "7e1ef5f56787b1ffcf1ad867d72738f40ef90f66",
+          "number": 52942,
+          "title": "[Bugfix] Fix stale mamba/GDN states with ngram spec decode on hybrid …",
+          "updatedAt": "2026-09-01T10:08:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52942"
+        },
+        {
+          "headRefOid": "da225215151a5698385b09dbd471bffc736e3343",
+          "number": 56971,
+          "title": "[KV Connector] Save decode-phase Mamba states and fingerprint MooncakeStoreConnector keys",
+          "updatedAt": "2026-10-01T10:23:32Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56971"
+        },
+        {
+          "headRefOid": "b597ed8a514eb757ae807410809980722e679e09",
+          "number": 50380,
+          "title": "Gdn ucache backend",
+          "updatedAt": "2026-07-30T04:52:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50380"
+        },
+        {
+          "headRefOid": "aea531b1cf284296ad3d106aca99f384d2182b29",
+          "number": 53078,
+          "title": "[Bugfix][KV Connector] Mooncake: heterogeneous-TP support for hybrid GDN/Mamba models",
+          "updatedAt": "2026-10-01T11:04:40Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53078"
+        },
+        {
+          "headRefOid": "3c7112c0f3f55e40b0a0b6bbcaefb845be57131e",
+          "number": 57560,
+          "title": "[ROCm][Perf] Add AITER FlyDSL GDN prefill backend",
+          "updatedAt": "2026-10-07T13:02:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57560"
+        },
+        {
+          "headRefOid": "317415c5a1fd8d02dd063ceb7ccd0b95ce0e27d9",
+          "number": 57925,
+          "title": "[ROCm][DO NOT MERGE] RDNA3 (gfx1100) full inference stack — tracking branch for splitting into landable PRs",
+          "updatedAt": "2026-10-06T21:30:46Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57925"
+        },
+        {
+          "headRefOid": "ae83db26030336d376d921f7e0b2b43a3de5f24f",
+          "number": 50021,
+          "title": "[Bugfix] Bound accepted-token state lookups in GDN/KDA spec decode",
+          "updatedAt": "2026-10-06T01:28:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50021"
+        },
+        {
+          "headRefOid": "09838c600a0b4a8156541bd1a5f91d84b10de909",
+          "number": 59483,
+          "title": "[ROCm][Perf] Fuse the MXFP4 activation quant into AITER AR+RMSNorm",
+          "updatedAt": "2026-10-02T12:47:15Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59483"
+        },
+        {
+          "headRefOid": "62cbf34259002207e237eec5b5af79f75cc1606c",
+          "number": 52244,
+          "title": "[Bugfix][V1] Restore hybrid GDN prefix-cache hits under MTP spec decoding",
+          "updatedAt": "2026-10-07T13:24:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52244"
+        },
+        {
+          "headRefOid": "97db14b8a6e5b3ef9c5eb9e7902d46a247ad0edd",
+          "number": 59997,
+          "title": "[Bugfix][KV Connector][NIXL] Transfer the whole PLE short-conv page in disaggregated P/D",
+          "updatedAt": "2026-10-07T10:57:07Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59997"
+        },
+        {
+          "headRefOid": "9ff2c4e42d44ce032889185f4585ace2a6c7db69",
+          "number": 56518,
+          "title": "fix(mamba): tolerate num_accepted=0 in the CPU GDN spec path",
+          "updatedAt": "2026-09-12T19:39:11Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56518"
+        },
+        {
+          "headRefOid": "a753ee286332cc07d339e1c58818e0acb303a1a9",
+          "number": 57280,
+          "title": "[Bugfix] Honor batch invariance in gated normalization row tiling",
+          "updatedAt": "2026-09-26T12:25:10Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57280"
+        },
+        {
+          "headRefOid": "0752d2c2ffbf6adc8736c75517331b88fa84551e",
+          "number": 41395,
+          "title": "flashinfer gdn decode kernel integration",
+          "updatedAt": "2026-05-23T09:42:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41395"
+        },
+        {
+          "headRefOid": "c18d18579c4013ceda18f557ea95d4135db67e97",
+          "number": 59594,
+          "title": "[Core][KV Connector] Keep the connector's head order when its KV layout is unsupported",
+          "updatedAt": "2026-10-06T12:39:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59594"
+        },
+        {
+          "headRefOid": "9eb3b4c393944ee9697236c35305d9a7a82a8e8f",
+          "number": 46048,
+          "title": "## [Model][GDN] Add prefix caching support for 'all' mode in Qwen3.5",
+          "updatedAt": "2026-09-22T01:50:36Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46048"
+        },
+        {
+          "headRefOid": "e75da053eb30a69c70d208ac4a89398e10883483",
+          "number": 54361,
+          "title": "[Bugfix][GDN] Run Qwen GDN cores as eager breaks in breakable CUDA graph",
+          "updatedAt": "2026-09-11T21:16:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54361"
+        },
+        {
+          "headRefOid": "556f1f79bf3886e959c9c9ff723f7beb048d4f89",
+          "number": 45819,
+          "title": "[Feature] Add batch invariance support to GDN_ATTN backend",
+          "updatedAt": "2026-10-05T20:01:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45819"
+        },
+        {
+          "headRefOid": "6b5632cda8af914481b2cfa8fa6faad7b2678e0b",
+          "number": 40738,
+          "title": "[Bugfix] Fix GDN conv + SSM state corruption with ngram spec decode",
+          "updatedAt": "2026-09-06T01:42:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/40738"
+        },
+        {
+          "headRefOid": "b0fd8e7b322b51a6288c0cd3976fb20676495b0b",
+          "number": 51836,
+          "title": "[qwen3] correct linear_attn norm and a_log parameter dtype to F32 for qwen 3.5 series",
+          "updatedAt": "2026-10-01T04:10:57Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51836"
+        },
+        {
+          "headRefOid": "6062a5d2b8aeaf3259e8d5e2b380f306337aa30d",
+          "number": 57128,
+          "title": "[Bugfix] MambaManager.find_longest_cache_hit ignores drop_eagle_block, silent corruption with prefix caching + MTP/EAGLE",
+          "updatedAt": "2026-10-06T09:33:21Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57128"
+        },
+        {
+          "headRefOid": "686b98f10b7e5485e013932e33aeda656f8b5fbc",
+          "number": 59592,
+          "title": "[Bugfix][KV Connector] Mooncake: reject mismatched block sizes in the handshake",
+          "updatedAt": "2026-10-01T11:24:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59592"
+        },
+        {
+          "headRefOid": "97f5a42ffabe690913d338beb9a9e73284e691a8",
+          "number": 55516,
+          "title": "[Bugfix][GDN] Reclassify a partial final speculative group as prefill at the max-model-len boundary",
+          "updatedAt": "2026-09-22T04:17:03Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55516"
+        },
+        {
+          "headRefOid": "58f54ceb743961e280e86eab287e9442e8a6ff16",
+          "number": 57616,
+          "title": "[Bugfix] Plain MTP must not trigger the all-groups eagle-group fallback (it zeroes all prefix-cache insertions)",
+          "updatedAt": "2026-09-19T22:14:19Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57616"
+        },
+        {
+          "headRefOid": "ccc280c2ce810aeebc46912f1b02da48db95569b",
+          "number": 50372,
+          "title": "[Kernel] Fuse FlashInfer GDN prefill state I/O",
+          "updatedAt": "2026-08-02T08:11:27Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50372"
+        },
+        {
+          "headRefOid": "99dcd7600195c3a7ffaa23eb782591d04df1dc65",
+          "number": 47576,
+          "title": "[Kernel] ReplaySSM: cache SSM inputs instead of state for faster standard and speculative decode (Mamba2 + GDN)",
+          "updatedAt": "2026-07-23T00:19:24Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47576"
+        },
+        {
+          "headRefOid": "eb5c5399545a742ab4b8635d602b2ae0af7b5d9c",
+          "number": 35292,
+          "title": "[Perf] flashinfer gdn decode kernel intergration",
+          "updatedAt": "2026-05-23T06:28:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/35292"
+        },
+        {
+          "headRefOid": "d54d61884e8000c2c22ddcb7a13d84506281ed1c",
+          "number": 58592,
+          "title": "[CI] Split (H200 MIG 35GB) Mamba Kernels into SSD / Ops / GDN whole-unit jobs",
+          "updatedAt": "2026-10-01T15:44:21Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58592"
+        },
+        {
+          "headRefOid": "b40433a4d12c08882866fdbf6296d9ceba8483ba",
+          "number": 55873,
+          "title": "[1/3][Config] Support application-directed Mamba checkpoint token and input processing",
+          "updatedAt": "2026-10-01T21:15:42Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55873"
+        },
+        {
+          "headRefOid": "026b276e5c549c9b1b390dee152ae7615a3719ff",
+          "number": 55858,
+          "title": "[Bugfix][Model] Fix OLMo Hybrid fused conv weight loading",
+          "updatedAt": "2026-09-16T11:23:27Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55858"
+        },
+        {
+          "headRefOid": "b1171c804b96474eafd3e2f0354b8ec67bfa8ab7",
+          "number": 52559,
+          "title": "[Spec Decode] Add graph-aware adaptive K for DFlash",
+          "updatedAt": "2026-08-24T06:51:57Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52559"
+        },
+        {
+          "headRefOid": "7e22f56584af166f649788cb7f720f958ffa9fbf",
+          "number": 50226,
+          "title": "[Kernel] Optimize SM103 GDN causal-conv prefills",
+          "updatedAt": "2026-08-11T00:17:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50226"
+        },
+        {
+          "headRefOid": "aca4b3d3d9d4b918f52a1907ee0fde76ed711b31",
+          "number": 58851,
+          "title": "[Perf][MRV2] Share GDN, Mamba and Kimi-K3 KDA batch metadata across KV cache groups",
+          "updatedAt": "2026-10-06T06:37:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58851"
+        },
+        {
+          "headRefOid": "93c50651529bb4b3b92122fd2f42ad447b65eb36",
+          "number": 57617,
+          "title": "[Perf][GLM-5.3-Flash] Batch paired KDA gate projections (f_b_proj/g_b_proj) into one bmm",
+          "updatedAt": "2026-09-23T12:41:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57617"
+        },
+        {
+          "headRefOid": "d4b4669f7cc4322ee43d0e7799bcaeb88ce5b1f5",
+          "number": 57496,
+          "title": "[CPU] Add KDA backend for GLM5Next",
+          "updatedAt": "2026-09-21T11:13:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57496"
+        },
+        {
+          "headRefOid": "d172b7f5ddc52c05cf58c26227d164756544fac1",
+          "number": 53919,
+          "title": "[Bugfix] Await the accepted-token copy before moving batch rows",
+          "updatedAt": "2026-08-28T19:20:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53919"
+        },
+        {
+          "headRefOid": "41edfaf77e3b4765a43d58f7cd81445aa481b83d",
+          "number": 47123,
+          "title": "[Bugfix] Fix misclassification of prefill as uniform decode for hybrid models",
+          "updatedAt": "2026-09-24T00:55:42Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47123"
+        },
+        {
+          "headRefOid": "20eb253b5bed231b6b1b824e3fab5d53b5cc6ac9",
+          "number": 53205,
+          "title": "[Mooncake][PD] Support DCP transfer for MLA/GQA models",
+          "updatedAt": "2026-10-01T17:06:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53205"
+        },
+        {
+          "headRefOid": "877a3c671e69d628ecd868219ac10b554088bd73",
+          "number": 55374,
+          "title": "[KV Connector] Support piecewise prefix loading with NIXL connectors",
+          "updatedAt": "2026-09-08T23:46:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55374"
+        },
+        {
+          "headRefOid": "2d890cc219985eb016f328135507e9feddfe21dc",
+          "number": 57039,
+          "title": "[GDN] Avoid two per-layer copies in the FlashInfer prefill path",
+          "updatedAt": "2026-09-24T09:46:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57039"
+        },
+        {
+          "headRefOid": "243f32eceace9561078ae6bfba4a2bf2a5739ad8",
+          "number": 55875,
+          "title": "[2/3][Core] Prefix checkpoint coordination and same-step pairing in Core Scheduler",
+          "updatedAt": "2026-09-26T23:04:56Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55875"
+        },
+        {
+          "headRefOid": "7e2d16c7be868661586ce46063a8ef8605a74019",
+          "number": 60031,
+          "title": "[Spec Decode][Test] Add regression test for draft slot_mapping block size on hybrid models",
+          "updatedAt": "2026-10-05T09:02:16Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60031"
+        },
+        {
+          "headRefOid": "308d645ff9cba14502dedd5afb2d6d8a2bf912d8",
+          "number": 45717,
+          "title": "[Kernel] Opt-in fused shared-expert gate + GDN in-proj fusion + prefill scan-output copy elision for Qwen3.5-122B-A10B-NVFP4 (Blackwell SM103)",
+          "updatedAt": "2026-06-30T11:07:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45717"
+        },
+        {
+          "headRefOid": "126c2af4b2af28c7d701ce865f377ef0ddcef34f",
+          "number": 49620,
+          "title": "fix(v1): prevent IMA after speculative preemption",
+          "updatedAt": "2026-08-19T21:49:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49620"
+        },
+        {
+          "headRefOid": "673af7f556eb86348fd0cff490d4403abb73d020",
+          "number": 53406,
+          "title": "[Bugfix] Do not FULL-capture spec-decode batches in TurboQuant attention backend",
+          "updatedAt": "2026-08-22T22:36:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53406"
+        },
+        {
+          "headRefOid": "81d8ff7bac552395e28248a4c1bac59bd45ac5e2",
+          "number": 55123,
+          "title": "[Guard] Assert no prefill in FULL decode-cudagraph replay (#53051)",
+          "updatedAt": "2026-09-03T10:20:40Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55123"
+        },
+        {
+          "headRefOid": "cfea4e64dbb96e626c0e3ffb980bfee9d5bbcfbb",
+          "number": 58502,
+          "title": "[helion] Helion KDA backend integration",
+          "updatedAt": "2026-09-24T02:56:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58502"
+        },
+        {
+          "headRefOid": "7c4775ff310fb14b7a330ae1a6c863d70762b777",
+          "number": 60068,
+          "title": "[MRV2][Spec Decode] Opt-in confidence stop for autoregressive drafting",
+          "updatedAt": "2026-10-07T06:06:20Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60068"
+        },
+        {
+          "headRefOid": "a699f5cc09d62651868925b71da80df80933a829",
+          "number": 55138,
+          "title": "[Docs][Test] Add GraniteSWA (granite-swash-2b) to batch invariance tested models",
+          "updatedAt": "2026-10-05T20:11:17Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55138"
+        },
+        {
+          "headRefOid": "3d6472753f0216c06a499f3d36ea49bb9bc493fb",
+          "number": 41457,
+          "title": "[Perf] Fuse Qwen3.5 GDN in_proj_ba into 6-way in_proj MergedColumnParallelLinear",
+          "updatedAt": "2026-09-28T02:55:46Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41457"
+        },
+        {
+          "headRefOid": "2e128835b1e4d8881218bb405b504b6b6f57dd96",
+          "number": 52522,
+          "title": "[Feature] Batch-invariant support for speculative decoding",
+          "updatedAt": "2026-09-03T16:26:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52522"
+        },
+        {
+          "headRefOid": "7af173ae2dc4da50541b414d9b89037d48343d20",
+          "number": 53520,
+          "title": "[Bugfix][Spec Decode] Fix prompt_logprobs corruption from CUDA graph output buffer reuse by padded drafter",
+          "updatedAt": "2026-09-30T07:39:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53520"
+        },
+        {
+          "headRefOid": "4820a2758c68ea6069ecaf7269ce3dd2d17cc7ad",
+          "number": 57294,
+          "title": "[CPU] Add Qwen3.8-Flash-Next CPU backend",
+          "updatedAt": "2026-09-29T20:03:40Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57294"
+        },
+        {
+          "headRefOid": "d8917f4fd4cdfd0c5d8faed292772c0ade0304cd",
+          "number": 55523,
+          "title": "[Bugfix][Mooncake] Fix mixed-TP GQA and indexer cache transfers for MiniMax-M3",
+          "updatedAt": "2026-10-01T17:07:55Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55523"
+        },
+        {
+          "headRefOid": "14b8fe82ade5c1d43c3741aacbbfb434acd87e48",
+          "number": 51540,
+          "title": "[Perf] Avoid a per-prefill-step GPU->CPU sync in the KDA chunk kernels",
+          "updatedAt": "2026-09-14T00:42:11Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51540"
+        },
+        {
+          "headRefOid": "ffacc1b04159e9ba4833e07f31d65ca718c2deb2",
+          "number": 54495,
+          "title": "[Bugfix][Kimi-K3] Fix two crashes that make --use-replayssm unusable",
+          "updatedAt": "2026-09-16T20:57:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54495"
+        },
+        {
+          "headRefOid": "0e9767b9a507d42ec482ae95b89e5e0d0935d35a",
+          "number": 44698,
+          "title": "[Spec][PP] Support MTP speculative decoding under pipeline parallelism (PP>1)",
+          "updatedAt": "2026-07-15T20:54:07Z",
+          "url": "https://github.com/vllm-project/vllm/pull/44698"
+        },
+        {
+          "headRefOid": "d3f80850fc45331a28abc09131cc8521d401af01",
+          "number": 44309,
+          "title": "Adding support for zentorch-gdn",
+          "updatedAt": "2026-06-15T11:00:24Z",
+          "url": "https://github.com/vllm-project/vllm/pull/44309"
+        },
+        {
+          "headRefOid": "f70b0ffe66a9ea4cfb8601d01e7b81ad771bc156",
+          "number": 48475,
+          "title": "[Bugfix] Clamp spec-decode state index load for zero num_accepted_tokens in GDN kernels",
+          "updatedAt": "2026-08-17T02:27:37Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48475"
+        },
+        {
+          "headRefOid": "82a5b697484848eb7722e12c6da333bf3dc3f4e0",
+          "number": 59523,
+          "title": "[ROCm] Enable the cuMem CUDA-graph pool offload on ROCm",
+          "updatedAt": "2026-10-07T12:42:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59523"
+        },
+        {
+          "headRefOid": "284fe4e00364544346c5508218960ef5c39c674e",
+          "number": 49652,
+          "title": "[Bugfix][Spec Decode] Fix autoregressive draft decode capture with dynamic SD",
+          "updatedAt": "2026-10-05T19:26:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49652"
+        },
+        {
+          "headRefOid": "37e72c5967f10515482b6ee1acfc9e7a6d0fb921",
+          "number": 46239,
+          "title": "[Kernel] ReplaySSM opt-in AR decode for Mamba2 (#46187)",
+          "updatedAt": "2026-07-24T18:14:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46239"
+        },
+        {
+          "headRefOid": "cc79e96238e8b39db4e41d8715d2983cb703ecba",
+          "number": 58836,
+          "title": "[Bugfix][Metrics][MFU] Bill linear-attention layers of hybrid models separately",
+          "updatedAt": "2026-09-26T10:18:07Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58836"
+        },
+        {
+          "headRefOid": "cf55f0ae61693c973cf3292a03cec24754d93a39",
+          "number": 47759,
+          "title": "[Model] Support uneven TP3 Qwen3.5/Qwen3Next layouts",
+          "updatedAt": "2026-10-07T09:15:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47759"
+        },
+        {
+          "headRefOid": "78ecc0a2a1c6cf120a127f5953117513f0dfe427",
+          "number": 53403,
+          "title": "[Docs] Add Qwen3-0.6B to batch invariance tested models",
+          "updatedAt": "2026-09-29T16:22:19Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53403"
+        },
+        {
+          "headRefOid": "b28e4b9195d4f72cd908e8b7e80355c0bb509487",
+          "number": 60250,
+          "title": "[ROCm] Enable the rms_norm_gated custom op by default (Qwen3.8-27B)",
+          "updatedAt": "2026-10-06T16:25:10Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60250"
+        },
+        {
+          "headRefOid": "ee8dc84b1efec13ca4bad30d1b5aaea4f5600a21",
+          "number": 47377,
+          "title": "[Spec Decode] Add DSpark support for Qwen3.5 target models",
+          "updatedAt": "2026-08-20T01:05:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47377"
+        },
+        {
+          "headRefOid": "9fa214e0df12bbd6e810afc4cab4c786676d600c",
+          "number": 45883,
+          "title": "[Feat] Support FlashQLA backend for qwen3.5",
+          "updatedAt": "2026-09-22T07:24:07Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45883"
+        },
+        {
+          "headRefOid": "c92b9b70fb66a63d2d04eebb91ea36c74d7caa67",
+          "number": 59406,
+          "title": "[ROCm][Perf][Bugfix] Probe the preshuffled FP4 GEMM config by logical K",
+          "updatedAt": "2026-10-01T13:26:13Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59406"
+        },
+        {
+          "headRefOid": "21f0f3a5d2f1e1ea20edc5b0b40c42d3cd7c46e7",
+          "number": 57003,
+          "title": "Add Agnes 3.0 Flash model support",
+          "updatedAt": "2026-09-15T12:17:14Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57003"
+        },
+        {
+          "headRefOid": "1ccfe71982c9422acc6d51d1d273d6857ae9f33a",
+          "number": 58630,
+          "title": "[Bugfix][Attention] Resolve kernel block-size constraints per KV cache spec",
+          "updatedAt": "2026-10-04T09:40:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58630"
+        },
+        {
+          "headRefOid": "98dbed64d7e070d0d2f34794ef2b5dc1d75507fb",
+          "number": 49847,
+          "title": "[Kernel] ReplaySSM: cache SSM inputs for faster Mamba2 speculative decode",
+          "updatedAt": "2026-10-03T01:03:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49847"
+        },
+        {
+          "headRefOid": "a30966bb94d8ba748fe8985b2814af7a57bdeac2",
+          "number": 53410,
+          "title": "[Perf] TurboQuant: run spec-decode verify batches as decodes with FULL cudagraphs",
+          "updatedAt": "2026-08-22T23:14:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53410"
+        },
+        {
+          "headRefOid": "8d1e6e21aa4626653e298b5738c46335ca0fcd05",
+          "number": 56173,
+          "title": "Add gigachat 3.5 reasoning support",
+          "updatedAt": "2026-10-02T05:11:36Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56173"
+        },
+        {
+          "headRefOid": "4a365dee4aed8ae3135213b4cf6ce04f6d82e756",
+          "number": 56026,
+          "title": "[Bugfix] Flag every KV cache group holding a separately prefixed drafter's layers as a draft group",
+          "updatedAt": "2026-09-22T01:18:44Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56026"
+        },
+        {
+          "headRefOid": "205244e93f872310416c401be92a069a6665ec6b",
+          "number": 45614,
+          "title": "[Bugfix][Core] Fix Mamba prefix cache EAGLE hit",
+          "updatedAt": "2026-08-19T22:18:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45614"
+        },
+        {
+          "headRefOid": "129eb8ec01dca3f5e723ad140010ab1e20e1895c",
+          "number": 41481,
+          "title": "[Spec Decode][V1][V2] Warm spec-decode helper kernels at startup",
+          "updatedAt": "2026-09-05T01:48:22Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41481"
+        },
+        {
+          "headRefOid": "20dced5edfab1231a45310143ef517e2f1a801e1",
+          "number": 48375,
+          "title": "[BugFix] Honor drop_eagle_block in MambaManager",
+          "updatedAt": "2026-09-08T21:31:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48375"
+        },
+        {
+          "headRefOid": "ccf4b2aec8453291032c7e19721686b2b0cbe9e5",
+          "number": 47708,
+          "title": "[Feature] Gigachat 3.5 support",
+          "updatedAt": "2026-09-15T10:29:40Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47708"
+        },
+        {
+          "headRefOid": "2c23f7225fc2d72317d3bfa2ebfa53b712394c8a",
+          "number": 59448,
+          "title": "[Attention][Triton] Admit short spec-verify queries into the 3D split-KV path, guard masked segments",
+          "updatedAt": "2026-10-04T21:57:48Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59448"
+        },
+        {
+          "headRefOid": "3812af4ed37258e8be9114b491d634b10c053aaa",
+          "number": 43650,
+          "title": "[Bugfix][Core] MTP + enable prefix caching + mamba accuracy fix",
+          "updatedAt": "2026-09-29T09:26:23Z",
+          "url": "https://github.com/vllm-project/vllm/pull/43650"
+        },
+        {
+          "headRefOid": "d45c7e2f1812dfdea66ff4d9ee71b8577e57a434",
+          "number": 50038,
+          "title": "[XPU] Gate FlashAttention-in-graph on oneAPI 2026.0+ runtime support",
+          "updatedAt": "2026-09-01T12:20:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50038"
+        },
+        {
+          "headRefOid": "227e72a0f57b5c89cfb802a26faab97867efbf4c",
+          "number": 51055,
+          "title": "[Perf][Hybrid] Skip redundant num_accepted_tokens H2D copy after preprocess_mamba",
+          "updatedAt": "2026-09-17T11:33:33Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51055"
+        },
+        {
+          "headRefOid": "b4e0bd2df0ea6f7d9999b8e6243010337330fdc2",
+          "number": 58737,
+          "title": "[Perf] Fuse the mamba align block-table gather into one Triton kernel, 7 kernels -> 1, 6x speedup on all shapes for this kernel",
+          "updatedAt": "2026-10-05T17:49:36Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58737"
+        },
+        {
+          "headRefOid": "8a290deeeba123eabf6f1f8aeae63bbd3b47592c",
+          "number": 60034,
+          "title": "[WIP][Perf] Tune small-M batch-invariant GEMMs on Hopper",
+          "updatedAt": "2026-10-05T09:15:44Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60034"
+        },
+        {
+          "headRefOid": "54dc12db53959c3d95738f535b95becd8074ce5b",
+          "number": 58662,
+          "title": "[Perf][SM100] Use TGV for small-batch BF16 output projections",
+          "updatedAt": "2026-09-25T04:36:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58662"
+        },
+        {
+          "headRefOid": "ccc71957c46ea5d970c41062e08287e30040939b",
+          "number": 54163,
+          "title": "[Bugfix][Spec Decode] DFlash/DSpark no longer drop the last prefix-cache block (mamba align context recompute)",
+          "updatedAt": "2026-10-05T21:16:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54163"
+        },
+        {
+          "headRefOid": "e829a9cd14c915d28e2eb328e52a32cc589deee3",
+          "number": 54716,
+          "title": "[Bugfix][Spec Decode] Derive draft KV slots from absolute position on M-RoPE models",
+          "updatedAt": "2026-09-10T07:20:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54716"
+        },
+        {
+          "headRefOid": "581e6d4ecd3e29a29ac96aef89c00d0e65364dde",
+          "number": 58094,
+          "title": "[Bugfix][Spec Decode] Propagate rope hf_overrides to MTP draft",
+          "updatedAt": "2026-10-07T06:33:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58094"
+        },
+        {
+          "headRefOid": "ac7645cc45155061b34fc69fe47593ea8d3c2480",
+          "number": 59554,
+          "title": "[watermarking] Add DFlash support to dual-key gumbel-max watermarking",
+          "updatedAt": "2026-10-06T20:27:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59554"
+        },
+        {
+          "headRefOid": "10f53819bd60a09a3757b946f66c751ff941f17b",
+          "number": 59746,
+          "title": "[Bugfix][NIXL] Pair P/D blocks by the last token with different block sizes",
+          "updatedAt": "2026-10-02T11:04:23Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59746"
+        },
+        {
+          "headRefOid": "a986ac076d750876a93b94c4b31d1d24b1126c3e",
+          "number": 50897,
+          "title": "[Core][Spec Decode] Add lookahead-aware prefix cache hashing for EAGLE-style draft models",
+          "updatedAt": "2026-10-07T06:56:43Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50897"
+        },
+        {
+          "headRefOid": "4d0c82af87029ab70bc792e48929553de97cbf1d",
+          "number": 54421,
+          "title": "[KV Connector] Support piecewise Store and P/D loading with Mooncake",
+          "updatedAt": "2026-10-01T11:06:26Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54421"
+        },
+        {
+          "headRefOid": "9c3855cdaed9b6ac63022862acb4716a8857134e",
+          "number": 55306,
+          "title": "fix: fix Heterogeneous TP bug of Mamba2 conv state",
+          "updatedAt": "2026-09-25T00:44:12Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55306"
+        },
+        {
+          "headRefOid": "e04d9cda2f689f1996cef0d293eac857c6987300",
+          "number": 47981,
+          "title": "Support attention-HMA PP prefill in NixlPushConnector",
+          "updatedAt": "2026-08-19T22:27:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47981"
+        },
+        {
+          "headRefOid": "dd4cf3b1065086cfbf5e6829024a53ea33c5e015",
+          "number": 56577,
+          "title": "[Spec Decode][Perf] Add opt-in FP8 proposal head for Qwen4Exp MTP",
+          "updatedAt": "2026-10-05T12:27:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56577"
+        },
+        {
+          "headRefOid": "02a4938d1788652fbfcb191b11f6a31041d4f074",
+          "number": 51506,
+          "title": "[Bugfix][Kernel] Hoist tensor-descriptor build out of unified-attention TD ti…",
+          "updatedAt": "2026-09-24T15:50:55Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51506"
+        },
+        {
+          "headRefOid": "746f6c2e9a06a3d7aac6e8e404ee61521840984b",
+          "number": 42792,
+          "title": "[WIP][Model Runner V2] support spec decode + mamba align prefix caching",
+          "updatedAt": "2026-08-13T22:26:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/42792"
+        },
+        {
+          "headRefOid": "15787522732a833aa8c6a95bdb59e8b3e3ec4f88",
+          "number": 60252,
+          "title": "[Bugfix][Spec Decode] Keep SW draft block a divisor of the primary block",
+          "updatedAt": "2026-10-07T12:10:17Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60252"
+        },
+        {
+          "headRefOid": "2428bacabf981bf71094cd230f85d3952ad2eaa7",
+          "number": 55617,
+          "title": "[WIP] Hybrid GDN (Qwen3.5/Qwen3.8 27B-class) + MTP ~3 concurrent sequences at batch >= 4",
+          "updatedAt": "2026-09-13T22:12:16Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55617"
+        },
+        {
+          "headRefOid": "d8739095850eaa30207e85f1a5fdea744fba674d",
+          "number": 56273,
+          "title": "[Quantization] Support packed NVFP4 Qwen4Exp PLE embeddings",
+          "updatedAt": "2026-10-07T13:03:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56273"
+        },
+        {
+          "headRefOid": "78328b8b8df78dd454567e3aff861d480422ef78",
+          "number": 26807,
+          "title": "[V1][Hybrid] GatedDeltaNet Automatic Prefix Caching (`all`-mode) ",
+          "updatedAt": "2026-07-24T19:50:22Z",
+          "url": "https://github.com/vllm-project/vllm/pull/26807"
+        },
+        {
+          "headRefOid": "0457e961490be6234aac531a76e40859874f9813",
+          "number": 58818,
+          "title": "[Perf][DSv4.1] Share the FlashMLA decode plan across KV cache groups",
+          "updatedAt": "2026-09-28T07:42:45Z",
+          "url": "https://github.com/vllm-project/vllm/pull/58818"
+        },
+        {
+          "headRefOid": "67371f67f2ff8e2b54a572cb654b06790bc137b9",
+          "number": 52196,
+          "title": "[Mamba][Quantization] Add Stage 1 (CPU-only, reference) int8 quantization utilities for SSM state",
+          "updatedAt": "2026-08-20T16:35:00Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52196"
+        },
+        {
+          "headRefOid": "848bf2dbdc67917061846ab8f9ede073a5cf934b",
+          "number": 59019,
+          "title": "[Feature][Profiler] Meta-device operator capture",
+          "updatedAt": "2026-09-30T07:34:50Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59019"
+        },
+        {
+          "headRefOid": "40c9a82e0e878c4a21e0b2310c32db43420f46f0",
+          "number": 46329,
+          "title": "[Attention][Quantization] NVFP4 KV cache on consumer/SoC Blackwell (sm120/sm121) for Gemma 3/4 via FlashInfer FA2",
+          "updatedAt": "2026-10-04T21:20:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46329"
+        },
+        {
+          "headRefOid": "c65ba6aa8ffe9fa6719c5dcdda747b59d7d32520",
+          "number": 48363,
+          "title": "[Perf] Warm up hybrid Mamba2 Triton kernels reported by the JIT monitor",
+          "updatedAt": "2026-07-30T16:17:26Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48363"
+        },
+        {
+          "headRefOid": "7c9454a1eb7649cb4da692c3f5ef014e798d8843",
+          "number": 49367,
+          "title": "[Perf] Split-reduction batch-invariant log_softmax for small-batch decode",
+          "updatedAt": "2026-08-25T10:32:07Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49367"
+        },
+        {
+          "headRefOid": "7cfe1eb757bbc520f5701e20920790a7de88ad09",
+          "number": 59368,
+          "title": "[Bugfix][MRV2] Measure the CUDA graph pool for the memory estimate, not the capture's free-memory delta",
+          "updatedAt": "2026-10-04T02:01:38Z",
+          "url": "https://github.com/vllm-project/vllm/pull/59368"
+        },
+        {
+          "headRefOid": "fa0ba8da22a8838abca7def1d4c13a4b241c0ccd",
+          "number": 52970,
+          "title": "[ROCm][aiter] officially supporting aiter Triton kernels+dsv4 on RDNA3",
+          "updatedAt": "2026-10-06T17:54:27Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52970"
+        },
+        {
+          "headRefOid": "cf37d936bfdbdb07f0a46763b9b4b4861062e267",
+          "number": 41824,
+          "title": "[Kernel] Enable in-place SSM state access for GDN chunk prefill kernel (Qwen3.5, Qwen3 Next, OLMo-Hybrid)",
+          "updatedAt": "2026-07-16T19:53:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41824"
+        },
+        {
+          "headRefOid": "30c5471bb3e46ae211934a20cddb6e7c17e4b5db",
+          "number": 54993,
+          "title": "[Feature][Mamba] Support batch-invariant Mamba2 prefill and recovery",
+          "updatedAt": "2026-09-16T20:48:58Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54993"
+        },
+        {
+          "headRefOid": "99a840e2e3f04990e13ebeb638f3f3d118699d97",
+          "number": 47638,
+          "title": "[KV Connector] Normalize list/tuple KV cache input in register_kv_caches",
+          "updatedAt": "2026-10-01T11:04:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47638"
+        },
+        {
+          "headRefOid": "5c900f259f8876f94b2508be975129c25fce428b",
+          "number": 38315,
+          "title": "[Perf][GDN] Fuse kkt + solve_tril kernels in chunk forward",
+          "updatedAt": "2026-09-09T10:13:33Z",
+          "url": "https://github.com/vllm-project/vllm/pull/38315"
+        },
+        {
+          "headRefOid": "d5721d054fe8c2d45f72730d8f53fffbd15d88f8",
+          "number": 46883,
+          "title": "[Core] Reserve FlashInfer's persistent workspace before KV cache sizing",
+          "updatedAt": "2026-10-03T17:28:20Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46883"
+        },
+        {
+          "headRefOid": "d8d9c7d4ce3b3b9e0dfe903bf2684067bb22a218",
+          "number": 53090,
+          "title": "[Perf][Spec Decode] Fuse target temperature in rejection sampler",
+          "updatedAt": "2026-09-19T05:07:44Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53090"
+        },
+        {
+          "headRefOid": "5fa1b61cf6400fc9bbaacbaab78c48ea966687e6",
+          "number": 44296,
+          "title": "[Bugfix] Fix speculative decoding for short_conv (LFM2) models",
+          "updatedAt": "2026-07-29T13:49:38Z",
+          "url": "https://github.com/vllm-project/vllm/pull/44296"
+        },
+        {
+          "headRefOid": "cdbfdfdd30d7284d6b2c31662fc34c633caaa00c",
+          "number": 53426,
+          "title": "[Core][Spec Decode] Opt-in skip of the K=0 draft sync forward (MTP + DFlash, default off)",
+          "updatedAt": "2026-10-05T19:48:42Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53426"
+        },
+        {
+          "headRefOid": "7ad10effcf0e43a6c6ab9af917d0491a6a789e94",
+          "number": 53979,
+          "title": "[Attention][Spec Decode] NVFP4 KV: open the FA2 non-causal prefill wrapper for DFlash-family drafters (sm12x)",
+          "updatedAt": "2026-09-08T19:43:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53979"
+        },
+        {
+          "headRefOid": "acdc715fad1d2ff97a521e6e62542c63f485cab0",
+          "number": 37700,
+          "title": "[Bugfix] Fix FLA Hopper/TMA misclassification on SM12x desktop Blackwell",
+          "updatedAt": "2026-07-13T02:17:18Z",
+          "url": "https://github.com/vllm-project/vllm/pull/37700"
+        },
+        {
+          "headRefOid": "1ad399b0aa0189d952a958a1aa201ff373b2ffae",
+          "number": 51599,
+          "title": "[Bugfix][MRv1] Decouple async Mamba align D2H counts from InputBatch row shifts (#51571)",
+          "updatedAt": "2026-10-01T18:04:19Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51599"
+        },
+        {
+          "headRefOid": "0c44504421cb7ed5f9eacf97875902328d9b6a14",
+          "number": 56187,
+          "title": "[KVConnector][NIXL] Route Mamba/SSM layers through the PP push member-identity path",
+          "updatedAt": "2026-09-12T06:43:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56187"
+        },
+        {
+          "headRefOid": "c70113053761985aa289d5088503731c535dc028",
+          "number": 52190,
+          "title": "# [kimik3][ROCm] Enable torch.compile for so post-grad fusion passes work (aiter::fused_qk_rmsnorm_kernel, aiter::allreduce_fusion_kernel_1stage)",
+          "updatedAt": "2026-08-20T00:11:52Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52190"
+        },
+        {
+          "headRefOid": "fea7052371a3e4353b5a246c437a9f9759aa959a",
+          "number": 55065,
+          "title": "[Attention] Add FlashInfer SM120 FP8 PRIMS prefill",
+          "updatedAt": "2026-09-17T03:46:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55065"
+        },
+        {
+          "headRefOid": "4c8a5a4639545014d49978e38d3b90adbd8fa35a",
+          "number": 49472,
+          "title": "[Core] Balance padding vs group count when grouping hybrid KV cache layers",
+          "updatedAt": "2026-09-01T02:50:03Z",
+          "url": "https://github.com/vllm-project/vllm/pull/49472"
+        },
+        {
+          "headRefOid": "9760bffb7c02e57f3b143605d6cb794cb3d1f787",
+          "number": 54979,
+          "title": "[Bugfix][V1] Register accepted spec-decode tokens before terminal cleanup",
+          "updatedAt": "2026-09-30T17:03:59Z",
+          "url": "https://github.com/vllm-project/vllm/pull/54979"
+        },
+        {
+          "headRefOid": "d1742683ac33aedb452b50e5752b7395e89308c8",
+          "number": 55688,
+          "title": "[Mamba] Unify FI ReplaySSM STP/MTP/Prefix Caching Lifecycle",
+          "updatedAt": "2026-10-07T06:25:34Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55688"
+        },
+        {
+          "headRefOid": "f78fd7a96abd548f13c34630cb06abb66d84da0d",
+          "number": 42910,
+          "title": "[Feature]: Support DDTree speculative decoding",
+          "updatedAt": "2026-09-02T12:38:31Z",
+          "url": "https://github.com/vllm-project/vllm/pull/42910"
+        },
+        {
+          "headRefOid": "7a80a19a9d39e60b08a5cdc4a88f639305a1c479",
+          "number": 39001,
+          "title": "[ROCm] Support unlimited sequence lengths via multi-pass reduction",
+          "updatedAt": "2026-10-01T17:42:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/39001"
+        },
+        {
+          "headRefOid": "1be9d21b0f829aa510d83de66391ca29a0017a45",
+          "number": 51575,
+          "title": "[Bugfix][MRV2] Respect dynamic K=0 from scheduler in AutoRegressiveSpeculator",
+          "updatedAt": "2026-10-05T19:15:08Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51575"
+        },
+        {
+          "headRefOid": "98d2bfa9e2b206d803e608a783a3fffe7b5bb20f",
+          "number": 51526,
+          "title": "[Perf] Sample in log space in TopKTopPSampler.forward_native, skipping the full-vocab softmax",
+          "updatedAt": "2026-08-09T08:25:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/51526"
+        },
+        {
+          "headRefOid": "f74c1cb20d7e1eaabdfe3224ff7808a00019aea9",
+          "number": 37429,
+          "title": " [Bugfix] Fix KV cache sizing and allocation for hybrid Mamba/attention models",
+          "updatedAt": "2026-09-05T01:51:16Z",
+          "url": "https://github.com/vllm-project/vllm/pull/37429"
+        },
+        {
+          "headRefOid": "2d08f7f889131f97ce1874872bce01ae7cd3b631",
+          "number": 45916,
+          "title": "[Perf][Kernel][ROCm] Add Triton split-KV paged decode fallback for gfx12",
+          "updatedAt": "2026-08-31T14:29:35Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45916"
+        },
+        {
+          "headRefOid": "7d9ddebd669dcd0d6a87c5dd3a5bc2f435208973",
+          "number": 55686,
+          "title": "[Quantization] Enable shared expert fusion compatibility with online `shared_expert` quantization (showcase: along Quark MXFP4 routed experts)",
+          "updatedAt": "2026-10-07T13:31:12Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55686"
+        },
+        {
+          "headRefOid": "450b266580e5f37073f285bb3567337e8f7c7bfb",
+          "number": 43611,
+          "title": "[Frontend] Make DP ZMQ liveness timeout configurable",
+          "updatedAt": "2026-09-07T01:47:29Z",
+          "url": "https://github.com/vllm-project/vllm/pull/43611"
+        },
+        {
+          "headRefOid": "367930ede2e61312faed48dfab5da22767f25694",
+          "number": 60186,
+          "title": "[Core] Count V2's KV cache init memory against the KV cache budget",
+          "updatedAt": "2026-10-07T09:09:06Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60186"
+        },
+        {
+          "headRefOid": "0ee9b859bbb2bbb6e33a461e7fd1fee1fa4792cc",
+          "number": 40914,
+          "title": "[Bugfix][Spec-Decode] TurboQuant K+1 spec-verify routing (fixes #40880)",
+          "updatedAt": "2026-08-21T12:30:23Z",
+          "url": "https://github.com/vllm-project/vllm/pull/40914"
+        },
+        {
+          "headRefOid": "a3304b243f9a74ef1eb2314231203962832ab5a3",
+          "number": 52553,
+          "title": "[Bugfix] Keep GEMM workspace addresses stable once CUDA graphs may have captured them",
+          "updatedAt": "2026-09-01T15:46:10Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52553"
+        },
+        {
+          "headRefOid": "35ef7d584496197460151cacd1cef8fd0bf63dca",
+          "number": 57319,
+          "title": "[Perf][MRV2] Fuse final Gumbel sampler argmax and gather",
+          "updatedAt": "2026-09-17T07:46:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57319"
+        },
+        {
+          "headRefOid": "c5b071d48ede75dd75ee50d0ed5b21bdefb0695d",
+          "number": 39033,
+          "title": "[Bugfix][MoE] Fix hardcoded SharedExperts output buffer size for DBO ubatches",
+          "updatedAt": "2026-08-20T19:55:53Z",
+          "url": "https://github.com/vllm-project/vllm/pull/39033"
+        },
+        {
+          "headRefOid": "d672b75416eb3a53ba6e66e5453a01de4cd8dee8",
+          "number": 55122,
+          "title": "[Kernel] persistent_topk: deterministic select, faster than the exact-topk workaround",
+          "updatedAt": "2026-10-02T13:54:14Z",
+          "url": "https://github.com/vllm-project/vllm/pull/55122"
+        },
+        {
+          "headRefOid": "a15f484e492ad63dede8553f0e3c86c1a5f9f6a1",
+          "number": 48532,
+          "title": "[Bugfix][V1] Preserve per-group eviction order in deferred block free",
+          "updatedAt": "2026-09-16T17:16:57Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48532"
+        },
+        {
+          "headRefOid": "cf5ad62a9898bd0a9fc8188843107afe0646c891",
+          "number": 44106,
+          "title": "fix: prompt logprobs in Model Runner V2",
+          "updatedAt": "2026-07-31T02:50:45Z",
+          "url": "https://github.com/vllm-project/vllm/pull/44106"
+        },
+        {
+          "headRefOid": "1d405f59fdca2f78d9aec33b86ce7c3c69fd8a46",
+          "number": 52487,
+          "title": "[Bugfix] Reload speculative draft weights after Level 2 sleep wake",
+          "updatedAt": "2026-10-06T17:23:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/52487"
+        },
+        {
+          "headRefOid": "7365b4e50302447c8c89501941dccac3f9ca5774",
+          "number": 41365,
+          "title": "Add opt-in FP8 vocab embedding support",
+          "updatedAt": "2026-07-23T00:01:36Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41365"
+        },
+        {
+          "headRefOid": "d7d689a3efff9fc2aa11efc8e13099f85eec6efc",
+          "number": 56142,
+          "title": "[Bugfix][V1] Bound hybrid shared-prefix checkpoints by all full-attention hits",
+          "updatedAt": "2026-09-13T17:15:48Z",
+          "url": "https://github.com/vllm-project/vllm/pull/56142"
+        },
+        {
+          "headRefOid": "9ad62027bc84ca0ccbcc40853179312de770220c",
+          "number": 41834,
+          "title": "[New Model][Nvidia] Add SM12x support for DeepSeek V4 Flash with essential fixes",
+          "updatedAt": "2026-09-19T05:54:51Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41834"
+        },
+        {
+          "headRefOid": "f6e2740cdccb382bf025675f5a4dd804e5540bae",
+          "number": 48214,
+          "title": "[Bugfix] Fix pooling input buffer race across chunked prefill steps",
+          "updatedAt": "2026-10-04T14:02:32Z",
+          "url": "https://github.com/vllm-project/vllm/pull/48214"
+        },
+        {
+          "headRefOid": "1a82dbc758f54c5350675116346abd2ab8f9ee06",
+          "number": 47438,
+          "title": "[BUGFIX] Fix opencua processor on transformers 5",
+          "updatedAt": "2026-07-16T13:02:04Z",
+          "url": "https://github.com/vllm-project/vllm/pull/47438"
+        },
+        {
+          "headRefOid": "afcd8caa3874e55eb0787251ba4b718e1cc9c621",
+          "number": 37296,
+          "title": "fix marlin fp4 kernel N-dimension alignment",
+          "updatedAt": "2026-09-27T01:54:06Z",
+          "url": "https://github.com/vllm-project/vllm/pull/37296"
+        },
+        {
+          "headRefOid": "1a629ce0d3b61b67dd7a09a8c4a5b4205fe09987",
+          "number": 31740,
+          "title": "feat: Add SM121/GB10 (DGX Spark) Blackwell-class GPU support",
+          "updatedAt": "2026-09-28T01:59:05Z",
+          "url": "https://github.com/vllm-project/vllm/pull/31740"
+        },
+        {
+          "headRefOid": "f69793c76ebf1a8f02bb8252c0db868ecd98c254",
+          "number": 46811,
+          "title": "[Frontend] Add low-overhead /ready GPU health check",
+          "updatedAt": "2026-09-30T03:14:30Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46811"
+        },
+        {
+          "headRefOid": "fb3811026a9a82a3454c1f72961b54f2062b9480",
+          "number": 45288,
+          "title": "[Frontend] Add the p-less Sampling Method for LLM Decoding",
+          "updatedAt": "2026-08-21T08:59:14Z",
+          "url": "https://github.com/vllm-project/vllm/pull/45288"
+        }
+      ]
+    },
+    "title": {
+      "command": [
+        "gh",
+        "pr",
+        "list",
+        "--repo",
+        "vllm-project/vllm",
+        "--state",
+        "open",
+        "--search",
+        "GDN FlashInfer in:title",
+        "--limit",
+        "500",
+        "--json",
+        "number,title,headRefOid,updatedAt,url"
+      ],
+      "exit_code": 0,
+      "data": [
+        {
+          "headRefOid": "21eb1cc3a1800b1d6e91f8dae029fc563ab72d82",
+          "number": 60050,
+          "title": "[Perf][GDN] Internal prefill checkpoints for the FlashInfer GDN prefill backend",
+          "updatedAt": "2026-10-06T08:17:10Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60050"
+        },
+        {
+          "headRefOid": "9f50847a9a1fe275b383c9a8d5e1d19818d5d54e",
+          "number": 57318,
+          "title": "[Kernel][GDN] Use flashinfer bf16 mm for the GDN gate projection",
+          "updatedAt": "2026-09-28T07:17:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57318"
+        },
+        {
+          "headRefOid": "6ed041d0e52b316e9c9bbad8e3ebf4508dc10575",
+          "number": 60105,
+          "title": "[Perf][GDN] Reuse prefill lengths and fuse FlashInfer gate conversion",
+          "updatedAt": "2026-10-05T21:25:49Z",
+          "url": "https://github.com/vllm-project/vllm/pull/60105"
+        },
+        {
+          "headRefOid": "866de584641bb99137cbb54b74f2c69b5f1894b2",
+          "number": 41966,
+          "title": "[Qwen3.5] Add FlashInfer GDN decode backend",
+          "updatedAt": "2026-09-28T19:20:43Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41966"
+        },
+        {
+          "headRefOid": "2d890cc219985eb016f328135507e9feddfe21dc",
+          "number": 57039,
+          "title": "[GDN] Avoid two per-layer copies in the FlashInfer prefill path",
+          "updatedAt": "2026-09-24T09:46:02Z",
+          "url": "https://github.com/vllm-project/vllm/pull/57039"
+        },
+        {
+          "headRefOid": "fbd402ef87ad4f0a79a8d18ad17ccc70e1c10a3b",
+          "number": 53645,
+          "title": "Add FlashInfer fused decode for Qwen GDN on sm120",
+          "updatedAt": "2026-09-07T01:24:01Z",
+          "url": "https://github.com/vllm-project/vllm/pull/53645"
+        },
+        {
+          "headRefOid": "00545a8acc220f4c5fa47afad739e3d2baac7310",
+          "number": 46764,
+          "title": "[GDN] Improve UX when FlashInfer JIT compilation is happening",
+          "updatedAt": "2026-10-02T01:50:32Z",
+          "url": "https://github.com/vllm-project/vllm/pull/46764"
+        },
+        {
+          "headRefOid": "ccc280c2ce810aeebc46912f1b02da48db95569b",
+          "number": 50372,
+          "title": "[Kernel] Fuse FlashInfer GDN prefill state I/O",
+          "updatedAt": "2026-08-02T08:11:27Z",
+          "url": "https://github.com/vllm-project/vllm/pull/50372"
+        },
+        {
+          "headRefOid": "0752d2c2ffbf6adc8736c75517331b88fa84551e",
+          "number": 41395,
+          "title": "flashinfer gdn decode kernel integration",
+          "updatedAt": "2026-05-23T09:42:39Z",
+          "url": "https://github.com/vllm-project/vllm/pull/41395"
+        },
+        {
+          "headRefOid": "eb5c5399545a742ab4b8635d602b2ae0af7b5d9c",
+          "number": 35292,
+          "title": "[Perf] flashinfer gdn decode kernel intergration",
+          "updatedAt": "2026-05-23T06:28:54Z",
+          "url": "https://github.com/vllm-project/vllm/pull/35292"
+        }
+      ]
+    }
+  },
+  "assessment": "Reviewer-invited successor to open Draft #41966; current CustomOp/config, FP32-only pooled remapping, mixed decode and graph/cache-group integration differ materially. No additional successor found in issue context or open searches. #53645 is separate SM120 whole-layer decode; #60050/#60105 are prefill."
+}
