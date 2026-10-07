@@ -1,0 +1,35 @@
+README.md
+  s_73a5ddba7ce8b8::t_9e452d2739221b 1-29
+SHA256SUMS
+  s_73a5ddba7ce8b8::t_66ebb0454ef1b4 1
+duplicate-checks-recheck.json
+  s_73a5ddba7ce8b8::t_5e361d29ee192f 1-2320
+final-micro-results.md
+  s_73a5ddba7ce8b8::t_402f70349e7811 1-137
+final-quality-results.md
+  s_73a5ddba7ce8b8::t_0e22d585def6a9 1-66
+final-serving-results.md
+  s_73a5ddba7ce8b8::t_f97cfbb215dae7 1-159
+independent-recheck-20261007.md
+  s_73a5ddba7ce8b8::t_e90c9f447d32a6 1-43
+pr-description.md
+  s_73a5ddba7ce8b8::t_4d185496d8c6a9 1-77
+review-commands.md
+  s_73a5ddba7ce8b8::t_38c85bf15bc815 1-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8e2409b2bd26f8be392ee24277c4dae467b0ea38",
+  "prompts": {},
+  "sessions": {
+    "s_73a5ddba7ce8b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_73a5ddba7ce8b8",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
