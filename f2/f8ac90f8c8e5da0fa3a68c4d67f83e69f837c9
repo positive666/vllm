@@ -1,0 +1,53 @@
+tests/kernels/attention/test_fewhead_sparse_prefill.py
+  s_4950b657d66898::t_a03c38564ceebe 192,196-210,213-250
+vllm/v1/attention/backends/registry.py
+  s_4950b657d66898::t_98cc6f0e68a29c 113-115
+vllm/models/deepseek_v41/nvidia/triton_fewhead_sparse_prefill.py
+  s_4950b657d66898::t_98cc6f0e68a29c 51,55
+tests/models/test_fewhead_prefill_gate.py
+  s_4950b657d66898::t_1a575fa6b11fff 7,9,11,14-16,20,28-41,44-51,54-63,65-68,70,73-74,78,80-81,84-90,93-144,146,149-151,153-158,160,162-190,192-203,205-220,222-276
+  s_4950b657d66898::t_f748bcb4253252 277
+  s_57b7c9ef996031::t_e4133227832b80 279-282
+vllm/models/deepseek_v41/nvidia/model.py
+  s_4950b657d66898::t_98cc6f0e68a29c 207-213,237,249
+.buildkite/test_areas/kernels.yaml
+  s_4950b657d66898::t_a03c38564ceebe 390-391
+vllm/models/deepseek_v41/nvidia/fewhead_prefill.py
+  s_57b7c9ef996031::t_20b5191b7220c4 3
+vllm/models/deepseek_v41/nvidia/flashmla.py
+  s_57b7c9ef996031::t_0e6712c061f188 351-358
+vllm/models/deepseek_v41/nvidia/triton_sparse.py
+  s_d6988063cfa454::t_f2745896321117 3,5,10-21,23-27,30-44,46,49-50,53-54,56-68,71-72,75-78,81-101,105-117,119-126,128,132-226,228-368,370-372,375-376
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f2f8ac90f8c8e5da0fa3a68c4d67f83e69f837c9",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_57b7c9ef996031": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0eb36-ca8c-71a0-bc3f-04917a7cb849",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

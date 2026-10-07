@@ -1,0 +1,34 @@
+vllm/v1/worker/gpu/warmup.py
+  s_2499f117543f0a::t_83a38b876323fe 428
+  s_2499f117543f0a::t_bf5f95c88ad68a 225,412-427
+tests/v1/worker/test_gpu_warmup_blocks.py
+  s_2499f117543f0a::t_83a38b876323fe 133-144,175-197
+tests/v1/spec_decode/test_rejection_sampler_utils.py
+  s_2499f117543f0a::t_83a38b876323fe 307-314,316,319-320,322,330,333,351-358,362,368
+  s_2499f117543f0a::t_4c1967c868c8e8 306
+  s_255e78913f2a0c::t_8847f1f5801c12 303-304
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "66a1368cde0e1b37cfe4c2454c071481ec283a65",
+  "prompts": {},
+  "sessions": {
+    "s_2499f117543f0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01d82-f6ae-7d52-a799-ade86760b4ad",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": null
+    },
+    "s_255e78913f2a0c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04ec1-72de-7fb1-b333-609d15090963",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

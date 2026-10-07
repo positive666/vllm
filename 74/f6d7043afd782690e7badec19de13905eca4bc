@@ -1,0 +1,24 @@
+vllm/models/deepseek_v41/nvidia/fewhead_prefill.py
+  s_b2c9fdbea497c3::t_348191356156f2 11-12,54-55,60-61
+tests/models/test_fewhead_prefill_gate.py
+  s_b2c9fdbea497c3::t_8e7bf38bed622f 8,70
+  s_b2c9fdbea497c3::t_900ffb3d6b4325 19,21,66,68
+  s_b2c9fdbea497c3::t_348191356156f2 9,18,20,22,55-65,67,69
+  s_b2c9fdbea497c3::t_ccaed47ea07f63 71-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "74f6d7043afd782690e7badec19de13905eca4bc",
+  "prompts": {},
+  "sessions": {
+    "s_b2c9fdbea497c3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07eea-4a17-7943-a3e8-ae2e6efd2728",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

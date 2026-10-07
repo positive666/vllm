@@ -1,0 +1,16 @@
+tests/models/glm5next/test_kda_paired_projection.py
+  h_5da81f0cb6051e 1-91
+vllm/models/glm5next/common/kda.py
+  h_5da81f0cb6051e 278-281,359-391,461-466
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "87fe7c7927bebe5aa0a5c0e7ef3c1ab7e007943b",
+  "prompts": {},
+  "humans": {
+    "h_5da81f0cb6051e": {
+      "author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
