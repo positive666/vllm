@@ -1,0 +1,21 @@
+tests/v1/worker/test_gpu_penalties.py
+  s_c827f51579bf2d::t_b364237446e27c 1-226
+vllm/v1/worker/gpu/sample/penalties.py
+  s_c827f51579bf2d::t_889ab6e4ca7e27 38-44,46-49,155,238,270-278,281,283,295-300,304,316-317,319
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "6f2142f45dd4e48187f1f81f8a93b63e0f83060d",
+  "prompts": {},
+  "sessions": {
+    "s_c827f51579bf2d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff8f2-a573-7741-8c41-a72a2716deb2",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Rui4 Cheng <chengrui4@lenovo.com>"
+    }
+  }
+}

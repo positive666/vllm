@@ -1,0 +1,17 @@
+vllm/models/glm5next/nvidia/ops/third_party/kda/kernels.py
+  h_5da81f0cb6051e 35-44,74-82
+  h_5da81f0cb6051e 83-85
+tests/models/glm5next/test_kda_recurrent.py
+  h_5da81f0cb6051e 175-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ca844ca4f82e02d35813a8a840ee77a755839585",
+  "prompts": {},
+  "humans": {
+    "h_5da81f0cb6051e": {
+      "author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
