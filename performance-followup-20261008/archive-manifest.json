@@ -1,0 +1,312 @@
+{
+  "archive_sha256": "b8ede3808ebd6278ffe55c9f8dfa4e92e62aadd6c53b90730e1230f7a19ca7b3",
+  "bytes": 3205210,
+  "member_count": 61,
+  "members": [
+    {
+      "path": "client-supervisor-flashinfer-b1.log",
+      "bytes": 4561,
+      "sha256": "c12337795dc09caf361ab5dbc122698c79e7394b8ec685785bf5a928bc1596d0"
+    },
+    {
+      "path": "client-supervisor-flashinfer-b2.log",
+      "bytes": 4563,
+      "sha256": "247eba044781c5ed3a9f2791ebfeb20da5baa7433272af2f77a74847945c333f"
+    },
+    {
+      "path": "client-supervisor-triton-a1.log",
+      "bytes": 4682,
+      "sha256": "68b4615765c2eeeb34a0eac634b1c6c256d8b801b684af86c7436cc5cff44917"
+    },
+    {
+      "path": "client-supervisor-triton-a2.log",
+      "bytes": 4523,
+      "sha256": "5e45321703c9a5dd6a438fda53744a7db70b78e3883da5f2d703ad2a4deaed35"
+    },
+    {
+      "path": "gpu-telemetry.csv",
+      "bytes": 38131,
+      "sha256": "bc39236b66758ee23dee4c259e56fa5f8b6f437470746c36e26de86ad7b700e9"
+    },
+    {
+      "path": "gpu-telemetry.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "http/flashinfer-b1-measured-c1-r1.json",
+      "bytes": 608900,
+      "sha256": "568141d3fa940fe31a6750a562483ab970d53d6672cd01fb65a7c62665ab0170"
+    },
+    {
+      "path": "http/flashinfer-b1-measured-c1-r2.json",
+      "bytes": 608784,
+      "sha256": "951992fe83f3c97b3420ddb754ffc1c8d084b7510be0018a5f01ba20b7d1a78c"
+    },
+    {
+      "path": "http/flashinfer-b1-measured-c1-r3.json",
+      "bytes": 608748,
+      "sha256": "847f2f38d088d744407240e876cd099fbdbeb5beb94c738a9e29ce32a20dbe40"
+    },
+    {
+      "path": "http/flashinfer-b1-measured-c8-r1.json",
+      "bytes": 607293,
+      "sha256": "ea51dcc81f743641f00d623ab06652c8ba03ff990682ffc001a729a5f616bdae"
+    },
+    {
+      "path": "http/flashinfer-b1-measured-c8-r2.json",
+      "bytes": 607292,
+      "sha256": "29220b6190b6a05ff49101ea863c8710be9eec0e4cb762f43a1b5bf800427bd5"
+    },
+    {
+      "path": "http/flashinfer-b1-measured-c8-r3.json",
+      "bytes": 607263,
+      "sha256": "3fd3a4d8ac736dc1ad0267043bd4a92578e36e55143a67e9a39cf1ff2d285d80"
+    },
+    {
+      "path": "http/flashinfer-b1-warmup-c1-r0.json",
+      "bytes": 304869,
+      "sha256": "11d35e44e6e5575e627a07998fb65780b14167d703360b44cab30c9dc828f732"
+    },
+    {
+      "path": "http/flashinfer-b1-warmup-c8-r0.json",
+      "bytes": 304102,
+      "sha256": "321cb4edeaeaf27027b90a3792d4c53d7cbff6c4066efc2d2c4135dd45f4585d"
+    },
+    {
+      "path": "http/flashinfer-b1.json",
+      "bytes": 5034961,
+      "sha256": "d4799e38ab9fbb44ce3255b4933e1ec5a9ffb0f01a0b01ec37231a5a959236b7"
+    },
+    {
+      "path": "http/flashinfer-b2-measured-c1-r1.json",
+      "bytes": 608673,
+      "sha256": "0a00597fb4879c369ba4d402b21f7ac5924080ef0bfa7633f5b00155d7b756e0"
+    },
+    {
+      "path": "http/flashinfer-b2-measured-c1-r2.json",
+      "bytes": 608785,
+      "sha256": "e82222f1ab5c42c2d3167f8bbb9b5fbe0e4016977d6053ea0a60a2c6f34977f3"
+    },
+    {
+      "path": "http/flashinfer-b2-measured-c1-r3.json",
+      "bytes": 608782,
+      "sha256": "29b56b9796bbe3651331942a1e3652314477936cd1d888b5d281780723dd789e"
+    },
+    {
+      "path": "http/flashinfer-b2-measured-c8-r1.json",
+      "bytes": 607293,
+      "sha256": "ea6d0a829e0dd86deed11786e09576182f3dee3cd5e3aca4f213cce6749d7e34"
+    },
+    {
+      "path": "http/flashinfer-b2-measured-c8-r2.json",
+      "bytes": 607343,
+      "sha256": "2a329069d975c6f98e9d4998b15ddd9681de98796b32754f7569db2f445a6c32"
+    },
+    {
+      "path": "http/flashinfer-b2-measured-c8-r3.json",
+      "bytes": 607288,
+      "sha256": "a85a8debf4646b3ce1cf717dba91cef442f5110380755bfa976a25f6a2494306"
+    },
+    {
+      "path": "http/flashinfer-b2-warmup-c1-r0.json",
+      "bytes": 304824,
+      "sha256": "1afdd77ce97b7e43d247526cec0d1901c9877c16a8d6aedc4644159d610a95d6"
+    },
+    {
+      "path": "http/flashinfer-b2-warmup-c8-r0.json",
+      "bytes": 304080,
+      "sha256": "f4b42a2f92fe920ef78a6b92c81f189e35374cfbefaba411c80d4f52b579ab0d"
+    },
+    {
+      "path": "http/flashinfer-b2.json",
+      "bytes": 5034778,
+      "sha256": "e7442972631548de5f09cb2581237e87d184f61e277fee8fdf552a54f0b67657"
+    },
+    {
+      "path": "http/triton-a1-measured-c1-r1.json",
+      "bytes": 608763,
+      "sha256": "82572cac993dc16e1981a05ef34befc1242609270c17235bd945b17fbb656147"
+    },
+    {
+      "path": "http/triton-a1-measured-c1-r2.json",
+      "bytes": 608774,
+      "sha256": "c2e65b13c2a4ba4f3c7ae2f5a4793212c89e6c0146824357e4f8c6bfc6b07d45"
+    },
+    {
+      "path": "http/triton-a1-measured-c1-r3.json",
+      "bytes": 608776,
+      "sha256": "2a9b3a0576890e1929537e8d57c43067b40ca85b3433e07e5b92c10f2d8e84f8"
+    },
+    {
+      "path": "http/triton-a1-measured-c8-r1.json",
+      "bytes": 607622,
+      "sha256": "88da8f7b5aef2ab6943e99e3e3b0b4f60e4041dc60805320959a6ca71617562f"
+    },
+    {
+      "path": "http/triton-a1-measured-c8-r2.json",
+      "bytes": 607589,
+      "sha256": "9386b3040a16e6b6aacb3ad559fbfce2e3e33cce18aafe59078185358ba9a57d"
+    },
+    {
+      "path": "http/triton-a1-measured-c8-r3.json",
+      "bytes": 607613,
+      "sha256": "e9c34c1c6b27b7423c61c69ce75e0612cb2450266025384098724fc9c37d310f"
+    },
+    {
+      "path": "http/triton-a1-warmup-c1-r0.json",
+      "bytes": 304787,
+      "sha256": "32ba3618a7fc0405f29ea44f22c9e9c4eac95c2b5245dd99991d1151ec72fe19"
+    },
+    {
+      "path": "http/triton-a1-warmup-c8-r0.json",
+      "bytes": 304155,
+      "sha256": "2352fe1f75a33ac1d252f1be43f07015c2a21150fb18363fa01298f0464b61eb"
+    },
+    {
+      "path": "http/triton-a1.json",
+      "bytes": 5035756,
+      "sha256": "d542a446ae8db02eae126986e4282d880e7f0647d4600baa152d11b97310defc"
+    },
+    {
+      "path": "http/triton-a2-measured-c1-r1.json",
+      "bytes": 608805,
+      "sha256": "76481e2159b23f97c371f9dda0ca56ffecb74a5745bd50923f34904f07dd4a27"
+    },
+    {
+      "path": "http/triton-a2-measured-c1-r2.json",
+      "bytes": 608725,
+      "sha256": "2883a7701ee380816988c23fd112851f9d45e165264a7eb829d0261b9df96fe1"
+    },
+    {
+      "path": "http/triton-a2-measured-c1-r3.json",
+      "bytes": 608726,
+      "sha256": "d6b1d62baa78ac05e8be6865d229b17edcca3aca66c8b18eed2a52fa4abe7550"
+    },
+    {
+      "path": "http/triton-a2-measured-c8-r1.json",
+      "bytes": 607580,
+      "sha256": "1bfbef6e09b6c3672f770df840a3b038714d52807c9541fff2accc4a63698c89"
+    },
+    {
+      "path": "http/triton-a2-measured-c8-r2.json",
+      "bytes": 607435,
+      "sha256": "b40d01d5895ffa57d10ae430eca64e99625a34a6fd2c7c647a7e308d216549fa"
+    },
+    {
+      "path": "http/triton-a2-measured-c8-r3.json",
+      "bytes": 607574,
+      "sha256": "c57a3a4ffe6b68104603112384894d870d2c6ce0c72b08da2ccd2bf69b7a569c"
+    },
+    {
+      "path": "http/triton-a2-warmup-c1-r0.json",
+      "bytes": 304844,
+      "sha256": "6547c7341e7e7b98dc448335dc9829e388ac2c9b0004fb7c9f198e089cad8923"
+    },
+    {
+      "path": "http/triton-a2-warmup-c8-r0.json",
+      "bytes": 304180,
+      "sha256": "21702b3ab8fec8712704c37ac1f3f9bcbeca5d635b84ddd0f5dfcf72399d31ac"
+    },
+    {
+      "path": "http/triton-a2.json",
+      "bytes": 5035547,
+      "sha256": "5228695f2fcac87790830e918c6802ddae447f0da1add482acf45ae621b95998"
+    },
+    {
+      "path": "http-fixture.json",
+      "bytes": 5413,
+      "sha256": "3492a9c9c359bd16ffe354e34b8a714bbf6aa49bc95fbf1c2e919cea0581955a"
+    },
+    {
+      "path": "micro-current.json",
+      "bytes": 66950,
+      "sha256": "9a3a737cc7bbad1ebd3cf48a0d3339e1bf2301d06f97f3b77da9d960f9424328"
+    },
+    {
+      "path": "micro-current.log",
+      "bytes": 26135,
+      "sha256": "0305b16b4442d4cf9eecd1bdc44abacfb143fc60956e1d7ba6b86b927051e6c1"
+    },
+    {
+      "path": "pipeline-finished.utc",
+      "bytes": 21,
+      "sha256": "86930fc1c1c8b3f9267c004bf88cfd69780b019180ac7dca5a651082d4291d85"
+    },
+    {
+      "path": "pipeline-started.utc",
+      "bytes": 21,
+      "sha256": "5a8824c0a127b8ee0a09c7f2b7f7f998b7299b78f9f74feb762730a72f1c20fd"
+    },
+    {
+      "path": "pipeline.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "pipeline.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "protocol.json",
+      "bytes": 1259,
+      "sha256": "a71396c64449b6b7244363d298e1cbc29d59ff9a6b6b515d7f387ff54632e0d7"
+    },
+    {
+      "path": "round-file-times.json",
+      "bytes": 14872,
+      "sha256": "c56837260ceb4f807c2c92e69c758ba78a7a55994b6366cc72cad59e1e7a187c"
+    },
+    {
+      "path": "runtime-probe.json",
+      "bytes": 11235,
+      "sha256": "7e0ac600b71a1965541b00ea2bfb5d90931bc414ac46f746645a18ecab5921ab"
+    },
+    {
+      "path": "runtime-probe.log",
+      "bytes": 382,
+      "sha256": "154368e275cf2b8a6116d452f6c91400bc16df9476904e975e9883a79b572568"
+    },
+    {
+      "path": "serve-flashinfer-b1.json",
+      "bytes": 14856,
+      "sha256": "7c1b7a61e304b879b1d9d48561d0fecac471909d2c2318802e1461c7ecf033f2"
+    },
+    {
+      "path": "serve-flashinfer-b1.log",
+      "bytes": 88935,
+      "sha256": "bba5b39549914e1ec7bc267831badb0f9af71ea9ff1cd427d85d8b334f14f678"
+    },
+    {
+      "path": "serve-flashinfer-b2.json",
+      "bytes": 14856,
+      "sha256": "c7384ebf5a164bc1724c3e989dd085b0000b89608775e1ff75fe7e09c71492ce"
+    },
+    {
+      "path": "serve-flashinfer-b2.log",
+      "bytes": 89146,
+      "sha256": "bbb52817d60311492699444daee534aa48f2e68d90c46482ccad9bd118c27f8b"
+    },
+    {
+      "path": "serve-triton-a1.json",
+      "bytes": 14827,
+      "sha256": "d00420e5e3eb373da558bfd4ce3925119ac0923879dd0d7c564264d2a7bc4912"
+    },
+    {
+      "path": "serve-triton-a1.log",
+      "bytes": 80259,
+      "sha256": "6a83f3298c631cdf201da64a32314a77c95d13468b90ebca70ce55e18acdd773"
+    },
+    {
+      "path": "serve-triton-a2.json",
+      "bytes": 14828,
+      "sha256": "98cfce218ebd3cb58ab9513d85013f38cc31db410ff3c93b11d5cd9745cfed9a"
+    },
+    {
+      "path": "serve-triton-a2.log",
+      "bytes": 80548,
+      "sha256": "038f4ffa4d0bb6199f9786454538a1aeb2568e26bd53751050d1f3a7a5f58944"
+    }
+  ]
+}

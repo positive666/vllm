@@ -1,0 +1,2304 @@
+{
+  "validation_passed": true,
+  "errors": [],
+  "gpu_uuid": "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675",
+  "inputs": {
+    "gpu_telemetry_sha256": "bc39236b66758ee23dee4c259e56fa5f8b6f437470746c36e26de86ad7b700e9",
+    "round_file_times_sha256": "c56837260ceb4f807c2c92e69c758ba78a7a55994b6366cc72cad59e1e7a187c",
+    "csv_utc_offset_used": "+0000",
+    "csv_offset_override": null,
+    "container_local_datetime": "2026-10-08T14:12:52.814621+00:00",
+    "container_timezone_names": [
+      "UTC",
+      "UTC"
+    ]
+  },
+  "sampling": {
+    "declared_period_seconds": 5,
+    "observed_spacing_seconds": {
+      "samples": 323,
+      "min": 5.001,
+      "median": 5.003,
+      "max": 5.052
+    },
+    "total_samples": 324
+  },
+  "limitations": [
+    "Approximate round end uses JSON file mtime; start subtracts measured wall_seconds. JSON serialization, file write and scheduling add untimed uncertainty. Not original per-round UTC instrumentation.",
+    "Bare nvidia-smi timestamps use the recorded container UTC offset unless an evidence-backed explicit override is supplied.",
+    "Telemetry samples every 5 seconds; these are approximate window descriptions and cannot establish absence of finer throttling.",
+    "No clock, fan, power, or thermal control was changed by this audit. No causal attribution of performance to temperature is made."
+  ],
+  "round_windows": [
+    {
+      "arm": "flashinfer-b1",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 1,
+      "path": "http/flashinfer-b1-measured-c1-r1.json",
+      "approx_start_utc": "2026-10-08T13:54:18.314004+00:00",
+      "approx_end_utc": "2026-10-08T13:55:42.198765+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2445.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 76.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 286.03,
+          "median": 290.88,
+          "max": 314.57
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 1,
+      "path": "http/flashinfer-b1-measured-c1-r2.json",
+      "approx_start_utc": "2026-10-08T13:56:12.922137+00:00",
+      "approx_end_utc": "2026-10-08T13:57:36.802740+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2430.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 78.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 288.37,
+          "median": 292.89,
+          "max": 311.24
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 1,
+      "path": "http/flashinfer-b1-measured-c1-r3.json",
+      "approx_start_utc": "2026-10-08T13:57:36.859028+00:00",
+      "approx_end_utc": "2026-10-08T13:59:00.742848+00:00",
+      "summary": {
+        "samples": 16,
+        "sm_clock_mhz": {
+          "samples": 16,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 16,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 16,
+          "min": 78.0,
+          "median": 78.0,
+          "max": 78.0
+        },
+        "power_w": {
+          "samples": 16,
+          "min": 288.98,
+          "median": 291.33000000000004,
+          "max": 292.62
+        },
+        "utilization_percent": {
+          "samples": 16,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 8,
+      "path": "http/flashinfer-b1-measured-c8-r1.json",
+      "approx_start_utc": "2026-10-08T13:55:42.263073+00:00",
+      "approx_end_utc": "2026-10-08T13:55:57.530761+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2355.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 77.0,
+          "median": 78.0,
+          "max": 83.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 291.4,
+          "median": 292.82,
+          "max": 349.61
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        125,
+        126,
+        127
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 8,
+      "path": "http/flashinfer-b1-measured-c8-r2.json",
+      "approx_start_utc": "2026-10-08T13:55:57.593143+00:00",
+      "approx_end_utc": "2026-10-08T13:56:12.862757+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2415.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 78.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 292.71,
+          "median": 294.18,
+          "max": 350.49
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        128,
+        129,
+        130
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 8,
+      "path": "http/flashinfer-b1-measured-c8-r3.json",
+      "approx_start_utc": "2026-10-08T13:59:00.804108+00:00",
+      "approx_end_utc": "2026-10-08T13:59:16.074879+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2340.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 78.0,
+          "median": 79.0,
+          "max": 83.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 295.0,
+          "median": 295.67,
+          "max": 333.46
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        164,
+        165,
+        166
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 1,
+      "path": "http/flashinfer-b1-warmup-c1-r0.json",
+      "approx_start_utc": "2026-10-08T13:53:28.394615+00:00",
+      "approx_end_utc": "2026-10-08T13:54:10.554790+00:00",
+      "summary": {
+        "samples": 8,
+        "sm_clock_mhz": {
+          "samples": 8,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 8,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 8,
+          "min": 75.0,
+          "median": 79.5,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 8,
+          "min": 283.16,
+          "median": 294.185,
+          "max": 299.34
+        },
+        "utilization_percent": {
+          "samples": 8,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 8,
+      "path": "http/flashinfer-b1-warmup-c8-r0.json",
+      "approx_start_utc": "2026-10-08T13:54:10.593543+00:00",
+      "approx_end_utc": "2026-10-08T13:54:18.258788+00:00",
+      "summary": {
+        "samples": 2,
+        "sm_clock_mhz": {
+          "samples": 2,
+          "min": 2340.0,
+          "median": 2430.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 2,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 2,
+          "min": 76.0,
+          "median": 79.0,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 2,
+          "min": 291.57,
+          "median": 316.04499999999996,
+          "max": 340.52
+        },
+        "utilization_percent": {
+          "samples": 2,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        106,
+        107
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 1,
+      "path": "http/flashinfer-b2-measured-c1-r1.json",
+      "approx_start_utc": "2026-10-08T14:00:49.606153+00:00",
+      "approx_end_utc": "2026-10-08T14:02:13.487178+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2430.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 75.0,
+          "median": 79.0,
+          "max": 86.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 285.89,
+          "median": 294.48,
+          "max": 312.6
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 1,
+      "path": "http/flashinfer-b2-measured-c1-r2.json",
+      "approx_start_utc": "2026-10-08T14:02:44.220668+00:00",
+      "approx_end_utc": "2026-10-08T14:04:08.099332+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2445.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 78.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 291.49,
+          "median": 292.7,
+          "max": 311.95
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 1,
+      "path": "http/flashinfer-b2-measured-c1-r3.json",
+      "approx_start_utc": "2026-10-08T14:04:08.159410+00:00",
+      "approx_end_utc": "2026-10-08T14:05:32.039429+00:00",
+      "summary": {
+        "samples": 16,
+        "sm_clock_mhz": {
+          "samples": 16,
+          "min": 2490.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 16,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 16,
+          "min": 77.0,
+          "median": 78.5,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 16,
+          "min": 287.86,
+          "median": 294.655,
+          "max": 312.22
+        },
+        "utilization_percent": {
+          "samples": 16,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 8,
+      "path": "http/flashinfer-b2-measured-c8-r1.json",
+      "approx_start_utc": "2026-10-08T14:02:13.547967+00:00",
+      "approx_end_utc": "2026-10-08T14:02:28.823200+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2340.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 79.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 295.12,
+          "median": 295.93,
+          "max": 340.96
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        203,
+        204,
+        205
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 8,
+      "path": "http/flashinfer-b2-measured-c8-r2.json",
+      "approx_start_utc": "2026-10-08T14:02:28.884017+00:00",
+      "approx_end_utc": "2026-10-08T14:02:44.163222+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2460.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 79.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 292.69,
+          "median": 304.34,
+          "max": 322.08
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        206,
+        207,
+        208
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 8,
+      "path": "http/flashinfer-b2-measured-c8-r3.json",
+      "approx_start_utc": "2026-10-08T14:05:32.096943+00:00",
+      "approx_end_utc": "2026-10-08T14:05:47.387445+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2505.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 81.0,
+          "median": 82.0,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 299.07,
+          "median": 299.52,
+          "max": 340.98
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        243,
+        244,
+        245
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 1,
+      "path": "http/flashinfer-b2-warmup-c1-r0.json",
+      "approx_start_utc": "2026-10-08T13:59:59.688447+00:00",
+      "approx_end_utc": "2026-10-08T14:00:41.851034+00:00",
+      "summary": {
+        "samples": 9,
+        "sm_clock_mhz": {
+          "samples": 9,
+          "min": 2460.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 9,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 9,
+          "min": 75.0,
+          "median": 79.0,
+          "max": 83.0
+        },
+        "power_w": {
+          "samples": 9,
+          "min": 284.1,
+          "median": 302.28,
+          "max": 311.64
+        },
+        "utilization_percent": {
+          "samples": 9,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 8,
+      "path": "http/flashinfer-b2-warmup-c8-r0.json",
+      "approx_start_utc": "2026-10-08T14:00:41.887173+00:00",
+      "approx_end_utc": "2026-10-08T14:00:49.547047+00:00",
+      "summary": {
+        "samples": 1,
+        "sm_clock_mhz": {
+          "samples": 1,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 1,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 1,
+          "min": 75.0,
+          "median": 75.0,
+          "max": 75.0
+        },
+        "power_w": {
+          "samples": 1,
+          "min": 289.79,
+          "median": 289.79,
+          "max": 289.79
+        },
+        "utilization_percent": {
+          "samples": 1,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        185
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 1,
+      "path": "http/triton-a1-measured-c1-r1.json",
+      "approx_start_utc": "2026-10-08T13:47:46.290948+00:00",
+      "approx_end_utc": "2026-10-08T13:49:10.342926+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 68.0,
+          "median": 74.0,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 269.75,
+          "median": 281.45,
+          "max": 297.13
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 72.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 1,
+      "path": "http/triton-a1-measured-c1-r2.json",
+      "approx_start_utc": "2026-10-08T13:49:41.177197+00:00",
+      "approx_end_utc": "2026-10-08T13:51:05.250863+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2445.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 75.0,
+          "median": 79.0,
+          "max": 83.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 286.23,
+          "median": 291.01,
+          "max": 296.9
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 60.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 1,
+      "path": "http/triton-a1-measured-c1-r3.json",
+      "approx_start_utc": "2026-10-08T13:51:05.306404+00:00",
+      "approx_end_utc": "2026-10-08T13:52:29.366826+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2475.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 71.0,
+          "median": 77.0,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 283.43,
+          "median": 292.24,
+          "max": 301.35
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 8,
+      "path": "http/triton-a1-measured-c8-r1.json",
+      "approx_start_utc": "2026-10-08T13:49:10.404336+00:00",
+      "approx_end_utc": "2026-10-08T13:49:25.738916+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2325.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 81.0,
+          "median": 81.0,
+          "max": 86.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 296.37,
+          "median": 297.09,
+          "max": 336.7
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        46,
+        47,
+        48
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 8,
+      "path": "http/triton-a1-measured-c8-r2.json",
+      "approx_start_utc": "2026-10-08T13:49:25.801774+00:00",
+      "approx_end_utc": "2026-10-08T13:49:41.118907+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2400.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 79.0,
+          "median": 79.0,
+          "max": 85.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 291.57,
+          "median": 309.72,
+          "max": 316.12
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        49,
+        50,
+        51
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 8,
+      "path": "http/triton-a1-measured-c8-r3.json",
+      "approx_start_utc": "2026-10-08T13:52:29.428662+00:00",
+      "approx_end_utc": "2026-10-08T13:52:44.730820+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2415.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 76.0,
+          "median": 77.0,
+          "max": 81.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 288.48,
+          "median": 288.86,
+          "max": 348.33
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        86,
+        87,
+        88
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 1,
+      "path": "http/triton-a1-warmup-c1-r0.json",
+      "approx_start_utc": "2026-10-08T13:46:56.320896+00:00",
+      "approx_end_utc": "2026-10-08T13:47:38.546988+00:00",
+      "summary": {
+        "samples": 8,
+        "sm_clock_mhz": {
+          "samples": 8,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 8,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 8,
+          "min": 55.0,
+          "median": 61.0,
+          "max": 66.0
+        },
+        "power_w": {
+          "samples": 8,
+          "min": 258.01,
+          "median": 264.38,
+          "max": 272.27
+        },
+        "utilization_percent": {
+          "samples": 8,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "arm": "triton-a1",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 8,
+      "path": "http/triton-a1-warmup-c8-r0.json",
+      "approx_start_utc": "2026-10-08T13:47:38.586282+00:00",
+      "approx_end_utc": "2026-10-08T13:47:46.234983+00:00",
+      "summary": {
+        "samples": 1,
+        "sm_clock_mhz": {
+          "samples": 1,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 1,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 1,
+          "min": 69.0,
+          "median": 69.0,
+          "max": 69.0
+        },
+        "power_w": {
+          "samples": 1,
+          "min": 313.33,
+          "median": 313.33,
+          "max": 313.33
+        },
+        "utilization_percent": {
+          "samples": 1,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        28
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 1,
+      "path": "http/triton-a2-measured-c1-r1.json",
+      "approx_start_utc": "2026-10-08T14:07:21.222344+00:00",
+      "approx_end_utc": "2026-10-08T14:08:45.307615+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2460.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 75.0,
+          "median": 79.0,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 288.76,
+          "median": 295.53,
+          "max": 308.17
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 91.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 1,
+      "path": "http/triton-a2-measured-c1-r2.json",
+      "approx_start_utc": "2026-10-08T14:09:16.101981+00:00",
+      "approx_end_utc": "2026-10-08T14:10:40.187705+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2445.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 77.0,
+          "median": 79.0,
+          "max": 82.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 287.76,
+          "median": 295.68,
+          "max": 310.85
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301,
+        302,
+        303
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 1,
+      "path": "http/triton-a2-measured-c1-r3.json",
+      "approx_start_utc": "2026-10-08T14:10:40.245501+00:00",
+      "approx_end_utc": "2026-10-08T14:12:04.335764+00:00",
+      "summary": {
+        "samples": 17,
+        "sm_clock_mhz": {
+          "samples": 17,
+          "min": 2475.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 17,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 17,
+          "min": 76.0,
+          "median": 80.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 17,
+          "min": 287.56,
+          "median": 295.39,
+          "max": 312.8
+        },
+        "utilization_percent": {
+          "samples": 17,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "measured",
+      "repeat": 1,
+      "concurrency": 8,
+      "path": "http/triton-a2-measured-c8-r1.json",
+      "approx_start_utc": "2026-10-08T14:08:45.361015+00:00",
+      "approx_end_utc": "2026-10-08T14:09:00.675627+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2325.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 77.0,
+          "median": 78.0,
+          "max": 83.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 288.1,
+          "median": 288.78,
+          "max": 348.23
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        281,
+        282,
+        283
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "measured",
+      "repeat": 2,
+      "concurrency": 8,
+      "path": "http/triton-a2-measured-c8-r2.json",
+      "approx_start_utc": "2026-10-08T14:09:00.737067+00:00",
+      "approx_end_utc": "2026-10-08T14:09:16.047640+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2415.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 78.0,
+          "median": 79.0,
+          "max": 84.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 289.74,
+          "median": 293.82,
+          "max": 349.8
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        284,
+        285,
+        286
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "measured",
+      "repeat": 3,
+      "concurrency": 8,
+      "path": "http/triton-a2-measured-c8-r3.json",
+      "approx_start_utc": "2026-10-08T14:12:04.398503+00:00",
+      "approx_end_utc": "2026-10-08T14:12:19.683774+00:00",
+      "summary": {
+        "samples": 3,
+        "sm_clock_mhz": {
+          "samples": 3,
+          "min": 2490.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 3,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 3,
+          "min": 72.0,
+          "median": 75.0,
+          "max": 79.0
+        },
+        "power_w": {
+          "samples": 3,
+          "min": 283.32,
+          "median": 302.68,
+          "max": 312.24
+        },
+        "utilization_percent": {
+          "samples": 3,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        321,
+        322,
+        323
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 1,
+      "path": "http/triton-a2-warmup-c1-r0.json",
+      "approx_start_utc": "2026-10-08T14:06:31.190549+00:00",
+      "approx_end_utc": "2026-10-08T14:07:13.447532+00:00",
+      "summary": {
+        "samples": 9,
+        "sm_clock_mhz": {
+          "samples": 9,
+          "min": 2445.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 9,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 9,
+          "min": 76.0,
+          "median": 80.0,
+          "max": 85.0
+        },
+        "power_w": {
+          "samples": 9,
+          "min": 189.87,
+          "median": 296.74,
+          "max": 306.24
+        },
+        "utilization_percent": {
+          "samples": 9,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "kind": "warmup",
+      "repeat": 0,
+      "concurrency": 8,
+      "path": "http/triton-a2-warmup-c8-r0.json",
+      "approx_start_utc": "2026-10-08T14:07:13.486316+00:00",
+      "approx_end_utc": "2026-10-08T14:07:21.167539+00:00",
+      "summary": {
+        "samples": 1,
+        "sm_clock_mhz": {
+          "samples": 1,
+          "min": 2520.0,
+          "median": 2520.0,
+          "max": 2520.0
+        },
+        "memory_clock_mhz": {
+          "samples": 1,
+          "min": 9000.0,
+          "median": 9000.0,
+          "max": 9000.0
+        },
+        "temperature_c": {
+          "samples": 1,
+          "min": 76.0,
+          "median": 76.0,
+          "max": 76.0
+        },
+        "power_w": {
+          "samples": 1,
+          "min": 286.74,
+          "median": 286.74,
+          "max": 286.74
+        },
+        "utilization_percent": {
+          "samples": 1,
+          "min": 100.0,
+          "median": 100.0,
+          "max": 100.0
+        }
+      },
+      "selected_indexes": [
+        263
+      ]
+    }
+  ],
+  "launch_windows": {
+    "triton-a1": {
+      "warmup": {
+        "1": {
+          "samples": 8,
+          "sm_clock_mhz": {
+            "samples": 8,
+            "min": 2520.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 8,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 8,
+            "min": 55.0,
+            "median": 61.0,
+            "max": 66.0
+          },
+          "power_w": {
+            "samples": 8,
+            "min": 258.01,
+            "median": 264.38,
+            "max": 272.27
+          },
+          "utilization_percent": {
+            "samples": 8,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 1,
+          "sm_clock_mhz": {
+            "samples": 1,
+            "min": 2520.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 1,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 1,
+            "min": 69.0,
+            "median": 69.0,
+            "max": 69.0
+          },
+          "power_w": {
+            "samples": 1,
+            "min": 313.33,
+            "median": 313.33,
+            "max": 313.33
+          },
+          "utilization_percent": {
+            "samples": 1,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      },
+      "measured": {
+        "1": {
+          "samples": 51,
+          "sm_clock_mhz": {
+            "samples": 51,
+            "min": 2445.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 51,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 51,
+            "min": 68.0,
+            "median": 77.0,
+            "max": 83.0
+          },
+          "power_w": {
+            "samples": 51,
+            "min": 269.75,
+            "median": 290.56,
+            "max": 301.35
+          },
+          "utilization_percent": {
+            "samples": 51,
+            "min": 60.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 9,
+          "sm_clock_mhz": {
+            "samples": 9,
+            "min": 2325.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 9,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 9,
+            "min": 76.0,
+            "median": 81.0,
+            "max": 86.0
+          },
+          "power_w": {
+            "samples": 9,
+            "min": 288.48,
+            "median": 297.09,
+            "max": 348.33
+          },
+          "utilization_percent": {
+            "samples": 9,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      }
+    },
+    "flashinfer-b1": {
+      "warmup": {
+        "1": {
+          "samples": 8,
+          "sm_clock_mhz": {
+            "samples": 8,
+            "min": 2520.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 8,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 8,
+            "min": 75.0,
+            "median": 79.5,
+            "max": 82.0
+          },
+          "power_w": {
+            "samples": 8,
+            "min": 283.16,
+            "median": 294.185,
+            "max": 299.34
+          },
+          "utilization_percent": {
+            "samples": 8,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 2,
+          "sm_clock_mhz": {
+            "samples": 2,
+            "min": 2340.0,
+            "median": 2430.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 2,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 2,
+            "min": 76.0,
+            "median": 79.0,
+            "max": 82.0
+          },
+          "power_w": {
+            "samples": 2,
+            "min": 291.57,
+            "median": 316.04499999999996,
+            "max": 340.52
+          },
+          "utilization_percent": {
+            "samples": 2,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      },
+      "measured": {
+        "1": {
+          "samples": 50,
+          "sm_clock_mhz": {
+            "samples": 50,
+            "min": 2430.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 50,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 50,
+            "min": 76.0,
+            "median": 78.0,
+            "max": 84.0
+          },
+          "power_w": {
+            "samples": 50,
+            "min": 286.03,
+            "median": 291.865,
+            "max": 314.57
+          },
+          "utilization_percent": {
+            "samples": 50,
+            "min": 91.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 9,
+          "sm_clock_mhz": {
+            "samples": 9,
+            "min": 2340.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 9,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 9,
+            "min": 77.0,
+            "median": 79.0,
+            "max": 84.0
+          },
+          "power_w": {
+            "samples": 9,
+            "min": 291.4,
+            "median": 295.0,
+            "max": 350.49
+          },
+          "utilization_percent": {
+            "samples": 9,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      }
+    },
+    "flashinfer-b2": {
+      "warmup": {
+        "1": {
+          "samples": 9,
+          "sm_clock_mhz": {
+            "samples": 9,
+            "min": 2460.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 9,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 9,
+            "min": 75.0,
+            "median": 79.0,
+            "max": 83.0
+          },
+          "power_w": {
+            "samples": 9,
+            "min": 284.1,
+            "median": 302.28,
+            "max": 311.64
+          },
+          "utilization_percent": {
+            "samples": 9,
+            "min": 91.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 1,
+          "sm_clock_mhz": {
+            "samples": 1,
+            "min": 2520.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 1,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 1,
+            "min": 75.0,
+            "median": 75.0,
+            "max": 75.0
+          },
+          "power_w": {
+            "samples": 1,
+            "min": 289.79,
+            "median": 289.79,
+            "max": 289.79
+          },
+          "utilization_percent": {
+            "samples": 1,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      },
+      "measured": {
+        "1": {
+          "samples": 50,
+          "sm_clock_mhz": {
+            "samples": 50,
+            "min": 2430.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 50,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 50,
+            "min": 75.0,
+            "median": 79.0,
+            "max": 86.0
+          },
+          "power_w": {
+            "samples": 50,
+            "min": 285.89,
+            "median": 293.955,
+            "max": 312.6
+          },
+          "utilization_percent": {
+            "samples": 50,
+            "min": 91.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 9,
+          "sm_clock_mhz": {
+            "samples": 9,
+            "min": 2340.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 9,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 9,
+            "min": 79.0,
+            "median": 81.0,
+            "max": 84.0
+          },
+          "power_w": {
+            "samples": 9,
+            "min": 292.69,
+            "median": 299.52,
+            "max": 340.98
+          },
+          "utilization_percent": {
+            "samples": 9,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      }
+    },
+    "triton-a2": {
+      "warmup": {
+        "1": {
+          "samples": 9,
+          "sm_clock_mhz": {
+            "samples": 9,
+            "min": 2445.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 9,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 9,
+            "min": 76.0,
+            "median": 80.0,
+            "max": 85.0
+          },
+          "power_w": {
+            "samples": 9,
+            "min": 189.87,
+            "median": 296.74,
+            "max": 306.24
+          },
+          "utilization_percent": {
+            "samples": 9,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 1,
+          "sm_clock_mhz": {
+            "samples": 1,
+            "min": 2520.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 1,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 1,
+            "min": 76.0,
+            "median": 76.0,
+            "max": 76.0
+          },
+          "power_w": {
+            "samples": 1,
+            "min": 286.74,
+            "median": 286.74,
+            "max": 286.74
+          },
+          "utilization_percent": {
+            "samples": 1,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      },
+      "measured": {
+        "1": {
+          "samples": 51,
+          "sm_clock_mhz": {
+            "samples": 51,
+            "min": 2445.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 51,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 51,
+            "min": 75.0,
+            "median": 80.0,
+            "max": 84.0
+          },
+          "power_w": {
+            "samples": 51,
+            "min": 287.56,
+            "median": 295.53,
+            "max": 312.8
+          },
+          "utilization_percent": {
+            "samples": 51,
+            "min": 91.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        },
+        "8": {
+          "samples": 9,
+          "sm_clock_mhz": {
+            "samples": 9,
+            "min": 2325.0,
+            "median": 2520.0,
+            "max": 2520.0
+          },
+          "memory_clock_mhz": {
+            "samples": 9,
+            "min": 9000.0,
+            "median": 9000.0,
+            "max": 9000.0
+          },
+          "temperature_c": {
+            "samples": 9,
+            "min": 72.0,
+            "median": 78.0,
+            "max": 84.0
+          },
+          "power_w": {
+            "samples": 9,
+            "min": 283.32,
+            "median": 293.82,
+            "max": 349.8
+          },
+          "utilization_percent": {
+            "samples": 9,
+            "min": 100.0,
+            "median": 100.0,
+            "max": 100.0
+          }
+        }
+      }
+    }
+  },
+  "clock_comparisons": {
+    "1": {
+      "measured_launch_sm_clock_medians_mhz": {
+        "triton-a1": 2520.0,
+        "flashinfer-b1": 2520.0,
+        "flashinfer-b2": 2520.0,
+        "triton-a2": 2520.0
+      },
+      "flashinfer_vs_triton_clock_difference_percent": 0.0,
+      "paired_clock_difference_percent_a1_b1_a2_b2": [
+        0.0,
+        0.0
+      ],
+      "inference_limit": "Sampled clock differences are descriptive. Matching sampled medians cannot prove frequency or throttling was identical between samples, nor identify temperature as a cause."
+    },
+    "8": {
+      "measured_launch_sm_clock_medians_mhz": {
+        "triton-a1": 2520.0,
+        "flashinfer-b1": 2520.0,
+        "flashinfer-b2": 2520.0,
+        "triton-a2": 2520.0
+      },
+      "flashinfer_vs_triton_clock_difference_percent": 0.0,
+      "paired_clock_difference_percent_a1_b1_a2_b2": [
+        0.0,
+        0.0
+      ],
+      "inference_limit": "Sampled clock differences are descriptive. Matching sampled medians cannot prove frequency or throttling was identical between samples, nor identify temperature as a cause."
+    }
+  },
+  "audit_script_sha256": "5d547c48d78fa739716f5fb50158306eccf1fba7d00a37685760ad8191411d62"
+}

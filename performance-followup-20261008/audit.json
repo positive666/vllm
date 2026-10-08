@@ -1,0 +1,1490 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "protocol": {
+    "input_tokens": 512,
+    "output_tokens": 128,
+    "concurrency": [
+      1,
+      8
+    ],
+    "requests_per_measured_round": 16,
+    "warmup_requests_per_concurrency": 8,
+    "rounds_per_concurrency_per_launch": 3,
+    "launch_order": [
+      "triton-a1",
+      "flashinfer-b1",
+      "flashinfer-b2",
+      "triton-a2"
+    ],
+    "independent_launches_per_backend": 2
+  },
+  "statistical_scope": "Descriptive launch/round comparisons only. Requests within a launch are not independent hardware/process replications. No significance test or confidence interval based on pooled requests is asserted.",
+  "native_runtime_scope": "The reused native library is tied to its recorded SHA256, not a fresh full CUDA13 build. Embedded inherited runtime probes retain their original timestamp/provenance.",
+  "launches": {
+    "triton-a1": {
+      "client_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\http\\triton-a1.json",
+      "client_sha256": "d542a446ae8db02eae126986e4282d880e7f0647d4600baa152d11b97310defc",
+      "runtime_probe_timestamp": "2026-10-08T13:45:21.359294+00:00",
+      "runtime_provenance": "Fresh probe before this performance pipeline, not inside each model process",
+      "server_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\serve-triton-a1.json",
+      "server_sha256": "d00420e5e3eb373da558bfd4ce3925119ac0923879dd0d7c564264d2a7bc4912",
+      "server_status": "completed",
+      "kv_capacity_tokens": 21845,
+      "rounds": [
+        {
+          "kind": "warmup",
+          "concurrency": 1,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 42.226092752069235,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 24.25040853323613,
+            "requests_per_second": 0.18945631666590726,
+            "ttft_ms": {
+              "p50": 292.6627239212394,
+              "p95": 431.8808673880993,
+              "mean": 319.6396960411221
+            },
+            "tpot_ms": {
+              "p50": 39.04097143736646,
+              "p95": 39.04394330823515,
+              "mean": 39.038587550405325
+            },
+            "request_seconds": {
+              "p50": 5.251015724614263,
+              "p95": 5.388455256912857,
+              "mean": 5.277752446010709
+            }
+          }
+        },
+        {
+          "kind": "warmup",
+          "concurrency": 8,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 7.648700572550297,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 133.8789498016091,
+            "requests_per_second": 1.0459292953250712,
+            "ttft_ms": {
+              "p50": 1835.023951716721,
+              "p95": 2216.2959570996463,
+              "mean": 1669.5559322834015
+            },
+            "tpot_ms": {
+              "p50": 45.27883372438235,
+              "p95": 53.430116274870755,
+              "mean": 46.532126321406
+            },
+            "request_seconds": {
+              "p50": 7.585914043709636,
+              "p95": 7.646092513855547,
+              "mean": 7.579595681279898
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 84.05197798460722,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.365875129970867,
+            "requests_per_second": 0.1903583994528974,
+            "ttft_ms": {
+              "p50": 293.95038913935423,
+              "p95": 296.19518341496587,
+              "mean": 294.1483920440078
+            },
+            "tpot_ms": {
+              "p50": 39.042763082002566,
+              "p95": 39.04665691235403,
+              "mean": 39.04314087997154
+            },
+            "request_seconds": {
+              "p50": 5.252608290873468,
+              "p95": 5.255010549444705,
+              "mean": 5.252842347021215
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.33457993902266,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.55435937233295,
+            "requests_per_second": 1.0433934325963512,
+            "ttft_ms": {
+              "p50": 1564.3012700602412,
+              "p95": 2264.886052813381,
+              "mean": 1516.957949846983
+            },
+            "tpot_ms": {
+              "p50": 48.219616847538106,
+              "p95": 55.276258929273276,
+              "mean": 48.06153865175424
+            },
+            "request_seconds": {
+              "p50": 7.585975692607462,
+              "p95": 8.463188803754747,
+              "mean": 7.621172141400166
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.317133024334908,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.70648389266222,
+            "requests_per_second": 1.0445819054114236,
+            "ttft_ms": {
+              "p50": 1556.5082840621471,
+              "p95": 2256.4263637177646,
+              "mean": 1510.620831977576
+            },
+            "tpot_ms": {
+              "p50": 48.21009612752228,
+              "p95": 55.243842784080684,
+              "mean": 48.04382706977662
+            },
+            "request_seconds": {
+              "p50": 7.576016169041395,
+              "p95": 8.45261540915817,
+              "mean": 7.6126148930052295
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 84.07366581447423,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.35958965461708,
+            "requests_per_second": 0.19030929417669593,
+            "ttft_ms": {
+              "p50": 295.5105025321245,
+              "p95": 296.4413673616946,
+              "mean": 295.49738857895136
+            },
+            "tpot_ms": {
+              "p50": 39.04323836451206,
+              "p95": 39.04551730718552,
+              "mean": 39.04260367642736
+            },
+            "request_seconds": {
+              "p50": 5.254349430091679,
+              "p95": 5.255194069817662,
+              "mean": 5.254168699961156
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 84.0604221560061,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.363427490277846,
+            "requests_per_second": 0.19033927726779568,
+            "ttft_ms": {
+              "p50": 295.11324036866426,
+              "p95": 296.53505282476544,
+              "mean": 294.6344615193084
+            },
+            "tpot_ms": {
+              "p50": 39.043459395958685,
+              "p95": 39.04613247141242,
+              "mean": 39.04348425200488
+            },
+            "request_seconds": {
+              "p50": 5.253761484287679,
+              "p95": 5.255021631717682,
+              "mean": 5.2533699930645525
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.30215785652399,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.8373332181282,
+            "requests_per_second": 1.0456041657666266,
+            "ttft_ms": {
+              "p50": 1551.3184489682317,
+              "p95": 2244.2500703036785,
+              "mean": 1505.2831425564364
+            },
+            "tpot_ms": {
+              "p50": 48.162003539091955,
+              "p95": 55.161122940334046,
+              "mean": 48.02586373004065
+            },
+            "request_seconds": {
+              "p50": 7.569607935845852,
+              "p95": 8.43773055030033,
+              "mean": 7.605022419826128
+            }
+          }
+        }
+      ],
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 24.363427490277846,
+            "min": 24.35958965461708,
+            "max": 24.365875129970867,
+            "range": 0.006285475353788428,
+            "values": [
+              24.365875129970867,
+              24.35958965461708,
+              24.363427490277846
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 295.11324036866426,
+            "min": 293.95038913935423,
+            "max": 295.5105025321245,
+            "range": 1.5601133927702904,
+            "values": [
+              293.95038913935423,
+              295.5105025321245,
+              295.11324036866426
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 39.04323836451206,
+            "min": 39.042763082002566,
+            "max": 39.043459395958685,
+            "range": 0.0006963139561193543,
+            "values": [
+              39.042763082002566,
+              39.04323836451206,
+              39.043459395958685
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 133.70648389266222,
+            "min": 133.55435937233295,
+            "max": 133.8373332181282,
+            "range": 0.2829738457952544,
+            "values": [
+              133.55435937233295,
+              133.70648389266222,
+              133.8373332181282
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 1556.5082840621471,
+            "min": 1551.3184489682317,
+            "max": 1564.3012700602412,
+            "range": 12.982821092009544,
+            "values": [
+              1564.3012700602412,
+              1556.5082840621471,
+              1551.3184489682317
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 48.21009612752228,
+            "min": 48.162003539091955,
+            "max": 48.219616847538106,
+            "range": 0.05761330844615031,
+            "values": [
+              48.219616847538106,
+              48.21009612752228,
+              48.162003539091955
+            ]
+          }
+        }
+      }
+    },
+    "flashinfer-b1": {
+      "client_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\http\\flashinfer-b1.json",
+      "client_sha256": "d4799e38ab9fbb44ce3255b4933e1ec5a9ffb0f01a0b01ec37231a5a959236b7",
+      "runtime_probe_timestamp": "2026-10-08T13:45:21.359294+00:00",
+      "runtime_provenance": "Fresh probe before this performance pipeline, not inside each model process",
+      "server_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\serve-flashinfer-b1.json",
+      "server_sha256": "7c1b7a61e304b879b1d9d48561d0fecac471909d2c2318802e1461c7ecf033f2",
+      "server_status": "completed",
+      "kv_capacity_tokens": 21845,
+      "rounds": [
+        {
+          "kind": "warmup",
+          "concurrency": 1,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 42.160175355151296,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 24.288324025551844,
+            "requests_per_second": 0.18975253144962378,
+            "ttft_ms": {
+              "p50": 297.34809696674347,
+              "p95": 434.7677148878573,
+              "mean": 323.9669657777995
+            },
+            "tpot_ms": {
+              "p50": 38.94179697170502,
+              "p95": 38.94504007670706,
+              "mean": 38.93954575604459
+            },
+            "request_seconds": {
+              "p50": 5.243188066408038,
+              "p95": 5.378839137218892,
+              "mean": 5.269501775270328
+            }
+          }
+        },
+        {
+          "kind": "warmup",
+          "concurrency": 8,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 7.665245041251183,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 133.58998890306245,
+            "requests_per_second": 1.0436717883051754,
+            "ttft_ms": {
+              "p50": 1828.8805605843663,
+              "p95": 2250.728361867368,
+              "mean": 1669.431660324335
+            },
+            "tpot_ms": {
+              "p50": 45.45796947832417,
+              "p95": 53.73300025899579,
+              "mean": 46.66684197965922
+            },
+            "request_seconds": {
+              "p50": 7.602176008746028,
+              "p95": 7.6627769820392135,
+              "mean": 7.596513749565929
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 83.88476053625345,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.41444652053208,
+            "requests_per_second": 0.19073786344165689,
+            "ttft_ms": {
+              "p50": 296.2930900976062,
+              "p95": 297.887044493109,
+              "mean": 296.3330668862909
+            },
+            "tpot_ms": {
+              "p50": 38.94368115460544,
+              "p95": 38.94614518114079,
+              "mean": 38.94371791068083
+            },
+            "request_seconds": {
+              "p50": 5.242278473451734,
+              "p95": 5.243837884161621,
+              "mean": 5.24239324091468
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.267687944695354,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 134.13949822779568,
+            "requests_per_second": 1.0479648299046538,
+            "ttft_ms": {
+              "p50": 1538.741779513657,
+              "p95": 2246.182566508651,
+              "mean": 1489.5328279817477
+            },
+            "tpot_ms": {
+              "p50": 48.22400189554832,
+              "p95": 55.193924114078754,
+              "mean": 48.016101060486506
+            },
+            "request_seconds": {
+              "p50": 7.55202563200146,
+              "p95": 8.3709109229967,
+              "mean": 7.587971830624156
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.269613863900304,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 134.12257953960344,
+            "requests_per_second": 1.0478326526531518,
+            "ttft_ms": {
+              "p50": 1538.1489861756563,
+              "p95": 2248.1170082464814,
+              "mean": 1489.6970711415634
+            },
+            "tpot_ms": {
+              "p50": 48.23541947031819,
+              "p95": 55.210251485796896,
+              "mean": 48.021361044806056
+            },
+            "request_seconds": {
+              "p50": 7.552490622736514,
+              "p95": 8.375008553732187,
+              "mean": 7.588871712912805
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 83.88060259073973,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.41565674000172,
+            "requests_per_second": 0.19074731828126343,
+            "ttft_ms": {
+              "p50": 295.812314376235,
+              "p95": 296.442152466625,
+              "mean": 295.8765982184559
+            },
+            "tpot_ms": {
+              "p50": 38.944600384653086,
+              "p95": 38.94755607617535,
+              "mean": 38.94523744962699
+            },
+            "request_seconds": {
+              "p50": 5.242026061750948,
+              "p95": 5.242762780748308,
+              "mean": 5.242131597129628
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 83.883819995448,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.414720265614225,
+            "requests_per_second": 0.19074000207511113,
+            "ttft_ms": {
+              "p50": 295.77114433050156,
+              "p95": 297.7434112690389,
+              "mean": 296.12195980735123
+            },
+            "tpot_ms": {
+              "p50": 38.944496333188425,
+              "p95": 38.94802996536761,
+              "mean": 38.944813722605254
+            },
+            "request_seconds": {
+              "p50": 5.2420908669009805,
+              "p95": 5.243891248945147,
+              "mean": 5.242328950786032
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.27077086828649,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 134.11241761561465,
+            "requests_per_second": 1.0477532626219894,
+            "ttft_ms": {
+              "p50": 1537.0377507060766,
+              "p95": 2248.270728625357,
+              "mean": 1490.1410245802253
+            },
+            "tpot_ms": {
+              "p50": 48.234461740715304,
+              "p95": 55.21600653131412,
+              "mean": 48.021449947612375
+            },
+            "request_seconds": {
+              "p50": 7.554679568856955,
+              "p95": 8.37504577031359,
+              "mean": 7.5894732744200155
+            }
+          }
+        }
+      ],
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 24.414720265614225,
+            "min": 24.41444652053208,
+            "max": 24.41565674000172,
+            "range": 0.001210219469637508,
+            "values": [
+              24.41444652053208,
+              24.41565674000172,
+              24.414720265614225
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 295.812314376235,
+            "min": 295.77114433050156,
+            "max": 296.2930900976062,
+            "range": 0.5219457671046257,
+            "values": [
+              296.2930900976062,
+              295.812314376235,
+              295.77114433050156
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 38.944496333188425,
+            "min": 38.94368115460544,
+            "max": 38.944600384653086,
+            "range": 0.0009192300476428272,
+            "values": [
+              38.94368115460544,
+              38.944600384653086,
+              38.944496333188425
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 134.12257953960344,
+            "min": 134.11241761561465,
+            "max": 134.13949822779568,
+            "range": 0.027080612181038077,
+            "values": [
+              134.13949822779568,
+              134.12257953960344,
+              134.11241761561465
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 1538.1489861756563,
+            "min": 1537.0377507060766,
+            "max": 1538.741779513657,
+            "range": 1.704028807580471,
+            "values": [
+              1538.741779513657,
+              1538.1489861756563,
+              1537.0377507060766
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 48.234461740715304,
+            "min": 48.22400189554832,
+            "max": 48.23541947031819,
+            "range": 0.011417574769872374,
+            "values": [
+              48.22400189554832,
+              48.23541947031819,
+              48.234461740715304
+            ]
+          }
+        }
+      }
+    },
+    "flashinfer-b2": {
+      "client_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\http\\flashinfer-b2.json",
+      "client_sha256": "e7442972631548de5f09cb2581237e87d184f61e277fee8fdf552a54f0b67657",
+      "runtime_probe_timestamp": "2026-10-08T13:45:21.359294+00:00",
+      "runtime_provenance": "Fresh probe before this performance pipeline, not inside each model process",
+      "server_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\serve-flashinfer-b2.json",
+      "server_sha256": "c7384ebf5a164bc1724c3e989dd085b0000b89608775e1ff75fe7e09c71492ce",
+      "server_status": "completed",
+      "kv_capacity_tokens": 21845,
+      "rounds": [
+        {
+          "kind": "warmup",
+          "concurrency": 1,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 42.16258726455271,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 24.28693461278421,
+            "requests_per_second": 0.18974167666237665,
+            "ttft_ms": {
+              "p50": 297.322416678071,
+              "p95": 437.5299373641609,
+              "mean": 324.11631429567933
+            },
+            "tpot_ms": {
+              "p50": 38.943424307572556,
+              "p95": 38.946374180162046,
+              "mean": 38.940617730327716
+            },
+            "request_seconds": {
+              "p50": 5.243353211320937,
+              "p95": 5.381548605393618,
+              "mean": 5.269800864625722
+            }
+          }
+        },
+        {
+          "kind": "warmup",
+          "concurrency": 8,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 7.65987409837544,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 133.68365939815868,
+            "requests_per_second": 1.0444035890481147,
+            "ttft_ms": {
+              "p50": 1822.7850664407015,
+              "p95": 2244.1848499700427,
+              "mean": 1664.1781064681709
+            },
+            "tpot_ms": {
+              "p50": 45.46373047110603,
+              "p95": 53.715076663450695,
+              "mean": 46.666432199559694
+            },
+            "request_seconds": {
+              "p50": 7.597060191445053,
+              "p95": 7.656150515936315,
+              "mean": 7.591213670093566
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 83.88102563470602,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.415533602543768,
+            "requests_per_second": 0.19074635626987319,
+            "ttft_ms": {
+              "p50": 296.0126893594861,
+              "p95": 297.5790021009743,
+              "mean": 296.00148636382073
+            },
+            "tpot_ms": {
+              "p50": 38.94410386505559,
+              "p95": 38.947040860460504,
+              "mean": 38.944308603857095
+            },
+            "request_seconds": {
+              "p50": 5.24201937392354,
+              "p95": 5.244045764673501,
+              "mean": 5.2421509344130754
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.27523273974657,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 134.07324358934633,
+            "requests_per_second": 1.0474472155417682,
+            "ttft_ms": {
+              "p50": 1540.57758115232,
+              "p95": 2251.564900390804,
+              "mean": 1492.1542827505618
+            },
+            "tpot_ms": {
+              "p50": 48.23909784249199,
+              "p95": 55.23172159510569,
+              "mean": 48.02328976435865
+            },
+            "request_seconds": {
+              "p50": 7.556319057941437,
+              "p95": 8.379147382453084,
+              "mean": 7.591646350105293
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.27920514345169,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 134.03838621001333,
+            "requests_per_second": 1.0471748922657291,
+            "ttft_ms": {
+              "p50": 1541.6415818035603,
+              "p95": 2251.144199166447,
+              "mean": 1493.0682928534225
+            },
+            "tpot_ms": {
+              "p50": 48.23341673078734,
+              "p95": 55.24097154224952,
+              "mean": 48.03195676315342
+            },
+            "request_seconds": {
+              "p50": 7.558582539670169,
+              "p95": 8.377927106339484,
+              "mean": 7.59367870981805
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 83.87866426631808,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.41622095337044,
+            "requests_per_second": 0.19075172619820657,
+            "ttft_ms": {
+              "p50": 295.8648260682821,
+              "p95": 296.2804837152362,
+              "mean": 295.83207913674414
+            },
+            "tpot_ms": {
+              "p50": 38.94464792610388,
+              "p95": 38.946562604318686,
+              "mean": 38.94450714514686
+            },
+            "request_seconds": {
+              "p50": 5.242029276676476,
+              "p95": 5.24253459321335,
+              "mean": 5.242004468454979
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 83.88001877069473,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.41582667737209,
+            "requests_per_second": 0.19074864591696944,
+            "ttft_ms": {
+              "p50": 295.7780668511987,
+              "p95": 296.9410102814436,
+              "mean": 295.8392729051411
+            },
+            "tpot_ms": {
+              "p50": 38.94443845185708,
+              "p95": 38.948249368833046,
+              "mean": 38.94495895301087
+            },
+            "request_seconds": {
+              "p50": 5.242204001173377,
+              "p95": 5.243064283393323,
+              "mean": 5.242081480217166
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.290502395480871,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.93935313762412,
+            "requests_per_second": 1.0464011963876885,
+            "ttft_ms": {
+              "p50": 1548.5394289717078,
+              "p95": 2258.7904259562492,
+              "mean": 1497.2095384728163
+            },
+            "tpot_ms": {
+              "p50": 48.24984446901271,
+              "p95": 55.271703683895865,
+              "mean": 48.04370236605054
+            },
+            "request_seconds": {
+              "p50": 7.563265579752624,
+              "p95": 8.386793246492743,
+              "mean": 7.599298551212996
+            }
+          }
+        }
+      ],
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 24.41582667737209,
+            "min": 24.415533602543768,
+            "max": 24.41622095337044,
+            "range": 0.0006873508266735939,
+            "values": [
+              24.415533602543768,
+              24.41622095337044,
+              24.41582667737209
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 295.8648260682821,
+            "min": 295.7780668511987,
+            "max": 296.0126893594861,
+            "range": 0.2346225082874298,
+            "values": [
+              296.0126893594861,
+              295.8648260682821,
+              295.7780668511987
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 38.94443845185708,
+            "min": 38.94410386505559,
+            "max": 38.94464792610388,
+            "range": 0.0005440610482949637,
+            "values": [
+              38.94410386505559,
+              38.94464792610388,
+              38.94443845185708
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 134.03838621001333,
+            "min": 133.93935313762412,
+            "max": 134.07324358934633,
+            "range": 0.13389045172220904,
+            "values": [
+              134.07324358934633,
+              134.03838621001333,
+              133.93935313762412
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 1541.6415818035603,
+            "min": 1540.57758115232,
+            "max": 1548.5394289717078,
+            "range": 7.961847819387913,
+            "values": [
+              1540.57758115232,
+              1541.6415818035603,
+              1548.5394289717078
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 48.23909784249199,
+            "min": 48.23341673078734,
+            "max": 48.24984446901271,
+            "range": 0.01642773822536725,
+            "values": [
+              48.23909784249199,
+              48.23341673078734,
+              48.24984446901271
+            ]
+          }
+        }
+      }
+    },
+    "triton-a2": {
+      "client_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\http\\triton-a2.json",
+      "client_sha256": "5228695f2fcac87790830e918c6802ddae447f0da1add482acf45ae621b95998",
+      "runtime_probe_timestamp": "2026-10-08T13:45:21.359294+00:00",
+      "runtime_provenance": "Fresh probe before this performance pipeline, not inside each model process",
+      "server_path": "artifacts\\gdn60403-review-20261008\\performance-followup-20261008\\raw\\serve-triton-a2.json",
+      "server_sha256": "98cfce218ebd3cb58ab9513d85013f38cc31db410ff3c93b11d5cd9745cfed9a",
+      "server_status": "completed",
+      "kv_capacity_tokens": 21845,
+      "rounds": [
+        {
+          "kind": "warmup",
+          "concurrency": 1,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 42.256983164697886,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 24.23268116441083,
+            "requests_per_second": 0.18931782159695962,
+            "ttft_ms": {
+              "p50": 298.29943273216486,
+              "p95": 428.64174814894784,
+              "mean": 323.1280108448118
+            },
+            "tpot_ms": {
+              "p50": 39.04406056101397,
+              "p95": 39.04897868559937,
+              "mean": 39.04134789518425
+            },
+            "request_seconds": {
+              "p50": 5.256820715032518,
+              "p95": 5.38578264079988,
+              "mean": 5.281599759822711
+            }
+          }
+        },
+        {
+          "kind": "warmup",
+          "concurrency": 8,
+          "repeat": 0,
+          "recomputed": {
+            "requests": 8,
+            "successful": 8,
+            "failed": 0,
+            "wall_seconds": 7.681223724037409,
+            "output_tokens": 1024,
+            "output_tokens_per_second": 133.312091509003,
+            "requests_per_second": 1.041500714914086,
+            "ttft_ms": {
+              "p50": 1859.2594787478447,
+              "p95": 2248.0283530429006,
+              "mean": 1692.8883013315499
+            },
+            "tpot_ms": {
+              "p50": 45.33166443474415,
+              "p95": 53.6160528938484,
+              "mean": 46.6046451378291
+            },
+            "request_seconds": {
+              "p50": 7.617226339876652,
+              "p95": 7.679071596451104,
+              "mean": 7.612167554907501
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 84.0852701626718,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.35622786295303,
+            "requests_per_second": 0.19028303017932055,
+            "ttft_ms": {
+              "p50": 295.7721333950758,
+              "p95": 297.24470945075154,
+              "mean": 295.7517566392198
+            },
+            "tpot_ms": {
+              "p50": 39.04705977903342,
+              "p95": 39.04921633712067,
+              "mean": 39.04687047397029
+            },
+            "request_seconds": {
+              "p50": 5.2550894701853395,
+              "p95": 5.256525026168674,
+              "mean": 5.254917990649119
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 1,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.314612478017807,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.72848989418736,
+            "requests_per_second": 1.0447538272983388,
+            "ttft_ms": {
+              "p50": 1555.455043911934,
+              "p95": 2253.3551873639226,
+              "mean": 1509.8257844801992
+            },
+            "tpot_ms": {
+              "p50": 48.192168879286044,
+              "p95": 55.20822161324615,
+              "mean": 48.03872574579088
+            },
+            "request_seconds": {
+              "p50": 7.576182283461094,
+              "p95": 8.449512124061584,
+              "mean": 7.611165357520804
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.310572812333703,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.76377390336418,
+            "requests_per_second": 1.0450294836200327,
+            "ttft_ms": {
+              "p50": 1555.511549115181,
+              "p95": 2248.711094725877,
+              "mean": 1508.273719693534
+            },
+            "tpot_ms": {
+              "p50": 48.1786100985849,
+              "p95": 55.18890083877472,
+              "mean": 48.035825379046166
+            },
+            "request_seconds": {
+              "p50": 7.572492577135563,
+              "p95": 8.445544102229178,
+              "mean": 7.609280491946265
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 2,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 84.08572351932526,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.356096543895614,
+            "requests_per_second": 0.19028200424918448,
+            "ttft_ms": {
+              "p50": 295.7718791440129,
+              "p95": 296.3064578361809,
+              "mean": 295.73383822571486
+            },
+            "tpot_ms": {
+              "p50": 39.04770118162388,
+              "p95": 39.0505656145337,
+              "mean": 39.047286671579
+            },
+            "request_seconds": {
+              "p50": 5.254877692088485,
+              "p95": 5.255726428702474,
+              "mean": 5.254947958048433
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 1,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 84.09026290103793,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 24.354781746968726,
+            "requests_per_second": 0.19027173239819317,
+            "ttft_ms": {
+              "p50": 295.8624605089426,
+              "p95": 296.7733102850616,
+              "mean": 295.91284634079784
+            },
+            "tpot_ms": {
+              "p50": 39.04812156743421,
+              "p95": 39.050588175273084,
+              "mean": 39.04807600137726
+            },
+            "request_seconds": {
+              "p50": 5.255154675804079,
+              "p95": 5.256165821105242,
+              "mean": 5.255233114818111
+            }
+          }
+        },
+        {
+          "kind": "rounds",
+          "concurrency": 8,
+          "repeat": 3,
+          "recomputed": {
+            "requests": 16,
+            "successful": 16,
+            "failed": 0,
+            "wall_seconds": 15.28527163527906,
+            "output_tokens": 2048,
+            "output_tokens_per_second": 133.98518841321265,
+            "requests_per_second": 1.0467592844782239,
+            "ttft_ms": {
+              "p50": 1546.105763874948,
+              "p95": 2239.1219083219767,
+              "mean": 1500.1134384656325
+            },
+            "tpot_ms": {
+              "p50": 48.16231361817657,
+              "p95": 55.12483218890124,
+              "mean": 48.000743037903696
+            },
+            "request_seconds": {
+              "p50": 7.561120483092964,
+              "p95": 8.429639270994812,
+              "mean": 7.596518684178591
+            }
+          }
+        }
+      ],
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 24.356096543895614,
+            "min": 24.354781746968726,
+            "max": 24.35622786295303,
+            "range": 0.0014461159843044413,
+            "values": [
+              24.35622786295303,
+              24.356096543895614,
+              24.354781746968726
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 295.7721333950758,
+            "min": 295.7718791440129,
+            "max": 295.8624605089426,
+            "range": 0.09058136492967606,
+            "values": [
+              295.7721333950758,
+              295.7718791440129,
+              295.8624605089426
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 39.04770118162388,
+            "min": 39.04705977903342,
+            "max": 39.04812156743421,
+            "range": 0.0010617884007899647,
+            "values": [
+              39.04705977903342,
+              39.04770118162388,
+              39.04812156743421
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 133.76377390336418,
+            "min": 133.72848989418736,
+            "max": 133.98518841321265,
+            "range": 0.25669851902529217,
+            "values": [
+              133.72848989418736,
+              133.76377390336418,
+              133.98518841321265
+            ]
+          },
+          "ttft_p50_ms": {
+            "median": 1555.455043911934,
+            "min": 1546.105763874948,
+            "max": 1555.511549115181,
+            "range": 9.405785240232944,
+            "values": [
+              1555.455043911934,
+              1555.511549115181,
+              1546.105763874948
+            ]
+          },
+          "tpot_p50_ms": {
+            "median": 48.1786100985849,
+            "min": 48.16231361817657,
+            "max": 48.192168879286044,
+            "range": 0.029855261109474895,
+            "values": [
+              48.192168879286044,
+              48.1786100985849,
+              48.16231361817657
+            ]
+          }
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "1": {
+      "output_tokens_per_second": {
+        "triton_launch_medians": {
+          "median": 24.35976201708673,
+          "min": 24.356096543895614,
+          "max": 24.363427490277846,
+          "range": 0.007330946382232639,
+          "values": [
+            24.363427490277846,
+            24.356096543895614
+          ]
+        },
+        "flashinfer_launch_medians": {
+          "median": 24.41527347149316,
+          "min": 24.414720265614225,
+          "max": 24.41582667737209,
+          "range": 0.0011064117578634125,
+          "values": [
+            24.414720265614225,
+            24.41582667737209
+          ]
+        },
+        "flashinfer_improvement_percent_of_launch_medians": 0.22788175995926974,
+        "paired_improvement_percent_a1_b1_a2_b2": [
+          0.21053185294575005,
+          0.24523688912476693
+        ],
+        "paired_direction_consistent": true,
+        "observed_max_relative_launch_or_round_range_percent": 0.030094490976925285,
+        "descriptive_conclusion": "consistent_descriptive_improvement",
+        "criterion_limit": "Observed-range comparison is a descriptive heuristic, not a formal statistical confidence bound."
+      },
+      "ttft_p50_ms": {
+        "triton_launch_medians": {
+          "median": 295.44268688187003,
+          "min": 295.11324036866426,
+          "max": 295.7721333950758,
+          "range": 0.6588930264115334,
+          "values": [
+            295.11324036866426,
+            295.7721333950758
+          ]
+        },
+        "flashinfer_launch_medians": {
+          "median": 295.83857022225857,
+          "min": 295.812314376235,
+          "max": 295.8648260682821,
+          "range": 0.05251169204711914,
+          "values": [
+            295.812314376235,
+            295.8648260682821
+          ]
+        },
+        "flashinfer_improvement_percent_of_launch_medians": -0.13399666262405852,
+        "paired_improvement_percent_a1_b1_a2_b2": [
+          -0.2368833084877675,
+          -0.03133921784392868
+        ],
+        "paired_direction_consistent": true,
+        "observed_max_relative_launch_or_round_range_percent": 0.5286490673279688,
+        "descriptive_conclusion": "inconclusive_at_observed_variability",
+        "criterion_limit": "Observed-range comparison is a descriptive heuristic, not a formal statistical confidence bound."
+      },
+      "tpot_p50_ms": {
+        "triton_launch_medians": {
+          "median": 39.045469773067964,
+          "min": 39.04323836451206,
+          "max": 39.04770118162388,
+          "range": 0.004462817111821948,
+          "values": [
+            39.04323836451206,
+            39.04770118162388
+          ]
+        },
+        "flashinfer_launch_medians": {
+          "median": 38.94446739252275,
+          "min": 38.94443845185708,
+          "max": 38.944496333188425,
+          "range": 5.788133134387863e-05,
+          "values": [
+            38.944496333188425,
+            38.94443845185708
+          ]
+        },
+        "flashinfer_improvement_percent_of_launch_medians": 0.25867887140873513,
+        "paired_improvement_percent_a1_b1_a2_b2": [
+          0.25290430676309095,
+          0.2644527760712112
+        ],
+        "paired_direction_consistent": true,
+        "observed_max_relative_launch_or_round_range_percent": 0.011429794897486995,
+        "descriptive_conclusion": "consistent_descriptive_improvement",
+        "criterion_limit": "Observed-range comparison is a descriptive heuristic, not a formal statistical confidence bound."
+      }
+    },
+    "8": {
+      "output_tokens_per_second": {
+        "triton_launch_medians": {
+          "median": 133.73512889801322,
+          "min": 133.70648389266222,
+          "max": 133.76377390336418,
+          "range": 0.057290010701962046,
+          "values": [
+            133.70648389266222,
+            133.76377390336418
+          ]
+        },
+        "flashinfer_launch_medians": {
+          "median": 134.08048287480838,
+          "min": 134.03838621001333,
+          "max": 134.12257953960344,
+          "range": 0.08419332959010717,
+          "values": [
+            134.12257953960344,
+            134.03838621001333
+          ]
+        },
+        "flashinfer_improvement_percent_of_launch_medians": 0.2582372931038357,
+        "paired_improvement_percent_a1_b1_a2_b2": [
+          0.3112007995627497,
+          0.20529647051341637
+        ],
+        "paired_direction_consistent": true,
+        "observed_max_relative_launch_or_round_range_percent": 0.21163808781511453,
+        "descriptive_conclusion": "consistent_descriptive_improvement",
+        "criterion_limit": "Observed-range comparison is a descriptive heuristic, not a formal statistical confidence bound."
+      },
+      "ttft_p50_ms": {
+        "triton_launch_medians": {
+          "median": 1555.9816639870405,
+          "min": 1555.455043911934,
+          "max": 1556.5082840621471,
+          "range": 1.0532401502132416,
+          "values": [
+            1556.5082840621471,
+            1555.455043911934
+          ]
+        },
+        "flashinfer_launch_medians": {
+          "median": 1539.8952839896083,
+          "min": 1538.1489861756563,
+          "max": 1541.6415818035603,
+          "range": 3.4925956279039383,
+          "values": [
+            1538.1489861756563,
+            1541.6415818035603
+          ]
+        },
+        "flashinfer_improvement_percent_of_launch_medians": 1.033841231535626,
+        "paired_improvement_percent_a1_b1_a2_b2": [
+          1.1795181609041694,
+          0.8880656604277726
+        ],
+        "paired_direction_consistent": true,
+        "observed_max_relative_launch_or_round_range_percent": 0.834099068083802,
+        "descriptive_conclusion": "consistent_descriptive_improvement",
+        "criterion_limit": "Observed-range comparison is a descriptive heuristic, not a formal statistical confidence bound."
+      },
+      "tpot_p50_ms": {
+        "triton_launch_medians": {
+          "median": 48.19435311305359,
+          "min": 48.1786100985849,
+          "max": 48.21009612752228,
+          "range": 0.03148602893737973,
+          "values": [
+            48.21009612752228,
+            48.1786100985849
+          ]
+        },
+        "flashinfer_launch_medians": {
+          "median": 48.236779791603645,
+          "min": 48.234461740715304,
+          "max": 48.23909784249199,
+          "range": 0.004636101776682722,
+          "values": [
+            48.234461740715304,
+            48.23909784249199
+          ]
+        },
+        "flashinfer_improvement_percent_of_launch_medians": -0.08803246814110821,
+        "paired_improvement_percent_a1_b1_a2_b2": [
+          -0.0505404783441632,
+          -0.12554895997065607
+        ],
+        "paired_direction_consistent": true,
+        "observed_max_relative_launch_or_round_range_percent": 0.11950465374255895,
+        "descriptive_conclusion": "inconclusive_at_observed_variability",
+        "criterion_limit": "Observed-range comparison is a descriptive heuristic, not a formal statistical confidence bound."
+      }
+    }
+  },
+  "errors": [],
+  "notes": [],
+  "expected_client_sha256": "25e59e25bcd69230af292c0bb5cb03dc30dafa5a048ff108c08f341427a09510",
+  "counts": {
+    "measured_requests": 384,
+    "warmup_requests": 64
+  },
+  "validation_passed": true,
+  "audit_script_sha256": "fd3975529354fce7eb827bff3304aba60286e544ba962b68d4ea72ba2cdd2d58"
+}

@@ -1,0 +1,13 @@
+{
+  "verified_utc": "2026-10-08T14:12:55Z",
+  "container_id": "99879b5a9eb515388d05f22902b23ccb1c9462ae27c0b19e3a23995d04d54570",
+  "container_name": "gdn60403-review-20261008",
+  "owner_label": "gdn60403-review-20261008",
+  "status": "exited",
+  "gpu_uuid": "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675",
+  "memory_used_mib": 1,
+  "utilization_percent": 0,
+  "compute_pids": [],
+  "other_workloads_touched": false,
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6"
+}

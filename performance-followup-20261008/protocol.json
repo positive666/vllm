@@ -1,0 +1,48 @@
+{
+  "frozen_utc": "2026-10-08T13:44:34.1881599Z",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "gpu": "L20 GPU7 GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675",
+  "serving": {
+    "order": [
+      "triton-a1",
+      "flashinfer-b1",
+      "flashinfer-b2",
+      "triton-a2"
+    ],
+    "input_tokens": 512,
+    "output_tokens": 128,
+    "requests_per_round": 16,
+    "warmup_per_concurrency": 8,
+    "rounds": 3,
+    "concurrency": [
+      1,
+      8
+    ],
+    "measured_total": 384,
+    "warmup_total": 64,
+    "startup_excluded": true,
+    "comparison": "Descriptive launch medians/ranges; two independent launches per backend, no statistical equivalence or significance claim"
+  },
+  "micro": {
+    "head_shapes": [
+      "16:48 model TP1",
+      "2:4 synthetic alignment cost"
+    ],
+    "batches": [
+      1,
+      8
+    ],
+    "state_dtype": "float32",
+    "index_dtype": "int32",
+    "steps": 128,
+    "rounds": 3,
+    "timer": "cupti with recorded event fallback",
+    "cache": [
+      "warm",
+      "cold state rotation >5x L2"
+    ],
+    "boundary": "production GDNDecode plus identical gated RMSNorm, post-convolution",
+    "no_private_tuning": true
+  },
+  "source_code_changed": false
+}
