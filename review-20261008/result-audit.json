@@ -1,0 +1,81 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "core_passed": 104,
+  "core_counts": {
+    "adapter-and-split": 40,
+    "gdn-metadata": 63,
+    "gdn-config": 1
+  },
+  "core_failures_errors_skips": 0,
+  "parameter_export_probes": {
+    "0": {
+      "raw_fi_error_type": "BufferError",
+      "raw_fi_error_message": "Can't export tensors that require gradient, use tensor.detach()",
+      "adapter_status": "passed",
+      "max_output_abs_error": 0.0
+    },
+    "1": {
+      "raw_fi_error_type": "ValueError",
+      "raw_fi_error_message": "Misaligned Tensor data on argument #2 when calling: `run_gdn_decode_kernel_small_batch_pretranspose(h0_source: Tensor([n0, 4, 128, 128], float32), A_log: Tensor([4], float32), a: Tensor([n1, n2, n3], bfloat16), dt_bias: Tensor([4], float32), q: Tensor([n4, n5, n6, n7], bfloat16), k: Tensor([n8, n9, n10, n11], bfloat16), v: Tensor([n12, n13, n14, n15], bfloat16), b: Tensor([n16, n17, n18], bfloat16), o: Tensor([n19, n20, n21, n22], bfloat16), h0_indices: Tensor([n23], int32), h0_out_indices: Tensor([n24], int32), cu_seqlens: Tensor([n25], int32), stream: Stream)`, expected data alignment=16 bytes",
+      "adapter_status": "passed",
+      "max_output_abs_error": 0.0
+    }
+  },
+  "explicit_override_log": {
+    "status": "passed",
+    "constructions": 2,
+    "message_count": 1,
+    "message": "Explicit FlashInfer GDN decode overrides VLLM_ENABLE_FLA_PACKED_RECURRENT_DECODE=0 for ordinary decode"
+  },
+  "serving": {
+    "successful_retry_attempt": 2,
+    "counts": {
+      "measured": 96,
+      "warmup": 32
+    },
+    "requests_by_backend": {
+      "triton-a1": {
+        "measured": 48,
+        "warmup": 16
+      },
+      "flashinfer-b1": {
+        "measured": 48,
+        "warmup": 16
+      }
+    },
+    "kv_tokens_each_backend": 21845,
+    "fixture_sha256": "2fc2a4d643b0abea735b5d83888585eec25eb5fda2919b7f964add44834a350d",
+    "protocol_sha256": "ecac8fe0e02430bca5de49bb03839b5fb2e9319327ada419fb349767fcf92595",
+    "paired_output_agreement": {
+      "1": {
+        "paired_requests": 24,
+        "identical_sequences": 24,
+        "matching_token_positions": 1536,
+        "compared_token_positions": 1536,
+        "distinct_sequences_by_backend": {
+          "triton-a1": 1,
+          "flashinfer-b1": 1
+        }
+      },
+      "8": {
+        "paired_requests": 24,
+        "identical_sequences": 12,
+        "matching_token_positions": 833,
+        "compared_token_positions": 1536,
+        "distinct_sequences_by_backend": {
+          "triton-a1": 3,
+          "flashinfer-b1": 2
+        }
+      }
+    },
+    "scope": "One successful launch per backend, compatibility smoke; no performance or accuracy equivalence conclusion"
+  },
+  "preserved_initial_pipeline_exit": "1",
+  "serving_retry_exit": "0",
+  "limitations": [
+    "Only SM89/L20 hardware tested",
+    "No new benchmark or GSM8K evaluation",
+    "Reused native binary; full CUDA13 build not validated",
+    "Earlier environment and HV4 alignment failures retained"
+  ]
+}
