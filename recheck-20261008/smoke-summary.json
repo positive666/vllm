@@ -1,0 +1,652 @@
+{
+  "purpose": "Compatibility smoke only; no performance or model accuracy inference",
+  "source_head": "c3424cc55d5258a3d5f104d817d6c6ef850db67f",
+  "fixed_main": "8352b2427f704652da1910f0d53f3fdcc2fa2b0d",
+  "selected_attempt": 2,
+  "fixture_sha256": "c3fa30d96ca0727d1e75ffc5b3d1f6d8ccd5013873b07c21b0edb07ee506339a",
+  "input_tokens_sha256": "085b2baa43d07d5872446fe1dc93076ac4e10b5d04df0ef75d20492c46a6220e",
+  "client_sha256": "739a52684006443c7bce324eef724aa5f2098a5c129003e3a9b23a46f79371f9",
+  "runtime_probe_sha256": "8f82ab34e64534127523e72f79b0829949bf0d4972f23627de7757ada1334d21",
+  "runtime_provenance_snapshot_utc": "2026-10-08T04:17:06.081375+00:00",
+  "runtime_provenance_scope": "One pre-launch runtime probe retained unchanged in both arms; launch source SHA and server logs also checked independently. This is not a separate full module probe inside each server process.",
+  "source_files": {
+    "vllm/config/kernel.py": {
+      "path": "/source/vllm/config/kernel.py",
+      "resolved_path": "/source/vllm/config/kernel.py",
+      "sha256": "277f7c7f9b5359472d8e9d9198a8dbc5f4befb6e0a79fe837fc8415b39e807bb",
+      "bytes": 18878
+    },
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": {
+      "path": "/source/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+      "resolved_path": "/source/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+      "sha256": "7c301398f49335dd041f1ce39988376e8d2b1149cd3d2ae677ad2ad397d0ec6c",
+      "bytes": 84292
+    },
+    "vllm/v1/attention/backends/gdn_attn.py": {
+      "path": "/source/vllm/v1/attention/backends/gdn_attn.py",
+      "resolved_path": "/source/vllm/v1/attention/backends/gdn_attn.py",
+      "sha256": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+      "bytes": 34134
+    }
+  },
+  "shared_recorded_runtime": {
+    "torch": {
+      "version": "2.13.0+cu129",
+      "cuda": "12.9",
+      "cuda_available": true,
+      "gpu_count": 1,
+      "devices": [
+        {
+          "index": 0,
+          "name": "NVIDIA L20",
+          "capability": [
+            8,
+            9
+          ],
+          "properties": "_CudaDeviceProperties(name='NVIDIA L20', major=8, minor=9, total_memory=45589MB, multi_processor_count=92, uuid=b7783a01-c440-29bd-ccb8-98ca7acf6675, pci_bus_id=155, pci_device_id=0, pci_domain_id=0, L2_cache_size=96MB)"
+        }
+      ]
+    },
+    "cute_dsl_imported_version": "4.8.0",
+    "stable_native_binary": {
+      "path": "/source/vllm/_C_stable_libtorch.abi3.so",
+      "resolved_path": "/study/.venv/lib/python3.12/site-packages/vllm/_C_stable_libtorch.abi3.so",
+      "sha256": "3efc749cc7d32a0177376cdabc19d18f406ca2f5a002f933a48997882536d6d8",
+      "bytes": 508948960
+    },
+    "record_integrity_failures": []
+  },
+  "arms": {
+    "triton-a1": {
+      "backend": "triton",
+      "attempt": 2,
+      "status": "completed",
+      "server_exit": 0,
+      "started_utc": "2026-10-08T04:33:41Z",
+      "ready_utc": "2026-10-08T04:36:32Z",
+      "finished_utc": "2026-10-08T04:38:22Z",
+      "measured_requests": 48,
+      "warmup_requests": 16,
+      "successful_requests": 64,
+      "failed_requests": 0,
+      "http_200_completion_lines": 64,
+      "protocol_sha256": "ecac8fe0e02430bca5de49bb03839b5fb2e9319327ada419fb349767fcf92595",
+      "request_checks": {
+        "http_200_and_done_and_length": 64,
+        "usage_prompt512_completion64_total576": 64,
+        "exact_fixture_prompt_token_ids": 64,
+        "output_token_ids_length64_and_digest_match": 64,
+        "text_sha256_match": 64,
+        "token_chunk_counts_sum64": 64
+      },
+      "configuration": {
+        "ssm_state_dtype": "float32",
+        "linear_backend": "marlin",
+        "attention_backend": "FLASH_ATTN",
+        "flash_attention_version": 2,
+        "tensor_parallel_size": 1,
+        "kv_blocks_override": 64,
+        "logged_gpu_kv_cache_tokens": 21845,
+        "max_model_len": 2048,
+        "prefix_caching": false
+      },
+      "unique_output_sequences": {
+        "warmup": {
+          "1": 1,
+          "8": 3
+        },
+        "measured": {
+          "1": 1,
+          "8": 3
+        }
+      },
+      "bundles": [
+        {
+          "kind": "warmup",
+          "concurrency": 1,
+          "repeat": 0,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-warmup-c1-r0.json",
+          "sha256": "d31f3c59990c744a7a005f7e05ae68496a76f3120a6e9ce152eec8147d24aa41"
+        },
+        {
+          "kind": "warmup",
+          "concurrency": 8,
+          "repeat": 0,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-warmup-c8-r0.json",
+          "sha256": "bfbbc4943e12f42014f986b75b0dbc4aa798177b4493dec7f2379b09a617671d"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 1,
+          "repeat": 1,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-measured-c1-r1.json",
+          "sha256": "716583f0b1b4b4f253c9882ec011170d1d30d0b566319b4a6fbf93e16ce15cc2"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 8,
+          "repeat": 1,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-measured-c8-r1.json",
+          "sha256": "82332b3b3d61421e63d2ad363b3cd3a907b28edc0363f4f8fe0d50724d5a9198"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 8,
+          "repeat": 2,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-measured-c8-r2.json",
+          "sha256": "dae7025c5ac047d2d0615481d6235e0da8deae8d20829a923a79efb0493171e4"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 1,
+          "repeat": 2,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-measured-c1-r2.json",
+          "sha256": "d490dfae8adf236c911c8c87fafe9669b27049ebbf8bc383ca2a07ccdc5e85ea"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 1,
+          "repeat": 3,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-measured-c1-r3.json",
+          "sha256": "32e0b29071d4d3cac4ab3b29f6d420fbc4bc8504470b54a5424f97a45474aa48"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 8,
+          "repeat": 3,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/triton-a1-measured-c8-r3.json",
+          "sha256": "b9d05c07786265f00811242ac315542281fad3f08247399af1290dd7d78c1fbe"
+        }
+      ],
+      "warnings_retained": [
+        "missing vllm._version",
+        "nccl Python package discovery warning",
+        "_gumbel_sample_kernel JIT during warmup",
+        "owned SIGTERM/shutdown cleanup warnings"
+      ],
+      "runtime_probe_is_prelaunch_snapshot": true,
+      "supplemental_native_mtp_loaded_into_server": false,
+      "server_log_sha256": "4e749f8b1068b76ebd9443ac70b0f5a6d782b5e08ea9f24109fceb90a849e73c"
+    },
+    "flashinfer-b1": {
+      "backend": "flashinfer",
+      "attempt": 2,
+      "status": "completed",
+      "server_exit": 0,
+      "started_utc": "2026-10-08T04:38:22Z",
+      "ready_utc": "2026-10-08T04:41:10Z",
+      "finished_utc": "2026-10-08T04:42:59Z",
+      "measured_requests": 48,
+      "warmup_requests": 16,
+      "successful_requests": 64,
+      "failed_requests": 0,
+      "http_200_completion_lines": 64,
+      "protocol_sha256": "ecac8fe0e02430bca5de49bb03839b5fb2e9319327ada419fb349767fcf92595",
+      "request_checks": {
+        "http_200_and_done_and_length": 64,
+        "usage_prompt512_completion64_total576": 64,
+        "exact_fixture_prompt_token_ids": 64,
+        "output_token_ids_length64_and_digest_match": 64,
+        "text_sha256_match": 64,
+        "token_chunk_counts_sum64": 64
+      },
+      "configuration": {
+        "ssm_state_dtype": "float32",
+        "linear_backend": "marlin",
+        "attention_backend": "FLASH_ATTN",
+        "flash_attention_version": 2,
+        "tensor_parallel_size": 1,
+        "kv_blocks_override": 64,
+        "logged_gpu_kv_cache_tokens": 21845,
+        "max_model_len": 2048,
+        "prefix_caching": false
+      },
+      "unique_output_sequences": {
+        "warmup": {
+          "1": 1,
+          "8": 2
+        },
+        "measured": {
+          "1": 1,
+          "8": 2
+        }
+      },
+      "bundles": [
+        {
+          "kind": "warmup",
+          "concurrency": 1,
+          "repeat": 0,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-warmup-c1-r0.json",
+          "sha256": "078dd8c9f99480de870395375541798f2b5d0ff4515920946628542fb5e99285"
+        },
+        {
+          "kind": "warmup",
+          "concurrency": 8,
+          "repeat": 0,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-warmup-c8-r0.json",
+          "sha256": "22f7a0f536689506ea6a5e0eae205bf11b579fde715316a7a32d38bc49d24680"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 1,
+          "repeat": 1,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-measured-c1-r1.json",
+          "sha256": "68f531e05439d718315b854f54c596552f45461a75a29b9cd31aa3aae58f5320"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 8,
+          "repeat": 1,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-measured-c8-r1.json",
+          "sha256": "cb6473e015e4ecbfa26109a225579050ce3074a992dfa3a58144701c47661baf"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 8,
+          "repeat": 2,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-measured-c8-r2.json",
+          "sha256": "bd21857de552df98bcd3d9f0353affcd607642cfe2d5b6475d0fde8171328c43"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 1,
+          "repeat": 2,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-measured-c1-r2.json",
+          "sha256": "e95edb24529322b269db4b88126c0203a066b52ffa4ae0fa51fdddf48b9f837d"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 1,
+          "repeat": 3,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-measured-c1-r3.json",
+          "sha256": "3acda1191a70b7323bd8e6852522167c3a2e7700dbaddf89c4c7dcad9cce9eed"
+        },
+        {
+          "kind": "measured",
+          "concurrency": 8,
+          "repeat": 3,
+          "requests": 8,
+          "successful": 8,
+          "failed": 0,
+          "raw_file": "final/http/flashinfer-b1-measured-c8-r3.json",
+          "sha256": "ab9abac0b7e75baae3149489ba6e21e826f555332a29222939ac27cdee87352a"
+        }
+      ],
+      "warnings_retained": [
+        "missing vllm._version",
+        "nccl Python package discovery warning",
+        "_gumbel_sample_kernel JIT during warmup",
+        "owned SIGTERM/shutdown cleanup warnings"
+      ],
+      "runtime_probe_is_prelaunch_snapshot": true,
+      "supplemental_native_mtp_loaded_into_server": false,
+      "server_log_sha256": "152821ba332ff45e64172f44555cac575fe73f13411f5b564689198a8d1c4bab"
+    }
+  },
+  "output_token_agreement": {
+    "measured": {
+      "1": {
+        "pairing": "same repeat and request index; all requests use one fixed synthetic fixture",
+        "request_pairs": 24,
+        "exact_output_sequence_pairs": 24,
+        "exact_output_sequence_percent": 100.0,
+        "matched_token_positions": 1536,
+        "token_positions_compared": 1536,
+        "matched_token_position_percent": 100.0,
+        "mismatch_counts_by_zero_based_position": {},
+        "interpretation": "Descriptive agreement only. Scheduling is not aligned between launches; C8 also has multiple outputs within each arm. Does not establish model accuracy equivalence or a PR-specific cause."
+      },
+      "8": {
+        "pairing": "same repeat and request index; all requests use one fixed synthetic fixture",
+        "request_pairs": 24,
+        "exact_output_sequence_pairs": 11,
+        "exact_output_sequence_percent": 45.833333333333336,
+        "matched_token_positions": 730,
+        "token_positions_compared": 1536,
+        "matched_token_position_percent": 47.526041666666664,
+        "mismatch_counts_by_zero_based_position": {
+          "1": 13,
+          "2": 13,
+          "3": 13,
+          "4": 13,
+          "5": 13,
+          "6": 13,
+          "7": 13,
+          "8": 13,
+          "9": 13,
+          "10": 13,
+          "11": 13,
+          "12": 13,
+          "13": 13,
+          "14": 13,
+          "15": 13,
+          "16": 13,
+          "17": 13,
+          "18": 13,
+          "19": 13,
+          "20": 13,
+          "21": 13,
+          "22": 13,
+          "23": 13,
+          "24": 13,
+          "25": 13,
+          "26": 13,
+          "27": 13,
+          "28": 13,
+          "29": 13,
+          "30": 13,
+          "32": 13,
+          "33": 13,
+          "34": 13,
+          "35": 13,
+          "36": 13,
+          "37": 13,
+          "38": 13,
+          "39": 13,
+          "40": 13,
+          "41": 13,
+          "42": 13,
+          "43": 13,
+          "44": 13,
+          "45": 13,
+          "46": 13,
+          "47": 13,
+          "48": 13,
+          "49": 13,
+          "50": 13,
+          "51": 13,
+          "52": 13,
+          "53": 13,
+          "54": 13,
+          "55": 13,
+          "56": 13,
+          "57": 13,
+          "58": 13,
+          "59": 13,
+          "60": 13,
+          "61": 13,
+          "62": 13,
+          "63": 13
+        },
+        "interpretation": "Descriptive agreement only. Scheduling is not aligned between launches; C8 also has multiple outputs within each arm. Does not establish model accuracy equivalence or a PR-specific cause."
+      }
+    },
+    "warmup": {
+      "1": {
+        "pairing": "same repeat and request index; all requests use one fixed synthetic fixture",
+        "request_pairs": 8,
+        "exact_output_sequence_pairs": 8,
+        "exact_output_sequence_percent": 100.0,
+        "matched_token_positions": 512,
+        "token_positions_compared": 512,
+        "matched_token_position_percent": 100.0,
+        "mismatch_counts_by_zero_based_position": {},
+        "interpretation": "Descriptive agreement only. Scheduling is not aligned between launches; C8 also has multiple outputs within each arm. Does not establish model accuracy equivalence or a PR-specific cause."
+      },
+      "8": {
+        "pairing": "same repeat and request index; all requests use one fixed synthetic fixture",
+        "request_pairs": 8,
+        "exact_output_sequence_pairs": 2,
+        "exact_output_sequence_percent": 25.0,
+        "matched_token_positions": 181,
+        "token_positions_compared": 512,
+        "matched_token_position_percent": 35.3515625,
+        "mismatch_counts_by_zero_based_position": {
+          "1": 5,
+          "2": 5,
+          "3": 5,
+          "4": 5,
+          "5": 5,
+          "6": 5,
+          "7": 5,
+          "8": 5,
+          "9": 5,
+          "10": 5,
+          "11": 5,
+          "12": 5,
+          "13": 5,
+          "14": 5,
+          "15": 5,
+          "16": 5,
+          "17": 5,
+          "18": 5,
+          "19": 5,
+          "20": 5,
+          "21": 5,
+          "22": 5,
+          "23": 5,
+          "24": 5,
+          "25": 5,
+          "26": 5,
+          "27": 5,
+          "28": 5,
+          "29": 5,
+          "30": 5,
+          "32": 5,
+          "33": 5,
+          "34": 5,
+          "35": 5,
+          "36": 5,
+          "37": 5,
+          "38": 5,
+          "39": 5,
+          "40": 5,
+          "41": 5,
+          "42": 6,
+          "43": 5,
+          "44": 6,
+          "45": 6,
+          "46": 6,
+          "47": 6,
+          "48": 6,
+          "49": 6,
+          "50": 6,
+          "51": 6,
+          "52": 6,
+          "53": 6,
+          "54": 6,
+          "55": 6,
+          "56": 6,
+          "57": 6,
+          "58": 6,
+          "59": 6,
+          "60": 6,
+          "61": 6,
+          "62": 6,
+          "63": 6
+        },
+        "interpretation": "Descriptive agreement only. Scheduling is not aligned between launches; C8 also has multiple outputs within each arm. Does not establish model accuracy equivalence or a PR-specific cause."
+      }
+    }
+  },
+  "input_sha256": {
+    "final/http/triton-a1-warmup-c1-r0.json": "d31f3c59990c744a7a005f7e05ae68496a76f3120a6e9ce152eec8147d24aa41",
+    "final/http/triton-a1-warmup-c8-r0.json": "bfbbc4943e12f42014f986b75b0dbc4aa798177b4493dec7f2379b09a617671d",
+    "final/http/triton-a1-measured-c1-r1.json": "716583f0b1b4b4f253c9882ec011170d1d30d0b566319b4a6fbf93e16ce15cc2",
+    "final/http/triton-a1-measured-c8-r1.json": "82332b3b3d61421e63d2ad363b3cd3a907b28edc0363f4f8fe0d50724d5a9198",
+    "final/http/triton-a1-measured-c8-r2.json": "dae7025c5ac047d2d0615481d6235e0da8deae8d20829a923a79efb0493171e4",
+    "final/http/triton-a1-measured-c1-r2.json": "d490dfae8adf236c911c8c87fafe9669b27049ebbf8bc383ca2a07ccdc5e85ea",
+    "final/http/triton-a1-measured-c1-r3.json": "32e0b29071d4d3cac4ab3b29f6d420fbc4bc8504470b54a5424f97a45474aa48",
+    "final/http/triton-a1-measured-c8-r3.json": "b9d05c07786265f00811242ac315542281fad3f08247399af1290dd7d78c1fbe",
+    "final/http/triton-a1.json": "7866b8abb0b79e2c7019529281c0a1d4ae5556070e1c0afc9a0fea3f76824ba1",
+    "final/serve-final-triton-a1-attempt2.json": "d86c942539cf3c9501da0d7d058efba05d20b658519b1b86704e65279582ff67",
+    "logs/serve-final-triton-a1-attempt2.log": "4e749f8b1068b76ebd9443ac70b0f5a6d782b5e08ea9f24109fceb90a849e73c",
+    "final/http/flashinfer-b1-warmup-c1-r0.json": "078dd8c9f99480de870395375541798f2b5d0ff4515920946628542fb5e99285",
+    "final/http/flashinfer-b1-warmup-c8-r0.json": "22f7a0f536689506ea6a5e0eae205bf11b579fde715316a7a32d38bc49d24680",
+    "final/http/flashinfer-b1-measured-c1-r1.json": "68f531e05439d718315b854f54c596552f45461a75a29b9cd31aa3aae58f5320",
+    "final/http/flashinfer-b1-measured-c8-r1.json": "cb6473e015e4ecbfa26109a225579050ce3074a992dfa3a58144701c47661baf",
+    "final/http/flashinfer-b1-measured-c8-r2.json": "bd21857de552df98bcd3d9f0353affcd607642cfe2d5b6475d0fde8171328c43",
+    "final/http/flashinfer-b1-measured-c1-r2.json": "e95edb24529322b269db4b88126c0203a066b52ffa4ae0fa51fdddf48b9f837d",
+    "final/http/flashinfer-b1-measured-c1-r3.json": "3acda1191a70b7323bd8e6852522167c3a2e7700dbaddf89c4c7dcad9cce9eed",
+    "final/http/flashinfer-b1-measured-c8-r3.json": "ab9abac0b7e75baae3149489ba6e21e826f555332a29222939ac27cdee87352a",
+    "final/http/flashinfer-b1.json": "df118f544baf05641a0ae9ecc705fc6d37cde6b099827c2a3a068e0a4a14485f",
+    "final/serve-final-flashinfer-b1-attempt2.json": "3b988f0aac49ec179eb22c3a570c7c79aa880d71bb95556cee0559e915e70f0d",
+    "logs/serve-final-flashinfer-b1-attempt2.log": "152821ba332ff45e64172f44555cac575fe73f13411f5b564689198a8d1c4bab"
+  },
+  "performance_inference_supported": false,
+  "accuracy_equivalence_supported": false,
+  "current_100_question_quality_repeated": false,
+  "same_server_command_except_decode_backend": true,
+  "totals": {
+    "measured_requests": 96,
+    "warmup_requests": 32,
+    "successful_requests": 128,
+    "failed_requests": 0,
+    "expected_prompt_tokens_each": 512,
+    "expected_completion_tokens_each": 64
+  },
+  "failed_smoke_launches_preserved": [
+    {
+      "arm": "triton-a1",
+      "attempt": 1,
+      "status": "failed",
+      "reason": "Original benchmark guard requires >=32 requests; supervisor supplied 8. Rejected before completion HTTP requests.",
+      "completion_http_200_lines": 0,
+      "tokenize_http_calls": 1,
+      "owner_sigterm_recorded": true,
+      "server_exit": 0,
+      "included_in_passed_smoke": false,
+      "server_evidence_sha256": "9c5fbde83f17f49bdc269759b428fdf568434d021efaa15ef0de364ddaa4c49f",
+      "server_log_sha256": "6e15d2c024f8d2cafbf6d0734924d0c27c2f2f09cc74a978464c97e5c56b6a93",
+      "supervisor_log_sha256": "6e09ac6b4bd81df7ee90f2cec2f26e16217aaa0797a9dd9d0f678262ad4586e2"
+    },
+    {
+      "arm": "flashinfer-b1",
+      "attempt": 1,
+      "status": "failed",
+      "reason": "Original benchmark guard requires >=32 requests; supervisor supplied 8. Rejected before completion HTTP requests.",
+      "completion_http_200_lines": 0,
+      "tokenize_http_calls": 0,
+      "owner_sigterm_recorded": true,
+      "server_exit": 0,
+      "included_in_passed_smoke": false,
+      "server_evidence_sha256": "b1e03f8fbb5797c6841aa22b884a694d270d02163478357fdb383532adcd43ef",
+      "server_log_sha256": "472964a186038f5a2ccf85f1c2b25785f277b1660db8aaf4f470a1507aa5215e",
+      "supervisor_log_sha256": "ef6ef6360f9a95dcaa92f8d973afbcc10b67e2c4c41ae26163554e36439159f2"
+    }
+  ],
+  "earlier_environment_and_launcher_failures_preserved": {
+    "directory": "results/attempt1",
+    "missing_local_hf_config": "Initial split/metadata tests fail ModelConfig validation for Qwen/Qwen3.5-0.8B (and other fixture configuration). Those failures remain separate from the later passing XML files.",
+    "native_launcher": "pytest_runtest_logreport(test_report) hook argument rejected by pluggy before suite execution; corrected launcher records are separate.",
+    "included_in_passed_counts": false
+  },
+  "independent_downloaded_junit_counts": {
+    "adapter-and-split": {
+      "cases": 31,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "sha256": "98ade1c992575f8e685d1229df349cd4e5cbda9b899ced33edf03d4edd278bbe"
+    },
+    "gdn-metadata": {
+      "cases": 63,
+      "passed": 63,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "sha256": "94f3f8d6ff84d0867c4e9113ba4cb7699d759ca794dec06fe5d6280b567b4318"
+    },
+    "gdn-config": {
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "sha256": "f8b042e2292391ac5171c5d79cd44f6961ac2da867f416500abc1eb25449d19c"
+    },
+    "native-mtp-diagnostic": {
+      "cases": 16,
+      "passed": 7,
+      "failed": 2,
+      "skipped": 7,
+      "errors": 0,
+      "sha256": "c454118511a109536e2380b631489b3c3804a9024af76ecfc394535d6770ee3c"
+    },
+    "native-mtp-tests": {
+      "cases": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "sha256": "764aa20d335847e43184c2d786c90b09bcce5514dcb73fd6c2adb57b16981f4c"
+    },
+    "native-head-ratios": {
+      "cases": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "sha256": "ed174d9715e3d1b2ce280af264593dd91995ffc6f9e6386a3dec657622497be8"
+    }
+  },
+  "supplemental_native_local_binary_verification": {
+    "file": "D:\\code\\vllm\\artifacts\\gdn60403-recheck-20261008\\results\\native-supplemental\\build\\gdn_native_supplemental_20261008.so",
+    "bytes": 895328,
+    "independently_computed_sha256": "4c2fa6d18f9622f34b1637caa186b2d62bf314fc9a3413051f172fb6c2b9a42b",
+    "matches_build_and_both_test_launchers": true,
+    "nvcc": "12.9.86",
+    "normal_main_cuda13_build_covered": false,
+    "scope": "Supplemental official native MTP component only; this binary is not used in the ordinary serving smoke."
+  },
+  "results_archive": {
+    "sha256": "170c065f6db2a2fb7ef61b5451fc86e5fe6a02fef6fb152158ddd505aac5e010",
+    "entries": 152,
+    "files": 128,
+    "directories": 24,
+    "all_archived_file_bytes_match_downloaded_results": true
+  },
+  "limitations": [
+    "One launch per backend; no ABBA or balanced launches and only 8 requests per concurrency round. Timing in raw files is not interpreted as a performance comparison.",
+    "One fixed synthetic token fixture at 512 input/64 output tokens; no 100-question GSM8K repetition or accuracy claim.",
+    "C8 output sequences differ across and within arms; recorded agreement is not an equivalence result.",
+    "Native MTP diagnostic still fails with original stable .so; separate CUDA12.9 supplemental tests do not cover full CUDA13 main build.",
+    "Single L20 TP1; H20 and actual multi-GPU TP are not covered."
+  ]
+}

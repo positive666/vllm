@@ -1,0 +1,20 @@
+{
+  "path": "D:\\code\\vllm\\artifacts\\gdn60403-recheck-20261008\\source-main-patched.tar.gz",
+  "sha256": "71eea07a8f49e8f0cb049317c708183e42d0c369e100cd67a756687b6ab60b6e",
+  "bytes": 44008878,
+  "git_head": "c3424cc55d5258a3d5f104d817d6c6ef850db67f",
+  "base": "8352b2427f704652da1910f0d53f3fdcc2fa2b0d",
+  "changed_files_checked_against_rebase_manifest": {
+    "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": true,
+    "tests/kernels/mamba/test_gdn_forward_core_split.py": true,
+    "tests/kernels/mamba/test_gdn_fused_mtp.py": true,
+    "tests/test_config.py": true,
+    "tests/v1/attention/test_gdn_metadata_builder.py": true,
+    "vllm/config/kernel.py": true,
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": true,
+    "vllm/v1/attention/backends/gdn_attn.py": true
+  },
+  "supplemental_native_source_sha256": "9581d256847b1922b21a54c39086d92da4f402b7310b0e8649e45ec0cae341fe",
+  "native_source_and_bindings_match_previous_base": true,
+  "native_extension_compilation": "not performed locally"
+}
