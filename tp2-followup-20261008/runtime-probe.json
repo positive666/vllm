@@ -1,0 +1,263 @@
+{
+  "created_utc": "2026-10-08T15:39:04.106890+00:00",
+  "probe": {
+    "path": "/reference-artifacts/runtime_probe.py",
+    "resolved_path": "/reference-artifacts/runtime_probe.py",
+    "sha256": "646190369bb882af37d293d356990fbe8a448ebb5a9e4d60ce9b77587a2e5edc",
+    "bytes": 9471
+  },
+  "python": {
+    "executable": "/cache/gdn-runtime/bin/python",
+    "version": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]"
+  },
+  "declared_source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source": "/source",
+  "modules": {
+    "torch": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/torch/__init__.py",
+      "resolved_path": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+      "sha256": "cf40c075c95864036e835795756d69b8cccfafa76f3bcde5eba9d06065ccd3d1",
+      "bytes": 111841,
+      "imported_version": "2.13.0+cu129"
+    },
+    "vllm._custom_ops": {
+      "path": "/source/vllm/_custom_ops.py",
+      "resolved_path": "/source/vllm/_custom_ops.py",
+      "sha256": "1b0c510619bc0391b5e81d7db64b385013027f85395ba0dbf20300f57adcd4b2",
+      "bytes": 137046
+    },
+    "flashinfer.gdn_decode": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_decode.py",
+      "resolved_path": "/oldcache/runtime-addons/flashinfer/gdn_decode.py",
+      "sha256": "e5a5a796613a48f5750bed2e7cd4f9917a9580374ce3fa6bc0ea2aa47db3d280",
+      "bytes": 53749
+    },
+    "flashinfer.jit.env": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/jit/env.py",
+      "resolved_path": "/oldcache/runtime-addons/flashinfer/jit/env.py",
+      "sha256": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+      "bytes": 13853
+    },
+    "cutlass": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+      "resolved_path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+      "sha256": "069beceb6181368405a5ebb9d9567296816c7bfce3c4afc9565c03133e9f009f",
+      "bytes": 5714,
+      "imported_version": "4.8.0"
+    },
+    "cutlass.cute": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+      "resolved_path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+      "sha256": "786af9d1cca111f65abab450d3fb173d62a30d7e09ff328820652e23f42b0b55",
+      "bytes": 9968
+    },
+    "vllm._C_stable_libtorch": {
+      "path": "/source/vllm/_C_stable_libtorch.abi3.so",
+      "resolved_path": "/study/.venv/lib/python3.12/site-packages/vllm/_C_stable_libtorch.abi3.so",
+      "sha256": "3efc749cc7d32a0177376cdabc19d18f406ca2f5a002f933a48997882536d6d8",
+      "bytes": 508948960
+    }
+  },
+  "errors": {
+    "vllm._C": "ModuleNotFoundError: No module named 'vllm._C'"
+  },
+  "cache_configuration": {
+    "PYTHONPATH": "/source",
+    "VLLM_CACHE_ROOT": "/cache/tp2-probe/vllm",
+    "TRITON_CACHE_DIR": "/cache/tp2-probe/triton",
+    "CUDA_CACHE_PATH": "/cache/tp2-probe/cuda",
+    "XDG_CACHE_HOME": null,
+    "FLASHINFER_WORKSPACE_BASE": null
+  },
+  "observed_git_head": null,
+  "git_probe_exit": 127,
+  "git_probe_error": "FileNotFoundError: [Errno 2] No such file or directory: 'git'",
+  "torch": {
+    "version": "2.13.0+cu129",
+    "cuda": "12.9",
+    "cuda_available": true,
+    "gpu_count": 2,
+    "devices": [
+      {
+        "index": 0,
+        "name": "NVIDIA L20",
+        "capability": [
+          8,
+          9
+        ],
+        "properties": "_CudaDeviceProperties(name='NVIDIA L20', major=8, minor=9, total_memory=45589MB, multi_processor_count=92, uuid=a2be9350-e0b5-d8b0-9844-51c35161cd3e, pci_bus_id=154, pci_device_id=0, pci_domain_id=0, L2_cache_size=96MB)"
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA L20",
+        "capability": [
+          8,
+          9
+        ],
+        "properties": "_CudaDeviceProperties(name='NVIDIA L20', major=8, minor=9, total_memory=45589MB, multi_processor_count=92, uuid=b7783a01-c440-29bd-ccb8-98ca7acf6675, pci_bus_id=155, pci_device_id=0, pci_domain_id=0, L2_cache_size=96MB)"
+      }
+    ]
+  },
+  "native_mtp": {
+    "registered": false,
+    "gpu_execution_verified": false
+  },
+  "flashinfer_api": "(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, state: Optional[torch.Tensor], A_log: torch.Tensor, a: torch.Tensor, dt_bias: torch.Tensor, b: torch.Tensor, scale: Optional[float] = None, output: Optional[torch.Tensor] = None, use_qk_l2norm: bool = True, initial_state: Optional[torch.Tensor] = None, initial_state_indices: Optional[torch.Tensor] = None, output_state_indices: Optional[torch.Tensor] = None, intermediate_states_buffer: Optional[torch.Tensor] = None, disable_state_update: bool = False, backend: Literal['auto', 'flashinfer', 'cake_gdn'] = 'auto') -> Tuple[torch.Tensor, torch.Tensor]",
+  "flashinfer_features": {
+    "_PRETRANSPOSE_AVAILABLE": true,
+    "_GDN_DECODE_BF16_STATE_AVAILABLE": true
+  },
+  "flashinfer_cache": {
+    "FLASHINFER_CACHE_DIR": "/root/.cache/flashinfer",
+    "FLASHINFER_JIT_DIR": "/root/.cache/flashinfer/0.7.0.post1/89/cached_ops"
+  },
+  "distributions": {
+    "torch": {
+      "installed": true,
+      "version": "2.13.0+cu129",
+      "verified_files": [
+        {
+          "relative_path": "torch/__init__.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/torch/__init__.py",
+          "resolved_path": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+          "sha256": "cf40c075c95864036e835795756d69b8cccfafa76f3bcde5eba9d06065ccd3d1",
+          "bytes": 111841,
+          "record_hash": "sha256=z0DAdclYZANug1eVdW1puMzPr6dvO83l66nQYGXM09E",
+          "record_matches": true,
+          "record_size_matches": true
+        }
+      ],
+      "record_available": true
+    },
+    "vllm": {
+      "installed": true,
+      "version": "0.30.1rc1.dev143+g29468dde8.cu129",
+      "verified_files": [],
+      "record_available": true
+    },
+    "flashinfer-python": {
+      "installed": true,
+      "version": "0.7.0.post1",
+      "verified_files": [
+        {
+          "relative_path": "flashinfer/gdn_decode.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_decode.py",
+          "resolved_path": "/oldcache/runtime-addons/flashinfer/gdn_decode.py",
+          "sha256": "e5a5a796613a48f5750bed2e7cd4f9917a9580374ce3fa6bc0ea2aa47db3d280",
+          "bytes": 53749,
+          "record_hash": "sha256=5aWnlmE6SPV1C-0ufNT5kXqVgDdM4_prwOoqpH2z0oA",
+          "record_matches": true,
+          "record_size_matches": true
+        },
+        {
+          "relative_path": "flashinfer/gdn_kernels/gdn_decode_bf16_state.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_kernels/gdn_decode_bf16_state.py",
+          "resolved_path": "/oldcache/runtime-addons/flashinfer/gdn_kernels/gdn_decode_bf16_state.py",
+          "sha256": "9e261f92cec0f64475204961a806157ffbe9f5d93ecca5791ab9d99e0fd5c672",
+          "bytes": 181145,
+          "record_hash": "sha256=niYfks7A9kR1IElhqAYVf_vp9dk-zKV5GrnZng_VxnI",
+          "record_matches": true,
+          "record_size_matches": true
+        },
+        {
+          "relative_path": "flashinfer/gdn_kernels/gdn_decode_pretranspose.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_kernels/gdn_decode_pretranspose.py",
+          "resolved_path": "/oldcache/runtime-addons/flashinfer/gdn_kernels/gdn_decode_pretranspose.py",
+          "sha256": "0547298823f4cdc1434c079749fe62a1bcafbd5aae3f129321431f414751b84d",
+          "bytes": 41846,
+          "record_hash": "sha256=BUcpiCP0zcFDTAeXSf5iobyvvVquPxKTIUMfQUdRuE0",
+          "record_matches": true,
+          "record_size_matches": true
+        },
+        {
+          "relative_path": "flashinfer/jit/env.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/jit/env.py",
+          "resolved_path": "/oldcache/runtime-addons/flashinfer/jit/env.py",
+          "sha256": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+          "bytes": 13853,
+          "record_hash": "sha256=nhpS_0rSOrcqspiYJs5Io7TSZsf65gxotuidnSZj7hg",
+          "record_matches": true,
+          "record_size_matches": true
+        }
+      ],
+      "record_available": true
+    },
+    "nvidia-cutlass-dsl": {
+      "installed": true,
+      "version": "4.8.0",
+      "verified_files": [],
+      "record_available": true
+    },
+    "nvidia-cutlass-dsl-libs-core": {
+      "installed": true,
+      "version": "4.8.0",
+      "verified_files": [
+        {
+          "relative_path": "nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+          "resolved_path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+          "sha256": "069beceb6181368405a5ebb9d9567296816c7bfce3c4afc9565c03133e9f009f",
+          "bytes": 5714,
+          "record_hash": "sha256=Bpvs62GBNoQFpeu52VZyloFse_zjxK_JVlwDEz6fAJ8",
+          "record_matches": true,
+          "record_size_matches": true
+        },
+        {
+          "relative_path": "nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+          "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+          "resolved_path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+          "sha256": "786af9d1cca111f65abab450d3fb173d62a30d7e09ff328820652e23f42b0b55",
+          "bytes": 9968,
+          "record_hash": "sha256=eGr50cyhEfZaurRQ0_sXPWKjDX4J_zKIIGUuI_QrC1U",
+          "record_matches": true,
+          "record_size_matches": true
+        }
+      ],
+      "record_available": true
+    },
+    "nvidia-cutlass-dsl-libs-cu13": {
+      "installed": true,
+      "version": "4.8.0",
+      "verified_files": [],
+      "record_available": true
+    },
+    "nvidia-cutlass-dsl-libs-cu12": {
+      "installed": true,
+      "version": "4.8.0",
+      "verified_files": [],
+      "record_available": true
+    },
+    "apache-tvm-ffi": {
+      "installed": true,
+      "version": "0.1.11",
+      "verified_files": [],
+      "record_available": true
+    }
+  },
+  "record_integrity_failures": [],
+  "unverified_imported_files": [
+    "/source/vllm/_custom_ops.py",
+    "/study/.venv/lib/python3.12/site-packages/vllm/_C_stable_libtorch.abi3.so"
+  ],
+  "source_files": {
+    "vllm/config/kernel.py": {
+      "path": "/source/vllm/config/kernel.py",
+      "resolved_path": "/source/vllm/config/kernel.py",
+      "sha256": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+      "bytes": 18410
+    },
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": {
+      "path": "/source/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+      "resolved_path": "/source/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+      "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+      "bytes": 84578
+    },
+    "vllm/v1/attention/backends/gdn_attn.py": {
+      "path": "/source/vllm/v1/attention/backends/gdn_attn.py",
+      "resolved_path": "/source/vllm/v1/attention/backends/gdn_attn.py",
+      "sha256": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+      "bytes": 34134
+    }
+  },
+  "required_imports_succeeded": true
+}

@@ -1,0 +1,29 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "archive": {
+    "file": "tp2-evidence.zip",
+    "sha256": "775cf833e113209b0d649bc1873c9b06d1d9d8b6ed0a54f18a400019e0120b44"
+  },
+  "audit_tp2_sha256": "e01413ddd8682ddae294b8055dc3f9fe154d7b284129c0f458b4dd1185aeaa36",
+  "audit_quality_correctness_sha256": "7cef1d251472e6078aceb619338a475a7ee5367c18d0e0f41497cc1262e09269",
+  "audit_diagnostics_sha256": "5fc147688ee3afb7f3520a4c1ffe829abc6b869f145d7f4c1537b3a65f0fb88c",
+  "audit_logprobs_sha256": "3af2c63613d0226c3432bc2fd5ebaeacec53912057c974180bc3fcd74025dd04",
+  "generator_sha256": "e75517ca51817a03e5f5baf26cb4fdaef485a8c47d3dd501bcb674b514d0af3d",
+  "derived_files": {
+    "README.md": "04e053667ac107320b78105286061bf0b3b1b173e0ff6c3e1d79741e3dce5cba",
+    "serving-results.md": "f6eccab5f9a854b039693011421134f6d74593349db5efcf203c4321d8c2d65f",
+    "quality-results.md": "8a3771a90b7794afee1d30d34ec3dd3accdeb4adabe9dfc89603b40e77418c4e",
+    "review-update-draft.md": "5eab1bbdf1412191c9b338c52bb8883d6a45cc924901e10d5b78160df30ed1f1",
+    "review-alignment.md": "b6982cf1b829ecc804ef20aa485e3918242ef77328bdc9003f4724890f74c764",
+    "additional-logprob-results.md": "0d7934a3f6232245d5b1a1ad4baaa5ffcf92fec5cacc8f24694fe58ed84612e3"
+  },
+  "quality_strict_correct": {
+    "triton": 95,
+    "flashinfer": 96
+  },
+  "serving_throughput_improvement_percent": [
+    0.3779123921015426,
+    0.4196722665761987
+  ],
+  "statistical_scope": "Descriptive only; no significance/equivalence claim"
+}

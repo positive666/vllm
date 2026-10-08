@@ -1,0 +1,2 @@
+# Preserve the exact bytes verified by the evidence hashes.
+* -text whitespace=cr-at-eol,-blank-at-eof

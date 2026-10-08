@@ -1,0 +1,8 @@
+2026-10-08T17:07:45Z
+Flag --time has been deprecated, use --timeout instead
+gdn60403-tp2-20261008
+26d01be4237a6d46f7fa11244d75442dcfdfe76842cedb6aacd4e29f755aee06 gdn60403-tp2-20261008 exited
+index, uuid, utilization.gpu [%], memory.used [MiB]
+6, GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e, 0 %, 1 MiB
+7, GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675, 0 %, 1 MiB
+gpu_uuid, pid, process_name, used_gpu_memory [MiB]

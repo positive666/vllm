@@ -1,0 +1,499 @@
+{
+  "validator_sha256": "98122975ed9ce125e069e28361d0905959b7eb336b52fc375e55f05b62800ed6",
+  "logs": {
+    "diagnostics\\serve-flashinfer.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "bb8f2634a7f57d477516aed58ebfa5cd58cb3e74cc0c638a1c906fed5aad8dd9",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "diagnostics\\serve-triton.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "4926d98b6d621c82b873e8dd4c5d84caf89ff748a3386ea3055fc988de9355ca",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "logprob-diagnostics\\serve-flashinfer.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "7ceab04e19f9cacfbb3c08e52ce95622b5e8d3fb4422a341c85ffb048c6fa7c2",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "logprob-diagnostics\\serve-triton.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "f870d74352a73cfb89a9ae6f2674909593f8cb0efe930803fced8a80555da81e",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "serve-flashinfer-b1.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "4e001cdd61153e516f414e678f59ec54bf2e257844b85eac06144d7d195867a7",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "serve-flashinfer-b2.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "74f830868930b78706e7039048904b28fb37dd311c891636c8c8986cb9af0661",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "serve-flashinfer-compat.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "8be7592a9aa9ea36a75c8437b498c87d29c2ba57dbf1a49dc40828ac4918d181",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "serve-triton-a1.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "279516187c0fcbc7a771931ed8d559e9e2fd8ef3e9b4897e39387c52e944ad44",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "serve-triton-a2.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "1770267a38df083a43e2e177e4e0b52ee34e5467dcac9328341d76e92028cdad",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    },
+    "serve-triton-compat.log": {
+      "optional_startup_import_failures": [
+        {
+          "module_warning_line": 17,
+          "traceback_first_line": 18,
+          "traceback_last_line": 41,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "1bec2f5290ed53dc87720777ff368075cc03e4b1266675819d58e308b34d588c",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 50,
+          "traceback_first_line": 51,
+          "traceback_last_line": 74,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 83,
+          "traceback_first_line": 84,
+          "traceback_last_line": 107,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        },
+        {
+          "module_warning_line": 108,
+          "traceback_first_line": 109,
+          "traceback_last_line": 132,
+          "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+          "terminal_error": "AssertionError: Cannot find package: nccl",
+          "classification": "caught optional deep_ep startup import failure"
+        }
+      ],
+      "unclassified_tracebacks": [],
+      "runtime_error_messages": [],
+      "source_contract": {
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "path": "vllm/utils/import_utils.py",
+        "handler": "_has_module catches Exception, emits warning, returns False",
+        "handler_first_line": 403
+      }
+    }
+  },
+  "errors": [],
+  "notes": [
+    "diagnostics\\serve-flashinfer.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "diagnostics\\serve-triton.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "logprob-diagnostics\\serve-flashinfer.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "logprob-diagnostics\\serve-triton.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "serve-flashinfer-b1.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "serve-flashinfer-b2.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "serve-flashinfer-compat.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "serve-triton-a1.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "serve-triton-a2.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit.",
+    "serve-triton-compat.log: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+  ],
+  "validation_passed": true
+}

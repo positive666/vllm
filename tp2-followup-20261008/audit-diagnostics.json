@@ -1,0 +1,1196 @@
+{
+  "status": "passed",
+  "meaning_of_pass": "Raw record, parser, protocol and provenance integrity checks passed; this does not mean all answers are correct or accuracy is equivalent",
+  "scope": "Targeted expanded-budget TP2 diagnostic; original 100 screen retained",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source_files": {
+    "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+    "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+    "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": "7c9bf8e9d07f8d96d5e4bb9779d0031b8022e9b5edc687b7e489bf72bcf09ec6",
+    "tests/kernels/mamba/test_gdn_forward_core_split.py": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72"
+  },
+  "source_manifest_sha256": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60",
+  "audit_script_sha256": "d3030c0015f66788feffc1a431b7451ba2cc7a8b7583f4e1bf82f387e728ca21",
+  "dataset_sha256": "ca6e7c5108b7ab7bc920c707e021b21bd9bdaf725e48a179b781ce4be1e9ad13",
+  "changed_settings": [
+    "output budget",
+    "maximum model context",
+    "KV capacity"
+  ],
+  "backends": {
+    "triton": {
+      "integrity": {
+        "raw_client_sha256": "d50b98019aeedf25bffcababa41bfc15f835edcfe578561f192193addf8c6327",
+        "server_record_sha256": "be6094bb4be23b2cf19a3383f78809dd48592e52be302d3fcd8019f30e54957a",
+        "server_log_sha256": "e72b8f3872e5e86545bde3553317bcfc44addcefb8c2aeeae82beb29377dadd7",
+        "primary_quality_sha256": "c391678e16cf6a52ce87ea3f95152fb07207d656f9b44be350dde5c6762dbbb4",
+        "client_helper_sha256": "82bbfce74bf6168d8d49290a0e6b0f951daee8afe6131e92cc967b8e9b456e71",
+        "supervisor_sha256": "07904d38f04589d2b7cfcd644a89a81cfb107e5abd073efda59fcb7b82fedbc5",
+        "log_integrity": {
+          "recorded_sha256": "2eee7aa9bab0bd6d32ecc41c7d64260990ecce70c9683e665f13a1b5463961e8",
+          "full_actual_sha256": "e72b8f3872e5e86545bde3553317bcfc44addcefb8c2aeeae82beb29377dadd7",
+          "full_actual_bytes": 126541,
+          "mode": "verified_newline_prefix_with_exact_closeout_manifest",
+          "recorded_prefix_bytes": 122191,
+          "appended_tail_bytes": 4350,
+          "appended_tail_sha256": "7b7bd6dcaaf3500a47e8c364a34d004d06b7895fe86105f23e93297fef137477",
+          "closeout_manifest_sha256": "49b358b71d20f619bf49be0a16212399005532d18ee8a4b461ed0afbf23a98e3",
+          "candidate_closeout_manifest_sha256": null,
+          "tail_classification": "late buffered NCCL informational output and resource_tracker shutdown cleanup",
+          "validation_notes": [
+            "serve-triton.log: recorded log SHA verifies the first 122191 bytes; 4350 appended bytes separately match the closeout manifest. Tail contains allowed late buffered NCCL informational output and resource_tracker shutdown cleanup; it is not described as only teardown. Original record/raw bytes were not changed."
+          ],
+          "validator_sha256": "98122975ed9ce125e069e28361d0905959b7eb336b52fc375e55f05b62800ed6"
+        },
+        "logged_diagnostic_http_200": 16
+      },
+      "protocol": {
+        "temperature": 0,
+        "seed": 42,
+        "max_tokens": 3500,
+        "enable_thinking": false,
+        "return_token_ids": true,
+        "prefix_caching": "must be disabled on server",
+        "round_order": [
+          {
+            "concurrency": 1,
+            "repeat": 1
+          },
+          {
+            "concurrency": 8,
+            "repeat": 1
+          }
+        ],
+        "primary_max_tokens": 1750,
+        "model_max_len": 4096,
+        "gpu_blocks": 128,
+        "minimum_actual_kv_tokens": 32768,
+        "requests_per_backend": 16,
+        "changed_settings": [
+          "output budget",
+          "maximum model context",
+          "KV capacity"
+        ]
+      },
+      "selected_indices": [
+        198,
+        206,
+        209,
+        228,
+        255,
+        285,
+        292,
+        318
+      ],
+      "primary_quality_sha256": "c391678e16cf6a52ce87ea3f95152fb07207d656f9b44be350dde5c6762dbbb4",
+      "primary_target_outcomes": [
+        {
+          "index": 209,
+          "gold": "145",
+          "predicted": "34800",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "has_answer_marker": true,
+          "unparsed": false,
+          "token_count": 1423,
+          "token_ids_sha256": "a0e3550b787e73ca8c7037746b0e3f6af9dd9b8a2b6e947529533251df25947b"
+        },
+        {
+          "index": 255,
+          "gold": "192",
+          "predicted": "176",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "has_answer_marker": true,
+          "unparsed": false,
+          "token_count": 995,
+          "token_ids_sha256": "d2dbcbb1513ccd37b1c30e3e9972b136e011a17d2130927106c995f3d2f65d60"
+        }
+      ],
+      "rounds": [
+        {
+          "concurrency": 1,
+          "repeat": 1,
+          "summary": {
+            "requests": 8,
+            "raw_correct": 7,
+            "strict_correct": 7,
+            "truncated": 0,
+            "unparsed": 0,
+            "missing_marker": 0
+          },
+          "target_outcomes": [
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "145",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 2350,
+              "token_ids_sha256": "a38b1b61f34b9e1519c4fa220cd4758fc76bfbfeeeb569b31f2c0f52f01c35b6"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1482,
+              "token_ids_sha256": "a45c5346cb32516d03f09cfaf913fe2aa6a3ee00a91982cacf1fc2fddf13e6f9"
+            }
+          ],
+          "all_outcomes": [
+            {
+              "index": 198,
+              "gold": "320",
+              "predicted": "320",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 471,
+              "token_ids_sha256": "e368d15e12ee197833623c82770cb6edef643c2e72c5916c5012ccd05c701003"
+            },
+            {
+              "index": 206,
+              "gold": "860",
+              "predicted": "860",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 381,
+              "token_ids_sha256": "2606709e15e2fdfdc4732d4567374426377fbbe7c21b537cfa256217d1c83f7e"
+            },
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "145",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 2350,
+              "token_ids_sha256": "a38b1b61f34b9e1519c4fa220cd4758fc76bfbfeeeb569b31f2c0f52f01c35b6"
+            },
+            {
+              "index": 228,
+              "gold": "1",
+              "predicted": "1",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 451,
+              "token_ids_sha256": "64b6427cc104812d6631269af56ad35e461cfb1a2bcd5925562e46295ef0472c"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1482,
+              "token_ids_sha256": "a45c5346cb32516d03f09cfaf913fe2aa6a3ee00a91982cacf1fc2fddf13e6f9"
+            },
+            {
+              "index": 285,
+              "gold": "21",
+              "predicted": "21",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 139,
+              "token_ids_sha256": "aa0dd12e9b751c1fe1c89139433704deb1b1fe6e029bea4eeb2577448e6d3112"
+            },
+            {
+              "index": 292,
+              "gold": "75",
+              "predicted": "75",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 403,
+              "token_ids_sha256": "05bf78588e8857185b7f5199b6c44a4f0bf71907ba78c34f23fea9064b8195e2"
+            },
+            {
+              "index": 318,
+              "gold": "123",
+              "predicted": "123",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 316,
+              "token_ids_sha256": "aa6afedc73f206c5a587dba03c45bf583a34b24cf72d2c71bdc823eeba2a5c66"
+            }
+          ],
+          "exceptional_outcomes": [
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1482,
+              "token_ids_sha256": "a45c5346cb32516d03f09cfaf913fe2aa6a3ee00a91982cacf1fc2fddf13e6f9",
+              "text": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of stalls and cows.**\nThe problem states there are \"Ten stalls\" initially, with 20 cows each.\nHowever, the next sentence says Mr. Sylas divides the new cows into \"each of the twenty stalls.\" This implies that the total number of stalls is actually 20, not 10. Let's re-read carefully.\n\"Ten stalls have 20 cows each.\" -> This describes the initial state of a subset or perhaps there is a typo in the problem statement regarding the number of stalls.\n\"Mr. Sylas buys 40 cows and divides them equally, putting an equal number of the new cows into each of the twenty stalls.\" -> This explicitly mentions **twenty stalls**.\n\nLet's assume the total number of stalls is 20. The first sentence \"Ten stalls have 20 cows each\" might be a distractor or a partial description, but the action is performed on \"each of the twenty stalls\". To solve for the final state, we need to know the distribution of cows in all 20 stalls.\n\nLet's look at the wording again. Is it possible there are only 10 stalls?\nIf there are only 10 stalls, the phrase \"each of the twenty stalls\" would be impossible. Therefore, there must be 20 stalls in total.\nThe first sentence \"Ten stalls have 20 cows each\" is likely incomplete information or a typo for \"Twenty stalls have 20 cows each\". Given the context of standard math problems, it is highly probable that the initial state is **20 stalls with 20 cows each**. If we assume only 10 stalls exist, the problem is unsolvable because we don't know what happens to the other 10 stalls mentioned in the second sentence. If we assume there are 20 stalls, and the first sentence only describes 10 of them, we don't know the cow count for the other 10.\n\nHowever, a common pattern in such riddles or typos is that \"Ten\" was a typo for \"Twenty\". Let's proceed with the assumption that **all 20 stalls initially had 20 cows each**. This is the only logical interpretation that allows for a unique solution based on the \"equal number\" distribution.\n\n**Alternative Interpretation Check:**\nCould \"Ten stalls\" be the total? No, because it says \"each of the twenty stalls\".\nCould the 40 cows be added to 10 stalls? No, it says \"each of the twenty stalls\".\n\nLet's assume the standard setup:\nTotal Stalls = 20\nInitial Cows per Stall = 20 (Assuming the \"Ten\" was a typo for \"Twenty\", or that the other 10 stalls also had 20 cows, which is the standard assumption for \"equal\" initial conditions unless specified otherwise).\n\n**Step 2: Calculate the number of new cows added to each stall.**\nMr. Sylas buys 40 cows.\nHe divides them equally among the 20 stalls.\n$$ \\text{New cows per stall} = \\frac{40 \\text{ cows}}{20 \\text{ stalls}} = 2 \\text{ cows per stall} $$\n\n**Step 3: Calculate the total number of cows in each stall after the addition.**\n$$ \\text{Total cows per stall} = \\text{Initial cows} + \\text{New cows} $$\n$$ \\text{Total cows per stall} = 20 + 2 = 22 \\text{ cows} $$\n\n**Step 4: Calculate the total number of cows in 8 of the stalls.**\nWe need to find the total for 8 stalls.\n$$ \\text{Total cows in 8 stalls} = 8 \\times 22 $$\n\nCalculation:\n$$ 8 \\times 20 = 160 $$\n$$ 8 \\times 2 = 16 $$\n$$ 160 + 16 = 176 $$\n\n**Verification of the \"Ten stalls\" phrasing:**\nIf the problem strictly means \"10 stalls have 20 cows\" and the other 10 stalls have an unknown number of cows, the problem is unsolvable. However, in the context of such problems, \"Ten\" is almost certainly a typo for \"Twenty\". If we assume the other 10 stalls had 0 cows, the answer would be different. But \"divides them equally... into each of the twenty stalls\" implies a uniform system. The most robust interpretation is that the initial state was uniform across all 20 stalls.\n\nLet's double check if \"Ten stalls\" refers to the *new* arrangement? No, \"Ten stalls have 20 cows each\" is a present tense statement of the initial state.\nLet's consider if the question implies there are *only* 10 stalls and the \"twenty\" is a typo for \"ten\".\nIf there are 10 stalls:\nInitial: 10 stalls * 20 cows = 200 cows.\nNew cows: 40.\nDivided by 10 stalls: 4 cows per stall.\nNew total per stall: 20 + 4 = 24.\nCows in 8 stalls: 8 * 24 = 192.\n\nWhich typo is more likely? \"Ten\" instead of \"Twenty\" or \"Twenty\" instead of \"Ten\"?\nThe phrase \"each of the twenty stalls\" is very specific. It is less likely to be a typo for \"ten\" than \"Ten\" being a typo for \"Twenty\" in the first sentence, especially since 20 is a round number often used in these problems. Also, 40 cows divided by 20 stalls is 2, a very clean integer. 40 divided by 10 is 4, also clean.\n\nLet's look at the structure: \"Ten stalls have 20 cows each.\" vs \"each of the twenty stalls\".\nIf I assume the text is correct as written, it is a contradiction.\nHowever, usually, the number of stalls is defined by the container. \"Each of the twenty stalls\" defines the universe of stalls as 20. The first sentence is likely \"Twenty stalls have 20 cows each\".\n\nLet's stick with the 20 stalls interpretation.\n\n1.  **Total Stalls**: 20\n2.  **Initial Cows per Stall**: 20\n3.  **New Cows**: 40\n4.  **New Cows per Stall**: $40 / 20 = 2$\n5.  **Final Cows per Stall**: $20 + 2 = 22$\n6.  **Cows in 8 Stalls**: $8 \\times 22 = 176$\n\n#### 176"
+            }
+          ]
+        },
+        {
+          "concurrency": 8,
+          "repeat": 1,
+          "summary": {
+            "requests": 8,
+            "raw_correct": 7,
+            "strict_correct": 7,
+            "truncated": 0,
+            "unparsed": 0,
+            "missing_marker": 0
+          },
+          "target_outcomes": [
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "145",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1804,
+              "token_ids_sha256": "f293c6d992baec6a600a13906412fcff63a952e2d0171282db44fe39eb70be47"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 3315,
+              "token_ids_sha256": "106c9d1eb3d86f010da31b511f6639d01d4db7c6cd0bdb07bcc51bfdc979cef3"
+            }
+          ],
+          "all_outcomes": [
+            {
+              "index": 198,
+              "gold": "320",
+              "predicted": "320",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 471,
+              "token_ids_sha256": "e368d15e12ee197833623c82770cb6edef643c2e72c5916c5012ccd05c701003"
+            },
+            {
+              "index": 206,
+              "gold": "860",
+              "predicted": "860",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 383,
+              "token_ids_sha256": "f6b67ec0bb255d62aba99130e2985e904dcc17dfd0d6388dee163b71ae1168d7"
+            },
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "145",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1804,
+              "token_ids_sha256": "f293c6d992baec6a600a13906412fcff63a952e2d0171282db44fe39eb70be47"
+            },
+            {
+              "index": 228,
+              "gold": "1",
+              "predicted": "1",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 451,
+              "token_ids_sha256": "64b6427cc104812d6631269af56ad35e461cfb1a2bcd5925562e46295ef0472c"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 3315,
+              "token_ids_sha256": "106c9d1eb3d86f010da31b511f6639d01d4db7c6cd0bdb07bcc51bfdc979cef3"
+            },
+            {
+              "index": 285,
+              "gold": "21",
+              "predicted": "21",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 139,
+              "token_ids_sha256": "aa0dd12e9b751c1fe1c89139433704deb1b1fe6e029bea4eeb2577448e6d3112"
+            },
+            {
+              "index": 292,
+              "gold": "75",
+              "predicted": "75",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 403,
+              "token_ids_sha256": "05bf78588e8857185b7f5199b6c44a4f0bf71907ba78c34f23fea9064b8195e2"
+            },
+            {
+              "index": 318,
+              "gold": "123",
+              "predicted": "123",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 316,
+              "token_ids_sha256": "aa6afedc73f206c5a587dba03c45bf583a34b24cf72d2c71bdc823eeba2a5c66"
+            }
+          ],
+          "exceptional_outcomes": [
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 3315,
+              "token_ids_sha256": "106c9d1eb3d86f010da31b511f6639d01d4db7c6cd0bdb07bcc51bfdc979cef3",
+              "text": "Here is the step-by-step solution:\n\n1.  **Determine the initial number of cows:**\n    The problem states there are 10 stalls, and each stall has 20 cows.\n    $$10 \\text{ stalls} \\times 20 \\text{ cows/stall} = 200 \\text{ cows initially}$$\n\n2.  **Analyze the addition of new cows:**\n    Mr. Sylas buys 40 new cows.\n    The problem states he divides them equally, putting an equal number of the new cows into each of the **twenty** stalls.\n    *Note: The problem mentions \"twenty stalls\" in the second sentence, implying the total number of stalls is now 20 (or perhaps the original 10 were part of a larger set, but the phrasing \"each of the twenty stalls\" suggests the distribution happens across 20 stalls). Let's re-read carefully: \"Ten stalls have 20 cows each... divides them equally, putting an equal number of the new cows into each of the twenty stalls.\"*\n    \n    This phrasing is slightly ambiguous. Does it mean there are now 20 stalls total? Or did he put cows into 20 specific stalls?\n    Let's look at the standard interpretation of such riddles. Usually, \"Ten stalls have 20 cows each\" sets the initial state. Then \"divides them equally... into each of the twenty stalls\" implies the total number of stalls involved in the final count is 20.\n    \n    However, a more literal reading might be:\n    - Initial state: 10 stalls with 20 cows.\n    - Action: Buy 40 cows.\n    - Distribution: Put an equal number of these 40 new cows into each of the **twenty** stalls.\n    \n    If there are 20 stalls receiving the new cows, how many new cows go into each?\n    $$40 \\text{ new cows} / 20 \\text{ stalls} = 2 \\text{ new cows per stall}$$\n\n    Now, we need to determine the total number of cows in the stalls.\n    The question asks: \"How many cows are in 8 of the stalls?\"\n    \n    We need to know the total number of cows in *any* given stall to answer this.\n    \n    Let's re-evaluate the stall count.\n    If the problem implies that the \"Ten stalls\" mentioned at the start are the only ones that existed, and then it says \"each of the twenty stalls\", it likely implies that there are 20 stalls in total in the final configuration.\n    \n    Let's assume the standard logic for this type of problem:\n    1.  There are 20 stalls in total.\n    2.  Initially, 10 of these stalls had 20 cows. What about the other 10? The problem doesn't explicitly state the other 10 stalls existed or had cows. However, usually, in these problems, if it says \"Ten stalls have 20 cows each\" and then talks about distributing into \"twenty stalls\", it implies the other 10 stalls were empty or the \"Ten stalls\" was just a subset description.\n    \n    Let's look at the most robust interpretation:\n    The phrase \"Ten stalls have 20 cows each\" establishes a baseline.\n    The phrase \"divides them equally... into each of the twenty stalls\" establishes the distribution target.\n    \n    If we assume the 20 stalls are the total number of stalls:\n    - 10 stalls start with 20 cows.\n    - 10 stalls start with 0 cows (implied, as they aren't mentioned as having cows initially).\n    - 40 new cows are distributed equally among all 20 stalls.\n    - New cows per stall = $40 / 20 = 2$.\n    \n    So, the final count for the first 10 stalls is $20 + 2 = 22$ cows.\n    The final count for the other 10 stalls is $0 + 2 = 2$ cows.\n    \n    The question asks: \"How many cows are in 8 of the stalls?\"\n    This is ambiguous. Which 8 stalls?\n    - If it means \"any 8 stalls\", the answer isn't a single number because the stalls have different counts (22 vs 2).\n    - If it means \"the 8 stalls that originally had cows\", the answer would be $8 \\times 22 = 176$.\n    - If it means \"the 8 stalls that were empty\", the answer would be $8 \\times 2 = 16$.\n    - If it means \"a random selection of 8 stalls\", it's indeterminate.\n    \n    Let's reconsider the text. \"Ten stalls have 20 cows each.\" This is a specific fact.\n    \"Mr. Sylas buys 40 cows and divides them equally, putting an equal number of the new cows into each of the twenty stalls.\"\n    \n    Is it possible the problem implies that **all** 20 stalls end up with the same number of cows?\n    If all 20 stalls end up with the same number, then the initial distribution must have been uniform, or the \"Ten stalls\" description is just a distractor or a partial description of a larger uniform set.\n    \n    However, a very common pattern in these riddles is that the \"Ten stalls\" are the *only* stalls, and the \"twenty stalls\" is a typo for \"ten stalls\"?\n    If it were 10 stalls:\n    - Initial: 10 stalls * 20 cows = 200 cows.\n    - New: 40 cows.\n    - Distributed into 10 stalls: 40 / 10 = 4 cows per stall.\n    - Total per stall: 20 + 4 = 24 cows.\n    - Cows in 8 stalls: $8 \\times 24 = 192$.\n    \n    But the text explicitly says \"twenty stalls\". We must stick to the text.\n    \n    Let's look at another interpretation. Maybe the \"Ten stalls\" are just a subset, and the other 10 stalls *also* had 20 cows?\n    \"Ten stalls have 20 cows each.\" It doesn't say \"Only ten stalls...\". It just states a fact about ten of them. If the context implies a farm with 20 stalls, and it mentions 10 of them have 20 cows, it's highly probable the other 10 also have 20 cows, or the problem is poorly phrased and intends for all 20 stalls to be identical.\n    \n    Let's assume the most standard \"uniform distribution\" intent:\n    The problem likely intends for the final state to be uniform, or the initial state to be uniform across the 20 stalls.\n    If the initial state was 20 stalls with 20 cows each:\n    - Initial total: $20 \\times 20 = 400$.\n    - Add 40 cows.\n    - Total cows: 440.\n    - Divide by 20 stalls: $440 / 20 = 22$ cows per stall.\n    - Cows in 8 stalls: $8 \\times 22 = 176$.\n    \n    Let's check the alternative: The 10 stalls mentioned are the *only* ones with cows initially, and the other 10 are empty.\n    - Stall types A (10 stalls): Start with 20, get 2. End with 22.\n    - Stall types B (10 stalls): Start with 0, get 2. End with 2.\n    - Question: \"How many cows are in 8 of the stalls?\"\n    This question is ill-posed if the stalls are not identical. However, in many online riddles of this specific format, there is a trick.\n    \n    Let's re-read carefully: \"Ten stalls have 20 cows each.\"\n    Could \"Ten stalls\" be a typo for \"Twenty stalls\"?\n    If the first sentence was \"Twenty stalls have 20 cows each\", then:\n    1. 20 stalls * 20 cows = 400 cows.\n    2. Buy 40 cows.\n    3. Total = 440 cows.\n    4. Divide equally among 20 stalls.\n    5. 440 / 20 = 22 cows per stall.\n    6. 8 stalls * 22 cows/stall = 176 cows.\n    \n    This seems like the most logical path to a single, definitive numeric answer. The discrepancy between \"Ten\" and \"twenty\" is likely a typo in the problem statement provided by the user (or the source), where \"Ten\" should have been \"Twenty\" to match the \"twenty stalls\" mentioned later. If we assume the text is exactly as written and not a typo, the problem is unsolvable without knowing which 8 stalls are chosen.\n    \n    However, there is another possibility. What if the \"Ten stalls\" are the *only* stalls, and the \"twenty stalls\" refers to something else? No, \"putting... into each of the twenty stalls\" is clear.\n    \n    Let's consider if \"Ten stalls have 20 cows each\" implies that the *other* 10 stalls have 0 cows.\n    If the question asks \"How many cows are in 8 of the stalls?\", and it doesn't specify *which* 8, it implies that the number of cows in *any* 8 stalls is the same. This is only true if all stalls have the same number of cows.\n    For all stalls to have the same number of cows, the initial distribution must have been uniform.\n    Therefore, the statement \"Ten stalls have 20 cows each\" must be interpreted as \"The stalls (of which there are 20) have 20 cows each\", and \"Ten\" is a typo for \"Twenty\".\n    \n    Let's proceed with the assumption that it is a typo and all 20 stalls initially had 20 cows.\n    \n    **Step 1:** Calculate the initial number of cows in all 20 stalls.\n    Assuming the \"Ten\" is a typo for \"Twenty\" to align with the \"twenty stalls\" mentioned later and the requirement for a unique answer:\n    $$20 \\text{ stalls} \\times 20 \\text{ cows/stall} = 400 \\text{ cows}$$\n    \n    **Step 2:** Add the new cows.\n    $$400 \\text{ cows} + 40 \\text{ new cows} = 440 \\text{ total cows}$$\n    \n    **Step 3:** Divide the total cows equally among the 20 stalls.\n    $$440 \\text{ cows} / 20 \\text{ stalls} = 22 \\text{ cows per stall}$$\n    \n    **Step 4:** Calculate the number of cows in 8 stalls.\n    $$8 \\text{ stalls} \\times 22 \\text{ cows/stall} = 176 \\text{ cows}$$\n    \n    **Alternative Check:** What if \"Ten stalls\" is correct and the other 10 stalls are empty?\n    Then we have 10 stalls with 22 cows and 10 stalls with 2 cows.\n    The question \"How many cows are in 8 of the stalls?\" is ambiguous.\n    - If it means \"What is the maximum number of cows in 8 stalls?\", it would be $8 \\times 22 = 176$.\n    - If it means \"What is the minimum number of cows in 8 stalls?\", it would be $8 \\times 2 = 16$.\n    - If it means \"What is the average number of cows in 8 stalls?\", it would be $8 \\times ( (10 \\times 22 + 10 \\times 2) / 20 ) = 8 \\times 12 = 96$.\n    \n    Given the phrasing of such math problems, they almost always rely on uniformity. The \"Ten\" vs \"Twenty\" conflict is the key. In similar riddles found online, the text often reads \"Twenty stalls have 20 cows each...\". The \"Ten\" is likely a transcription error.\n    \n    Let's try one more interpretation. Is it possible that the 40 cows are divided into the 10 stalls that *already* had cows, and the \"twenty stalls\" is a distractor? No, \"into each of the twenty stalls\" is explicit.\n    \n    Is it possible that the 10 stalls are just a sample, and we are to assume the other 10 are identical? Yes, this leads to the 176 answer.\n    \n    Let's double check the math.\n    Initial: 20 stalls * 20 cows = 400.\n    Added: 40.\n    Total: 440.\n    Per stall: 440 / 20 = 22.\n    8 stalls: 8 * 22 = 176.\n    \n    What if the \"Ten stalls\" is correct, and the question implies we pick 8 stalls from the *original* 10?\n    \"How many cows are in 8 of the stalls?\" usually implies \"8 of the [total] stalls\".\n    If the problem is from a specific source where \"Ten\" is not a typo, and the other 10 stalls are empty, the question is flawed. However, if we assume the question implies \"8 of the stalls that originally had cows\", the answer is 176. If it implies \"8 of the stalls that were empty\", the answer is 16.\n    \n    Let's look at the numbers.\n    40 cows / 20 stalls = 2 cows/stall.\n    If the 10 stalls had 20, they now have 22.\n    If the other 10 had 0, they now have 2.\n    \n    If the question is \"How many cows are in 8 of the stalls?\", and it expects a single number, the stalls must be identical.\n    Therefore, the initial condition must be that all 20 stalls had 20 cows.\n    \n    Final Calculation:\n    1.  Total stalls = 20.\n    2.  Initial cows per stall = 20.\n    3.  Total initial cows = $20 \\times 20 = 400$.\n    4.  New cows = 40.\n    5.  Total cows = 440.\n    6.  Cows per stall after distribution = $440 / 20 = 22$.\n    7.  Cows in 8 stalls = $8 \\times 22 = 176$.\n\n#### 176"
+            }
+          ]
+        }
+      ],
+      "tensor_parallel_size": 2,
+      "global_gdn_shape": {
+        "H": 16,
+        "HV": 48,
+        "K": 128,
+        "V": 128
+      },
+      "per_rank_gdn_shape": {
+        "H": 8,
+        "HV": 24,
+        "K": 128,
+        "V": 128
+      },
+      "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+      "source_files": {
+        "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+        "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+        "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+        "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": "7c9bf8e9d07f8d96d5e4bb9779d0031b8022e9b5edc687b7e489bf72bcf09ec6",
+        "tests/kernels/mamba/test_gdn_forward_core_split.py": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72"
+      },
+      "model_config_sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc",
+      "gpu_uuids": [
+        "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675"
+      ],
+      "runtime_snapshot_digest": "1fe5f18dcbaa2d2b05aa3367340ccb866dc89871854b69ba69763a5d6a37527b",
+      "kv_capacity_tokens": 58254
+    },
+    "flashinfer": {
+      "integrity": {
+        "raw_client_sha256": "1459b34eb48a8d76b6bf6bb0f7fc2ad9af724e2f858be949e724508ec67346d5",
+        "server_record_sha256": "2af9cb39de375f6565508137524ef00f79ade6b4fbfb77c8c58dcaa382b547db",
+        "server_log_sha256": "c86fcf85fed55534a275e52d27f061d1f82b2ddb669144467252017520fb000d",
+        "primary_quality_sha256": "6ba765c5f2f46f2051ac3cdae40f80950ce155a5bb397bb7c51269efe88b09dd",
+        "client_helper_sha256": "82bbfce74bf6168d8d49290a0e6b0f951daee8afe6131e92cc967b8e9b456e71",
+        "supervisor_sha256": "07904d38f04589d2b7cfcd644a89a81cfb107e5abd073efda59fcb7b82fedbc5",
+        "log_integrity": {
+          "recorded_sha256": "c86fcf85fed55534a275e52d27f061d1f82b2ddb669144467252017520fb000d",
+          "full_actual_sha256": "c86fcf85fed55534a275e52d27f061d1f82b2ddb669144467252017520fb000d",
+          "full_actual_bytes": 139900,
+          "mode": "exact_full_log",
+          "validation_notes": [],
+          "validator_sha256": "98122975ed9ce125e069e28361d0905959b7eb336b52fc375e55f05b62800ed6"
+        },
+        "logged_diagnostic_http_200": 16
+      },
+      "protocol": {
+        "temperature": 0,
+        "seed": 42,
+        "max_tokens": 3500,
+        "enable_thinking": false,
+        "return_token_ids": true,
+        "prefix_caching": "must be disabled on server",
+        "round_order": [
+          {
+            "concurrency": 1,
+            "repeat": 1
+          },
+          {
+            "concurrency": 8,
+            "repeat": 1
+          }
+        ],
+        "primary_max_tokens": 1750,
+        "model_max_len": 4096,
+        "gpu_blocks": 128,
+        "minimum_actual_kv_tokens": 32768,
+        "requests_per_backend": 16,
+        "changed_settings": [
+          "output budget",
+          "maximum model context",
+          "KV capacity"
+        ]
+      },
+      "selected_indices": [
+        198,
+        206,
+        209,
+        228,
+        255,
+        285,
+        292,
+        318
+      ],
+      "primary_quality_sha256": "6ba765c5f2f46f2051ac3cdae40f80950ce155a5bb397bb7c51269efe88b09dd",
+      "primary_target_outcomes": [
+        {
+          "index": 209,
+          "gold": "145",
+          "predicted": "145",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "has_answer_marker": true,
+          "unparsed": false,
+          "token_count": 1320,
+          "token_ids_sha256": "0fe5ab846528e2685af033d60035fc97a5c6020f7ed03f5749193333c061567e"
+        },
+        {
+          "index": 255,
+          "gold": "192",
+          "predicted": "20",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "length",
+          "truncated": true,
+          "has_answer_marker": false,
+          "unparsed": false,
+          "token_count": 1750,
+          "token_ids_sha256": "29065e2f6013fea87fb1e1f86b8fe77429b28dd275dc2311ba5827842fe36cb3"
+        }
+      ],
+      "rounds": [
+        {
+          "concurrency": 1,
+          "repeat": 1,
+          "summary": {
+            "requests": 8,
+            "raw_correct": 7,
+            "strict_correct": 7,
+            "truncated": 0,
+            "unparsed": 0,
+            "missing_marker": 0
+          },
+          "target_outcomes": [
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "145",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1597,
+              "token_ids_sha256": "e1343996a587cb0b704f84825257be4723b7534195785e5d98e2db8d4c370378"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1835,
+              "token_ids_sha256": "06022c143165c1c57b131137bf722f6beac58968665eeff39bf2d5587626e353"
+            }
+          ],
+          "all_outcomes": [
+            {
+              "index": 198,
+              "gold": "320",
+              "predicted": "320",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 471,
+              "token_ids_sha256": "e368d15e12ee197833623c82770cb6edef643c2e72c5916c5012ccd05c701003"
+            },
+            {
+              "index": 206,
+              "gold": "860",
+              "predicted": "860",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 383,
+              "token_ids_sha256": "f6b67ec0bb255d62aba99130e2985e904dcc17dfd0d6388dee163b71ae1168d7"
+            },
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "145",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1597,
+              "token_ids_sha256": "e1343996a587cb0b704f84825257be4723b7534195785e5d98e2db8d4c370378"
+            },
+            {
+              "index": 228,
+              "gold": "1",
+              "predicted": "1",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 451,
+              "token_ids_sha256": "64b6427cc104812d6631269af56ad35e461cfb1a2bcd5925562e46295ef0472c"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1835,
+              "token_ids_sha256": "06022c143165c1c57b131137bf722f6beac58968665eeff39bf2d5587626e353"
+            },
+            {
+              "index": 285,
+              "gold": "21",
+              "predicted": "21",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 139,
+              "token_ids_sha256": "aa0dd12e9b751c1fe1c89139433704deb1b1fe6e029bea4eeb2577448e6d3112"
+            },
+            {
+              "index": 292,
+              "gold": "75",
+              "predicted": "75",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 403,
+              "token_ids_sha256": "05bf78588e8857185b7f5199b6c44a4f0bf71907ba78c34f23fea9064b8195e2"
+            },
+            {
+              "index": 318,
+              "gold": "123",
+              "predicted": "123",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 316,
+              "token_ids_sha256": "aa6afedc73f206c5a587dba03c45bf583a34b24cf72d2c71bdc823eeba2a5c66"
+            }
+          ],
+          "exceptional_outcomes": [
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "176",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1835,
+              "token_ids_sha256": "06022c143165c1c57b131137bf722f6beac58968665eeff39bf2d5587626e353",
+              "text": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of stalls and cows.**\nThe problem states there are \"Ten stalls\" initially, with 20 cows each.\nHowever, the next sentence says Mr. Sylas divides the new cows into \"each of the twenty stalls.\" This implies that the total number of stalls is actually 20, not 10. Let's re-read carefully.\n\"Ten stalls have 20 cows each.\" -> This describes the initial state of a subset or perhaps there is a typo in the problem statement regarding the number of stalls.\n\"Mr. Sylas buys 40 cows and divides them equally, putting an equal number of the new cows into each of the twenty stalls.\" -> This explicitly mentions **twenty stalls**.\n\nLet's assume the total number of stalls is 20. The first sentence \"Ten stalls have 20 cows each\" might be a distractor or a partial description, but the action is performed on \"each of the twenty stalls\". To solve for the final state, we need to know the distribution of cows in all 20 stalls.\n\nLet's look at the wording again. Is it possible there are only 10 stalls?\nIf there are only 10 stalls, the phrase \"each of the twenty stalls\" would be impossible. Therefore, there must be 20 stalls in total.\nThe first sentence \"Ten stalls have 20 cows each\" is likely incomplete information or a typo for \"Twenty stalls have 20 cows each\". Given the context of standard math problems, it is highly probable that the initial state is **20 stalls with 20 cows each**. If we assume only 10 stalls exist, the problem is unsolvable because we don't know what happens to the other 10 stalls mentioned in the second sentence. If we assume there are 20 stalls, and the first sentence only describes 10 of them, we don't know the cow count for the other 10.\n\nHowever, a common pattern in such riddles or typos is that \"Ten\" was a typo for \"Twenty\". Let's proceed with the assumption that **all 20 stalls initially had 20 cows each**. This is the only logical interpretation that allows for a unique solution based on the \"equal number\" distribution.\n\n**Alternative Interpretation Check:**\nCould \"Ten stalls\" be the total? No, because it says \"each of the twenty stalls\".\nCould the 40 cows be added to 10 stalls? No, it says \"each of the twenty stalls\".\n\nLet's assume the standard setup:\nTotal Stalls = 20\nInitial Cows per Stall = 20 (Assuming the \"Ten\" was a typo for \"Twenty\", or that the other 10 stalls also had 20 cows, which is the standard assumption for \"equal\" initial conditions unless specified otherwise).\n\n**Step 2: Calculate the number of new cows added to each stall.**\nMr. Sylas buys 40 cows.\nHe divides them equally among the 20 stalls.\n$$ \\text{New cows per stall} = \\frac{40 \\text{ cows}}{20 \\text{ stalls}} = 2 \\text{ cows per stall} $$\n\n**Step 3: Calculate the total number of cows in each stall after the addition.**\n$$ \\text{Total cows per stall} = \\text{Initial cows} + \\text{New cows} $$\n$$ \\text{Total cows per stall} = 20 + 2 = 22 \\text{ cows} $$\n\n**Step 4: Calculate the total number of cows in 8 of the stalls.**\nWe need to find the total for 8 stalls.\n$$ \\text{Total cows in 8 stalls} = 8 \\times 22 $$\n\nCalculation:\n$$ 8 \\times 20 = 160 $$\n$$ 8 \\times 2 = 16 $$\n$$ 160 + 16 = 176 $$\n\n**Verification of the \"Ten stalls\" phrasing:**\nIf the problem strictly means \"10 stalls have 20 cows\" and the other 10 stalls have an unknown number of cows, the problem is unsolvable. However, in the context of such problems, \"Ten\" is almost certainly a typo for \"Twenty\". If we assume the other 10 stalls had 0 cows, the answer would be different. But \"divides them equally... into each of the twenty stalls\" implies a uniform system. The most robust interpretation is that the initial state was uniform across all 20 stalls.\n\nLet's double check if \"Ten stalls\" refers to the *new* arrangement? No, \"Ten stalls have 20 cows each\" is a present tense statement of the initial state.\nLet's consider if the question implies there are *only* 10 stalls and the \"twenty\" is a typo for \"ten\".\nIf there are 10 stalls:\nInitial: 10 stalls * 20 cows = 200 cows.\nNew cows: 40.\nDivided by 10 stalls: 4 cows per stall.\nNew total per stall: 20 + 4 = 24.\nCows in 8 stalls: 8 * 24 = 192.\n\nWhich typo is more likely? \"Ten\" instead of \"Twenty\" or \"Twenty\" instead of \"Ten\"?\nThe phrase \"each of the twenty stalls\" is very specific. It is less likely to be a typo for \"ten\" than \"Ten\" being a typo for \"Twenty\" in the first sentence, especially since 20 is a round number often used in these problems. Also, 40 cows divided by 20 stalls is 2, a very clean integer. 40 divided by 10 is 4, also clean.\n\nLet's look at the structure: \"Ten stalls have 20 cows each.\" vs \"each of the twenty stalls\".\nIf I assume the text is correct as written, it's a contradiction.\nHowever, usually, the number of stalls is defined by the container. \"Each of the twenty stalls\" defines the universe of stalls as 20. The first sentence likely meant \"Twenty stalls...\".\n\nLet's stick with the 20 stalls interpretation.\nInitial: 20 stalls, 20 cows each.\nAdd: 40 cows / 20 stalls = 2 cows/stall.\nFinal per stall: 22 cows.\n8 stalls: $8 \\times 22 = 176$.\n\nLet's consider the source or style. This looks like a standard arithmetic word problem.\nIf the first sentence was \"Twenty stalls have 20 cows each\", the answer is 176.\nIf the second sentence was \"each of the ten stalls\", the answer is 192.\n\nLet's re-read carefully: \"Ten stalls have 20 cows each.\"\nIs it possible that there are 20 stalls, but only 10 of them are described? And the other 10 are empty?\nIf 10 stalls have 20 cows, and 10 stalls have 0 cows.\nTotal initial = 200.\nAdd 40 cows to 20 stalls -> 2 cows per stall.\nStalls 1-10: $20 + 2 = 22$.\nStalls 11-20: $0 + 2 = 2$.\nThe question asks: \"How many cows are in 8 of the stalls?\"\nThis is ambiguous. Which 8 stalls? The ones with 22? The ones with 2? A mix?\nSince the question doesn't specify *which* 8 stalls, this interpretation leads to an undefined answer. Therefore, the initial state must be uniform.\nThus, \"Ten\" must be a typo for \"Twenty\".\n\n**Conclusion:**\n1.  There are 20 stalls.\n2.  Initially, each stall has 20 cows.\n3.  40 new cows are added, distributed equally: $40 / 20 = 2$ cows per stall.\n4.  Each stall now has $20 + 2 = 22$ cows.\n5.  The total number of cows in 8 stalls is $8 \\times 22$.\n6.  $8 \\times 22 = 176$.\n\n#### 176"
+            }
+          ]
+        },
+        {
+          "concurrency": 8,
+          "repeat": 1,
+          "summary": {
+            "requests": 8,
+            "raw_correct": 6,
+            "strict_correct": 6,
+            "truncated": 1,
+            "unparsed": 0,
+            "missing_marker": 1
+          },
+          "target_outcomes": [
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "34800",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1355,
+              "token_ids_sha256": "af2947bcfbea6245e0d4fad90940d2cf3e75d625c7f1ae792039b8c1b42b5d1e"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "20",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "length",
+              "truncated": true,
+              "has_answer_marker": false,
+              "unparsed": false,
+              "token_count": 3500,
+              "token_ids_sha256": "1e585f7dfaea102fb0bbca7d656a0164d03673422165657ba28cd9244bf0c2e6"
+            }
+          ],
+          "all_outcomes": [
+            {
+              "index": 198,
+              "gold": "320",
+              "predicted": "320",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 471,
+              "token_ids_sha256": "e368d15e12ee197833623c82770cb6edef643c2e72c5916c5012ccd05c701003"
+            },
+            {
+              "index": 206,
+              "gold": "860",
+              "predicted": "860",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 383,
+              "token_ids_sha256": "f6b67ec0bb255d62aba99130e2985e904dcc17dfd0d6388dee163b71ae1168d7"
+            },
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "34800",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1355,
+              "token_ids_sha256": "af2947bcfbea6245e0d4fad90940d2cf3e75d625c7f1ae792039b8c1b42b5d1e"
+            },
+            {
+              "index": 228,
+              "gold": "1",
+              "predicted": "1",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 451,
+              "token_ids_sha256": "64b6427cc104812d6631269af56ad35e461cfb1a2bcd5925562e46295ef0472c"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "20",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "length",
+              "truncated": true,
+              "has_answer_marker": false,
+              "unparsed": false,
+              "token_count": 3500,
+              "token_ids_sha256": "1e585f7dfaea102fb0bbca7d656a0164d03673422165657ba28cd9244bf0c2e6"
+            },
+            {
+              "index": 285,
+              "gold": "21",
+              "predicted": "21",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 139,
+              "token_ids_sha256": "aa0dd12e9b751c1fe1c89139433704deb1b1fe6e029bea4eeb2577448e6d3112"
+            },
+            {
+              "index": 292,
+              "gold": "75",
+              "predicted": "75",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 403,
+              "token_ids_sha256": "05bf78588e8857185b7f5199b6c44a4f0bf71907ba78c34f23fea9064b8195e2"
+            },
+            {
+              "index": 318,
+              "gold": "123",
+              "predicted": "123",
+              "raw_correct": true,
+              "completed_correct": true,
+              "strict_correct": true,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 316,
+              "token_ids_sha256": "aa6afedc73f206c5a587dba03c45bf583a34b24cf72d2c71bdc823eeba2a5c66"
+            }
+          ],
+          "exceptional_outcomes": [
+            {
+              "index": 209,
+              "gold": "145",
+              "predicted": "34800",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "stop",
+              "truncated": false,
+              "has_answer_marker": true,
+              "unparsed": false,
+              "token_count": 1355,
+              "token_ids_sha256": "af2947bcfbea6245e0d4fad90940d2cf3e75d625c7f1ae792039b8c1b42b5d1e",
+              "text": "To find the total cost of buying each cup (which implies the total cost of the twenty dozen cups), we need to break down the problem into logical steps.\n\n**Step 1: Calculate the total cost of the plates.**\n*   We are given \"half a dozen\" plates.\n*   One dozen is 12, so half a dozen is $12 / 2 = 6$ plates.\n*   The cost per plate is $\\$6000$.\n*   Total cost of plates = Number of plates $\\times$ Cost per plate\n    $$6 \\times 6000 = 36,000$$\nSo, the total cost of the plates is $\\$36,000$.\n\n**Step 2: Calculate the total cost of the cups.**\n*   The problem states that twenty dozen cups cost $\\$1200$ less than the total cost of the plates.\n*   Total cost of cups = Total cost of plates $- 1200$\n    $$36,000 - 1,200 = 34,800$$\nSo, the total cost of the twenty dozen cups is $\\$34,800$.\n\n**Step 3: Interpret the question \"Calculate the total cost of buying each cup\".**\nThe phrasing \"total cost of buying each cup\" is slightly ambiguous. It could mean:\n1.  The total cost of the entire batch of cups (which we just calculated as $\\$34,800$).\n2.  The unit price of a single cup.\n\nLet's re-read carefully: \"Calculate the total cost of buying each cup.\"\nUsually, \"total cost\" refers to the aggregate sum. However, \"of buying each cup\" often implies the unit price. Let's look at the structure.\n\"Twenty dozen cups cost $1200 less than...\" -> This defines the *total* cost of the 240 cups.\nIf the question asked for the \"cost per cup\", it would likely say \"unit price\" or \"price per cup\".\nHowever, the phrase \"total cost of buying each cup\" is grammatically awkward. Let's consider the standard interpretation in such math problems.\nIf it meant the unit price, it would ask \"What is the cost of one cup?\"\nIf it meant the aggregate, it would ask \"What is the total cost of the cups?\"\n\nLet's look at the wording again: \"Calculate the total cost of buying each cup.\"\nThis is likely a typo for \"Calculate the total cost of the cups\" OR \"Calculate the cost of each cup\".\nLet's calculate the cost per cup just in case, but usually, \"total cost\" is the key noun.\nTotal cost of 20 dozen cups = $\\$34,800$.\n\nLet's check if \"total cost of buying each cup\" is a standard phrase for unit price. No, \"total cost\" is an aggregate. \"Cost of each cup\" is a unit price. The combination is contradictory.\nHowever, in many generated or translated math problems, \"total cost\" refers to the final monetary value derived from the main subject (the cups). The main subject is \"Twenty dozen cups\". Their cost is defined.\nLet's assume the question asks for the **total cost of the twenty dozen cups**.\n\nLet's double-check the calculation for the unit price just to be thorough.\nNumber of cups = 20 dozen = $20 \\times 12 = 240$ cups.\nTotal cost = $\\$34,800$.\nCost per cup = $34,800 / 240$.\n$34,800 / 24 = 1,450$.\n$1,450 / 10 = 145$.\nSo the cost per cup is $\\$145$.\n\nWhich answer is expected?\n\"Calculate the total cost...\" usually points to the aggregate sum.\nIf the question meant unit price, it would typically say \"Calculate the cost per cup\".\nThe phrase \"of buying each cup\" is the confusing part. It might be a garbled version of \"Calculate the total cost of the cups\".\nGiven the explicit mention of \"total cost\" in the first sentence (\"...cost $1200 less than the total cost...\"), it is highly probable the question asks for the corresponding total cost for the cups.\n\nLet's re-read the prompt's final instruction: \"Calculate the total cost of buying each cup.\"\nActually, looking at similar problems online, this specific phrasing is often a mistake for \"Calculate the total cost of the cups\".\nHowever, if I must interpret \"cost of buying each cup\" as the unit price, the answer is 145.\nIf I interpret \"total cost\" as the aggregate, the answer is 34,800.\n\nLet's look at the magnitude.\nPlates: 6 * 6000 = 36,000.\nCups: 36,000 - 1,200 = 34,800.\nThe question asks for the \"total cost\". The word \"total\" is the strongest indicator. The \"of buying each cup\" part is likely poor phrasing for \"of the cups\". If it wanted the unit price, it would not use the word \"total\".\n\nTherefore, the total cost of the twenty dozen cups is $\\$34,800$.\n\n**Step-by-step derivation:**\n1.  **Find the number of plates:**\n    Half a dozen = $12 / 2 = 6$ plates.\n2.  **Find the total cost of the plates:**\n    $6 \\text{ plates} \\times \\$6,000/\\text{plate} = \\$36,000$.\n3.  **Find the total cost of the cups:**\n    The cost of the cups is $\\$1,200$ less than the cost of the plates.\n    $\\$36,000 - \\$1,200 = \\$34,800$.\n\nThe total cost of the twenty dozen cups is $\\$34,800$.\n\n#### 34800"
+            },
+            {
+              "index": 255,
+              "gold": "192",
+              "predicted": "20",
+              "raw_correct": false,
+              "completed_correct": false,
+              "strict_correct": false,
+              "finish_reason": "length",
+              "truncated": true,
+              "has_answer_marker": false,
+              "unparsed": false,
+              "token_count": 3500,
+              "token_ids_sha256": "1e585f7dfaea102fb0bbca7d656a0164d03673422165657ba28cd9244bf0c2e6",
+              "text": "Here is the step-by-step solution:\n\n1.  **Determine the initial number of cows:**\n    The problem states there are 10 stalls, and each stall has 20 cows.\n    $$10 \\text{ stalls} \\times 20 \\text{ cows/stall} = 200 \\text{ cows initially}$$\n\n2.  **Determine the total number of cows after the purchase:**\n    Mr. Sylas buys 40 additional cows.\n    $$200 \\text{ initial cows} + 40 \\text{ new cows} = 240 \\text{ total cows}$$\n\n3.  **Determine the number of cows per stall after distribution:**\n    The problem states that the 40 new cows are divided equally among the stalls. It also mentions \"each of the twenty stalls.\" This implies the total number of stalls is now 20 (likely 10 original stalls plus 10 new ones, or the phrasing implies the total capacity/context is 20 stalls). Let's re-read carefully: \"divides them equally, putting an equal number of the new cows into each of the twenty stalls.\"\n    \n    This phrasing confirms there are **20 stalls** in total involved in the distribution.\n    \n    First, let's find out how many new cows go into each stall:\n    $$40 \\text{ new cows} / 20 \\text{ stalls} = 2 \\text{ new cows per stall}$$\n\n    Now, we need to determine the total number of cows in each stall.\n    *   The original 10 stalls had 20 cows each.\n    *   The problem implies a uniform distribution across \"each of the twenty stalls\". This usually implies that the final state is uniform across all 20 stalls, or that the 10 new stalls started with 0 cows and received the new cows.\n    \n    Let's look at the wording again: \"Ten stalls have 20 cows each... divides them [the 40 new cows] equally... into each of the twenty stalls.\"\n    \n    If we assume the 10 new stalls started with 0 cows:\n    *   Original 10 stalls: $20 \\text{ (old)} + 2 \\text{ (new)} = 22 \\text{ cows}$.\n    *   New 10 stalls: $0 \\text{ (old)} + 2 \\text{ (new)} = 2 \\text{ cows}$.\n    \n    However, a more standard interpretation of such riddles is that the \"twenty stalls\" refers to the total set of stalls being managed, and the distribution results in a specific count. But wait, if the stalls are not identical in their starting state, the number of cows in \"8 of the stalls\" depends on *which* 8 stalls are chosen.\n    \n    Let's re-read the prompt's constraint: \"putting an equal number of the new cows into each of the twenty stalls.\"\n    \n    Is it possible the problem implies that the *total* cows are distributed equally? No, it says \"divides them [the 40 new cows] equally\".\n    \n    Let's consider another interpretation: Perhaps the \"Ten stalls\" mentioned at the start are just a subset, or the problem implies that after the transaction, there are 20 stalls, and we need to know the count in 8 of them.\n    \n    Let's look for a simpler interpretation often found in these types of logic puzzles.\n    Total cows = 240.\n    Total stalls = 20.\n    If the cows were distributed equally across all 20 stalls, each would have $240 / 20 = 12$ cows.\n    But the text says only the *new* cows are divided equally.\n    \n    Let's look at the phrase \"each of the twenty stalls\". This implies the existence of 20 stalls.\n    Scenario A: There are 10 old stalls (20 cows each) and 10 new stalls (0 cows each).\n    New cows added: 2 per stall.\n    Old stalls now have: $20 + 2 = 22$ cows.\n    New stalls now have: $0 + 2 = 2$ cows.\n    If we pick 8 stalls, the answer could be anything from $8 \\times 2 = 16$ to $8 \\times 22 = 176$ depending on which stalls are picked. This suggests this interpretation is flawed or missing a constraint.\n    \n    Scenario B: The problem implies that the *result* is that all 20 stalls have the same number of cows? No, it explicitly says only the *new* cows are divided equally.\n    \n    Scenario C: Maybe the \"Ten stalls\" is a typo for \"Twenty stalls\"?\n    If there were 20 stalls with 20 cows each initially:\n    Initial: $20 \\times 20 = 400$.\n    New: 40.\n    Total: 440.\n    New per stall: $40 / 20 = 2$.\n    Total per stall: $20 + 2 = 22$.\n    Cows in 8 stalls: $8 \\times 22 = 176$.\n    \n    Scenario D: Maybe the \"Ten stalls\" is correct, but the \"twenty stalls\" refers to the fact that the 40 cows are put into 20 stalls, meaning the 10 original stalls are joined by 10 *empty* stalls?\n    If the question asks \"How many cows are in 8 of the stalls?\", it implies the answer is unique. This only happens if all stalls have the same number of cows.\n    \n    How can all stalls have the same number of cows?\n    Only if the initial distribution was also uniform across all 20 stalls, or if the \"Ten stalls have 20 cows each\" is describing the *average* or a specific subset that doesn't apply to the final state calculation in a way that creates variance.\n    \n    Let's reconsider the standard structure of this specific riddle.\n    Often, these problems are simpler.\n    \"Ten stalls have 20 cows each.\" -> Total 200.\n    \"Mr. Sylas buys 40 cows.\" -> Total 240.\n    \"Divides them equally... into each of the twenty stalls.\"\n    \n    If the problem implies that the *total* herd is now in 20 stalls, and the question asks for the number in 8 stalls, it strongly implies a uniform distribution of the *total* cows, or that the \"20 stalls\" are the only stalls that exist and they all end up with the same count.\n    \n    However, the text says \"divides **them** [the 40 new cows] equally\". It does *not* say he redistributes the old cows.\n    \n    Let's look at the numbers again.\n    If the 10 original stalls keep their 20 cows and get 2 new ones, they have 22.\n    If the 10 new stalls get 2 new ones, they have 2.\n    \n    Is it possible the question implies that the 10 stalls *are* the twenty stalls? No, \"Ten stalls... each of the twenty stalls\".\n    \n    Let's try a different angle. What if \"Ten stalls have 20 cows each\" is just background info, and the key is the final state?\n    Actually, there is a common variation of this problem where the answer is derived from the average.\n    Total cows = 240.\n    Total stalls = 20.\n    Average cows per stall = $240 / 20 = 12$.\n    \n    If the question assumes that the cows are distributed such that the stalls are equal (which contradicts the \"only new cows divided\" text but fits the \"unique answer\" requirement), the answer would be $8 \\times 12 = 96$.\n    \n    Let's check if there is an interpretation where the stalls are equal.\n    If the 10 original stalls had 20 cows, and we add 2, they have 22.\n    If the other 10 stalls had 0, and we add 2, they have 2.\n    They are not equal.\n    \n    However, consider the source or style of this problem. It looks like a trick question or a poorly phrased standard arithmetic problem.\n    Let's look at the phrase \"putting an equal number of the new cows into each of the twenty stalls\".\n    This confirms 20 stalls exist.\n    \n    If we assume the question is valid and has a single numeric answer, the most logical mathematical path that ignores the \"old vs new stall\" distinction (assuming the \"Ten stalls\" description was just to establish the initial total count, and the \"twenty stalls\" is the final container count, and perhaps the cows were mixed or the question implies an average) is:\n    \n    Total Cows = $(10 \\times 20) + 40 = 240$.\n    Total Stalls = 20.\n    Cows per Stall (Average) = $240 / 20 = 12$.\n    Cows in 8 stalls = $8 \\times 12 = 96$.\n    \n    Let's verify if there is any other interpretation.\n    What if the \"Ten stalls\" are the *only* stalls, and \"twenty stalls\" is a typo for \"ten stalls\"?\n    If 10 stalls:\n    New cows per stall = $40 / 10 = 4$.\n    Total per stall = $20 + 4 = 24$.\n    Cows in 8 stalls = $8 \\times 24 = 192$.\n    \n    What if \"Ten stalls\" is a typo for \"Twenty stalls\"?\n    If 20 stalls initially with 20 cows each:\n    Total = 400.\n    New = 40.\n    Total = 440.\n    New per stall = 2.\n    Total per stall = 22.\n    Cows in 8 stalls = $8 \\times 22 = 176$.\n    \n    Let's compare the \"Average\" theory (96) vs the \"Typo\" theories.\n    The text explicitly says \"each of the **twenty** stalls\". This number 20 is specific.\n    The text explicitly says \"Ten stalls have 20 cows each\". This number 10 is specific.\n    \n    If we take the text literally:\n    10 stalls have 20 cows.\n    10 stalls have 0 cows (implied, to make 20 stalls).\n    Add 2 cows to each of the 20 stalls.\n    10 stalls have 22 cows.\n    10 stalls have 2 cows.\n    \n    Question: \"How many cows are in 8 of the stalls?\"\n    This question is ambiguous unless \"8 of the stalls\" refers to a specific group, or the distribution is uniform.\n    \n    However, in many online logic puzzles of this format, if the distribution isn't uniform, the question is flawed. But if we assume the question implies that the *total* number of cows is distributed equally among the 20 stalls (perhaps Mr. Sylas moved the old cows too, or the \"divides them\" refers to the total herd, despite the pronoun \"them\" referring to \"40 cows\"), then:\n    \n    Total cows = 240.\n    Stalls = 20.\n    Cows per stall = 12.\n    8 stalls = 96.\n    \n    Let's look for clues in similar problems.\n    \"A farmer has 10 pens with 20 sheep. He buys 40 sheep and puts them into 20 pens equally.\"\n    If he puts the *new* sheep equally, the pens are not equal.\n    If he puts the *total* sheep equally, the pens are equal.\n    \n    The phrasing \"divides **them** [40 cows] equally\" is very specific. It restricts the action to the new cows.\n    \n    Is it possible that the \"Ten stalls\" are actually 20 stalls? No.\n    \n    Let's consider the possibility that the question asks for the number of cows in 8 stalls *assuming the stalls are identical in their final state*. This would only be true if the initial 10 stalls and the new 10 stalls had the same number of cows. They don't.\n    \n    However, there is a third interpretation. What if the \"Ten stalls\" is just a distractor, and the \"20 stalls\" is the key? No, we need the initial count.\n    \n    Let's step back. What if the answer is simply based on the average?\n    In standardized tests, if a distribution is not uniform, asking for the sum of a subset is impossible without knowing which subset. Therefore, the problem *must* imply a uniform distribution of the total cows, or a uniform distribution of the final state.\n    \n    If the final state is uniform, then:\n    Total Cows = 240.\n    Total Stalls = 20.\n    Cows per Stall = 12.\n    Answer = 96.\n    \n    Why would the final state be uniform?\n    Maybe the sentence \"divides them equally\" is a shorthand for \"distributes the herd equally\"?\n    Or maybe the \"Ten stalls have 20 cows each\" is the *final* state of the first 10, and the other 10 are empty? No, that contradicts the \"buys 40\" part.\n    \n    Let's try one more literal reading.\n    \"Ten stalls have 20 cows each.\"\n    \"Mr. Sylas buys 40 cows.\"\n    \"Divides them [the 40] equally... into each of the twenty stalls.\"\n    \n    If I have to bet on the intended logic of a potentially flawed puzzle:\n    The puzzle likely intends for you to calculate the total cows and divide by the total stalls to get a per-stall count, then multiply by 8.\n    \n    Calculation:\n    1. Initial cows: $10 \\times 20 = 200$.\n    2. Added cows: 40.\n    3. Total cows: 240.\n    4. Total stalls: 20.\n    5. Cows per stall: $240 / 20 = 12$.\n    6. Cows in 8 stalls: $8 \\times 12 = 96$.\n    \n    Alternative Calculation (Literal \"New Cows Only\"):\n    If the question implies that we pick 8 stalls from the 10 that had 20 cows: $8 \\times 22 = 176$.\n    If the question implies we pick 8 stalls from the 10 that had 0 cows: $8 \\times 2 = 16$.\n    If the question implies a random mix, it's unsolvable.\n    \n    Given the ambiguity, the \"Average/Total Distribution\" model (96) is the most common \"trick\" or \"standard\" answer for this type of word problem where the specific subset isn't defined, implying the system is in equilibrium or the question refers to the average capacity.\n    \n    However, let's look at the wording \"putting an equal number of the new cows into each of the twenty stalls\".\n    This explicitly describes the action on the *new* cows.\n    \n    Is there any way the 10 original stalls and 10 new stalls end up with the same number?\n    Only if the new stalls started with 20 cows? No, \"Ten stalls have 20 cows each\" implies the others don't"
+            }
+          ]
+        }
+      ],
+      "tensor_parallel_size": 2,
+      "global_gdn_shape": {
+        "H": 16,
+        "HV": 48,
+        "K": 128,
+        "V": 128
+      },
+      "per_rank_gdn_shape": {
+        "H": 8,
+        "HV": 24,
+        "K": 128,
+        "V": 128
+      },
+      "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+      "source_files": {
+        "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+        "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+        "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+        "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": "7c9bf8e9d07f8d96d5e4bb9779d0031b8022e9b5edc687b7e489bf72bcf09ec6",
+        "tests/kernels/mamba/test_gdn_forward_core_split.py": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72"
+      },
+      "model_config_sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc",
+      "gpu_uuids": [
+        "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675"
+      ],
+      "runtime_snapshot_digest": "1fe5f18dcbaa2d2b05aa3367340ccb866dc89871854b69ba69763a5d6a37527b",
+      "kv_capacity_tokens": 58254
+    }
+  },
+  "paired": {
+    "C1": {
+      "paired_questions": 8,
+      "matching_parsed_answers": 8,
+      "exact_token_sequences": 5,
+      "flips": {
+        "raw_correct": {
+          "losses": [],
+          "gains": []
+        },
+        "strict_correct": {
+          "losses": [],
+          "gains": []
+        }
+      },
+      "target_pairs": [
+        {
+          "index": 209,
+          "gold": "145",
+          "triton": {
+            "index": 209,
+            "gold": "145",
+            "predicted": "145",
+            "raw_correct": true,
+            "completed_correct": true,
+            "strict_correct": true,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 2350,
+            "token_ids_sha256": "a38b1b61f34b9e1519c4fa220cd4758fc76bfbfeeeb569b31f2c0f52f01c35b6"
+          },
+          "flashinfer": {
+            "index": 209,
+            "gold": "145",
+            "predicted": "145",
+            "raw_correct": true,
+            "completed_correct": true,
+            "strict_correct": true,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 1597,
+            "token_ids_sha256": "e1343996a587cb0b704f84825257be4723b7534195785e5d98e2db8d4c370378"
+          }
+        },
+        {
+          "index": 255,
+          "gold": "192",
+          "triton": {
+            "index": 255,
+            "gold": "192",
+            "predicted": "176",
+            "raw_correct": false,
+            "completed_correct": false,
+            "strict_correct": false,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 1482,
+            "token_ids_sha256": "a45c5346cb32516d03f09cfaf913fe2aa6a3ee00a91982cacf1fc2fddf13e6f9"
+          },
+          "flashinfer": {
+            "index": 255,
+            "gold": "192",
+            "predicted": "176",
+            "raw_correct": false,
+            "completed_correct": false,
+            "strict_correct": false,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 1835,
+            "token_ids_sha256": "06022c143165c1c57b131137bf722f6beac58968665eeff39bf2d5587626e353"
+          }
+        }
+      ],
+      "changed_token_indices": [
+        206,
+        209,
+        255
+      ],
+      "first_token_differences": [
+        {
+          "index": 206,
+          "first_difference_zero_based": 4,
+          "triton_tokens": 381,
+          "flashinfer_tokens": 383
+        },
+        {
+          "index": 209,
+          "first_difference_zero_based": 15,
+          "triton_tokens": 2350,
+          "flashinfer_tokens": 1597
+        },
+        {
+          "index": 255,
+          "first_difference_zero_based": 1304,
+          "triton_tokens": 1482,
+          "flashinfer_tokens": 1835
+        }
+      ]
+    },
+    "C8": {
+      "paired_questions": 8,
+      "matching_parsed_answers": 6,
+      "exact_token_sequences": 6,
+      "flips": {
+        "raw_correct": {
+          "losses": [
+            209
+          ],
+          "gains": []
+        },
+        "strict_correct": {
+          "losses": [
+            209
+          ],
+          "gains": []
+        }
+      },
+      "target_pairs": [
+        {
+          "index": 209,
+          "gold": "145",
+          "triton": {
+            "index": 209,
+            "gold": "145",
+            "predicted": "145",
+            "raw_correct": true,
+            "completed_correct": true,
+            "strict_correct": true,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 1804,
+            "token_ids_sha256": "f293c6d992baec6a600a13906412fcff63a952e2d0171282db44fe39eb70be47"
+          },
+          "flashinfer": {
+            "index": 209,
+            "gold": "145",
+            "predicted": "34800",
+            "raw_correct": false,
+            "completed_correct": false,
+            "strict_correct": false,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 1355,
+            "token_ids_sha256": "af2947bcfbea6245e0d4fad90940d2cf3e75d625c7f1ae792039b8c1b42b5d1e"
+          }
+        },
+        {
+          "index": 255,
+          "gold": "192",
+          "triton": {
+            "index": 255,
+            "gold": "192",
+            "predicted": "176",
+            "raw_correct": false,
+            "completed_correct": false,
+            "strict_correct": false,
+            "finish_reason": "stop",
+            "truncated": false,
+            "has_answer_marker": true,
+            "unparsed": false,
+            "token_count": 3315,
+            "token_ids_sha256": "106c9d1eb3d86f010da31b511f6639d01d4db7c6cd0bdb07bcc51bfdc979cef3"
+          },
+          "flashinfer": {
+            "index": 255,
+            "gold": "192",
+            "predicted": "20",
+            "raw_correct": false,
+            "completed_correct": false,
+            "strict_correct": false,
+            "finish_reason": "length",
+            "truncated": true,
+            "has_answer_marker": false,
+            "unparsed": false,
+            "token_count": 3500,
+            "token_ids_sha256": "1e585f7dfaea102fb0bbca7d656a0164d03673422165657ba28cd9244bf0c2e6"
+          }
+        }
+      ],
+      "changed_token_indices": [
+        209,
+        255
+      ],
+      "first_token_differences": [
+        {
+          "index": 209,
+          "first_difference_zero_based": 480,
+          "triton_tokens": 1804,
+          "flashinfer_tokens": 1355
+        },
+        {
+          "index": 255,
+          "first_difference_zero_based": 81,
+          "triton_tokens": 3315,
+          "flashinfer_tokens": 3500
+        }
+      ]
+    }
+  },
+  "notes": [
+    "serve-triton.log: recorded log SHA verifies the first 122191 bytes; 4350 appended bytes separately match the closeout manifest. Tail contains allowed late buffered NCCL informational output and resource_tracker shutdown cleanup; it is not described as only teardown. Original record/raw bytes were not changed."
+  ],
+  "limitations": [
+    "Eight selected questions and one run per concurrency cannot estimate overall accuracy or establish backend equivalence",
+    "Output budget, model context and KV capacity change together",
+    "Wrong, unparsed, missing-marker and truncated responses remain in results",
+    "The original 100-question scores and truncations remain unchanged",
+    "Target-answer instability and any continued truncation are unresolved observations; successful HTTP requests do not establish quality correctness",
+    "Shared log-closeout verifier checks bytes only; quality scores are independently recomputed here"
+  ]
+}
