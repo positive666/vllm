@@ -1,0 +1,12 @@
+{
+  "observed_utc": "2026-10-08T12:47:32Z",
+  "owned_container": "gdn60403-review-20261008",
+  "container_id": "99879b5a9eb515388d05f22902b23ccb1c9462ae27c0b19e3a23995d04d54570",
+  "owner_label_verified": true,
+  "container_status": "exited",
+  "gpu": 7,
+  "memory_used_mib": 1,
+  "utilization_percent": 0,
+  "gpu_compute_processes": 0,
+  "other_services_modified": false
+}

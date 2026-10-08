@@ -1,0 +1,2374 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "status": "integrity_passed",
+  "source_manifest_sha256": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60",
+  "audit_script_sha256": "7c129a18854a6010c53f80e68909d9934a3a7670ced01920b9b309437a48e990",
+  "harness_sha256": "885dab543e73369a8fab05603274fbf654add1eeeae9f0c70e4324c3e138b74e",
+  "supervisor_sha256": "96ebd53719b942b10989212cb6d07ff6e4adb4bcba41899aa65589b895caf93e",
+  "dataset_sha256": "ca6e7c5108b7ab7bc920c707e021b21bd9bdaf725e48a179b781ce4be1e9ad13",
+  "question_fixture_sha256": "281fc18d4cc24deb70f039966292226a93945424078523f5e4706c4d714b0f7e",
+  "protocol": {
+    "temperature": 0,
+    "seed": 42,
+    "max_tokens": 1750,
+    "enable_thinking": false,
+    "concurrency": 8,
+    "return_token_ids": true,
+    "prefix_caching": "must be disabled on server"
+  },
+  "protocol_sha256": "edb749403ea17744ce4d298aad92cb802a901736fa5b96a75a88bdfbac7e2a36",
+  "frozen_fixture_reference_sha256": "6a75093d52a8e2aa9bbff105115c0c11011d121522388ce9c18be31e38d3f1c4",
+  "model_config_sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc",
+  "matched_server_command_sha256": "e382757d4593bc37b28f74ed45037da785801312f2df0fda48da7f1c5e667d00",
+  "fixture_validation_note": "The full local dataset hash and all selected question/gold rows were checked.",
+  "backends": {
+    "triton": {
+      "summary": {
+        "samples": 100,
+        "correct": 96,
+        "truncated": 0,
+        "unparsed": 0,
+        "missing_answer_marker": 0,
+        "http_failures": 0,
+        "completed_correct": 96,
+        "strict_correct": 96,
+        "unexpected_finish": 0,
+        "total_output_tokens": 39373
+      },
+      "integrity": {
+        "raw_quality_sha256": "00c5e7a17dacfd445ad2516aeb52482e0a47bb7564ad26ced5389f93af10e679",
+        "supervisor_record_sha256": "f715a73a219c97abf829b64ab3308fa6e2c163c2c075a54f9adf3b23c4dd7232",
+        "server_log_sha256": "41c422c5210095740d23d43cbfe6756c48e70ba694f88d7681b0ed1f5d4d8672",
+        "supervisor_sha256": "96ebd53719b942b10989212cb6d07ff6e4adb4bcba41899aa65589b895caf93e",
+        "source_hash_count": 5,
+        "reused_runtime_source_hash_count": 3,
+        "logged_http_200": 100,
+        "kv_capacity_tokens": 21845,
+        "server_exit": 0,
+        "runtime_note": "Reused runtime probe from the earlier review run"
+      },
+      "raw_quality_file": "triton-c8-r1-quality.json",
+      "supervisor_file": "supervisor-triton-c8-r1.json",
+      "server_log_file": "supervisor-triton-c8-r1.log"
+    },
+    "flashinfer": {
+      "summary": {
+        "samples": 100,
+        "correct": 96,
+        "truncated": 0,
+        "unparsed": 0,
+        "missing_answer_marker": 0,
+        "http_failures": 0,
+        "completed_correct": 96,
+        "strict_correct": 96,
+        "unexpected_finish": 0,
+        "total_output_tokens": 38486
+      },
+      "integrity": {
+        "raw_quality_sha256": "3760968573eecdac80fe69f15fa5eba647505695f3fcc58226d34c0c3d847e34",
+        "supervisor_record_sha256": "055a06b4e5cff4a08b2e98f492749db7d8c0848fd0d437275e2ffea36eb4a4fd",
+        "server_log_sha256": "6b7ffc96332ce8efefb370bc3868038a8d7f7b64ed842b8fc2d09875e86b8a48",
+        "supervisor_sha256": "96ebd53719b942b10989212cb6d07ff6e4adb4bcba41899aa65589b895caf93e",
+        "source_hash_count": 5,
+        "reused_runtime_source_hash_count": 3,
+        "logged_http_200": 100,
+        "kv_capacity_tokens": 21845,
+        "server_exit": 0,
+        "runtime_note": "Reused runtime probe from the earlier review run"
+      },
+      "raw_quality_file": "flashinfer-c8-r1-quality.json",
+      "supervisor_file": "supervisor-flashinfer-c8-r1.json",
+      "server_log_file": "supervisor-flashinfer-c8-r1.log"
+    }
+  },
+  "comparison": {
+    "paired_questions": 100,
+    "exact_token_sequences": 62,
+    "same_parsed_answers": 100,
+    "flips": {
+      "raw_correct": {
+        "triton_to_flashinfer_losses": [],
+        "triton_to_flashinfer_gains": []
+      },
+      "completed_correct": {
+        "triton_to_flashinfer_losses": [],
+        "triton_to_flashinfer_gains": []
+      },
+      "strict_correct": {
+        "triton_to_flashinfer_losses": [],
+        "triton_to_flashinfer_gains": []
+      }
+    },
+    "changed_outputs": [
+      {
+        "index": 13,
+        "gold": "18",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 54,
+        "token_context": {
+          "triton": [
+            87,
+            3,
+            198,
+            2742,
+            9376,
+            283,
+            393
+          ],
+          "flashinfer": [
+            87,
+            3,
+            198,
+            52904,
+            27286,
+            72317,
+            283
+          ]
+        },
+        "triton": {
+          "index": 13,
+          "gold": "18",
+          "predicted": "18",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 539,
+          "token_ids_sha256": "0678449395eae9cb443d1ab94fda3c5d975182e586ff2261afe36dfc65db6be2"
+        },
+        "flashinfer": {
+          "index": 13,
+          "gold": "18",
+          "predicted": "18",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 533,
+          "token_ids_sha256": "d4a6697fdcc1f0117fb785249b849d14b3e6b01904ab5ead838947ab72a9d947"
+        }
+      },
+      {
+        "index": 61,
+        "gold": "1430",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 132,
+        "token_context": {
+          "triton": [
+            279,
+            2702,
+            2695,
+            6945,
+            748,
+            2944,
+            318
+          ],
+          "flashinfer": [
+            279,
+            2702,
+            2695,
+            50028,
+            748,
+            2944,
+            318
+          ]
+        },
+        "triton": {
+          "index": 61,
+          "gold": "1430",
+          "predicted": "1430",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 248,
+          "token_ids_sha256": "823b114d8c04d37c13a69f03b8612ec20d1494b811158692163e8e672c3c7540"
+        },
+        "flashinfer": {
+          "index": 61,
+          "gold": "1430",
+          "predicted": "1430",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 248,
+          "token_ids_sha256": "e1093ed053d2cafc6cc1e013047b77ffc59e89c6c4e4a218d040b2a6bdcd19be"
+        }
+      },
+      {
+        "index": 93,
+        "gold": "36",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 109,
+        "token_context": {
+          "triton": [
+            11723,
+            8213,
+            279,
+            220,
+            19,
+            15,
+            15
+          ],
+          "flashinfer": [
+            11723,
+            8213,
+            279,
+            70073,
+            303,
+            220,
+            18
+          ]
+        },
+        "triton": {
+          "index": 93,
+          "gold": "36",
+          "predicted": "36.36",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 836,
+          "token_ids_sha256": "a549a449abe60d31c18646ff42fdc458a3931dcf7f6376ce5aae6827b6330273"
+        },
+        "flashinfer": {
+          "index": 93,
+          "gold": "36",
+          "predicted": "36.36",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1437,
+          "token_ids_sha256": "b804da44f1710c9dccef128595abf92d6ca4366af43c9b8e7fdc280df78f2ad1"
+        }
+      },
+      {
+        "index": 191,
+        "gold": "5",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 30,
+        "token_context": {
+          "triton": [
+            279,
+            2702,
+            16556,
+            14849,
+            364,
+            279,
+            4307
+          ],
+          "flashinfer": [
+            279,
+            2702,
+            16556,
+            3487,
+            15808,
+            364,
+            279
+          ]
+        },
+        "triton": {
+          "index": 191,
+          "gold": "5",
+          "predicted": "5",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 209,
+          "token_ids_sha256": "f6077b8e267a2f11505197e6e0c53bf210c767688846acae1cc3340273a8e510"
+        },
+        "flashinfer": {
+          "index": 191,
+          "gold": "5",
+          "predicted": "5",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 276,
+          "token_ids_sha256": "a04be8dfda9ac135c83efdb973f897f2f79e7eaf49608d84c0702f1a37b62166"
+        }
+      },
+      {
+        "index": 209,
+        "gold": "145",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 454,
+        "token_context": {
+          "triton": [
+            198,
+            10883,
+            11,
+            328,
+            4873,
+            2695,
+            314
+          ],
+          "flashinfer": [
+            198,
+            10883,
+            11,
+            279,
+            16629,
+            328,
+            4873
+          ]
+        },
+        "triton": {
+          "index": 209,
+          "gold": "145",
+          "predicted": "145",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1289,
+          "token_ids_sha256": "ec1a3a56564c44f0c286725082b4f7fe0f98f5817d44477a2a4a231c058beb8f"
+        },
+        "flashinfer": {
+          "index": 209,
+          "gold": "145",
+          "predicted": "145",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1685,
+          "token_ids_sha256": "e7597fb436c5a0da0796b2fb8904a3b1c5449c3ab2af46e5ae4dd1269c38c9f2"
+        }
+      },
+      {
+        "index": 255,
+        "gold": "192",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 19,
+        "token_context": {
+          "triton": [
+            2763,
+            1324,
+            314,
+            71072,
+            321,
+            43659,
+            159029
+          ],
+          "flashinfer": [
+            2763,
+            1324,
+            314,
+            43659,
+            159029,
+            198,
+            760
+          ]
+        },
+        "triton": {
+          "index": 255,
+          "gold": "192",
+          "predicted": "96",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1608,
+          "token_ids_sha256": "78ca70c6065b69fe0c4838bde2ba30b071ce8eddcdc3268601024730fabff363"
+        },
+        "flashinfer": {
+          "index": 255,
+          "gold": "192",
+          "predicted": "96",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 467,
+          "token_ids_sha256": "62da5b392073cabdd65efb2db4ff6dd80459818130dfa7a5a5520890ca002f57"
+        }
+      },
+      {
+        "index": 326,
+        "gold": "14",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 24,
+        "token_context": {
+          "triton": [
+            220,
+            16,
+            25,
+            36189,
+            2891,
+            279,
+            4203
+          ],
+          "flashinfer": [
+            220,
+            16,
+            25,
+            19182,
+            279,
+            1324,
+            314
+          ]
+        },
+        "triton": {
+          "index": 326,
+          "gold": "14",
+          "predicted": "14",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 331,
+          "token_ids_sha256": "eee654ee1623ab861a3f8f04f0caae6fcc10d325a664316cf20eda78fcd1d731"
+        },
+        "flashinfer": {
+          "index": 326,
+          "gold": "14",
+          "predicted": "14",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 312,
+          "token_ids_sha256": "91b091c8d9699190dfcd7f777f31308f9f3a010e37685c643a678b0c8ab43be3"
+        }
+      },
+      {
+        "index": 334,
+        "gold": "6",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 158,
+        "token_context": {
+          "triton": [
+            279,
+            1103,
+            369,
+            14557,
+            11,
+            11528,
+            11
+          ],
+          "flashinfer": [
+            279,
+            1103,
+            369,
+            328,
+            29367,
+            11,
+            11528
+          ]
+        },
+        "triton": {
+          "index": 334,
+          "gold": "6",
+          "predicted": "6",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 396,
+          "token_ids_sha256": "c4ff4155c5578dfae5e07e37c4172d7cace2cb77fc9036f992b3bb3fb54d46ec"
+        },
+        "flashinfer": {
+          "index": 334,
+          "gold": "6",
+          "predicted": "6",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 396,
+          "token_ids_sha256": "4ac26f4c687503c0400be67f9ffcc6413be3e48c0ee7c522d71dbd4e891efef6"
+        }
+      },
+      {
+        "index": 350,
+        "gold": "8",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 140,
+        "token_context": {
+          "triton": [
+            383,
+            7670,
+            38346,
+            264,
+            4139,
+            20580,
+            13
+          ],
+          "flashinfer": [
+            383,
+            7670,
+            38346,
+            4139,
+            449,
+            6258,
+            13
+          ]
+        },
+        "triton": {
+          "index": 350,
+          "gold": "8",
+          "predicted": "8",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 375,
+          "token_ids_sha256": "f5626f57abc29385816c89ec82bdc2c7a1b442bbbb5fb361e00a1274dfd8268e"
+        },
+        "flashinfer": {
+          "index": 350,
+          "gold": "8",
+          "predicted": "8",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 371,
+          "token_ids_sha256": "9105e7411ce7b9b60cd34a32007fb05b7a02b1b0c006b8e76309ec3c65f3a8a1"
+        }
+      },
+      {
+        "index": 393,
+        "gold": "20",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 22,
+        "token_context": {
+          "triton": [
+            383,
+            1754,
+            3274,
+            321,
+            1179,
+            10724,
+            279
+          ],
+          "flashinfer": [
+            383,
+            1754,
+            3274,
+            11,
+            10724,
+            279,
+            2702
+          ]
+        },
+        "triton": {
+          "index": 393,
+          "gold": "20",
+          "predicted": "20",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 553,
+          "token_ids_sha256": "7be2594ed544e37a714cd09115d5d142ff0016d9f96679d62da7d9c9bd42004b"
+        },
+        "flashinfer": {
+          "index": 393,
+          "gold": "20",
+          "predicted": "20",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 541,
+          "token_ids_sha256": "a80b45e515aa510da06a601cd1145a5e7af3e18345b4402d646883aa6198c57e"
+        }
+      },
+      {
+        "index": 407,
+        "gold": "2000",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 138,
+        "token_context": {
+          "triton": [
+            220,
+            18,
+            25,
+            8352,
+            364,
+            279,
+            2716
+          ],
+          "flashinfer": [
+            220,
+            18,
+            25,
+            19892,
+            279,
+            7123,
+            4284
+          ]
+        },
+        "triton": {
+          "index": 407,
+          "gold": "2000",
+          "predicted": "2000",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 560,
+          "token_ids_sha256": "d89e4a2d9cb887ed01feb6d3ab1cbe5c2f2a7a757f92a97d992c4664d57ec686"
+        },
+        "flashinfer": {
+          "index": 407,
+          "gold": "2000",
+          "predicted": "2000",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 559,
+          "token_ids_sha256": "8547a7e8977ad2cc87bd04e4b2c3b3648689cda3657fe4f80d069f86d870604b"
+        }
+      },
+      {
+        "index": 435,
+        "gold": "5",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 141,
+        "token_context": {
+          "triton": [
+            25273,
+            17,
+            15,
+            593,
+            220,
+            19,
+            283
+          ],
+          "flashinfer": [
+            25273,
+            17,
+            15,
+            1088,
+            596,
+            220,
+            19
+          ]
+        },
+        "triton": {
+          "index": 435,
+          "gold": "5",
+          "predicted": "5",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 164,
+          "token_ids_sha256": "414b823ef21c6c87a1f2127c5b63dc7eb035fa2edf33858a9db94d83907f1599"
+        },
+        "flashinfer": {
+          "index": 435,
+          "gold": "5",
+          "predicted": "5",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 167,
+          "token_ids_sha256": "e7810f9aa567665f97a4de3f8d46956e9f0e4a2423111a759e8710f2822b9805"
+        }
+      },
+      {
+        "index": 440,
+        "gold": "98",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 58,
+        "token_context": {
+          "triton": [
+            13299,
+            13,
+            8439,
+            1017,
+            513,
+            220,
+            18
+          ],
+          "flashinfer": [
+            13299,
+            13,
+            8439,
+            220,
+            16,
+            18921,
+            16327
+          ]
+        },
+        "triton": {
+          "index": 440,
+          "gold": "98",
+          "predicted": "98",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 360,
+          "token_ids_sha256": "c960060dc96bbc9026d364d04d643d21eb271de517552a97c5dc9917ef8b0c15"
+        },
+        "flashinfer": {
+          "index": 440,
+          "gold": "98",
+          "predicted": "98",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 398,
+          "token_ids_sha256": "b01eb43365793b76c790b5efcbdeec18815498fc35482d97a94090e26ed63f41"
+        }
+      },
+      {
+        "index": 447,
+        "gold": "5",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 75,
+        "token_context": {
+          "triton": [
+            15,
+            13682,
+            198,
+            4272,
+            11,
+            52894,
+            579
+          ],
+          "flashinfer": [
+            15,
+            13682,
+            198,
+            21794,
+            1155,
+            579,
+            1534
+          ]
+        },
+        "triton": {
+          "index": 447,
+          "gold": "5",
+          "predicted": "5",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 213,
+          "token_ids_sha256": "e6640cb6e4af52febf4a2ee187e7de1403fe522bfd1c9e45364663d47a349ef1"
+        },
+        "flashinfer": {
+          "index": 447,
+          "gold": "5",
+          "predicted": "5",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 209,
+          "token_ids_sha256": "93ae4118c2ac60b7b9450d7e574db055ce0cb2cee634e388bb7cb112e2915bbc"
+        }
+      },
+      {
+        "index": 457,
+        "gold": "45",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 7,
+        "token_context": {
+          "triton": [
+            13909,
+            28253,
+            6093,
+            310,
+            279,
+            3377,
+            25
+          ],
+          "flashinfer": [
+            13909,
+            28253,
+            6093,
+            25,
+            271,
+            16,
+            13
+          ]
+        },
+        "triton": {
+          "index": 457,
+          "gold": "45",
+          "predicted": "45",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 235,
+          "token_ids_sha256": "03fe9acc04d5c986509e276ef2807456e9959d34b30ba4d8b022bd72ff722cb8"
+        },
+        "flashinfer": {
+          "index": 457,
+          "gold": "45",
+          "predicted": "45",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 168,
+          "token_ids_sha256": "2f89aaf32ebc7e65a3041e2b4b6353841285ccc26676342c3dd2e41df7911978"
+        }
+      },
+      {
+        "index": 466,
+        "gold": "1",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 322,
+        "token_context": {
+          "triton": [
+            19892,
+            279,
+            6463,
+            159029,
+            271,
+            3036,
+            2076
+          ],
+          "flashinfer": [
+            19892,
+            279,
+            6463,
+            303,
+            2695,
+            159029,
+            271
+          ]
+        },
+        "triton": {
+          "index": 466,
+          "gold": "1",
+          "predicted": "1",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 381,
+          "token_ids_sha256": "c3e6eff937242990fd23c03173ae18ac95d9f9669638289e00119a1fd1657ebb"
+        },
+        "flashinfer": {
+          "index": 466,
+          "gold": "1",
+          "predicted": "1",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 383,
+          "token_ids_sha256": "dae99c140ccd34979d094fd355efe5142e666b07ff5f4f3757e3de2d64cf9408"
+        }
+      },
+      {
+        "index": 469,
+        "gold": "4",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 62,
+        "token_context": {
+          "triton": [
+            84865,
+            92,
+            283,
+            1088,
+            1272,
+            90,
+            2742
+          ],
+          "flashinfer": [
+            84865,
+            92,
+            283,
+            220,
+            21,
+            1088,
+            1272
+          ]
+        },
+        "triton": {
+          "index": 469,
+          "gold": "4",
+          "predicted": "4",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 246,
+          "token_ids_sha256": "a11eaec290fd9ddf75240704938b0c94c40f1c527e9c4e21a7fdcc9afe639a3b"
+        },
+        "flashinfer": {
+          "index": 469,
+          "gold": "4",
+          "predicted": "4",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 228,
+          "token_ids_sha256": "85bf1e5ca147e770d961b42021ac216caa8f78a825565d26e5236f3c09481443"
+        }
+      },
+      {
+        "index": 505,
+        "gold": "1600",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 448,
+        "token_context": {
+          "triton": [
+            5954,
+            364,
+            279,
+            13881,
+            13,
+            271,
+            9764
+          ],
+          "flashinfer": [
+            5954,
+            364,
+            279,
+            2400,
+            7384,
+            314,
+            279
+          ]
+        },
+        "triton": {
+          "index": 505,
+          "gold": "1600",
+          "predicted": "1600",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1192,
+          "token_ids_sha256": "a49cbeed1f7e2d22ac4e306bbc4a784e680076ae1d7cb755ef5d8d685e8d11d2"
+        },
+        "flashinfer": {
+          "index": 505,
+          "gold": "1600",
+          "predicted": "1600",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1252,
+          "token_ids_sha256": "0bc6735fa677cf9deeeb33d062326a35335313e1eca43804a76bb66a3f05f91e"
+        }
+      },
+      {
+        "index": 541,
+        "gold": "50",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 225,
+        "token_context": {
+          "triton": [
+            198,
+            760,
+            2702,
+            18413,
+            364,
+            279,
+            2182
+          ],
+          "flashinfer": [
+            198,
+            760,
+            2702,
+            14647,
+            13595,
+            2100,
+            369
+          ]
+        },
+        "triton": {
+          "index": 541,
+          "gold": "50",
+          "predicted": "50",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 629,
+          "token_ids_sha256": "2a01227a53aac11b613264c929315fd50a3c95dc2f5baef80eb5f99ab39d1fd9"
+        },
+        "flashinfer": {
+          "index": 541,
+          "gold": "50",
+          "predicted": "50",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 614,
+          "token_ids_sha256": "f12b257b93934ed3e64e49051ea449953250e7ab40775ef2bb052589534788a5"
+        }
+      },
+      {
+        "index": 542,
+        "gold": "7",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 1,
+        "token_context": {
+          "triton": [
+            1206,
+            1423,
+            680,
+            1204,
+            1691
+          ],
+          "flashinfer": [
+            1206,
+            7995,
+            1204,
+            1691,
+            2222
+          ]
+        },
+        "triton": {
+          "index": 542,
+          "gold": "7",
+          "predicted": "7",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 351,
+          "token_ids_sha256": "fc61b9d02d8ce87d886cb3b6da812091d6439e5ae778a5ed386f9f8f19507d81"
+        },
+        "flashinfer": {
+          "index": 542,
+          "gold": "7",
+          "predicted": "7",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 349,
+          "token_ids_sha256": "0d08caf5320669030daa876c33b3aabff35d45cf22a0e1871519fd252648835e"
+        }
+      },
+      {
+        "index": 563,
+        "gold": "12",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 213,
+        "token_context": {
+          "triton": [
+            13,
+            7555,
+            3749,
+            310,
+            3569,
+            220,
+            19
+          ],
+          "flashinfer": [
+            13,
+            7555,
+            3749,
+            220,
+            19,
+            29318,
+            13
+          ]
+        },
+        "triton": {
+          "index": 563,
+          "gold": "12",
+          "predicted": "12",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 257,
+          "token_ids_sha256": "6fe63911534fb0418e23b4565560ef465d21ae3740428fd3b9c7f37541de563f"
+        },
+        "flashinfer": {
+          "index": 563,
+          "gold": "12",
+          "predicted": "12",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 255,
+          "token_ids_sha256": "52162e94b3b914f6be8afdd207113033ec2469f27b0bbcb1b5f601a1b649bd9b"
+        }
+      },
+      {
+        "index": 592,
+        "gold": "1",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 135,
+        "token_context": {
+          "triton": [
+            11268,
+            2695,
+            283,
+            393,
+            19,
+            1088,
+            14695
+          ],
+          "flashinfer": [
+            11268,
+            2695,
+            283,
+            220,
+            17,
+            348,
+            393
+          ]
+        },
+        "triton": {
+          "index": 592,
+          "gold": "1",
+          "predicted": "1",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 253,
+          "token_ids_sha256": "75732b467daebb09a91387bbc74323f6c0c42a8d463b166d436ee1cf7ac334c7"
+        },
+        "flashinfer": {
+          "index": 592,
+          "gold": "1",
+          "predicted": "1",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 252,
+          "token_ids_sha256": "0abf5d572bb01ef2f15c037aa85b6082a81662984fe5c0f73037f8b1315b1d6f"
+        }
+      },
+      {
+        "index": 664,
+        "gold": "32",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 215,
+        "token_context": {
+          "triton": [
+            791,
+            10793,
+            3307,
+            25273,
+            198,
+            13682,
+            1088
+          ],
+          "flashinfer": [
+            791,
+            10793,
+            3307,
+            283,
+            1088,
+            35790,
+            90
+          ]
+        },
+        "triton": {
+          "index": 664,
+          "gold": "32",
+          "predicted": "32",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 327,
+          "token_ids_sha256": "259542e2c6de09216227211c69ae1a4ca7292c77a69e122a4776f48f3ffeda47"
+        },
+        "flashinfer": {
+          "index": 664,
+          "gold": "32",
+          "predicted": "32",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 317,
+          "token_ids_sha256": "c5cf309c7e418516b0e036ebaaac977ee39a4598b9447cd23613d00cefd04e62"
+        }
+      },
+      {
+        "index": 689,
+        "gold": "7",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 215,
+        "token_context": {
+          "triton": [
+            279,
+            2695,
+            314,
+            220,
+            19,
+            94038,
+            539
+          ],
+          "flashinfer": [
+            279,
+            2695,
+            314,
+            279,
+            220,
+            19,
+            94038
+          ]
+        },
+        "triton": {
+          "index": 689,
+          "gold": "7",
+          "predicted": "7",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 445,
+          "token_ids_sha256": "2c791c7dcd3a152a590d22ae36949135561b813b60b39ad7abc11dbcfb5b9a9b"
+        },
+        "flashinfer": {
+          "index": 689,
+          "gold": "7",
+          "predicted": "7",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 446,
+          "token_ids_sha256": "3c02e51458cd27596d510705ec3b5c8de79c584b749875151e2a09531578fdbd"
+        }
+      },
+      {
+        "index": 704,
+        "gold": "50",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 161,
+        "token_context": {
+          "triton": [
+            89999,
+            279,
+            3202,
+            7157,
+            494,
+            52433,
+            579
+          ],
+          "flashinfer": [
+            89999,
+            279,
+            3202,
+            52433,
+            7157,
+            159029,
+            198
+          ]
+        },
+        "triton": {
+          "index": 704,
+          "gold": "50",
+          "predicted": "50",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 213,
+          "token_ids_sha256": "a8ba282d594ebfee7e33dcda2883c8a253d319f16fcdb9596a9fd000ec1e92e8"
+        },
+        "flashinfer": {
+          "index": 704,
+          "gold": "50",
+          "predicted": "50",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 209,
+          "token_ids_sha256": "697dcc884ff92b0a22216c86c424cec585e6c383895751d0523dcdff6a483738"
+        }
+      },
+      {
+        "index": 727,
+        "gold": "112",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 1,
+        "token_context": {
+          "triton": [
+            1206,
+            1423,
+            279,
+            2702,
+            1324
+          ],
+          "flashinfer": [
+            1206,
+            7995,
+            279,
+            2702,
+            1324
+          ]
+        },
+        "triton": {
+          "index": 727,
+          "gold": "112",
+          "predicted": "112",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 414,
+          "token_ids_sha256": "b4ed1176e2c56c93aeefb4e0077ef6cfd15e2c652eeb9577e9c6e73f7eb1b6a3"
+        },
+        "flashinfer": {
+          "index": 727,
+          "gold": "112",
+          "predicted": "112",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 418,
+          "token_ids_sha256": "b723f2481833fb840b851696c741f5950c172ca2633eeb5354640e0bdec5ee8d"
+        }
+      },
+      {
+        "index": 775,
+        "gold": "276",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 19,
+        "token_context": {
+          "triton": [
+            314,
+            21992,
+            2483,
+            364,
+            279,
+            9054,
+            321
+          ],
+          "flashinfer": [
+            314,
+            21992,
+            2483,
+            310,
+            40362,
+            279,
+            22351
+          ]
+        },
+        "triton": {
+          "index": 775,
+          "gold": "276",
+          "predicted": "276",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 307,
+          "token_ids_sha256": "f3e5448e63cc0dbebc7d28b1803619607abe8f0295ce4a8d806828e2b448b5ab"
+        },
+        "flashinfer": {
+          "index": 775,
+          "gold": "276",
+          "predicted": "276",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 302,
+          "token_ids_sha256": "2a407ca9a4c0fecef82ec021a9fb52138253beda2589d687b6e886900f172267"
+        }
+      },
+      {
+        "index": 777,
+        "gold": "4400",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 134,
+        "token_context": {
+          "triton": [
+            3240,
+            791,
+            5522,
+            2785,
+            279,
+            3878,
+            369
+          ],
+          "flashinfer": [
+            3240,
+            791,
+            5522,
+            364,
+            279,
+            3878,
+            369
+          ]
+        },
+        "triton": {
+          "index": 777,
+          "gold": "4400",
+          "predicted": "4400",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1405,
+          "token_ids_sha256": "fee70bd804abd7576b0680fcbe842e08b209804e87da271bcd16a7ae9f561667"
+        },
+        "flashinfer": {
+          "index": 777,
+          "gold": "4400",
+          "predicted": "4400",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 650,
+          "token_ids_sha256": "de5c288f2037e9121404908826001a9f15add051c65214724cfc1e5b08440abd"
+        }
+      },
+      {
+        "index": 778,
+        "gold": "38",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 72,
+        "token_context": {
+          "triton": [
+            13,
+            15,
+            15,
+            1088,
+            14695,
+            220,
+            21
+          ],
+          "flashinfer": [
+            13,
+            15,
+            15,
+            12943,
+            65,
+            56014,
+            14695
+          ]
+        },
+        "triton": {
+          "index": 778,
+          "gold": "38",
+          "predicted": "38",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 305,
+          "token_ids_sha256": "8c90b229e0a6a80e3c6351dac38785eaed9e56154d57236852635046bdcd4de7"
+        },
+        "flashinfer": {
+          "index": 778,
+          "gold": "38",
+          "predicted": "38",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 317,
+          "token_ids_sha256": "81fb18e23b9974ab327975fe4abb6780d97534bfe638999b20ab6399df73eadf"
+        }
+      },
+      {
+        "index": 821,
+        "gold": "35",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 164,
+        "token_context": {
+          "triton": [
+            4139,
+            14195,
+            13,
+            198,
+            262,
+            25273,
+            1088
+          ],
+          "flashinfer": [
+            4139,
+            14195,
+            13,
+            1165,
+            1144,
+            310,
+            1423
+          ]
+        },
+        "triton": {
+          "index": 821,
+          "gold": "35",
+          "predicted": "35",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 226,
+          "token_ids_sha256": "3f0c361976d933cd657d0224daafb89aae23e931c69dcad174a00772516ecc0a"
+        },
+        "flashinfer": {
+          "index": 821,
+          "gold": "35",
+          "predicted": "35",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 245,
+          "token_ids_sha256": "b7a3743cfb2b1a4683d94faa3c67c25bc32cbd7d1753f953d7f8be3b36e8ed58"
+        }
+      },
+      {
+        "index": 946,
+        "gold": "450",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 94,
+        "token_context": {
+          "triton": [
+            159029,
+            198,
+            760,
+            3377,
+            32726,
+            328,
+            77420
+          ],
+          "flashinfer": [
+            159029,
+            198,
+            760,
+            16629,
+            328,
+            77420,
+            2942
+          ]
+        },
+        "triton": {
+          "index": 946,
+          "gold": "450",
+          "predicted": "450",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 231,
+          "token_ids_sha256": "38cbee03f30b81d719fc936da1298e2a2cdb429093f3e8920e9dfaf0e7392912"
+        },
+        "flashinfer": {
+          "index": 946,
+          "gold": "450",
+          "predicted": "450",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 224,
+          "token_ids_sha256": "08411b12f2a5dfa30602131c7252666c0339e60d206acbcb084be177824cb497"
+        }
+      },
+      {
+        "index": 1022,
+        "gold": "12",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 141,
+        "token_context": {
+          "triton": [
+            513,
+            2574,
+            421,
+            61296,
+            5898,
+            10598,
+            430
+          ],
+          "flashinfer": [
+            513,
+            2574,
+            421,
+            1292,
+            5898,
+            10598,
+            430
+          ]
+        },
+        "triton": {
+          "index": 1022,
+          "gold": "12",
+          "predicted": "12",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 535,
+          "token_ids_sha256": "44d8f3c61be79f4b970fed55a9044d614715204c36101fde868b570fd895897a"
+        },
+        "flashinfer": {
+          "index": 1022,
+          "gold": "12",
+          "predicted": "12",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 535,
+          "token_ids_sha256": "bef2a2202e7f88577ca3242748c56c70b22418a5c043cab429b933efc4269f9b"
+        }
+      },
+      {
+        "index": 1093,
+        "gold": "144",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 67,
+        "token_context": {
+          "triton": [
+            11,
+            440,
+            14890,
+            393,
+            16,
+            15,
+            1088
+          ],
+          "flashinfer": [
+            11,
+            440,
+            14890,
+            220,
+            16,
+            15,
+            7303
+          ]
+        },
+        "triton": {
+          "index": 1093,
+          "gold": "144",
+          "predicted": "144",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 503,
+          "token_ids_sha256": "abdcefed33793cc3400f6ac6d2d4659d7a25c5b1cd06f5cfd873a1ee9f819d9b"
+        },
+        "flashinfer": {
+          "index": 1093,
+          "gold": "144",
+          "predicted": "144",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 496,
+          "token_ids_sha256": "771678ca6a15a65312558d7bf0f89423abe7c29316d90dd32a7fd466382af121"
+        }
+      },
+      {
+        "index": 1103,
+        "gold": "90",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 279,
+        "token_context": {
+          "triton": [
+            487,
+            70392,
+            567,
+            513,
+            24217,
+            279,
+            3050
+          ],
+          "flashinfer": [
+            487,
+            70392,
+            567,
+            1132,
+            1698,
+            279,
+            5981
+          ]
+        },
+        "triton": {
+          "index": 1103,
+          "gold": "90",
+          "predicted": "90",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 598,
+          "token_ids_sha256": "659b33e1dfb63dbcc63931934134ff4abc3343e4df9d7ce54300d5d28c94cdfd"
+        },
+        "flashinfer": {
+          "index": 1103,
+          "gold": "90",
+          "predicted": "90",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 597,
+          "token_ids_sha256": "ee8ddad03275d8d1c6b9eb5079148d138248528f37235c44dc398ee0f548862b"
+        }
+      },
+      {
+        "index": 1130,
+        "gold": "25",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 65,
+        "token_context": {
+          "triton": [
+            2305,
+            791,
+            3618,
+            25,
+            198,
+            13682,
+            1088
+          ],
+          "flashinfer": [
+            2305,
+            791,
+            3618,
+            13,
+            198,
+            13682,
+            1088
+          ]
+        },
+        "triton": {
+          "index": 1130,
+          "gold": "25",
+          "predicted": "25",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 423,
+          "token_ids_sha256": "1931987b6bea949026bf5e86d2a593dba16445fb85cffdb87e351b4aa97b74f4"
+        },
+        "flashinfer": {
+          "index": 1130,
+          "gold": "25",
+          "predicted": "25",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 419,
+          "token_ids_sha256": "76bfab1397511af2b38ee5ed9f07cfc2677be5efda7a3bd713d56450cf3436f7"
+        }
+      },
+      {
+        "index": 1209,
+        "gold": "29",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 172,
+        "token_context": {
+          "triton": [
+            279,
+            2919,
+            6747,
+            2261,
+            1754,
+            4031,
+            159029
+          ],
+          "flashinfer": [
+            279,
+            2919,
+            6747,
+            364,
+            1754,
+            4031,
+            159029
+          ]
+        },
+        "triton": {
+          "index": 1209,
+          "gold": "29",
+          "predicted": "29",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 415,
+          "token_ids_sha256": "540c022678c62aa2d3a73302e56beb42fb9ad5fa8c529c7819d1dfd85b2b90f2"
+        },
+        "flashinfer": {
+          "index": 1209,
+          "gold": "29",
+          "predicted": "29",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 415,
+          "token_ids_sha256": "151579db89379e5506ac3686c3e7aab22052bbdf8f83b814a085450318f113cd"
+        }
+      },
+      {
+        "index": 1300,
+        "gold": "120",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 74,
+        "token_context": {
+          "triton": [
+            19932,
+            974,
+            25,
+            7043,
+            11,
+            7670,
+            318
+          ],
+          "flashinfer": [
+            19932,
+            974,
+            25,
+            220,
+            17,
+            318,
+            34871
+          ]
+        },
+        "triton": {
+          "index": 1300,
+          "gold": "120",
+          "predicted": "120",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 287,
+          "token_ids_sha256": "75455fc0388b231eb5d167353b992b747ad4e217b17ba492cb6fc7f23dbb3b72"
+        },
+        "flashinfer": {
+          "index": 1300,
+          "gold": "120",
+          "predicted": "120",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 315,
+          "token_ids_sha256": "ff6f14678bc206f9c94ac54f63376f1f2480dac582fa930917a29a0a9bc12d1d"
+        }
+      },
+      {
+        "index": 1310,
+        "gold": "64",
+        "prediction_changed": false,
+        "raw_correctness_flip": false,
+        "strict_correctness_flip": false,
+        "first_token_difference_zero_based": 63,
+        "token_context": {
+          "triton": [
+            21,
+            4276,
+            13,
+            4213,
+            11,
+            567,
+            1118
+          ],
+          "flashinfer": [
+            21,
+            4276,
+            13,
+            1165,
+            1048,
+            1366,
+            421
+          ]
+        },
+        "triton": {
+          "index": 1310,
+          "gold": "64",
+          "predicted": "64",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 512,
+          "token_ids_sha256": "a6ef75cbae29cb63b693753d3f59e62db8f67f1ed9915d0a656427558538a3bd"
+        },
+        "flashinfer": {
+          "index": 1310,
+          "gold": "64",
+          "predicted": "64",
+          "raw_correct": true,
+          "completed_correct": true,
+          "strict_correct": true,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 479,
+          "token_ids_sha256": "00a5db5ff2ce8b74088550dcf5332b59abbad62a93af026dba420e4a898c9229"
+        }
+      }
+    ],
+    "all_exceptional_or_changed_answer_outcomes": [
+      {
+        "index": 93,
+        "question": "Lee used to be able to run the 400-meter hurdles two seconds faster than Gerald would run the 400-meter hurdles.  But Gerald changed his diet, which improved his speed by 10%.  If Lee runs the 400-meter hurdles in 38 seconds, how fast can Gerald, with his improved diet, run the 400-meter hurdles, in seconds?",
+        "gold": "36",
+        "triton": {
+          "index": 93,
+          "gold": "36",
+          "predicted": "36.36",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 836,
+          "token_ids_sha256": "a549a449abe60d31c18646ff42fdc458a3931dcf7f6376ce5aae6827b6330273",
+          "text": "Let $L$ be Lee's time and $G_{old}$ be Gerald's original time.\n\n**Step 1: Determine Gerald's original time.**\nThe problem states that Lee used to be able to run the 400-meter hurdles two seconds faster than Gerald. In the context of race times, \"faster\" means a lower time. Therefore, Lee's time was 2 seconds less than Gerald's original time.\n$$L = G_{old} - 2$$\n\nWe are given that Lee runs the 400-meter hurdles in 38 seconds ($L = 38$). We can substitute this into the equation:\n$$38 = G_{old} - 2$$\n\nSolving for $G_{old}$:\n$$G_{old} = 38 + 2$$\n$$G_{old} = 40 \\text{ seconds}$$\n\nSo, Gerald's original time was 40 seconds.\n\n**Step 2: Calculate Gerald's improved time.**\nThe problem states that Gerald changed his diet, which improved his speed by 10%. It is crucial to distinguish between improving *speed* and improving *time*.\n\nLet $v_{old}$ be Gerald's original speed and $v_{new}$ be his new speed.\nSpeed is inversely proportional to time ($v = \\frac{d}{t}$).\nIf speed increases by 10%, the new speed is:\n$$v_{new} = 1.10 \\times v_{old}$$\n\nSince distance ($d$) is constant (400 meters), the relationship between the old time ($G_{old}$) and the new time ($G_{new}$) is:\n$$v_{old} = \\frac{d}{G_{old}}$$\n$$v_{new} = \\frac{d}{G_{new}}$$\n\nSubstituting the speed relationship:\n$$\\frac{d}{G_{new}} = 1.10 \\times \\frac{d}{G_{old}}$$\n\nDividing both sides by $d$:\n$$\\frac{1}{G_{new}} = \\frac{1.10}{G_{old}}$$\n\nSolving for $G_{new}$:\n$$G_{new} = \\frac{G_{old}}{1.10}$$\n\n**Step 3: Perform the final calculation.**\nSubstitute $G_{old} = 40$ into the equation:\n$$G_{new} = \\frac{40}{1.10}$$\n$$G_{new} = \\frac{40}{1.1}$$\n$$G_{new} = \\frac{400}{11}$$\n\nNow, convert the fraction to a decimal:\n$$400 \\div 11 \\approx 36.3636...$$\n\nRounding to two decimal places (standard for such problems unless specified otherwise), we get 36.36 seconds. However, usually, exact fractions or standard rounding is accepted. Let's provide the decimal value.\n\n$$G_{new} \\approx 36.36$$\n\nLet's double-check the logic.\nOriginal Time: 40s.\nOriginal Speed: $1/40$ units/sec.\nNew Speed: $1.1 \\times (1/40) = 1.1/40 = 11/400$ units/sec.\nNew Time: $1 / (11/400) = 400/11$ seconds.\n$400 / 11 = 36.3636...$\n\nThe question asks \"how fast... in seconds\". This implies the time taken.\n\nFinal Answer:\n$$ \\frac{400}{11} \\approx 36.36 $$\n\n#### 36.36"
+        },
+        "flashinfer": {
+          "index": 93,
+          "gold": "36",
+          "predicted": "36.36",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1437,
+          "token_ids_sha256": "b804da44f1710c9dccef128595abf92d6ca4366af43c9b8e7fdc280df78f2ad1",
+          "text": "Let $L$ be Lee's time and $G_{old}$ be Gerald's original time.\n\n**Step 1: Determine Gerald's original time.**\nThe problem states that Lee used to be able to run the 400-meter hurdles two seconds faster than Gerald. In the context of race times, \"faster\" means a lower time. Therefore, Lee's time was 2 seconds less than Gerald's original time.\n$$L = G_{old} - 2$$\n\nWe are given that Lee runs the hurdles in 38 seconds ($L = 38$). We can substitute this into the equation:\n$$38 = G_{old} - 2$$\n\nSolving for $G_{old}$:\n$$G_{old} = 38 + 2$$\n$$G_{old} = 40 \\text{ seconds}$$\n\nSo, Gerald's original time was 40 seconds.\n\n**Step 2: Calculate Gerald's improved time.**\nThe problem states that Gerald changed his diet, which improved his speed by 10%. It is crucial to distinguish between improving *speed* and improving *time*.\n\nLet $v_{old}$ be Gerald's original speed and $v_{new}$ be his new speed.\nSpeed is inversely proportional to time ($v = \\frac{d}{t}$).\nIf speed increases by 10%, the new speed is $1.10$ times the old speed:\n$$v_{new} = 1.10 \\times v_{old}$$\n\nSince distance ($d$) is constant (400 meters), we can relate the times:\n$$v_{old} = \\frac{d}{G_{old}}$$\n$$v_{new} = \\frac{d}{G_{new}}$$\n\nSubstituting these into the speed relationship:\n$$\\frac{d}{G_{new}} = 1.10 \\times \\frac{d}{G_{old}}$$\n\nDividing both sides by $d$:\n$$\\frac{1}{G_{new}} = \\frac{1.10}{G_{old}}$$\n\nSolving for $G_{new}$:\n$$G_{new} = \\frac{G_{old}}{1.10}$$\n\nNow, substitute $G_{old} = 40$:\n$$G_{new} = \\frac{40}{1.10}$$\n$$G_{new} = \\frac{40}{1.1}$$\n$$G_{new} = \\frac{400}{11}$$\n\n**Step 3: Perform the final calculation.**\n$$G_{new} \\approx 36.3636...$$\n\nLet's double-check the logic.\nOriginal time: 40s.\nOriginal speed: $400/40 = 10$ m/s.\nNew speed: $10 \\times 1.10 = 11$ m/s.\nNew time: $400 / 11 \\approx 36.36$ seconds.\n\nThe question asks for the answer in seconds. Usually, unless specified, we can provide the exact fraction or a rounded decimal. Given the context of such problems, a decimal approximation to two places is standard, or the exact fraction. Let's provide the decimal value rounded to two decimal places, or check if it divides evenly. It does not divide evenly.\n\n$400 / 11 = 36.3636...$\n\nLet's re-read carefully to ensure \"improved his speed by 10%\" doesn't mean \"reduced his time by 10%\".\n\"Improved his speed\" strictly refers to velocity. If it meant time, it would say \"improved his time by 10%\".\nIf it were time reduction: $40 \\times (1 - 0.10) = 36$ seconds.\nHowever, \"speed\" is the physical quantity.\nSpeed $v = d/t$.\n$v_{new} = 1.1 v_{old}$.\n$d/t_{new} = 1.1 (d/t_{old})$.\n$1/t_{new} = 1.1 / t_{old}$.\n$t_{new} = t_{old} / 1.1$.\n$t_{new} = 40 / 1.1 = 36.36...$\n\nLet's consider if there is an ambiguity. In many casual contexts, people confuse speed and time. However, in math problems, \"speed\" is specific.\nLet's look at the numbers.\nIf the answer was intended to be 36, the phrasing would likely be \"improved his time by 10%\".\nSince it says \"improved his speed\", the calculation $40/1.1$ is the mathematically correct interpretation.\n\n$400/11$ seconds.\n\nLet's convert to a decimal.\n$36.36$ seconds.\n\nIs it possible the question implies a simpler integer answer?\nIf Gerald's time was reduced by 10%, it would be 36.\nIf Gerald's speed was increased by 10%, it is $36.36$.\n\nLet's check similar problems online. Often, \"improved speed by X%\" leads to $T_{new} = T_{old} / (1 + X/100)$.\nLet's stick with the rigorous definition.\n\nCalculation:\n$40 / 1.1 = 36.363636...$\n\nRounding to two decimal places: 36.36.\n\nLet's verify the \"two seconds faster\" part again.\nLee = 38.\nLee is 2 seconds faster than Gerald (original).\nSo Gerald (original) is 2 seconds slower than Lee.\nGerald (original) = $38 + 2 = 40$. Correct.\n\nGerald's speed improved by 10%.\nNew Speed = $1.1 \\times$ Old Speed.\nNew Time = Distance / New Speed = Distance / ($1.1 \\times$ Old Speed) = (Distance / Old Speed) / 1.1 = Old Time / 1.1.\nNew Time = $40 / 1.1 = 36.3636...$\n\nThe final answer is $36.36$ (rounded) or $400/11$. I will provide the decimal rounded to two places as is standard for time in seconds unless a fraction is requested.\n\n#### 36.36"
+        }
+      },
+      {
+        "index": 255,
+        "question": "Ten stalls have 20 cows each. Mr. Sylas buys 40 cows and divides them equally, putting an equal number of the new cows into each of the twenty stalls. How many cows are in 8 of the stalls?",
+        "gold": "192",
+        "triton": {
+          "index": 255,
+          "gold": "192",
+          "predicted": "96",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 1608,
+          "token_ids_sha256": "78ca70c6065b69fe0c4838bde2ba30b071ce8eddcdc3268601024730fabff363",
+          "text": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of stalls and cows.**\nThe problem states there are \"Ten stalls\" initially, with 20 cows each.\nHowever, the next sentence says Mr. Sylas divides the new cows into \"each of the twenty stalls.\" This implies that the total number of stalls is actually 20, not 10. Let's re-read carefully.\n\"Ten stalls have 20 cows each.\" -> This describes the initial state of a subset or perhaps there is a typo in the problem statement regarding the number of stalls.\n\"Mr. Sylas buys 40 cows and divides them equally, putting an equal number of the new cows into each of the twenty stalls.\" -> This explicitly mentions **twenty stalls**.\n\nLet's assume the total number of stalls is 20. The first sentence \"Ten stalls have 20 cows each\" might be a distractor or a partial description, but the action of distributing the new cows happens across **20 stalls**. To find the total number of cows in the stalls after the purchase, we need to know the initial number of cows in *all* 20 stalls.\n\nLet's re-evaluate the text. Is it possible there are only 10 stalls?\nIf there are only 10 stalls, the phrase \"each of the twenty stalls\" would be impossible. Therefore, there must be 20 stalls.\nDoes the first sentence imply that only 10 of the 20 stalls initially had cows? Or does it mean there are 10 stalls total?\nStandard word problem logic suggests that if the distribution is into \"twenty stalls\", the system consists of 20 stalls.\nLet's look at the phrasing again: \"Ten stalls have 20 cows each.\" This is a specific statement about 10 stalls. It does not explicitly state the cow count for the other 10 stalls. However, usually, in such problems, if a specific number of stalls is mentioned with a specific count, and then a larger number of stalls is mentioned for distribution, it's highly likely that the \"Ten stalls\" part is a typo for \"Twenty stalls\" OR that the other 10 stalls are empty.\n\nLet's consider the most standard interpretation of such riddles:\nInterpretation A: There are 20 stalls total. Initially, 10 of them have 20 cows, and the other 10 have 0 cows.\nInterpretation B: There are 20 stalls total. Initially, *all* of them have 20 cows (and the \"Ten\" is a typo for \"Twenty\").\nInterpretation C: There are 10 stalls total, and \"twenty stalls\" is a typo for \"ten stalls\".\n\nLet's look at the numbers.\nIf Interpretation C (10 stalls):\nInitial cows = $10 \\times 20 = 200$.\nNew cows = 40.\nTotal cows = 240.\nDivided by 10 stalls = 24 cows per stall.\nQuestion: How many cows in 8 stalls? $8 \\times 24 = 192$.\n\nIf Interpretation A (20 stalls, 10 full, 10 empty):\nInitial cows = $10 \\times 20 + 10 \\times 0 = 200$.\nNew cows = 40.\nTotal cows = 240.\nDivided by 20 stalls = 12 cows per stall.\nQuestion: How many cows in 8 stalls? $8 \\times 12 = 96$.\n\nIf Interpretation B (20 stalls, all full):\nInitial cows = $20 \\times 20 = 400$.\nNew cows = 40.\nTotal cows = 440.\nDivided by 20 stalls = 22 cows per stall.\nQuestion: How many cows in 8 stalls? $8 \\times 22 = 176$.\n\nLet's re-read the first sentence: \"Ten stalls have 20 cows each.\"\nIt does *not* say \"There are ten stalls\". It says \"Ten stalls [out of the total] have 20 cows each.\"\nThe second sentence clarifies the total number of stalls is **twenty**.\nIt is standard in these types of logic puzzles that if the status of the other stalls isn't mentioned, they are assumed to be empty (0 cows). If they had cows, the problem would be unsolvable without that information. Therefore, we assume the other 10 stalls have 0 cows.\n\nSo, the setup is:\n- Total stalls: 20\n- Initial cows in 10 stalls: $10 \\times 20 = 200$ cows.\n- Initial cows in the other 10 stalls: 0 cows.\n- Total initial cows: 200.\n\n**Step 2: Add the new cows.**\nMr. Sylas buys 40 cows.\nTotal cows now = Initial cows + New cows\nTotal cows = $200 + 40 = 240$ cows.\n\n**Step 3: Distribute the cows equally.**\nThe 240 cows are divided equally among the 20 stalls.\nCows per stall = $\\frac{240}{20}$\nCows per stall = 12.\n\n**Step 4: Calculate the number of cows in 8 stalls.**\nSince each stall has 12 cows, 8 stalls will have:\n$8 \\times 12 = 96$ cows.\n\nLet's double check if \"Ten stalls have 20 cows each\" could imply that there are *only* 10 stalls and the \"twenty\" is a typo.\nIf there were 10 stalls:\nInitial: 200.\nNew: 40.\nTotal: 240.\nPer stall: 24.\n8 stalls: 192.\n\nHowever, \"each of the twenty stalls\" is a very specific constraint. In math problems, explicit numbers in the action phase (\"divides... into each of the twenty stalls\") usually define the denominator. The first sentence defines the initial state. The discrepancy between \"Ten stalls\" and \"twenty stalls\" is the key.\nIf the problem meant 10 stalls, it would likely say \"divides them into each of the ten stalls\".\nThe fact that it specifies \"twenty stalls\" strongly implies the universe of stalls is 20.\nThe fact that it specifies \"Ten stalls have 20 cows\" implies the other 10 are different (likely 0).\n\nTherefore, the calculation based on 20 stalls is the most logically consistent with the text provided.\n\n1.  **Total Stalls**: 20\n2.  **Initial Cows**: 10 stalls $\\times$ 20 cows/stall = 200 cows. (Assuming the other 10 stalls are empty).\n3.  **New Cows**: 40\n4.  **Total Cows**: $200 + 40 = 240$\n5.  **Cows per Stall**: $240 / 20 = 12$\n6.  **Cows in 8 Stalls**: $8 \\times 12 = 96$\n\n#### 96"
+        },
+        "flashinfer": {
+          "index": 255,
+          "gold": "192",
+          "predicted": "96",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 467,
+          "token_ids_sha256": "62da5b392073cabdd65efb2db4ff6dd80459818130dfa7a5a5520890ca002f57",
+          "text": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of cows.**\nThe problem states there are ten stalls, and each stall has 20 cows.\n$$ \\text{Initial total cows} = 10 \\text{ stalls} \\times 20 \\text{ cows/stall} = 200 \\text{ cows} $$\n\n**Step 2: Determine the total number of cows after the purchase.**\nMr. Sylas buys 40 additional cows.\n$$ \\text{Total cows} = 200 \\text{ (initial)} + 40 \\text{ (new)} = 240 \\text{ cows} $$\n\n**Step 3: Determine the number of stalls.**\nThe problem mentions \"each of the twenty stalls.\" This implies that the total number of stalls is 20. (Note: The initial statement \"Ten stalls have 20 cows each\" establishes the starting condition, but the subsequent action of dividing cows into \"each of the twenty stalls\" clarifies the final configuration involves 20 stalls. It is likely the initial 10 stalls were joined by 10 more, or the phrasing implies the final state has 20 stalls. Let's re-read carefully: \"Ten stalls have 20 cows each... divides them equally... into each of the twenty stalls.\" This confirms the final distribution is across 20 stalls.)\n\n**Step 4: Calculate the number of cows per stall.**\nThe 240 total cows are divided equally among the 20 stalls.\n$$ \\text{Cows per stall} = \\frac{240 \\text{ cows}}{20 \\text{ stalls}} = 12 \\text{ cows/stall} $$\n\n**Step 5: Calculate the number of cows in 8 of the stalls.**\nWe need to find the total number of cows in 8 stalls, given that each stall now has 12 cows.\n$$ \\text{Cows in 8 stalls} = 8 \\text{ stalls} \\times 12 \\text{ cows/stall} = 96 \\text{ cows} $$\n\n#### 96"
+        }
+      },
+      {
+        "index": 1161,
+        "question": "Abraham owns 80 square meters of unused land. He sold half of the land for $50, and after a month, he sold another 1/4 of his land for $30. He then sold the remaining land for $3 per square meter. How much money will he be able to earn after selling all his unused land?",
+        "gold": "170",
+        "triton": {
+          "index": 1161,
+          "gold": "170",
+          "predicted": "140",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 628,
+          "token_ids_sha256": "f1f750561fae0cd1db18dc6e690eb8c2833fcc1eaf2e4ec691768268b709d98e",
+          "text": "Here is the step-by-step solution to calculate the total earnings from selling the land.\n\n**Step 1: Determine the total area of the land.**\nAbraham starts with 80 square meters of land.\n\n**Step 2: Calculate the area and revenue from the first sale.**\nHe sold half of the land.\n$$ \\text{Area sold} = \\frac{1}{2} \\times 80 \\text{ m}^2 = 40 \\text{ m}^2 $$\nThe price for this portion was $50.\n$$ \\text{Revenue}_1 = \\$50 $$\nRemaining land:\n$$ 80 \\text{ m}^2 - 40 \\text{ m}^2 = 40 \\text{ m}^2 $$\n\n**Step 3: Calculate the area and revenue from the second sale.**\nHe sold another 1/4 of his *original* land (the problem states \"1/4 of his land\", which typically refers to the original total unless specified as \"remaining land\". Let's verify the context. Usually, in such problems, fractions refer to the original whole unless \"of the remaining\" is specified. Let's assume it refers to the original 80 m²).\n$$ \\text{Area sold} = \\frac{1}{4} \\times 80 \\text{ m}^2 = 20 \\text{ m}^2 $$\nThe price for this portion was $30.\n$$ \\text{Revenue}_2 = \\$30 $$\nRemaining land:\n$$ 40 \\text{ m}^2 - 20 \\text{ m}^2 = 20 \\text{ m}^2 $$\n\n*Note: If \"1/4 of his land\" meant 1/4 of the remaining 40 m², the area would be 10 m². However, standard phrasing \"sold another 1/4 of his land\" implies 1/4 of the total original land. Let's proceed with 20 m².*\n\n**Step 4: Calculate the revenue from the final sale.**\nHe sold the remaining land for $3 per square meter.\n$$ \\text{Remaining Area} = 20 \\text{ m}^2 $$\n$$ \\text{Price per m}^2 = \\$3 $$\n$$ \\text{Revenue}_3 = 20 \\text{ m}^2 \\times \\$3/\\text{m}^2 = \\$60 $$\n\n**Step 5: Calculate the total earnings.**\n$$ \\text{Total Earnings} = \\text{Revenue}_1 + \\text{Revenue}_2 + \\text{Revenue}_3 $$\n$$ \\text{Total Earnings} = \\$50 + \\$30 + \\$60 $$\n$$ \\text{Total Earnings} = \\$140 $$\n\n#### 140"
+        },
+        "flashinfer": {
+          "index": 1161,
+          "gold": "170",
+          "predicted": "140",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 628,
+          "token_ids_sha256": "f1f750561fae0cd1db18dc6e690eb8c2833fcc1eaf2e4ec691768268b709d98e",
+          "text": "Here is the step-by-step solution to calculate the total earnings from selling the land.\n\n**Step 1: Determine the total area of the land.**\nAbraham starts with 80 square meters of land.\n\n**Step 2: Calculate the area and revenue from the first sale.**\nHe sold half of the land.\n$$ \\text{Area sold} = \\frac{1}{2} \\times 80 \\text{ m}^2 = 40 \\text{ m}^2 $$\nThe price for this portion was $50.\n$$ \\text{Revenue}_1 = \\$50 $$\nRemaining land:\n$$ 80 \\text{ m}^2 - 40 \\text{ m}^2 = 40 \\text{ m}^2 $$\n\n**Step 3: Calculate the area and revenue from the second sale.**\nHe sold another 1/4 of his *original* land (the problem states \"1/4 of his land\", which typically refers to the original total unless specified as \"remaining land\". Let's verify the context. Usually, in such problems, fractions refer to the original whole unless \"of the remaining\" is specified. Let's assume it refers to the original 80 m²).\n$$ \\text{Area sold} = \\frac{1}{4} \\times 80 \\text{ m}^2 = 20 \\text{ m}^2 $$\nThe price for this portion was $30.\n$$ \\text{Revenue}_2 = \\$30 $$\nRemaining land:\n$$ 40 \\text{ m}^2 - 20 \\text{ m}^2 = 20 \\text{ m}^2 $$\n\n*Note: If \"1/4 of his land\" meant 1/4 of the remaining 40 m², the area would be 10 m². However, standard phrasing \"sold another 1/4 of his land\" implies 1/4 of the total original land. Let's proceed with 20 m².*\n\n**Step 4: Calculate the revenue from the final sale.**\nHe sold the remaining land for $3 per square meter.\n$$ \\text{Remaining Area} = 20 \\text{ m}^2 $$\n$$ \\text{Price per m}^2 = \\$3 $$\n$$ \\text{Revenue}_3 = 20 \\text{ m}^2 \\times \\$3/\\text{m}^2 = \\$60 $$\n\n**Step 5: Calculate the total earnings.**\n$$ \\text{Total Earnings} = \\text{Revenue}_1 + \\text{Revenue}_2 + \\text{Revenue}_3 $$\n$$ \\text{Total Earnings} = \\$50 + \\$30 + \\$60 $$\n$$ \\text{Total Earnings} = \\$140 $$\n\n#### 140"
+        }
+      },
+      {
+        "index": 1309,
+        "question": "The girls are trying to raise money for a carnival. Kim raises $320 more than Alexandra, who raises $430, and Maryam raises $400 more than Sarah, who raises $300. How much money, in dollars, did they all raise in total?",
+        "gold": "2280",
+        "triton": {
+          "index": 1309,
+          "gold": "2280",
+          "predicted": "2180",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 441,
+          "token_ids_sha256": "a1d908bdebc142be9d80a4bf4ae020d115bbc293f809dfa9faecdc6b0728803e",
+          "text": "To find the total amount of money raised by all four girls, we need to determine how much each individual raised and then sum those amounts.\n\n**Step 1: Determine how much Alexandra raised.**\nThe problem states directly that Alexandra raises $430.\n$$ \\text{Alexandra} = 430 $$\n\n**Step 2: Determine how much Kim raised.**\nThe problem states that Kim raises $320 more than Alexandra.\n$$ \\text{Kim} = \\text{Alexandra} + 320 $$\n$$ \\text{Kim} = 430 + 320 $$\n$$ \\text{Kim} = 750 $$\n\n**Step 3: Determine how much Sarah raised.**\nThe problem states directly that Sarah raises $300.\n$$ \\text{Sarah} = 300 $$\n\n**Step 4: Determine how much Maryam raised.**\nThe problem states that Maryam raises $400 more than Sarah.\n$$ \\text{Maryam} = \\text{Sarah} + 400 $$\n$$ \\text{Maryam} = 300 + 400 $$\n$$ \\text{Maryam} = 700 $$\n\n**Step 5: Calculate the total amount raised.**\nNow, we sum the amounts raised by Kim, Alexandra, Maryam, and Sarah.\n$$ \\text{Total} = \\text{Kim} + \\text{Alexandra} + \\text{Maryam} + \\text{Sarah} $$\n$$ \\text{Total} = 750 + 430 + 700 + 300 $$\n\nLet's add them up:\n$$ 750 + 430 = 1180 $$\n$$ 700 + 300 = 1000 $$\n$$ 1180 + 1000 = 2180 $$\n\nThe total amount raised is $2180.\n\n#### 2180"
+        },
+        "flashinfer": {
+          "index": 1309,
+          "gold": "2280",
+          "predicted": "2180",
+          "raw_correct": false,
+          "completed_correct": false,
+          "strict_correct": false,
+          "finish_reason": "stop",
+          "truncated": false,
+          "unparsed": false,
+          "missing_marker": false,
+          "token_count": 441,
+          "token_ids_sha256": "a1d908bdebc142be9d80a4bf4ae020d115bbc293f809dfa9faecdc6b0728803e",
+          "text": "To find the total amount of money raised by all four girls, we need to determine how much each individual raised and then sum those amounts.\n\n**Step 1: Determine how much Alexandra raised.**\nThe problem states directly that Alexandra raises $430.\n$$ \\text{Alexandra} = 430 $$\n\n**Step 2: Determine how much Kim raised.**\nThe problem states that Kim raises $320 more than Alexandra.\n$$ \\text{Kim} = \\text{Alexandra} + 320 $$\n$$ \\text{Kim} = 430 + 320 $$\n$$ \\text{Kim} = 750 $$\n\n**Step 3: Determine how much Sarah raised.**\nThe problem states directly that Sarah raises $300.\n$$ \\text{Sarah} = 300 $$\n\n**Step 4: Determine how much Maryam raised.**\nThe problem states that Maryam raises $400 more than Sarah.\n$$ \\text{Maryam} = \\text{Sarah} + 400 $$\n$$ \\text{Maryam} = 300 + 400 $$\n$$ \\text{Maryam} = 700 $$\n\n**Step 5: Calculate the total amount raised.**\nNow, we sum the amounts raised by Kim, Alexandra, Maryam, and Sarah.\n$$ \\text{Total} = \\text{Kim} + \\text{Alexandra} + \\text{Maryam} + \\text{Sarah} $$\n$$ \\text{Total} = 750 + 430 + 700 + 300 $$\n\nLet's add them up:\n$$ 750 + 430 = 1180 $$\n$$ 700 + 300 = 1000 $$\n$$ 1180 + 1000 = 2180 $$\n\nThe total amount raised is $2180.\n\n#### 2180"
+        }
+      }
+    ]
+  },
+  "scope": "One C8 run per backend, fixed 100-question quality screen; no accuracy equivalence or performance claim",
+  "limitations": [
+    "Single L20/SM89, TP1; SM80 and H20 untested",
+    "Reused runtime probe and native binary; full CUDA13 build unvalidated",
+    "No same-backend repeat or C1 diagnostic in this audit",
+    "A bounded subset does not establish statistical accuracy equivalence"
+  ]
+}
