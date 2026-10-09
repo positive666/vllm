@@ -1,0 +1,26 @@
+{
+  "status": "READY_local_CPU_only",
+  "commands": {
+    "ruff_check": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m ruff check D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/replay_late_capture.py",
+    "py_compile": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m py_compile D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/replay_late_capture.py",
+    "prior_help": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/replay_late_capture.py --help",
+    "final_cpu_contract_and_receipt": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -c \"import sys,copy,json,hashlib; from pathlib import Path; h=Path('D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers'); sys.path.insert(0,str(h)); import replay_late_capture as r; case={'production_reproduction':{'attempted':True,'exact_reproduction':True},'checks_within_frozen_tolerance':True}; nonexact=copy.deepcopy(case); nonexact['production_reproduction']['exact_reproduction']=False; assert not r.summarize_cases([nonexact],1,1)['accepted']; assert r.summarize_cases([case],1,672)['status']=='partial_completed'; assert not r.summarize_cases([],1,1)['accepted']; assert r.summarize_cases([case],1,1)['accepted']; assert 'torch' not in sys.modules and 'flashinfer' not in sys.modules; sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest(); out={'status':'READY_local_CPU_only','wrapper_sha256':sha(h/'replay_late_capture.py'),'frozen_replay_sha256':sha(h/'frozen_replay_capture.py'),'final_checks':{'ruff_check_exit':0,'py_compile_exit':0,'cpu_exact_fidelity_coverage_import_contract_exit':0},'prior_help_exit':0,'cpu_contracts':['reject tolerance-only own production fidelity','reject missing cases','reject full acceptance for partial coverage','accept complete exact fidelity and frozen tolerance','no Torch/FlashInfer import side effects'],'gpu_execution':False,'no_numerical_or_model_quality_claim':True}; (h.parent/'replay-cpu-receipt.json').write_text(json.dumps(out,indent=2)+'\\n',encoding='utf-8'); print(json.dumps(out))\""
+  },
+  "wrapper_sha256": "2e6d71a5ece657186bf43cfda020272e39fc80363a6db593b35d5c3f428d4744",
+  "frozen_replay_sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a",
+  "final_checks": {
+    "ruff_check_exit": 0,
+    "py_compile_exit": 0,
+    "cpu_exact_fidelity_coverage_import_contract_exit": 0
+  },
+  "prior_help_exit": 0,
+  "cpu_contracts": [
+    "reject tolerance-only own production fidelity",
+    "reject missing cases",
+    "reject full acceptance for partial coverage",
+    "accept complete exact fidelity and frozen tolerance",
+    "no Torch/FlashInfer import side effects"
+  ],
+  "gpu_execution": false,
+  "no_numerical_or_model_quality_claim": true
+}

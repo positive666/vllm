@@ -1,0 +1,249 @@
+{
+  "status": "READ_ONLY_REVIEW_COMPLETE_REVIEW_REQUIRED_RETAINED",
+  "gpu_execution": false,
+  "ready_for_bounded_local_replay": true,
+  "readiness_scope": "Captured-input kernel replay and frozen common-prestate math checks only; no new free-generation, accuracy, performance or causal conclusion",
+  "overall_validation_pass": false,
+  "strict_same_sample_ownership_pass": false,
+  "snapshot_localization_status": "OBSERVED_INITIAL_PASS",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "positions_per_arm": 7378,
+  "decode_positions_per_arm": 7370,
+  "native_physical_records_per_rank_per_arm": 7378,
+  "prefill_full_logits_equal_examples": 8,
+  "initial_gdn_prestate_equal_pairs": 768,
+  "snapshots_per_arm": 672,
+  "later_state_pairs": 1920,
+  "arms": {
+    "triton": {
+      "run": "late-triton-2",
+      "token_lengths": {
+        "198": 471,
+        "206": 383,
+        "209": 1715,
+        "228": 451,
+        "255": 3500,
+        "285": 139,
+        "292": 403,
+        "318": 316
+      },
+      "actual_outputs_recomputed_against_frozen_reference": true,
+      "metadata_sha256": {
+        "completed.json": "43c30d02d57d4a8e96284ca1dab14ad993c99f7dcf6f811f2d8020dde4f8eb2d",
+        "launch.json": "70620fbc24a6a8083dd3c2ed391995a5b4bb1e862446f8dd30bb3955f7b3ffdf",
+        "runtime-before.json": "8124e358c576bfa05e6da61ee50a76c0882d07450be74468fde4dc110ff177e1",
+        "runtime-after.json": "8124e358c576bfa05e6da61ee50a76c0882d07450be74468fde4dc110ff177e1"
+      },
+      "hardware": [
+        {
+          "rank": 0,
+          "tp_rank": 0,
+          "tp_world_size": 2,
+          "gpu_uuid": "a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ],
+          "tp_device_backend": "nccl"
+        },
+        {
+          "rank": 1,
+          "tp_rank": 1,
+          "tp_world_size": 2,
+          "gpu_uuid": "b7783a01-c440-29bd-ccb8-98ca7acf6675",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ],
+          "tp_device_backend": "nccl"
+        }
+      ]
+    },
+    "flashinfer": {
+      "run": "late-flashinfer-2",
+      "token_lengths": {
+        "198": 471,
+        "206": 383,
+        "209": 1715,
+        "228": 451,
+        "255": 3500,
+        "285": 139,
+        "292": 403,
+        "318": 316
+      },
+      "actual_outputs_recomputed_against_frozen_reference": true,
+      "metadata_sha256": {
+        "completed.json": "cea768e1ecd473c62c06e19f9a4b74e724c9bdfe16b736187bd70a0ea63c3be7",
+        "launch.json": "4cda563f1e4b604b14e5818a7c29713c49b43b75b2d14579bc770653e8be5ed9",
+        "runtime-before.json": "48825892bf7edf65df39e5962c42d0df1bf5ab46cf62022eb6e47eebe3dc50eb",
+        "runtime-after.json": "48825892bf7edf65df39e5962c42d0df1bf5ab46cf62022eb6e47eebe3dc50eb"
+      },
+      "hardware": [
+        {
+          "rank": 0,
+          "tp_rank": 0,
+          "tp_world_size": 2,
+          "gpu_uuid": "a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ],
+          "tp_device_backend": "nccl"
+        },
+        {
+          "rank": 1,
+          "tp_rank": 1,
+          "tp_world_size": 2,
+          "gpu_uuid": "b7783a01-c440-29bd-ccb8-98ca7acf6675",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ],
+          "tp_device_backend": "nccl"
+        }
+      ]
+    }
+  },
+  "native_sampler_difference_count": 15,
+  "native_sampler_difference_counts_by_index": {
+    "206": 1,
+    "209": 5,
+    "255": 9
+  },
+  "first_native_backend_difference_steps": {
+    "206": 4,
+    "209": 454,
+    "255": 19
+  },
+  "first_actual_sampler_reference_difference": {
+    "triton": {
+      "198": null,
+      "206": 4,
+      "209": 454,
+      "228": null,
+      "255": 19,
+      "285": null,
+      "292": null,
+      "318": null
+    },
+    "flashinfer": {
+      "198": null,
+      "206": null,
+      "209": null,
+      "228": null,
+      "255": null,
+      "285": null,
+      "292": null,
+      "318": null
+    }
+  },
+  "target255_later_state_observations": {
+    "18": {
+      "pairs": 96,
+      "max_prestate_abs_error": 0.023635506629943848,
+      "max_poststate_abs_error": 0.017369866371154785
+    },
+    "19": {
+      "pairs": 96,
+      "max_prestate_abs_error": 0.017369866371154785,
+      "max_poststate_abs_error": 0.014776766300201416
+    },
+    "1750": {
+      "pairs": 96,
+      "max_prestate_abs_error": 0.0683215782046318,
+      "max_poststate_abs_error": 0.06713247299194336
+    },
+    "3497": {
+      "pairs": 96,
+      "max_prestate_abs_error": 0.029655516147613525,
+      "max_poststate_abs_error": 0.02963791787624359
+    },
+    "3498": {
+      "pairs": 96,
+      "max_prestate_abs_error": 0.02963791787624359,
+      "max_poststate_abs_error": 0.029572412371635437
+    },
+    "3499": {
+      "pairs": 96,
+      "max_prestate_abs_error": 0.029572412371635437,
+      "max_poststate_abs_error": 0.029566235840320587
+    }
+  },
+  "host_raw_recomputed": [
+    {
+      "run": "late-triton-2",
+      "sample_count": 64,
+      "strict_same_sample_ownership_pass": true,
+      "compute_pid_observations": 113,
+      "same_sample_confirmed_observations": 113,
+      "unmatched_same_sample_observations": 0,
+      "possible_adjacent_sample_race_observations": 0,
+      "unknown_ownership_observations": 0,
+      "unknown_ownership_pids": [],
+      "mismatches": [],
+      "scope": "Sampled PIDs only. Sequential GPU and container queries are not atomic; candidate race labels are observations, not proof of ownership at that instant. Unobserved short-lived activity and PID reuse between samples remain possible."
+    },
+    {
+      "run": "late-flashinfer-2",
+      "sample_count": 63,
+      "strict_same_sample_ownership_pass": false,
+      "compute_pid_observations": 115,
+      "same_sample_confirmed_observations": 114,
+      "unmatched_same_sample_observations": 1,
+      "possible_adjacent_sample_race_observations": 1,
+      "unknown_ownership_observations": 0,
+      "unknown_ownership_pids": [],
+      "mismatches": [
+        {
+          "utc": "2026-10-09T12:11:36Z",
+          "gpu_uuid": "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675",
+          "pid": 206320,
+          "used_gpu_memory": "550 MiB",
+          "category": "possible_adjacent_sample_spawn_or_exit_race",
+          "candidate_owned_sample_utc": [
+            "2026-10-09T12:11:30Z"
+          ],
+          "previous_owned_sample_utc": "2026-10-09T12:11:30Z",
+          "previous_sample_had_same_gpu_compute_pid": true
+        }
+      ],
+      "scope": "Sampled PIDs only. Sequential GPU and container queries are not atomic; candidate race labels are observations, not proof of ownership at that instant. Unobserved short-lived activity and PID reuse between samples remain possible."
+    }
+  ],
+  "artifact_sha256": {
+    "pair-native.json": "d773790253ab1ee6777c18ecda52fa04752cc430f7c981f5581390c5045da0d4",
+    "pair-host.json": "cfb52ea4cae258ae78f993fd5016df8a6cd20d8e749f63f6cea49c8e230e868e",
+    "pair-snapshots.json": "c514484cf04938fcc1b3585e1ce3a373c0e0ebe3b8f13966811837b4fe1e54ec",
+    "pair-summary.json": "248d1256d71d7153c23068d8cbf8ce1eda16104e6211f4ffb8d074d688930787"
+  },
+  "review_script_sha256": "0f2c7d2c93f4e93d0d522ce67ab1c233101d877ee30ba4b6da7357abc287834f",
+  "limitations": [
+    "Local recomputation covers downloaded metadata, report coverage and raw PID telemetry; all1344 binary snapshots were checked by the frozen remote CPU consumer, not downloaded and reread locally.",
+    "The single unmatched current sample remains unconfirmed; prior owned PID is a possible exit race, not proof of instantaneous ownership.",
+    "Full-attention KV is unobserved; forced output cannot validate natural stopping or model accuracy."
+  ]
+}

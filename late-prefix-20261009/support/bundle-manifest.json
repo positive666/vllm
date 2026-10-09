@@ -1,0 +1,340 @@
+{
+  "archive_inputs": {
+    "helpers/audit_late_host.py": {
+      "bytes": 9589,
+      "sha256": "62b336f3566cef56cdd2d46c09d26016f4261727bcd7388d852f2cb904638362"
+    },
+    "helpers/audit_late_sampler.py": {
+      "bytes": 42773,
+      "sha256": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d"
+    },
+    "helpers/audit_late_snapshots.py": {
+      "bytes": 20412,
+      "sha256": "bab8c17cc979527f0dd906355bee89843814e91cc268eda8cce934c32118fe5e"
+    },
+    "helpers/cpu_bootstrap_contracts.py": {
+      "bytes": 7150,
+      "sha256": "702e55cd382d32e40bf940274e5d2361f85f3587c087244788c49c9812411393"
+    },
+    "helpers/cpu_capture_contracts.py": {
+      "bytes": 9935,
+      "sha256": "2df1809f1383782b26782071dd6b0e058441d90dc2bf6540f6b900f8dd7138d4"
+    },
+    "helpers/cpu_contracts.py": {
+      "bytes": 1541,
+      "sha256": "9ec97fb3782c7d153118594a3d79370cfa749eae29b488bfb0a53fc1a50acb49"
+    },
+    "helpers/cpu_sampler_contracts.py": {
+      "bytes": 9022,
+      "sha256": "1caceeacac879d35ad12c5ed9222d4480f9813651e97650cbe00815c2bdb7fe4"
+    },
+    "helpers/force_decode.py": {
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    "helpers/force_decode_v2.py": {
+      "bytes": 18819,
+      "sha256": "13f31dc70d02ba4fe69b901d1be6f2a703bddc1d5bfde3838cc1119bbfb7ede1"
+    },
+    "helpers/frozen_replay_capture.py": {
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    "helpers/late_bootstrap.py": {
+      "bytes": 877,
+      "sha256": "da35fe1986392658a73f8cc663f39aac3362dc4940cb37e6839eae405b6e8ab0"
+    },
+    "helpers/late_capture.py": {
+      "bytes": 9271,
+      "sha256": "74d8ce3a16ea5bcadd4a3ae324b9cd9de1878f8def7860b13e0570291835eb97"
+    },
+    "helpers/late_driver.py": {
+      "bytes": 10439,
+      "sha256": "bb2dcc1457400057f104c5d3498470ea9082f8638b48a316e0c897a72c84c072"
+    },
+    "helpers/late_plan.py": {
+      "bytes": 3800,
+      "sha256": "954252fbfadbf898a4dc6240bd6db1c0954001360bf073c98dcc1496f8f318ca"
+    },
+    "helpers/late_runtime.py": {
+      "bytes": 2369,
+      "sha256": "3c90f717e7fe9e7c5df79edf41e212173d49a3e3e9e1a099b692c0070b9a38e6"
+    },
+    "helpers/late_site/sitecustomize.py": {
+      "bytes": 47,
+      "sha256": "9de9c1430dcabbfb210a2ae95135533d12b789a7f10b6777534f16b42c9c680e"
+    },
+    "helpers/launch_capture.py": {
+      "bytes": 14351,
+      "sha256": "fa19732e40b53aefdaed5f4f1cd45451c7abbe614e913a2587db6133a1c1b006"
+    },
+    "helpers/replay_late_capture.py": {
+      "bytes": 16850,
+      "sha256": "2e6d71a5ece657186bf43cfda020272e39fc80363a6db593b35d5c3f428d4744"
+    },
+    "reference/reference-lock.json": {
+      "bytes": 1954,
+      "sha256": "c56bc5f24109901190769b0047b809da4a7d57448884442afd6a1a507924c4bb"
+    },
+    "reference/reference/completed.json": {
+      "bytes": 145702,
+      "sha256": "d293b322876e8236f7799a688221ddd0d10e79f8046c6601db40fa6316421e78"
+    },
+    "reference/reference/fixture.json": {
+      "bytes": 22354,
+      "sha256": "0ef122fc8b9a36abd51884201e03b40b9529ef2fffafd7124a7a46609ca6a6e4"
+    },
+    "reference/reference/launch.json": {
+      "bytes": 6258,
+      "sha256": "69967bcc38ca26dd41477b40b43108c819d4bf958e9e320146af6568ea5fd83d"
+    },
+    "reference/reference/run.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "reference/reference/runtime-after.json": {
+      "bytes": 112608,
+      "sha256": "cc5f9265856a58f900358621a34fea72da369109607ecc2b9dcf8a7b7dfb1a6e"
+    },
+    "reference/reference/runtime-before.json": {
+      "bytes": 102890,
+      "sha256": "0644e3f02d644b2233e2b7300e3cc2852b16745ad6bbd6fb410f52185ce015ad"
+    },
+    "reference/reference/runtime-binding.json": {
+      "bytes": 1846,
+      "sha256": "3d70b3ff020676a2eda076c9652369adc810580ed4ce448d3e87a8e056a5136a"
+    },
+    "reference/reference/sampling-runtime.json": {
+      "bytes": 1136,
+      "sha256": "d17d6efbcb95ed51eba86061a07a720d7585dc82150e786344fabb78e40dc9f8"
+    },
+    "reference/reference/shutdown.json": {
+      "bytes": 107,
+      "sha256": "06ebb23a9edd3acd4bfddc17fcab1f3ef64bce18bd87ae2571af5983c523bbfa"
+    }
+  },
+  "archive_layout": "helpers mounted at /late-helpers; reference mounted at /late-reference",
+  "coverage": {
+    "layers": 48,
+    "native_positions_per_arm": 7378,
+    "ranks": 2,
+    "snapshots_per_arm": 672,
+    "steps": [
+      1,
+      18,
+      19,
+      1750,
+      3497,
+      3498,
+      3499
+    ]
+  },
+  "cpu_receipts": {
+    "cpu-bootstrap-preparation-receipt.json": {
+      "receipt": {
+        "bootstrap_helper_sha256": "da35fe1986392658a73f8cc663f39aac3362dc4940cb37e6839eae405b6e8ab0",
+        "checks": [
+          {
+            "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_bootstrap_contracts.py -v",
+            "contract_sha256": "0b01f921c7278ed5a1ee6a691a68941c7ec113e0b7ef8ab19d2e9ef74018a12a",
+            "exit_code": 0,
+            "route": "Parent explicit install + actual deferred hooks",
+            "runtime_seconds": 29.028,
+            "tests": 1
+          },
+          {
+            "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_bootstrap_contracts.py -v",
+            "contract_sha256": "702e55cd382d32e40bf940274e5d2361f85f3587c087244788c49c9812411393",
+            "exit_code": 0,
+            "route": "Actual worker late_site/sitecustomize + deferred hooks + duplicate explicit install rejected",
+            "runtime_seconds": 27.587,
+            "tests": 1
+          }
+        ],
+        "frozen_force_common_sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24",
+        "gpu_execution": false,
+        "parent_child_path": "Parent process starts without GDN observer environment and explicitly installs once in main; spawned worker runs late_site/sitecustomize once, and __mp_main__ does not execute the driver main.",
+        "schema": 1,
+        "scope": "Actual artifact installers/deferred loaders use CPU stub model classes. No numerical native sampler or CUDA kernel invocation."
+      },
+      "sha256": "1cf22fb6c5281fc182901a877e900fc4b04c512e06792a23d87ea6080d7bc812"
+    },
+    "cpu-capture-preparation-receipt.json": {
+      "receipt": {
+        "checks": [
+          {
+            "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_capture_contracts.py -v",
+            "exit_code": 0,
+            "test_runtime_seconds": 52.539,
+            "tests": 8
+          },
+          {
+            "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m compileall -q artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers",
+            "exit_code": 0,
+            "scope": "Final complete v2 helper set after bootstrap/source/consumer freeze"
+          },
+          {
+            "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_contracts.py -v",
+            "exit_code": 0,
+            "tests": 2
+          },
+          {
+            "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/late_driver.py --backend flashinfer --run late-v2-cpu --reference-root artifacts/gdn60403-review-20261008/late-prefix-v2-20261009 --plan-only",
+            "exit_code": 0,
+            "gpu_execution": false,
+            "observations": 7378,
+            "requests": 8
+          }
+        ],
+        "gpu_execution": false,
+        "schema": 1,
+        "scope": "Local CPU preparation only; no GPU execution or capture results."
+      },
+      "sha256": "d0f4cae0f3dcbfc26f361a7ada3274991fb96e281a505200fa93ea548dfc162f"
+    },
+    "cpu-sampler-contracts.json": {
+      "receipt": {
+        "auditor_sha256": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d",
+        "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_sampler_contracts.py",
+        "contracts": [
+          "Physical sharded sampler ownership and exact GPU input join; wrong input token rejected",
+          "Changed full-vocabulary prefill SHA or normalized schedule retained as explicit NOGO"
+        ],
+        "contracts_sha256": "1caceeacac879d35ad12c5ed9222d4480f9813651e97650cbe00815c2bdb7fe4",
+        "exit_code": 0,
+        "gpu_execution": false,
+        "producer_or_production_changes": false,
+        "status": "CPU-contracts-pass-no-GPU",
+        "synthetic_fixture_scope": "Temporary stdlib trace fixtures; never model quality or performance evidence",
+        "test_duration_seconds": 3.123,
+        "tests_passed": 2,
+        "tests_run": 2
+      },
+      "sha256": "13688067bd4bf102a29ac9281988fcf2d979810a24f96d32c50e062983ebb137"
+    },
+    "replay-cpu-receipt.json": {
+      "receipt": {
+        "commands": {
+          "final_cpu_contract_and_receipt": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -c \"import sys,copy,json,hashlib; from pathlib import Path; h=Path('D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers'); sys.path.insert(0,str(h)); import replay_late_capture as r; case={'production_reproduction':{'attempted':True,'exact_reproduction':True},'checks_within_frozen_tolerance':True}; nonexact=copy.deepcopy(case); nonexact['production_reproduction']['exact_reproduction']=False; assert not r.summarize_cases([nonexact],1,1)['accepted']; assert r.summarize_cases([case],1,672)['status']=='partial_completed'; assert not r.summarize_cases([],1,1)['accepted']; assert r.summarize_cases([case],1,1)['accepted']; assert 'torch' not in sys.modules and 'flashinfer' not in sys.modules; sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest(); out={'status':'READY_local_CPU_only','wrapper_sha256':sha(h/'replay_late_capture.py'),'frozen_replay_sha256':sha(h/'frozen_replay_capture.py'),'final_checks':{'ruff_check_exit':0,'py_compile_exit':0,'cpu_exact_fidelity_coverage_import_contract_exit':0},'prior_help_exit':0,'cpu_contracts':['reject tolerance-only own production fidelity','reject missing cases','reject full acceptance for partial coverage','accept complete exact fidelity and frozen tolerance','no Torch/FlashInfer import side effects'],'gpu_execution':False,'no_numerical_or_model_quality_claim':True}; (h.parent/'replay-cpu-receipt.json').write_text(json.dumps(out,indent=2)+'\\n',encoding='utf-8'); print(json.dumps(out))\"",
+          "prior_help": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/replay_late_capture.py --help",
+          "py_compile": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m py_compile D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/replay_late_capture.py",
+          "ruff_check": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m ruff check D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/replay_late_capture.py"
+        },
+        "cpu_contracts": [
+          "reject tolerance-only own production fidelity",
+          "reject missing cases",
+          "reject full acceptance for partial coverage",
+          "accept complete exact fidelity and frozen tolerance",
+          "no Torch/FlashInfer import side effects"
+        ],
+        "final_checks": {
+          "cpu_exact_fidelity_coverage_import_contract_exit": 0,
+          "py_compile_exit": 0,
+          "ruff_check_exit": 0
+        },
+        "frozen_replay_sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a",
+        "gpu_execution": false,
+        "no_numerical_or_model_quality_claim": true,
+        "prior_help_exit": 0,
+        "status": "READY_local_CPU_only",
+        "wrapper_sha256": "2e6d71a5ece657186bf43cfda020272e39fc80363a6db593b35d5c3f428d4744"
+      },
+      "sha256": "b31273bc6c30f70beca47f1784aff8c4e146954fefcba550e40939bf1775b5af"
+    }
+  },
+  "gpu_completion_within_time_bound_validated": false,
+  "gpu_execution_performed_by_this_preparation": false,
+  "helpers": {
+    "audit_late_host.py": {
+      "bytes": 9589,
+      "sha256": "62b336f3566cef56cdd2d46c09d26016f4261727bcd7388d852f2cb904638362"
+    },
+    "audit_late_sampler.py": {
+      "bytes": 42773,
+      "sha256": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d"
+    },
+    "audit_late_snapshots.py": {
+      "bytes": 20412,
+      "sha256": "bab8c17cc979527f0dd906355bee89843814e91cc268eda8cce934c32118fe5e"
+    },
+    "cpu_bootstrap_contracts.py": {
+      "bytes": 7150,
+      "sha256": "702e55cd382d32e40bf940274e5d2361f85f3587c087244788c49c9812411393"
+    },
+    "cpu_capture_contracts.py": {
+      "bytes": 9935,
+      "sha256": "2df1809f1383782b26782071dd6b0e058441d90dc2bf6540f6b900f8dd7138d4"
+    },
+    "cpu_contracts.py": {
+      "bytes": 1541,
+      "sha256": "9ec97fb3782c7d153118594a3d79370cfa749eae29b488bfb0a53fc1a50acb49"
+    },
+    "cpu_sampler_contracts.py": {
+      "bytes": 9022,
+      "sha256": "1caceeacac879d35ad12c5ed9222d4480f9813651e97650cbe00815c2bdb7fe4"
+    },
+    "force_decode.py": {
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    "force_decode_v2.py": {
+      "bytes": 18819,
+      "sha256": "13f31dc70d02ba4fe69b901d1be6f2a703bddc1d5bfde3838cc1119bbfb7ede1"
+    },
+    "frozen_replay_capture.py": {
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    "late_bootstrap.py": {
+      "bytes": 877,
+      "sha256": "da35fe1986392658a73f8cc663f39aac3362dc4940cb37e6839eae405b6e8ab0"
+    },
+    "late_capture.py": {
+      "bytes": 9271,
+      "sha256": "74d8ce3a16ea5bcadd4a3ae324b9cd9de1878f8def7860b13e0570291835eb97"
+    },
+    "late_driver.py": {
+      "bytes": 10439,
+      "sha256": "bb2dcc1457400057f104c5d3498470ea9082f8638b48a316e0c897a72c84c072"
+    },
+    "late_plan.py": {
+      "bytes": 3800,
+      "sha256": "954252fbfadbf898a4dc6240bd6db1c0954001360bf073c98dcc1496f8f318ca"
+    },
+    "late_runtime.py": {
+      "bytes": 2369,
+      "sha256": "3c90f717e7fe9e7c5df79edf41e212173d49a3e3e9e1a099b692c0070b9a38e6"
+    },
+    "late_site/sitecustomize.py": {
+      "bytes": 47,
+      "sha256": "9de9c1430dcabbfb210a2ae95135533d12b789a7f10b6777534f16b42c9c680e"
+    },
+    "launch_capture.py": {
+      "bytes": 14351,
+      "sha256": "fa19732e40b53aefdaed5f4f1cd45451c7abbe614e913a2587db6133a1c1b006"
+    },
+    "replay_late_capture.py": {
+      "bytes": 16850,
+      "sha256": "2e6d71a5ece657186bf43cfda020272e39fc80363a6db593b35d5c3f428d4744"
+    }
+  },
+  "historical_inherited_files_not_current_receipts": [
+    "cpu-preparation-receipt.json",
+    "independent-preparation-review.json",
+    "independent-review.md"
+  ],
+  "pending_gpu_acceptance_gates": [
+    "actual exit0/full native trace and exact snapshot joins",
+    "two-rank owned host telemetry and GPU release",
+    "full prefill logits/all first-decode active GDN prestates/schedules common-start check",
+    "separate fresh-process dtype-isolated exact own-production and frozen FP64/common-prestate replay"
+  ],
+  "readiness": "READY_FOR_BOUNDED_CONDITIONAL_CAPTURE",
+  "reference_completed_sha256": "d293b322876e8236f7799a688221ddd0d10e79f8046c6601db40fa6316421e78",
+  "reference_lock_sha256": "c56bc5f24109901190769b0047b809da4a7d57448884442afd6a1a507924c4bb",
+  "schema": 2,
+  "scope": "Artifact-only localization. Forced history is not accuracy, natural stopping or performance evidence. Full-attention KV is unobserved; valid differing observed starts are NOGO and retained.",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "supervisor_seconds_per_arm": 1800,
+  "v1_manifest_sha256_unchanged": "a7cec848071f2c3cebac9d7bfa4bd94419cb1c6b4955d56f44c41ea45d0ffd3e"
+}

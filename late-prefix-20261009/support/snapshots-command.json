@@ -1,0 +1,25 @@
+{
+  "stage": "snapshots",
+  "argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "/cache/gdn-runtime/bin/python",
+    "/late-helpers/audit_late_snapshots.py",
+    "--triton",
+    "/results/late-triton-2",
+    "--flashinfer",
+    "/results/late-flashinfer-2",
+    "--reference-root",
+    "/late-reference",
+    "--source-root",
+    "/source",
+    "--source-manifest",
+    "/artifacts/performance-source.json",
+    "--output",
+    "/results/pair-audit-v1/snapshots.json"
+  ],
+  "timeout_seconds": 1800,
+  "gpu_execution": false
+}

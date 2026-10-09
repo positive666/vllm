@@ -1,0 +1,2266 @@
+{
+  "schema": "gdn60403-independent-replay-report-review-v1",
+  "status": "LOCAL_REPLAY_REPORT_REVIEW_PASS",
+  "reviewed_utc": "2026-10-09T13:12:59.277Z",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "outer_status_retained": "REVIEW_REQUIRED",
+  "snapshot_initial_status_retained": "OBSERVED_INITIAL_PASS",
+  "input_sha256": {
+    "replay-triton-1.json": "0d1286104422fe6bbd5effed0d3195b364e025922a8098ed9e2751d13ac5a3f1",
+    "replay-flashinfer-1.json": "bd9a306aa2a495af1af4f0edf51cc946c35cbe718a7b6c8e16062258d38554bd",
+    "pair-snapshots.json": "c514484cf04938fcc1b3585e1ce3a373c0e0ebe3b8f13966811837b4fe1e54ec",
+    "replay-triton-1.receipt.json": "54287a88454078986f141ff6d98ef7b2d4ba1171b42c42e80e5b1ef1e2a394a3",
+    "replay-flashinfer-1.receipt.json": "5328f8e4dd9b6cb3f9b086cad84ec4088865b42d1363401c07e56765b03ba399",
+    "replay-input-gates.json": "baabf13186276cce94c6ed05e73238d57f05b2c99bab87a187261c24914191b0",
+    "performance-source.json": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60"
+  },
+  "completeness": {
+    "triton_cases": 672,
+    "flashinfer_cases": 672,
+    "physical_ranks": [
+      0,
+      1
+    ],
+    "gdn_layers_per_rank": 48,
+    "steps": [
+      1,
+      18,
+      19,
+      1750,
+      3497,
+      3498,
+      3499
+    ],
+    "fixed_native_positions_per_arm": 7378,
+    "committed_capture_rows_per_arm": 2688,
+    "raw_binary_capture_scope": "Remote frozen CPU consumer verified 1,344 binaries/sidecars and actual sampler/metadata joins; this local reviewer checked every report case and its capture bindings, not a second raw PT tensor read."
+  },
+  "replay_reports": {
+    "triton": {
+      "backend": "triton",
+      "counts": {
+        "cases": 672,
+        "own_exact": 672,
+        "backend_invariant_records": 1344,
+        "no_padding_cases": 672,
+        "committed_rows": 2688
+      },
+      "failures": [],
+      "maxima": {
+        "bias_promotion": {
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        },
+        "triton.vs_fp64_math_output": {
+          "absmax": {
+            "value": 0.015228413194737556,
+            "where": {
+              "rank": 1,
+              "layer": 0,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.003054297034442327,
+            "where": {
+              "rank": 0,
+              "layer": 30,
+              "step": 3497
+            }
+          }
+        },
+        "triton.vs_fp64_math_state": {
+          "absmax": {
+            "value": 0.000003915195925685566,
+            "where": {
+              "rank": 1,
+              "layer": 0,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 3.8226748185167767e-7,
+            "where": {
+              "rank": 1,
+              "layer": 6,
+              "step": 3498
+            }
+          }
+        },
+        "triton.vs_fp64_rounded_output": {
+          "absmax": {
+            "value": 0.00006103515625,
+            "where": {
+              "rank": 0,
+              "layer": 54,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.00020086419992444956,
+            "where": {
+              "rank": 0,
+              "layer": 54,
+              "step": 19
+            }
+          }
+        },
+        "triton.vs_fp64_rounded_state": {
+          "absmax": {
+            "value": 0.000003814697265625,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 3.894912025024745e-7,
+            "where": {
+              "rank": 1,
+              "layer": 6,
+              "step": 3498
+            }
+          }
+        },
+        "flashinfer.vs_fp64_math_output": {
+          "absmax": {
+            "value": 0.015228413194737556,
+            "where": {
+              "rank": 1,
+              "layer": 0,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.003054297034442327,
+            "where": {
+              "rank": 0,
+              "layer": 30,
+              "step": 3497
+            }
+          }
+        },
+        "flashinfer.vs_fp64_math_state": {
+          "absmax": {
+            "value": 0.000004030529595411281,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 6.438770637980534e-7,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        },
+        "flashinfer.vs_fp64_rounded_output": {
+          "absmax": {
+            "value": 0.00006103515625,
+            "where": {
+              "rank": 0,
+              "layer": 54,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.00020086419992444956,
+            "where": {
+              "rank": 0,
+              "layer": 54,
+              "step": 19
+            }
+          }
+        },
+        "flashinfer.vs_fp64_rounded_state": {
+          "absmax": {
+            "value": 0.000003814697265625,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 6.444258853514138e-7,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        },
+        "common_prestate_T_F.output": {
+          "absmax": {
+            "value": 0.000030517578125,
+            "where": {
+              "rank": 1,
+              "layer": 56,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0.00011683929442966183,
+            "where": {
+              "rank": 0,
+              "layer": 5,
+              "step": 1
+            }
+          }
+        },
+        "common_prestate_T_F.state": {
+          "absmax": {
+            "value": 0.000003814697265625,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 4.266382049818353e-7,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        },
+        "own_production.active_output": {
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        },
+        "own_production.all_captured_page_poststate": {
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        }
+      },
+      "scope": "Read-only report/provenance consistency audit; CPU capture auditor previously verified raw binary joins. No independent raw PT reread or new GPU math execution."
+    },
+    "flashinfer": {
+      "backend": "flashinfer",
+      "counts": {
+        "cases": 672,
+        "own_exact": 672,
+        "backend_invariant_records": 1344,
+        "no_padding_cases": 672,
+        "committed_rows": 2688
+      },
+      "failures": [],
+      "maxima": {
+        "bias_promotion": {
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        },
+        "triton.vs_fp64_math_output": {
+          "absmax": {
+            "value": 0.015208103725131927,
+            "where": {
+              "rank": 1,
+              "layer": 0,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.002784365886081456,
+            "where": {
+              "rank": 0,
+              "layer": 30,
+              "step": 3499
+            }
+          }
+        },
+        "triton.vs_fp64_math_state": {
+          "absmax": {
+            "value": 0.000003858413187174392,
+            "where": {
+              "rank": 1,
+              "layer": 0,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 4.0897984114028163e-7,
+            "where": {
+              "rank": 1,
+              "layer": 6,
+              "step": 3499
+            }
+          }
+        },
+        "triton.vs_fp64_rounded_output": {
+          "absmax": {
+            "value": 0.000030517578125,
+            "where": {
+              "rank": 0,
+              "layer": 56,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0.00010846711199125548,
+            "where": {
+              "rank": 1,
+              "layer": 38,
+              "step": 3499
+            }
+          }
+        },
+        "triton.vs_fp64_rounded_state": {
+          "absmax": {
+            "value": 0.000003814697265625,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 4.063919248039908e-7,
+            "where": {
+              "rank": 1,
+              "layer": 6,
+              "step": 3499
+            }
+          }
+        },
+        "flashinfer.vs_fp64_math_output": {
+          "absmax": {
+            "value": 0.015208103725131927,
+            "where": {
+              "rank": 1,
+              "layer": 0,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.002784365886081456,
+            "where": {
+              "rank": 0,
+              "layer": 30,
+              "step": 3499
+            }
+          }
+        },
+        "flashinfer.vs_fp64_math_state": {
+          "absmax": {
+            "value": 0.000004030529595411281,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 6.806789245240857e-7,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        },
+        "flashinfer.vs_fp64_rounded_output": {
+          "absmax": {
+            "value": 0.00006103515625,
+            "where": {
+              "rank": 1,
+              "layer": 56,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.00028684436500829997,
+            "where": {
+              "rank": 0,
+              "layer": 13,
+              "step": 3499
+            }
+          }
+        },
+        "flashinfer.vs_fp64_rounded_state": {
+          "absmax": {
+            "value": 0.000003814697265625,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 6.812836382836846e-7,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        },
+        "common_prestate_T_F.output": {
+          "absmax": {
+            "value": 0.00006103515625,
+            "where": {
+              "rank": 1,
+              "layer": 56,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.00028684436500829997,
+            "where": {
+              "rank": 0,
+              "layer": 13,
+              "step": 3499
+            }
+          }
+        },
+        "common_prestate_T_F.state": {
+          "absmax": {
+            "value": 0.000003814697265625,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 4.313753744615593e-7,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        },
+        "own_production.active_output": {
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        },
+        "own_production.all_captured_page_poststate": {
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        }
+      },
+      "scope": "Read-only report/provenance consistency audit; CPU capture auditor previously verified raw binary joins. No independent raw PT reread or new GPU math execution."
+    }
+  },
+  "provenance": {
+    "failures": [],
+    "matched": {
+      "triton.completed_full": true,
+      "triton.wrapper_sha256": true,
+      "triton.frozen_replay_sha256": true,
+      "triton.consumer_helper_sha256": true,
+      "triton.reference_helper_sha256": true,
+      "triton.reference": true,
+      "triton.snapshot_binding": true,
+      "triton.runtime_module_files": true,
+      "triton.runtime_versions": true,
+      "triton.source": true,
+      "triton.frozen_tolerance": true,
+      "triton.actual_bias_dtype": true,
+      "triton.fresh_workspace": true,
+      "triton.override_environment": true,
+      "triton.exit": true,
+      "triton-host.exit": true,
+      "triton.receipt": true,
+      "triton.supervisor": true,
+      "flashinfer.completed_full": true,
+      "flashinfer.wrapper_sha256": true,
+      "flashinfer.frozen_replay_sha256": true,
+      "flashinfer.consumer_helper_sha256": true,
+      "flashinfer.reference_helper_sha256": true,
+      "flashinfer.reference": true,
+      "flashinfer.snapshot_binding": true,
+      "flashinfer.runtime_module_files": true,
+      "flashinfer.runtime_versions": true,
+      "flashinfer.source": true,
+      "flashinfer.frozen_tolerance": true,
+      "flashinfer.actual_bias_dtype": true,
+      "flashinfer.fresh_workspace": true,
+      "flashinfer.override_environment": true,
+      "flashinfer.exit": true,
+      "flashinfer-host.exit": true,
+      "flashinfer.receipt": true,
+      "flashinfer.supervisor": true,
+      "separate_workspaces": true,
+      "nonoverlapping_backend_invocations": true
+    }
+  },
+  "source_bindings": {
+    "triton": {
+      "manifest_sha": true,
+      "head": true,
+      "exact_five_manifest_plus_two_pinned_math_files": true,
+      "native_launch_shared_source_files": true,
+      "scopes": "Native launch records four V2/history sources; replay records the five performance manifest files plus two pinned mathematical kernel files. Full maps are intentionally different."
+    },
+    "flashinfer": {
+      "manifest_sha": true,
+      "head": true,
+      "exact_five_manifest_plus_two_pinned_math_files": true,
+      "native_launch_shared_source_files": true,
+      "scopes": "Native launch records four V2/history sources; replay records the five performance manifest files plus two pinned mathematical kernel files. Full maps are intentionally different."
+    }
+  },
+  "paired_initial": {
+    "full_prefill_logits_exact_rows": 8,
+    "first_decode_active_prestate_exact_rows": 768,
+    "histories_schedules_execution_contexts_match": true,
+    "full_attention_kv_observed": false
+  },
+  "independently_propagated_native_drift": {
+    "counts": {
+      "first_states": 768,
+      "later_states": 1920,
+      "input_output_cases": 672
+    },
+    "failures": [],
+    "byStep": {
+      "1": {
+        "propagated_prestate": {
+          "n": 768,
+          "exact": 768,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1,
+              "index": 198
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1,
+              "index": 198
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 768,
+          "exact": 0,
+          "above_one_percent_relative": 1,
+          "absmax": {
+            "value": 0.016549959778785706,
+            "where": {
+              "rank": 0,
+              "layer": 30,
+              "step": 1,
+              "index": 228
+            }
+          },
+          "relative_l2": {
+            "value": 0.011799326257434599,
+            "where": {
+              "rank": 0,
+              "layer": 46,
+              "step": 1,
+              "index": 209
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.25,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0.008110193612050398,
+            "where": {
+              "rank": 0,
+              "layer": 54,
+              "step": 1
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 1,
+          "absmax": {
+            "value": 0.09375,
+            "where": {
+              "rank": 0,
+              "layer": 18,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0.010030094051249485,
+            "where": {
+              "rank": 1,
+              "layer": 29,
+              "step": 1
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 5,
+          "absmax": {
+            "value": 0.0625,
+            "where": {
+              "rank": 0,
+              "layer": 16,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0.012331216180566448,
+            "where": {
+              "rank": 0,
+              "layer": 41,
+              "step": 1
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 1,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.0029296875,
+            "where": {
+              "rank": 1,
+              "layer": 62,
+              "step": 1
+            }
+          },
+          "relative_l2": {
+            "value": 0.009729571339881057,
+            "where": {
+              "rank": 1,
+              "layer": 44,
+              "step": 1
+            }
+          }
+        }
+      },
+      "18": {
+        "propagated_prestate": {
+          "n": 768,
+          "exact": 0,
+          "above_one_percent_relative": 14,
+          "absmax": {
+            "value": 0.02733433246612549,
+            "where": {
+              "rank": 1,
+              "layer": 52,
+              "step": 18,
+              "index": 318
+            }
+          },
+          "relative_l2": {
+            "value": 0.014435919241200499,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 18,
+              "index": 255
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 768,
+          "exact": 0,
+          "above_one_percent_relative": 14,
+          "absmax": {
+            "value": 0.02732980251312256,
+            "where": {
+              "rank": 1,
+              "layer": 52,
+              "step": 18,
+              "index": 318
+            }
+          },
+          "relative_l2": {
+            "value": 0.014110560860703588,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 18,
+              "index": 255
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.5,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0.008603838470062837,
+            "where": {
+              "rank": 1,
+              "layer": 46,
+              "step": 18
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.0625,
+            "where": {
+              "rank": 0,
+              "layer": 58,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0.009630201217542097,
+            "where": {
+              "rank": 0,
+              "layer": 37,
+              "step": 18
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.048828125,
+            "where": {
+              "rank": 0,
+              "layer": 58,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0.007611253747364465,
+            "where": {
+              "rank": 0,
+              "layer": 49,
+              "step": 18
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 18
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 18
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 1,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.001953125,
+            "where": {
+              "rank": 1,
+              "layer": 62,
+              "step": 18
+            }
+          },
+          "relative_l2": {
+            "value": 0.00908777294628455,
+            "where": {
+              "rank": 1,
+              "layer": 45,
+              "step": 18
+            }
+          }
+        }
+      },
+      "19": {
+        "propagated_prestate": {
+          "n": 768,
+          "exact": 0,
+          "above_one_percent_relative": 14,
+          "absmax": {
+            "value": 0.02732980251312256,
+            "where": {
+              "rank": 1,
+              "layer": 52,
+              "step": 19,
+              "index": 318
+            }
+          },
+          "relative_l2": {
+            "value": 0.014110560860703588,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 19,
+              "index": 255
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 768,
+          "exact": 0,
+          "above_one_percent_relative": 13,
+          "absmax": {
+            "value": 0.027352452278137207,
+            "where": {
+              "rank": 1,
+              "layer": 52,
+              "step": 19,
+              "index": 318
+            }
+          },
+          "relative_l2": {
+            "value": 0.013625721529709115,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 19,
+              "index": 255
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.1875,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.00818861889095768,
+            "where": {
+              "rank": 0,
+              "layer": 32,
+              "step": 19
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 3,
+          "absmax": {
+            "value": 0.078125,
+            "where": {
+              "rank": 1,
+              "layer": 57,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.011686390304313664,
+            "where": {
+              "rank": 0,
+              "layer": 32,
+              "step": 19
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.046875,
+            "where": {
+              "rank": 0,
+              "layer": 12,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.007909207011222117,
+            "where": {
+              "rank": 0,
+              "layer": 41,
+              "step": 19
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 19
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 19
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.0010986328125,
+            "where": {
+              "rank": 1,
+              "layer": 62,
+              "step": 19
+            }
+          },
+          "relative_l2": {
+            "value": 0.008037984027150287,
+            "where": {
+              "rank": 1,
+              "layer": 29,
+              "step": 19
+            }
+          }
+        }
+      },
+      "1750": {
+        "propagated_prestate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 14,
+          "absmax": {
+            "value": 0.0683215782046318,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 1750,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.016521329537603498,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 1750,
+              "index": 255
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 15,
+          "absmax": {
+            "value": 0.06713247299194336,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 1750,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.01654833752545897,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 1750,
+              "index": 255
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 39,
+          "absmax": {
+            "value": 0.15625,
+            "where": {
+              "rank": 1,
+              "layer": 62,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0.030918773960528063,
+            "where": {
+              "rank": 0,
+              "layer": 50,
+              "step": 1750
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 34,
+          "absmax": {
+            "value": 0.1875,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0.03867236312756449,
+            "where": {
+              "rank": 0,
+              "layer": 50,
+              "step": 1750
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 5,
+          "above_one_percent_relative": 16,
+          "absmax": {
+            "value": 0.1328125,
+            "where": {
+              "rank": 1,
+              "layer": 58,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0.02354943575005174,
+            "where": {
+              "rank": 1,
+              "layer": 57,
+              "step": 1750
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1750
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 1750
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 1,
+          "above_one_percent_relative": 36,
+          "absmax": {
+            "value": 0.00390625,
+            "where": {
+              "rank": 0,
+              "layer": 53,
+              "step": 1750
+            }
+          },
+          "relative_l2": {
+            "value": 0.03526424764637274,
+            "where": {
+              "rank": 1,
+              "layer": 49,
+              "step": 1750
+            }
+          }
+        }
+      },
+      "3497": {
+        "propagated_prestate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 3,
+          "absmax": {
+            "value": 0.029655516147613525,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3497,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.01276349450495495,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3497,
+              "index": 255
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 3,
+          "absmax": {
+            "value": 0.02963791787624359,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3497,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.012747720647706419,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3497,
+              "index": 255
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.125,
+            "where": {
+              "rank": 0,
+              "layer": 60,
+              "step": 3497
+            }
+          },
+          "relative_l2": {
+            "value": 0.009236628670124546,
+            "where": {
+              "rank": 1,
+              "layer": 45,
+              "step": 3497
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 1,
+          "absmax": {
+            "value": 0.0625,
+            "where": {
+              "rank": 1,
+              "layer": 61,
+              "step": 3497
+            }
+          },
+          "relative_l2": {
+            "value": 0.01009453918105784,
+            "where": {
+              "rank": 1,
+              "layer": 45,
+              "step": 3497
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.03125,
+            "where": {
+              "rank": 0,
+              "layer": 9,
+              "step": 3497
+            }
+          },
+          "relative_l2": {
+            "value": 0.007522197277352275,
+            "where": {
+              "rank": 0,
+              "layer": 57,
+              "step": 3497
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3497
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3497
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3497
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3497
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.001953125,
+            "where": {
+              "rank": 1,
+              "layer": 62,
+              "step": 3497
+            }
+          },
+          "relative_l2": {
+            "value": 0.008711865775614799,
+            "where": {
+              "rank": 1,
+              "layer": 45,
+              "step": 3497
+            }
+          }
+        }
+      },
+      "3498": {
+        "propagated_prestate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 3,
+          "absmax": {
+            "value": 0.02963791787624359,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3498,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.012747720647706419,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3498,
+              "index": 255
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 3,
+          "absmax": {
+            "value": 0.029572412371635437,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3498,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.012732679470539502,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3498,
+              "index": 255
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.0625,
+            "where": {
+              "rank": 1,
+              "layer": 62,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.00888866313874949,
+            "where": {
+              "rank": 1,
+              "layer": 45,
+              "step": 3498
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.0625,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.00960824774384446,
+            "where": {
+              "rank": 0,
+              "layer": 46,
+              "step": 3498
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0.03125,
+            "where": {
+              "rank": 0,
+              "layer": 14,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.008838848755755382,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3498
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3498
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3498
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 1,
+          "above_one_percent_relative": 1,
+          "absmax": {
+            "value": 0.0009765625,
+            "where": {
+              "rank": 0,
+              "layer": 56,
+              "step": 3498
+            }
+          },
+          "relative_l2": {
+            "value": 0.011074561004943513,
+            "where": {
+              "rank": 0,
+              "layer": 38,
+              "step": 3498
+            }
+          }
+        }
+      },
+      "3499": {
+        "propagated_prestate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 3,
+          "absmax": {
+            "value": 0.029572412371635437,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3499,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.012732679470539502,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3499,
+              "index": 255
+            }
+          }
+        },
+        "propagated_poststate": {
+          "n": 96,
+          "exact": 0,
+          "above_one_percent_relative": 5,
+          "absmax": {
+            "value": 0.029566235840320587,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3499,
+              "index": 255
+            }
+          },
+          "relative_l2": {
+            "value": 0.01269940711846312,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3499,
+              "index": 255
+            }
+          }
+        },
+        "propagated_input.mixed_qkv": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 4,
+          "absmax": {
+            "value": 0.25,
+            "where": {
+              "rank": 1,
+              "layer": 60,
+              "step": 3499
+            }
+          },
+          "relative_l2": {
+            "value": 0.011386191611346477,
+            "where": {
+              "rank": 1,
+              "layer": 36,
+              "step": 3499
+            }
+          }
+        },
+        "propagated_input.a": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 16,
+          "absmax": {
+            "value": 0.0703125,
+            "where": {
+              "rank": 1,
+              "layer": 36,
+              "step": 3499
+            }
+          },
+          "relative_l2": {
+            "value": 0.018984318196482025,
+            "where": {
+              "rank": 1,
+              "layer": 37,
+              "step": 3499
+            }
+          }
+        },
+        "propagated_input.b": {
+          "n": 96,
+          "exact": 4,
+          "above_one_percent_relative": 1,
+          "absmax": {
+            "value": 0.046875,
+            "where": {
+              "rank": 1,
+              "layer": 37,
+              "step": 3499
+            }
+          },
+          "relative_l2": {
+            "value": 0.01036391874257657,
+            "where": {
+              "rank": 1,
+              "layer": 40,
+              "step": 3499
+            }
+          }
+        },
+        "propagated_input.A_log": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3499
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3499
+            }
+          }
+        },
+        "propagated_input.dt_bias_actual_values_float32": {
+          "n": 96,
+          "exact": 96,
+          "above_one_percent_relative": 0,
+          "absmax": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3499
+            }
+          },
+          "relative_l2": {
+            "value": 0,
+            "where": {
+              "rank": 0,
+              "layer": 0,
+              "step": 3499
+            }
+          }
+        },
+        "propagated_production_output": {
+          "n": 96,
+          "exact": 2,
+          "above_one_percent_relative": 1,
+          "absmax": {
+            "value": 0.0009765625,
+            "where": {
+              "rank": 0,
+              "layer": 53,
+              "step": 3499
+            }
+          },
+          "relative_l2": {
+            "value": 0.011507914398037429,
+            "where": {
+              "rank": 0,
+              "layer": 38,
+              "step": 3499
+            }
+          }
+        }
+      }
+    },
+    "global": {
+      "propagated_prestate": {
+        "n": 2688,
+        "exact": 768,
+        "above_one_percent_relative": 51,
+        "absmax": {
+          "value": 0.0683215782046318,
+          "where": {
+            "rank": 1,
+            "layer": 60,
+            "step": 1750,
+            "index": 255
+          }
+        },
+        "relative_l2": {
+          "value": 0.016521329537603498,
+          "where": {
+            "rank": 1,
+            "layer": 60,
+            "step": 1750,
+            "index": 255
+          }
+        }
+      },
+      "propagated_poststate": {
+        "n": 2688,
+        "exact": 0,
+        "above_one_percent_relative": 54,
+        "absmax": {
+          "value": 0.06713247299194336,
+          "where": {
+            "rank": 1,
+            "layer": 60,
+            "step": 1750,
+            "index": 255
+          }
+        },
+        "relative_l2": {
+          "value": 0.01654833752545897,
+          "where": {
+            "rank": 1,
+            "layer": 60,
+            "step": 1750,
+            "index": 255
+          }
+        }
+      },
+      "propagated_input.mixed_qkv": {
+        "n": 672,
+        "exact": 16,
+        "above_one_percent_relative": 43,
+        "absmax": {
+          "value": 0.5,
+          "where": {
+            "rank": 1,
+            "layer": 60,
+            "step": 18
+          }
+        },
+        "relative_l2": {
+          "value": 0.030918773960528063,
+          "where": {
+            "rank": 0,
+            "layer": 50,
+            "step": 1750
+          }
+        }
+      },
+      "propagated_input.a": {
+        "n": 672,
+        "exact": 22,
+        "above_one_percent_relative": 55,
+        "absmax": {
+          "value": 0.1875,
+          "where": {
+            "rank": 1,
+            "layer": 60,
+            "step": 1750
+          }
+        },
+        "relative_l2": {
+          "value": 0.03867236312756449,
+          "where": {
+            "rank": 0,
+            "layer": 50,
+            "step": 1750
+          }
+        }
+      },
+      "propagated_input.b": {
+        "n": 672,
+        "exact": 23,
+        "above_one_percent_relative": 22,
+        "absmax": {
+          "value": 0.1328125,
+          "where": {
+            "rank": 1,
+            "layer": 58,
+            "step": 1750
+          }
+        },
+        "relative_l2": {
+          "value": 0.02354943575005174,
+          "where": {
+            "rank": 1,
+            "layer": 57,
+            "step": 1750
+          }
+        }
+      },
+      "propagated_input.A_log": {
+        "n": 672,
+        "exact": 672,
+        "above_one_percent_relative": 0,
+        "absmax": {
+          "value": 0,
+          "where": {
+            "rank": 0,
+            "layer": 0,
+            "step": 1
+          }
+        },
+        "relative_l2": {
+          "value": 0,
+          "where": {
+            "rank": 0,
+            "layer": 0,
+            "step": 1
+          }
+        }
+      },
+      "propagated_input.dt_bias_actual_values_float32": {
+        "n": 672,
+        "exact": 672,
+        "above_one_percent_relative": 0,
+        "absmax": {
+          "value": 0,
+          "where": {
+            "rank": 0,
+            "layer": 0,
+            "step": 1
+          }
+        },
+        "relative_l2": {
+          "value": 0,
+          "where": {
+            "rank": 0,
+            "layer": 0,
+            "step": 1
+          }
+        }
+      },
+      "propagated_production_output": {
+        "n": 672,
+        "exact": 6,
+        "above_one_percent_relative": 38,
+        "absmax": {
+          "value": 0.00390625,
+          "where": {
+            "rank": 0,
+            "layer": 53,
+            "step": 1750
+          }
+        },
+        "relative_l2": {
+          "value": 0.03526424764637274,
+          "where": {
+            "rank": 1,
+            "layer": 49,
+            "step": 1750
+          }
+        }
+      }
+    }
+  },
+  "first_step_input_observation": [
+    {
+      "rank": 0,
+      "layer0": {
+        "rank": 0,
+        "layer_idx": 0,
+        "step": 1,
+        "inputs": {
+          "mixed_qkv": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "a": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "b": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "A_log": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "dt_bias_actual_values_float32": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          }
+        },
+        "production_output": {
+          "exact_equal": false,
+          "max_abs_error": 0.0000152587890625,
+          "relative_l2_error": 0.000001018653235384606
+        }
+      },
+      "firstUnequalInput": {
+        "rank": 0,
+        "layer_idx": 1,
+        "step": 1,
+        "inputs": {
+          "mixed_qkv": {
+            "exact_equal": false,
+            "max_abs_error": 0.001953125,
+            "relative_l2_error": 0.0005229225389323241
+          },
+          "a": {
+            "exact_equal": false,
+            "max_abs_error": 0.00390625,
+            "relative_l2_error": 0.0003528650692671765
+          },
+          "b": {
+            "exact_equal": false,
+            "max_abs_error": 0.001953125,
+            "relative_l2_error": 0.00027586682344976176
+          },
+          "A_log": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "dt_bias_actual_values_float32": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          }
+        },
+        "production_output": {
+          "exact_equal": false,
+          "max_abs_error": 0.0000152587890625,
+          "relative_l2_error": 0.00018927812888771663
+        }
+      }
+    },
+    {
+      "rank": 1,
+      "layer0": {
+        "rank": 1,
+        "layer_idx": 0,
+        "step": 1,
+        "inputs": {
+          "mixed_qkv": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "a": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "b": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "A_log": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "dt_bias_actual_values_float32": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          }
+        },
+        "production_output": {
+          "exact_equal": true,
+          "max_abs_error": 0,
+          "relative_l2_error": 0
+        }
+      },
+      "firstUnequalInput": {
+        "rank": 1,
+        "layer_idx": 1,
+        "step": 1,
+        "inputs": {
+          "mixed_qkv": {
+            "exact_equal": false,
+            "max_abs_error": 0.0009765625,
+            "relative_l2_error": 0.00020205377848080618
+          },
+          "a": {
+            "exact_equal": false,
+            "max_abs_error": 0.0078125,
+            "relative_l2_error": 0.0004675740164211433
+          },
+          "b": {
+            "exact_equal": false,
+            "max_abs_error": 0.001953125,
+            "relative_l2_error": 0.0002955025929283171
+          },
+          "A_log": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          },
+          "dt_bias_actual_values_float32": {
+            "exact_equal": true,
+            "max_abs_error": 0,
+            "relative_l2_error": 0
+          }
+        },
+        "production_output": {
+          "exact_equal": false,
+          "max_abs_error": 0.000003814697265625,
+          "relative_l2_error": 0.0000760853445121217
+        }
+      }
+    }
+  ],
+  "actual_incoming_grad_evidence": {
+    "triton": {
+      "counts": {
+        "A_log": {
+          "true": 672
+        },
+        "dt_bias": {
+          "true": 672
+        }
+      },
+      "example": {
+        "A_log": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "storage_offset": 0,
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "data_ptr_mod_16": 0,
+          "data_ptr_mod_128": 0,
+          "data_ptr_mod_256": 0,
+          "requires_grad": true
+        },
+        "dt_bias": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "storage_offset": 0,
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "data_ptr_mod_16": 0,
+          "data_ptr_mod_128": 0,
+          "data_ptr_mod_256": 0,
+          "requires_grad": true
+        }
+      }
+    },
+    "flashinfer": {
+      "counts": {
+        "A_log": {
+          "true": 672
+        },
+        "dt_bias": {
+          "true": 672
+        }
+      },
+      "example": {
+        "A_log": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "storage_offset": 0,
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "data_ptr_mod_16": 0,
+          "data_ptr_mod_128": 0,
+          "data_ptr_mod_256": 0,
+          "requires_grad": true
+        },
+        "dt_bias": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "storage_offset": 0,
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "data_ptr_mod_16": 0,
+          "data_ptr_mod_128": 0,
+          "data_ptr_mod_256": 0,
+          "requires_grad": true
+        }
+      }
+    }
+  },
+  "bias_values": {
+    "A_log_all_672_pairs_exact": true,
+    "dt_bias_float32_values_all_672_pairs_exact": true,
+    "actual_dtype_triton": "torch.bfloat16",
+    "actual_dtype_flashinfer": "torch.float32",
+    "interpretation": "Value equality does not make typed backend specializations identical. Captured replay tests actual dtypes in separate fresh interpreters/workspaces."
+  },
+  "limits": [
+    "Review independently checked every JSON case, metric arithmetic, capture identity, history/prefix metadata, invariant flags, complete coverage, immutable source/runtime/helper/reference bindings and exit receipts. It did not recompute FP64 or GPU kernels or reread the raw PT tensors locally.",
+    "Each replay resets both backends to the same captured prestate; captured Triton and FlashInfer native histories use independently propagated states. These are different comparisons.",
+    "Finite allclose uses atol=0.01 plus rtol=0.01, together with strict global relative L2 below 0.01. A maximum absolute difference above 0.01 alone is not a failed allclose.",
+    "The native propagation metrics use the snapshot consumer reference norm; they are diagnostic observations, not an end-to-end acceptance threshold inherited from local kernel replay.",
+    "All captures are non-speculative eager pure decode with batch 8 or 1. No padded rows or masked/null requests were executed; captured sentinel slot 0 and one sampled unused page remained unchanged. Other state pool pages were not replayed.",
+    "Synthetic storage-gap guards and original tensor strides/pointer modulo alignment were preserved. Original aliasing and absolute addresses were not reconstructed.",
+    "Local replay is independent rank-local execution on one device, not a TP2 sequence replay, accuracy evaluation, EOS termination experiment, or timing benchmark.",
+    "Full-attention KV was not captured. The observed common GDN prestate and prefill logits are prerequisites, not complete causal proof.",
+    "The fixed-history native sampler has 15 backend choice differences. This does not itself establish free-generation model quality or the precise cause of previous truncation.",
+    "Incoming A_log and dt_bias requires_grad=true on all 672 actual captures per backend directly supports the detach input-contract rationale for this run, not every model or configuration.",
+    "The native host audit retained one possible exit race and strict same-sample ownership REVIEW_REQUIRED. This local numerical review does not clear it."
+  ],
+  "conclusion": "Captured single-update fidelity and mathematical correctness pass for all covered cases. Propagated inputs/states/outputs differ in the native paired run; model-quality equivalence, performance benefit and a full causal root-cause claim remain unsupported by this localization alone."
+}

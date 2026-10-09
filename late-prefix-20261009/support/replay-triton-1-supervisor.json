@@ -1,0 +1,14 @@
+{
+  "backend": "triton",
+  "host_exit_code": 0,
+  "wrapper_exit_code": 0,
+  "report_sha256": "0d1286104422fe6bbd5effed0d3195b364e025922a8098ed9e2751d13ac5a3f1",
+  "receipt_sha256": "54287a88454078986f141ff6d98ef7b2d4ba1171b42c42e80e5b1ef1e2a394a3",
+  "local_numeric_checks_pass": true,
+  "completed_cases": 672,
+  "host_csv": "replay-triton-1-hostwatch-host.csv",
+  "host_process_log": "replay-triton-1-hostwatch-processes.log",
+  "outer_status_retained": "REVIEW_REQUIRED",
+  "snapshot_status_retained": "OBSERVED_INITIAL_PASS",
+  "scope": "Complete one-arm local fidelity/math only; does not clear a pair outer REVIEW_REQUIRED or initial NOGO."
+}

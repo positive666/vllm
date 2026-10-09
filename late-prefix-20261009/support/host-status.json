@@ -1,0 +1,25 @@
+{
+  "stage": "host",
+  "argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "/cache/gdn-runtime/bin/python",
+    "/results/audit_late_host_v3.py",
+    "--runs",
+    "/results/late-triton-2",
+    "/results/late-flashinfer-2",
+    "--monitor",
+    "/results/monitor_host.sh",
+    "--container-name",
+    "gdn60403-late-v3-20261009",
+    "--output",
+    "/results/pair-audit-v1/host.json"
+  ],
+  "timeout_seconds": 120,
+  "gpu_execution": false,
+  "exit_code": 0,
+  "stdout_sha256": "cc5a208d72a97593adcb50770be09b98dd2987bed6ea9aa1af9bf4bf99ad1986",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

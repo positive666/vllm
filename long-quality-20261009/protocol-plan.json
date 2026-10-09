@@ -1,0 +1,54 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source_manifest_sha256": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60",
+  "reference_scorer_sha256": "885dab543e73369a8fab05603274fbf654add1eeeae9f0c70e4324c3e138b74e",
+  "selected_indices": [198, 206, 209, 228, 255, 285, 292, 318],
+  "targets": [209, 255],
+  "gpu_uuids": [
+    "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+    "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675"
+  ],
+  "scope": "Eight selected questions, actual unforced offline generation with controlled initial submission; no general accuracy equivalence or serving performance claim.",
+  "options": {
+    "tensor_parallel_size": 2,
+    "model_max_len": 4096,
+    "max_tokens": 3500,
+    "gpu_blocks": 128,
+    "max_num_seqs": 32,
+    "max_num_batched_tokens": 1024,
+    "gpu_memory_utilization": 0.9,
+    "state_dtype": "float32",
+    "input_dtype": "bfloat16",
+    "temperature": 0,
+    "seed": 42,
+    "ignore_eos": false,
+    "thinking": false,
+    "prefix_caching": false,
+    "engine_core_multiprocessing": false,
+    "async_scheduling": false,
+    "api_logprobs": false,
+    "trace_replay": false,
+    "native_binary_reused": true,
+    "attention_backend": "FLASH_ATTN",
+    "flash_attn_version": 2,
+    "linear_backend": "marlin"
+  },
+  "initial_order": [
+    {"backend": "triton", "mode": "eager", "run": "triton-eager-1"},
+    {"backend": "flashinfer", "mode": "eager", "run": "flashinfer-eager-1"},
+    {"backend": "triton", "mode": "graph", "run": "triton-graph-1"},
+    {"backend": "flashinfer", "mode": "graph", "run": "flashinfer-graph-1"}
+  ],
+  "repeat_policy": "If target answer/truncation differences appear, independently repeat the affected mode's backend pair in reversed order. If no target symptom appears, repeat all four cells once in reversed order before claiming non-reproduction under this protocol.",
+  "graph_coverage": "Requires actual runtime graph evidence; enforce_eager=false alone is insufficient.",
+  "stop_conditions": [
+    "foreign compute workload on either selected GPU",
+    "source, helper, fixture or required option mismatch",
+    "nonzero exit, missing output or invalid token/history evidence",
+    "OOM, illegal memory access or engine death",
+    "graph arm actually falls back to eager"
+  ],
+  "quality_flags": "Recompute the retained scorer from raw text; strict correct requires parsed gold match, normal stop and answer marker. Retain raw correct and every length/unparsed/missing-marker outcome.",
+  "causal_limit": "Identical initial submission does not ensure identical later histories/batches. Do not infer adapter or graph root cause from late free-generation differences alone.",
+  "source_fix_criterion": "A reproducible violated local update, state/index/alignment or graph replay contract is required before changing production code. Numerical choice differences alone do not establish a fix."
+}

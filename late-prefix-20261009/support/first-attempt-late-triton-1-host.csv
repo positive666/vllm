@@ -1,0 +1,5 @@
+utc,index,uuid,memory.used,utilization.gpu,temperature.gpu,clocks.sm,clocks.mem,pstate
+2026-10-09T11:48:58Z,6, GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e, 1 MiB, 0 %, 31, 210 MHz, 405 MHz, P8
+2026-10-09T11:48:58Z,7, GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675, 1 MiB, 0 %, 31, 210 MHz, 405 MHz, P8
+2026-10-09T11:49:03Z,6, GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e, 1 MiB, 0 %, 31, 210 MHz, 405 MHz, P8
+2026-10-09T11:49:03Z,7, GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675, 1 MiB, 0 %, 31, 210 MHz, 405 MHz, P8

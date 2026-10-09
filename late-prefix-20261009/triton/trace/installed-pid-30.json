@@ -1,0 +1,42 @@
+{
+  "config": {
+    "eos_candidate_ids": [
+      248046
+    ],
+    "eos_observation_scope": "TokenizerEOS248046candidate only; additional model EOS/stop IDs are not raw-logit-covered",
+    "expected_input_batch_sha256": "96163c486368f2cf0e539fe68eaa06f4df3ac814da8f7a92af2b04242e01bc6d",
+    "expected_runner_sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+    "fixture_path": "/results/late-triton-2/fixture.json",
+    "limit": 3500,
+    "output_dir": "/results/late-triton-2/trace",
+    "snapshot_steps": [
+      1,
+      18,
+      19,
+      1750,
+      3497,
+      3498,
+      3499
+    ],
+    "snapshot_target": 255,
+    "target_indices": [
+      209,
+      255
+    ]
+  },
+  "config_sha256": "e8f4acd4ad636059d62af4494668433c38b62d0cf87abc37bc0cb97c8e29ac7d",
+  "event": "installed",
+  "fixture_sha256": "b440a03fddbbaf5732a5985ceccfae6154fc965eec87e2ce0f0b381901f07296",
+  "pid": 30,
+  "planned_indices": [
+    198,
+    206,
+    209,
+    228,
+    255,
+    285,
+    292,
+    318
+  ],
+  "target": "vllm.v1.worker.gpu.model_runner"
+}

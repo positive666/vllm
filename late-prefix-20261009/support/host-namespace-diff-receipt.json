@@ -1,0 +1,18 @@
+{
+  "status": "root-only-v3-adaptation-no-GPU",
+  "gpu_execution": false,
+  "source_v2_host_sha256": "62b336f3566cef56cdd2d46c09d26016f4261727bcd7388d852f2cb904638362",
+  "v3_host_sha256": "294361399debabd6922bc1616722c88d7b0c62e1eff7a6b07a04155257d97f37",
+  "only_host_change": "Exact namespace string replacement from v2 to v3",
+  "namespace_replacement_count": 2,
+  "reversed_replacement_equals_frozen_source": true,
+  "host_diff_sha256": "0e8b16da0a19f584d54079a7186f0c96c18002a92803d53db6c1b71c16bea17a",
+  "source_v2_orchestrator_sha256": "9984885516da953f79d74973f23a7ff592c9eff15f864063418c2cafc9570947",
+  "v3_orchestrator_sha256": "707530878383835bc78ebd7bbc65de17dafce1f5ceef12ae465e466b998e187d",
+  "explicit_root_host_script": "audit_late_host_v3.py",
+  "frozen_native_snapshot_sha256": {
+    "audit_late_sampler.py": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d",
+    "audit_late_snapshots.py": "bab8c17cc979527f0dd906355bee89843814e91cc268eda8cce934c32118fe5e"
+  },
+  "no_frozen_helper_changes": true
+}

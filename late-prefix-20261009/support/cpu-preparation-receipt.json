@@ -1,0 +1,20 @@
+{
+  "gpu_execution": false,
+  "checks": [
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m compileall -q D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-20261009/helpers",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-20261009/helpers/late_driver.py --backend flashinfer --run late-plan --reference-root D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-20261009 --plan-only",
+      "exit_code": 0,
+      "requests": 8,
+      "observations": 7378
+    },
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-20261009/helpers/cpu_contracts.py",
+      "exit_code": 0,
+      "tests": 2
+    }
+  ]
+}

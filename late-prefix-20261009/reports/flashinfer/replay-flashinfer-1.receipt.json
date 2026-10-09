@@ -1,0 +1,8 @@
+{
+  "report_sha256": "bd9a306aa2a495af1af4f0edf51cc946c35cbe718a7b6c8e16062258d38554bd",
+  "report_bytes": 23507731,
+  "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+  "exit_code": 0,
+  "wrapper_sha256": "2e6d71a5ece657186bf43cfda020272e39fc80363a6db593b35d5c3f428d4744",
+  "frozen_replay_sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+}

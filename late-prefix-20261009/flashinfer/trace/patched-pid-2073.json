@@ -1,0 +1,18 @@
+{
+  "common_helper_sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24",
+  "event": "patched",
+  "forcing_implementation": "native V2 TraceReplayState.apply_trace",
+  "helper_sha256": "13f31dc70d02ba4fe69b901d1be6f2a703bddc1d5bfde3838cc1119bbfb7ede1",
+  "module": "vllm.v1.worker.gpu.model_runner",
+  "module_file": "/source/vllm/v1/worker/gpu/model_runner.py",
+  "module_sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+  "pid": 2073,
+  "related_source_sha256": {
+    "/source/vllm/v1/worker/gpu/input_batch.py": "96163c486368f2cf0e539fe68eaa06f4df3ac814da8f7a92af2b04242e01bc6d",
+    "/source/vllm/v1/worker/gpu/model_runner.py": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+    "/source/vllm/v1/worker/gpu/sample/sampler.py": "620b0ff1bea504ebe61794b91ab07cdc243d3d05f8dea4c4044c374add76270b",
+    "/source/vllm/v1/worker/gpu/sample/trace_replay.py": "d2a7d3b3b55379efabe4740a4b7f14030126dc11be36f6ea974164ce42316a50",
+    "/source/vllm/v1/worker/gpu/states.py": "5ca84b57d4f4233ba4013ed42f44b7917cdd7a14b6ea4dabf4ba8de5c9d5f4d6"
+  },
+  "runner_relative_path": "vllm/v1/worker/gpu/model_runner.py"
+}

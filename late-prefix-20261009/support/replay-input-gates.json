@@ -1,0 +1,9 @@
+{
+  "outer_status": "REVIEW_REQUIRED",
+  "outer_summary_sha256": "248d1256d71d7153c23068d8cbf8ce1eda16104e6211f4ffb8d074d688930787",
+  "snapshot_status": "OBSERVED_INITIAL_PASS",
+  "snapshot_audit_sha256": "c514484cf04938fcc1b3585e1ce3a373c0e0ebe3b8f13966811837b4fe1e54ec",
+  "capture_count_per_arm": 672,
+  "gpu_execution": false,
+  "scope": "Input-gate receipt only. One-arm local replay never overrides the outer gate or an observed-initial NOGO."
+}

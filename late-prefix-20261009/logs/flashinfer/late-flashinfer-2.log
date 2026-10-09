@@ -1,0 +1,766 @@
+/source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from .version import __version__, __version_tuple__  # isort:skip
+(MainProcess pid=1644) INFO 10-09 12:06:21 [api_utils.py:286] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 4096, 'tensor_parallel_size': 2, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.9, 'max_num_batched_tokens': 1024, 'max_num_seqs': 32, 'enable_trace_replay': True, 'disable_log_stats': True, 'enforce_eager': True, 'language_model_only': True, 'num_gpu_blocks_override': 128, 'attention_config': AttentionConfig(backend=<AttentionBackendEnum.FLASH_ATTN: 'vllm.v1.attention.backends.flash_attn.FlashAttentionBackend'>, minimax_m3_msa_decode_backend='triton', backend_per_kind={}, flash_attn_version=2, flash_attn_max_num_splits_for_cuda_graph=32, tq_max_kv_splits_for_cuda_graph=32, use_trtllm_attention=None, disable_flashinfer_q_quantization=False, mla_prefill_backend=None, use_prefill_query_quantization=False, indexer_kv_dtype='auto', indexer_sparse_logits=False, hisparse_config=None, use_non_causal=False, sparse_mla_force_mqa=False, flex_attn_block_m=None, flex_attn_block_n=None, flex_attn_q_block_size=None, flex_attn_kv_block_size=None), 'kernel_config': KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=[], fused_add_rms_norm=[], gelu_and_mul_sparse=[]), enable_flashinfer_autotune=None, enable_rocm_segmented_attn_autotune=False, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', gdn_decode_backend='flashinfer', sparse_indexer_topk_backend='auto', linear_backend='marlin', linear_backend_per_quant=None), 'mamba_ssm_cache_dtype': 'float32', 'async_scheduling': False, 'model': '/model'}
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [arg_utils.py:1929] The global random seed is set to 42. Since VLLM_ENABLE_V1_MULTIPROCESSING is set to False, this may affect the random state of the Python process that launched vLLM.
+(MainProcess pid=1644) INFO 10-09 12:06:21 [model.py:730] Resolved architecture: Qwen3_5ForConditionalGeneration
+(MainProcess pid=1644) INFO 10-09 12:06:21 [model.py:2141] Using max model len 4096
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418] Module deep_ep was found but failed to import
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418] Traceback (most recent call last):
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "/source/vllm/utils/import_utils.py", line 416, in _has_module
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]     importlib.import_module(module_name)
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]     return _bootstrap._gcd_import(name[level:], package, level)
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/__init__.py", line 83, in <module>
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]     check_nccl_so()
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/__init__.py", line 60, in check_nccl_so
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]     linked_nccl_so_candidates = sorted(glob.glob(f'{find_nccl_root()}/lib/libnccl.so*'))
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]                                                     ^^^^^^^^^^^^^^^^
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/utils/find_pkgs.py", line 68, in find_nccl_root
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]     return find_pkg_root('nccl', lib_name='libnccl.so', optional=optional)
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]   File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/utils/find_pkgs.py", line 53, in find_pkg_root
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]     assert best is not None, f'Cannot find package: {name}'
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418]            ^^^^^^^^^^^^^^^^
+(MainProcess pid=1644) WARNING 10-09 12:06:21 [import_utils.py:418] AssertionError: Cannot find package: nccl
+(MainProcess pid=1644) INFO 10-09 12:06:23 [model.py:948] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(MainProcess pid=1644) INFO 10-09 12:06:23 [model.py:1005] Disabled mm_prefix attention mode because multimodal inputs are configuration-disabled. Attention backends without mm_prefix support may now be selected.
+(MainProcess pid=1644) INFO 10-09 12:06:23 [scheduler.py:308] Chunked prefill is enabled with max_num_batched_tokens=1024.
+(MainProcess pid=1644) WARNING 10-09 12:06:23 [vllm.py:1758] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=1644) WARNING 10-09 12:06:23 [vllm.py:1802] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(MainProcess pid=1644) INFO 10-09 12:06:23 [kernel.py:475] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=1644) INFO 10-09 12:06:23 [vllm.py:2026] Cudagraph is disabled under eager mode
+(MainProcess pid=1644) INFO 10-09 12:06:23 [compilation.py:331] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=1644) INFO 10-09 12:06:26 [core.py:129] Initializing a V1 LLM engine (vdev) with config: model='/model', speculative_config=None, tokenizer='/model', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=/model, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['+quant_fp8', 'all', '+quant_fp8'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [1024], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, moe_backend='auto', gdn_decode_backend='flashinfer', sparse_indexer_topk_backend='auto', linear_backend='marlin', linear_backend_per_quant=None)
+(MainProcess pid=1644) INFO 10-09 12:06:26 [multiproc_executor.py:153] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=<REDACTED_PRIVATE_IPV4>, mq_connect_ip=<REDACTED_PRIVATE_IPV4> (local), world_size=2, local_world_size=2
+/source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from .version import __version__, __version_tuple__  # isort:skip
+/source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from .version import __version__, __version_tuple__  # isort:skip
+Module deep_ep was found but failed to import
+Traceback (most recent call last):
+  File "/source/vllm/utils/import_utils.py", line 416, in _has_module
+    importlib.import_module(module_name)
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/__init__.py", line 83, in <module>
+    check_nccl_so()
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/__init__.py", line 60, in check_nccl_so
+    linked_nccl_so_candidates = sorted(glob.glob(f'{find_nccl_root()}/lib/libnccl.so*'))
+                                                    ^^^^^^^^^^^^^^^^
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/utils/find_pkgs.py", line 68, in find_nccl_root
+    return find_pkg_root('nccl', lib_name='libnccl.so', optional=optional)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/utils/find_pkgs.py", line 53, in find_pkg_root
+    assert best is not None, f'Cannot find package: {name}'
+           ^^^^^^^^^^^^^^^^
+AssertionError: Cannot find package: nccl
+Module deep_ep was found but failed to import
+Traceback (most recent call last):
+  File "/source/vllm/utils/import_utils.py", line 416, in _has_module
+    importlib.import_module(module_name)
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/__init__.py", line 83, in <module>
+    check_nccl_so()
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/__init__.py", line 60, in check_nccl_so
+    linked_nccl_so_candidates = sorted(glob.glob(f'{find_nccl_root()}/lib/libnccl.so*'))
+                                                    ^^^^^^^^^^^^^^^^
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/utils/find_pkgs.py", line 68, in find_nccl_root
+    return find_pkg_root('nccl', lib_name='libnccl.so', optional=optional)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/deep_ep/utils/find_pkgs.py", line 53, in find_pkg_root
+    assert best is not None, f'Cannot find package: {name}'
+           ^^^^^^^^^^^^^^^^
+AssertionError: Cannot find package: nccl
+(Worker pid=2073) INFO 10-09 12:06:34 [parallel_state.py:1906] world_size=2 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_8025c5d06987446c9faad379638aec73 backend=nccl
+(Worker pid=2074) INFO 10-09 12:06:34 [parallel_state.py:1906] world_size=2 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_8025c5d06987446c9faad379638aec73 backend=nccl
+(Worker pid=2073) INFO 10-09 12:06:35 [pynccl.py:148] vLLM is using nccl==2.30.7
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlopen(libnccl-env.so) failed: libnccl-env.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2073:2073 [0] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+b8942b9047ed:2073:2073 [0] NCCL INFO Bootstrap: Using eth0:<REDACTED_PRIVATE_IPV4><0>
+b8942b9047ed:2073:2692 [0] NCCL INFO Socket handshake magic 0x564ab9f2fc4b9d6c (built-in default)
+b8942b9047ed:2073:2073 [0] NCCL INFO cudaDriverVersion 12090
+b8942b9047ed:2073:2073 [0] NCCL INFO NCCL version 2.30.7+cuda12.9
+b8942b9047ed:2073:2073 [0] NCCL INFO NCCL git version HEAD a5187fa2e
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlopen(libnccl-net.so) failed: libnccl-net.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2073:2073 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+b8942b9047ed:2073:2073 [0] NCCL INFO NET/IB : No device found.
+b8942b9047ed:2073:2073 [0] NCCL INFO NET/IB : Using [RO]; OOB eth0:<REDACTED_PRIVATE_IPV4><0>
+b8942b9047ed:2073:2073 [0] NCCL INFO Failed to initialize NET plugin IB
+b8942b9047ed:2073:2073 [0] NCCL INFO NET/Socket : Using [0]eth0:<REDACTED_PRIVATE_IPV4><0>
+b8942b9047ed:2073:2073 [0] NCCL INFO Initialized NET plugin Socket
+b8942b9047ed:2073:2073 [0] NCCL INFO Assigned NET plugin Socket to comm
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlopen(libnccl-rma.so) failed: libnccl-rma.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2073:2073 [0] NCCL INFO RMA/Plugin: Could not find: libnccl-rma.so
+b8942b9047ed:2073:2073 [0] NCCL INFO RMA/Plugin: Failed to load external plugin libnccl-rma.so, dlHandle: (nil), ncclRma: (nil)
+b8942b9047ed:2073:2073 [0] NCCL INFO RMA/Plugin: Failed to initialize any plugin
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlopen(libnccl-gin.so) failed: libnccl-gin.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2073:2073 [0] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+b8942b9047ed:2073:2073 [0] NCCL INFO GIN/Plugin: Failed to load external plugin libnccl-gin.so, dlHandle: (nil), ncclGin: (nil)
+b8942b9047ed:2073:2073 [0] NCCL INFO GIN/Plugin: Failed to initialize any GIN plugin
+b8942b9047ed:2073:2073 [0] NCCL INFO Using network Socket
+b8942b9047ed:2073:2073 [0] NCCL INFO Loaded NVML from libnvidia-ml.so.1
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlsym(nvmlDeviceGetPlatformInfo) failed: /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1: undefined symbol: nvmlDeviceGetPlatformInfo
+b8942b9047ed:2073:2073 [0] NCCL INFO [Rank 0] ncclCommInitRank comm 0x122c1250 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 9a000 commId 0xe0d78b0a12b81371 - Init START
+b8942b9047ed:2073:2073 [0] NCCL INFO RAS client listening socket at <REDACTED_PRIVATE_IPV6><28028>
+b8942b9047ed:2073:2073 [0] NCCL INFO Bootstrap timings total 0.000881 (create 0.000032, send 0.000123, recv 0.000329, ring 0.000022, delay 0.000001)
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 0 is 48-95,144-191. (GPU affinity = 48-95,144-191 ; CPU affinity = 0-191).
+b8942b9047ed:2073:2073 [0] NCCL INFO NVLS multicast support is not available on dev 0
+b8942b9047ed:2073:2073 [0] NCCL INFO Rank 0: 1 Net devices
+b8942b9047ed:2073:2073 [0] NCCL INFO Rank 0: 0 CollNet devices
+b8942b9047ed:2073:2073 [0] NCCL INFO Local Net device counts across ranks: min 1 max 1
+b8942b9047ed:2073:2073 [0] NCCL INFO Local CollNet device counts across ranks: min 0 max 0
+b8942b9047ed:2073:2073 [0] NCCL INFO comm 0x122c1250 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 00/04 : 0 1
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 01/04 : 0 1
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 02/04 : 0 1
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 03/04 : 0 1
+b8942b9047ed:2073:2073 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1 [2] 1/-1/-1->0->-1 [3] -1/-1/-1->0->1
+b8942b9047ed:2073:2073 [0] NCCL INFO P2P Chunksize set to 131072
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlopen(libnccl-profiler.so) failed: libnccl-profiler.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2073:2073 [0] NCCL INFO PROFIb8942b9047ed:2074:2074 [1] NCCL INFO ncclOsDlopen(libnccl-env.so) failed: libnccl-env.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2074:2074 [1] NCCL INFO ENV/Plugin: Could not find: libnccl-env.so
+b8942b9047ed:2074:2074 [1] NCCL INFO cudaDriverVersion 12090
+b8942b9047ed:2074:2074 [1] NCCL INFO Bootstrap: Using eth0:<REDACTED_PRIVATE_IPV4><0>
+b8942b9047ed:2074:2074 [1] NCCL INFO NCCL version 2.30.7+cuda12.9
+b8942b9047ed:2074:2074 [1] NCCL INFO NCCL git version HEAD a5187fa2e
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclOsDlopen(libnccl-net.so) failed: libnccl-net.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2074:2074 [1] NCCL INFO NET/Plugin: Could not find: libnccl-net.so
+b8942b9047ed:2074:2074 [1] NCCL INFO NET/IB : No device found.
+b8942b9047ed:2074:2074 [1] NCCL INFO NET/IB : Using [RO]; OOB eth0:<REDACTED_PRIVATE_IPV4><0>
+b8942b9047ed:2074:2074 [1] NCCL INFO Failed to initialize NET plugin IB
+b8942b9047ed:2074:2074 [1] NCCL INFO NET/Socket : Using [0]eth0:<REDACTED_PRIVATE_IPV4><0>
+b8942b9047ed:2074:2074 [1] NCCL INFO Initialized NET plugin Socket
+b8942b9047ed:2074:2074 [1] NCCL INFO Assigned NET plugin Socket to comm
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclOsDlopen(libnccl-rma.so) failed: libnccl-rma.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2074:2074 [1] NCCL INFO RMA/Plugin: Could not find: libnccl-rma.so
+b8942b9047ed:2074:2074 [1] NCCL INFO RMA/Plugin: Failed to load external plugin libnccl-rma.so, dlHandle: (nil), ncclRma: (nil)
+b8942b9047ed:2074:2074 [1] NCCL INFO RMA/Plugin: Failed to initialize any plugin
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclOsDlopen(libnccl-gin.so) failed: libnccl-gin.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2074:2074 [1] NCCL INFO GIN/Plugin: Could not find: libnccl-gin.so
+b8942b9047ed:2074:2074 [1] NCCL INFO GIN/Plugin: Failed to load external plugin libnccl-gin.so, dlHandle: (nil), ncclGin: (nil)
+b8942b9047ed:2074:2074 [1] NCCL INFO GIN/Plugin: Failed to initialize any GIN plugin
+b8942b9047ed:2074:2074 [1] NCCL INFO Using network Socket
+b8942b9047ed:2074:2074 [1] NCCL INFO Loaded NVML from libnvidia-ml.so.1
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclOsDlsym(nvmlDeviceGetPlatformInfo) failed: /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1: undefined symbol: nvmlDeviceGetPlatformInfo
+b8942b9047ed:2074:2074 [1] NCCL INFO [Rank 1] ncclCommInitRank comm 0x12816fa0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 9b000 commId 0xe0d78b0a12b81371 - Init START
+b8942b9047ed:2074:2074 [1] NCCL INFO Socket handshake magic 0x564ab9f2fc4b9d6c (built-in default)
+b8942b9047ed:2074:2074 [1] NCCL INFO RAS client listening socket at <REDACTED_PRIVATE_IPV6><28028>
+b8942b9047ed:2074:2074 [1] NCCL INFO Bootstrap timings total 0.061325 (create 0.000030, send 0.000091, recv 0.060700, ring 0.000082, delay 0.000000)
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclTopoGetCpuAffinity: Affinity for GPU 1 is 48-95,144-191. (GPU affinity = 48-95,144-191 ; CPU affinity = 0-191).
+b8942b9047ed:2074:2074 [1] NCCL INFO NVLS multicast support is not available on dev 1
+b8942b9047ed:2074:2074 [1] NCCL INFO Rank 1: 1 Net devices
+b8942b9047ed:2074:2074 [1] NCCL INFO Rank 1: 0 CollNet devices
+b8942b9047ed:2074:2074 [1] NCCL INFO comm 0x12816fa0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+b8942b9047ed:2074:2074 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1 [2] -1/-1/-1->1->0 [3] 0/-1/-1->1->-1
+b8942b9047ed:2074:2074 [1] NCCL INFO P2P Chunksize set to 131072
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclOsDlopen(libnccl-profiler.so) failed: libnccl-profiler.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2074:2074 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so
+b8942b9047ed:2074:2074 [1] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0 isAllCudaP2p 1
+b8942b9047ed:2074:2697 [0] NCCL INFO [Proxy Service UDS] Device 1 CPU core 154
+b8942b9047ed:2074:2696 [0] NCCL INFO [Proxy Service] Device 1 CPU core 152
+b8942b9047ed:2074:2696 [1] NCCL INFO proxy listening socket at <REDACTED_PRIVATE_IPV4><38393>
+b8942b9047ed:2074:2074 [1(Worker pid=2073) WARNING 10-09 12:06:35 [symm_mem.py:67] SymmMemCommunicator: Device capability 8.9 not supported, communicator is not available.
+(Worker pid=2074) WARNING 10-09 12:06:35 [symm_mem.py:67] SymmMemCommunicator: Device capability 8.9 not supported, communicator is not available.
+(Worker pid=2074) WARNING 10-09 12:06:35 [flashinfer_all_reduce.py:407] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=2073) WARNING 10-09 12:06:35 [flashinfer_all_reduce.py:407] FlashInfer All Reduce is disabled because it is not supported for world_size=2.
+(Worker pid=2073) INFO 10-09 12:06:35 [cuda_communicator.py:351] Using ['CUSTOM', 'PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=2073) INFO 10-09 12:06:35 [parallel_state.py:2350] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(Worker pid=2073) INFO 10-09 12:06:35 [gpu_worker.py:501] Using V2 Model Runner
+(Worker_TP0 pid=2073) INFO 10-09 12:06:36 [model_runner.py:381] Loading model from scratch...
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [cuda.py:585] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [__init__.py:733] Selected MarlinFP8ScaledMMLinearKernel for Fp8LinearMethod
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [qwen_gdn_linear_attn.py:222] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [qwen_gdn_linear_attn.py:520] GDN non-speculative decode backend: flashinfer
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [cuda.py:466] Using AttentionBackendEnum.FLASH_ATTN backend.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [flash_attn.py:1171] Using FlashAttention version 2
+(Worker_TP1 pid=2074) INFO 10-09 12:06:37 [cuda.py:466] Using AttentionBackendEnum.FLASH_ATTN backend.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [base_loader.py:81] Initializing model took 0.878239 seconds
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [weight_utils.py:1108] Filesystem type for checkpoints: XFS. Checkpoint size: 28.75 GiB. Available RAM: 1454.26 GiB.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:37 [weight_utils.py:1131] Auto-prefetch is disabled because the filesystem (XFS) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+Loading safetensors checkpoint shards:   0% Completed | 0/66 [00:00<?, ?it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:   3% Completed | 2/66 [00:00<00:03, 19.02it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.3.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.0.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.3.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.1.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:   8% Completed | 5/66 [00:00<00:03, 19.76it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.5.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.5.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.5.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.2.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.5.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.6.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.6.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.6.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.3.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.6.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.3.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  11% Completed | 7/66 [00:00<00:03, 17.35it/s]
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.7.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.7.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.8.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.8.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:37 [utils.py:325] Attempted to load weight layers.4.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.8.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.5.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.5.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.5.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.8.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.5.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  14% Completed | 9/66 [00:00<00:03, 17.51it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.6.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.6.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.6.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.6.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.7.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  17% Completed | 11/66 [00:00<00:03, 18.08it/s]
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.7.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.8.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.8.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.11.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.8.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.8.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.11.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.9.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  20% Completed | 13/66 [00:00<00:03, 16.41it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.10.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.11.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.11.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  23% Completed | 15/66 [00:00<00:03, 16.97it/s]
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.12.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.15.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.15.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.13.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  26% Completed | 17/66 [00:00<00:02, 16.92it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.14.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.15.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.15.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.16.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  29% Completed | 19/66 [00:01<00:02, 16.39it/s]
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.17.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.19.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.19.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.18.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.19.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  32% Completed | 21/66 [00:01<00:02, 17.21it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.19.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.20.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.23.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.23.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.21.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  36% Completed | 24/66 [00:01<00:02, 18.43it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.24.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.24.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.24.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.24.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.25.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.25.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.25.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.22.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.25.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.26.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.26.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:38 [utils.py:325] Attempted to load weight layers.23.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.26.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.26.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.23.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  41% Completed | 27/66 [00:01<00:01, 19.67it/s]
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.24.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.24.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.27.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.24.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.27.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.24.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.25.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.25.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.25.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  44% Completed | 29/66 [00:01<00:01, 19.58it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.25.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.26.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.26.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.26.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.26.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.27.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.31.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.27.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.31.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  48% Completed | 32/66 [00:01<00:01, 20.36it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.28.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.29.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.30.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  53% Completed | 35/66 [00:01<00:01, 20.26it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.35.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.31.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.35.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.31.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.32.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.33.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  58% Completed | 38/66 [00:02<00:01, 19.34it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.34.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.39.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.35.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.39.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  61% Completed | 40/66 [00:02<00:01, 18.40it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.40.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.40.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.35.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.40.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.40.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.41.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.41.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.36.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.41.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.41.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  64% Completed | 42/66 [00:02<00:01, 18.48it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.42.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.42.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.37.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.42.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.42.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.43.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.38.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.43.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.44.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.44.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.44.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.39.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.44.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  68% Completed | 45/66 [00:02<00:01, 19.18it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.45.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.45.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.39.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.45.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.40.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:39 [utils.py:325] Attempted to load weight layers.40.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.45.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.40.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.40.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.41.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.41.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  71% Completed | 47/66 [00:02<00:00, 19.19it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.47.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.41.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.41.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.47.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.42.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.42.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.42.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.42.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  74% Completed | 49/66 [00:02<00:00, 18.39it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.43.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.43.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.44.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.44.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.44.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.44.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.45.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.45.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  77% Completed | 51/66 [00:02<00:00, 16.82it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.51.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.45.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.45.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.51.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  80% Completed | 53/66 [00:02<00:00, 17.31it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.46.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.47.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.47.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  83% Completed | 55/66 [00:03<00:00, 17.93it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.55.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.48.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.55.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.56.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.56.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.56.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.56.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.49.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  86% Completed | 57/66 [00:03<00:00, 17.83it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.57.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.57.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.57.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.57.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.58.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.58.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.50.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.58.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.58.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.51.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  89% Completed | 59/66 [00:03<00:00, 18.22it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.59.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.51.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.59.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.60.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.60.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.52.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.60.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.60.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  92% Completed | 61/66 [00:03<00:00, 17.70it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.61.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.61.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.53.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.61.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.61.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.54.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.62.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.62.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:40 [utils.py:325] Attempted to load weight layers.62.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.62.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.55.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards:  95% Completed | 63/66 [00:03<00:00, 16.79it/s]
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.63.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.55.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.56.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.56.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.63.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.56.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.56.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.57.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.57.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.57.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.57.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.58.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.58.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.58.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.58.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.59.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.59.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.60.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.60.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.60.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.60.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.61.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.61.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.61.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.61.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.62.linear_attn.A_log with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.62.linear_attn.dt_bias with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.62.linear_attn.out_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.62.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+Loading safetensors checkpoint shards: 100% Completed | 66/66 [00:03<00:00, 10.60it/s]
+Loading safetensors checkpoint shards: 100% Completed | 66/66 [00:03<00:00, 16.79it/s]
+
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.63.mlp.down_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) INFO 10-09 12:06:41 [default_loader.py:494] Loading weights took 3.96 seconds
+(Worker_TP1 pid=2074) WARNING 10-09 12:06:41 [utils.py:325] Attempted to load weight layers.63.self_attn.o_proj.weight_scale_inv with dtype torch.bfloat16 into parameter with dtype torch.float32
+(Worker_TP0 pid=2073) WARNING 10-09 12:06:41 [marlin_utils_fp8.py:108] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:42 [model_runner.py:413] Model loading took 14.28 GiB memory and 5.781735 seconds
+(Worker_TP0 pid=2073) INFO 10-09 12:06:42 [topk_topp_sampler.py:124] Using FlashInfer for top-p & top-k sampling.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:42 [torch_utils.py:287] Reducing Torch threads from 96 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:42 [interface.py:1015] Setting attention block size to 784 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:42 [interface.py:1039] Padding mamba page size by 0.13% to ensure that mamba page size and attention page size are exactly equal.
+(Worker_TP1 pid=2074) INFO 10-09 12:06:42 [model_runner.py:413] Model loading took 14.28 GiB memory and 6.356777 seconds
+(Worker_TP1 pid=2074) INFO 10-09 12:06:42 [interface.py:1015] Setting attention block size to 784 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP1 pid=2074) INFO 10-09 12:06:42 [interface.py:1039] Padding mamba page size by 0.13% to ensure that mamba page size and attention page size are exactly equal.
+(MainProcess pid=1644) INFO 10-09 12:06:42 [torch_utils.py:287] Reducing Torch threads from 96 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(MainProcess pid=1644) INFO 10-09 12:06:42 [utils.py:347] Using LBNHC KV cache layout.
+/cache/gdn-runtime/lib/python3.12/site-packages/triton/language/core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+  warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+/cache/gdn-runtime/lib/python3.12/site-packages/triton/language/core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+  warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+(Worker_TP0 pid=2073) INFO 10-09 12:06:49 [gpu_worker.py:726] Available KV cache memory: 25.6 GiB
+(MainProcess pid=1644) INFO 10-09 12:06:49 [kv_cache_utils.py:2789] Overriding num_gpu_blocks=1070 with num_gpu_blocks_override=128
+(MainProcess pid=1644) INFO 10-09 12:06:49 [kv_cache_utils.py:2789] Overriding num_gpu_blocks=1070 with num_gpu_blocks_override=128
+(MainProcess pid=1644) INFO 10-09 12:06:49 [kv_cache_utils.py:2481] GPU KV cache size: 58,254 tokens, Maximum concurrency for 4,096 tokens per request: 14.22x
+(Worker_TP1 pid=2074) INFO 10-09 12:06:49 [qwen_triton_warmup.py:296] Warming up Qwen GDN Triton kernels for model_type=qwen3_5_text.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:49 [qwen_triton_warmup.py:296] Warming up Qwen GDN Triton kernels for model_type=qwen3_5_text.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:52 [qwen_vl_triton_warmup.py:98] Warmed M-RoPE Triton kernels.
+(Worker_TP1 pid=2074) INFO 10-09 12:06:52 [qwen_vl_triton_warmup.py:98] Warmed M-RoPE Triton kernels.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:52 [mamba_triton_warmup.py:42] Warmed Mamba batch_memcpy_kernel.
+(Worker_TP1 pid=2074) INFO 10-09 12:06:52 [mamba_triton_warmup.py:42] Warmed Mamba batch_memcpy_kernel.
+(Worker_TP0 pid=2073) INFO 10-09 12:06:52 [gpu_worker.py:996] Free memory on device (43.97/44.52 GiB) on startup. Desired GPU memory utilization is (0.9, 40.07 GiB). Actual usage is 14.36 GiB for consumed memory (weights + non-torch), 0.11 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=27334440960` (25.46 GiB) to fit into requested memory, or `--kv-cache-memory=31527467008` (29.36 GiB) to fully utilize gpu memory. Current kv cache memory in use is 25.6 GiB.
+(Worker_TP1 pid=2074) INFO 10-09 12:06:52 [gpu_worker.py:996] Free memory on device (43.97/44.52 GiB) on startup. Desired GPU memory utilization is (0.9, 40.07 GiB). Actual usage is 14.36 GiB for consumed memory (weights + non-torch), 0.11 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=27334440960` (25.46 GiB) to fit into requested memory, or `--kv-cache-memory=31527467008` (29.36 GiB) to fully utilize gpu memory. Current kv cache memory in use is 25.6 GiB.
+(MainProcess pid=1644) INFO 10-09 12:06:53 [core.py:380] init engine (profile, create kv cache, warmup model) took 10.58 s
+(MainProcess pid=1644) INFO 10-09 12:06:53 [kv_cache_utils.py:789] kv cache group sizes [4096, 4096, 4096, 784]
+(MainProcess pid=1644) INFO 10-09 12:06:53 [kv_cache_utils.py:790] kv lcm block sizes 200704
+(MainProcess pid=1644) INFO 10-09 12:06:54 [hf.py:648] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(MainProcess pid=1644) WARNING 10-09 12:06:54 [vllm.py:1327] Watermarking is enabled for this request, but the engine has no watermark configuration. This and subsequent requests will run without watermarking.
+(Worker_TP0 pid=2073) INFO 10-09 12:11:34 [multiproc_executor.py:842] Parent process exited, terminating worker queues
+(MainProcess pid=1644) INFO 10-09 12:11:34 [multiproc_executor.py:478] [shutdown] Executor: waiting for worker exit count=2
+] NCCL INFO ncclOsDlopen(libnccl-tuner.so) failed: libnccl-tuner.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2074:2074 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+b8942b9047ed:2074:2074 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+b8942b9047ed:2074:2074 [1] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+b8942b9047ed:2074:2074 [1] NCCL INFO ncclCommInitRank comm 0x12816fa0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 9b000 commId 0xe0d78b0a12b81371 - Init COMPLETE
+b8942b9047ed:2074:2074 [1] NCCL INFO Init timings - ncclCommInitRank: rank 1 nranks 2 total 0.21 (kernels 0.13, alloc 0.00, bootstrap 0.06, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+b8942b9047ed:2074:2074 [1] NCCL INFO Symmetric VA size=48GB
+b8942b9047ed:2074:2074 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+b8942b9047ed:2074:2074 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+b8942b9047ed:2074:2074 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+b8942b9047ed:2074:2074 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+b8942b9047ed:2074:2074 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+b8942b9047ed:2074:3241 [1] NCCL INFO misc/socket.cc:51 (socketProgress) -> 3
+b8942b9047ed:2074:3241 [1] NCCL INFO misc/socket.cc:68 (socketWait) -> 3
+b8942b9047ed:2074:3241 [1] NCCL INFO misc/socket.cc:632 (ncclSocketSend) -> 3
+b8942b9047ed:2074:3241 [1] NCCL INFO misc/socket.cc:51 (socketProgress) -> 3
+b8942b9047ed:2074:3241 [1] NCCL INFO misc/socket.cc:68 (socketWait) -> 3
+b8942b9047ed:2074:3241 [1] NCCL INFO misc/socket.cc:632 (ncclSocketSend) -> 3
+b8942b9047ed:2074:2696 [1] NCCL INFO misc/socket.cc:707 (ncclSocketTryRecv) -> 3
+b8942b9047ed:2074:2696 [1] NCCL INFO misc/socket.cc:707 (ncclSocketTryRecv) -> 3
+LER/Plugin: Could not find: libnccl-profiler.so
+b8942b9047ed:2073:2073 [0] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0 isAllCudaP2p 1
+b8942b9047ed:2073:2698 [0] NCCL INFO [Proxy Service] Device 0 CPU core 51
+b8942b9047ed:2073:2699 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 53
+b8942b9047ed:2073:2698 [0] NCCL INFO proxy listening socket at <REDACTED_PRIVATE_IPV4><38789>
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclOsDlopen(libnccl-tuner.so) failed: libnccl-tuner.so: cannot open shared object file: No such file or directory
+b8942b9047ed:2073:2073 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so
+b8942b9047ed:2073:2073 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+b8942b9047ed:2073:2073 [0] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+b8942b9047ed:2073:2073 [0] NCCL INFO CC Off, workFifoBytes 1048576
+b8942b9047ed:2073:2073 [0] NCCL INFO ncclCommInitRank comm 0x122c1250 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 9a000 commId 0xe0d78b0a12b81371 - Init COMPLETE
+b8942b9047ed:2073:2073 [0] NCCL INFO Init timings - ncclCommInitRank: rank 0 nranks 2 total 0.16 (kernels 0.14, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+b8942b9047ed:2073:2073 [0] NCCL INFO Symmetric VA size=48GB
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+b8942b9047ed:2073:2073 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+b8942b9047ed:2073:2073 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+b8942b9047ed:2073:3242 [0] NCCL INFO misc/socket.cc:51 (socketProgress) -> 3
+b8942b9047ed:2073:3242 [0] NCCL INFO misc/socket.cc:68 (socketWait) -> 3
+b8942b9047ed:2073:3242 [0] NCCL INFO misc/socket.cc:632 (ncclSocketSend) -> 3
+b8942b9047ed:2073:2698 [0] NCCL INFO misc/socket.cc:707 (ncclSocketTryRecv) -> 3
+b8942b9047ed:2073:3242 [0] NCCL INFO misc/socket.cc:51 (socketProgress) -> 3
+b8942b9047ed:2073:3242 [0] NCCL INFO misc/socket.cc:68 (socketWait) -> 3
+b8942b9047ed:2073:3242 [0] NCCL INFO misc/socket.cc:632 (ncclSocketSend) -> 3
+(MainProcess pid=1644) INFO 10-09 12:11:36 [multiproc_executor.py:485] [shutdown] Executor: all workers exited gracefully

@@ -1,0 +1,88 @@
+{
+  "scope": "Forced common-history local numerical diagnostics only; no accuracy/performance or complete initial-state causal proof.",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "capture_initial_status": "OBSERVED_INITIAL_PASS",
+  "raw_snapshots": 1344,
+  "raw_snapshot_bytes_retained_remotely": 25465522432,
+  "representative_selection": "Each arm: rank0/layer0/actual step3499, explicitly not exhaustive.",
+  "replay_by_captured_backend": {
+    "triton": {
+      "captured_backend": "triton",
+      "captured_dt_bias_dtype": "torch.bfloat16",
+      "cases": 672,
+      "exact_own_fidelity": 672,
+      "within_frozen_tolerance": 672,
+      "accepted_local_arm": true,
+      "tolerances": {
+        "atol": 0.01,
+        "rtol": 0.01,
+        "relative_l2_strictly_below": 0.01
+      },
+      "observed_maxima": {
+        "triton/vs_fp64_math_output/relative_l2": 0.003054297034442327,
+        "triton/vs_fp64_math_output/absmax": 0.015228413194737556,
+        "triton/vs_fp64_math_state/relative_l2": 3.8226748185167767e-07,
+        "triton/vs_fp64_math_state/absmax": 3.915195925685566e-06,
+        "triton/vs_fp64_rounded_output/relative_l2": 0.00020086419992444956,
+        "triton/vs_fp64_rounded_output/absmax": 6.103515625e-05,
+        "triton/vs_fp64_rounded_state/relative_l2": 3.894912025024745e-07,
+        "triton/vs_fp64_rounded_state/absmax": 3.814697265625e-06,
+        "flashinfer/vs_fp64_math_output/relative_l2": 0.003054297034442327,
+        "flashinfer/vs_fp64_math_output/absmax": 0.015228413194737556,
+        "flashinfer/vs_fp64_math_state/relative_l2": 6.438770637980534e-07,
+        "flashinfer/vs_fp64_math_state/absmax": 4.030529595411281e-06,
+        "flashinfer/vs_fp64_rounded_output/relative_l2": 0.00020086419992444956,
+        "flashinfer/vs_fp64_rounded_output/absmax": 6.103515625e-05,
+        "flashinfer/vs_fp64_rounded_state/relative_l2": 6.444258853514138e-07,
+        "flashinfer/vs_fp64_rounded_state/absmax": 3.814697265625e-06
+      },
+      "observed_padding_rows_by_replayed_backend": {
+        "triton": 0,
+        "flashinfer": 0
+      }
+    },
+    "flashinfer": {
+      "captured_backend": "flashinfer",
+      "captured_dt_bias_dtype": "torch.float32",
+      "cases": 672,
+      "exact_own_fidelity": 672,
+      "within_frozen_tolerance": 672,
+      "accepted_local_arm": true,
+      "tolerances": {
+        "atol": 0.01,
+        "rtol": 0.01,
+        "relative_l2_strictly_below": 0.01
+      },
+      "observed_maxima": {
+        "triton/vs_fp64_math_output/relative_l2": 0.002784365886081456,
+        "triton/vs_fp64_math_output/absmax": 0.015208103725131927,
+        "triton/vs_fp64_math_state/relative_l2": 4.0897984114028163e-07,
+        "triton/vs_fp64_math_state/absmax": 3.858413187174392e-06,
+        "triton/vs_fp64_rounded_output/relative_l2": 0.00010846711199125548,
+        "triton/vs_fp64_rounded_output/absmax": 3.0517578125e-05,
+        "triton/vs_fp64_rounded_state/relative_l2": 4.063919248039908e-07,
+        "triton/vs_fp64_rounded_state/absmax": 3.814697265625e-06,
+        "flashinfer/vs_fp64_math_output/relative_l2": 0.002784365886081456,
+        "flashinfer/vs_fp64_math_output/absmax": 0.015208103725131927,
+        "flashinfer/vs_fp64_math_state/relative_l2": 6.806789245240857e-07,
+        "flashinfer/vs_fp64_math_state/absmax": 4.030529595411281e-06,
+        "flashinfer/vs_fp64_rounded_output/relative_l2": 0.00028684436500829997,
+        "flashinfer/vs_fp64_rounded_output/absmax": 6.103515625e-05,
+        "flashinfer/vs_fp64_rounded_state/relative_l2": 6.812836382836846e-07,
+        "flashinfer/vs_fp64_rounded_state/absmax": 3.814697265625e-06
+      },
+      "observed_padding_rows_by_replayed_backend": {
+        "triton": 0,
+        "flashinfer": 0
+      }
+    }
+  },
+  "exception_count": 1,
+  "full_attention_kv_observed": false,
+  "prior_unforced_truncation_resolved": false,
+  "native_pair_status": "REVIEW_REQUIRED",
+  "native_sampler_difference_count": 15,
+  "strict_same_sample_ownership_pass": false,
+  "unmatched_same_sample_observations": 1,
+  "unknown_ownership_observations": 0
+}

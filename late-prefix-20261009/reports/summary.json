@@ -1,0 +1,148 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "snapshot_localization_status": "OBSERVED_INITIAL_PASS",
+  "gpu_execution": false,
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "positions_per_arm": {
+    "triton": 7378,
+    "flashinfer": 7378
+  },
+  "true_decode_positions_per_arm": {
+    "triton": 7370,
+    "flashinfer": 7370
+  },
+  "snapshots_per_arm": {
+    "triton": 672,
+    "flashinfer": 672
+  },
+  "native_starting_condition_gate_pass": true,
+  "full_prefill_logits_equal": true,
+  "common_prefill_sampler": true,
+  "matching_execution_contexts": true,
+  "schedules_equal": true,
+  "native_sampler_difference_count": 15,
+  "first_backend_native_sampler_difference_step": {
+    "206": 4,
+    "209": 454,
+    "255": 19
+  },
+  "first_actual_sampler_reference_difference": {
+    "triton": {
+      "198": null,
+      "206": 4,
+      "209": 454,
+      "228": null,
+      "255": 19,
+      "285": null,
+      "292": null,
+      "318": null
+    },
+    "flashinfer": {
+      "198": null,
+      "206": null,
+      "209": null,
+      "228": null,
+      "255": null,
+      "285": null,
+      "292": null,
+      "318": null
+    }
+  },
+  "common_observed_initial_gdn_state": true,
+  "strict_same_sample_ownership_pass": false,
+  "unmatched_same_sample_observations": 1,
+  "unknown_ownership_observations": 0,
+  "interpretation": "CPU evidence audit only. NOGO or ownership mismatches remain explicit. Forced histories do not establish accuracy, natural stopping, performance or a decode root cause. Full-attention KV is unobserved; GPU replays remain a separate gate.",
+  "stages": [
+    {
+      "stage": "native",
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--no-project",
+        "/cache/gdn-runtime/bin/python",
+        "/late-helpers/audit_late_sampler.py",
+        "--triton-dir",
+        "/results/late-triton-2",
+        "--flashinfer-dir",
+        "/results/late-flashinfer-2",
+        "--reference-root",
+        "/late-reference",
+        "--source-root",
+        "/source",
+        "--source-manifest",
+        "/artifacts/performance-source.json",
+        "--output",
+        "/results/pair-audit-v1/native.json"
+      ],
+      "timeout_seconds": 300,
+      "gpu_execution": false,
+      "exit_code": 0,
+      "stdout_sha256": "a434a0866ee9d18831a2b389382f162fa93d5e9dc110e161690ffb875f76554c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "host",
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--no-project",
+        "/cache/gdn-runtime/bin/python",
+        "/results/audit_late_host_v3.py",
+        "--runs",
+        "/results/late-triton-2",
+        "/results/late-flashinfer-2",
+        "--monitor",
+        "/results/monitor_host.sh",
+        "--container-name",
+        "gdn60403-late-v3-20261009",
+        "--output",
+        "/results/pair-audit-v1/host.json"
+      ],
+      "timeout_seconds": 120,
+      "gpu_execution": false,
+      "exit_code": 0,
+      "stdout_sha256": "cc5a208d72a97593adcb50770be09b98dd2987bed6ea9aa1af9bf4bf99ad1986",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "snapshots",
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--no-project",
+        "/cache/gdn-runtime/bin/python",
+        "/late-helpers/audit_late_snapshots.py",
+        "--triton",
+        "/results/late-triton-2",
+        "--flashinfer",
+        "/results/late-flashinfer-2",
+        "--reference-root",
+        "/late-reference",
+        "--source-root",
+        "/source",
+        "--source-manifest",
+        "/artifacts/performance-source.json",
+        "--output",
+        "/results/pair-audit-v1/snapshots.json"
+      ],
+      "timeout_seconds": 1800,
+      "gpu_execution": false,
+      "exit_code": 0,
+      "stdout_sha256": "35bf27eeed31064afd2808a214c23e12fd77bb99c6ec8015530c0425aac17d51",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "frozen_consumers_unchanged": true,
+  "orchestrator_sha256": "707530878383835bc78ebd7bbc65de17dafce1f5ceef12ae465e466b998e187d",
+  "frozen_consumers": {
+    "audit_late_sampler.py": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d",
+    "audit_late_host.py": "62b336f3566cef56cdd2d46c09d26016f4261727bcd7388d852f2cb904638362",
+    "audit_late_snapshots.py": "bab8c17cc979527f0dd906355bee89843814e91cc268eda8cce934c32118fe5e"
+  },
+  "host_v3_sha256": "294361399debabd6922bc1616722c88d7b0c62e1eff7a6b07a04155257d97f37",
+  "owned_container_name": "gdn60403-late-v3-20261009"
+}

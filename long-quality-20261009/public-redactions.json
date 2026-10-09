@@ -1,0 +1,278 @@
+{
+  "original_candidate_archive_sha256": "fcacd39022cec5a006045b31ed134d316379f71b1abe9eac81cbddede50b2583",
+  "redacted_files": [
+    {
+      "path": "flashinfer-eager-1.log",
+      "original_sha256": "496f3449a83592b8c7d2f5aceec3009533e190146f996ad1f8db083038dab919",
+      "original_bytes": 153768,
+      "public_redacted_sha256": "e2af93a0fd89a6a9015ad44c18bb51015ad4445f28937609e73ed11ef4f68e67",
+      "public_redacted_bytes": 153930,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-eager-1/runtime-after.json",
+      "original_sha256": "cc5f9265856a58f900358621a34fea72da369109607ecc2b9dcf8a7b7dfb1a6e",
+      "original_bytes": 112608,
+      "public_redacted_sha256": "8cb68ae1e940e319532ab643b9f3b2edb8d5ae0429dbd65eb43fd1f869938b26",
+      "public_redacted_bytes": 112664,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-eager-1/runtime-before.json",
+      "original_sha256": "0644e3f02d644b2233e2b7300e3cc2852b16745ad6bbd6fb410f52185ce015ad",
+      "original_bytes": 102890,
+      "public_redacted_sha256": "a1deaa273aa7baa1d8173ce5ecc09365de2cf246614301bb3c1bb403a58bfe12",
+      "public_redacted_bytes": 102946,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-eager-2.log",
+      "original_sha256": "9e91f7e16042def4784a4d8fc154ff36fc5d2676269e7c092065360b3b7a78d9",
+      "original_bytes": 153153,
+      "public_redacted_sha256": "eaece94182566f092fbaaf56871848054e0a1813610e3b5a95f96518ab6781d8",
+      "public_redacted_bytes": 153315,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-eager-2/runtime-after.json",
+      "original_sha256": "c911aa41a3a7bbd3c89a10d50f7618f4f100be34bb04b9051e2cce529fd52550",
+      "original_bytes": 110157,
+      "public_redacted_sha256": "5750b25975db2a5d5978207314ad804f7dc084894ec930451a5f4fc679d00517",
+      "public_redacted_bytes": 110213,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-eager-2/runtime-before.json",
+      "original_sha256": "0644e3f02d644b2233e2b7300e3cc2852b16745ad6bbd6fb410f52185ce015ad",
+      "original_bytes": 102890,
+      "public_redacted_sha256": "a1deaa273aa7baa1d8173ce5ecc09365de2cf246614301bb3c1bb403a58bfe12",
+      "public_redacted_bytes": 102946,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-graph-1.log",
+      "original_sha256": "3931281a0d4a7dcef29711607e2c39064dce61082fe9ddd283a4b25996ccb4dc",
+      "original_bytes": 140755,
+      "public_redacted_sha256": "4fbf95e344f081a3f262fa98b153e1d34307be2f4153aca761dea118d00b8834",
+      "public_redacted_bytes": 140917,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-graph-1/runtime-after.json",
+      "original_sha256": "0e62ad99a5659a43588b7a0c1ef45048add18a82f2195b0098ca27f922ebe27c",
+      "original_bytes": 119449,
+      "public_redacted_sha256": "1ea228f53e0da9549639674ff23a91958641caf0a87bd281df29b3b6483443c2",
+      "public_redacted_bytes": 119505,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-graph-1/runtime-before.json",
+      "original_sha256": "f5ea204da50571bda142a4ef97a6286efecbf19b89f32ef78a234686e0b78095",
+      "original_bytes": 108699,
+      "public_redacted_sha256": "d7b862d5dc974f8f4c2586461a0e46685a550acd545b47484cd6a02d6db62b9c",
+      "public_redacted_bytes": 108755,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-graph-2.log",
+      "original_sha256": "0762696a2f2bf6a8b399b0fcba46fb836a122c683c28ebf45a3dafb3b2fe2dd3",
+      "original_bytes": 136263,
+      "public_redacted_sha256": "3edcb8b048dce96fabae416a5de302278aa93ddc83724ceeb5a62374d2ddac8f",
+      "public_redacted_bytes": 136425,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-graph-2/runtime-after.json",
+      "original_sha256": "b77bf4cd3c5d17dd4178e19dc19d135864922d80e419685aeb71b11873fca17d",
+      "original_bytes": 157375,
+      "public_redacted_sha256": "4b761fd9309640a9e8cad66d034a8ad4d0a4fda257c0fce944f0a2746a9e2eaa",
+      "public_redacted_bytes": 157431,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "flashinfer-graph-2/runtime-before.json",
+      "original_sha256": "46b5158d1d9705bd400e5763bdfdb99c6e9b334241aee8377297e0537d1ebbac",
+      "original_bytes": 108699,
+      "public_redacted_sha256": "728dbafbdb5e4bce3b9ee396c9a5d042214810b6adfa97b40db0699ad507fcdd",
+      "public_redacted_bytes": 108755,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-eager-1.log",
+      "original_sha256": "85fd7ec8a81cd372005e16f336f65e6969e7f2919880458f11d54683dd0c8530",
+      "original_bytes": 133677,
+      "public_redacted_sha256": "cbd6bcf6b0a4e885318d92f559a72cac6d86a87001379c492efc65ddb22de3f8",
+      "public_redacted_bytes": 133839,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-eager-1/runtime-after.json",
+      "original_sha256": "9069db7c182885f9f92c68cb46b84e5cf8bd12739b7d78e15bc2d901a8cca5eb",
+      "original_bytes": 105505,
+      "public_redacted_sha256": "fc7bd2b0eb8a9aabd18a5cfb31c7806644091653c74d91cb7dbcb405111d61de",
+      "public_redacted_bytes": 105561,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-eager-1/runtime-before.json",
+      "original_sha256": "5177fa3123493243934dcc3f22629e813d559c0241a762d21a6de668571d72e9",
+      "original_bytes": 102882,
+      "public_redacted_sha256": "0fc68c43ff0d385334b8a681307e6f9827a9925d23d972699fb97f00d96437a9",
+      "public_redacted_bytes": 102938,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-eager-2.log",
+      "original_sha256": "199db3b445257859eb29685a7c8edd160e867743f864c70a73a83207031a3359",
+      "original_bytes": 135018,
+      "public_redacted_sha256": "29aa9672b3d7d1a676624c8f281bc7be66a223159b53abb162fe42abda30d6ea",
+      "public_redacted_bytes": 135180,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-eager-2/runtime-after.json",
+      "original_sha256": "2d59e10be7abfb1e41f403e72a198914668725d02d9ae683ae057d6d607e099a",
+      "original_bytes": 103183,
+      "public_redacted_sha256": "20d49177fdd496817074f6db03528ae56e508775f0eb567e590dbb29adb4ef26",
+      "public_redacted_bytes": 103239,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-eager-2/runtime-before.json",
+      "original_sha256": "5177fa3123493243934dcc3f22629e813d559c0241a762d21a6de668571d72e9",
+      "original_bytes": 102882,
+      "public_redacted_sha256": "0fc68c43ff0d385334b8a681307e6f9827a9925d23d972699fb97f00d96437a9",
+      "public_redacted_bytes": 102938,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-graph-1.log",
+      "original_sha256": "e01d238718912a16d1c87506aa49eeeae488d2b6b8301a7f0ce4e81bc79b2348",
+      "original_bytes": 122086,
+      "public_redacted_sha256": "00e34cf18e0809eaaf90e3488e24f73b9ef17f71c7fdf2834d33e1c7b29a7b75",
+      "public_redacted_bytes": 122248,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-graph-1/runtime-after.json",
+      "original_sha256": "edaf621ff0d20ff92a17be249df60a1c2b9682c64a143abaf5a9c6d3642b1ef5",
+      "original_bytes": 110136,
+      "public_redacted_sha256": "308f9bc30977b97e805a16d2d8f91e1687f4503cabc65fa61f8af53d727c8c76",
+      "public_redacted_bytes": 110192,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-graph-1/runtime-before.json",
+      "original_sha256": "7867375629da3eecc40ce7e1bd91089172a187b565fe6a6e690469d4f0f7fa59",
+      "original_bytes": 108674,
+      "public_redacted_sha256": "0d5afa297627acb7053003e617161c3304bd4c44e7a56c8b8fe1ada3daff169a",
+      "public_redacted_bytes": 108730,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-graph-2.log",
+      "original_sha256": "d3093733e380b3b9fc000e03293f7ff852c33eb80003af8acc5a1b3247bd547c",
+      "original_bytes": 120065,
+      "public_redacted_sha256": "952e5fbc93a528c11b836e8447be000c484a8494bc5f54597be87ca745e1184b",
+      "public_redacted_bytes": 120227,
+      "redaction_counts": {
+        "ipv6": 2,
+        "ipv4": 10
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-graph-2/runtime-after.json",
+      "original_sha256": "12e8abe282ba544abc49d5e5b9dfcdf4848afd5c72a47c06ac904167722c8faa",
+      "original_bytes": 119295,
+      "public_redacted_sha256": "868659ec1cdc8a3aeec48275cc9df4886d797e8f1fe9eec24d9bb1e9d7ba73fe",
+      "public_redacted_bytes": 119351,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    },
+    {
+      "path": "triton-graph-2/runtime-before.json",
+      "original_sha256": "90bd1320fdcbc3b0af1e746a689e25dc54204b8ddb738709db45aec286371dca",
+      "original_bytes": 108674,
+      "public_redacted_sha256": "a948bf143eea5c10f6d0894291a5380ee77c7e43d9c98e06a324ad9a9077c85f",
+      "public_redacted_bytes": 108730,
+      "redaction_counts": {
+        "ipv4": 4
+      },
+      "scope": "Private/loopback IPv4 and private/link-local/loopback IPv6 observations only; no original address values published. Generic reference localhost defaults are preserved."
+    }
+  ],
+  "scope": "Public observation copies only. Raw logs are retained locally/remotely; original audit log digests remain raw digests. Frozen source files remain exact; literal localhost defaults in source/reference are not observed host-network addresses."
+}

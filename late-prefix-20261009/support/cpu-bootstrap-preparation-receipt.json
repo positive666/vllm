@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "gpu_execution": false,
+  "scope": "Actual artifact installers/deferred loaders use CPU stub model classes. No numerical native sampler or CUDA kernel invocation.",
+  "bootstrap_helper_sha256": "da35fe1986392658a73f8cc663f39aac3362dc4940cb37e6839eae405b6e8ab0",
+  "frozen_force_common_sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24",
+  "checks": [
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_bootstrap_contracts.py -v",
+      "route": "Parent explicit install + actual deferred hooks",
+      "contract_sha256": "0b01f921c7278ed5a1ee6a691a68941c7ec113e0b7ef8ab19d2e9ef74018a12a",
+      "exit_code": 0,
+      "tests": 1,
+      "runtime_seconds": 29.028
+    },
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_bootstrap_contracts.py -v",
+      "route": "Actual worker late_site/sitecustomize + deferred hooks + duplicate explicit install rejected",
+      "contract_sha256": "702e55cd382d32e40bf940274e5d2361f85f3587c087244788c49c9812411393",
+      "exit_code": 0,
+      "tests": 1,
+      "runtime_seconds": 27.587
+    }
+  ],
+  "parent_child_path": "Parent process starts without GDN observer environment and explicitly installs once in main; spawned worker runs late_site/sitecustomize once, and __mp_main__ does not execute the driver main."
+}

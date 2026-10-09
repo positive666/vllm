@@ -1,0 +1,25 @@
+{
+  "output_dir": "/results/late-triton-2/trace",
+  "fixture_path": "/results/late-triton-2/fixture.json",
+  "target_indices": [
+    209,
+    255
+  ],
+  "limit": 3500,
+  "snapshot_target": 255,
+  "snapshot_steps": [
+    1,
+    18,
+    19,
+    1750,
+    3497,
+    3498,
+    3499
+  ],
+  "eos_candidate_ids": [
+    248046
+  ],
+  "eos_observation_scope": "TokenizerEOS248046candidate only; additional model EOS/stop IDs are not raw-logit-covered",
+  "expected_runner_sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+  "expected_input_batch_sha256": "96163c486368f2cf0e539fe68eaa06f4df3ac814da8f7a92af2b04242e01bc6d"
+}

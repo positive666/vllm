@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "readiness": "READY_FOR_BOUNDED_FULL_REPLAY",
+  "script_sha256": "2a1cdd2a727790085b2bc9b53d96e40b70692f0507624033d0dca2dc3018ce7f",
+  "script_bytes": 13094,
+  "monitor_sha256": "623909c16471a9f53f7b989aaa6c532f583143daa318d3aa104c6446d4ce3b3f",
+  "wrapper_sha256": "2e6d71a5ece657186bf43cfda020272e39fc80363a6db593b35d5c3f428d4744",
+  "checks": [
+    {
+      "command": "bash -n artifacts/gdn60403-review-20261008/late-prefix-v3-20261009/run_replay.sh",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe artifacts/gdn60403-review-20261008/late-prefix-v3-20261009/check_replay_syntax.py",
+      "exit_code": 0,
+      "stdlib_python_heredocs": 3
+    }
+  ],
+  "actual_schema_binding": {
+    "native_sampler_global_unique_effective_records": {
+      "triton": 7378,
+      "flashinfer": 7378
+    },
+    "first_sidecar_sha256": "4194a68ec75b3ea399eec12debe842457ccdda901457064f419f1c1c81eaefbb",
+    "first_capture_sha256": "3c19d76aa94145fbe458ae36143c2dca3a9fdddd547534add7c8d75334275025",
+    "first_capture_rank": 0,
+    "first_capture_layer": 0,
+    "first_capture_call": 1,
+    "actual_target_step": 1,
+    "execution_id": 2
+  },
+  "scope": "CPU script preparation only. All672 cases per arm, fresh process/workspace,1800s+30s kill-after, owned container only. One-arm fidelity does not clear outer REVIEW_REQUIRED or initial NOGO.",
+  "outer_status_retained": "REVIEW_REQUIRED",
+  "snapshot_status_retained": "OBSERVED_INITIAL_PASS",
+  "gpu_execution": false,
+  "frozen_helpers_modified": false
+}

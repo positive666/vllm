@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "origin": "flashinfer-eager-1 unforced offline8 diagnostic",
+  "reference_files": {
+    "completed.json": "d293b322876e8236f7799a688221ddd0d10e79f8046c6601db40fa6316421e78",
+    "launch.json": "69967bcc38ca26dd41477b40b43108c819d4bf958e9e320146af6568ea5fd83d",
+    "fixture.json": "0ef122fc8b9a36abd51884201e03b40b9529ef2fffafd7124a7a46609ca6a6e4",
+    "runtime-before.json": "0644e3f02d644b2233e2b7300e3cc2852b16745ad6bbd6fb410f52185ce015ad",
+    "runtime-after.json": "cc5f9265856a58f900358621a34fea72da369109607ecc2b9dcf8a7b7dfb1a6e",
+    "sampling-runtime.json": "d17d6efbcb95ed51eba86061a07a720d7585dc82150e786344fabb78e40dc9f8",
+    "shutdown.json": "06ebb23a9edd3acd4bfddc17fcab1f3ef64bce18bd87ae2571af5983c523bbfa",
+    "run.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "runtime-binding.json": "3d70b3ff020676a2eda076c9652369adc810580ed4ce448d3e87a8e056a5136a"
+  },
+  "source_files": {
+    "vllm/v1/worker/gpu/model_runner.py": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+    "vllm/v1/worker/gpu/input_batch.py": "96163c486368f2cf0e539fe68eaa06f4df3ac814da8f7a92af2b04242e01bc6d",
+    "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d"
+  },
+  "indices": [
+    198,
+    206,
+    209,
+    228,
+    255,
+    285,
+    292,
+    318
+  ],
+  "target": 255,
+  "selected_steps": [
+    1,
+    18,
+    19,
+    1750,
+    3497,
+    3498,
+    3499
+  ],
+  "limit": 3500,
+  "scope": "Artifact-only conditional shared-history localization. Forced output is not quality, natural stopping or performance evidence. First-decode GDN prestates/full prefill logits must match before attributing later differences to propagated decode."
+}

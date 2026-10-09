@@ -1,0 +1,11 @@
+[
+  {
+    "scope": "host_process_ownership_observations",
+    "check": "strict_same_sample_ownership",
+    "observed": {
+      "strict_same_sample_ownership_pass": false,
+      "unmatched_same_sample_observations": 1,
+      "unknown_ownership_observations": 0
+    }
+  }
+]

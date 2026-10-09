@@ -1,0 +1,8 @@
+{
+  "event": "patched",
+  "helper_sha256": "fa19732e40b53aefdaed5f4f1cd45451c7abbe614e913a2587db6133a1c1b006",
+  "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+  "module_file": "/source/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+  "module_sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+  "pid": 30
+}

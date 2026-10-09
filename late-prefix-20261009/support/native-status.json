@@ -1,0 +1,28 @@
+{
+  "stage": "native",
+  "argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "/cache/gdn-runtime/bin/python",
+    "/late-helpers/audit_late_sampler.py",
+    "--triton-dir",
+    "/results/late-triton-2",
+    "--flashinfer-dir",
+    "/results/late-flashinfer-2",
+    "--reference-root",
+    "/late-reference",
+    "--source-root",
+    "/source",
+    "--source-manifest",
+    "/artifacts/performance-source.json",
+    "--output",
+    "/results/pair-audit-v1/native.json"
+  ],
+  "timeout_seconds": 300,
+  "gpu_execution": false,
+  "exit_code": 0,
+  "stdout_sha256": "a434a0866ee9d18831a2b389382f162fa93d5e9dc110e161690ffb875f76554c",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

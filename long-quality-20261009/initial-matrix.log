@@ -1,0 +1,6 @@
+2026-10-09T09:04:52Z starting flashinfer-eager-1
+2026-10-09T09:09:44Z completed flashinfer-eager-1 exit=0
+2026-10-09T09:09:45Z starting triton-graph-1
+2026-10-09T09:13:31Z completed triton-graph-1 exit=0
+2026-10-09T09:13:32Z starting flashinfer-graph-1
+2026-10-09T09:17:29Z completed flashinfer-graph-1 exit=0

@@ -1,0 +1,77 @@
+{
+  "scope": "Setup-attempt and CPU runtime-preflight verification only; no GPU numerical or quality claim",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "first_attempt_matrix_exit": 1,
+  "first_attempt_triton_exit": 1,
+  "failure_before_llm_init": "FlashInfer metadata equality gate at late_driver.py:73",
+  "rerun_cpu_packages_exact_to_frozen_reference": true,
+  "rerun_cpu_modules_exact_to_frozen_reference": true,
+  "packages": 6,
+  "modules": 7,
+  "raw_cleanup_log_contains_only_stop_container_name": true,
+  "full_container_inspect_record_pending": false,
+  "files": {
+    "late-prefix-v2-20261009/first-attempt-matrix.log": {
+      "sha256": "5e71efe269f4b1d4e27a720218831e7660078d02233b6e55867c94cc7e6d6f74",
+      "bytes": 96,
+      "public_path": "support/first-attempt-matrix.log"
+    },
+    "late-prefix-v2-20261009/first-attempt-matrix.exit": {
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2,
+      "public_path": "support/first-attempt-matrix.exit"
+    },
+    "late-prefix-v2-20261009/first-attempt-triton.log": {
+      "sha256": "5108de2e8cb4921db6c45b49d38899115a870b1bb15c0401c3ee1963abaae7f5",
+      "bytes": 398,
+      "public_path": "support/first-attempt-triton.log"
+    },
+    "late-prefix-v2-20261009/first-attempt-cleanup.log": {
+      "sha256": "83dffd7ff8f2364e496c86ee4e440dd0f1a9c53fe3042772282bbf307402b6da",
+      "bytes": 26,
+      "public_path": "support/first-attempt-cleanup.log"
+    },
+    "late-prefix-v2-20261009/first-attempt-late-triton-1.exit": {
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2,
+      "public_path": "support/first-attempt-late-triton-1.exit"
+    },
+    "late-prefix-v2-20261009/first-attempt-late-triton-1-host.csv": {
+      "sha256": "8c7430b8b0b011cb78873d42e74a141c66b24e77413d8fc395d5a48ff1e06ac6",
+      "bytes": 499,
+      "public_path": "support/first-attempt-late-triton-1-host.csv"
+    },
+    "late-prefix-v2-20261009/first-attempt-late-triton-1-processes.log": {
+      "sha256": "c63c3a3082a50d6281a4f0144676c85bb56c6dc93ba9456cdb2b1bb9817e3d21",
+      "bytes": 87,
+      "public_path": "support/first-attempt-late-triton-1-processes.log"
+    },
+    "late-prefix-v3-20261009/runtime-preflight.json": {
+      "sha256": "43c70164bf4d5878ac36055f5487def2963dfe77dc6fd8db80842e486b22424c",
+      "bytes": 2058,
+      "public_path": "support/runtime-preflight.json"
+    },
+    "late-prefix-v2-20261009/first-attempt-container-state.json": {
+      "sha256": "668fe77b6e7a5b51961e02cae2b8242e8e01d019a86e43ae3b0caab3727cb301",
+      "bytes": 344,
+      "public_path": "support/first-attempt-container-state.json"
+    }
+  },
+  "container_stop_inspect": {
+    "id": "9e449277b3c2453dda1636a6691c004f62cc254f7e1184ac78f5a1be855b1482",
+    "owner": "gdn60403-late-v2-20261009",
+    "state": {
+      "Dead": false,
+      "Error": "",
+      "ExitCode": 137,
+      "FinishedAt": "2026-10-09T11:49:34.381014131Z",
+      "OOMKilled": false,
+      "Paused": false,
+      "Pid": 0,
+      "Restarting": false,
+      "Running": false,
+      "StartedAt": "2026-10-09T10:49:51.150023804Z",
+      "Status": "exited"
+    }
+  }
+}

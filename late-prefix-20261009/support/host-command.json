@@ -1,0 +1,22 @@
+{
+  "stage": "host",
+  "argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "/cache/gdn-runtime/bin/python",
+    "/results/audit_late_host_v3.py",
+    "--runs",
+    "/results/late-triton-2",
+    "/results/late-flashinfer-2",
+    "--monitor",
+    "/results/monitor_host.sh",
+    "--container-name",
+    "gdn60403-late-v3-20261009",
+    "--output",
+    "/results/pair-audit-v1/host.json"
+  ],
+  "timeout_seconds": 120,
+  "gpu_execution": false
+}

@@ -1,0 +1,14 @@
+{
+  "backend": "flashinfer",
+  "host_exit_code": 0,
+  "wrapper_exit_code": 0,
+  "report_sha256": "bd9a306aa2a495af1af4f0edf51cc946c35cbe718a7b6c8e16062258d38554bd",
+  "receipt_sha256": "5328f8e4dd9b6cb3f9b086cad84ec4088865b42d1363401c07e56765b03ba399",
+  "local_numeric_checks_pass": true,
+  "completed_cases": 672,
+  "host_csv": "replay-flashinfer-1-hostwatch-host.csv",
+  "host_process_log": "replay-flashinfer-1-hostwatch-processes.log",
+  "outer_status_retained": "REVIEW_REQUIRED",
+  "snapshot_status_retained": "OBSERVED_INITIAL_PASS",
+  "scope": "Complete one-arm local fidelity/math only; does not clear a pair outer REVIEW_REQUIRED or initial NOGO."
+}

@@ -1,0 +1,42 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "origin_probe_sha256": "aa54188b0edab41010a840f3d547024491904f1b16ce115a5e1f90a9c5155560",
+  "modules": {
+    "torch": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/torch/__init__.py",
+      "sha256": "cf40c075c95864036e835795756d69b8cccfafa76f3bcde5eba9d06065ccd3d1",
+      "bytes": 111841
+    },
+    "vllm._custom_ops": {
+      "path": "/source/vllm/_custom_ops.py",
+      "sha256": "1b0c510619bc0391b5e81d7db64b385013027f85395ba0dbf20300f57adcd4b2",
+      "bytes": 137046
+    },
+    "flashinfer.gdn_decode": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_decode.py",
+      "sha256": "e5a5a796613a48f5750bed2e7cd4f9917a9580374ce3fa6bc0ea2aa47db3d280",
+      "bytes": 53749
+    },
+    "flashinfer.jit.env": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/jit/env.py",
+      "sha256": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+      "bytes": 13853
+    },
+    "cutlass": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+      "sha256": "069beceb6181368405a5ebb9d9567296816c7bfce3c4afc9565c03133e9f009f",
+      "bytes": 5714
+    },
+    "cutlass.cute": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+      "sha256": "786af9d1cca111f65abab450d3fb173d62a30d7e09ff328820652e23f42b0b55",
+      "bytes": 9968
+    },
+    "vllm._C_stable_libtorch": {
+      "path": "/source/vllm/_C_stable_libtorch.abi3.so",
+      "sha256": "3efc749cc7d32a0177376cdabc19d18f406ca2f5a002f933a48997882536d6d8",
+      "bytes": 508948960
+    }
+  },
+  "scope": "Fresh static file verification before model init; per-rank actual runtime recorded separately."
+}

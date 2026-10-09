@@ -1,0 +1,25 @@
+{
+  "stage": "native",
+  "argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "/cache/gdn-runtime/bin/python",
+    "/late-helpers/audit_late_sampler.py",
+    "--triton-dir",
+    "/results/late-triton-2",
+    "--flashinfer-dir",
+    "/results/late-flashinfer-2",
+    "--reference-root",
+    "/late-reference",
+    "--source-root",
+    "/source",
+    "--source-manifest",
+    "/artifacts/performance-source.json",
+    "--output",
+    "/results/pair-audit-v1/native.json"
+  ],
+  "timeout_seconds": 300,
+  "gpu_execution": false
+}

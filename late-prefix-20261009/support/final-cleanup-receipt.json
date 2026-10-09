@@ -1,0 +1,93 @@
+{
+  "scope": "Recorded final owned-container stop and GPU6/7 checkpoint only",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "container_id": "b8942b9047ed79523b6cb99ba3f5bcc1983857b3b074e31773cd4f43d5968a3c",
+  "owner": "gdn60403-late-v3-20261009",
+  "owner_label_keys": [
+    "codex.owner"
+  ],
+  "started_utc": "2026-10-09T13:32:46Z",
+  "completed_utc": "2026-10-09T13:32:57Z",
+  "before_state": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 193054,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-09T11:57:53.021053918Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "after_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 137,
+    "Error": "",
+    "StartedAt": "2026-10-09T11:57:53.021053918Z",
+    "FinishedAt": "2026-10-09T13:32:57.119312733Z"
+  },
+  "command_exit": 0,
+  "container_command": [
+    "-c",
+    "sleep infinity"
+  ],
+  "cleanup_exit_137_is_model_oom": false,
+  "recorded_compute_process_rows": 0,
+  "gpu_checkpoint": [
+    {
+      "index": 6,
+      "uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "memory_used_mib": 1,
+      "utilization_pct": 0
+    },
+    {
+      "index": 7,
+      "uuid": "GPU-b7783a01-c440-29bd-ccb8-98ca7acf6675",
+      "memory_used_mib": 1,
+      "utilization_pct": 0
+    }
+  ],
+  "raw_record_bindings": {
+    "final-cleanup-before.json": {
+      "sha256": "a9483323e14abbc220245aace1e4b2f458fdd2d313e9a553d87260cd6e4a7db8",
+      "bytes": 29171
+    },
+    "final-cleanup-after.json": {
+      "sha256": "ef6252052b6c1ec6e70af495291033d3ac020e4928976023d0ddbbc64dc63cd6",
+      "bytes": 28977
+    },
+    "final-cleanup-start.txt": {
+      "sha256": "430de393e1b45ca9cbf015c6bf27c2b304bb0510fd7a5b2c659d5b35430c0505",
+      "bytes": 21
+    },
+    "final-cleanup-completed.txt": {
+      "sha256": "d866b8e41c4ca22e8420030ff261f1ce394cc1b7f58e0ef590667bee7c284676",
+      "bytes": 21
+    },
+    "final-cleanup-gpus.csv": {
+      "sha256": "1c30c54b711500222b610f3d97e92754b5e75d4daffc7e40a4fefba7e6fc5552",
+      "bytes": 164
+    },
+    "final-cleanup-processes.csv": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "final-cleanup-stop.log": {
+      "sha256": "04cc047ef5cb035d0b40035954753e477f54fb0168fd0ce7b705a230a42dce4f",
+      "bytes": 81
+    },
+    "final-cleanup.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    }
+  },
+  "does_not_claim_current_availability_or_container_removal": true
+}

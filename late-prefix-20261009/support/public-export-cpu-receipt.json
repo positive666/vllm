@@ -1,0 +1,18 @@
+{
+  "scope": "Standard-library public packaging only; no GPU execution or publication",
+  "exporter_sha256": "39a14ef9be9cf6b16958baca1a946ecba0a6f78d5c102910f1fd3e6a7c717310",
+  "sanitizer_sha256": "4a9a2c0661996a566b7f75a2a508dee7a7aa839097907bbe0711769c2f3a9f0f",
+  "commands": [
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m ruff check D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/packaging/export_late_evidence.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe -m py_compile D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/packaging/export_late_evidence.py D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/packaging/public_log_redaction.py",
+      "exit_code": 0
+    }
+  ],
+  "raw_audit_acceptance_unchanged": true,
+  "public_redacted_copies_do_not_reproduce_all_raw_provenance_gates": true,
+  "final_cleanup_receipt_added_before_public_package_freeze": "pending"
+}

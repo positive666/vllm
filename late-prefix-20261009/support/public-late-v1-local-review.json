@@ -1,0 +1,15 @@
+{
+  "status": "verified_local_v1_candidate_no_publication",
+  "archive_sha256": "b318ac66255daa77e54e73602b751a2611c3ea51de59edcf953c9664510021e3",
+  "archive_bytes": 24352488,
+  "manifest_sha256": "399e7d132f489764266ae5818e11d99dce284b8966576868d1f3001b1c243d6d",
+  "members": 1629,
+  "payload_members": 1628,
+  "all_member_sha_and_bytes_verified": true,
+  "redacted_observation_files": 12,
+  "bounded_credential_and_observed_address_findings": [],
+  "quality_and_root_cause_and_performance_claim": false,
+  "outer_pair_status": "REVIEW_REQUIRED",
+  "scope": "Public payload integrity; original remote raw audit SHA bindings remain distinct from redacted public observation bytes.",
+  "final_cleanup_pending": true
+}

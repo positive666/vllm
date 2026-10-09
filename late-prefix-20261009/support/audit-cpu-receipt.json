@@ -1,0 +1,62 @@
+{
+  "status": "CPU-v3-audit-ready",
+  "gpu_execution": false,
+  "scripts_compile_pass": true,
+  "host_help_exit_code": 0,
+  "plan_exit_code": 0,
+  "plan_stage_order": [
+    "native",
+    "host",
+    "snapshots"
+  ],
+  "host_help_argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:\\code\\vllm\\.venv\\Scripts\\python.exe",
+    "D:\\code\\vllm\\artifacts\\gdn60403-review-20261008\\late-prefix-v3-20261009\\audit_late_host_v3.py",
+    "--help"
+  ],
+  "plan_argv": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:\\code\\vllm\\.venv\\Scripts\\python.exe",
+    "D:\\code\\vllm\\artifacts\\gdn60403-review-20261008\\late-prefix-v3-20261009\\audit_after_pair_v3.py",
+    "--host-auditor",
+    "D:\\code\\vllm\\artifacts\\gdn60403-review-20261008\\late-prefix-v3-20261009\\audit_late_host_v3.py",
+    "--container-name",
+    "gdn60403-late-v3-20261009",
+    "--helper-root",
+    "D:\\code\\vllm\\artifacts\\gdn60403-review-20261008\\late-prefix-v2-20261009\\helpers",
+    "--triton-dir",
+    "/results/late-triton-2",
+    "--flashinfer-dir",
+    "/results/late-flashinfer-2",
+    "--reference-root",
+    "/late-reference",
+    "--source-root",
+    "/source",
+    "--source-manifest",
+    "/artifacts/performance-source.json",
+    "--monitor",
+    "/results/monitor_host.sh",
+    "--output-root",
+    "/results/audit-pair-2",
+    "--plan-only"
+  ],
+  "v3_root_script_sha256": {
+    "audit_late_host_v3.py": "294361399debabd6922bc1616722c88d7b0c62e1eff7a6b07a04155257d97f37",
+    "audit_after_pair_v3.py": "707530878383835bc78ebd7bbc65de17dafce1f5ceef12ae465e466b998e187d"
+  },
+  "frozen_consumer_sha256": {
+    "audit_late_sampler.py": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d",
+    "audit_late_host.py": "62b336f3566cef56cdd2d46c09d26016f4261727bcd7388d852f2cb904638362",
+    "audit_late_snapshots.py": "bab8c17cc979527f0dd906355bee89843814e91cc268eda8cce934c32118fe5e"
+  },
+  "v3_host_sha256": "294361399debabd6922bc1616722c88d7b0c62e1eff7a6b07a04155257d97f37",
+  "actual_run_evidence_audited": false,
+  "no_frozen_helper_changes": true
+}

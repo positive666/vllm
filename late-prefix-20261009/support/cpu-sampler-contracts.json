@@ -1,0 +1,17 @@
+{
+  "status": "CPU-contracts-pass-no-GPU",
+  "command": "uv run --no-project D:/code/vllm/.venv/Scripts/python.exe D:/code/vllm/artifacts/gdn60403-review-20261008/late-prefix-v2-20261009/helpers/cpu_sampler_contracts.py",
+  "exit_code": 0,
+  "tests_run": 2,
+  "tests_passed": 2,
+  "test_duration_seconds": 3.123,
+  "contracts": [
+    "Physical sharded sampler ownership and exact GPU input join; wrong input token rejected",
+    "Changed full-vocabulary prefill SHA or normalized schedule retained as explicit NOGO"
+  ],
+  "auditor_sha256": "674044c55c49328117283e538f90abd3584c67d53a1ef5fbe2d5181833eda43d",
+  "contracts_sha256": "1caceeacac879d35ad12c5ed9222d4480f9813651e97650cbe00815c2bdb7fe4",
+  "gpu_execution": false,
+  "synthetic_fixture_scope": "Temporary stdlib trace fixtures; never model quality or performance evidence",
+  "producer_or_production_changes": false
+}

@@ -1,0 +1,309 @@
+{
+  "bytes": 31597186,
+  "event": "capture",
+  "file": "rank-0/layer-057/call-000001-pid-459.pt",
+  "metadata": {
+    "active_original_indices": [
+      2,
+      6,
+      10,
+      14,
+      18,
+      22,
+      26,
+      30
+    ],
+    "batch_size": 8,
+    "before_first_b8_calls": 0,
+    "call_index": 1,
+    "capture_scope": "ordinary packed decode in eager mode; no mixed-path coverage",
+    "compact_to_original": [
+      0,
+      2,
+      6,
+      10,
+      14,
+      18,
+      22,
+      26,
+      30,
+      1
+    ],
+    "head_qk_dim": 128,
+    "head_v_dim": 128,
+    "layer_idx": 57,
+    "num_heads_qk": 8,
+    "num_heads_v": 24,
+    "original_backend": "triton",
+    "original_shapes_strides": {
+      "A_log": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "requires_grad": true,
+        "shape": [
+          24
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1
+        ]
+      },
+      "a": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "requires_grad": false,
+        "shape": [
+          8,
+          24
+        ],
+        "storage_offset": 0,
+        "stride": [
+          24,
+          1
+        ]
+      },
+      "b": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "requires_grad": false,
+        "shape": [
+          8,
+          24
+        ],
+        "storage_offset": 0,
+        "stride": [
+          24,
+          1
+        ]
+      },
+      "dt_bias": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "requires_grad": true,
+        "shape": [
+          24
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1
+        ]
+      },
+      "initial_state": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "requires_grad": false,
+        "shape": [
+          128,
+          24,
+          128,
+          128
+        ],
+        "storage_offset": 719330816,
+        "stride": [
+          401408,
+          16384,
+          128,
+          1
+        ]
+      },
+      "mixed_qkv": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "requires_grad": false,
+        "shape": [
+          8,
+          5120
+        ],
+        "storage_offset": 0,
+        "stride": [
+          8192,
+          1
+        ]
+      },
+      "out": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.bfloat16",
+        "requires_grad": false,
+        "shape": [
+          8,
+          1,
+          24,
+          128
+        ],
+        "storage_offset": 0,
+        "stride": [
+          3072,
+          3072,
+          128,
+          1
+        ]
+      },
+      "ssm_state_indices": {
+        "data_ptr_mod_128": 0,
+        "data_ptr_mod_16": 0,
+        "data_ptr_mod_256": 0,
+        "device": "cuda:0",
+        "dtype": "torch.int32",
+        "requires_grad": false,
+        "shape": [
+          8
+        ],
+        "storage_offset": 0,
+        "stride": [
+          1
+        ]
+      }
+    },
+    "padding_rows": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "pid": 459,
+    "prefix": "language_model.model.layers.57.linear_attn",
+    "rank": 0,
+    "runtime_join": {
+      "actual_target_step": 1,
+      "late_execution_id": 2,
+      "rows": [
+        {
+          "gdn_state_page": 2,
+          "index": 198,
+          "input_position": 105,
+          "input_prefix_sha256": "2eeb45e7c27f2403cfd1ec6a74ee0752a4e1ed77f8766f5cfdc064c4eaef2f55",
+          "input_token": 9764,
+          "prompt_token_ids_sha256": "c7b319fcbd94221c6383565a43095b923512d9ec14ec99a9749145c7e466f673",
+          "req_id": "0-a0df1d24",
+          "request_state_slot": 31,
+          "row": 0,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 6,
+          "index": 206,
+          "input_position": 107,
+          "input_prefix_sha256": "539b2f112237bd88bd91c7fc52fe2d7fac42dc7a5bfa592e25df9632db0eed49",
+          "input_token": 1206,
+          "prompt_token_ids_sha256": "23682f1d0480c73181fe427b0f5c9f835f6de255fe097d05235737f298edc5e1",
+          "req_id": "1-9e31bbb1",
+          "request_state_slot": 30,
+          "row": 1,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 10,
+          "index": 209,
+          "input_position": 66,
+          "input_prefix_sha256": "539b2f112237bd88bd91c7fc52fe2d7fac42dc7a5bfa592e25df9632db0eed49",
+          "input_token": 1206,
+          "prompt_token_ids_sha256": "81dfcbdfc304e5f9c2f12578db7f70470983f1ab396676dca62e976cd4fdf5f5",
+          "req_id": "2-84773221",
+          "request_state_slot": 29,
+          "row": 2,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 14,
+          "index": 228,
+          "input_position": 84,
+          "input_prefix_sha256": "539b2f112237bd88bd91c7fc52fe2d7fac42dc7a5bfa592e25df9632db0eed49",
+          "input_token": 1206,
+          "prompt_token_ids_sha256": "20c3175865fc6cff33630c1b8a79e6f0b26dc15bc17b7a72452d947d255e1e43",
+          "req_id": "3-a931b4a6",
+          "request_state_slot": 28,
+          "row": 3,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 18,
+          "index": 255,
+          "input_position": 78,
+          "input_prefix_sha256": "1a2723b38deabd76c1dd9ef8fd771b72ef408da1f639ed14a85a80c00bdafd74",
+          "input_token": 8160,
+          "prompt_token_ids_sha256": "a3583f65229ff256462fafeaed20ac27d14de08fcb3bbf51a79ceff90d374b90",
+          "req_id": "4-bffde7c3",
+          "request_state_slot": 27,
+          "row": 4,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 22,
+          "index": 285,
+          "input_position": 55,
+          "input_prefix_sha256": "1a2723b38deabd76c1dd9ef8fd771b72ef408da1f639ed14a85a80c00bdafd74",
+          "input_token": 8160,
+          "prompt_token_ids_sha256": "678e0c1ed76d2a27c10592532d3147bdf59c5135c6ef59e198ba819af64fc3e4",
+          "req_id": "5-a357cb4f",
+          "request_state_slot": 26,
+          "row": 5,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 26,
+          "index": 292,
+          "input_position": 81,
+          "input_prefix_sha256": "539b2f112237bd88bd91c7fc52fe2d7fac42dc7a5bfa592e25df9632db0eed49",
+          "input_token": 1206,
+          "prompt_token_ids_sha256": "7ec007943af591f0af163fbbc7a3797b34f0bb7630c548507bf1596472967744",
+          "req_id": "6-951ed312",
+          "request_state_slot": 25,
+          "row": 6,
+          "step": 1
+        },
+        {
+          "gdn_state_page": 30,
+          "index": 318,
+          "input_position": 80,
+          "input_prefix_sha256": "1a2723b38deabd76c1dd9ef8fd771b72ef408da1f639ed14a85a80c00bdafd74",
+          "input_token": 8160,
+          "prompt_token_ids_sha256": "46da5e5889749f96a77072ba71db04f836a47b3400273429d73c6663174ca1af",
+          "req_id": "7-b4464e3c",
+          "request_state_slot": 24,
+          "row": 7,
+          "step": 1
+        }
+      ],
+      "scope": "Actual prepare_inputs row order + per-layer forward metadata page vector; GPU committed histories/input positions verified before this local update.",
+      "target_index": 255
+    },
+    "scale": 0.08838834764831845,
+    "schema_version": 2,
+    "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+    "source_head_scope": "experiment revision; actual module hash in patched-pid record",
+    "state_scope": "null, active pages and one sampled unused page only",
+    "synthetic_unused_slot": false,
+    "tp_rank": 0,
+    "trajectory_scope": "copy and serialization synchronization may change scheduling",
+    "unused_compact_index": 9,
+    "unused_original_index": 1,
+    "use_qk_l2norm_in_kernel": true,
+    "values_scope": "CPU tensor exact values; compact copies do not preserve original strides"
+  },
+  "sha256": "8b57530359274389b8173119de531cb826419363b651fe545842c27d1f53085f"
+}
