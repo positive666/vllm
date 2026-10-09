@@ -1,0 +1,20 @@
+[
+  {
+    "label": "dispatch-owner-kv",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "......\r\n----------------------------------------------------------------------\r\nRan 6 tests in 24.979s\r\n\r\nOK\r\n"
+  },
+  {
+    "label": "prefix-abort-identities",
+    "exitCode": 0,
+    "stdout": "{\"status\": \"CPU-contracts-passed\", \"contracts\": 3, \"gpu_execution\": false, \"checks\": [\"native prefix18 forced /19 passthrough and GPU history tamper\", \"exact20 public steps then abort; failure abort before21\", \"public output/abort IDs differ from randomized internal IDs\"], \"helper_sha256\": {\"short_force.py\": \"676bc50d3894010b3daf801f3062b9533842cb06ecafaa46a3e988f62e89711f\", \"short_driver.py\": \"52a3cb053a15c2ce0c0c519f963055a0386d06ab51b209ccedaf51fb484f2ee9\", \"cpu_short_force.py\": \"b20fe80518625ef5545a05177682431e07b9b1be183122df63296c50f240a0c6\"}}\r\n",
+    "stderr": ""
+  },
+  {
+    "label": "syntax",
+    "exitCode": 0,
+    "stdout": "{\"parsed\": 9, \"gpu_execution\": false}\r\n",
+    "stderr": ""
+  }
+]

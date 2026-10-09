@@ -1,0 +1,16 @@
+{
+  "status": "CPU-contracts-passed",
+  "contracts": 4,
+  "gpu_execution": false,
+  "checks": [
+    "native prefix18 forced /19 passthrough and GPU history tamper",
+    "exact20 public steps then abort; failure abort before21",
+    "public output/abort IDs differ from randomized internal IDs",
+    "runner sampler patch ignores model-only module hooks"
+  ],
+  "helper_sha256": {
+    "short_force.py": "2e3b29beb82ee879ae839eec7b1617cdfac3482d988f3a222cc889402c7f5ac8",
+    "short_driver.py": "52a3cb053a15c2ce0c0c519f963055a0386d06ab51b209ccedaf51fb484f2ee9",
+    "cpu_short_force.py": "e57cfa6812393c820cf3f10d7f1f725c2ee74e7ac7b8a026af3f6aef4d23b2d8"
+  }
+}

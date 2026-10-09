@@ -1,0 +1,45 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "model": "Qwen3.8-27B-FP8",
+  "hardware": "2x NVIDIA L20, TP2, eager, sync",
+  "indices": [
+    198,
+    206,
+    209,
+    228,
+    255,
+    285,
+    292,
+    318
+  ],
+  "arms": {
+    "A": "native Triton, BF16 bias",
+    "B": "FI constructor/FP32 bias + native Triton leaf",
+    "C": "native FlashInfer/FP32 bias"
+  },
+  "native_prefix_length": 19,
+  "natural_output_index": 19,
+  "original_budget": 3500,
+  "original_ignore_eos": false,
+  "effective_model_eos_ids": [
+    248044,
+    248046
+  ],
+  "diagnostic_normalizer": "Only known eight trace19 requests bypass private native trace termination normalization after original generation/tokenizer updates",
+  "abort": "public external IDs after output20; no further engine model step",
+  "capture_steps": [
+    1,
+    18,
+    19
+  ],
+  "capture_target_index": 255,
+  "per_arm_initial_records": 1792,
+  "per_arm_prefill_hashes": 16,
+  "per_arm_capture_count": 288,
+  "per_rank_actual_leaf_calls": 912,
+  "status": "REVIEWED_BOUNDED_EVIDENCE",
+  "scope": "Bounded propagated numerical contribution; no specific-operation/integration-bug, long-termination cause, accuracy-equivalence or performance claim",
+  "included_full_raw_logit_files": 96,
+  "included_representative_snapshots": 3,
+  "omitted_complete_snapshot_count": 861
+}

@@ -1,0 +1,8 @@
+{
+  "consumer_sha256": "e1f12445529043aff36c499a7f0183b85bab3ad99297ad52ed05af4f7d2a015f",
+  "summary_sha256": "b319bd284ce1da1cd39b2f4a0ad1d6e63bbf8fa6fcbe73944186b8a2c05e014f",
+  "capture_comparisons_sha256": "6689b4c403793a0c37d18dccaeabecf12df941645763d2c512342739ea1c7fac",
+  "raw_logit_comparisons_sha256": "86833ffeb9dc8533d7274a81a2c3cbeecb05142dce02b9f941fa0750b5213a68",
+  "status": "OBSERVED_INITIAL_PASS",
+  "gpu_execution": false
+}

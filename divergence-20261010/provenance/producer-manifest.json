@@ -1,0 +1,94 @@
+{
+  "schema": "gdn-short-producer-v6",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "reference_completed_sha256": "d293b322876e8236f7799a688221ddd0d10e79f8046c6601db40fa6316421e78",
+  "files": {
+    "cpu_divergence_contracts.py": {
+      "bytes": 7047,
+      "sha256": "e397c9bbe2eee389b83f7db844db84f1a0f90a25a94a87d4ac7a065173d14dcc"
+    },
+    "cpu_short_force.py": {
+      "bytes": 4436,
+      "sha256": "e57cfa6812393c820cf3f10d7f1f725c2ee74e7ac7b8a026af3f6aef4d23b2d8"
+    },
+    "cpu_short_normalize.py": {
+      "bytes": 7785,
+      "sha256": "78a73709b661285079cd7e1a1ad57dbed453e34d24456930357c6d35dd707940"
+    },
+    "divergence_bootstrap.py": {
+      "bytes": 2468,
+      "sha256": "cadc35587c2d53bf0fa0b9003846037f7f9a1f6c3df416203c0dbe4e7e83f82f"
+    },
+    "divergence_capture.py": {
+      "bytes": 19799,
+      "sha256": "0e506d302e05df30ffd1aff3399dc626c2844bed0d5034558a75147fbfee8f78"
+    },
+    "divergence_contract.py": {
+      "bytes": 4194,
+      "sha256": "7b72a6c47f3b0e4cf2abad95db2a3432567213f4ce7e709d1961595c88d7064d"
+    },
+    "divergence_leaf.py": {
+      "bytes": 5131,
+      "sha256": "406635cbb25377ec643b3e83734f0ae07e691a1e775e4144ecec646872e5ddb2"
+    },
+    "short_driver.py": {
+      "bytes": 18898,
+      "sha256": "8a2a8012b7dcdb4e939d5c30b7ef5bf07e63c832d863c0df9e95db6025692376"
+    },
+    "short_force.py": {
+      "bytes": 20111,
+      "sha256": "b040055e49fa3e6069be76aba7b0348c29e4f85b6fe398a16dc05d6936ea04c8"
+    },
+    "short_normalize.py": {
+      "bytes": 9317,
+      "sha256": "0cfc982ff53a3f29b7b008c2d0788b680a7c6f922132497490c2d821462690bf"
+    },
+    "short_site/sitecustomize.py": {
+      "bytes": 153,
+      "sha256": "b41924f6c0304a2e356be54dd74a4c556ebc0712350d82d4592da0c389d32c5f"
+    }
+  },
+  "host_scripts": {
+    "create_container.sh": {
+      "bytes": 2238,
+      "sha256": "64d520c4775c9b861993b65053d7cbdc3d9093aa2f449f24c492a6092b5cbdaf"
+    },
+    "run_cells.sh": {
+      "bytes": 2964,
+      "sha256": "b979aa8545f565d11c69386bca14d8b93300e24efa44495968979df98aeb60af"
+    },
+    "monitor_host.sh": {
+      "bytes": 1847,
+      "sha256": "030fe8dff57915650c942d2220a39d04a51611bc93ab9f91ba3f05ec12dc6f19"
+    },
+    "launch_matrix.sh": {
+      "bytes": 486,
+      "sha256": "6f7579545af8e8500ba396423bb5cca4daa006c589086f0a68ac756f0109d086"
+    }
+  },
+  "additional_source_files": {
+    "vllm/v1/engine/input_processor.py": {
+      "bytes": 28644,
+      "sha256": "97f66659814177d3f7b72b959f09201cbdd1794de21ec1542fe8970f18a1a2b6"
+    },
+    "vllm/sampling_params.py": {
+      "bytes": 64689,
+      "sha256": "005eeca282874cde09864133f2100de6ae985439b93e50891194e8447a265999"
+    }
+  },
+  "placement": {
+    "gpu_indices": [
+      4,
+      6
+    ],
+    "gpu_uuids": [
+      "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e"
+    ],
+    "topology": "PIX",
+    "numa": 1,
+    "reason": "GPU4/6 used in all arms; priorv4 experiment failed before prefill due native trace max19/EOS normalization; preserved separately."
+  },
+  "normalization_intervention": "Exact request-bound normalization bypass keeps generation/tokenizer-derived EOS and3500budget; native trace19, natural20 then abort. Unsupported diagnostic mode, no accuracy/performance claim.",
+  "python_producer_manifest_sha256": "4364c8b3a202e7ab016de32b68587a76f75fdbc42e110dc05291f48c7f1b63d6"
+}

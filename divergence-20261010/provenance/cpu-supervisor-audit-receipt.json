@@ -1,0 +1,31 @@
+{
+  "scope": "CPU synthetic stdlib contracts only; no GPU, container, ownership, math, accuracy or performance claim",
+  "command": {
+    "executable": "uv",
+    "args": [
+      "run",
+      "--offline",
+      "--no-project",
+      "D:/code/vllm/.venv/Scripts/python.exe",
+      "-X",
+      "utf8",
+      "D:/code/vllm/artifacts/gdn60403-review-20261008/divergence-20261009/cpu_supervisor_audit.py"
+    ],
+    "cwd": "D:/code/vllm"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "killed": false,
+  "stdout": "{\"scope\": \"CPU synthetic parser/ownership contracts only\", \"gpu_execution\": false, \"contracts\": [\"matched\", \"unmatched-retained\", \"marker-fails\", \"final-PID-retained\", \"partial-retained\", \"state-only-rejected\"], \"status\": \"PASS\"}\r\n",
+  "stderr": "",
+  "files": {
+    "supervisor_audit.py": {
+      "sha256": "639e2ef26c07473beae120b0a460fdd73046b3bb5ae41fa99b2b6662b4239323",
+      "bytes": 17295
+    },
+    "cpu_supervisor_audit.py": {
+      "sha256": "3470e29e2cfda2b2bd8051030ccb5fdcc2637185e633353c2fa159bd8d64d931",
+      "bytes": 3679
+    }
+  }
+}

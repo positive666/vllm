@@ -1,0 +1,22 @@
+{
+  "consumer_sha256": "0ecf658c4c18eb14c765dea1bf28aae4ca9c02f0fcca70987472de0918374a13",
+  "contracts_sha256": "29b6a4ce0dd086598cc9c44e481618ee9b9d27dfb7b66b2e2404fd816ad1068e",
+  "enum_contract": {
+    "argv": [
+      "run",
+      "--offline",
+      "--no-project",
+      "D:/code/vllm/.venv/Scripts/python.exe",
+      "D:/code/vllm/artifacts/gdn60403-review-20261008/divergence-20261009/cpu_short_pair_audit.py",
+      "ConsumerContracts.test_effective_eos_struct_cannot_hide_native_trace_termination",
+      "-v"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "test_effective_eos_struct_cannot_hide_native_trace_termination (__main__.ConsumerContracts.test_effective_eos_struct_cannot_hide_native_trace_termination) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 1 test in 0.000s\r\n\r\nOK\r\n"
+  },
+  "prior_four_contracts_receipt_sha256": "e16ff183f6d0f945669361b6b5a41d7504706b6262ca53f738d6205d49fa24c9",
+  "producer_manifest_sha256": "4364c8b3a202e7ab016de32b68587a76f75fdbc42e110dc05291f48c7f1b63d6",
+  "gpu_execution": false,
+  "scope": "Final enum-only serializer mapping tested; previousfour contracts passed beforethis lastlimitedchange; productionhelpers unchanged"
+}

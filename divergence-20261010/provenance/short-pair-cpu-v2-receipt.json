@@ -1,0 +1,21 @@
+{
+  "scope": "Actual retained metadata plus CPU-only evidence tamper contracts; no PT/bin numerical acceptance, no GPU rerun",
+  "started_at": "2026-10-09T19:07:44.053Z",
+  "finished_at": "2026-10-09T19:07:53.706Z",
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/divergence-20261009/cpu_short_pair_audit_v2.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "error": null,
+  "stdout": "",
+  "stderr": "test_actual_metadata_index_advances_to_absent_raw_binary_without_mocking (__main__.ActualSourceContracts.test_actual_metadata_index_advances_to_absent_raw_binary_without_mocking) ... ok\r\ntest_actual_source_evidence_missing_tampered_duplicate_or_wrong_pid_fails (__main__.ActualSourceContracts.test_actual_source_evidence_missing_tampered_duplicate_or_wrong_pid_fails) ... ok\r\ntest_actual_three_arm_source_schema_binds_import_pid_to_native_rank (__main__.ActualSourceContracts.test_actual_three_arm_source_schema_binds_import_pid_to_native_rank) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 3 tests in 2.238s\r\n\r\nOK\r\n",
+  "consumer_sha256": "e1f12445529043aff36c499a7f0183b85bab3ad99297ad52ed05af4f7d2a015f",
+  "contract_sha256": "4a9f34cd996ee089005b62cf77bd47a349437d6b902ae657bf53053e5db4dafb",
+  "preserved_v1_sha256": "0ecf658c4c18eb14c765dea1bf28aae4ca9c02f0fcca70987472de0918374a13"
+}

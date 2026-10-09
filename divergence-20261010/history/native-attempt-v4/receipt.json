@@ -1,0 +1,14 @@
+{
+  "status": "HARNESS_NORMALIZATION_FAILED_BEFORE_PREFILL",
+  "matrix_exit": 1,
+  "arm_A_exit": 1,
+  "arms_B_C": "NOT_RUN",
+  "cleanup_stop_exit": 0,
+  "container_running_after": false,
+  "OOMKilled": false,
+  "gpu_compute_processes_after": [],
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "producer_manifest_sha256": "871a7734f2b31ce922128b03ae91e6a10e74cdc851bd12f8dd40f64a81d15cd7",
+  "archive_sha256": "9ba4d07568532295925529e98c05e80e3824c5ac4d482e4dcdd4ba846a28a131",
+  "scope": "Not a model/kernel failure; native normalization shortened replay length and cleared EOS; no first native prefill output reached."
+}

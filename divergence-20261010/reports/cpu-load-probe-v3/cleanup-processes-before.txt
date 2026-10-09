@@ -1,0 +1,4 @@
+PID                 COMMAND
+72832               sleep infinity
+73694               /cache/gdn-runtime/bin/python -c import humming.utils.nvrtc; humming.utils.nvrtc.may_build_nvrtc_compile_binary()
+73696               /cache/gdn-runtime/bin/python -c import humming.ops.utils; humming.ops.utils.init_humming_launcher()

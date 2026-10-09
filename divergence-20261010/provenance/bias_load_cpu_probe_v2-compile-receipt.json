@@ -1,0 +1,32 @@
+{
+  "scope": "Syntax compilation only; explicit CPU device fixture added, no production/loader changes, no constructor/runtime/GPU execution claim",
+  "command": {
+    "executable": "uv",
+    "args": [
+      "run",
+      "--offline",
+      "--no-project",
+      "D:/code/vllm/.venv/Scripts/python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "py_compile",
+      "D:/code/vllm/artifacts/gdn60403-review-20261008/divergence-20261009/source-review/bias_load_cpu_probe_v2.py"
+    ],
+    "cwd": "D:/code/vllm"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "killed": false,
+  "stdout": "",
+  "stderr": "",
+  "original_probe_sha256": "3a37c02a6ae6807d86ce2471d249b452e0dc974e1f66c2e16ffae2fe5f0b6ad5",
+  "new_probe_sha256": "ad69dc6c334fd15e93d6614422f9ecf578baa0763624e3d160c9b3888ce247d9",
+  "new_probe_bytes": 7852,
+  "change": [
+    "import actual DeviceConfig",
+    "VllmConfig(device_config=DeviceConfig(device=\"cpu\"))"
+  ],
+  "pinned_constructor_sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+  "pinned_loader_sha256": "15eeb78befb71c75240f5b20c762381905a8f54f83f252de914330b1dddb7dfe"
+}

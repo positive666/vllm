@@ -1,0 +1,7 @@
+/source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from .version import __version__, __version_tuple__  # isort:skip
+Failed to import from vllm._C: ModuleNotFoundError("No module named 'vllm._C'")
+W1009 19:21:02.742000 19 /usr/local/lib/python3.12/dist-packages/torch/utils/cpp_extension.py:178] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda'
+Current platform  does not have 'current_device' attribute.
+{"status": "CPU_LOAD_SEMANTICS_REPRODUCED", "by_dtype": {"torch.bfloat16": {"baseline_and_flashinfer_values_equal": true, "max_abs_difference": 0.0}, "torch.float32": {"baseline_and_flashinfer_values_equal": false, "max_abs_difference": 0.0015000104904174805}}}

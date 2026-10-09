@@ -1,0 +1,21 @@
+{
+  "executable": "uv",
+  "args": [
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "py_compile",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/divergence-20261009/source-review/bias_load_cpu_probe.py"
+  ],
+  "cwd": "D:/code/vllm",
+  "exit_code": 0,
+  "error": null,
+  "stdout": "",
+  "stderr": "",
+  "helper_sha256": "3a37c02a6ae6807d86ce2471d249b452e0dc974e1f66c2e16ffae2fe5f0b6ad5",
+  "scope": "stdlib syntax compilation only; no vLLM constructor execution and no GPU"
+}

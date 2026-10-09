@@ -1,0 +1,1009 @@
+{
+  "status": "OBSERVED_INITIAL_PASS",
+  "first_flip_reproduction_pass": true,
+  "bounded_interpretation_ready": true,
+  "scope": "CPU inspection of bounded nineteen-token native-prefix intervention. A request-bound unsupported InputProcessor hook bypasses native trace termination normalization after ordinary tokenizer/generation updates. Initial equality is only the observed prompt KV, conv/recurrent and raw prefill logits. Captured later tensors propagated separately. No whole hidden-state equality, full-pool replay, accuracy, performance or proven integration-bug claim.",
+  "gpu_execution": false,
+  "cpu_torch_threads": 1,
+  "arms": {
+    "A": {
+      "arm": "A",
+      "initial_records": 1792,
+      "prefill_hashes": 16,
+      "native_positions": 320,
+      "captures": 288,
+      "actual_inference_leaf_calls_per_rank": {
+        "0": 912,
+        "1": 912
+      },
+      "excluded_profiling_leaf_calls_per_rank": {},
+      "choices_at19": {
+        "198": 13,
+        "206": 1330,
+        "209": 24569,
+        "228": 310,
+        "255": 71072,
+        "285": 64700,
+        "292": 1179,
+        "318": 64700
+      },
+      "launch_sha256": "0197f008c4d3a5d94d54bffa31caa1b2831a70556b2ca4e7ef2d1f4bdf8042da",
+      "completed_sha256": "004954ac3d175a3829d6f91255a90536b65ee77c1906d9ca0d04554e68ca05cf",
+      "resolved_runtime": {
+        "0": {
+          "runner_class": "vllm.v1.worker.gpu.model_runner.GPUModelRunner",
+          "tp_world_size": 2,
+          "tp_rank": 0,
+          "tp_device_backend": "nccl",
+          "gpu_uuid": "4af84168-6d29-6128-fee3-1b146cce9b47",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ]
+        },
+        "1": {
+          "runner_class": "vllm.v1.worker.gpu.model_runner.GPUModelRunner",
+          "tp_world_size": 2,
+          "tp_rank": 1,
+          "tp_device_backend": "nccl",
+          "gpu_uuid": "a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ]
+        }
+      },
+      "request_bound_normalization_bypasses": 8,
+      "effective_model_eos_ids": [
+        248044,
+        248046
+      ],
+      "actual_guarded_module_source_evidence": [
+        {
+          "pid": 457,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.attention.attention",
+          "sha256": "bde77677fd0e95ea09c6a580dfaf09b57741e8183e00cb106e2d1cc64d8e03f2",
+          "source": {
+            "file": "events-pid-457.jsonl",
+            "line": 1
+          }
+        },
+        {
+          "pid": 457,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+          "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+          "source": {
+            "file": "events-pid-457.jsonl",
+            "line": 3
+          }
+        },
+        {
+          "pid": 457,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.v1.worker.gpu.model_runner",
+          "sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+          "source": {
+            "file": "events-pid-457.jsonl",
+            "line": 2
+          }
+        },
+        {
+          "pid": 458,
+          "registered_tp_rank": 1,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.attention.attention",
+          "sha256": "bde77677fd0e95ea09c6a580dfaf09b57741e8183e00cb106e2d1cc64d8e03f2",
+          "source": {
+            "file": "events-pid-458.jsonl",
+            "line": 1
+          }
+        },
+        {
+          "pid": 458,
+          "registered_tp_rank": 1,
+          "rank_at_import": 1,
+          "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+          "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+          "source": {
+            "file": "events-pid-458.jsonl",
+            "line": 3
+          }
+        },
+        {
+          "pid": 458,
+          "registered_tp_rank": 1,
+          "rank_at_import": 0,
+          "module": "vllm.v1.worker.gpu.model_runner",
+          "sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+          "source": {
+            "file": "events-pid-458.jsonl",
+            "line": 2
+          }
+        }
+      ]
+    },
+    "B": {
+      "arm": "B",
+      "initial_records": 1792,
+      "prefill_hashes": 16,
+      "native_positions": 320,
+      "captures": 288,
+      "actual_inference_leaf_calls_per_rank": {
+        "0": 912,
+        "1": 912
+      },
+      "excluded_profiling_leaf_calls_per_rank": {},
+      "choices_at19": {
+        "198": 13,
+        "206": 1330,
+        "209": 24569,
+        "228": 310,
+        "255": 71072,
+        "285": 64700,
+        "292": 1179,
+        "318": 64700
+      },
+      "launch_sha256": "6bb53b94c528f2ac3f89574a7168057d9f73b50de1278c4977030d37d20302c8",
+      "completed_sha256": "8565aa2b2e244a20ca9150e3029829f4e78b9b2bebf04763921d0d8133bef64b",
+      "resolved_runtime": {
+        "0": {
+          "runner_class": "vllm.v1.worker.gpu.model_runner.GPUModelRunner",
+          "tp_world_size": 2,
+          "tp_rank": 0,
+          "tp_device_backend": "nccl",
+          "gpu_uuid": "4af84168-6d29-6128-fee3-1b146cce9b47",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ]
+        },
+        "1": {
+          "runner_class": "vllm.v1.worker.gpu.model_runner.GPUModelRunner",
+          "tp_world_size": 2,
+          "tp_rank": 1,
+          "tp_device_backend": "nccl",
+          "gpu_uuid": "a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ]
+        }
+      },
+      "request_bound_normalization_bypasses": 8,
+      "effective_model_eos_ids": [
+        248044,
+        248046
+      ],
+      "actual_guarded_module_source_evidence": [
+        {
+          "pid": 2065,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.attention.attention",
+          "sha256": "bde77677fd0e95ea09c6a580dfaf09b57741e8183e00cb106e2d1cc64d8e03f2",
+          "source": {
+            "file": "events-pid-2065.jsonl",
+            "line": 1
+          }
+        },
+        {
+          "pid": 2065,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+          "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+          "source": {
+            "file": "events-pid-2065.jsonl",
+            "line": 3
+          }
+        },
+        {
+          "pid": 2065,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.v1.worker.gpu.model_runner",
+          "sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+          "source": {
+            "file": "events-pid-2065.jsonl",
+            "line": 2
+          }
+        },
+        {
+          "pid": 2066,
+          "registered_tp_rank": 1,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.attention.attention",
+          "sha256": "bde77677fd0e95ea09c6a580dfaf09b57741e8183e00cb106e2d1cc64d8e03f2",
+          "source": {
+            "file": "events-pid-2066.jsonl",
+            "line": 1
+          }
+        },
+        {
+          "pid": 2066,
+          "registered_tp_rank": 1,
+          "rank_at_import": 1,
+          "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+          "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+          "source": {
+            "file": "events-pid-2066.jsonl",
+            "line": 3
+          }
+        },
+        {
+          "pid": 2066,
+          "registered_tp_rank": 1,
+          "rank_at_import": 0,
+          "module": "vllm.v1.worker.gpu.model_runner",
+          "sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+          "source": {
+            "file": "events-pid-2066.jsonl",
+            "line": 2
+          }
+        }
+      ]
+    },
+    "C": {
+      "arm": "C",
+      "initial_records": 1792,
+      "prefill_hashes": 16,
+      "native_positions": 320,
+      "captures": 288,
+      "actual_inference_leaf_calls_per_rank": {
+        "0": 912,
+        "1": 912
+      },
+      "excluded_profiling_leaf_calls_per_rank": {},
+      "choices_at19": {
+        "198": 13,
+        "206": 1330,
+        "209": 24569,
+        "228": 310,
+        "255": 43659,
+        "285": 64700,
+        "292": 1179,
+        "318": 64700
+      },
+      "launch_sha256": "e86e1fc957bffb95e118e3c4d778a99abec2547e05731b133d9b355f3a0bcf29",
+      "completed_sha256": "f116093be3b7256104837d12719c352a1095c6a632bc7cd3044a8b05bca6a8a2",
+      "resolved_runtime": {
+        "0": {
+          "runner_class": "vllm.v1.worker.gpu.model_runner.GPUModelRunner",
+          "tp_world_size": 2,
+          "tp_rank": 0,
+          "tp_device_backend": "nccl",
+          "gpu_uuid": "4af84168-6d29-6128-fee3-1b146cce9b47",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ]
+        },
+        "1": {
+          "runner_class": "vllm.v1.worker.gpu.model_runner.GPUModelRunner",
+          "tp_world_size": 2,
+          "tp_rank": 1,
+          "tp_device_backend": "nccl",
+          "gpu_uuid": "a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+          "gpu_name": "NVIDIA L20",
+          "compute_capability": [
+            8,
+            9
+          ],
+          "nccl_version": [
+            2,
+            29,
+            7
+          ]
+        }
+      },
+      "request_bound_normalization_bypasses": 8,
+      "effective_model_eos_ids": [
+        248044,
+        248046
+      ],
+      "actual_guarded_module_source_evidence": [
+        {
+          "pid": 3674,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.attention.attention",
+          "sha256": "bde77677fd0e95ea09c6a580dfaf09b57741e8183e00cb106e2d1cc64d8e03f2",
+          "source": {
+            "file": "events-pid-3674.jsonl",
+            "line": 1
+          }
+        },
+        {
+          "pid": 3674,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+          "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+          "source": {
+            "file": "events-pid-3674.jsonl",
+            "line": 3
+          }
+        },
+        {
+          "pid": 3674,
+          "registered_tp_rank": 0,
+          "rank_at_import": 0,
+          "module": "vllm.v1.worker.gpu.model_runner",
+          "sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+          "source": {
+            "file": "events-pid-3674.jsonl",
+            "line": 2
+          }
+        },
+        {
+          "pid": 3675,
+          "registered_tp_rank": 1,
+          "rank_at_import": 0,
+          "module": "vllm.model_executor.layers.attention.attention",
+          "sha256": "bde77677fd0e95ea09c6a580dfaf09b57741e8183e00cb106e2d1cc64d8e03f2",
+          "source": {
+            "file": "events-pid-3675.jsonl",
+            "line": 1
+          }
+        },
+        {
+          "pid": 3675,
+          "registered_tp_rank": 1,
+          "rank_at_import": 1,
+          "module": "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn",
+          "sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+          "source": {
+            "file": "events-pid-3675.jsonl",
+            "line": 3
+          }
+        },
+        {
+          "pid": 3675,
+          "registered_tp_rank": 1,
+          "rank_at_import": 0,
+          "module": "vllm.v1.worker.gpu.model_runner",
+          "sha256": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+          "source": {
+            "file": "events-pid-3675.jsonl",
+            "line": 2
+          }
+        }
+      ]
+    }
+  },
+  "initial_differences": [],
+  "full_prefill_logit_differences": [],
+  "normalized_schedule_differences": [],
+  "parameter_value_differences_fp32": [],
+  "captured_keys_per_arm": 288,
+  "raw_logit_cases": 32,
+  "max_abs_cases": {
+    "A-B:mixed_qkv": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:a": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:b": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:A_log": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:dt_bias": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": false,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:target_state_before": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:target_state_after": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:out": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "B-C:mixed_qkv": {
+      "key": [
+        1,
+        60,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.5,
+      "relative_l2_to_second": 0.006167794912200373,
+      "zero_denominator": false
+    },
+    "B-C:a": {
+      "key": [
+        0,
+        18,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.09375,
+      "relative_l2_to_second": 0.0061344733808038334,
+      "zero_denominator": false
+    },
+    "B-C:b": {
+      "key": [
+        0,
+        16,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.0625,
+      "relative_l2_to_second": 0.006941284719862466,
+      "zero_denominator": false
+    },
+    "B-C:A_log": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "B-C:dt_bias": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "B-C:target_state_before": {
+      "key": [
+        1,
+        62,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.023635506629943848,
+      "relative_l2_to_second": 0.006547693335656008,
+      "zero_denominator": false
+    },
+    "B-C:target_state_after": {
+      "key": [
+        1,
+        62,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.017369866371154785,
+      "relative_l2_to_second": 0.006549457667474623,
+      "zero_denominator": false
+    },
+    "B-C:out": {
+      "key": [
+        1,
+        62,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.0029296875,
+      "relative_l2_to_second": 0.006369486058446387,
+      "zero_denominator": false
+    },
+    "A-C:mixed_qkv": {
+      "key": [
+        1,
+        60,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.5,
+      "relative_l2_to_second": 0.006167794912200373,
+      "zero_denominator": false
+    },
+    "A-C:a": {
+      "key": [
+        0,
+        18,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.09375,
+      "relative_l2_to_second": 0.0061344733808038334,
+      "zero_denominator": false
+    },
+    "A-C:b": {
+      "key": [
+        0,
+        16,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.0625,
+      "relative_l2_to_second": 0.006941284719862466,
+      "zero_denominator": false
+    },
+    "A-C:A_log": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-C:dt_bias": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": false,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-C:target_state_before": {
+      "key": [
+        1,
+        62,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.023635506629943848,
+      "relative_l2_to_second": 0.006547693335656008,
+      "zero_denominator": false
+    },
+    "A-C:target_state_after": {
+      "key": [
+        1,
+        62,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.017369866371154785,
+      "relative_l2_to_second": 0.006549457667474623,
+      "zero_denominator": false
+    },
+    "A-C:out": {
+      "key": [
+        1,
+        62,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.0029296875,
+      "relative_l2_to_second": 0.006369486058446387,
+      "zero_denominator": false
+    }
+  },
+  "max_relative_l2_cases": {
+    "A-B:mixed_qkv": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:a": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:b": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:A_log": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:dt_bias": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": false,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:target_state_before": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:target_state_after": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-B:out": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "B-C:mixed_qkv": {
+      "key": [
+        1,
+        46,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.0234375,
+      "relative_l2_to_second": 0.008603387855118683,
+      "zero_denominator": false
+    },
+    "B-C:a": {
+      "key": [
+        0,
+        32,
+        19
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.046875,
+      "relative_l2_to_second": 0.011634302184116157,
+      "zero_denominator": false
+    },
+    "B-C:b": {
+      "key": [
+        0,
+        41,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.037109375,
+      "relative_l2_to_second": 0.012345228994887823,
+      "zero_denominator": false
+    },
+    "B-C:A_log": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "B-C:dt_bias": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "B-C:target_state_before": {
+      "key": [
+        1,
+        49,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.003632776439189911,
+      "relative_l2_to_second": 0.01443373464116053,
+      "zero_denominator": false
+    },
+    "B-C:target_state_after": {
+      "key": [
+        1,
+        49,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.00310390442609787,
+      "relative_l2_to_second": 0.014119483698028372,
+      "zero_denominator": false
+    },
+    "B-C:out": {
+      "key": [
+        1,
+        44,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.00054931640625,
+      "relative_l2_to_second": 0.009724364858888068,
+      "zero_denominator": false
+    },
+    "A-C:mixed_qkv": {
+      "key": [
+        1,
+        46,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.0234375,
+      "relative_l2_to_second": 0.008603387855118683,
+      "zero_denominator": false
+    },
+    "A-C:a": {
+      "key": [
+        0,
+        32,
+        19
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.046875,
+      "relative_l2_to_second": 0.011634302184116157,
+      "zero_denominator": false
+    },
+    "A-C:b": {
+      "key": [
+        0,
+        41,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.037109375,
+      "relative_l2_to_second": 0.012345228994887823,
+      "zero_denominator": false
+    },
+    "A-C:A_log": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": true,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-C:dt_bias": {
+      "key": [
+        0,
+        0,
+        1
+      ],
+      "value_equal_fp32": true,
+      "same_dtype": false,
+      "max_abs": 0.0,
+      "relative_l2_to_second": 0.0,
+      "zero_denominator": false
+    },
+    "A-C:target_state_before": {
+      "key": [
+        1,
+        49,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.003632776439189911,
+      "relative_l2_to_second": 0.01443373464116053,
+      "zero_denominator": false
+    },
+    "A-C:target_state_after": {
+      "key": [
+        1,
+        49,
+        18
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.00310390442609787,
+      "relative_l2_to_second": 0.014119483698028372,
+      "zero_denominator": false
+    },
+    "A-C:out": {
+      "key": [
+        1,
+        44,
+        1
+      ],
+      "value_equal_fp32": false,
+      "same_dtype": true,
+      "max_abs": 0.00054931640625,
+      "relative_l2_to_second": 0.009724364858888068,
+      "zero_denominator": false
+    }
+  },
+  "q255_step19_reproduction": {
+    "A_expected71072": true,
+    "C_expected43659": true
+  },
+  "scope_limits": [
+    "Other requests also have forced FI histories0..18.",
+    "Profiling calls are excluded; real inference calls are separately counted.",
+    "KV observation covers initialized prompt positions, not later KV or all hidden states.",
+    "Snapshots contain target propagated recurrent page, not full B8 pool replay.",
+    "Matched observed starts permit a bounded numerical-contribution comparison only.",
+    "Alog and bias value equality after FP32 conversion does not erase dtype specialization.",
+    "Host GPU ownership/release remains an independent supervisor audit."
+  ],
+  "consumer_sha256": "e1f12445529043aff36c499a7f0183b85bab3ad99297ad52ed05af4f7d2a015f"
+}

@@ -1,0 +1,188 @@
+{
+  "status": "CPU_LOAD_SEMANTICS_REPRODUCED",
+  "source_head_binding": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "git_head_verified": null,
+  "source_binding": "Exact SHA256 checks of constructor and weight-loader files",
+  "source_module_sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+  "source_weight_loader_sha256": "15eeb78befb71c75240f5b20c762381905a8f54f83f252de914330b1dddb7dfe",
+  "probe_sha256": "ad69dc6c334fd15e93d6614422f9ecf578baa0763624e3d160c9b3888ce247d9",
+  "torch_version": "2.13.0+cu129",
+  "scope": "Real constructor and real sharded loader, mocked CUDA admission only",
+  "gpu_kernels_executed": false,
+  "model_output_or_accuracy_evaluated": false,
+  "by_checkpoint_dtype": {
+    "torch.bfloat16": {
+      "baseline_and_flashinfer_values_equal": true,
+      "max_abs_difference": 0.0
+    },
+    "torch.float32": {
+      "baseline_and_flashinfer_values_equal": false,
+      "max_abs_difference": 0.0015000104904174805
+    }
+  },
+  "rows": [
+    {
+      "checkpoint_dtype": "torch.bfloat16",
+      "backend": "auto",
+      "parameter_dtype": "torch.bfloat16",
+      "source_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "loaded_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "actual_loader_matches_selected_parameter_dtype": true,
+      "cuda_initialized": false
+    },
+    {
+      "checkpoint_dtype": "torch.bfloat16",
+      "backend": "triton",
+      "parameter_dtype": "torch.bfloat16",
+      "source_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "loaded_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "actual_loader_matches_selected_parameter_dtype": true,
+      "cuda_initialized": false
+    },
+    {
+      "checkpoint_dtype": "torch.bfloat16",
+      "backend": "flashinfer",
+      "parameter_dtype": "torch.float32",
+      "source_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "loaded_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "actual_loader_matches_selected_parameter_dtype": true,
+      "cuda_initialized": false
+    },
+    {
+      "checkpoint_dtype": "torch.float32",
+      "backend": "auto",
+      "parameter_dtype": "torch.bfloat16",
+      "source_rank1_values": [
+        1.0008000135421753,
+        1.0009000301361084,
+        1.0010000467300415,
+        1.001099944114685,
+        1.0011999607086182,
+        1.0012999773025513,
+        1.0013999938964844,
+        1.0015000104904175
+      ],
+      "loaded_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "actual_loader_matches_selected_parameter_dtype": true,
+      "cuda_initialized": false
+    },
+    {
+      "checkpoint_dtype": "torch.float32",
+      "backend": "triton",
+      "parameter_dtype": "torch.bfloat16",
+      "source_rank1_values": [
+        1.0008000135421753,
+        1.0009000301361084,
+        1.0010000467300415,
+        1.001099944114685,
+        1.0011999607086182,
+        1.0012999773025513,
+        1.0013999938964844,
+        1.0015000104904175
+      ],
+      "loaded_rank1_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "actual_loader_matches_selected_parameter_dtype": true,
+      "cuda_initialized": false
+    },
+    {
+      "checkpoint_dtype": "torch.float32",
+      "backend": "flashinfer",
+      "parameter_dtype": "torch.float32",
+      "source_rank1_values": [
+        1.0008000135421753,
+        1.0009000301361084,
+        1.0010000467300415,
+        1.001099944114685,
+        1.0011999607086182,
+        1.0012999773025513,
+        1.0013999938964844,
+        1.0015000104904175
+      ],
+      "loaded_rank1_values": [
+        1.0008000135421753,
+        1.0009000301361084,
+        1.0010000467300415,
+        1.001099944114685,
+        1.0011999607086182,
+        1.0012999773025513,
+        1.0013999938964844,
+        1.0015000104904175
+      ],
+      "actual_loader_matches_selected_parameter_dtype": true,
+      "cuda_initialized": false
+    }
+  ],
+  "interpretation": "BF16 checkpoint values are exact-promoted for FlashInfer. Non-BF16-representable FP32 checkpoint values are retained by FlashInfer but rounded to the baseline BF16 parameter dtype by auto/Triton. This does not explain divergence for the actual BF16 checkpoint."
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/consumer/short_pair_audit.py", line 771, in <module>
+    main()
+  File "/consumer/short_pair_audit.py", line 742, in main
+    arm: index_arm(
+         ^^^^^^^^^^
+  File "/consumer/short_pair_audit.py", line 242, in index_arm
+    require(launch["source_files"][name] == expected
+            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'vllm/model_executor/layers/attention/attention.py'

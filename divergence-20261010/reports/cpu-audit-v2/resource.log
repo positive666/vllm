@@ -1,0 +1,1 @@
+{"status": "PASS", "strict_ownership": true, "counts": {"process_snapshots": 38, "compute_observations": 31, "matched_same_snapshot": 31, "unmatched": 0, "unknown_uuid": 0, "partial_frames": 0}, "mathematical_gate_evaluated": false}

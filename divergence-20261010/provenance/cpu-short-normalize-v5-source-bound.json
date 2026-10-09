@@ -1,0 +1,17 @@
+{
+  "status": "CPU-contracts-passed",
+  "gpu_execution": false,
+  "source_sha256": {
+    "input_processor": "97f66659814177d3f7b72b959f09201cbdd1794de21ec1542fe8970f18a1a2b6",
+    "sampling_params": "005eeca282874cde09864133f2100de6ae985439b93e50891194e8447a265999"
+  },
+  "contracts": [
+    "Actual native method demonstrates max19/EOS mutation",
+    "Actual generation-config EOS update + scoped bypass preserve cloned resolved fields",
+    "Unknown prompt/prefix/user-stop/unbound context/extra effective stop fail closed"
+  ],
+  "helper_sha256": {
+    "short_normalize.py": "0cfc982ff53a3f29b7b008c2d0788b680a7c6f922132497490c2d821462690bf",
+    "cpu_short_normalize.py": "78a73709b661285079cd7e1a1ad57dbed453e34d24456930357c6d35dd707940"
+  }
+}

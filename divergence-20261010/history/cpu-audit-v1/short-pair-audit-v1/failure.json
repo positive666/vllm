@@ -1,0 +1,8 @@
+{
+  "status": "INCOMPLETE_OR_INVALID",
+  "exception": "KeyError",
+  "message": "'vllm/model_executor/layers/attention/attention.py'",
+  "traceback": "Traceback (most recent call last):\n  File \"/consumer/short_pair_audit.py\", line 742, in main\n    arm: index_arm(\n         ^^^^^^^^^^\n  File \"/consumer/short_pair_audit.py\", line 242, in index_arm\n    require(launch[\"source_files\"][name] == expected\n            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^\nKeyError: 'vllm/model_executor/layers/attention/attention.py'\n",
+  "consumer_sha256": "0ecf658c4c18eb14c765dea1bf28aae4ca9c02f0fcca70987472de0918374a13",
+  "gpu_execution": false
+}

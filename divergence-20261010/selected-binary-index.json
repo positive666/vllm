@@ -1,0 +1,1882 @@
+{
+  "raw_vector_count": 96,
+  "representative_snapshot_count": 3,
+  "scope": "All raw logits at steps18/19; representative PTs only, not complete tensor-audit reproduction",
+  "files": [
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-198-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 198,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ea20c2b0fbe4d80bfb1e08b10d07a94c62a40b041ec7f6ba2a4f4d15a32c1e13",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-206-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 206,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ad086c26cab70a33773e2c3b42331b0bf56d552eedf63d9b9b4fa2d8372ab295",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-209-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 209,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "87b8036d65776f1857811b7b652a9fcf0f65f963064d7cc0514bb7f0b2e9d58d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-228-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 228,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "90cbe37b6de3680ebeb22ebeaa547e1c85d6c756560e8ca8dfd8cfbbb58c69e6",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-255-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 255,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "dc1ee13060b1defa6702d1e52908d5e24cc7096dd6065886b090041219dbcc19",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-285-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 285,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "3385b15f2772a58ab067dcd529805f2c939328941cafe8be77961d4983b3f2a9",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-292-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 292,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "c4ba38f46057a583dc0e8d15711e2158fd65ad273f5c21055a9c5e745a9f3a2d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-318-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 318,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "6cadc420a6923976be0c64911c47592dad6ecd2ce0daeb4e9c9d35797904648b",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-198-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 198,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "fe4acaf3c69dc6caa07b01cca535a46e74abb518c253468b0a0936f15a30ee85",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-206-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 206,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "29c16710799d85b92e2b28d21f067a6ce1241ad2d39881032768dd3c588f75cf",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-209-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 209,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "0df55514bc568e4427ef7c3d75399581991a5bd3b822f91bbdd362f505d325d0",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-228-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 228,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "ea7963e37e67bd3a0499e5c9358ef7847c2dacdc69480a3a8fc3ccc25621c5ae",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-255-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 255,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "46d35f9d5965685d53dd04468872572eb0c618f4c95ec3c41dbabd298bebe581",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-285-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 285,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "24dc5718953386078fb3961033ae1c83642d9755ce3230322af7a2b975f47a3f",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-292-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 292,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "dd2fee14bf77f4df6fd0dff6c86f3125105739cda0926b87430904034653c732",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-0-index-318-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 0,
+      "index": 318,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "e78eb2216332b8e1784f7c1c6d777e460ea68d0fe4ae43076db10b64805d7227",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-198-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 198,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ea20c2b0fbe4d80bfb1e08b10d07a94c62a40b041ec7f6ba2a4f4d15a32c1e13",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-206-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 206,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ad086c26cab70a33773e2c3b42331b0bf56d552eedf63d9b9b4fa2d8372ab295",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-209-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 209,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "87b8036d65776f1857811b7b652a9fcf0f65f963064d7cc0514bb7f0b2e9d58d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-228-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 228,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "90cbe37b6de3680ebeb22ebeaa547e1c85d6c756560e8ca8dfd8cfbbb58c69e6",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-255-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 255,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "dc1ee13060b1defa6702d1e52908d5e24cc7096dd6065886b090041219dbcc19",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-285-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 285,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "3385b15f2772a58ab067dcd529805f2c939328941cafe8be77961d4983b3f2a9",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-292-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 292,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "c4ba38f46057a583dc0e8d15711e2158fd65ad273f5c21055a9c5e745a9f3a2d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-318-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 318,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "6cadc420a6923976be0c64911c47592dad6ecd2ce0daeb4e9c9d35797904648b",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-198-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 198,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "fe4acaf3c69dc6caa07b01cca535a46e74abb518c253468b0a0936f15a30ee85",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-206-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 206,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "29c16710799d85b92e2b28d21f067a6ce1241ad2d39881032768dd3c588f75cf",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-209-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 209,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "0df55514bc568e4427ef7c3d75399581991a5bd3b822f91bbdd362f505d325d0",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-228-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 228,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "ea7963e37e67bd3a0499e5c9358ef7847c2dacdc69480a3a8fc3ccc25621c5ae",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-255-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 255,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "46d35f9d5965685d53dd04468872572eb0c618f4c95ec3c41dbabd298bebe581",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-285-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 285,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "24dc5718953386078fb3961033ae1c83642d9755ce3230322af7a2b975f47a3f",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-292-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 292,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "dd2fee14bf77f4df6fd0dff6c86f3125105739cda0926b87430904034653c732",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/raw-rank-1-index-318-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "A",
+      "rank": 1,
+      "index": 318,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "e78eb2216332b8e1784f7c1c6d777e460ea68d0fe4ae43076db10b64805d7227",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-458.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-A/trace/captures/rank-0-layer-0-step-19-eid-20.pt",
+      "kind": "representative_snapshot",
+      "arm": "A",
+      "rank": 0,
+      "layer": 0,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "7e2c33803e84efdb1d1a5fce9cae24d7beea64d6aa663c87f94626fd936f914b",
+      "bytes": 3281537,
+      "actual_sidecar_sha256": "6fde45998ab93328459b3f167cac68aa03503b9f0d969c1ac449e5ea85686a90",
+      "metadata_sidecar_member": "metadata/short-A/trace/captures/rank-0-layer-0-step-19-eid-20.json",
+      "actual_event_source": {
+        "file": "events-pid-457.jsonl",
+        "line": 1908
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-198-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 198,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ea20c2b0fbe4d80bfb1e08b10d07a94c62a40b041ec7f6ba2a4f4d15a32c1e13",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-206-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 206,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ad086c26cab70a33773e2c3b42331b0bf56d552eedf63d9b9b4fa2d8372ab295",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-209-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 209,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "87b8036d65776f1857811b7b652a9fcf0f65f963064d7cc0514bb7f0b2e9d58d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-228-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 228,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "90cbe37b6de3680ebeb22ebeaa547e1c85d6c756560e8ca8dfd8cfbbb58c69e6",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-255-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 255,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "dc1ee13060b1defa6702d1e52908d5e24cc7096dd6065886b090041219dbcc19",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-285-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 285,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "3385b15f2772a58ab067dcd529805f2c939328941cafe8be77961d4983b3f2a9",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-292-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 292,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "c4ba38f46057a583dc0e8d15711e2158fd65ad273f5c21055a9c5e745a9f3a2d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-318-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 318,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "6cadc420a6923976be0c64911c47592dad6ecd2ce0daeb4e9c9d35797904648b",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-198-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 198,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "fe4acaf3c69dc6caa07b01cca535a46e74abb518c253468b0a0936f15a30ee85",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-206-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 206,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "29c16710799d85b92e2b28d21f067a6ce1241ad2d39881032768dd3c588f75cf",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-209-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 209,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "0df55514bc568e4427ef7c3d75399581991a5bd3b822f91bbdd362f505d325d0",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-228-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 228,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "ea7963e37e67bd3a0499e5c9358ef7847c2dacdc69480a3a8fc3ccc25621c5ae",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-255-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 255,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "46d35f9d5965685d53dd04468872572eb0c618f4c95ec3c41dbabd298bebe581",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-285-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 285,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "24dc5718953386078fb3961033ae1c83642d9755ce3230322af7a2b975f47a3f",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-292-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 292,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "dd2fee14bf77f4df6fd0dff6c86f3125105739cda0926b87430904034653c732",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-0-index-318-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 0,
+      "index": 318,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "e78eb2216332b8e1784f7c1c6d777e460ea68d0fe4ae43076db10b64805d7227",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-198-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 198,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ea20c2b0fbe4d80bfb1e08b10d07a94c62a40b041ec7f6ba2a4f4d15a32c1e13",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-206-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 206,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "ad086c26cab70a33773e2c3b42331b0bf56d552eedf63d9b9b4fa2d8372ab295",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-209-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 209,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "87b8036d65776f1857811b7b652a9fcf0f65f963064d7cc0514bb7f0b2e9d58d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-228-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 228,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "90cbe37b6de3680ebeb22ebeaa547e1c85d6c756560e8ca8dfd8cfbbb58c69e6",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-255-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 255,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "dc1ee13060b1defa6702d1e52908d5e24cc7096dd6065886b090041219dbcc19",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-285-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 285,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "3385b15f2772a58ab067dcd529805f2c939328941cafe8be77961d4983b3f2a9",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-292-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 292,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "c4ba38f46057a583dc0e8d15711e2158fd65ad273f5c21055a9c5e745a9f3a2d",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-318-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 318,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "6cadc420a6923976be0c64911c47592dad6ecd2ce0daeb4e9c9d35797904648b",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-198-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 198,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "fe4acaf3c69dc6caa07b01cca535a46e74abb518c253468b0a0936f15a30ee85",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-206-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 206,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "29c16710799d85b92e2b28d21f067a6ce1241ad2d39881032768dd3c588f75cf",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-209-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 209,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "0df55514bc568e4427ef7c3d75399581991a5bd3b822f91bbdd362f505d325d0",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-228-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 228,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "ea7963e37e67bd3a0499e5c9358ef7847c2dacdc69480a3a8fc3ccc25621c5ae",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-255-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 255,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "46d35f9d5965685d53dd04468872572eb0c618f4c95ec3c41dbabd298bebe581",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-285-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 285,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "24dc5718953386078fb3961033ae1c83642d9755ce3230322af7a2b975f47a3f",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-292-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 292,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "dd2fee14bf77f4df6fd0dff6c86f3125105739cda0926b87430904034653c732",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/raw-rank-1-index-318-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "B",
+      "rank": 1,
+      "index": 318,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "e78eb2216332b8e1784f7c1c6d777e460ea68d0fe4ae43076db10b64805d7227",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-2066.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-B/trace/captures/rank-0-layer-0-step-19-eid-20.pt",
+      "kind": "representative_snapshot",
+      "arm": "B",
+      "rank": 0,
+      "layer": 0,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "945c5219973ee2be2ac4f2909b65179cfefc3214ddf9097955c083347365d7b8",
+      "bytes": 3281537,
+      "actual_sidecar_sha256": "9fd311dfdca4dd430642a1e3cf0bbd383b5e942ffff457fccd2f141d09e5495f",
+      "metadata_sidecar_member": "metadata/short-B/trace/captures/rank-0-layer-0-step-19-eid-20.json",
+      "actual_event_source": {
+        "file": "events-pid-2065.jsonl",
+        "line": 1908
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-198-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 198,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "c85063115b96f92050f356e8b0c9d29afeac175e436a90069833dac764851235",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-206-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 206,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "5aa6f111ce8902503d1c7435d5a64fe79dda428007d6b5690f2941f9e0d6e7e1",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-209-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 209,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "a684c1631b9f376ffdd451d749a6d9a367dd94a6b56dd06659ff97f96ec40fc9",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-228-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 228,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "7bca8a9c19a571ee22332b4555098d46211c665c42645741fe624dc31da3596c",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-255-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 255,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "2e87072eb900db63b36879775a6bfa6d0e153aea01c30393a9bfb819b6e30d13",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-285-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 285,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "2de5f5b8052719dbc88acb2453d9934495cf39a50c2478e454da6a9bf212ef23",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-292-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 292,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "1d63bd1f9a92e1705999d8baf0305077c1105cf9efda8f6af60af76887a12885",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-318-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 318,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "03ae2904211bdad418acd7e030405c63bf3c2c936ff6990f1ea5299a5f6cdca2",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-198-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 198,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "5e9ed0779959d2e13438194aec09da16689bb9a02ec22a8e3edb1f262a1e928b",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-206-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 206,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "a6cb301a77bf543f8537518ee8a3830559bacd11b862e4ca4a73b652a1e78a77",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-209-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 209,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "52ec89fdf2f1780fc37e5fdb03f65b91b1438b33566ebc511e337ec9b64cf2b6",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-228-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 228,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "b3a7f9ab8cb2b7816068c9519e984a956f0d0f9b6774ec55e7fd03d9e557c347",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-255-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 255,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "6440c8aa5576ed99212ba292bdeadad5f58b44c7e1f8b472264724595929c563",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-285-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 285,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "2571f126a77c34c03e539e275a1d183cf9ea289da6d660fc337108948a1e3bde",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-292-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 292,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "02286d59e8fedd32c2b2c93e588d3021b1acd799c267041d1cf9519f307814ea",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-0-index-318-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 0,
+      "index": 318,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "5c3760eee44195cb6a48ad27a4c3c10770505186d971beb8ec1461f261bf9c68",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-198-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 198,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "c85063115b96f92050f356e8b0c9d29afeac175e436a90069833dac764851235",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-206-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 206,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "5aa6f111ce8902503d1c7435d5a64fe79dda428007d6b5690f2941f9e0d6e7e1",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-209-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 209,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "a684c1631b9f376ffdd451d749a6d9a367dd94a6b56dd06659ff97f96ec40fc9",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-228-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 228,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "7bca8a9c19a571ee22332b4555098d46211c665c42645741fe624dc31da3596c",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-255-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 255,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "2e87072eb900db63b36879775a6bfa6d0e153aea01c30393a9bfb819b6e30d13",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-285-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 285,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "2de5f5b8052719dbc88acb2453d9934495cf39a50c2478e454da6a9bf212ef23",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-292-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 292,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "1d63bd1f9a92e1705999d8baf0305077c1105cf9efda8f6af60af76887a12885",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-318-step-18-eid-000019.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 318,
+      "step": 18,
+      "execution_id": 19,
+      "sha256": "03ae2904211bdad418acd7e030405c63bf3c2c936ff6990f1ea5299a5f6cdca2",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 1905
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-198-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 198,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "5e9ed0779959d2e13438194aec09da16689bb9a02ec22a8e3edb1f262a1e928b",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-206-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 206,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "a6cb301a77bf543f8537518ee8a3830559bacd11b862e4ca4a73b652a1e78a77",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-209-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 209,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "52ec89fdf2f1780fc37e5fdb03f65b91b1438b33566ebc511e337ec9b64cf2b6",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-228-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 228,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "b3a7f9ab8cb2b7816068c9519e984a956f0d0f9b6774ec55e7fd03d9e557c347",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-255-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 255,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "6440c8aa5576ed99212ba292bdeadad5f58b44c7e1f8b472264724595929c563",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-285-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 285,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "2571f126a77c34c03e539e275a1d183cf9ea289da6d660fc337108948a1e3bde",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-292-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 292,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "02286d59e8fedd32c2b2c93e588d3021b1acd799c267041d1cf9519f307814ea",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/raw-rank-1-index-318-step-19-eid-000020.bin",
+      "kind": "full_raw_logits",
+      "arm": "C",
+      "rank": 1,
+      "index": 318,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "5c3760eee44195cb6a48ad27a4c3c10770505186d971beb8ec1461f261bf9c68",
+      "bytes": 993280,
+      "shape": [
+        248320
+      ],
+      "dtype": "float32-le",
+      "actual_event_source": {
+        "file": "events-pid-3675.jsonl",
+        "line": 2003
+      }
+    },
+    {
+      "public_path": "selected-binaries/short-C/trace/captures/rank-0-layer-0-step-19-eid-20.pt",
+      "kind": "representative_snapshot",
+      "arm": "C",
+      "rank": 0,
+      "layer": 0,
+      "step": 19,
+      "execution_id": 20,
+      "sha256": "c2db975b84abe17057bd40baeeea9e3094616a512ab892af3705b40bb721ab1a",
+      "bytes": 3281537,
+      "actual_sidecar_sha256": "9fab8123a3a944b0fd2555235e963800290a97d29a1e6d3ac04ef8ab455dc5b7",
+      "metadata_sidecar_member": "metadata/short-C/trace/captures/rank-0-layer-0-step-19-eid-20.json",
+      "actual_event_source": {
+        "file": "events-pid-3674.jsonl",
+        "line": 1908
+      }
+    }
+  ]
+}

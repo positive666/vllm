@@ -1,0 +1,442 @@
+{
+  "schema": "gdn-short-supervisor-independent-v1",
+  "status": "PASS",
+  "scope": "Recorded process/placement/cleanup only; no mathematical, accuracy, or performance verdict",
+  "strict_ownership": true,
+  "mathematical_gate_evaluated": false,
+  "expected_container_id": "90d3dcde46c02c8d9ca1694606f791796a6a8c37c99895e0602cdd49aee3816e",
+  "expected_owner": "gdn60403-divergence-v2-20261010",
+  "expected_physical_gpus": {
+    "4": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+    "6": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e"
+  },
+  "producer_manifest_sha256": "f7325bd688eafa308a3c08c1dc66747518c9e7d079f433de30b775d365902a88",
+  "auditor_sha256": "639e2ef26c07473beae120b0a460fdd73046b3bb5ae41fa99b2b6662b4239323",
+  "input_files": {
+    "container-id.txt": {
+      "sha256": "a627d7bfa136bff5f52f26d6ebb424f7ae160bc4bfc4e70bcf446bd555afb773",
+      "bytes": 65
+    },
+    "matrix.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "short-A.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "short-A.log": {
+      "sha256": "77f7c91e2acc73dbb8497b4ed75188ea1008d3a826a13888a9d8b6dd20159a14",
+      "bytes": 105274
+    },
+    "short-B.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "short-B.log": {
+      "sha256": "211958618ceab219890cdf7c7388977448f9d6c08c614c0f7d4d4cb54cf4e0b1",
+      "bytes": 123301
+    },
+    "short-C.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "short-C.log": {
+      "sha256": "1cb705c607537bb5b05a6db49e702fb970d8d36044d764e6f6150523af692428",
+      "bytes": 123389
+    },
+    "cleanup-stop.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "monitor-final.exit": {
+      "sha256": "9d9b18720961e9b4689fd763b85e7b6f36160ccd3a8a1c9ddc5103bb0f66c396",
+      "bytes": 4
+    },
+    "container-inspect-initial.json": {
+      "sha256": "95b17998fc24b21f7de24c1b7acef2637d487deb0a30da633f66637159996bab",
+      "bytes": 29628
+    },
+    "container-inspect-before.json": {
+      "sha256": "f11b858df2da0b3e17cf94f09bcd6772e60395291ebab2e87f2bd04308a124f4",
+      "bytes": 29628
+    },
+    "container-inspect-after.json": {
+      "sha256": "e8f811ad440f5c0495f4c4f581ed3334b262c53520d24ccf5366d9942326c3e7",
+      "bytes": 29435
+    },
+    "cleanup-before.json": {
+      "sha256": "c32656f08191f554d4202b03db3cc387f33e4539a705bd0e2cd42a5bf045540b",
+      "bytes": 218
+    },
+    "cleanup-after.json": {
+      "sha256": "2c7ef36e99de0994231e464bd0b5f44058f918eac24edc37fec65b79d543e582",
+      "bytes": 226
+    },
+    "cleanup-stop.log": {
+      "sha256": "a627d7bfa136bff5f52f26d6ebb424f7ae160bc4bfc4e70bcf446bd555afb773",
+      "bytes": 65
+    },
+    "matrix-completed.txt": {
+      "sha256": "f9a2395646f76647b08395a9f919a0c649a4392d7963458cb02e03b18fc10a8b",
+      "bytes": 21
+    },
+    "host-processes.log": {
+      "sha256": "64b38a0ceb51cd1dd2cd4363d21b6425dc94d4802731b116bc7388c552850161",
+      "bytes": 4190
+    },
+    "host-identities.log": {
+      "sha256": "d71ee017fbb7e192f22b5f91818a3c3aa11e49f8367f08eaaf38f94d3920c29b",
+      "bytes": 4674
+    },
+    "host-gpus.csv": {
+      "sha256": "37312454d3dd4055ee4592804451d88a22ca60771c4c8b3fa71b8c3f6863fbe8",
+      "bytes": 7296
+    },
+    "final-gpus.csv": {
+      "sha256": "828efda9e03093f8c1496bc44570dcee07253303d8debe7274eafeb965dbeee7",
+      "bytes": 164
+    },
+    "final-processes.csv": {
+      "sha256": "f2103265936621e692b0d6089b7792c125d5860534bb6a48e5e51474e6414dd7",
+      "bytes": 37
+    }
+  },
+  "gates": {
+    "matrix_exit": true,
+    "arm_A_exit": true,
+    "arm_B_exit": true,
+    "arm_C_exit": true,
+    "cleanup_stop_exit": true,
+    "monitor_no_failure_marker": true,
+    "monitor_final_exit": true,
+    "container_initial_identity": true,
+    "container_before_identity": true,
+    "container_after_identity": true,
+    "container_initial_running": true,
+    "container_after_stopped_not_oomkilled": true,
+    "process_log_format": true,
+    "identity_log_binding": true,
+    "gpu_log_format": true,
+    "final_gpu_identity_memory": true,
+    "final_no_compute_pids": true
+  },
+  "failures": [],
+  "review_required_reasons": [],
+  "counts": {
+    "process_snapshots": 38,
+    "compute_observations": 31,
+    "matched_same_snapshot": 31,
+    "unmatched": 0,
+    "unknown_uuid": 0,
+    "partial_frames": 0
+  },
+  "details": {
+    "matrix.exit": 0,
+    "short-A.exit": 0,
+    "short-B.exit": 0,
+    "short-C.exit": 0,
+    "cleanup-stop.exit": 0,
+    "monitor_stop_markers": [],
+    "monitor-final.exit": 143,
+    "monitor_143_scope": "Expected supervisor termination only with no monitor-stop marker; does not erase partial telemetry or unmatched PID observations.",
+    "containers": {
+      "initial": {
+        "container_id": "90d3dcde46c02c8d9ca1694606f791796a6a8c37c99895e0602cdd49aee3816e",
+        "owner": "gdn60403-divergence-v2-20261010",
+        "state": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 25098,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-09T18:43:18.964322483Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        }
+      },
+      "before": {
+        "container_id": "90d3dcde46c02c8d9ca1694606f791796a6a8c37c99895e0602cdd49aee3816e",
+        "owner": "gdn60403-divergence-v2-20261010",
+        "state": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 25098,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-09T18:43:18.964322483Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        }
+      },
+      "after": {
+        "container_id": "90d3dcde46c02c8d9ca1694606f791796a6a8c37c99895e0602cdd49aee3816e",
+        "owner": "gdn60403-divergence-v2-20261010",
+        "state": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 137,
+          "Error": "",
+          "StartedAt": "2026-10-09T18:43:18.964322483Z",
+          "FinishedAt": "2026-10-09T18:47:56.673456722Z"
+        }
+      }
+    },
+    "compute_observations": [
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 28165,
+        "used_memory_mib": 284.0,
+        "timestamp": "2026-10-09T18:44:37Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 28164,
+        "used_memory_mib": 15490.0,
+        "timestamp": "2026-10-09T18:44:43Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 28165,
+        "used_memory_mib": 15490.0,
+        "timestamp": "2026-10-09T18:44:43Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 28164,
+        "used_memory_mib": 15370.0,
+        "timestamp": "2026-10-09T18:44:48Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 28165,
+        "used_memory_mib": 15370.0,
+        "timestamp": "2026-10-09T18:44:48Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 28164,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:44:54Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 28165,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:44:54Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 28164,
+        "used_memory_mib": 18512.0,
+        "timestamp": "2026-10-09T18:44:59Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 28165,
+        "used_memory_mib": 18512.0,
+        "timestamp": "2026-10-09T18:44:59Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 28164,
+        "used_memory_mib": 552.0,
+        "timestamp": "2026-10-09T18:45:05Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 28165,
+        "used_memory_mib": 552.0,
+        "timestamp": "2026-10-09T18:45:05Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 34748,
+        "used_memory_mib": 554.0,
+        "timestamp": "2026-10-09T18:45:48Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 34749,
+        "used_memory_mib": 554.0,
+        "timestamp": "2026-10-09T18:45:48Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 34748,
+        "used_memory_mib": 16140.0,
+        "timestamp": "2026-10-09T18:45:54Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 34749,
+        "used_memory_mib": 15184.0,
+        "timestamp": "2026-10-09T18:45:54Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 34748,
+        "used_memory_mib": 15422.0,
+        "timestamp": "2026-10-09T18:45:59Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 34749,
+        "used_memory_mib": 15422.0,
+        "timestamp": "2026-10-09T18:45:59Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 34748,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:46:05Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 34749,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:46:05Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 34748,
+        "used_memory_mib": 18512.0,
+        "timestamp": "2026-10-09T18:46:10Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 34749,
+        "used_memory_mib": 18512.0,
+        "timestamp": "2026-10-09T18:46:10Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 40466,
+        "used_memory_mib": 15490.0,
+        "timestamp": "2026-10-09T18:46:59Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 40467,
+        "used_memory_mib": 15490.0,
+        "timestamp": "2026-10-09T18:46:59Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 40466,
+        "used_memory_mib": 15370.0,
+        "timestamp": "2026-10-09T18:47:05Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 40467,
+        "used_memory_mib": 15370.0,
+        "timestamp": "2026-10-09T18:47:05Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 40466,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:47:10Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 40467,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:47:10Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 40466,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:47:16Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 40467,
+        "used_memory_mib": 18390.0,
+        "timestamp": "2026-10-09T18:47:16Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "pid": 40466,
+        "used_memory_mib": 728.0,
+        "timestamp": "2026-10-09T18:47:21Z",
+        "classification": "same_container_pid_snapshot"
+      },
+      {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "pid": 40467,
+        "used_memory_mib": 9980.0,
+        "timestamp": "2026-10-09T18:47:21Z",
+        "classification": "same_container_pid_snapshot"
+      }
+    ],
+    "unmatched_observations": [],
+    "unknown_gpu_uuid_observations": [],
+    "incomplete_process_frames": [],
+    "identity_only_timestamps": [],
+    "gpu_only_timestamps": [],
+    "final_gpus": {
+      "4": {
+        "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+        "memory_used_mib": 1.0,
+        "utilization_percent": 0.0
+      },
+      "6": {
+        "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "memory_used_mib": 1.0,
+        "utilization_percent": 0.0
+      }
+    },
+    "final_compute_observations": [],
+    "final_processes": {
+      "compute_pid_count": 0
+    }
+  },
+  "limitations": [
+    "Sequential NVML and docker-top sampling can race; an unmatched row stays unmatched",
+    "Container OOMKilled=false describes the container, not every model-process failure",
+    "This report checks raw supervision records; redacted copies require explicit raw/public maps"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "status": "actual-vocab-bytelevel-decode-verified-against-all8-archived-q255-texts",
+  "tokenizer_json_sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+  "tokenizer_json_bytes": 12809320,
+  "tokenizer_config_sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+  "tokenizer_config_bytes": 17928,
+  "decoder": {
+    "type": "ByteLevel",
+    "add_prefix_space": false,
+    "trim_offsets": false,
+    "use_regex": false
+  },
+  "single_tokens": {
+    "71072": {
+      "vocab_piece": "Ġstalls",
+      "decoded_text_with_boundary_spaces": " stalls",
+      "decoded_repr": "' stalls'"
+    },
+    "43659": {
+      "vocab_piece": "Ġcows",
+      "decoded_text_with_boundary_spaces": " cows",
+      "decoded_repr": "' cows'"
+    }
+  },
+  "common19_ids": [
+    8160,
+    369,
+    279,
+    2923,
+    13909,
+    28253,
+    6093,
+    25,
+    271,
+    332,
+    8046,
+    220,
+    16,
+    25,
+    28924,
+    279,
+    2763,
+    1324,
+    314
+  ],
+  "decoded_common19_prefix": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of",
+  "triton_first24_ids_decoded": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of stalls and cows.**\n",
+  "flashinfer_first22_ids_decoded": "Here is the step-by-step solution:\n\n**Step 1: Determine the initial number of cows.**\n",
+  "first_divergence_zero_based_output_index": 19,
+  "one_based_generated_token": 20,
+  "all8_full_actual_output_decodes": {
+    "triton-eager-1": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "10361bc249e6281205881eeaf146ac34b5171b628df01357fff9be4e425dac14",
+      "tokens": 1217
+    },
+    "flashinfer-eager-1": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "1ea040dde136a3af494e1923dc418eee22fe89fbb698c3431df2602eb6370895",
+      "tokens": 3500
+    },
+    "triton-eager-2": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "10361bc249e6281205881eeaf146ac34b5171b628df01357fff9be4e425dac14",
+      "tokens": 1217
+    },
+    "flashinfer-eager-2": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "1ea040dde136a3af494e1923dc418eee22fe89fbb698c3431df2602eb6370895",
+      "tokens": 3500
+    },
+    "triton-graph-1": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "344602f6666c7dd147c271588c585443ce36a09f432f10edf4c185618e711150",
+      "tokens": 2339
+    },
+    "flashinfer-graph-1": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "220bad58d48da8a5334fbbe729b7507aa051133734f8c366c361b09ee7a3e801",
+      "tokens": 2475
+    },
+    "triton-graph-2": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "7a8ff5a29731563e9fb302999569fc204d7d9cd594eece881e7a36457b899cb0",
+      "tokens": 359
+    },
+    "flashinfer-graph-2": {
+      "output_decode_matches_actual_raw_text": true,
+      "actual_ids_sha256": "7a8ff5a29731563e9fb302999569fc204d7d9cd594eece881e7a36457b899cb0",
+      "tokens": 359
+    }
+  },
+  "existing_launch_sha_binding_paths": {
+    "triton-eager-1": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "flashinfer-eager-1": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "triton-eager-2": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "flashinfer-eager-2": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "triton-graph-1": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "flashinfer-graph-1": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "triton-graph-2": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    },
+    "flashinfer-graph-2": {
+      "tokenizer_json_sha_paths": [
+        "$.model_files.tokenizer.json.sha256"
+      ],
+      "tokenizer_config_sha_paths": [
+        "$.model_files.tokenizer_config.json.sha256"
+      ]
+    }
+  },
+  "model_tokenizer_remote_sha_confirmation": "Parent will bind independently supplied remote SHA; local file read only after DOWNLOAD_OK.",
+  "GPU_source_sampling_edits_or_publication": false,
+  "script_sha256": "d4ca21ee83db5b69742d2a49988cd0df9567bffc9fc6cf3f90e99954f5f5dbdc"
+}

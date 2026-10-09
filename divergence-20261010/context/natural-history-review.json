@@ -1,0 +1,349 @@
+{
+  "scope": "Read-only existing8 natural histories and fixed-FI native audit; no GPU execution, source/fixture edits or publication.",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "index": 255,
+  "question": "Ten stalls have 20 cows each. Mr. Sylas buys 40 cows and divides them equally, putting an equal number of the new cows into each of the twenty stalls. How many cows are in 8 of the stalls?",
+  "frozen_gold": "192",
+  "question_discrepancy": {
+    "initial_count_wording": "Ten stalls",
+    "distribution_count_wording": "twenty stalls",
+    "frozen_gold_interpretation": "8*(20+40/10)=192",
+    "alternative20_uniform_interpretation": "8*(20+40/20)=176",
+    "inference": "The original wording is inconsistent about stall count; actual outputs explicitly deliberate about competing interpretations. No fixture/gold changes are proposed."
+  },
+  "natural_pairs": {
+    "eager-1": {
+      "zero_based_output_index": 19,
+      "one_based_generated_token": 20,
+      "common_generated_prefix_tokens": 19,
+      "triton_id": 71072,
+      "flashinfer_id": 43659
+    },
+    "eager-2": {
+      "zero_based_output_index": 19,
+      "one_based_generated_token": 20,
+      "common_generated_prefix_tokens": 19,
+      "triton_id": 71072,
+      "flashinfer_id": 43659
+    },
+    "graph-1": {
+      "zero_based_output_index": 400,
+      "one_based_generated_token": 401,
+      "common_generated_prefix_tokens": 400,
+      "triton_id": 23197,
+      "flashinfer_id": 12846
+    },
+    "graph-2": {
+      "common_generated_prefix_tokens": 359,
+      "all_actual_ids_equal": true
+    }
+  },
+  "natural_run_termination": {
+    "triton-eager-1": {
+      "completed_sha256": "fdc813d280e489acfc11591c4d3701c24c1a187c3338c8393288078329902a35",
+      "actual_token_ids_sha256": "10361bc249e6281205881eeaf146ac34b5171b628df01357fff9be4e425dac14",
+      "actual_completion_tokens": 1217,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "has_answer_marker": true,
+      "actual_answer_marker_numbers": [
+        "176"
+      ],
+      "strict_correct": false,
+      "truncated": false,
+      "raw_parser_last_number": "176"
+    },
+    "flashinfer-eager-1": {
+      "completed_sha256": "d293b322876e8236f7799a688221ddd0d10e79f8046c6601db40fa6316421e78",
+      "actual_token_ids_sha256": "1ea040dde136a3af494e1923dc418eee22fe89fbb698c3431df2602eb6370895",
+      "actual_completion_tokens": 3500,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "length",
+      "stop_reason": null,
+      "has_answer_marker": false,
+      "actual_answer_marker_numbers": [],
+      "strict_correct": false,
+      "truncated": true,
+      "raw_parser_last_number": "10"
+    },
+    "triton-eager-2": {
+      "completed_sha256": "448284ed385295d165c10ab29b3d87fe3c7cd5d95dd5b6d40fd6389902b4cf8d",
+      "actual_token_ids_sha256": "10361bc249e6281205881eeaf146ac34b5171b628df01357fff9be4e425dac14",
+      "actual_completion_tokens": 1217,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "has_answer_marker": true,
+      "actual_answer_marker_numbers": [
+        "176"
+      ],
+      "strict_correct": false,
+      "truncated": false,
+      "raw_parser_last_number": "176"
+    },
+    "flashinfer-eager-2": {
+      "completed_sha256": "6cfde0b5afef5a1c4ff23cd3bb6282b3d647eb99630de8c0cc274e0da5a2bb2c",
+      "actual_token_ids_sha256": "1ea040dde136a3af494e1923dc418eee22fe89fbb698c3431df2602eb6370895",
+      "actual_completion_tokens": 3500,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "length",
+      "stop_reason": null,
+      "has_answer_marker": false,
+      "actual_answer_marker_numbers": [],
+      "strict_correct": false,
+      "truncated": true,
+      "raw_parser_last_number": "10"
+    },
+    "triton-graph-1": {
+      "completed_sha256": "f46b1b7dcf2982ebdb191027063abbf39948371dfbce05c80abb4cbc839f3176",
+      "actual_token_ids_sha256": "344602f6666c7dd147c271588c585443ce36a09f432f10edf4c185618e711150",
+      "actual_completion_tokens": 2339,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "has_answer_marker": true,
+      "actual_answer_marker_numbers": [
+        "176"
+      ],
+      "strict_correct": false,
+      "truncated": false,
+      "raw_parser_last_number": "176"
+    },
+    "flashinfer-graph-1": {
+      "completed_sha256": "a385d60a139cbc50d7eeace17efc93973ca3cf324981d2d4c1fafcf493cb6e61",
+      "actual_token_ids_sha256": "220bad58d48da8a5334fbbe729b7507aa051133734f8c366c361b09ee7a3e801",
+      "actual_completion_tokens": 2475,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "has_answer_marker": true,
+      "actual_answer_marker_numbers": [
+        "176"
+      ],
+      "strict_correct": false,
+      "truncated": false,
+      "raw_parser_last_number": "176"
+    },
+    "triton-graph-2": {
+      "completed_sha256": "1b0969d6b6c045786fcb88cc3f5240e691ae8fd73de9212fd72da34d5f214010",
+      "actual_token_ids_sha256": "7a8ff5a29731563e9fb302999569fc204d7d9cd594eece881e7a36457b899cb0",
+      "actual_completion_tokens": 359,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "has_answer_marker": true,
+      "actual_answer_marker_numbers": [
+        "192"
+      ],
+      "strict_correct": true,
+      "truncated": false,
+      "raw_parser_last_number": "192"
+    },
+    "flashinfer-graph-2": {
+      "completed_sha256": "60912059de0fda44958016766903b44800f1028a4efb9e3cf2d7f8a17972ad4f",
+      "actual_token_ids_sha256": "7a8ff5a29731563e9fb302999569fc204d7d9cd594eece881e7a36457b899cb0",
+      "actual_completion_tokens": 359,
+      "actual_prompt_tokens": 78,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "has_answer_marker": true,
+      "actual_answer_marker_numbers": [
+        "192"
+      ],
+      "strict_correct": true,
+      "truncated": false,
+      "raw_parser_last_number": "192"
+    }
+  },
+  "eager_common_generated_prefix": {
+    "length": 19,
+    "actual_ids": [
+      8160,
+      369,
+      279,
+      2923,
+      13909,
+      28253,
+      6093,
+      25,
+      271,
+      332,
+      8046,
+      220,
+      16,
+      25,
+      28924,
+      279,
+      2763,
+      1324,
+      314
+    ],
+    "ids_sha256": "335281505e46e664f3d07a8c22b72ceaf2b0bc5429669242bdfc9ecceccb0cb7"
+  },
+  "decoded_single_token_status": "pending_correct_model_tokenizer_binding; raw-text heading semantics observed, IDs not guessed",
+  "raw_text_heading_difference": {
+    "common_observed_heading_text": "Determine the initial number of",
+    "triton_first_heading": "**Step 1: Determine the initial number of stalls and cows.**",
+    "flashinfer_first_heading": "**Step 1: Determine the initial number of cows.**"
+  },
+  "fixed_FI_native_alignment": {
+    "audit_sha256": "d773790253ab1ee6777c18ecda52fa04752cc430f7c981f5581390c5045da0d4",
+    "q255_first_difference": {
+      "index": 255,
+      "step": 19,
+      "triton": 71072,
+      "flashinfer": 43659
+    },
+    "matches_natural_eager_first_ids_and_zero_based_index": true,
+    "fixed_FI_prefix_before_step19_equals_both_natural_prefixes": true,
+    "step_zero_is_prefill_sample": true,
+    "does_not_exclude_intervention_to_other_request_histories_or_observer_protocol": true
+  },
+  "repetition_observations": {
+    "triton-eager-1": {
+      "ngram_max_occurrences_including_overlap": {
+        "8": 5,
+        "16": 1,
+        "32": 1,
+        "64": 1
+      },
+      "longest_adjacent_exact_repeat_period_up_to128": {
+        "period_tokens": 1,
+        "span_tokens": 2,
+        "start_index": 714,
+        "end_index_exclusive": 716,
+        "whole_repeats": 2
+      },
+      "exact_periodic_tail_period_up_to128": null,
+      "wording_motif_counts_case_insensitive": {
+        "ten stalls": 8,
+        "twenty stalls": 6,
+        "typo": 6,
+        "ambig": 1,
+        "interpret": 9,
+        "let's": 9,
+        "192": 0,
+        "176": 3,
+        "96": 0
+      }
+    },
+    "triton-graph-1": {
+      "ngram_max_occurrences_including_overlap": {
+        "8": 11,
+        "16": 2,
+        "32": 1,
+        "64": 1
+      },
+      "longest_adjacent_exact_repeat_period_up_to128": {
+        "period_tokens": 1,
+        "span_tokens": 2,
+        "start_index": 576,
+        "end_index_exclusive": 578,
+        "whole_repeats": 2
+      },
+      "exact_periodic_tail_period_up_to128": null,
+      "wording_motif_counts_case_insensitive": {
+        "ten stalls": 17,
+        "twenty stalls": 22,
+        "typo": 18,
+        "ambig": 3,
+        "interpret": 5,
+        "let's": 13,
+        "192": 3,
+        "176": 6,
+        "96": 0
+      }
+    },
+    "flashinfer-eager-1": {
+      "ngram_max_occurrences_including_overlap": {
+        "8": 7,
+        "16": 3,
+        "32": 2,
+        "64": 1
+      },
+      "longest_adjacent_exact_repeat_period_up_to128": {
+        "period_tokens": 1,
+        "span_tokens": 2,
+        "start_index": 73,
+        "end_index_exclusive": 75,
+        "whole_repeats": 2
+      },
+      "exact_periodic_tail_period_up_to128": null,
+      "wording_motif_counts_case_insensitive": {
+        "ten stalls": 16,
+        "twenty stalls": 25,
+        "typo": 7,
+        "ambig": 4,
+        "interpret": 7,
+        "let's": 24,
+        "192": 5,
+        "176": 5,
+        "96": 1
+      }
+    },
+    "flashinfer-graph-1": {
+      "ngram_max_occurrences_including_overlap": {
+        "8": 12,
+        "16": 3,
+        "32": 1,
+        "64": 1
+      },
+      "longest_adjacent_exact_repeat_period_up_to128": {
+        "period_tokens": 1,
+        "span_tokens": 2,
+        "start_index": 629,
+        "end_index_exclusive": 631,
+        "whole_repeats": 2
+      },
+      "exact_periodic_tail_period_up_to128": null,
+      "wording_motif_counts_case_insensitive": {
+        "ten stalls": 19,
+        "twenty stalls": 20,
+        "typo": 14,
+        "ambig": 2,
+        "interpret": 4,
+        "let's": 17,
+        "192": 2,
+        "176": 5,
+        "96": 0
+      }
+    }
+  },
+  "flashinfer_eager_tail_excerpt": " I have 20 stalls, and I say \"Ten stalls have 20 cows each\", I am describing a partial state.\n\nLet's try to find a reason why \"8 of the stalls\" would be well-defined in the non-uniform case (10 with 22, 10 with 2).\nMaybe \"8 of the stalls\" refers to the 8 stalls with the *most* cows? Or the *least*? No, that's not standard.\n\nLet's consider the possibility that the 40 cows are distributed among the **10** original stalls, and the \"twenty stalls\" is",
+  "triton_eager_terminal_excerpt": " = $40 / 20 = 2$.\n5. Final cows per stall = $20 + 2 = 22$.\n6. Cows in 8 stalls = $8 \\times 22$.\n   $8 \\times 20 = 160$\n   $8 \\times 2 = 16$\n   $160 + 16 = 176$.\n\n#### 176",
+  "interpretation": [
+    "FI emits changing text that repeatedly revisits the10/20 ambiguity and reaches3500-token budget without####. Raw parser10 is not a completed answer.",
+    "For exact adjacent periods1..128, its longest repeat is only2 identical adjacent tokens; no exact periodic suffix. This rejects a simple short fixed-token loop in these records, not all possible semantic repetition.",
+    "Observed truncation is a long/reconsidered semantic trajectory. It does not itself establish an incorrect recurrent state/writeback, nor prove that those errors are impossible.",
+    "The matching first eager/native difference supports observing the natural step19 boundary without forcing. Per-update numerical replay tolerance passes do not explain final natural EOS/accuracy.",
+    "Graph2 produces identical correct359-token outputs on both backends, so q255 failure is not an unconditional backend outcome. Eight selected diagnostics are not a population accuracy estimate."
+  ],
+  "minimal_paired_natural_observation": {
+    "scope": "Two fresh TP2 eager launches, one per backend, normal native sampling for original8 prompts; first20 generated tokens only.",
+    "preserve": [
+      "same source/model/tokenizer, prompts/actualpromptIDs and original8 enqueue-all batch",
+      "seed42/T0/thinkingfalse/prefixoff",
+      "same L20 UUIDs/TP2NCCL/asyncFalse/BF16/FP32SSM/MarlinFA2/eager settings"
+    ],
+    "intervention_excluded": [
+      "no trace_replay/teacher forcing/reference token injection",
+      "no sampler-choice replacement or request-history writes",
+      "no APIlogprobs or stop/EOS masking"
+    ],
+    "window_limit": "max_new20 is a prefix-only diagnostic; it cannot assess natural EOS or the3500-token termination. Require actual20 IDs to match the archived eager prefixes before treating instrumentation as comparable.",
+    "observe": [
+      "q255 actualprompt IDs, committed GPU prefix and input token/position, prepared global request IDs/rows/execution, native returned outputIDs on both ranks",
+      "prefill raw-full-logit SHA and steps18/19 raw/postprocessed logits for71072/43659 plus argmax margin; keep actual native choice unchanged",
+      "q255 actual GDN state-page indices/storage layout and compact incoming/outgoing SSM+convolution state at step19 (preceding18 if needed), joined through actualexecution/request/page metadata"
+    ],
+    "acceptance": [
+      "q255 first19 generated IDs match both archives and each other; actual20th native choices recorded",
+      "real schedules/ranks/state pages and helper/model/source bindings present; mismatch remains a result",
+      "consumer recomputes prefix/token/history equality; cleanup and ownership receipts retained"
+    ],
+    "limits": "A common natural prefix removes q255 forced-history interference. It does not prove all hidden/attention state equal or a writeback root cause; preserve those unknowns."
+  },
+  "reviewer_script_sha256": "4c9d965092bd2510c8300fd82158c9ee5de5cb5cfa38fe4bad3ed7c175ea928a",
+  "repetition_helper_sha256": "a81064670f91862d4b7e288817c15361a29e839f67ac8d0dce59a4229177bcaa"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "READY_BOUNDED_DIAGNOSTIC_V5",
+  "gpu_execution": false,
+  "producer_files": {
+    "cpu_divergence_contracts.py": "e397c9bbe2eee389b83f7db844db84f1a0f90a25a94a87d4ac7a065173d14dcc",
+    "cpu_short_force.py": "e57cfa6812393c820cf3f10d7f1f725c2ee74e7ac7b8a026af3f6aef4d23b2d8",
+    "cpu_short_normalize.py": "78a73709b661285079cd7e1a1ad57dbed453e34d24456930357c6d35dd707940",
+    "divergence_bootstrap.py": "cadc35587c2d53bf0fa0b9003846037f7f9a1f6c3df416203c0dbe4e7e83f82f",
+    "divergence_capture.py": "0e506d302e05df30ffd1aff3399dc626c2844bed0d5034558a75147fbfee8f78",
+    "divergence_contract.py": "7b72a6c47f3b0e4cf2abad95db2a3432567213f4ce7e709d1961595c88d7064d",
+    "divergence_leaf.py": "406635cbb25377ec643b3e83734f0ae07e691a1e775e4144ecec646872e5ddb2",
+    "short_driver.py": "8a2a8012b7dcdb4e939d5c30b7ef5bf07e63c832d863c0df9e95db6025692376",
+    "short_force.py": "b040055e49fa3e6069be76aba7b0348c29e4f85b6fe398a16dc05d6936ea04c8",
+    "short_normalize.py": "0cfc982ff53a3f29b7b008c2d0788b680a7c6f922132497490c2d821462690bf",
+    "short_site/sitecustomize.py": "b41924f6c0304a2e356be54dd74a4c556ebc0712350d82d4592da0c389d32c5f"
+  },
+  "changed_copied_files": [
+    "short_driver.py",
+    "short_force.py"
+  ],
+  "added_files": [
+    "cpu_short_normalize.py",
+    "short_normalize.py"
+  ],
+  "original_helpers_preserved": true,
+  "source_sha256": {
+    "input_processor": "97f66659814177d3f7b72b959f09201cbdd1794de21ec1542fe8970f18a1a2b6",
+    "sampling_params": "005eeca282874cde09864133f2100de6ae985439b93e50891194e8447a265999"
+  },
+  "cpu_receipt_sha256": "39731614036f83cdb7b3f8ca25d7e4150033e2219ebf56899f1841680573d330",
+  "parsed_files": 11,
+  "scope": "Exact request-bound normalization bypass keeps generation/tokenizer-derived EOS and3500budget; native trace19, natural20 then abort. Unsupported diagnostic mode, no accuracy/performance claim."
+}

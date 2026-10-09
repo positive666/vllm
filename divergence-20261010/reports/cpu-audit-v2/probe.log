@@ -1,0 +1,19 @@
+/source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from .version import __version__, __version_tuple__  # isort:skip
+Failed to import from vllm._C: ModuleNotFoundError("No module named 'vllm._C'")
+W1009 19:10:41.680000 107 /usr/local/lib/python3.12/dist-packages/torch/utils/cpp_extension.py:178] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda'
+Current platform  does not have 'current_device' attribute.
+Traceback (most recent call last):
+  File "/consumer/bias_load_cpu_probe.py", line 174, in <module>
+    main()
+  File "/consumer/bias_load_cpu_probe.py", line 97, in main
+    config = VllmConfig(
+             ^^^^^^^^^^^
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+  File "/cache/gdn-runtime/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+  File "/source/vllm/config/device.py", line 55, in __post_init__
+    raise RuntimeError(
+RuntimeError: Failed to infer device type, please set the environment variable `VLLM_LOGGING_LEVEL=DEBUG` to turn on verbose logging to help debug the issue.
