@@ -1,0 +1,9 @@
+{
+  "archive_verified": true,
+  "member_hashes_verified": 314,
+  "replay_cases": 248,
+  "paired_native_integrity": true,
+  "matched_request_schedule_and_observed_prefill": true,
+  "natural_choice_flips": 3,
+  "no_production_source_change": true
+}

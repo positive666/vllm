@@ -1,0 +1,34 @@
+{
+  "helper_sha256": "fd3719c1c4b5c4ddd7bdcf00affd44feb7c9878b7b7566aadf4c9d0616b66ae2",
+  "positive_paired_audit": "audit-local-v2-frozen.json",
+  "negative_guard_cases": [
+    {
+      "case": "actual_model_input_token_mutated",
+      "rejected": true,
+      "reason": "Actual executed model input token and position"
+    },
+    {
+      "case": "committed_history_hash_mutated",
+      "rejected": true,
+      "reason": "Actual forced history hash"
+    },
+    {
+      "case": "greedy_sampler_nonmax_logit",
+      "rejected": true,
+      "reason": "Actual greedy sampler selected an exact raw maximum"
+    },
+    {
+      "case": "both_ranks_final_steps_missing",
+      "rejected": true,
+      "reason": "Global shard union covers every continuous index/step exactly"
+    },
+    {
+      "case": "frozen_bootstrap_modified",
+      "rejected": true,
+      "reason": "Frozen snapshot helper hash: force_site/sitecustomize.py"
+    }
+  ],
+  "all_negative_cases_rejected": true,
+  "test_copy_restored_to_original_manifest": true,
+  "scope": "Standard-library audit integrity guards only; no GPU or accuracy/performance test"
+}

@@ -1,0 +1,1979 @@
+{
+  "files": [
+    {
+      "file": "capture-and-replay/capture-config.json",
+      "bytes": 401,
+      "sha256": "ddba209ecc0122f8826ff9b478390a6589583f0a1d4a60e80aac7a9f47728946"
+    },
+    {
+      "file": "capture-and-replay/frozen-capture-helpers/create_container.sh",
+      "bytes": 1839,
+      "sha256": "b7b62fb93e37bd997c9fb456ed4c39e2dc434b17782f8622d839267af7bc7f1d"
+    },
+    {
+      "file": "capture-and-replay/frozen-capture-helpers/launch_capture.py",
+      "bytes": 14100,
+      "sha256": "004dbe575b0830d7294bf45c5442362963d91e74dccf6b02c1a3444f35f2bae9"
+    },
+    {
+      "file": "capture-and-replay/frozen-capture-helpers/monitor_host.sh",
+      "bytes": 1063,
+      "sha256": "f53a7d0faa11ffdff91c1bfdebb5cd8759bfa3bb69486d01e5c942f137955917"
+    },
+    {
+      "file": "capture-and-replay/frozen-capture-helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "capture-and-replay/frozen-capture-helpers/shadow_supervisor.py",
+      "bytes": 7983,
+      "sha256": "ceb1073edff9e5df64b6c35e30b0ed367190b66c34df21e2ef3bff2b19618a2a"
+    },
+    {
+      "file": "capture-and-replay/frozen-capture-helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "capture-and-replay/replay-bf16-isolated-v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "capture-and-replay/replay-bf16-isolated-v2.json",
+      "bytes": 68286,
+      "sha256": "d0cad9bc0a28ca4f121320690958afa7353833afc4a1f7dd630594997da40eed"
+    },
+    {
+      "file": "capture-and-replay/replay-bf16-isolated-v2.log",
+      "bytes": 2566,
+      "sha256": "dfc25d635435528333dceb88b04abf87d39294b9496f4d1cb20c9c1cb0789461"
+    },
+    {
+      "file": "capture-and-replay/replay-full-v2-summary.json",
+      "bytes": 4942,
+      "sha256": "16ec38d4f8d1520e9669d9a2b755e0ff9bfa32341bc6237e838d577f75962839"
+    },
+    {
+      "file": "capture-and-replay/replay-full-v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "capture-and-replay/replay-full-v2.json",
+      "bytes": 8023098,
+      "sha256": "b9845fb320a4847d52dad8fcc80b07c75e075eaaefb94bdfecf3432e9f36e633"
+    },
+    {
+      "file": "capture-and-replay/replay-full-v2.log",
+      "bytes": 32628,
+      "sha256": "d31853a0526f1d86f7b13b775efcf0cb66ecc0d404cfa9259635e583662fefce"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke-v2-summary.json",
+      "bytes": 4887,
+      "sha256": "b39080f6e762ddb13b61fa47c83ce13231181823002fe8ae9cdf7ca3ccb86da4"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke-v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke-v2.json",
+      "bytes": 67731,
+      "sha256": "524e9c9acc3111a9c945bb680f31c5068ea8dc6ad3b3b2a1f9755c1042f995d1"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke-v2.log",
+      "bytes": 2565,
+      "sha256": "0ab072fe87bede33a96b40b7e03dfeaad03c1318378c89049c918291a7947401"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke.json",
+      "bytes": 5430,
+      "sha256": "c7952da669fc888fd790e8761ea92926375e058eec0cca03b768441af4c60c93"
+    },
+    {
+      "file": "capture-and-replay/replay-smoke.log",
+      "bytes": 2349,
+      "sha256": "798bc21aa80b49fdb6e31419008ce4f9facd296cc8325a2c325cd7c31248b37e"
+    },
+    {
+      "file": "capture-and-replay/replay_capture.smoke-v1.py",
+      "bytes": 29866,
+      "sha256": "f7f364e90aceb7832c0d91bdad5cf159a05b2376955824bb6475165b14753e4e"
+    },
+    {
+      "file": "capture-and-replay/responses.json",
+      "bytes": 124033,
+      "sha256": "10423fbd871a611b280f912a3ac1e18215298fa969f5ebbb98a692947ea99c34"
+    },
+    {
+      "file": "capture-and-replay/serve.log",
+      "bytes": 130217,
+      "sha256": "3d4cdcbe3cb337938a762c25382fa51a0680f6b7171a3bf723fe93b66a576862"
+    },
+    {
+      "file": "capture-and-replay/server.json",
+      "bytes": 28854,
+      "sha256": "b8b652798309a98e3cc2f4cb592244a08abba9b6042e24ef9af67e8af10804c2"
+    },
+    {
+      "file": "capture-and-replay/snapshot-manifest.json",
+      "bytes": 1366485,
+      "sha256": "3a1dc3c34a83f3f64e39c2507e5c43735d1a9a0c4e96dc9b2269f26c30c83689"
+    },
+    {
+      "file": "capture-and-replay/trace/events-pid-660.jsonl",
+      "bytes": 386394,
+      "sha256": "9dda75115d2ebd988a2f00f8bae31fd5fdced8fdbf649e9cde4ca676a15baeba"
+    },
+    {
+      "file": "capture-and-replay/trace/events-pid-661.jsonl",
+      "bytes": 386394,
+      "sha256": "c786d713d39ed64cc27e14dd837f2a97f3d25d795c9b648f2d8322bf1b52100a"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-1115.json",
+      "bytes": 666,
+      "sha256": "5fe6b791b1681058bd0527d5b5914cf74763cd54dd803537605569b8e76f8d1f"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-1117.json",
+      "bytes": 666,
+      "sha256": "cb964a6a6ca1561de86f0b22604fd9f0779b15c6b939916821b67b28b1f97b2a"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-1119.json",
+      "bytes": 666,
+      "sha256": "6ce41df5682b1e98de444848562271096e18c05384b36bd1f2684872f0c8ba30"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-1121.json",
+      "bytes": 666,
+      "sha256": "c12c98f123e72331d759f67cb947dad5af3574652ac4ecd90415a3d445edaf5a"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-1657.json",
+      "bytes": 666,
+      "sha256": "e0daa148583157460a25e9395bd63657a60c8fca4c7df359a41d579a2eaaa7e8"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-220.json",
+      "bytes": 665,
+      "sha256": "a451fb39cc24a0b163e867b588bfd300f64c9ec8c7ab9664eaa15f760eb0653d"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-222.json",
+      "bytes": 665,
+      "sha256": "a473e797cafd26ef3c05987589a7fa88807eefe73f7006b4b9623b4e5c3fc85c"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-25.json",
+      "bytes": 664,
+      "sha256": "6b182706ae2adc11dcedc1c7196f4bae1285e75a1fb94fa1b156926e5d597068"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-361.json",
+      "bytes": 665,
+      "sha256": "18fb12151bcd9043f4c38925771a473ff4eda29c3e39c71197b41c4d109cede3"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-362.json",
+      "bytes": 665,
+      "sha256": "003715814c41ea151bca3060987e90b59987fdd561e746e43fb8756847d0edb0"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-557.json",
+      "bytes": 665,
+      "sha256": "b1703aa2c819f7910c429710ab1266b84ded7fc8343aa1d09a7a4c2c2d8b0d54"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-559.json",
+      "bytes": 665,
+      "sha256": "fa35806241f8bb5da5a9150754a11a163fc1536430bda4cb722a45724cebb9ca"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-660.json",
+      "bytes": 665,
+      "sha256": "1df1a834b75056768a9d85c800e83514e9568cff67aef730e1dafcdb5e51e442"
+    },
+    {
+      "file": "capture-and-replay/trace/installed-pid-661.json",
+      "bytes": 665,
+      "sha256": "15805c61d08964b2317554572d4355816f0dc6aba05924bd0740ce40043631be"
+    },
+    {
+      "file": "capture-and-replay/trace/patched-pid-25.json",
+      "bytes": 374,
+      "sha256": "7fa1627c304a5ffc8deb270224d184aedc6dd5384386e80c85512f7e31d1a970"
+    },
+    {
+      "file": "capture-and-replay/trace/patched-pid-660.json",
+      "bytes": 375,
+      "sha256": "7a8c2863d2bf1bd3bfb1d3b84d08143da2eccd3eef0b92cb6ff3777395a234ef"
+    },
+    {
+      "file": "capture-and-replay/trace/patched-pid-661.json",
+      "bytes": 375,
+      "sha256": "06ef4c262f749556028433524a8e25f1a765a0d2345f63adf59b25cb0555f0cf"
+    },
+    {
+      "file": "helpers/audit_force.py",
+      "bytes": 42712,
+      "sha256": "fd3719c1c4b5c4ddd7bdcf00affd44feb7c9878b7b7566aadf4c9d0616b66ae2"
+    },
+    {
+      "file": "helpers/create_container.sh",
+      "bytes": 1839,
+      "sha256": "b7b62fb93e37bd997c9fb456ed4c39e2dc434b17782f8622d839267af7bc7f1d"
+    },
+    {
+      "file": "helpers/export_shadow.py",
+      "bytes": 5363,
+      "sha256": "c38ccc043fc384866b39807358ca787043c14410e5e67ba5f85d01d6e7935dd7"
+    },
+    {
+      "file": "helpers/force_decode.py",
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    {
+      "file": "helpers/force_decode_v2.py",
+      "bytes": 17907,
+      "sha256": "b0e526a86cada4379a32b410b486ce3a321fc5263b4305d31e2e8283c55cb184"
+    },
+    {
+      "file": "helpers/force_driver.py",
+      "bytes": 7461,
+      "sha256": "3eca92db168e57e407fb29f5dcdd00f6f6e03b6da7c4bb57a2c50a50881bc30b"
+    },
+    {
+      "file": "helpers/force_site/sitecustomize.py",
+      "bytes": 503,
+      "sha256": "f4adea00dd95e820aa583cbb3279b4362a6d505141f560d34806503263fdbd94"
+    },
+    {
+      "file": "helpers/inspect_capture.py",
+      "bytes": 3033,
+      "sha256": "9224086c5a80c7f6e092ca5af35c7aee39bc475f76474c0d14c29d439c1c7e44"
+    },
+    {
+      "file": "helpers/launch_capture.py",
+      "bytes": 14100,
+      "sha256": "004dbe575b0830d7294bf45c5442362963d91e74dccf6b02c1a3444f35f2bae9"
+    },
+    {
+      "file": "helpers/monitor_host.sh",
+      "bytes": 1107,
+      "sha256": "49a964a7531132b93a74dfd9a11a11dcfeb8a3091b60742a8171bb4dee357203"
+    },
+    {
+      "file": "helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "helpers/replay_capture.py",
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    {
+      "file": "helpers/shadow_supervisor.py",
+      "bytes": 7983,
+      "sha256": "ceb1073edff9e5df64b6c35e30b0ed367190b66c34df21e2ef3bff2b19618a2a"
+    },
+    {
+      "file": "helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "helpers/summarize_replay.py",
+      "bytes": 2573,
+      "sha256": "60df0da734cb307d28458c4672b6b413a01e68b663801013cb0c2b40df42dd66"
+    },
+    {
+      "file": "representative-snapshots/captures/rank-0/layer-000/call-000001-pid-660.json",
+      "bytes": 4534,
+      "sha256": "d77181e7898b583d92e9feb136c2788aa86cad3f1f8c4dddd86d1c41fc9cca9f"
+    },
+    {
+      "file": "representative-snapshots/captures/rank-0/layer-000/call-000001-pid-660.pt",
+      "bytes": 31595202,
+      "sha256": "98b2b2f085b323b4ae4baa4adf48db5ccfc6039678545027728b02f4ff6fb087"
+    },
+    {
+      "file": "representative-snapshots/captures/rank-1/layer-002/call-000995-pid-661.json",
+      "bytes": 4344,
+      "sha256": "169175525c4b8e05f74f6d70e0fc8d05923b85dd8b704cac61104ce39a4ebf72"
+    },
+    {
+      "file": "representative-snapshots/captures/rank-1/layer-002/call-000995-pid-661.pt",
+      "bytes": 12621954,
+      "sha256": "d32525da7d73c888d74aff4fc3fbc44362b0de2f33b15151f71b62aba647fc44"
+    },
+    {
+      "file": "run-records/capture-inspection.log",
+      "bytes": 4349,
+      "sha256": "1a72e6cd51fc1e0635e625dfcede8888db0facde621cda940d9d70abba1a14df"
+    },
+    {
+      "file": "run-records/fi-c8-v1/capture-config.json",
+      "bytes": 401,
+      "sha256": "2a9326c28118f4bd65779512229630d23a7f22246a5babe49563d14035a2534d"
+    },
+    {
+      "file": "run-records/fi-c8-v1/captures/installed-pid-100.json",
+      "bytes": 665,
+      "sha256": "6224d533e09450eeb4bb0e7b256ec58a40ef9579c3734fee77c13c49bbc0452b"
+    },
+    {
+      "file": "run-records/fi-c8-v1/helpers/launch_capture.py",
+      "bytes": 13899,
+      "sha256": "fb0ae9be1089ac5761a40e116d30144dbf23abf96ce9c134bc69e2dd77dfa8d4"
+    },
+    {
+      "file": "run-records/fi-c8-v1/helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "run-records/fi-c8-v1/helpers/shadow_supervisor.py",
+      "bytes": 7880,
+      "sha256": "9bb7857cec79281f73828c464203b9078e62cf4059a0e3c4ab6971903c6ba12a"
+    },
+    {
+      "file": "run-records/fi-c8-v1/helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "run-records/fi-c8-v1/serve.log",
+      "bytes": 739,
+      "sha256": "cae5f7d40edd0a4e03029250f75b8ffde484eee096ae634549fa6833843ad83f"
+    },
+    {
+      "file": "run-records/fi-c8-v1/server.json",
+      "bytes": 28755,
+      "sha256": "ded969f92c96e33c27a2280fc3799bf2de18a5ff3d48fca2d9a32d51a4b943ef"
+    },
+    {
+      "file": "run-records/fi-c8-v1-supervisor.log",
+      "bytes": 271,
+      "sha256": "3e3603249cb533e413f8c328f125d2c0ca2c9c7075f8e95d8667aa72152cc860"
+    },
+    {
+      "file": "run-records/fi-c8-v1.exit",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "file": "run-records/fi-c8-v2-host.csv",
+      "bytes": 5152,
+      "sha256": "7a05c0b395516280302b4067857571dc5bf6ac706c1c6f0589ae908df16b4659"
+    },
+    {
+      "file": "run-records/fi-c8-v2-processes.log",
+      "bytes": 4762,
+      "sha256": "f9c2c5e5580b3398c6e5bd6ff1d4be07cf4e6b2a274a9500908848e50af006d9"
+    },
+    {
+      "file": "run-records/fi-c8-v2-supervisor.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/fi-c8-v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "run-records/force-audit-v2.json",
+      "bytes": 258377,
+      "sha256": "bac44a9b7ced95d2c0ae0fd2ef19f532934d2a1f430897e397416693bb0831f4"
+    },
+    {
+      "file": "run-records/force-audit-v3.json",
+      "bytes": 102338,
+      "sha256": "5c2d2b28720157b43a62145ca850c7434e7823ddfd60c91b0f0c5a72a24c74ea"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/completed.json",
+      "bytes": 44794,
+      "sha256": "22f1114d29ce66f24b8daf3dc8a28653b95b982845130dc8063b10ffc7b4f8c3"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/fixture.json",
+      "bytes": 107139,
+      "sha256": "e8194dd150be976a221e0d90d7934268362ba866064249f2cdb876c12b2accae"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/force-config.json",
+      "bytes": 275,
+      "sha256": "cc9614f11dd6494de481f1b5af29dcd95281d0a5a985da882e3d4034ff830570"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/create_container.sh",
+      "bytes": 1839,
+      "sha256": "b7b62fb93e37bd997c9fb456ed4c39e2dc434b17782f8622d839267af7bc7f1d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/force_decode.py",
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/force_decode_v2.py",
+      "bytes": 17907,
+      "sha256": "b0e526a86cada4379a32b410b486ce3a321fc5263b4305d31e2e8283c55cb184"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/force_driver.py",
+      "bytes": 7371,
+      "sha256": "7f0453858c8c227ad4a8a920d0c69427fbc2acc6f618050e5de69363d40574cd"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/force_site/sitecustomize.py",
+      "bytes": 503,
+      "sha256": "f4adea00dd95e820aa583cbb3279b4362a6d505141f560d34806503263fdbd94"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/inspect_capture.py",
+      "bytes": 3033,
+      "sha256": "9224086c5a80c7f6e092ca5af35c7aee39bc475f76474c0d14c29d439c1c7e44"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/launch_capture.py",
+      "bytes": 14100,
+      "sha256": "004dbe575b0830d7294bf45c5442362963d91e74dccf6b02c1a3444f35f2bae9"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/monitor_host.sh",
+      "bytes": 1107,
+      "sha256": "49a964a7531132b93a74dfd9a11a11dcfeb8a3091b60742a8171bb4dee357203"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/replay_capture.py",
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/shadow_supervisor.py",
+      "bytes": 7983,
+      "sha256": "ceb1073edff9e5df64b6c35e30b0ed367190b66c34df21e2ef3bff2b19618a2a"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/helpers/summarize_replay.py",
+      "bytes": 2573,
+      "sha256": "60df0da734cb307d28458c4672b6b413a01e68b663801013cb0c2b40df42dd66"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/launch.json",
+      "bytes": 2231,
+      "sha256": "46067bcb7f1c755973bc3200c2f6206d676d1c91ceb967b60e0fca69d60a4982"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2014.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2401.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2403.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2542.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2543.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2738.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2740.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2841.jsonl",
+      "bytes": 4011741,
+      "sha256": "e0f98cff69e679f3e7cf2bd139788ec0a2e70fafb1482f2aa9beee15ecf348d6"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-2842.jsonl",
+      "bytes": 4011741,
+      "sha256": "d636308459c28e3ae747c7e6ce26b4a22094ce17deadf65ee2026130938cf41d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-3296.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-3298.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-3300.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-3302.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/events-pid-3838.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2014.json",
+      "bytes": 670,
+      "sha256": "52f3c292822fc3dc67d8b9c5703cd615f398cc8f49be4e18f49d07c58723dce5"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2401.json",
+      "bytes": 670,
+      "sha256": "543f535fd010a84255b138a2afbf932b054431c12efa6759c58ac9f25723ce9f"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2403.json",
+      "bytes": 670,
+      "sha256": "572d7d3666900cf207ebafc02162d4f4ef7da3b0c714c62ed460611f64f09fdd"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2542.json",
+      "bytes": 670,
+      "sha256": "7b3e22a9b88b98cebcb6723f1358df2f609e6adb11d2a8f533d9f9d9a57e4592"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2543.json",
+      "bytes": 670,
+      "sha256": "d60ea2e4343f35b9479c04202ecbe736a0017082f1b4b3c6a6af13b87479550c"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2738.json",
+      "bytes": 670,
+      "sha256": "ab044a58f4408a4f9e32769df3b1bd3421deff0a61aff9595661c36d2e32625b"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2740.json",
+      "bytes": 670,
+      "sha256": "3004bccef609dea6c78da09eea9c5d325bcb91ad551f63f02cf6c4bf9e929f1f"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2841.json",
+      "bytes": 670,
+      "sha256": "2a444ab47d162b99a7ddbacb0143b802a71db1af700e0676f6aae275410b6e20"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-2842.json",
+      "bytes": 670,
+      "sha256": "f179b17d9f392574f0ac6a265604942a9b4581259aa7c20401b71bacaeb6fcb1"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-3296.json",
+      "bytes": 670,
+      "sha256": "1f2c037f0676d69648e5f0c1a38bb437aac4fbb7f45ceae773475525b5723b05"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-3298.json",
+      "bytes": 670,
+      "sha256": "94fd839245458da2ffe5ec234b32e46f384afbb9d7e5a59096a63edba310974d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-3300.json",
+      "bytes": 670,
+      "sha256": "a00411ca4eec97ad4cbc1ef3e5fcc5d7491e7e3dbbcccdb411f5e2beceeaf023"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-3302.json",
+      "bytes": 670,
+      "sha256": "ddd58b9e1efb80444cd2ba78f2dc6b689c6dbe553c4a0b65206ca9459cc16de4"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/installed-pid-3838.json",
+      "bytes": 670,
+      "sha256": "fa7304f6222d668e7f587f5164ce50a9ec1546d6d740d2e2a83e939ba0dc7ec6"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/patched-pid-2841.json",
+      "bytes": 1177,
+      "sha256": "a134343483de36816d3491dfa2d0fb4fff29b2f63d28721098f031823084b443"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2/trace/patched-pid-2842.json",
+      "bytes": 1177,
+      "sha256": "9e8b322b7252397b20d03ac1970b6d9ffed455f984eb4f4317424eb3932daa99"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2-host.csv",
+      "bytes": 4156,
+      "sha256": "0668ddcb2e98f18960046192e37618c77cf2729e9751921965ac98a733b5f23b"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2-processes.log",
+      "bytes": 2993,
+      "sha256": "ec1b7b160065661d456f4348167664b9a1a3aa4535865c614d17cec3d7b6338a"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "run-records/force-flashinfer-v2.log",
+      "bytes": 126006,
+      "sha256": "3d50ec3488a532ce548048f98a970d237e838f3a1e81b86ac9744efe71b47be8"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/completed.json",
+      "bytes": 44794,
+      "sha256": "22f1114d29ce66f24b8daf3dc8a28653b95b982845130dc8063b10ffc7b4f8c3"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/fixture.json",
+      "bytes": 107139,
+      "sha256": "e8194dd150be976a221e0d90d7934268362ba866064249f2cdb876c12b2accae"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/force-config.json",
+      "bytes": 275,
+      "sha256": "1cd10d9feadd49088c8988ef4987104e304d981e12867d1d76ed740b790c6068"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/audit_force.py",
+      "bytes": 42712,
+      "sha256": "fd3719c1c4b5c4ddd7bdcf00affd44feb7c9878b7b7566aadf4c9d0616b66ae2"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/create_container.sh",
+      "bytes": 1839,
+      "sha256": "b7b62fb93e37bd997c9fb456ed4c39e2dc434b17782f8622d839267af7bc7f1d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/force_decode.py",
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/force_decode_v2.py",
+      "bytes": 17907,
+      "sha256": "b0e526a86cada4379a32b410b486ce3a321fc5263b4305d31e2e8283c55cb184"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/force_driver.py",
+      "bytes": 7461,
+      "sha256": "3eca92db168e57e407fb29f5dcdd00f6f6e03b6da7c4bb57a2c50a50881bc30b"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/force_site/sitecustomize.py",
+      "bytes": 503,
+      "sha256": "f4adea00dd95e820aa583cbb3279b4362a6d505141f560d34806503263fdbd94"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/inspect_capture.py",
+      "bytes": 3033,
+      "sha256": "9224086c5a80c7f6e092ca5af35c7aee39bc475f76474c0d14c29d439c1c7e44"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/launch_capture.py",
+      "bytes": 14100,
+      "sha256": "004dbe575b0830d7294bf45c5442362963d91e74dccf6b02c1a3444f35f2bae9"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/monitor_host.sh",
+      "bytes": 1107,
+      "sha256": "49a964a7531132b93a74dfd9a11a11dcfeb8a3091b60742a8171bb4dee357203"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/replay_capture.py",
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/shadow_supervisor.py",
+      "bytes": 7983,
+      "sha256": "ceb1073edff9e5df64b6c35e30b0ed367190b66c34df21e2ef3bff2b19618a2a"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/helpers/summarize_replay.py",
+      "bytes": 2573,
+      "sha256": "60df0da734cb307d28458c4672b6b413a01e68b663801013cb0c2b40df42dd66"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/launch.json",
+      "bytes": 2361,
+      "sha256": "db08dc0203d33bd3671625f8507956aa96e8b5276c428a00c1cd1f7391d5a981"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-5646.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6033.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6035.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6275.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6278.jsonl",
+      "bytes": 4011779,
+      "sha256": "ba8bea27dc5fef90e17c620694e3657723f6de9d884e95c96cb5abc89d6f625d"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6279.jsonl",
+      "bytes": 4011779,
+      "sha256": "458b4127efea46eaed53f272d1b5f3b1505b50a287ac5d9cde09fdd6f324d343"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6604.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6606.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6608.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-6610.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/events-pid-7146.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-5646.json",
+      "bytes": 670,
+      "sha256": "a490969011f43b3bc404973e8ecb050c8f2ac1a623efef75149a1f865db29f0b"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6033.json",
+      "bytes": 670,
+      "sha256": "4b97394f779d9bb4f347426c7f618fe804b1089f745721473988e48255551637"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6035.json",
+      "bytes": 670,
+      "sha256": "0762406c8505683c7aeb5bd670b06aee8b40c7dbb988c1965caeb3356484046c"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6275.json",
+      "bytes": 670,
+      "sha256": "fb81cdc092aaf767816f25f938b1eb293281d42cc7c40407c8d66a268ed9465f"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6278.json",
+      "bytes": 670,
+      "sha256": "36eb5fc4ec36a0b40e75160d5083f8f768f8338f35270d101072d2a40f737232"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6279.json",
+      "bytes": 670,
+      "sha256": "b440e256e5351a896625901b12bcd561e0a3577d544753eac09b91d570b2acb9"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6604.json",
+      "bytes": 670,
+      "sha256": "99db0ad156fe20d990c4ef560f92dc74a7dc0cacc08689c577f3c77bf11c6266"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6606.json",
+      "bytes": 670,
+      "sha256": "c52b7797b9b29b6e8cb695f75ad2920ec45a6aaa83ca20ba93d1112181bceedf"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6608.json",
+      "bytes": 670,
+      "sha256": "69b638404bf948cc79e95483a72aab756a086691abb13b9e8a4b4bfd8f168cd6"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-6610.json",
+      "bytes": 670,
+      "sha256": "b6a734ea3bfdffa4c46ed275294433900df271fedc70487d02f0671294d5e7d3"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/installed-pid-7146.json",
+      "bytes": 670,
+      "sha256": "6823036146185bc6b09868c6f53e3251a0691afa3fab9de14bc376e9deed9f22"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/patched-pid-6278.json",
+      "bytes": 1177,
+      "sha256": "2f034c204b8a229c97e0d5f3849a7da84d2041934385fe69b5d83927bbf41422"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3/trace/patched-pid-6279.json",
+      "bytes": 1177,
+      "sha256": "69fd12c1fe6e0901a98d4c445ff61b6ea3946ae62b6de771dbf7b68578540da1"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3-host.csv",
+      "bytes": 3743,
+      "sha256": "aa61630d43e8a4340a5df1d525e44c6663c79a8d0f740546de6fb8f897901072"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3-processes.log",
+      "bytes": 2713,
+      "sha256": "69c6114af067e4155c1f865e7f3ffde53545fa4704bfad4b45d2e046ee91bef4"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "run-records/force-flashinfer-v3.log",
+      "bytes": 123057,
+      "sha256": "f81762c44559fd44537304aa9d95a4c75f5139095b95b7346352494e7f385098"
+    },
+    {
+      "file": "run-records/force-plan-v1.log",
+      "bytes": 304,
+      "sha256": "1f47d8c2bab6f6d6466322a230576d000b31988a15adb164b89f044f984f3a9d"
+    },
+    {
+      "file": "run-records/force-plan-v2.log",
+      "bytes": 857,
+      "sha256": "e65388cbd4c5c1257db08c4570d98ae025f911ae1d765665fe763f2b451ca7a7"
+    },
+    {
+      "file": "run-records/force-triton-v1/fixture.json",
+      "bytes": 107139,
+      "sha256": "e8194dd150be976a221e0d90d7934268362ba866064249f2cdb876c12b2accae"
+    },
+    {
+      "file": "run-records/force-triton-v1/force-config.json",
+      "bytes": 267,
+      "sha256": "2f11cb24e4c8554d8c19647562ee0bcf626622dff3c54a3b5ca480169ae28ce8"
+    },
+    {
+      "file": "run-records/force-triton-v1/force_decode.v1.py",
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    {
+      "file": "run-records/force-triton-v1/force_driver.v1.py",
+      "bytes": 6605,
+      "sha256": "c970b9bcd5b989cd3bce4a8f8c0d776d443de380a74164c43c8807f8deb6267e"
+    },
+    {
+      "file": "run-records/force-triton-v1/launch.json",
+      "bytes": 1993,
+      "sha256": "beb34d1caf50e6b86574bc128e6392131b2ab8cb6b7f8cb559bcafb0e56f5084"
+    },
+    {
+      "file": "run-records/force-triton-v1/sitecustomize.v1.py",
+      "bytes": 352,
+      "sha256": "f7e0224cae1db708168d55c45b8e9ad0bb7f12d75e4adb1e045ada4249ed8cf1"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-4329.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-4716.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-4718.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-4857.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-4858.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5053.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5055.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5156.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5157.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5611.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5613.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5615.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-5617.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/events-pid-6153.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-4329.json",
+      "bytes": 662,
+      "sha256": "f64a3ea164fc4c4b3ea9a5b9ed8e3813923eb0e976f98f734947f956e22073fa"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-4716.json",
+      "bytes": 662,
+      "sha256": "0fcce7e4322c859fbfbc712f740d4c391c04275c9d7187b68cf65afd574aa1fa"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-4718.json",
+      "bytes": 662,
+      "sha256": "1c668a1fbfc085cde35f5ae2344390b8f715edf1e2588703cc73a95dc15cc9ae"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-4857.json",
+      "bytes": 662,
+      "sha256": "d27d12dcfed46bd06d15801261488fed7838847a8747330d4631c9551e34aea8"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-4858.json",
+      "bytes": 662,
+      "sha256": "2726bcd28c42cad01c729264375f153d3b2584446c7679ebbbb3ec41ae339f4d"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5053.json",
+      "bytes": 662,
+      "sha256": "8d64edbdc16c8b710f73e16307f9ef50894d2e02c2e5a59e1d5e7ad486e0610d"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5055.json",
+      "bytes": 662,
+      "sha256": "0b7bf154121026ae7289ab2f70c96e6c67e78bd29b39eb89f8cd19ff7c4b7903"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5156.json",
+      "bytes": 662,
+      "sha256": "b967ce453d6efe1f285eb1d37ccd4cb842a1bb13d5321191a1f1cc9aef0eb2cb"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5157.json",
+      "bytes": 662,
+      "sha256": "08386f8efe6d770339ae914e172be69ffa272d5cdf9244f112564518192fa069"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5611.json",
+      "bytes": 662,
+      "sha256": "2dae6451dd3fb956850d3fcf69e28487498386a6ddd6ddee1f682c92cf9eda17"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5613.json",
+      "bytes": 662,
+      "sha256": "67c751f74ef819b0f3a8473cb27ab12de2f8ad9be083296ec62f7408b5414dc1"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5615.json",
+      "bytes": 662,
+      "sha256": "d72ca3c9605f1d07324ec4edccc12a70f8522960d573547b2dc8e799505c50c4"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-5617.json",
+      "bytes": 662,
+      "sha256": "cf5dbd50800839d9ea34d2e8e0485505e18a34d0d62f552152fdaa2d116ae78a"
+    },
+    {
+      "file": "run-records/force-triton-v1/trace/installed-pid-6153.json",
+      "bytes": 662,
+      "sha256": "9ccdef41133302b2f317d6304a7ef726f71b83f8e147865189a4a15492299827"
+    },
+    {
+      "file": "run-records/force-triton-v1.exit",
+      "bytes": 74,
+      "sha256": "92157e6382095772a662a9b37807bd8d115acfd57ab80fcf6c35784749e719fe"
+    },
+    {
+      "file": "run-records/force-triton-v1.log",
+      "bytes": 104195,
+      "sha256": "2aade936ab67aaadffd20dae0d729814366f94860a044426b9cfb47614531f31"
+    },
+    {
+      "file": "run-records/force-triton-v1.stopped.utc",
+      "bytes": 32,
+      "sha256": "3960e7a005a5b40d0bda899b9c2be3f50b8e458c1c70119d9d2a0834719a4295"
+    },
+    {
+      "file": "run-records/force-triton-v2/completed.json",
+      "bytes": 44794,
+      "sha256": "22f1114d29ce66f24b8daf3dc8a28653b95b982845130dc8063b10ffc7b4f8c3"
+    },
+    {
+      "file": "run-records/force-triton-v2/fixture.json",
+      "bytes": 107139,
+      "sha256": "e8194dd150be976a221e0d90d7934268362ba866064249f2cdb876c12b2accae"
+    },
+    {
+      "file": "run-records/force-triton-v2/force-config.json",
+      "bytes": 267,
+      "sha256": "cf57da8da14d0472377d8103373ed649808697fd276a2f9f43e120148202eb71"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/create_container.sh",
+      "bytes": 1839,
+      "sha256": "b7b62fb93e37bd997c9fb456ed4c39e2dc434b17782f8622d839267af7bc7f1d"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/force_decode.py",
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/force_decode_v2.py",
+      "bytes": 17907,
+      "sha256": "b0e526a86cada4379a32b410b486ce3a321fc5263b4305d31e2e8283c55cb184"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/force_driver.py",
+      "bytes": 7371,
+      "sha256": "7f0453858c8c227ad4a8a920d0c69427fbc2acc6f618050e5de69363d40574cd"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/force_site/sitecustomize.py",
+      "bytes": 503,
+      "sha256": "f4adea00dd95e820aa583cbb3279b4362a6d505141f560d34806503263fdbd94"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/inspect_capture.py",
+      "bytes": 3033,
+      "sha256": "9224086c5a80c7f6e092ca5af35c7aee39bc475f76474c0d14c29d439c1c7e44"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/launch_capture.py",
+      "bytes": 14100,
+      "sha256": "004dbe575b0830d7294bf45c5442362963d91e74dccf6b02c1a3444f35f2bae9"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/monitor_host.sh",
+      "bytes": 1107,
+      "sha256": "49a964a7531132b93a74dfd9a11a11dcfeb8a3091b60742a8171bb4dee357203"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/replay_capture.py",
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/shadow_supervisor.py",
+      "bytes": 7983,
+      "sha256": "ceb1073edff9e5df64b6c35e30b0ed367190b66c34df21e2ef3bff2b19618a2a"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "run-records/force-triton-v2/helpers/summarize_replay.py",
+      "bytes": 2573,
+      "sha256": "60df0da734cb307d28458c4672b6b413a01e68b663801013cb0c2b40df42dd66"
+    },
+    {
+      "file": "run-records/force-triton-v2/launch.json",
+      "bytes": 2223,
+      "sha256": "539eabd7e960009a6a91dfb250517bd14eda7f49f58649b71f469007615117e5"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-1323.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-1325.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-1327.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-1335.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-1865.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-41.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-428.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-430.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-569.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-570.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-765.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-767.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-868.jsonl",
+      "bytes": 4011062,
+      "sha256": "c7c8f4eb671b1712e8d8d041ab43a93459aaa116605ee2c994ce5e719c846c13"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/events-pid-869.jsonl",
+      "bytes": 4011062,
+      "sha256": "9af671455964e90b88e941eb69690a3307d69698becae984f5de9cd3f0f888d3"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-1323.json",
+      "bytes": 662,
+      "sha256": "e0f6c3f74ef9a9da3b9f03eaa9514b0afd329dd0cfe1fb3a00ccad54a037622f"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-1325.json",
+      "bytes": 662,
+      "sha256": "d1e2576d4838551aa6f937dd464580e5e30e35a03df3aee7d76e37c6648c6bf0"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-1327.json",
+      "bytes": 662,
+      "sha256": "c07b0e7e1a76e21c843f8d5d274b42820c449853c9c13f524e9064e1c1ad22e2"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-1335.json",
+      "bytes": 662,
+      "sha256": "37f80fb6a590ce4d07bcdbd3d4f6f0bf703e1739b2a8d5e4258564c37262ba69"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-1865.json",
+      "bytes": 662,
+      "sha256": "d41f953494f36deae30866a7c484ec3dddacd90fb0df84bf82088e8a3f72d44e"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-41.json",
+      "bytes": 660,
+      "sha256": "226ecf42ec4961cdace870dd4a78d3cead4ff95d266c093e181e854022592796"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-428.json",
+      "bytes": 661,
+      "sha256": "97c938e9e371e38a3e4c464e51c038a3f7d6a5bd4e01fca014c4c4bb24244055"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-430.json",
+      "bytes": 661,
+      "sha256": "e6791c5a44229a5454168323c5c651271cddf4bfccdf74707efcc496b344ed5c"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-569.json",
+      "bytes": 661,
+      "sha256": "88b0891128584e705cfcc6706b29249de1b774061a29c0124b7dd5b2ff193005"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-570.json",
+      "bytes": 661,
+      "sha256": "0e85a0f139f1d62bb0ab440627bacc1b7f414b7e91bbd2daee4c07446ced1e12"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-765.json",
+      "bytes": 661,
+      "sha256": "5465b19644bdbcb9228e209499d23dd341f6ba2fdf13a7d05d7e1516b4a9c1f7"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-767.json",
+      "bytes": 661,
+      "sha256": "f6ab208762d301b58bb51d113599b410606987b3ea2ed2b7fdda63483b6eda66"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-868.json",
+      "bytes": 661,
+      "sha256": "9d9b65f6e8b220a264df43ae6a872d6ecabb7ecb2412991d06c93a7066b78535"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/installed-pid-869.json",
+      "bytes": 661,
+      "sha256": "a98e013a18cfabdf9a0e8b38f9d88fee2063069f9d266aab6f4d0aa9c6162646"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/patched-pid-868.json",
+      "bytes": 1176,
+      "sha256": "e8f94bf0db813516b63439d3f9d8c99f9bf4f085231389912381ec0b86f56aab"
+    },
+    {
+      "file": "run-records/force-triton-v2/trace/patched-pid-869.json",
+      "bytes": 1176,
+      "sha256": "951d1ac1aab9ec63746dfba777a02d6cc744ffa12ffafddeac224933c391bad7"
+    },
+    {
+      "file": "run-records/force-triton-v2-host.csv",
+      "bytes": 4159,
+      "sha256": "2175ed4621c64b9b68fd35e991a8bc83c6ff1096aa24329f81f0bee5c6b7cdf3"
+    },
+    {
+      "file": "run-records/force-triton-v2-processes.log",
+      "bytes": 2975,
+      "sha256": "255571a262a4e213fe9094b88a49e548ee91d790f50ea1a4ce21ef624a3510e2"
+    },
+    {
+      "file": "run-records/force-triton-v2.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "run-records/force-triton-v2.log",
+      "bytes": 108330,
+      "sha256": "9f78d1586b805fdc513d2d54479944623768aadcdb6cee003faf201dd5271154"
+    },
+    {
+      "file": "run-records/force-triton-v3/completed.json",
+      "bytes": 44794,
+      "sha256": "22f1114d29ce66f24b8daf3dc8a28653b95b982845130dc8063b10ffc7b4f8c3"
+    },
+    {
+      "file": "run-records/force-triton-v3/fixture.json",
+      "bytes": 107139,
+      "sha256": "e8194dd150be976a221e0d90d7934268362ba866064249f2cdb876c12b2accae"
+    },
+    {
+      "file": "run-records/force-triton-v3/force-config.json",
+      "bytes": 267,
+      "sha256": "c1a2ee492a74dbf16ea6adf787740b216cb931edbd07d6f67ad96bdfaf741fa0"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/create_container.sh",
+      "bytes": 1839,
+      "sha256": "b7b62fb93e37bd997c9fb456ed4c39e2dc434b17782f8622d839267af7bc7f1d"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/force_decode.py",
+      "bytes": 16042,
+      "sha256": "4f6660322f6ac964fede5038f7e129ac705e83a861693d6f06f559ea15bdeb24"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/force_decode_v2.py",
+      "bytes": 17907,
+      "sha256": "b0e526a86cada4379a32b410b486ce3a321fc5263b4305d31e2e8283c55cb184"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/force_driver.py",
+      "bytes": 7461,
+      "sha256": "3eca92db168e57e407fb29f5dcdd00f6f6e03b6da7c4bb57a2c50a50881bc30b"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/force_site/sitecustomize.py",
+      "bytes": 503,
+      "sha256": "f4adea00dd95e820aa583cbb3279b4362a6d505141f560d34806503263fdbd94"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/inspect_capture.py",
+      "bytes": 3033,
+      "sha256": "9224086c5a80c7f6e092ca5af35c7aee39bc475f76474c0d14c29d439c1c7e44"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/launch_capture.py",
+      "bytes": 14100,
+      "sha256": "004dbe575b0830d7294bf45c5442362963d91e74dccf6b02c1a3444f35f2bae9"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/monitor_host.sh",
+      "bytes": 1107,
+      "sha256": "49a964a7531132b93a74dfd9a11a11dcfeb8a3091b60742a8171bb4dee357203"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/probe_model.py",
+      "bytes": 1128,
+      "sha256": "3c70bd9bebbf48c2ed7ef4f58cbe2f76e9dc237db6ddbedc246c6888d9521407"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/replay_capture.py",
+      "bytes": 32658,
+      "sha256": "f8bc6de59f821b9846acd2b63ba221cb1e247ce8e97dec2a5f1e920e57db9e4a"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/shadow_supervisor.py",
+      "bytes": 7983,
+      "sha256": "ceb1073edff9e5df64b6c35e30b0ed367190b66c34df21e2ef3bff2b19618a2a"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/sitecustomize.py",
+      "bytes": 357,
+      "sha256": "07bab7f4e2cce2a7adcd11c2b4bfc829322b21389094c729ac756869c83c5f7d"
+    },
+    {
+      "file": "run-records/force-triton-v3/helpers/summarize_replay.py",
+      "bytes": 2573,
+      "sha256": "60df0da734cb307d28458c4672b6b413a01e68b663801013cb0c2b40df42dd66"
+    },
+    {
+      "file": "run-records/force-triton-v3/launch.json",
+      "bytes": 2263,
+      "sha256": "bdcbc8c0e882e2f6ccbf59849bf1832176a70f6252bfde7d6d78a7c2be1d05a5"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4010.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4397.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4399.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4628.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4631.jsonl",
+      "bytes": 4010545,
+      "sha256": "aab3858c2d053f57d19ab94fe8f9ef084f79573d028c867099efe0ccb5787d13"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4632.jsonl",
+      "bytes": 4010545,
+      "sha256": "8286a7fbf250482a56181534507725851bce527565bd77703be3f6ef08c10249"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4957.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4959.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4961.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-4963.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/events-pid-5499.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4010.json",
+      "bytes": 662,
+      "sha256": "0fa3a5d8001170b96d048f932fc9d6fd8065ffc4fa8fb49c47c580f55d52e5ad"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4397.json",
+      "bytes": 662,
+      "sha256": "c0a0c5dce86dae5b12dbf5126abb000086f8172444175ac9b9120728be10fcc8"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4399.json",
+      "bytes": 662,
+      "sha256": "7e0a542a7a1fbcbdc6af8d9b41ce6acd8bf13d881709eeadabc8b47e9dead4ae"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4628.json",
+      "bytes": 662,
+      "sha256": "f0de33d0a6aa91e658e4c2643e16a167b31a1400bbe396827c19077e73b6d2de"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4631.json",
+      "bytes": 662,
+      "sha256": "9661573c1d99bfeefbb318c81d2c32bfa711ed7df5a8ff4291c6074c92adb155"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4632.json",
+      "bytes": 662,
+      "sha256": "6bc869a01a5e2a0be14b0a94a6e14c634eb92a5c48d9fda0caa407f86228129d"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4957.json",
+      "bytes": 662,
+      "sha256": "d7a81bb27bb7da6d99e900e4ba7199b6cf615c041d4e2c94a87df715d408b46e"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4959.json",
+      "bytes": 662,
+      "sha256": "22db7822476e45a9e009513c81b8edbe3923ba2ca89bebafeeb3121b6ef6232f"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4961.json",
+      "bytes": 662,
+      "sha256": "7bbe2ff04a3b26f3b8b8f695be3a598534e43e6ea0efcef60f5b0b72aaf7f982"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-4963.json",
+      "bytes": 662,
+      "sha256": "910e894a5fcf57c8a343b4a12ec0650e1267cb3018bf299c6ceb499477365421"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/installed-pid-5499.json",
+      "bytes": 662,
+      "sha256": "460a1dcd65a01aa52b84ea9e93a98153e4f64a09808eb0f8d4b31d2898861571"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/patched-pid-4631.json",
+      "bytes": 1177,
+      "sha256": "1e93b15bbed7f42378e291e5b52c7c54cf7e1c4f77f1f0d66b0d020ba05840da"
+    },
+    {
+      "file": "run-records/force-triton-v3/trace/patched-pid-4632.json",
+      "bytes": 1177,
+      "sha256": "c1441ffabfb5b9329899fa8e290d1f47bb56ed5bc228de88cfd7992f865553c6"
+    },
+    {
+      "file": "run-records/force-triton-v3-host.csv",
+      "bytes": 3744,
+      "sha256": "034af477a9a80249f74acfec19e188845f64e111d4cb1bbd4c8294ac9954db08"
+    },
+    {
+      "file": "run-records/force-triton-v3-processes.log",
+      "bytes": 2706,
+      "sha256": "b5ee1074a912037c61366dc6357b63dc7fa56c786b9b2dbc99dd498c1c213f77"
+    },
+    {
+      "file": "run-records/force-triton-v3.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "run-records/force-triton-v3.log",
+      "bytes": 105683,
+      "sha256": "f9d0f9237969e28962221622960e27073d354bcde8bb0771d43c810d8fb1dddb"
+    },
+    {
+      "file": "run-records/model-bias-probe.json",
+      "bytes": 10907,
+      "sha256": "3036a23007dd0681ed4851b5e354e7d220866a555ddaa925d406020881667627"
+    }
+  ],
+  "representative_snapshots": [
+    {
+      "file": "captures/rank-0/layer-000/call-000001-pid-660.pt",
+      "sha256": "98b2b2f085b323b4ae4baa4adf48db5ccfc6039678545027728b02f4ff6fb087",
+      "bytes": 31595202,
+      "sidecar_sha256": "d77181e7898b583d92e9feb136c2788aa86cad3f1f8c4dddd86d1c41fc9cca9f",
+      "rank": 0,
+      "layer": 0,
+      "call": 1,
+      "actual_batch": 8,
+      "actual_metadata": {
+        "active_original_indices": [
+          1,
+          5,
+          9,
+          13,
+          17,
+          21,
+          25,
+          29
+        ],
+        "batch_size": 8,
+        "before_first_b8_calls": 2,
+        "call_index": 1,
+        "capture_scope": "ordinary packed decode in eager mode; no mixed-path coverage",
+        "compact_to_original": [
+          0,
+          1,
+          5,
+          9,
+          13,
+          17,
+          21,
+          25,
+          29,
+          2
+        ],
+        "head_qk_dim": 128,
+        "head_v_dim": 128,
+        "layer_idx": 0,
+        "num_heads_qk": 8,
+        "num_heads_v": 24,
+        "original_backend": "flashinfer",
+        "original_shapes_strides": {
+          "A_log": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.float32",
+            "requires_grad": true,
+            "shape": [
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          "a": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              8,
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              24,
+              1
+            ]
+          },
+          "b": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              8,
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              24,
+              1
+            ]
+          },
+          "dt_bias": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.float32",
+            "requires_grad": true,
+            "shape": [
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          "initial_state": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.float32",
+            "requires_grad": false,
+            "shape": [
+              128,
+              24,
+              128,
+              128
+            ],
+            "storage_offset": 7680,
+            "stride": [
+              401408,
+              16384,
+              128,
+              1
+            ]
+          },
+          "mixed_qkv": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              8,
+              5120
+            ],
+            "storage_offset": 0,
+            "stride": [
+              8192,
+              1
+            ]
+          },
+          "out": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              8,
+              1,
+              24,
+              128
+            ],
+            "storage_offset": 0,
+            "stride": [
+              3072,
+              3072,
+              128,
+              1
+            ]
+          },
+          "ssm_state_indices": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:0",
+            "dtype": "torch.int32",
+            "requires_grad": false,
+            "shape": [
+              8
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          }
+        },
+        "padding_rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pid": 660,
+        "prefix": "language_model.model.layers.0.linear_attn",
+        "rank": 0,
+        "scale": 0.08838834764831845,
+        "schema_version": 1,
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "source_head_scope": "experiment revision; actual module hash in patched-pid record",
+        "state_scope": "null, active pages and one sampled unused page only",
+        "synthetic_unused_slot": false,
+        "tp_rank": 0,
+        "trajectory_scope": "copy and serialization synchronization may change scheduling",
+        "unused_compact_index": 9,
+        "unused_original_index": 2,
+        "use_qk_l2norm_in_kernel": true,
+        "values_scope": "CPU tensor exact values; compact copies do not preserve original strides"
+      }
+    },
+    {
+      "file": "captures/rank-1/layer-002/call-000995-pid-661.pt",
+      "sha256": "d32525da7d73c888d74aff4fc3fbc44362b0de2f33b15151f71b62aba647fc44",
+      "bytes": 12621954,
+      "sidecar_sha256": "169175525c4b8e05f74f6d70e0fc8d05923b85dd8b704cac61104ce39a4ebf72",
+      "rank": 1,
+      "layer": 2,
+      "call": 995,
+      "actual_batch": 2,
+      "actual_metadata": {
+        "active_original_indices": [
+          11,
+          19
+        ],
+        "batch_size": 2,
+        "before_first_b8_calls": 2,
+        "call_index": 995,
+        "capture_scope": "ordinary packed decode in eager mode; no mixed-path coverage",
+        "compact_to_original": [
+          0,
+          11,
+          19,
+          1
+        ],
+        "head_qk_dim": 128,
+        "head_v_dim": 128,
+        "layer_idx": 2,
+        "num_heads_qk": 8,
+        "num_heads_v": 24,
+        "original_backend": "flashinfer",
+        "original_shapes_strides": {
+          "A_log": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.float32",
+            "requires_grad": true,
+            "shape": [
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          "a": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              2,
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              24,
+              1
+            ]
+          },
+          "b": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              2,
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              24,
+              1
+            ]
+          },
+          "dt_bias": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.float32",
+            "requires_grad": true,
+            "shape": [
+              24
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          },
+          "initial_state": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.float32",
+            "requires_grad": false,
+            "shape": [
+              128,
+              24,
+              128,
+              128
+            ],
+            "storage_offset": 7680,
+            "stride": [
+              401408,
+              16384,
+              128,
+              1
+            ]
+          },
+          "mixed_qkv": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              2,
+              5120
+            ],
+            "storage_offset": 0,
+            "stride": [
+              8192,
+              1
+            ]
+          },
+          "out": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.bfloat16",
+            "requires_grad": false,
+            "shape": [
+              2,
+              1,
+              24,
+              128
+            ],
+            "storage_offset": 0,
+            "stride": [
+              3072,
+              3072,
+              128,
+              1
+            ]
+          },
+          "ssm_state_indices": {
+            "data_ptr_mod_128": 0,
+            "data_ptr_mod_16": 0,
+            "data_ptr_mod_256": 0,
+            "device": "cuda:1",
+            "dtype": "torch.int32",
+            "requires_grad": false,
+            "shape": [
+              2
+            ],
+            "storage_offset": 0,
+            "stride": [
+              1
+            ]
+          }
+        },
+        "padding_rows": [
+          false,
+          false
+        ],
+        "pid": 661,
+        "prefix": "language_model.model.layers.2.linear_attn",
+        "rank": 1,
+        "scale": 0.08838834764831845,
+        "schema_version": 1,
+        "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+        "source_head_scope": "experiment revision; actual module hash in patched-pid record",
+        "state_scope": "null, active pages and one sampled unused page only",
+        "synthetic_unused_slot": false,
+        "tp_rank": 1,
+        "trajectory_scope": "copy and serialization synchronization may change scheduling",
+        "unused_compact_index": 3,
+        "unused_original_index": 1,
+        "use_qk_l2norm_in_kernel": true,
+        "values_scope": "CPU tensor exact values; compact copies do not preserve original strides"
+      }
+    }
+  ],
+  "full_capture_corpus_bytes": 7304360944,
+  "full_capture_corpus_exported": false,
+  "scope": "Full reports and source/trace artifacts; two representative raw snapshots. Full capture corpus retained on the experiment host, bound by snapshot-manifest.json."
+}

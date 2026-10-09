@@ -1,0 +1,160 @@
+{
+  "report_sha256": "524e9c9acc3111a9c945bb680f31c5068ea8dc6ad3b3b2a1f9755c1042f995d1",
+  "report_status": "completed",
+  "cases": 2,
+  "exact_fidelity_count": 2,
+  "cases_frozen_tolerance_pass": 2,
+  "rank_counts": {
+    "0": 1,
+    "1": 1
+  },
+  "tolerances": {
+    "atol": 0.01,
+    "rtol": 0.01,
+    "relative_l2_strictly_below": 0.01
+  },
+  "scope": {
+    "real_decode_inputs": true,
+    "independent_rank_local_replay": true,
+    "multi_gpu_timing_or_sequence_replay": false,
+    "original_per_tensor_strides_and_pointer_modulo_256_restored": true,
+    "original_absolute_addresses_and_input_aliasing_restored": false,
+    "state_scope": "Only captured compact pages, slot0 and sampled unused page; other original pool pages are unobserved.",
+    "storage_gap_guard": "Synthetic guard values in reconstructed storage; original page-padding values are not captured.",
+    "quality_conclusion": "Within-tolerance replay differences do not establish harmlessness or model-quality equivalence."
+  },
+  "metrics": {
+    "captured_actual_bias": {
+      "flashinfer/vs_fp64_math_output": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 0.0077064793770120765,
+        "max_relative_l2": 0.001848597208174399,
+        "worst_relative_case": {
+          "rank": 1,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "flashinfer/vs_fp64_math_state": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 3.3673216677243545e-06,
+        "max_relative_l2": 5.378379860920454e-08,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "flashinfer/vs_fp64_rounded_output": {
+        "case_count": 2,
+        "exact_equal_count": 1,
+        "within_tolerance_count": 2,
+        "max_abs_error": 1.4901161193847656e-08,
+        "max_relative_l2": 9.321469130704051e-10,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "flashinfer/vs_fp64_rounded_state": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 3.814697265625e-06,
+        "max_relative_l2": 5.9400304667894e-08,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "triton/vs_fp64_math_output": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 0.0077064793770120765,
+        "max_relative_l2": 0.001848597208174399,
+        "worst_relative_case": {
+          "rank": 1,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "triton/vs_fp64_math_state": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 2.9047332574805296e-06,
+        "max_relative_l2": 5.305114730137996e-08,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "triton/vs_fp64_rounded_output": {
+        "case_count": 2,
+        "exact_equal_count": 1,
+        "within_tolerance_count": 2,
+        "max_abs_error": 1.52587890625e-05,
+        "max_relative_l2": 9.545184389840948e-07,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "triton/vs_fp64_rounded_state": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 3.814697265625e-06,
+        "max_relative_l2": 5.8556934693882196e-08,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "triton_vs_flashinfer_output": {
+        "case_count": 2,
+        "exact_equal_count": 1,
+        "within_tolerance_count": 2,
+        "max_abs_error": 1.52587890625e-05,
+        "max_relative_l2": 9.545188943447406e-07,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      },
+      "triton_vs_flashinfer_state": {
+        "case_count": 2,
+        "exact_equal_count": 0,
+        "within_tolerance_count": 2,
+        "max_abs_error": 3.814697265625e-06,
+        "max_relative_l2": 3.6152147913775506e-08,
+        "worst_relative_case": {
+          "rank": 0,
+          "layer_idx": 0,
+          "call_index": 1,
+          "batch_size": 8
+        }
+      }
+    }
+  }
+}

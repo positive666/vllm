@@ -1,0 +1,25 @@
+{
+  "archive": "decode-shadow-evidence.zip",
+  "bytes": 40064406,
+  "sha256": "c44bbe5ea7d32a0265c1e0dbe09ea4a17ae15647da9f1d5dd4d59c2bb10e1519",
+  "archive_member_count": 315,
+  "manifest_file_count": 314,
+  "all_member_hashes_and_sizes_verified": true,
+  "entry_paths_checked": true,
+  "representative_pt_count": 2,
+  "full_capture_corpus_exported": false,
+  "full_capture_corpus_bytes": 7304360944,
+  "text_members_scanned": 312,
+  "secret_pattern_categories": [
+    "github_token",
+    "private_key",
+    "authorization",
+    "credential_assignment",
+    "password_flag",
+    "credential_url"
+  ],
+  "secret_pattern_findings": [],
+  "scope": "Independent zip member hash/path review and text-only pattern scan; raw PT contents were hashed but not deserialized. No secret contents are printed or stored.",
+  "archive_integrity_pass": true,
+  "publish_secret_scan_pass": true
+}

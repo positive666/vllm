@@ -1,0 +1,26 @@
+{
+  "output_dir": "/results/fi-c8-v2/captures",
+  "start_marker": "/results/fi-c8-v2/START",
+  "early_calls": [
+    1,
+    2
+  ],
+  "sample_calls": [
+    19,
+    253,
+    454,
+    995,
+    1750
+  ],
+  "sample_layers": [
+    0,
+    1,
+    2,
+    16,
+    32,
+    48,
+    62
+  ],
+  "initial_batch_size": 8,
+  "expected_module_sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d"
+}
