@@ -1,0 +1,220 @@
+{
+  "files": {
+    "audit_localization.py": {
+      "sha256": "3a06a15b25ff0d81ea256d04fad62c2e7955f1ebe6b2c3dcd60e4459420bedd7",
+      "bytes": 5612
+    },
+    "cpu-audit.json": {
+      "sha256": "f75eab442db835c6e1805fb6438163837571b7f18b2861132ddcf6b775bb94f7",
+      "bytes": 2356
+    },
+    "README.md": {
+      "sha256": "06530937d0f07dbf7003f6317df39b40c3677c4c216e5409e41ce026181c6ecf",
+      "bytes": 5113
+    },
+    "runtime-binding.json": {
+      "sha256": "bb80094de88c11d5492823901b8793749150b6aee4dcec4980fc60f7a762978d",
+      "bytes": 496
+    },
+    "selected-captures.tar.gz": {
+      "sha256": "64d98642b2674031d0cf1aa775cee1afb89be8f14a237d7eb95cbe4bfd4821f4",
+      "bytes": 18224217
+    },
+    "layer0/create_container.sh": {
+      "sha256": "135a15df21e52f88930c2f7ff81d9f9c0a075b6bebe91156513d85421e991255",
+      "bytes": 2461
+    },
+    "layer0/localize.py": {
+      "sha256": "1504dca80fd5804db34f6132f1a21ab841889e155d135b45dc62eb87c50cd8fb",
+      "bytes": 9044
+    },
+    "layer0/monitor_host.sh": {
+      "sha256": "9c2873b6ecefc84f247e044c778f5a3773b93704a0558ef904f5071069f4281b",
+      "bytes": 1767
+    },
+    "layer0/producer-manifest.json": {
+      "sha256": "9c2763c14613757add73acdd97b25f80954a6937fddf90661c039dc18ef27850",
+      "bytes": 630
+    },
+    "layer0/protocol.json": {
+      "sha256": "ff8c096ba8d8abf1b45dfed3941371f4395158381907c19ee30a2496d95d10c7",
+      "bytes": 777
+    },
+    "layer0/run.sh": {
+      "sha256": "f1cec80f669bb14893763507b4a238be5da34783c22ded2a866ec31be9046c19",
+      "bytes": 1614
+    },
+    "layer0/results/cleanup.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "layer0/results/cleanup.log": {
+      "sha256": "498ff0d909d3af7a384eb818191f8c3d6773efaa87941488048656a0820e007c",
+      "bytes": 65
+    },
+    "layer0/results/completed.txt": {
+      "sha256": "7655e964a784c1b0647deaeac98b0c887495d98fb45f92812dfba5398a6a6bee",
+      "bytes": 31
+    },
+    "layer0/results/container-id.txt": {
+      "sha256": "498ff0d909d3af7a384eb818191f8c3d6773efaa87941488048656a0820e007c",
+      "bytes": 65
+    },
+    "layer0/results/container-initial-state.json": {
+      "sha256": "7ff89d2cb6d8f70bbb6e3f8caf9a917a0fac5a50f46378cdfd72e8b918a55d33",
+      "bytes": 218
+    },
+    "layer0/results/container-inspect-initial.json": {
+      "sha256": "8628a1a2cfac563bd1af9169af639fb1b756b8d18543d1ec0f5c52a0bc8ea133",
+      "bytes": 1146
+    },
+    "layer0/results/docker-exec.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "layer0/results/final-gpus.csv": {
+      "sha256": "07819feaded3a468ae40f532882221b479d10ddb681cddccf962dafeb7fae4bd",
+      "bytes": 108
+    },
+    "layer0/results/final-processes.csv": {
+      "sha256": "f2103265936621e692b0d6089b7792c125d5860534bb6a48e5e51474e6414dd7",
+      "bytes": 37
+    },
+    "layer0/results/host-gpus.csv": {
+      "sha256": "939191dc1e57015d358c5235cd79a64383c4b1c2ce7153f276363bc42b697f46",
+      "bytes": 416
+    },
+    "layer0/results/host-identities.log": {
+      "sha256": "2e06d834ae325ea5a88f6ff5e43bd081fe1f3adc4766678b243611e1c9eee24d",
+      "bytes": 512
+    },
+    "layer0/results/host-processes.log": {
+      "sha256": "cc02e5b1ba82f414de277078f1c7d3bbd1bf6f7b08bdf4b659bfb8c86031a6ec",
+      "bytes": 236
+    },
+    "layer0/results/numeric.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "layer0/results/numeric.log": {
+      "sha256": "2d888b7f58ebb0345a6f7902669c91a0308e166c3319e62ff3e12b31d9d9d973",
+      "bytes": 2561
+    },
+    "layer0/results/report.json": {
+      "sha256": "cb07ac46201fbc1ba47fbbdcac9826dafa10df40a50358016c3bb401f01aa31b",
+      "bytes": 41436
+    },
+    "layer0/results/run.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "layer0/results/started.txt": {
+      "sha256": "2630159e382dfd36b51a2a2a7d50ff9aeb7e465ce3b2845ca12ef678fea0295a",
+      "bytes": 31
+    },
+    "layer0/results/supervisor.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "first-output/create_container.sh": {
+      "sha256": "d6065eb496adedc26c63248b67edb12f83c44cbb87fe615f597d611ef6056c3f",
+      "bytes": 2467
+    },
+    "first-output/localize.py": {
+      "sha256": "d97758dece22ee823a2b1ff0ab4286a512d9f6544172949d6bbc2d5cf251dd93",
+      "bytes": 10455
+    },
+    "first-output/monitor_host.sh": {
+      "sha256": "9c2873b6ecefc84f247e044c778f5a3773b93704a0558ef904f5071069f4281b",
+      "bytes": 1767
+    },
+    "first-output/producer-manifest.json": {
+      "sha256": "a15f7ec98025b1b58bbcd2c4a987cc7913779e5489358f05475b20f1b53f9445",
+      "bytes": 631
+    },
+    "first-output/protocol.json": {
+      "sha256": "12d5a112c1d2eda34cee84537f929c692efad2f8fa98c2cc25c1723165814ecc",
+      "bytes": 399
+    },
+    "first-output/run.sh": {
+      "sha256": "c0cb1f5336939ae0c1661adbe4a11ba0b02642eec20630442ade925b212ab222",
+      "bytes": 1620
+    },
+    "first-output/results/cleanup.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "first-output/results/cleanup.log": {
+      "sha256": "a8d273e7573e8d448d04622b118849a0a0ac21e5860277f8827f6e4328de26b2",
+      "bytes": 65
+    },
+    "first-output/results/completed.txt": {
+      "sha256": "ef297bbb97e03efdc1cabfec71e086db552689717676d2e7841ac42f394741f6",
+      "bytes": 31
+    },
+    "first-output/results/container-id.txt": {
+      "sha256": "a8d273e7573e8d448d04622b118849a0a0ac21e5860277f8827f6e4328de26b2",
+      "bytes": 65
+    },
+    "first-output/results/container-initial-state.json": {
+      "sha256": "19da1528fe6989dead4e66c4d446ea71d7fc5499582ab8512c213ca7a806dd8f",
+      "bytes": 218
+    },
+    "first-output/results/container-inspect-initial.json": {
+      "sha256": "85188aedbe0ad39a4419426f93473899b63e8317962ec232636df5e5de8c7e26",
+      "bytes": 1152
+    },
+    "first-output/results/docker-exec.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "first-output/results/final-gpus.csv": {
+      "sha256": "07819feaded3a468ae40f532882221b479d10ddb681cddccf962dafeb7fae4bd",
+      "bytes": 108
+    },
+    "first-output/results/final-processes.csv": {
+      "sha256": "f2103265936621e692b0d6089b7792c125d5860534bb6a48e5e51474e6414dd7",
+      "bytes": 37
+    },
+    "first-output/results/host-gpus.csv": {
+      "sha256": "6575538d590d34e7cc69a0f615b26cd38eb3b4d20114d8b64fb5b33e15c8dd63",
+      "bytes": 523
+    },
+    "first-output/results/host-identities.log": {
+      "sha256": "46acf5c33a447cac18c842976611b66efea999d94200da5dcad3006b2c773cbb",
+      "bytes": 655
+    },
+    "first-output/results/host-processes.log": {
+      "sha256": "dd918c1609dbef64c8a206f955291999f96f1cfc41a7839a9c6519c97d1eafd0",
+      "bytes": 360
+    },
+    "first-output/results/numeric.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "first-output/results/numeric.log": {
+      "sha256": "0b78397454f77ef0bd68d92ec37524132419f92d638b43f19700b174a51b5c13",
+      "bytes": 2471
+    },
+    "first-output/results/report.json": {
+      "sha256": "1b3a8deebe57cbeb7e77e1c8124d7ab879078b3dd278f7de11de170a9aad732a",
+      "bytes": 146009
+    },
+    "first-output/results/run.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "first-output/results/scan.json": {
+      "sha256": "0f3dd8ed9dd31fec3492948a77b9316ae56f1e920df5a31c6fb6e1e44615bd23",
+      "bytes": 123362
+    },
+    "first-output/results/started.txt": {
+      "sha256": "8e6a3bf2474317cabc12dde7193c5e692f57bc47a8ed92e503f097c0224c13b5",
+      "bytes": 31
+    },
+    "first-output/results/supervisor.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

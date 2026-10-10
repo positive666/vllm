@@ -1,0 +1,70 @@
+{
+  "status": "CPU_BINDING_AND_HIGH_PRECISION_REFERENCE_PASS",
+  "cases": [
+    {
+      "rank": 0,
+      "layer": 0,
+      "input_state_exact": true,
+      "own_fidelity_records": 12,
+      "output_differences": 0,
+      "output_absmax": 0.0
+    },
+    {
+      "rank": 1,
+      "layer": 0,
+      "input_state_exact": true,
+      "own_fidelity_records": 12,
+      "output_differences": 0,
+      "output_absmax": 0.0
+    },
+    {
+      "rank": 1,
+      "layer": 1,
+      "input_state_exact": true,
+      "own_fidelity_records": 12,
+      "output_differences": 2,
+      "output_absmax": 1.1920928955078125e-07
+    }
+  ],
+  "decimal80": [
+    {
+      "head": 1,
+      "value": 57,
+      "reference_decimal80": "2.7318277518867223671397637924777843454651421541030080603066070995490035972844E-11",
+      "fp64_abs_error": "2.081564190446683865880192843E-21",
+      "triton_abs_error": "1.330805586980015822926092544E-12",
+      "flashinfer_abs_error": "3.149794990525872298756170669E-12"
+    },
+    {
+      "head": 7,
+      "value": 8,
+      "reference_decimal80": "-0.000029265877743230805781958764693346234866753253299722714571936833650967520753007194",
+      "fp64_abs_error": "4.486282127172563843257236622E-22",
+      "triton_abs_error": "5.960748626138171804123530665E-8",
+      "flashinfer_abs_error": "5.960180328939953195876469335E-8"
+    }
+  ],
+  "resource_observations": [
+    {
+      "folder": "rounding-localization-20261010",
+      "snapshots": 4,
+      "matched_compute_rows": 0,
+      "unmatched": [],
+      "cleanup_exit": 0,
+      "final_gpu_idle": true,
+      "limitation": "Sequential five-second sampling; zero observed compute rows does not prove absence during the short kernel execution."
+    },
+    {
+      "folder": "rounding-localization-v2-20261010",
+      "snapshots": 5,
+      "matched_compute_rows": 1,
+      "unmatched": [],
+      "cleanup_exit": 0,
+      "final_gpu_idle": true,
+      "limitation": "Sequential five-second sampling; zero observed compute rows does not prove absence during the short kernel execution."
+    }
+  ],
+  "gpu_execution": false,
+  "scope": "Independent arithmetic checks on original captures, not GPU re-execution or model-quality equivalence.",
+  "script_sha256": "3a06a15b25ff0d81ea256d04fad62c2e7955f1ebe6b2c3dcd60e4459420bedd7"
+}

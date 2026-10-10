@@ -1,0 +1,5 @@
+{
+  "based_on": "rounding-localization-20261010",
+  "change": "Scan all48 layers x2ranks step1; select earliest target output mismatch whose target input and prestate match exactly; retain complete scan. Two backends, B8/B1,3 repetitions, own B8 fidelity and unchanged tolerance.",
+  "scope": "Conditional arithmetic localization on existing forced-history captures; not natural model validation."
+}

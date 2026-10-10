@@ -1,0 +1,29 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source_capture": "gdn60403-divergence-v2-20261010/results/short-B and short-C",
+  "selection": {
+    "ranks": [
+      0,
+      1
+    ],
+    "layer": 0,
+    "step": 1,
+    "question": 255
+  },
+  "backend": [
+    "triton",
+    "flashinfer"
+  ],
+  "batch": [
+    8,
+    1
+  ],
+  "repetitions": 3,
+  "requirements": [
+    "identical B/C captured inputs and target prestate",
+    "B8 target output and state exact fidelity",
+    "finite values and unchanged atol=.01 rtol=.01 relL2<.01",
+    "null and unused synthetic pages unchanged"
+  ],
+  "scope": "Single GPU, independent rank-local capture replay. B1 is batch ablation. Other active state pages synthesized. Not model evaluation or whole-model causal proof."
+}

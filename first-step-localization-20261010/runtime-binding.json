@@ -1,0 +1,7 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "flashinfer_api_sha256": "e5a5a796613a48f5750bed2e7cd4f9917a9580374ce3fa6bc0ea2aa47db3d280",
+  "flashinfer_pretranspose_sha256": "0547298823f4cdc1434c079749fe62a1bcafbd5aae3f129321431f414751b84d",
+  "post_run_readonly_sha_matches_prior_sources": true,
+  "notes": "Runtime venv flashinfer symlink resolves through the read-only /oldcache/runtime-addons mount. Versions/source-manifest validated in each producer. No full rebuild."
+}
