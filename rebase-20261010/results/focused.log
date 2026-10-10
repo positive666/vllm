@@ -1,0 +1,10 @@
+{"event": "start", "task": "runtime-probe"}
+{"event": "finished", "task": "runtime-probe", "exit_code": 0, "pytest_counts": null}
+{"event": "start", "task": "adapter-and-split"}
+{"event": "finished", "task": "adapter-and-split", "exit_code": 1, "pytest_counts": {"passed": 28, "failure": 12, "error": 0, "skipped": 0}}
+{"event": "start", "task": "gdn-metadata"}
+{"event": "finished", "task": "gdn-metadata", "exit_code": 1, "pytest_counts": {"passed": 0, "failure": 65, "error": 0, "skipped": 0}}
+{"event": "start", "task": "gdn-config"}
+{"event": "finished", "task": "gdn-config", "exit_code": 0, "pytest_counts": {"passed": 1, "failure": 0, "error": 0, "skipped": 0}}
+{"event": "start", "task": "benchmark-help"}
+{"event": "finished", "task": "benchmark-help", "exit_code": 0, "pytest_counts": null}

@@ -1,0 +1,578 @@
+{
+  "started_utc": "2026-10-10T08:28:51.448520+00:00",
+  "python": "/cache/gdn-runtime/bin/python",
+  "source": "/source",
+  "tasks": [
+    {
+      "name": "runtime-probe",
+      "command": [
+        "/cache/gdn-runtime/bin/python",
+        "/artifacts/runtime_probe.py",
+        "--source",
+        "/source",
+        "--output",
+        "/results/focused/runtime-probe.json",
+        "--source-head",
+        "abf17c7c071b1b6bdd81ca9756894998e5e8b32d"
+      ],
+      "started_utc": "2026-10-10T08:28:51.448861+00:00",
+      "expected_case_count": null,
+      "exit_code": 0,
+      "finished_utc": "2026-10-10T08:29:03.930141+00:00",
+      "seconds": 12.481255816295743,
+      "log": "/results/focused/runtime-probe.log",
+      "log_sha256": "60546b289480155f0032dc33b57b09212906ed7b060e114ef6734e96bac3be59"
+    },
+    {
+      "name": "adapter-and-split",
+      "command": [
+        "/cache/gdn-runtime/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-ra",
+        "--color=no",
+        "-o",
+        "cache_dir=/results/focused/pytest-cache",
+        "--junitxml",
+        "/results/focused/adapter-and-split.xml",
+        "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py",
+        "tests/kernels/mamba/test_gdn_forward_core_split.py",
+        "-k",
+        "gdn_decode or flashinfer_decode or gdn_layer or forward_core_split"
+      ],
+      "started_utc": "2026-10-10T08:29:03.931104+00:00",
+      "expected_case_count": 40,
+      "exit_code": 1,
+      "finished_utc": "2026-10-10T08:29:40.195197+00:00",
+      "seconds": 36.26406513527036,
+      "log": "/results/focused/adapter-and-split.log",
+      "log_sha256": "6b3c6cf09815a2ab05627e4cfabfc6848b1cc3b82c01d8b4286c83f1e5a9b424",
+      "pytest": {
+        "counts": {
+          "passed": 28,
+          "failure": 12,
+          "error": 0,
+          "skipped": 0
+        },
+        "cases": [
+          {
+            "name": "test_gdn_decode_default_does_not_require_flashinfer[state_dtype0-auto]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_default_does_not_require_flashinfer[state_dtype0-triton]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_default_does_not_require_flashinfer[state_dtype1-auto]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_default_does_not_require_flashinfer[state_dtype1-triton]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_non_cuda",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_unsupported_config[fp32-input]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_unsupported_config[fp16-state]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_unsupported_config[unsupported-key-head-dim]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_unsupported_config[unsupported-value-head-dim]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_unsupported_config[non-divisible-head-group]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_decode_explicit_flashinfer_rejects_unsupported_config[unsupported-bf16-state]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_layer_preserves_loaded_bias_with_flashinfer_dtype[auto]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_layer_preserves_loaded_bias_with_flashinfer_dtype[triton]",
+            "status": "passed"
+          },
+          {
+            "name": "test_gdn_layer_preserves_loaded_bias_with_flashinfer_dtype[flashinfer]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-8-False-index_dtype0]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-8-False-index_dtype1]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-8-True-index_dtype0]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-8-True-index_dtype1]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[1-4-False-index_dtype0]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[1-4-False-index_dtype1]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[1-4-True-index_dtype0]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[1-4-True-index_dtype1]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-4-False-index_dtype0]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-4-False-index_dtype1]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-4-True-index_dtype0]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_preserves_indexed_state[4-4-True-index_dtype1]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_graph_reads_remapped_slots[4]",
+            "status": "passed"
+          },
+          {
+            "name": "test_flashinfer_decode_graph_reads_remapped_slots[8]",
+            "status": "passed"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype1]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[False-3-prefill_lens0-flashinfer-state_dtype2]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[False-4-prefill_lens1-triton-state_dtype0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[False-4-prefill_lens1-triton-state_dtype1]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[False-4-prefill_lens1-flashinfer-state_dtype2]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[True-3-prefill_lens0-triton-state_dtype0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[True-3-prefill_lens0-triton-state_dtype1]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[True-3-prefill_lens0-flashinfer-state_dtype2]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[True-4-prefill_lens1-triton-state_dtype0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[True-4-prefill_lens1-triton-state_dtype1]",
+            "status": "failure"
+          },
+          {
+            "name": "test_forward_core_split_matches_unified[True-4-prefill_lens1-flashinfer-state_dtype2]",
+            "status": "failure"
+          }
+        ]
+      },
+      "case_count_matches": true
+    },
+    {
+      "name": "gdn-metadata",
+      "command": [
+        "/cache/gdn-runtime/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-ra",
+        "--color=no",
+        "-o",
+        "cache_dir=/results/focused/pytest-cache",
+        "--junitxml",
+        "/results/focused/gdn-metadata.xml",
+        "tests/v1/attention/test_gdn_metadata_builder.py"
+      ],
+      "started_utc": "2026-10-10T08:29:40.202915+00:00",
+      "expected_case_count": 63,
+      "exit_code": 1,
+      "finished_utc": "2026-10-10T08:30:07.353988+00:00",
+      "seconds": 27.15103294327855,
+      "log": "/results/focused/gdn-metadata.log",
+      "log_sha256": "10ca620a1851a58831469988e0206bba469f4cdf5115e729e7459acc09922472",
+      "pytest": {
+        "counts": {
+          "passed": 0,
+          "failure": 65,
+          "error": 0,
+          "skipped": 0
+        },
+        "cases": [
+          {
+            "name": "test_gdn_build_classification[mixed_decode_and_spec_decode]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[pure_spec_decode]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[pure_spec_decode_with_padding]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[pure_regular_decode]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[regular_decode_with_prefill]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[spec_decode_with_real_prefill]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[prefill_decode_and_spec_decode]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[multiple_decodes_reclassified]",
+            "status": "failure"
+          },
+          {
+            "name": "test_gdn_build_classification[zero_length_padding_with_spec]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[mixed_decode_and_spec_decode-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[mixed_decode_and_spec_decode-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[mixed_decode_and_spec_decode-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[mixed_decode_and_spec_decode-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode_with_padding-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode_with_padding-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode_with_padding-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_spec_decode_with_padding-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_regular_decode-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_regular_decode-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_regular_decode-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[pure_regular_decode-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[regular_decode_with_prefill-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[regular_decode_with_prefill-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[regular_decode_with_prefill-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[regular_decode_with_prefill-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[spec_decode_with_real_prefill-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[spec_decode_with_real_prefill-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[spec_decode_with_real_prefill-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[spec_decode_with_real_prefill-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[prefill_decode_and_spec_decode-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[prefill_decode_and_spec_decode-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[prefill_decode_and_spec_decode-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[prefill_decode_and_spec_decode-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[multiple_decodes_reclassified-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[multiple_decodes_reclassified-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[multiple_decodes_reclassified-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[multiple_decodes_reclassified-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[zero_length_padding_with_spec-False-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[zero_length_padding_with_spec-False-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[zero_length_padding_with_spec-True-none]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_matches_build[zero_length_padding_with_spec-True-align]",
+            "status": "failure"
+          },
+          {
+            "name": "test_flashinfer_indices_follow_group_remapping[False-False]",
+            "status": "failure"
+          },
+          {
+            "name": "test_flashinfer_indices_follow_group_remapping[False-True]",
+            "status": "failure"
+          },
+          {
+            "name": "test_flashinfer_indices_follow_group_remapping[True-False]",
+            "status": "failure"
+          },
+          {
+            "name": "test_flashinfer_indices_follow_group_remapping[True-True]",
+            "status": "failure"
+          },
+          {
+            "name": "test_has_initial_state_after_reclassification",
+            "status": "failure"
+          },
+          {
+            "name": "test_full_cudagraph_spec_metadata_uses_request_count",
+            "status": "failure"
+          },
+          {
+            "name": "test_one_token_chunk_classification[first-chunk]",
+            "status": "failure"
+          },
+          {
+            "name": "test_one_token_chunk_classification[resumed-chunk]",
+            "status": "failure"
+          },
+          {
+            "name": "test_one_token_chunk_classification[padding]",
+            "status": "failure"
+          },
+          {
+            "name": "test_one_token_chunk_classification[missing-prefill-flag]",
+            "status": "failure"
+          },
+          {
+            "name": "test_one_token_first_chunk_excludes_padding",
+            "status": "failure"
+          },
+          {
+            "name": "test_cudagraph_capture_batch_stays_decode_only",
+            "status": "failure"
+          },
+          {
+            "name": "test_checkpoint_metadata_preserves_non_spec_order[None-64-0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_checkpoint_metadata_preserves_non_spec_order[None-64-3]",
+            "status": "failure"
+          },
+          {
+            "name": "test_checkpoint_metadata_preserves_non_spec_order[16-96-0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_checkpoint_metadata_preserves_non_spec_order[16-96-3]",
+            "status": "failure"
+          },
+          {
+            "name": "test_checkpoint_metadata_preserves_non_spec_order[8-96-0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_checkpoint_metadata_preserves_non_spec_order[8-96-3]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_regathers_checkpoint[0]",
+            "status": "failure"
+          },
+          {
+            "name": "test_update_block_table_regathers_checkpoint[3]",
+            "status": "failure"
+          }
+        ]
+      },
+      "case_count_matches": false
+    },
+    {
+      "name": "gdn-config",
+      "command": [
+        "/cache/gdn-runtime/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-ra",
+        "--color=no",
+        "-o",
+        "cache_dir=/results/focused/pytest-cache",
+        "--junitxml",
+        "/results/focused/gdn-config.xml",
+        "tests/test_config.py",
+        "-k",
+        "gdn_decode"
+      ],
+      "started_utc": "2026-10-10T08:30:07.364540+00:00",
+      "expected_case_count": 1,
+      "exit_code": 0,
+      "finished_utc": "2026-10-10T08:30:26.905202+00:00",
+      "seconds": 19.54062807559967,
+      "log": "/results/focused/gdn-config.log",
+      "log_sha256": "ba8be80e7fe481e91fd239062a5ce6d785882447261c04b372c80298f10cc6e4",
+      "pytest": {
+        "counts": {
+          "passed": 1,
+          "failure": 0,
+          "error": 0,
+          "skipped": 0
+        },
+        "cases": [
+          {
+            "name": "test_gdn_decode_backend_separates_compile_cache",
+            "status": "passed"
+          }
+        ]
+      },
+      "case_count_matches": true
+    },
+    {
+      "name": "benchmark-help",
+      "command": [
+        "/cache/gdn-runtime/bin/python",
+        "/artifacts/benchmark_gdn_takeover.py",
+        "--help"
+      ],
+      "started_utc": "2026-10-10T08:30:26.907845+00:00",
+      "expected_case_count": null,
+      "exit_code": 0,
+      "finished_utc": "2026-10-10T08:30:44.695940+00:00",
+      "seconds": 17.788059290498495,
+      "log": "/results/focused/benchmark-help.log",
+      "log_sha256": "de0ab72a53305c6b7775991fc7dd690614dfe0fc30e66eb25b939c4bb2fda571"
+    }
+  ],
+  "runner_sha256": "9549a4181f19a6062c0951362ce146ba04e8ce7445ce9b7654642c994ae1af4a",
+  "finished_utc": "2026-10-10T08:30:44.698314+00:00",
+  "all_tasks_exit_zero": false,
+  "all_expected_pytest_cases_passed": false,
+  "scope": "Targeted checks and native MTP diagnostic; benchmark help is not a measurement."
+}

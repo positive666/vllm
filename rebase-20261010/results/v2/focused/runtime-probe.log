@@ -1,0 +1,4 @@
+/source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+No module named 'vllm._version'
+  from .version import __version__, __version_tuple__  # isort:skip
+{"output": "/results/v2/focused/runtime-probe.json", "required_imports_succeeded": true, "native_mtp": {"registered": false, "gpu_execution_verified": false}, "record_integrity_failures": 0}

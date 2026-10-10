@@ -1,0 +1,21 @@
+[
+  {
+    "stage": "Windows pre-commit",
+    "exit": 1,
+    "reason": "Default GBK input/output failed; unchanged source passed with PYTHONUTF8=1",
+    "successful_retry": "pre-commit.log"
+  },
+  {
+    "stage": "Remote prepare attempt 1",
+    "exit": 1,
+    "reason": "results directory missing; no source extracted and no container launched",
+    "remedy": "Explicit directory creation before retry"
+  },
+  {
+    "stage": "First focused matrix",
+    "exit": 1,
+    "reason": "Offline public Qwen3.5-0.8B cache absent from isolated container",
+    "result": "28 adapter tests passed; 12 mixed and 65 metadata cases failed before kernel execution; full raw logs retained",
+    "remedy": "Copy only the public model cache, set HF_HOME=/cache/hf; retain assertions and source unchanged; expect 65 upstream metadata cases"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "base": "a98247ab4db686ee03c66d5feb3c761e52a2f8ab",
+  "old_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source_delta": "Two unchanged rebased patches plus Transformers config import in an existing test",
+  "correctness": {
+    "focused_expected": 106,
+    "tp2_rank_cases": 12,
+    "replay_steps_per_case": 128,
+    "tolerances": "Unchanged original tolerances",
+    "upstream_added_cases": "Metadata checkpoint prefix_match_unit=None × num_spec={0,3}"
+  },
+  "model": {
+    "checkpoint": "Qwen3.8-27B-FP8 (Qwen3_5ForConditionalGeneration)",
+    "tp": 2,
+    "backends": [
+      "triton",
+      "flashinfer"
+    ],
+    "modes": [
+      "graph",
+      "eager"
+    ],
+    "selected_indices": [
+      198,
+      206,
+      209,
+      228,
+      255,
+      285,
+      292,
+      318
+    ],
+    "max_output_tokens": 3500,
+    "temperature": 0,
+    "seed": 42,
+    "scope": "32 selected completions, compatibility/diagnostic coverage; no new benchmark or population quality claim"
+  },
+  "native_artifacts": "Reused prior cu129 binaries; upstream native delta inspected: CPU/ROCm/HiSparse paths outside selected CUDA Qwen workload",
+  "publication": "Push existing Draft only after bounded validation; preserve old-head quality and performance limits"
+}

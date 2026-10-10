@@ -1,0 +1,1783 @@
+{
+  "status": "passed",
+  "source_head": "abf17c7c071b1b6bdd81ca9756894998e5e8b32d",
+  "world_size": 2,
+  "distributed_backend": "nccl",
+  "global_shape": {
+    "H": 16,
+    "HV": 48,
+    "K": 128,
+    "V": 128
+  },
+  "per_rank_shape": {
+    "H": 8,
+    "HV": 24,
+    "K": 128,
+    "V": 128
+  },
+  "passed_rank_cases": 12,
+  "ranks": [
+    {
+      "rank": 0,
+      "local_rank": 0,
+      "world_size": 2,
+      "status": "passed",
+      "cases": [
+        {
+          "case": "b1-int32-padding0",
+          "seed": 20261008,
+          "batch": 1,
+          "index_dtype": "int32",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            1,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            6,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            1
+          ],
+          "rank_input_sample": [
+            [
+              0.12109375,
+              -0.3828125,
+              0.34375,
+              0.00154876708984375,
+              -0.91015625,
+              0.19921875,
+              -0.81640625,
+              0.95703125
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.4901161193847656e-08,
+                  "relative_l2": 5.7736620817649964e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 9.5367431640625e-07,
+                  "relative_l2": 3.177239094043216e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 8.940696716308594e-08,
+                  "relative_l2": 7.326895001824596e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 7.383607680822024e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 6.103515625e-05,
+                "max_abs_step": 20,
+                "relative_l2": 0.00011972431093454361,
+                "relative_l2_step": 20,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 20,
+                "relative_l2": 0.000499064801260829,
+                "relative_l2_step": 20,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.384185791015625e-07,
+                "max_abs_step": 75,
+                "relative_l2": 1.2612271405032516e-07,
+                "relative_l2_step": 105,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int32-padding0",
+          "seed": 20261009,
+          "batch": 8,
+          "index_dtype": "int32",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1
+          ],
+          "rank_input_sample": [
+            [
+              -0.70703125,
+              -0.279296875,
+              -0.0203857421875,
+              -0.37890625,
+              0.90625,
+              -0.189453125,
+              1.96875,
+              -1.265625
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.52587890625e-05,
+                  "relative_l2": 2.1974869014229625e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0009765625,
+                  "relative_l2": 1.26096056192182e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 8.546842167334034e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.52587890625e-05,
+                  "relative_l2": 2.1964189727441408e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0009765625,
+                  "relative_l2": 1.2609699297172483e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 8.366986037344759e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.000244140625,
+                "max_abs_step": 120,
+                "relative_l2": 0.00015686574624851346,
+                "relative_l2_step": 120,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 25,
+                "relative_l2": 0.00021644358639605343,
+                "relative_l2_step": 25,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.980232238769531e-07,
+                "max_abs_step": 42,
+                "relative_l2": 1.202619159812457e-07,
+                "relative_l2_step": 85,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int32-padding1",
+          "seed": 20261010,
+          "batch": 8,
+          "index_dtype": "int32",
+          "padding": true,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            0,
+            -1
+          ],
+          "rank_input_sample": [
+            [
+              -0.79296875,
+              0.08837890625,
+              0.6875,
+              0.52734375,
+              -0.306640625,
+              0.494140625,
+              0.2265625,
+              0.51171875
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 1.05793297677792e-07,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.000244140625,
+                  "relative_l2": 3.510149326757528e-06,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.7881393432617188e-07,
+                  "relative_l2": 9.079531082534231e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.862645149230957e-09,
+                  "relative_l2": 3.3044273983762196e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.000244140625,
+                  "relative_l2": 3.5101224966638256e-06,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 7.693802928088189e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 20,
+                "relative_l2": 9.580671030562371e-05,
+                "relative_l2_step": 20,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 10,
+                "relative_l2": 0.000196969645912759,
+                "relative_l2_step": 10,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.980232238769531e-07,
+                "max_abs_step": 76,
+                "relative_l2": 1.1998919546840625e-07,
+                "relative_l2_step": 128,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b1-int64-padding0",
+          "seed": 20261011,
+          "batch": 1,
+          "index_dtype": "int64",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            1,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            6,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            1
+          ],
+          "rank_input_sample": [
+            [
+              0.65234375,
+              0.12451171875,
+              -0.470703125,
+              -1.1796875,
+              0.2734375,
+              0.431640625,
+              0.279296875,
+              1.7109375
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 2.3283064365386963e-10,
+                  "relative_l2": 1.6878987096902165e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 2.2059138959917846e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 7.172248217557353e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 4.656612873077393e-10,
+                  "relative_l2": 3.375797419380433e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 2.2059138959917846e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 6.643765715352856e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 117,
+                "relative_l2": 0.00021234521409496665,
+                "relative_l2_step": 117,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.0078125,
+                "max_abs_step": 68,
+                "relative_l2": 0.0003001308359671384,
+                "relative_l2_step": 73,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.384185791015625e-07,
+                "max_abs_step": 17,
+                "relative_l2": 1.2616087019523547e-07,
+                "relative_l2_step": 20,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int64-padding0",
+          "seed": 20261012,
+          "batch": 8,
+          "index_dtype": "int64",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1
+          ],
+          "rank_input_sample": [
+            [
+              0.37890625,
+              -1.2734375,
+              0.416015625,
+              0.17578125,
+              -1.1015625,
+              0.189453125,
+              -1.5234375,
+              0.298828125
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.4901161193847656e-08,
+                  "relative_l2": 2.1840465436184786e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 1.9073486328125e-06,
+                  "relative_l2": 2.2377479425017555e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 8.291129915960482e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 9.313225746154785e-10,
+                  "relative_l2": 1.5143638565362494e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 7.006393243358389e-10,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 7.425843762121076e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 56,
+                "relative_l2": 9.218473132932559e-05,
+                "relative_l2_step": 56,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.0078125,
+                "max_abs_step": 16,
+                "relative_l2": 0.00012447794142644852,
+                "relative_l2_step": 113,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.384185791015625e-07,
+                "max_abs_step": 19,
+                "relative_l2": 1.1703447455602145e-07,
+                "relative_l2_step": 100,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int64-padding1",
+          "seed": 20261013,
+          "batch": 8,
+          "index_dtype": "int64",
+          "padding": true,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            0,
+            -1
+          ],
+          "rank_input_sample": [
+            [
+              -1.1953125,
+              0.77734375,
+              1.296875,
+              -1.1015625,
+              0.6953125,
+              -0.87890625,
+              0.84375,
+              -0.65625
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.001953125,
+                  "relative_l2": 2.7503985620569438e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 8.097527626205192e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 3.0517578125e-05,
+                  "relative_l2": 4.6055825805524364e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.001953125,
+                  "relative_l2": 2.8350457796477713e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 7.252899791865275e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 59,
+                "relative_l2": 0.00010562962415860966,
+                "relative_l2_step": 59,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 29,
+                "relative_l2": 0.00020122065325267613,
+                "relative_l2_step": 29,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 3.5762786865234375e-07,
+                "max_abs_step": 18,
+                "relative_l2": 1.1976561609117198e-07,
+                "relative_l2_step": 75,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        }
+      ],
+      "script_sha256": "a851c203ad169b84418ceac08fef24826583ca7331cc72d5cc9839ab1b02770d",
+      "scope": "Two NCCL ranks execute TP2-shaped local GDN correctness",
+      "source_head": "abf17c7c071b1b6bdd81ca9756894998e5e8b32d",
+      "source_root": "/source",
+      "source_files": {
+        "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+        "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "fea21582b8c0fc495c2cd8c8872bdd81624175c289aff1502222dd399c8074f0",
+        "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+        "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": "84bf2c2dc321c4487bc246cb09975f2b0c52f813bdd3d398d8317233d1cd89ff",
+        "tests/kernels/mamba/test_gdn_forward_core_split.py": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72",
+        "tests/kernels/mamba/test_gdn_fused_mtp.py": "60acfa88c731c63d4044b66c358e1516fe9252cf919fe3d7983f7fd3d8403d4d",
+        "tests/test_config.py": "285ff4effbbabf7f5d06c4f724a64eb6b15648dcc14565d438792ea8df0a3a1c",
+        "tests/v1/attention/test_gdn_metadata_builder.py": "6b3b74e31becd6bf108a3987dbe87b211766455a0a7a7e91699da46f2da02313"
+      },
+      "source_manifest_sha256": "6b756d4106a5715ec4a82b0f314d945b43347856bde67433961cdd62488a106a",
+      "runtime_versions": {
+        "torch": "2.13.0+cu129",
+        "triton": "3.7.1",
+        "flashinfer-python": "0.7.0.post1",
+        "nvidia-cutlass-dsl": "4.8.0"
+      },
+      "device": {
+        "logical_index": 0,
+        "name": "NVIDIA L20",
+        "uuid": "4af84168-6d29-6128-fee3-1b146cce9b47",
+        "capability": [
+          8,
+          9
+        ]
+      },
+      "global_shape": {
+        "H": 16,
+        "HV": 48,
+        "K": 128,
+        "V": 128
+      },
+      "local_shape": {
+        "H": 8,
+        "HV": 24,
+        "K": 128,
+        "V": 128
+      },
+      "logical_head_shard": {
+        "key_head_range": [
+          0,
+          8
+        ],
+        "value_head_range": [
+          0,
+          24
+        ]
+      },
+      "tolerances": {
+        "relative_l2": 0.01,
+        "float32_state": {
+          "atol": 0.01,
+          "rtol": 0.01
+        },
+        "scope": "same dtype gate for raw output, state and normalized output; never relaxed for long trajectories"
+      },
+      "wrapper_boundary": "GDNDecode raw GPU output/state plus gated RMSNorm",
+      "state_dtype": "float32",
+      "input_dtype": "bfloat16",
+      "steps_per_case": 128,
+      "parameter_contract": "Grad-enabled Parameters; FI adapter detaches biases",
+      "harness_sha256": "6aff35692b74ad2bd0b86a7f79e31968bb0bb89e874883c92da51503f73c2933",
+      "nccl_collective_sum": 3,
+      "passed_cases": 6
+    },
+    {
+      "rank": 1,
+      "local_rank": 1,
+      "world_size": 2,
+      "status": "passed",
+      "cases": [
+        {
+          "case": "b1-int32-padding0",
+          "seed": 20262008,
+          "batch": 1,
+          "index_dtype": "int32",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            1,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            6,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            1
+          ],
+          "rank_input_sample": [
+            [
+              0.004486083984375,
+              1.0859375,
+              0.306640625,
+              0.484375,
+              1.34375,
+              1.421875,
+              0.259765625,
+              -1.3125
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 2.384185791015625e-07,
+                  "relative_l2": 1.3068030284557608e-06,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 3.814697265625e-06,
+                  "relative_l2": 1.2899441514946375e-07,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 9.156831737300308e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 6.711547229087955e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 109,
+                "relative_l2": 0.00021089841902721673,
+                "relative_l2_step": 109,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.0078125,
+                "max_abs_step": 90,
+                "relative_l2": 0.00026344473008066416,
+                "relative_l2_step": 90,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.384185791015625e-07,
+                "max_abs_step": 7,
+                "relative_l2": 1.295926352895549e-07,
+                "relative_l2_step": 20,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int32-padding0",
+          "seed": 20262009,
+          "batch": 8,
+          "index_dtype": "int32",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1
+          ],
+          "rank_input_sample": [
+            [
+              2.203125,
+              -2.0625,
+              0.28515625,
+              0.578125,
+              1.8046875,
+              -0.36328125,
+              -1.28125,
+              -0.10302734375
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 7.62939453125e-06,
+                  "relative_l2": 1.1484147762530483e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0009765625,
+                  "relative_l2": 1.1861844541272148e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 9.288834235121612e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 7.450580596923828e-09,
+                  "relative_l2": 1.156014484138268e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 9.5367431640625e-07,
+                  "relative_l2": 1.1673980004900386e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 8.940696716308594e-08,
+                  "relative_l2": 7.666475454470856e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 30,
+                "relative_l2": 8.342039654962718e-05,
+                "relative_l2_step": 107,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.0078125,
+                "max_abs_step": 35,
+                "relative_l2": 0.0001259941782336682,
+                "relative_l2_step": 65,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.980232238769531e-07,
+                "max_abs_step": 64,
+                "relative_l2": 1.1968239732595976e-07,
+                "relative_l2_step": 119,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int32-padding1",
+          "seed": 20262010,
+          "batch": 8,
+          "index_dtype": "int32",
+          "padding": true,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            0,
+            -1
+          ],
+          "rank_input_sample": [
+            [
+              -0.4921875,
+              0.953125,
+              -0.306640625,
+              -0.482421875,
+              0.64453125,
+              0.095703125,
+              -0.5,
+              0.39453125
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 3.0517578125e-05,
+                  "relative_l2": 4.299036299926229e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0078125,
+                  "relative_l2": 0.00011314365838188678,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 9.016598312427959e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 3.0517578125e-05,
+                  "relative_l2": 4.7952780732885e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0078125,
+                  "relative_l2": 0.00011655175330815837,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 7.695119563777553e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 19,
+                "relative_l2": 9.360078547615558e-05,
+                "relative_l2_step": 111,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.03125,
+                "max_abs_step": 3,
+                "relative_l2": 0.0004655917873606086,
+                "relative_l2_step": 3,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.980232238769531e-07,
+                "max_abs_step": 103,
+                "relative_l2": 1.173340749005547e-07,
+                "relative_l2_step": 103,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b1-int64-padding0",
+          "seed": 20262011,
+          "batch": 1,
+          "index_dtype": "int64",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            1,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            6,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            1
+          ],
+          "rank_input_sample": [
+            [
+              0.57421875,
+              0.1259765625,
+              -0.87109375,
+              1.3671875,
+              -2.265625,
+              1.0390625,
+              0.71484375,
+              0.6484375
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.0,
+                  "relative_l2": 0.0,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 9.308848092359767e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 2.9802322387695312e-08,
+                  "relative_l2": 1.0901374736249636e-07,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 9.5367431640625e-07,
+                  "relative_l2": 2.9431788561851135e-08,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 5.960464477539063e-08,
+                  "relative_l2": 7.121212064475912e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 6.103515625e-05,
+                "max_abs_step": 12,
+                "relative_l2": 0.0001260181306861341,
+                "relative_l2_step": 12,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 38,
+                "relative_l2": 0.0004872393619734794,
+                "relative_l2_step": 38,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.384185791015625e-07,
+                "max_abs_step": 39,
+                "relative_l2": 1.3728192982398468e-07,
+                "relative_l2_step": 101,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int64-padding0",
+          "seed": 20262012,
+          "batch": 8,
+          "index_dtype": "int64",
+          "padding": false,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1
+          ],
+          "rank_input_sample": [
+            [
+              0.59765625,
+              0.6796875,
+              -1.4609375,
+              0.0810546875,
+              -0.2470703125,
+              1.5546875,
+              -0.447265625,
+              0.61328125
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.3096723705530167e-10,
+                  "relative_l2": 1.7791255968457875e-10,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 6.705522537231445e-08,
+                  "relative_l2": 8.069457324566542e-10,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 8.260574446694591e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 4.76837158203125e-07,
+                  "relative_l2": 6.477598617493641e-07,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.000244140625,
+                  "relative_l2": 2.9379998522927053e-06,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 7.604332807886749e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.0001220703125,
+                "max_abs_step": 25,
+                "relative_l2": 8.331854041898623e-05,
+                "relative_l2_step": 99,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 67,
+                "relative_l2": 0.00016443028289359063,
+                "relative_l2_step": 67,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.980232238769531e-07,
+                "max_abs_step": 70,
+                "relative_l2": 1.2184928266378847e-07,
+                "relative_l2_step": 97,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        },
+        {
+          "case": "b8-int64-padding1",
+          "seed": 20262013,
+          "batch": 8,
+          "index_dtype": "int64",
+          "padding": true,
+          "status": "passed",
+          "local_A_log_shape": [
+            24
+          ],
+          "local_dt_bias_shape": [
+            24
+          ],
+          "raw_output_shape": [
+            8,
+            1,
+            24,
+            128
+          ],
+          "state_shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "state_strides": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "qkv_strides": [
+            8192,
+            1
+          ],
+          "gate_pointer_offset_bytes": 48,
+          "a_pointer_alignment_16_bytes": true,
+          "initial_index_map": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            0,
+            -1
+          ],
+          "rank_input_sample": [
+            [
+              -1.625,
+              -0.251953125,
+              0.1953125,
+              0.1328125,
+              1.015625,
+              -1.0234375,
+              0.037353515625,
+              -0.421875
+            ]
+          ],
+          "correctness": {
+            "one_step": {
+              "triton": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 3.814697265625e-06,
+                  "relative_l2": 6.601874247280648e-06,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 0.001953125,
+                  "relative_l2": 3.0503930247505195e-05,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 9.37982989057673e-08,
+                  "pointwise_over_threshold": 0
+                }
+              },
+              "flashinfer": {
+                "raw_output": {
+                  "finite": true,
+                  "max_abs": 1.862645149230957e-09,
+                  "relative_l2": 2.8832496390407414e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "output": {
+                  "finite": true,
+                  "max_abs": 1.1920928955078125e-07,
+                  "relative_l2": 1.665255378036079e-09,
+                  "pointwise_over_threshold": 0
+                },
+                "state": {
+                  "finite": true,
+                  "max_abs": 8.940696716308594e-08,
+                  "relative_l2": 7.270077162502275e-08,
+                  "pointwise_over_threshold": 0
+                }
+              }
+            },
+            "trajectory": {
+              "raw_output": {
+                "max_abs": 0.000244140625,
+                "max_abs_step": 20,
+                "relative_l2": 0.00020179356215521693,
+                "relative_l2_step": 20,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "output": {
+                "max_abs": 0.015625,
+                "max_abs_step": 39,
+                "relative_l2": 0.00019526149844750762,
+                "relative_l2_step": 39,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              },
+              "state": {
+                "max_abs": 2.980232238769531e-07,
+                "max_abs_step": 32,
+                "relative_l2": 1.207787789780923e-07,
+                "relative_l2_step": 83,
+                "pointwise_over_threshold": 0,
+                "pointwise_over_threshold_step": 1
+              }
+            },
+            "steps": 128,
+            "graph_replay": true,
+            "metadata_remap": true,
+            "inactive_slots_bitwise_unchanged": true,
+            "cache_page_padding_bitwise_unchanged": true,
+            "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+          }
+        }
+      ],
+      "script_sha256": "a851c203ad169b84418ceac08fef24826583ca7331cc72d5cc9839ab1b02770d",
+      "scope": "Two NCCL ranks execute TP2-shaped local GDN correctness",
+      "source_head": "abf17c7c071b1b6bdd81ca9756894998e5e8b32d",
+      "source_root": "/source",
+      "source_files": {
+        "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+        "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "fea21582b8c0fc495c2cd8c8872bdd81624175c289aff1502222dd399c8074f0",
+        "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+        "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": "84bf2c2dc321c4487bc246cb09975f2b0c52f813bdd3d398d8317233d1cd89ff",
+        "tests/kernels/mamba/test_gdn_forward_core_split.py": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72",
+        "tests/kernels/mamba/test_gdn_fused_mtp.py": "60acfa88c731c63d4044b66c358e1516fe9252cf919fe3d7983f7fd3d8403d4d",
+        "tests/test_config.py": "285ff4effbbabf7f5d06c4f724a64eb6b15648dcc14565d438792ea8df0a3a1c",
+        "tests/v1/attention/test_gdn_metadata_builder.py": "6b3b74e31becd6bf108a3987dbe87b211766455a0a7a7e91699da46f2da02313"
+      },
+      "source_manifest_sha256": "6b756d4106a5715ec4a82b0f314d945b43347856bde67433961cdd62488a106a",
+      "runtime_versions": {
+        "torch": "2.13.0+cu129",
+        "triton": "3.7.1",
+        "flashinfer-python": "0.7.0.post1",
+        "nvidia-cutlass-dsl": "4.8.0"
+      },
+      "device": {
+        "logical_index": 1,
+        "name": "NVIDIA L20",
+        "uuid": "a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+        "capability": [
+          8,
+          9
+        ]
+      },
+      "global_shape": {
+        "H": 16,
+        "HV": 48,
+        "K": 128,
+        "V": 128
+      },
+      "local_shape": {
+        "H": 8,
+        "HV": 24,
+        "K": 128,
+        "V": 128
+      },
+      "logical_head_shard": {
+        "key_head_range": [
+          8,
+          16
+        ],
+        "value_head_range": [
+          24,
+          48
+        ]
+      },
+      "tolerances": {
+        "relative_l2": 0.01,
+        "float32_state": {
+          "atol": 0.01,
+          "rtol": 0.01
+        },
+        "scope": "same dtype gate for raw output, state and normalized output; never relaxed for long trajectories"
+      },
+      "wrapper_boundary": "GDNDecode raw GPU output/state plus gated RMSNorm",
+      "state_dtype": "float32",
+      "input_dtype": "bfloat16",
+      "steps_per_case": 128,
+      "parameter_contract": "Grad-enabled Parameters; FI adapter detaches biases",
+      "harness_sha256": "6aff35692b74ad2bd0b86a7f79e31968bb0bb89e874883c92da51503f73c2933",
+      "nccl_collective_sum": 3,
+      "passed_cases": 6
+    }
+  ],
+  "scope": "Distributed local-wrapper correctness; no timing claim",
+  "limitations": [
+    "Does not exercise checkpoint weight loading or full-model TP",
+    "FP32 state and the frozen pinned runtime only",
+    "TP2 local HV24 does not enter the HV4/HV12 clone branch"
+  ]
+}

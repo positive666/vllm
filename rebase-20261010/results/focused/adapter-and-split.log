@@ -1,0 +1,909 @@
+............................FFFFFFFFFFFF                                 [100%]
+=================================== FAILURES ===================================
+_ test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype0] _
+
+state_dtype = torch.bfloat16, num_decodes = 3, prefill_lens = [512, 300]
+fresh_prefill = False, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype1] _
+
+state_dtype = torch.float32, num_decodes = 3, prefill_lens = [512, 300]
+fresh_prefill = False, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[False-3-prefill_lens0-flashinfer-state_dtype2] _
+
+state_dtype = torch.float32, num_decodes = 3, prefill_lens = [512, 300]
+fresh_prefill = False, decode_backend = 'flashinfer'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[False-4-prefill_lens1-triton-state_dtype0] _
+
+state_dtype = torch.bfloat16, num_decodes = 4, prefill_lens = [64, 5]
+fresh_prefill = False, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[False-4-prefill_lens1-triton-state_dtype1] _
+
+state_dtype = torch.float32, num_decodes = 4, prefill_lens = [64, 5]
+fresh_prefill = False, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[False-4-prefill_lens1-flashinfer-state_dtype2] _
+
+state_dtype = torch.float32, num_decodes = 4, prefill_lens = [64, 5]
+fresh_prefill = False, decode_backend = 'flashinfer'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[True-3-prefill_lens0-triton-state_dtype0] _
+
+state_dtype = torch.bfloat16, num_decodes = 3, prefill_lens = [512, 300]
+fresh_prefill = True, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[True-3-prefill_lens0-triton-state_dtype1] _
+
+state_dtype = torch.float32, num_decodes = 3, prefill_lens = [512, 300]
+fresh_prefill = True, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[True-3-prefill_lens0-flashinfer-state_dtype2] _
+
+state_dtype = torch.float32, num_decodes = 3, prefill_lens = [512, 300]
+fresh_prefill = True, decode_backend = 'flashinfer'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[True-4-prefill_lens1-triton-state_dtype0] _
+
+state_dtype = torch.bfloat16, num_decodes = 4, prefill_lens = [64, 5]
+fresh_prefill = True, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[True-4-prefill_lens1-triton-state_dtype1] _
+
+state_dtype = torch.float32, num_decodes = 4, prefill_lens = [64, 5]
+fresh_prefill = True, decode_backend = 'triton'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+_ test_forward_core_split_matches_unified[True-4-prefill_lens1-flashinfer-state_dtype2] _
+
+state_dtype = torch.float32, num_decodes = 4, prefill_lens = [64, 5]
+fresh_prefill = True, decode_backend = 'flashinfer'
+
+    @pytest.mark.parametrize(
+        "decode_backend,state_dtype",
+        [
+            ("triton", torch.bfloat16),
+            ("triton", torch.float32),
+            ("flashinfer", torch.float32),
+        ],
+    )
+    @pytest.mark.parametrize("num_decodes,prefill_lens", [(3, [512, 300]), (4, [64, 5])])
+    @pytest.mark.parametrize("fresh_prefill", [False, True])
+    def test_forward_core_split_matches_unified(
+        state_dtype: torch.dtype,
+        num_decodes: int,
+        prefill_lens: list[int],
+        fresh_prefill: bool,
+        decode_backend: str,
+    ) -> None:
+        if decode_backend == "flashinfer":
+            pytest.importorskip("flashinfer.gdn_decode")
+        torch.manual_seed(0)
+        device = torch.device("cuda")
+>       vllm_config = _make_vllm_config(decode_backend)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/kernels/mamba/test_gdn_forward_core_split.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/kernels/mamba/test_gdn_forward_core_split.py:90: in _make_vllm_config
+    cfg = create_vllm_config(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_name = 'Qwen/Qwen3.5-0.8B', tensor_parallel_size = 1, max_model_len = 1024
+dtype = 'auto', num_gpu_blocks = 1000, block_size = 16, max_num_seqs = 256
+max_num_batched_tokens = 8192, enable_chunked_prefill = True
+add_mock_model_methods = True, hf_config_override = {'linear_key_head_dim': 128}
+
+    def create_vllm_config(
+        model_name: str = "meta-llama/Meta-Llama-3-8B",
+        tensor_parallel_size: int = 1,
+        max_model_len: int = 1024,
+        dtype: ModelDType | torch.dtype = "auto",
+        num_gpu_blocks: int = 1000,
+        block_size: int = 16,
+        max_num_seqs: int = 256,
+        max_num_batched_tokens: int = 8192,
+        enable_chunked_prefill: bool = True,
+        add_mock_model_methods: bool = True,
+        hf_config_override: dict | None = None,
+    ) -> VllmConfig:
+        """Create a VllmConfig for testing with reasonable defaults."""
+>       model_config = ModelConfig(
+            model=model_name,
+            tokenizer=model_name,
+            trust_remote_code=False,
+            dtype=dtype,
+            seed=0,
+            max_model_len=max_model_len,
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+E         Value error, Invalid repository ID or local directory specified: 'Qwen/Qwen3.5-0.8B'.
+E       Please verify the following requirements:
+E       1. Provide a valid Hugging Face repository ID.
+E       2. Specify a local directory that contains a recognized configuration file.
+E          - For Hugging Face models: ensure the presence of a 'config.json'.
+E          - For Mistral models: ensure the presence of a 'params.json'.
+E        [type=value_error, input_value=ArgsKwargs((), {'model': ... 'max_model_len': 1024}), input_type=ArgsKwargs]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+tests/v1/attention/utils.py:196: ValidationError
+=============================== warnings summary ===============================
+vllm/__init__.py:7
+  /source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+  No module named 'vllm._version'
+    from .version import __version__, __version_tuple__  # isort:skip
+
+../cache/gdn-runtime/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+  /cache/gdn-runtime/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py::test_flashinfer_decode_preserves_indexed_state[4-8-False-index_dtype0]
+tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py::test_flashinfer_decode_preserves_indexed_state[1-4-False-index_dtype0]
+  /cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_kernels/gdn_decode_pretranspose.py:92: DeprecationWarning: cutlass.utils.smem_allocator.SmemAllocator is deprecated; use cutlass.memory.SmemAllocator instead. It will be removed in a future release.
+    smem = cutlass.utils.SmemAllocator()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+---------- generated xml file: /results/focused/adapter-and-split.xml ----------
+=========================== short test summary info ============================
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype0]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype1]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-3-prefill_lens0-flashinfer-state_dtype2]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-4-prefill_lens1-triton-state_dtype0]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-4-prefill_lens1-triton-state_dtype1]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-4-prefill_lens1-flashinfer-state_dtype2]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[True-3-prefill_lens0-triton-state_dtype0]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[True-3-prefill_lens0-triton-state_dtype1]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[True-3-prefill_lens0-flashinfer-state_dtype2]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[True-4-prefill_lens1-triton-state_dtype0]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[True-4-prefill_lens1-triton-state_dtype1]
+FAILED tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[True-4-prefill_lens1-flashinfer-state_dtype2]
+12 failed, 28 passed, 18 deselected, 17 warnings in 18.24s

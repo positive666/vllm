@@ -1,0 +1,23 @@
+........................................                                 [100%]
+=============================== warnings summary ===============================
+vllm/__init__.py:7
+  /source/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+  No module named 'vllm._version'
+    from .version import __version__, __version_tuple__  # isort:skip
+
+../cache/gdn-runtime/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+  /cache/gdn-runtime/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype0]
+tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-3-prefill_lens0-triton-state_dtype1]
+  /cache/gdn-runtime/lib/python3.12/site-packages/triton/language/core.py:2284: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+    warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+
+tests/kernels/mamba/test_gdn_forward_core_split.py::test_forward_core_split_matches_unified[False-3-prefill_lens0-flashinfer-state_dtype2]
+  /cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_kernels/gdn_decode_pretranspose.py:92: DeprecationWarning: cutlass.utils.smem_allocator.SmemAllocator is deprecated; use cutlass.memory.SmemAllocator instead. It will be removed in a future release.
+    smem = cutlass.utils.SmemAllocator()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+-------- generated xml file: /results/v2/focused/adapter-and-split.xml ---------
+40 passed, 18 deselected, 18 warnings in 119.97s (0:01:59)

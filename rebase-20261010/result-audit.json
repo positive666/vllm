@@ -1,0 +1,163 @@
+{
+  "status": "passed",
+  "source_head": "abf17c7c071b1b6bdd81ca9756894998e5e8b32d",
+  "focused_passed": 106,
+  "tp2_rank_cases": 12,
+  "model_completions": 32,
+  "arms": [
+    {
+      "backend": "triton",
+      "mode": "graph",
+      "summary": {
+        "requests": 8,
+        "raw_correct": 7,
+        "strict_correct": 7,
+        "truncated": 0,
+        "unparsed": 0,
+        "missing_marker": 0
+      },
+      "targets": [
+        {
+          "index": 209,
+          "predicted": "34800",
+          "gold": "145",
+          "finish_reason": "stop",
+          "strict_correct": false,
+          "usage": {
+            "prompt_tokens": 66,
+            "completion_tokens": 1720,
+            "total_tokens": 1786
+          }
+        },
+        {
+          "index": 255,
+          "predicted": "192",
+          "gold": "192",
+          "finish_reason": "stop",
+          "strict_correct": true,
+          "usage": {
+            "prompt_tokens": 78,
+            "completion_tokens": 359,
+            "total_tokens": 437
+          }
+        }
+      ]
+    },
+    {
+      "backend": "flashinfer",
+      "mode": "graph",
+      "summary": {
+        "requests": 8,
+        "raw_correct": 7,
+        "strict_correct": 7,
+        "truncated": 0,
+        "unparsed": 0,
+        "missing_marker": 0
+      },
+      "targets": [
+        {
+          "index": 209,
+          "predicted": "145",
+          "gold": "145",
+          "finish_reason": "stop",
+          "strict_correct": true,
+          "usage": {
+            "prompt_tokens": 66,
+            "completion_tokens": 2538,
+            "total_tokens": 2604
+          }
+        },
+        {
+          "index": 255,
+          "predicted": "176",
+          "gold": "192",
+          "finish_reason": "stop",
+          "strict_correct": false,
+          "usage": {
+            "prompt_tokens": 78,
+            "completion_tokens": 1834,
+            "total_tokens": 1912
+          }
+        }
+      ]
+    },
+    {
+      "backend": "triton",
+      "mode": "eager",
+      "summary": {
+        "requests": 8,
+        "raw_correct": 7,
+        "strict_correct": 7,
+        "truncated": 0,
+        "unparsed": 0,
+        "missing_marker": 0
+      },
+      "targets": [
+        {
+          "index": 209,
+          "predicted": "145",
+          "gold": "145",
+          "finish_reason": "stop",
+          "strict_correct": true,
+          "usage": {
+            "prompt_tokens": 66,
+            "completion_tokens": 3396,
+            "total_tokens": 3462
+          }
+        },
+        {
+          "index": 255,
+          "predicted": "176",
+          "gold": "192",
+          "finish_reason": "stop",
+          "strict_correct": false,
+          "usage": {
+            "prompt_tokens": 78,
+            "completion_tokens": 1217,
+            "total_tokens": 1295
+          }
+        }
+      ]
+    },
+    {
+      "backend": "flashinfer",
+      "mode": "eager",
+      "summary": {
+        "requests": 8,
+        "raw_correct": 7,
+        "strict_correct": 7,
+        "truncated": 1,
+        "unparsed": 0,
+        "missing_marker": 1
+      },
+      "targets": [
+        {
+          "index": 209,
+          "predicted": "145",
+          "gold": "145",
+          "finish_reason": "stop",
+          "strict_correct": true,
+          "usage": {
+            "prompt_tokens": 66,
+            "completion_tokens": 1715,
+            "total_tokens": 1781
+          }
+        },
+        {
+          "index": 255,
+          "predicted": "10",
+          "gold": "192",
+          "finish_reason": "length",
+          "strict_correct": false,
+          "usage": {
+            "prompt_tokens": 78,
+            "completion_tokens": 3500,
+            "total_tokens": 3578
+          }
+        }
+      ]
+    }
+  ],
+  "scope": "Record integrity and bounded compatibility; not accuracy equivalence or new performance measurement",
+  "ownership_scope": "No two-consecutive-failure monitor stop; inspect individual unmatched observations separately"
+}

@@ -1,0 +1,43 @@
+{
+  "source_head": "abf17c7c071b1b6bdd81ca9756894998e5e8b32d",
+  "review_base": "97c3e8078cc7479de03374d73043640faae2e665",
+  "main_base": "a98247ab4db686ee03c66d5feb3c761e52a2f8ab",
+  "archive": {
+    "bytes": 44239014,
+    "sha256": "51c1aaeb854880e0778b9caef7b85770090ae715deaea57082b26ccf34370319"
+  },
+  "files": {
+    "vllm/config/kernel.py": {
+      "sha256": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+      "bytes": 18410
+    },
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": {
+      "sha256": "fea21582b8c0fc495c2cd8c8872bdd81624175c289aff1502222dd399c8074f0",
+      "bytes": 84548
+    },
+    "vllm/v1/attention/backends/gdn_attn.py": {
+      "sha256": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+      "bytes": 34134
+    },
+    "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": {
+      "sha256": "84bf2c2dc321c4487bc246cb09975f2b0c52f813bdd3d398d8317233d1cd89ff",
+      "bytes": 18231
+    },
+    "tests/kernels/mamba/test_gdn_forward_core_split.py": {
+      "sha256": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72",
+      "bytes": 11728
+    },
+    "tests/kernels/mamba/test_gdn_fused_mtp.py": {
+      "sha256": "60acfa88c731c63d4044b66c358e1516fe9252cf919fe3d7983f7fd3d8403d4d",
+      "bytes": 12675
+    },
+    "tests/test_config.py": {
+      "sha256": "285ff4effbbabf7f5d06c4f724a64eb6b15648dcc14565d438792ea8df0a3a1c",
+      "bytes": 149679
+    },
+    "tests/v1/attention/test_gdn_metadata_builder.py": {
+      "sha256": "6b3b74e31becd6bf108a3987dbe87b211766455a0a7a7e91699da46f2da02313",
+      "bytes": 21205
+    }
+  }
+}

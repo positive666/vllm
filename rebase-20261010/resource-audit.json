@@ -1,0 +1,7 @@
+{
+  "samples": 263,
+  "matched_compute_rows": 374,
+  "unmatched_compute_rows": 0,
+  "unmatched": [],
+  "scope": "Sampled container-PID matching only; timestamps are second-resolution, not continuous ownership proof"
+}
