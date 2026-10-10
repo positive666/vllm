@@ -1,0 +1,121 @@
+first-step-localization-20261010/README.md
+  s_4bd6f8a8f15ce1::t_f3d27db22ed5d0 1-34
+first-step-localization-20261010/audit_localization.py
+  s_4bd6f8a8f15ce1::t_0edfbce2ec5ea7 1-106
+first-step-localization-20261010/cpu-audit.json
+  s_4bd6f8a8f15ce1::t_87073508b29a3e 1-70
+first-step-localization-20261010/first-output/create_container.sh
+  s_4bd6f8a8f15ce1::t_46c758e8eaae07 1-39
+first-step-localization-20261010/first-output/localize.py
+  s_4bd6f8a8f15ce1::t_5bc72d4ca61d32 1-176
+first-step-localization-20261010/first-output/monitor_host.sh
+  s_4bd6f8a8f15ce1::t_271132e4a58e8f 1-34
+first-step-localization-20261010/first-output/producer-manifest.json
+  s_4bd6f8a8f15ce1::t_782cd30728d177 1-22
+first-step-localization-20261010/first-output/protocol.json
+  s_4bd6f8a8f15ce1::t_38b0b40205c851 1-5
+first-step-localization-20261010/first-output/results/cleanup.exit
+  s_4bd6f8a8f15ce1::t_de997595eab51d 1
+first-step-localization-20261010/first-output/results/cleanup.log
+  s_4bd6f8a8f15ce1::t_1b8523fe8f9ab9 1
+first-step-localization-20261010/first-output/results/completed.txt
+  s_4bd6f8a8f15ce1::t_d07e0da782b958 1
+first-step-localization-20261010/first-output/results/container-id.txt
+  s_4bd6f8a8f15ce1::t_2b3726e527367d 1
+first-step-localization-20261010/first-output/results/container-initial-state.json
+  s_4bd6f8a8f15ce1::t_c03d89a28d4ddc 1
+first-step-localization-20261010/first-output/results/container-inspect-initial.json
+  s_4bd6f8a8f15ce1::t_c46c373c69c0c1 1
+first-step-localization-20261010/first-output/results/docker-exec.exit
+  s_4bd6f8a8f15ce1::t_6847a3fda087c2 1
+first-step-localization-20261010/first-output/results/final-gpus.csv
+  s_4bd6f8a8f15ce1::t_a1562c184242de 1-2
+first-step-localization-20261010/first-output/results/final-processes.csv
+  s_4bd6f8a8f15ce1::t_e928a3e79809f9 1
+first-step-localization-20261010/first-output/results/host-gpus.csv
+  s_4bd6f8a8f15ce1::t_8665a3f75757e6 1-5
+first-step-localization-20261010/first-output/results/host-identities.log
+  s_4bd6f8a8f15ce1::t_00296244a908b9 1-5
+first-step-localization-20261010/first-output/results/host-processes.log
+  s_4bd6f8a8f15ce1::t_e05c467b425088 1-34
+first-step-localization-20261010/first-output/results/numeric.exit
+  s_4bd6f8a8f15ce1::t_a6f4df23bf5ece 1
+first-step-localization-20261010/first-output/results/numeric.log
+  s_4bd6f8a8f15ce1::t_db450ee8f3ba7e 1-31
+first-step-localization-20261010/first-output/results/report.json
+  s_4bd6f8a8f15ce1::t_e9715943f8e32d 1-4578
+first-step-localization-20261010/first-output/results/run.exit
+  s_4bd6f8a8f15ce1::t_4f3632ce590439 1
+first-step-localization-20261010/first-output/results/scan.json
+  s_4bd6f8a8f15ce1::t_269cf5f537daec 1-3856
+first-step-localization-20261010/first-output/results/started.txt
+  s_4bd6f8a8f15ce1::t_aa24d6975b479a 1
+first-step-localization-20261010/first-output/run.sh
+  s_4bd6f8a8f15ce1::t_7ea9c0eda7f7bd 1-42
+first-step-localization-20261010/layer0/create_container.sh
+  s_4bd6f8a8f15ce1::t_c6673273029b2f 1-39
+first-step-localization-20261010/layer0/localize.py
+  s_4bd6f8a8f15ce1::t_6c8f7876d2c220 1-154
+first-step-localization-20261010/layer0/monitor_host.sh
+  s_4bd6f8a8f15ce1::t_54a092bbcb63a0 1-34
+first-step-localization-20261010/layer0/producer-manifest.json
+  s_4bd6f8a8f15ce1::t_2c468bef2414f7 1-22
+first-step-localization-20261010/layer0/protocol.json
+  s_4bd6f8a8f15ce1::t_2be5438a58eefe 1-29
+first-step-localization-20261010/layer0/results/cleanup.exit
+  s_4bd6f8a8f15ce1::t_3e4de931425db7 1
+first-step-localization-20261010/layer0/results/cleanup.log
+  s_4bd6f8a8f15ce1::t_cdaaf500ebdf8e 1
+first-step-localization-20261010/layer0/results/completed.txt
+  s_4bd6f8a8f15ce1::t_09a0d7c048ff24 1
+first-step-localization-20261010/layer0/results/container-id.txt
+  s_4bd6f8a8f15ce1::t_56d4b19fc4b94e 1
+first-step-localization-20261010/layer0/results/container-initial-state.json
+  s_4bd6f8a8f15ce1::t_ffbe95e9f89dac 1
+first-step-localization-20261010/layer0/results/container-inspect-initial.json
+  s_4bd6f8a8f15ce1::t_6aecc0bb56b1c6 1
+first-step-localization-20261010/layer0/results/docker-exec.exit
+  s_4bd6f8a8f15ce1::t_2fde5d5b190e84 1
+first-step-localization-20261010/layer0/results/final-gpus.csv
+  s_4bd6f8a8f15ce1::t_3b4df6cd482341 1-2
+first-step-localization-20261010/layer0/results/final-processes.csv
+  s_4bd6f8a8f15ce1::t_a488d6b5e05414 1
+first-step-localization-20261010/layer0/results/host-gpus.csv
+  s_4bd6f8a8f15ce1::t_526ce3d61f5cdc 1-4
+first-step-localization-20261010/layer0/results/host-identities.log
+  s_4bd6f8a8f15ce1::t_b4e0e628e6b598 1-4
+first-step-localization-20261010/layer0/results/host-processes.log
+  s_4bd6f8a8f15ce1::t_4f7f0260a3f788 1-26
+first-step-localization-20261010/layer0/results/numeric.exit
+  s_4bd6f8a8f15ce1::t_4e56cb078b6828 1
+first-step-localization-20261010/layer0/results/numeric.log
+  s_4bd6f8a8f15ce1::t_b25d89dc3f92c9 1-32
+first-step-localization-20261010/layer0/results/report.json
+  s_4bd6f8a8f15ce1::t_ae91fe3be09d73 1-1388
+first-step-localization-20261010/layer0/results/run.exit
+  s_4bd6f8a8f15ce1::t_eebe01d10b6bb5 1
+first-step-localization-20261010/layer0/results/started.txt
+  s_4bd6f8a8f15ce1::t_0694b0ae99bcf0 1
+first-step-localization-20261010/layer0/run.sh
+  s_4bd6f8a8f15ce1::t_f14da1ff8468ed 1-42
+first-step-localization-20261010/manifest.json
+  s_4bd6f8a8f15ce1::t_532186e0ad4fd9 1-220
+first-step-localization-20261010/runtime-binding.json
+  s_4bd6f8a8f15ce1::t_9319efda9797a5 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "10884194d5420aadf49835428e066a6819c58124",
+  "prompts": {},
+  "sessions": {
+    "s_4bd6f8a8f15ce1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_4bd6f8a8f15ce1",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
