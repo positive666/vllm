@@ -1,0 +1,7 @@
+{
+  "preparation_supervisor_exit": null,
+  "actual_child_exit": "not observed",
+  "completion_manifest_exists": true,
+  "no_matching_process_seen": true,
+  "action": "Retain original supervisor receipt. Independently verify completed public files and rerun all five consumers; do not claim the timed-out supervisor exited0."
+}

@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "{\"status\": \"CPU_CONSUMER_CHECKS_PASS\", \"checks\": [\"syntax audit_idle_wait.py\", \"syntax audit_serving.py\", \"syntax resource_audit.py\", \"syntax audit_telemetry.py\", \"all17 phases with two idle samples\", \"reject inconsistent busy flag\", \"retain unmatched despite later idle\", \"reject missing phase\", \"reject one idle\", \"reject wrong CID\"], \"v2_archive_sha256\": \"3c989e24198e86dc910eced86e3fcde5bcd33eb4c08ac391d0aca282e17ea97e\", \"gpu_runs\": false}\r\n",
+  "stderr": ""
+}

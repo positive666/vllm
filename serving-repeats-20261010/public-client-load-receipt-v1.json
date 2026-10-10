@@ -1,0 +1,18 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "D:\\code\\vllm\\artifacts\\gdn60403-review-20261008\\serving-repeats-v3-20261010\\publication-work-v1\\audit_client_load.py",
+    "--root",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/publication-work-v1",
+    "--output",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/publication-work-v1/public-client-load-summary-v1.json"
+  ],
+  "output": "{\"status\": \"CLIENT_CONCURRENCY_PASS\", \"rounds\": 64, \"error\": null}",
+  "exit": 0
+}

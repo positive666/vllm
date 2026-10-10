@@ -1,0 +1,23 @@
+{
+  "exit": 2,
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/resource_audit.py",
+    "--results",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/results",
+    "--manifest",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/producer-manifest.json",
+    "--expected-owner",
+    "gdn60403-serving-repeats-v3-20261010",
+    "--output",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/resource-summary-v1.json"
+  ],
+  "stdout": "{\"status\": \"REVIEW_REQUIRED\", \"strict_ownership\": false, \"counts\": {\"process_snapshots\": 528, \"compute_observations\": 876, \"matched_same_snapshot\": 874, \"unmatched\": 2, \"unknown_uuid\": 0, \"partial_frames\": 0}, \"mathematical_gate_evaluated\": false}\r\n",
+  "stderr": ""
+}

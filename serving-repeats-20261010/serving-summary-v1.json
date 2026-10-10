@@ -1,0 +1,2248 @@
+{
+  "status": "SERVING_RECORDS_AND_METRICS_PASS",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "measured_requests": 768,
+  "warmup_requests": 128,
+  "independent_launches_per_backend": 4,
+  "unit": "Independent serving process; requests and timing rounds are nested observations, not independent launches",
+  "analysis": {
+    "unit": "Independent serving process; requests and timing rounds are nested observations, not independent launches",
+    "aggregation": "Median of three round metrics per launch; median and range across four launches per backend; four predeclared paired percent changes",
+    "metrics": [
+      "output_tokens_per_second",
+      "ttft_ms.p50",
+      "ttft_ms.p95",
+      "token_ttft_ms.p50",
+      "tpot_ms.p50",
+      "tpot_ms.p95",
+      "request_seconds.p50",
+      "request_seconds.p95"
+    ],
+    "inference": "Descriptive paired replication only; no confidence interval, significance, broad quality equivalence or general serving speedup claim",
+    "negative_results": "Retain every launch, failure and regression; do not remove slow runs or stop after favorable results"
+  },
+  "scope": "Loopback streaming completions, fixed synthetic workload; includes TP collectives/model/API/client; excludes startup and warmup; not natural-answer accuracy or external-network latency",
+  "token_chunk_size_histogram": {
+    "1": 114688
+  },
+  "launches": [
+    {
+      "arm": "triton-a1",
+      "backend": "triton",
+      "started_utc": "2026-10-10T04:35:58Z",
+      "ready_utc": "2026-10-10T04:38:34Z",
+      "finished_utc": "2026-10-10T04:41:48Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.5228435974224,
+            "round_values": [
+              44.5228435974224,
+              44.52022424959767,
+              44.52626043486207
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 173.03234338760376,
+            "round_values": [
+              173.3359843492508,
+              172.82190266996622,
+              173.03234338760376
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 174.18709909543395,
+            "round_values": [
+              174.18709909543395,
+              175.07580621168017,
+              173.76204440370202
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 173.03234338760376,
+            "round_values": [
+              173.3359843492508,
+              172.82190266996622,
+              173.03234338760376
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.26891993895525,
+            "round_values": [
+              21.26694095181668,
+              21.269280360791626,
+              21.26891993895525
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.27105577328191,
+            "round_values": [
+              21.27105577328191,
+              21.2721082997897,
+              21.27047233635516
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.8742658300325274,
+            "round_values": [
+              2.8745107911527157,
+              2.874248405918479,
+              2.8742658300325274
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.87543952325359,
+            "round_values": [
+              2.8752023898996413,
+              2.8767853160388768,
+              2.87543952325359
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 228.3362216997818,
+            "round_values": [
+              228.6938335002288,
+              228.3252561266245,
+              228.3362216997818
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 848.1201380491257,
+            "round_values": [
+              813.9438536018133,
+              849.4705595076084,
+              848.1201380491257
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1343.6542600393295,
+            "round_values": [
+              1328.30415898934,
+              1344.3573089316487,
+              1343.6542600393295
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 848.1201380491257,
+            "round_values": [
+              813.9438536018133,
+              849.4705595076084,
+              848.1201380491257
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.359041759348294,
+            "round_values": [
+              28.500606313230485,
+              27.359041759348294,
+              27.349544527727787
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 33.11643903107038,
+            "round_values": [
+              33.14070435842191,
+              33.115644590914485,
+              33.11643903107038
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.432034511119127,
+            "round_values": [
+              4.43620163295418,
+              4.432034511119127,
+              4.4317383505403996
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.816943247336894,
+            "round_values": [
+              4.839060373604298,
+              4.816294994205236,
+              4.816943247336894
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "b0e70a5764c682211d5613fe0f626e36c1bcb7233c0bc678cb08433f0eb9133c",
+        "bytes": 131731,
+        "recorded_prefix_bytes": 127616,
+        "appended_bytes": 4115,
+        "appended_sha256": "8c73624dc749a5a40a46a0f7905256df671bafb731b803a5fc6ff30f7feed2ba"
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "01bc628c18999114d7d6a138638ecdf2a4469c2db35f4b7329f2858eeda3e985",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "triton-a1: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "flashinfer-b1",
+      "backend": "flashinfer",
+      "started_utc": "2026-10-10T04:41:58Z",
+      "ready_utc": "2026-10-10T04:44:34Z",
+      "finished_utc": "2026-10-10T04:47:47Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.712924269381126,
+            "round_values": [
+              44.70550785878458,
+              44.712924269381126,
+              44.71551162827745
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 172.70077392458916,
+            "round_values": [
+              173.0393897742033,
+              172.70077392458916,
+              172.54922911524773
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 173.83908852934837,
+            "round_values": [
+              174.81952253729105,
+              173.83908852934837,
+              173.2798032462597
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 172.70077392458916,
+            "round_values": [
+              173.0393897742033,
+              172.70077392458916,
+              172.54922911524773
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.175939751070317,
+            "round_values": [
+              21.175939751070317,
+              21.174972070249048,
+              21.175975251326882
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.1791311185367,
+            "round_values": [
+              21.180754435784,
+              21.176564653851386,
+              21.1791311185367
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.8621598901227117,
+            "round_values": [
+              2.8625859143212438,
+              2.8621598901227117,
+              2.8620278742164373
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.863099231850356,
+            "round_values": [
+              2.8641791474074125,
+              2.863099231850356,
+              2.8628893117420375
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 229.64074187725024,
+            "round_values": [
+              229.6294228555122,
+              229.64074187725024,
+              230.02326926264956
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 844.5752561092377,
+            "round_values": [
+              844.7972368448973,
+              844.5752561092377,
+              810.0194120779634
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1339.430064894259,
+            "round_values": [
+              1339.5370314829051,
+              1339.430064894259,
+              1323.0739100836217
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 844.5752561092377,
+            "round_values": [
+              844.7972368448973,
+              844.5752561092377,
+              810.0194120779634
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.18849554951266,
+            "round_values": [
+              27.18849554951266,
+              27.185336921334738,
+              28.330188435245688
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 32.92633817113173,
+            "round_values": [
+              32.9241830943607,
+              32.92633817113173,
+              32.94573698236834
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.405500443652272,
+            "round_values": [
+              4.405500443652272,
+              4.405195507220924,
+              4.410499989055097
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.790684642270207,
+            "round_values": [
+              4.790684642270207,
+              4.790477894246578,
+              4.8117652563378215
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "083425a8ea7703d304bc00c889ecbe380229abff3e1b114ecee52b73385ebf08",
+        "bytes": 150099,
+        "recorded_prefix_bytes": 145748,
+        "appended_bytes": 4351,
+        "appended_sha256": "dcd0d3e89bc889a4bd20f8c88b7cef15efa9b219ac10a3c6e84f68c9796ae581"
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "553ade651d83285b8ec686b33eff1c71f15b95bf88474b6a03b1135ed7468242",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "flashinfer-b1: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "flashinfer-b2",
+      "backend": "flashinfer",
+      "started_utc": "2026-10-10T04:47:59Z",
+      "ready_utc": "2026-10-10T04:50:35Z",
+      "finished_utc": "2026-10-10T04:53:48Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.71748502460868,
+            "round_values": [
+              44.71405123124386,
+              44.71748502460868,
+              44.72045104979421
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 172.56752215325832,
+            "round_values": [
+              172.7306693792343,
+              172.56752215325832,
+              172.3178094252944
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 173.30192681401968,
+            "round_values": [
+              173.6396849155426,
+              173.28252317383885,
+              173.30192681401968
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 172.56752215325832,
+            "round_values": [
+              172.7306693792343,
+              172.56752215325832,
+              172.3178094252944
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.174427378541374,
+            "round_values": [
+              21.174427378541374,
+              21.174623146946505,
+              21.17423166146898
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.176620624871468,
+            "round_values": [
+              21.176620624871468,
+              21.176390991524215,
+              21.17671605610237
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.861990506760776,
+            "round_values": [
+              2.8621209282428026,
+              2.861990506760776,
+              2.861760993488133
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.8627468976192176,
+            "round_values": [
+              2.8629131778143346,
+              2.8627468976192176,
+              2.8625629427842796
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 229.67032572842797,
+            "round_values": [
+              229.6194529058898,
+              229.67517000206573,
+              229.67032572842797
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 844.0046338364482,
+            "round_values": [
+              845.5370822921395,
+              844.0046338364482,
+              843.9486986026168
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1339.3607302568853,
+            "round_values": [
+              1341.9473418034613,
+              1339.3607302568853,
+              1338.5572764091194
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 844.0046338364482,
+            "round_values": [
+              845.5370822921395,
+              844.0046338364482,
+              843.9486986026168
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.183386130537105,
+            "round_values": [
+              27.18588161304241,
+              27.18298900579139,
+              27.183386130537105
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 32.921061506421545,
+            "round_values": [
+              32.91318135512039,
+              32.921061506421545,
+              32.92183727979308
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.405242837034166,
+            "round_values": [
+              4.405242837034166,
+              4.405116068199277,
+              4.405395300127566
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.789610513485968,
+            "round_values": [
+              4.792483954690397,
+              4.789610513485968,
+              4.789213641081005
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "30b3c5b207a5c960c8cd82cf4c96928e2852846037c893c8bbbdbb3e03e76ad9",
+        "bytes": 150185,
+        "recorded_prefix_bytes": 145835,
+        "appended_bytes": 4350,
+        "appended_sha256": "51c6d2145b44bd57a25bd0d1ac463b1594cb91ab530be1bc8bb4ff33167fac24"
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "1bc4af503c4a9d0b48094f92a311036cf34bff5ac7d7b0dd332b712e32fe3a7e",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "flashinfer-b2: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "triton-a2",
+      "backend": "triton",
+      "started_utc": "2026-10-10T04:54:00Z",
+      "ready_utc": "2026-10-10T04:56:39Z",
+      "finished_utc": "2026-10-10T04:59:53Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.53024458776561,
+            "round_values": [
+              44.56638737973947,
+              44.53024458776561,
+              44.52505428429111
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 173.67172054946423,
+            "round_values": [
+              170.9462385624647,
+              173.67172054946423,
+              174.08025916665792
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 174.84012758359313,
+            "round_values": [
+              173.65255998447537,
+              174.84012758359313,
+              175.24708714336157
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 173.67172054946423,
+            "round_values": [
+              170.9462385624647,
+              173.67172054946423,
+              174.08025916665792
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.26135527500956,
+            "round_values": [
+              21.26046413130413,
+              21.26136955284462,
+              21.26135527500956
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.263662461690075,
+            "round_values": [
+              21.263662461690075,
+              21.262189245042133,
+              21.263710311137316
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.8739237152040005,
+            "round_values": [
+              2.871319922618568,
+              2.8739237152040005,
+              2.874471758492291
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.875307969748974,
+            "round_values": [
+              2.8739294977858663,
+              2.875307969748974,
+              2.875553972553462
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 228.51476625053493,
+            "round_values": [
+              228.48880896154796,
+              228.5181435682296,
+              228.51476625053493
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 848.072512075305,
+            "round_values": [
+              850.2281662076712,
+              847.7352494373918,
+              848.072512075305
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1343.801407609135,
+            "round_values": [
+              1344.0996538847685,
+              1343.801407609135,
+              1343.470549210906
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 848.072512075305,
+            "round_values": [
+              850.2281662076712,
+              847.7352494373918,
+              848.072512075305
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.334595392421473,
+            "round_values": [
+              27.33474345071109,
+              27.334595392421473,
+              27.332692033075908
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 33.08992961597607,
+            "round_values": [
+              33.09265051154405,
+              33.087002887119226,
+              33.08992961597607
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.42814708314836,
+            "round_values": [
+              4.428016661666334,
+              4.42814708314836,
+              4.428297892212868
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.813007780350745,
+            "round_values": [
+              4.813956858124584,
+              4.813007780350745,
+              4.812906441744417
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "124b3da0b52bd70e1b10e1addf68df3e6ea8161e9d5913949e9ea3640270503e",
+        "bytes": 128779,
+        "recorded_prefix_bytes": 128779,
+        "appended_bytes": 0
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "82e1f573da0fd6be4707a210ac42dda382923fad1b2ec1fec3cfd80c8b7443a9",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "triton-a2: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "flashinfer-b3",
+      "backend": "flashinfer",
+      "started_utc": "2026-10-10T05:00:01Z",
+      "ready_utc": "2026-10-10T05:02:37Z",
+      "finished_utc": "2026-10-10T05:05:51Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.70373634390459,
+            "round_values": [
+              44.69788580777838,
+              44.70373634390459,
+              44.703995112679
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 173.33879601210356,
+            "round_values": [
+              173.79295639693737,
+              173.33879601210356,
+              173.29133860766888
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 174.3882093578577,
+            "round_values": [
+              174.5206261985004,
+              173.95005794242024,
+              174.3882093578577
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 173.33879601210356,
+            "round_values": [
+              173.79295639693737,
+              173.33879601210356,
+              173.29133860766888
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.175342692634253,
+            "round_values": [
+              21.175342692634253,
+              21.175659107645664,
+              21.175190527725405
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.177136335580602,
+            "round_values": [
+              21.177136870907752,
+              21.177136335580602,
+              21.17690872254334
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.8628449933603406,
+            "round_values": [
+              2.863187096081674,
+              2.8628449933603406,
+              2.862670890055597
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.8636493482626975,
+            "round_values": [
+              2.864150289911777,
+              2.8634539349004626,
+              2.8636493482626975
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 230.01904932893393,
+            "round_values": [
+              229.62977682931108,
+              230.10394444639402,
+              230.01904932893393
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 811.6352092474699,
+            "round_values": [
+              849.8517330735922,
+              809.8652279004455,
+              811.6352092474699
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1324.7911022044718,
+            "round_values": [
+              1339.917428791523,
+              1322.9721067473292,
+              1324.7911022044718
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 811.6352092474699,
+            "round_values": [
+              849.8517330735922,
+              809.8652279004455,
+              811.6352092474699
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 28.3247050865898,
+            "round_values": [
+              27.180747305021043,
+              28.3247050865898,
+              28.327564584223303
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 32.93866997467369,
+            "round_values": [
+              32.9183454581309,
+              32.93866997467369,
+              32.94728859511065
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.409578953869641,
+            "round_values": [
+              4.404469766654074,
+              4.409578953869641,
+              4.410597551614046
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.810083766933531,
+            "round_values": [
+              4.790414641145617,
+              4.810083766933531,
+              4.8124808254651725
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "c39d84e9e95c5e4cbd20f59512ab96fc366951926132e7eac8771731281bb269",
+        "bytes": 146214,
+        "recorded_prefix_bytes": 146214,
+        "appended_bytes": 0
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "d275330979a8561b8fedf7c3df2a802f2e289d27f9f170d0db0040baba708ccc",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "flashinfer-b3: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "triton-a3",
+      "backend": "triton",
+      "started_utc": "2026-10-10T05:05:59Z",
+      "ready_utc": "2026-10-10T05:08:36Z",
+      "finished_utc": "2026-10-10T05:11:50Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.532712981491564,
+            "round_values": [
+              44.537843827201705,
+              44.532712981491564,
+              44.524991314470796
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 173.04251994937658,
+            "round_values": [
+              173.01721218973398,
+              173.04251994937658,
+              173.60432166606188
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 174.15701504796743,
+            "round_values": [
+              173.96077699959278,
+              174.15701504796743,
+              176.1862295679748
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 173.04251994937658,
+            "round_values": [
+              173.01721218973398,
+              173.04251994937658,
+              173.60432166606188
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.263280766099456,
+            "round_values": [
+              21.261302314288034,
+              21.263280766099456,
+              21.26377762302639
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.265348151883508,
+            "round_values": [
+              21.26384060463215,
+              21.265378797529486,
+              21.265348151883508
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.873704358935356,
+            "round_values": [
+              2.873491839505732,
+              2.873704358935356,
+              2.874132577329874
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.874565673060715,
+            "round_values": [
+              2.874227021820843,
+              2.874565673060715,
+              2.8768449099734426
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 228.5682581994923,
+            "round_values": [
+              228.5682581994923,
+              228.58210015039703,
+              228.54508537224058
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 847.4483080208302,
+            "round_values": [
+              847.3067777231336,
+              847.8721752762794,
+              847.4483080208302
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1343.5073518194258,
+            "round_values": [
+              1344.528955873102,
+              1342.9081509821117,
+              1343.5073518194258
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 847.4483080208302,
+            "round_values": [
+              847.3067777231336,
+              847.8721752762794,
+              847.4483080208302
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.331147152255838,
+            "round_values": [
+              27.32997815176023,
+              27.331147152255838,
+              27.339338170965824
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 33.07725270242085,
+            "round_values": [
+              33.07725270242085,
+              33.073680134358135,
+              33.08303808192099
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.426464018411934,
+            "round_values": [
+              4.426464018411934,
+              4.426223516464233,
+              4.4268917525187135
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.8134261863306165,
+            "round_values": [
+              4.813745649997145,
+              4.812150125857443,
+              4.8134261863306165
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "aed75be52668f405758e61c9a341c284bb08b103b1d8a6ea2200ccd4080dc107",
+        "bytes": 131218,
+        "recorded_prefix_bytes": 128866,
+        "appended_bytes": 2352,
+        "appended_sha256": "c08cd604976b2f86cb9842b9590424f4f1c3a0ed5f69ebbfc0a761c0719fb58c"
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "b0cb399d01d4e0ed6e08e4e7b142945f3a32e78b663f915844390c30d2d48ab3",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "triton-a3: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "triton-a4",
+      "backend": "triton",
+      "started_utc": "2026-10-10T05:12:00Z",
+      "ready_utc": "2026-10-10T05:14:36Z",
+      "finished_utc": "2026-10-10T05:17:50Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.54766760275803,
+            "round_values": [
+              44.549615439385896,
+              44.54725884463364,
+              44.54766760275803
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 172.67223540693521,
+            "round_values": [
+              172.67223540693521,
+              172.87000454962254,
+              172.64837585389614
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 173.4758047387004,
+            "round_values": [
+              173.6581758596003,
+              173.4758047387004,
+              173.45419758930802
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 172.67223540693521,
+            "round_values": [
+              172.67223540693521,
+              172.87000454962254,
+              172.64837585389614
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.259059946192064,
+            "round_values": [
+              21.258343260471275,
+              21.259237124811946,
+              21.259059946192064
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.26003251095691,
+            "round_values": [
+              21.259701869443177,
+              21.26003251095691,
+              21.260677033844658
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.8727790052071214,
+            "round_values": [
+              2.8727790052071214,
+              2.8729443065822124,
+              2.8727789921686053
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.873566553927958,
+            "round_values": [
+              2.873566553927958,
+              2.8735280171968043,
+              2.873735764529556
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 228.58866834457277,
+            "round_values": [
+              228.5387049433667,
+              228.997414826475,
+              228.58866834457277
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 848.2188740745187,
+            "round_values": [
+              849.3230640888214,
+              812.4234732240438,
+              848.2188740745187
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1343.3238905854523,
+            "round_values": [
+              1348.1380953453481,
+              1325.6500232964754,
+              1343.3238905854523
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 848.2188740745187,
+            "round_values": [
+              849.3230640888214,
+              812.4234732240438,
+              848.2188740745187
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.32200102191272,
+            "round_values": [
+              27.32200102191272,
+              28.46341887415629,
+              27.31992154726832
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 33.08193626131598,
+            "round_values": [
+              33.08193626131598,
+              33.099347571512375,
+              33.079331205409815
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.427104253321886,
+            "round_values": [
+              4.426657375879586,
+              4.431298991665244,
+              4.427104253321886
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.815354524645954,
+            "round_values": [
+              4.815354524645954,
+              4.831721317023039,
+              4.8113101394847035
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "b7b3ec341e1e0063f8954941fc53a7aef5c5b4313554e79f891792a5675bf63f",
+        "bytes": 129788,
+        "recorded_prefix_bytes": 129788,
+        "appended_bytes": 0
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "a119ee094829efe0833317d27e358ddf7a1adc9074837adf6cbe8fec6619ca84",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "triton-a4: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    },
+    {
+      "arm": "flashinfer-b4",
+      "backend": "flashinfer",
+      "started_utc": "2026-10-10T05:17:58Z",
+      "ready_utc": "2026-10-10T05:20:37Z",
+      "finished_utc": "2026-10-10T05:23:51Z",
+      "server_exit": 0,
+      "metrics": {
+        "1": {
+          "output_tokens_per_second": {
+            "median": 44.68518378554816,
+            "round_values": [
+              44.67679920095235,
+              44.68518378554816,
+              44.6878937020123
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 173.15004393458366,
+            "round_values": [
+              173.33277687430382,
+              173.15004393458366,
+              172.6185791194439
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 173.90073649585247,
+            "round_values": [
+              174.54008385539055,
+              173.90073649585247,
+              173.2554854825139
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 173.15004393458366,
+            "round_values": [
+              173.33277687430382,
+              173.15004393458366,
+              172.6185791194439
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 21.188472155628244,
+            "round_values": [
+              21.188472155628244,
+              21.18800018774712,
+              21.18861664995903
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 21.19059353245525,
+            "round_values": [
+              21.19059353245525,
+              21.19020111932177,
+              21.191439389683833
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 2.864229913800955,
+            "round_values": [
+              2.864597992040217,
+              2.864229913800955,
+              2.863806580193341
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 2.8649850487709045,
+            "round_values": [
+              2.865434208419174,
+              2.8649850487709045,
+              2.8644175305962563
+            ]
+          }
+        },
+        "8": {
+          "output_tokens_per_second": {
+            "median": 229.2826058910284,
+            "round_values": [
+              229.26972704662944,
+              229.28502719464538,
+              229.2826058910284
+            ]
+          },
+          "ttft_ms.p50": {
+            "median": 845.9884747862816,
+            "round_values": [
+              845.9884747862816,
+              847.0802335068583,
+              845.1980911195278
+            ]
+          },
+          "ttft_ms.p95": {
+            "median": 1340.2662458829582,
+            "round_values": [
+              1340.448401402682,
+              1340.2662458829582,
+              1339.3680327571929
+            ]
+          },
+          "token_ttft_ms.p50": {
+            "median": 845.9884747862816,
+            "round_values": [
+              845.9884747862816,
+              847.0802335068583,
+              845.1980911195278
+            ]
+          },
+          "tpot_ms.p50": {
+            "median": 27.233618575580948,
+            "round_values": [
+              27.231348282474233,
+              27.233618575580948,
+              27.240540194288485
+            ]
+          },
+          "tpot_ms.p95": {
+            "median": 32.976852036924576,
+            "round_values": [
+              32.97417371819808,
+              32.976852036924576,
+              32.977805410577794
+            ]
+          },
+          "request_seconds.p50": {
+            "median": 4.412578070536256,
+            "round_values": [
+              4.412578070536256,
+              4.412503947503865,
+              4.41279274225235
+            ]
+          },
+          "request_seconds.p95": {
+            "median": 4.7971530058421195,
+            "round_values": [
+              4.797918240074068,
+              4.7971530058421195,
+              4.797011787071824
+            ]
+          }
+        }
+      },
+      "log_binding": {
+        "sha256": "0001a1e7c19b79c658be2dd80f764fb9683cfefb24c32f15851729fc302d938a",
+        "bytes": 150610,
+        "recorded_prefix_bytes": 145998,
+        "appended_bytes": 4612,
+        "appended_sha256": "911f4c7dcdc6b70fafd1d1fa9e8a07c5dd08b99c9649c89ea99a63423410473f"
+      },
+      "log_classification": {
+        "optional_startup_import_failures": [
+          {
+            "module_warning_line": 17,
+            "traceback_first_line": 18,
+            "traceback_last_line": 41,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "287ed55a52ca13571190ec4dd7cce8dcbfe6cf6af953732e9fe50d782d6526f9",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 50,
+            "traceback_first_line": 51,
+            "traceback_last_line": 74,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 83,
+            "traceback_first_line": 84,
+            "traceback_last_line": 107,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          },
+          {
+            "module_warning_line": 108,
+            "traceback_first_line": 109,
+            "traceback_last_line": 132,
+            "normalized_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "raw_block_sha256": "464576bcbe1c0900fa6ede45895b3d988012375f5117375c872c865f5f35a6e4",
+            "terminal_error": "AssertionError: Cannot find package: nccl",
+            "classification": "caught optional deep_ep startup import failure"
+          }
+        ],
+        "unclassified_tracebacks": [],
+        "runtime_error_messages": [],
+        "source_contract": {
+          "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+          "path": "vllm/utils/import_utils.py",
+          "handler": "_has_module catches Exception, emits warning, returns False",
+          "handler_first_line": 403
+        }
+      },
+      "notes": [
+        "flashinfer-b4: 4 exact DeepEP import traceback blocks before application readiness are retained and classified as caught optional dependency failures. import_utils._has_module catches Exception and returns False; this is not a claim that the whole log is warning-free or that NCCL transport is unavailable. Unknown tracebacks and actual CUDA/NCCL/worker/API errors still fail the audit."
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "concurrency": 1,
+      "metric": "output_tokens_per_second",
+      "triton": {
+        "median": 44.53147878462859,
+        "min": 44.5228435974224,
+        "max": 44.54766760275803,
+        "launch_values": [
+          44.5228435974224,
+          44.53024458776561,
+          44.532712981491564,
+          44.54766760275803
+        ]
+      },
+      "flashinfer": {
+        "median": 44.70833030664286,
+        "min": 44.68518378554816,
+        "max": 44.71748502460868,
+        "launch_values": [
+          44.712924269381126,
+          44.71748502460868,
+          44.70373634390459,
+          44.68518378554816
+        ]
+      },
+      "fi_relative_change_pct": 0.3971382196167106,
+      "paired_relative_changes_pct": [
+        0.42692841831362127,
+        0.42047924635588707,
+        0.3840398461331107,
+        0.30869446188832583
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "ttft_ms.p50",
+      "triton": {
+        "median": 173.03743166849017,
+        "min": 172.67223540693521,
+        "max": 173.67172054946423,
+        "launch_values": [
+          173.03234338760376,
+          173.67172054946423,
+          173.04251994937658,
+          172.67223540693521
+        ]
+      },
+      "flashinfer": {
+        "median": 172.9254089295864,
+        "min": 172.56752215325832,
+        "max": 173.33879601210356,
+        "launch_values": [
+          172.70077392458916,
+          172.56752215325832,
+          173.33879601210356,
+          173.15004393458366
+        ]
+      },
+      "fi_relative_change_pct": -0.0647390208139309,
+      "paired_relative_changes_pct": [
+        -0.19162282410511988,
+        -0.635796313131709,
+        0.17121575830820746,
+        0.2767141610939383
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "ttft_ms.p95",
+      "triton": {
+        "median": 174.1720570717007,
+        "min": 173.4758047387004,
+        "max": 174.84012758359313,
+        "launch_values": [
+          174.18709909543395,
+          174.84012758359313,
+          174.15701504796743,
+          173.4758047387004
+        ]
+      },
+      "flashinfer": {
+        "median": 173.86991251260042,
+        "min": 173.30192681401968,
+        "max": 174.3882093578577,
+        "launch_values": [
+          173.83908852934837,
+          173.30192681401968,
+          174.3882093578577,
+          173.90073649585247
+        ]
+      },
+      "fi_relative_change_pct": -0.17347476063619416,
+      "paired_relative_changes_pct": [
+        -0.19979124050679697,
+        -0.8797755931847062,
+        0.13275050093537466,
+        0.2449515987501094
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "token_ttft_ms.p50",
+      "triton": {
+        "median": 173.03743166849017,
+        "min": 172.67223540693521,
+        "max": 173.67172054946423,
+        "launch_values": [
+          173.03234338760376,
+          173.67172054946423,
+          173.04251994937658,
+          172.67223540693521
+        ]
+      },
+      "flashinfer": {
+        "median": 172.9254089295864,
+        "min": 172.56752215325832,
+        "max": 173.33879601210356,
+        "launch_values": [
+          172.70077392458916,
+          172.56752215325832,
+          173.33879601210356,
+          173.15004393458366
+        ]
+      },
+      "fi_relative_change_pct": -0.0647390208139309,
+      "paired_relative_changes_pct": [
+        -0.19162282410511988,
+        -0.635796313131709,
+        0.17121575830820746,
+        0.2767141610939383
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "tpot_ms.p50",
+      "triton": {
+        "median": 21.26231802055451,
+        "min": 21.259059946192064,
+        "max": 21.26891993895525,
+        "launch_values": [
+          21.26891993895525,
+          21.26135527500956,
+          21.263280766099456,
+          21.259059946192064
+        ]
+      },
+      "flashinfer": {
+        "median": 21.175641221852285,
+        "min": 21.174427378541374,
+        "max": 21.188472155628244,
+        "launch_values": [
+          21.175939751070317,
+          21.174427378541374,
+          21.175342692634253,
+          21.188472155628244
+        ]
+      },
+      "fi_relative_change_pct": -0.4076545116973307,
+      "paired_relative_changes_pct": [
+        -0.43716459581304434,
+        -0.40885397635191945,
+        -0.4135677576406982,
+        -0.33203627414609693
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "tpot_ms.p95",
+      "triton": {
+        "median": 21.26450530678679,
+        "min": 21.26003251095691,
+        "max": 21.27105577328191,
+        "launch_values": [
+          21.27105577328191,
+          21.263662461690075,
+          21.265348151883508,
+          21.26003251095691
+        ]
+      },
+      "flashinfer": {
+        "median": 21.17813372705865,
+        "min": 21.176620624871468,
+        "max": 21.19059353245525,
+        "launch_values": [
+          21.1791311185367,
+          21.176620624871468,
+          21.177136335580602,
+          21.19059353245525
+        ]
+      },
+      "fi_relative_change_pct": -0.4061772351721449,
+      "paired_relative_changes_pct": [
+        -0.43215840212630363,
+        -0.4093454595389012,
+        -0.41481482302979655,
+        -0.3266174615014106
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "request_seconds.p50",
+      "triton": {
+        "median": 2.8738140370696783,
+        "min": 2.8727790052071214,
+        "max": 2.8742658300325274,
+        "launch_values": [
+          2.8742658300325274,
+          2.8739237152040005,
+          2.873704358935356,
+          2.8727790052071214
+        ]
+      },
+      "flashinfer": {
+        "median": 2.862502441741526,
+        "min": 2.861990506760776,
+        "max": 2.864229913800955,
+        "launch_values": [
+          2.8621598901227117,
+          2.861990506760776,
+          2.8628449933603406,
+          2.864229913800955
+        ]
+      },
+      "fi_relative_change_pct": -0.3936091612833148,
+      "paired_relative_changes_pct": [
+        -0.4211837257126261,
+        -0.4152235628278489,
+        -0.3778873613512146,
+        -0.2975895949765217
+      ]
+    },
+    {
+      "concurrency": 1,
+      "metric": "request_seconds.p95",
+      "triton": {
+        "median": 2.8749368214048445,
+        "min": 2.873566553927958,
+        "max": 2.87543952325359,
+        "launch_values": [
+          2.87543952325359,
+          2.875307969748974,
+          2.874565673060715,
+          2.873566553927958
+        ]
+      },
+      "flashinfer": {
+        "median": 2.8633742900565267,
+        "min": 2.8627468976192176,
+        "max": 2.8649850487709045,
+        "launch_values": [
+          2.863099231850356,
+          2.8627468976192176,
+          2.8636493482626975,
+          2.8649850487709045
+        ]
+      },
+      "fi_relative_change_pct": -0.4021838414754342,
+      "paired_relative_changes_pct": [
+        -0.4291619178020789,
+        -0.4368600602756567,
+        -0.37975562361720616,
+        -0.29863603281863327
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "output_tokens_per_second",
+      "triton": {
+        "median": 228.5415122250136,
+        "min": 228.3362216997818,
+        "max": 228.58866834457277,
+        "launch_values": [
+          228.3362216997818,
+          228.51476625053493,
+          228.5682581994923,
+          228.58866834457277
+        ]
+      },
+      "flashinfer": {
+        "median": 229.6555338028391,
+        "min": 229.2826058910284,
+        "max": 230.01904932893393,
+        "launch_values": [
+          229.64074187725024,
+          229.67032572842797,
+          230.01904932893393,
+          229.2826058910284
+        ]
+      },
+      "fi_relative_change_pct": 0.48744823948161375,
+      "paired_relative_changes_pct": [
+        0.5713154784454888,
+        0.5056826291155891,
+        0.6347299230741843,
+        0.3035747797478727
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "ttft_ms.p50",
+      "triton": {
+        "median": 848.0963250622153,
+        "min": 847.4483080208302,
+        "max": 848.2188740745187,
+        "launch_values": [
+          848.1201380491257,
+          848.072512075305,
+          847.4483080208302,
+          848.2188740745187
+        ]
+      },
+      "flashinfer": {
+        "median": 844.2899449728429,
+        "min": 811.6352092474699,
+        "max": 845.9884747862816,
+        "launch_values": [
+          844.5752561092377,
+          844.0046338364482,
+          811.6352092474699,
+          845.9884747862816
+        ]
+      },
+      "fi_relative_change_pct": -0.44881459533422374,
+      "paired_relative_changes_pct": [
+        -0.41796931600304177,
+        -0.4796616068716064,
+        -4.2259921265286104,
+        -0.262950914723592
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "ttft_ms.p95",
+      "triton": {
+        "median": 1343.5808059293777,
+        "min": 1343.3238905854523,
+        "max": 1343.801407609135,
+        "launch_values": [
+          1343.6542600393295,
+          1343.801407609135,
+          1343.5073518194258,
+          1343.3238905854523
+        ]
+      },
+      "flashinfer": {
+        "median": 1339.3953975755721,
+        "min": 1324.7911022044718,
+        "max": 1340.2662458829582,
+        "launch_values": [
+          1339.430064894259,
+          1339.3607302568853,
+          1324.7911022044718,
+          1340.2662458829582
+        ]
+      },
+      "fi_relative_change_pct": -0.3115114725764756,
+      "paired_relative_changes_pct": [
+        -0.31438110760330096,
+        -0.3304563700487817,
+        -1.393088738190218,
+        -0.22761783095821553
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "token_ttft_ms.p50",
+      "triton": {
+        "median": 848.0963250622153,
+        "min": 847.4483080208302,
+        "max": 848.2188740745187,
+        "launch_values": [
+          848.1201380491257,
+          848.072512075305,
+          847.4483080208302,
+          848.2188740745187
+        ]
+      },
+      "flashinfer": {
+        "median": 844.2899449728429,
+        "min": 811.6352092474699,
+        "max": 845.9884747862816,
+        "launch_values": [
+          844.5752561092377,
+          844.0046338364482,
+          811.6352092474699,
+          845.9884747862816
+        ]
+      },
+      "fi_relative_change_pct": -0.44881459533422374,
+      "paired_relative_changes_pct": [
+        -0.41796931600304177,
+        -0.4796616068716064,
+        -4.2259921265286104,
+        -0.262950914723592
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "tpot_ms.p50",
+      "triton": {
+        "median": 27.332871272338657,
+        "min": 27.32200102191272,
+        "max": 27.359041759348294,
+        "launch_values": [
+          27.359041759348294,
+          27.334595392421473,
+          27.331147152255838,
+          27.32200102191272
+        ]
+      },
+      "flashinfer": {
+        "median": 27.211057062546804,
+        "min": 27.183386130537105,
+        "max": 28.3247050865898,
+        "launch_values": [
+          27.18849554951266,
+          27.183386130537105,
+          28.3247050865898,
+          27.233618575580948
+        ]
+      },
+      "fi_relative_change_pct": -0.4456692770332227,
+      "paired_relative_changes_pct": [
+        -0.6233632425278968,
+        -0.553179074771637,
+        3.635258808563968,
+        -0.3234845290463362
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "tpot_ms.p95",
+      "triton": {
+        "median": 33.085932938646025,
+        "min": 33.07725270242085,
+        "max": 33.11643903107038,
+        "launch_values": [
+          33.11643903107038,
+          33.08992961597607,
+          33.07725270242085,
+          33.08193626131598
+        ]
+      },
+      "flashinfer": {
+        "median": 32.93250407290271,
+        "min": 32.921061506421545,
+        "max": 32.976852036924576,
+        "launch_values": [
+          32.92633817113173,
+          32.921061506421545,
+          32.93866997467369,
+          32.976852036924576
+        ]
+      },
+      "fi_relative_change_pct": -0.46372839486747974,
+      "paired_relative_changes_pct": [
+        -0.5740377453031464,
+        -0.510330821232674,
+        -0.4189668621935483,
+        -0.3176483491212245
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "request_seconds.p50",
+      "triton": {
+        "median": 4.427625668235123,
+        "min": 4.426464018411934,
+        "max": 4.432034511119127,
+        "launch_values": [
+          4.432034511119127,
+          4.42814708314836,
+          4.426464018411934,
+          4.427104253321886
+        ]
+      },
+      "flashinfer": {
+        "median": 4.4075396987609565,
+        "min": 4.405242837034166,
+        "max": 4.412578070536256,
+        "launch_values": [
+          4.405500443652272,
+          4.405242837034166,
+          4.409578953869641,
+          4.412578070536256
+        ]
+      },
+      "fi_relative_change_pct": -0.4536510305798491,
+      "paired_relative_changes_pct": [
+        -0.5986881961385082,
+        -0.5172422163066348,
+        -0.38145717376352195,
+        -0.3281192841738556
+      ]
+    },
+    {
+      "concurrency": 8,
+      "metric": "request_seconds.p95",
+      "triton": {
+        "median": 4.814390355488285,
+        "min": 4.813007780350745,
+        "max": 4.816943247336894,
+        "launch_values": [
+          4.816943247336894,
+          4.813007780350745,
+          4.8134261863306165,
+          4.815354524645954
+        ]
+      },
+      "flashinfer": {
+        "median": 4.793918824056163,
+        "min": 4.789610513485968,
+        "max": 4.810083766933531,
+        "launch_values": [
+          4.790684642270207,
+          4.789610513485968,
+          4.810083766933531,
+          4.7971530058421195
+        ]
+      },
+      "fi_relative_change_pct": -0.4252154462046298,
+      "paired_relative_changes_pct": [
+        -0.5451300486299937,
+        -0.4861256813316728,
+        -0.0694395066569764,
+        -0.3779891742274777
+      ]
+    }
+  ],
+  "input_sha256": {
+    "results/http/triton-a1-warmup-c1-r0.json": "67c927bc55afe1c266a6b1626c6084cd526fc945db33438128aabd3520497f22",
+    "results/http/triton-a1-warmup-c8-r0.json": "c4d63bbb610b14e80cd445e59177530ab76df92c73a84df27bc5f988b524249d",
+    "results/http/triton-a1-measured-c1-r1.json": "f78310e737acf0d1f34358d9a2f3a91d3bde7d8a72ee5199494282f12fe3614b",
+    "results/http/triton-a1-measured-c8-r1.json": "0befac59153f9ae41e67a7177e2217f7c5aaf0296489cd2cb982c2d7feef7296",
+    "results/http/triton-a1-measured-c8-r2.json": "56894cd5dd4f91e53a7ce51984f568c9d5a565aa5c262c6959596da0903668f5",
+    "results/http/triton-a1-measured-c1-r2.json": "14d5dcbaad2ffc3e02460745878c3d48749c31465876b9b587ca194239e53fae",
+    "results/http/triton-a1-measured-c1-r3.json": "d95d3761934eb95c853f33d66cc9fd899c6a49e6d41e1f26224423379f905ca1",
+    "results/http/triton-a1-measured-c8-r3.json": "40e78de01de6422e5d4676e06620b7f7111dc4da2b6e82b5079a1cbc8aa8dd4e",
+    "results/serve-triton-a1.json": "930c4810412134b78b3de86ba2bd33506d6e3cb11e994f068f03fb25dd064cea",
+    "results/http/triton-a1.json": "177ab0306d0c5683b834a54c8e766988cfd1d60139ac9c4ac02fdbe0527b9339",
+    "results/http/flashinfer-b1-warmup-c1-r0.json": "1d4ba741b0e7b62e15f370d2529f79d33db18c4544edeb8ed48c9f87e880d886",
+    "results/http/flashinfer-b1-warmup-c8-r0.json": "e5221d42f19fa995fc6ce462ba34a5158c6187738dfa43ac58458360353cc755",
+    "results/http/flashinfer-b1-measured-c1-r1.json": "896fe5184d0fe51d35249705a7fe72df1297e8300914a785aa7e92e5b2e70ed0",
+    "results/http/flashinfer-b1-measured-c8-r1.json": "20ce6d036335f61928888d73c382c6524aa9c053c27b85ff0d42ceb0b4449e4c",
+    "results/http/flashinfer-b1-measured-c8-r2.json": "52b993991abb66d955a4077fcecfefdedf7a1ff00c3269229bb34406af49c271",
+    "results/http/flashinfer-b1-measured-c1-r2.json": "f0af05138b3c20cba9f8ded54cc99b87831c25b8d67c6d5fe8ca59ce494168eb",
+    "results/http/flashinfer-b1-measured-c1-r3.json": "2cb11f312132c84ae4dbcacf5cae5a569f1aa56664783e16337fb9b6c8f05ef8",
+    "results/http/flashinfer-b1-measured-c8-r3.json": "a569973780a6beaeb21ba3e72fae624440a1c815da03a2c5cc41a20e870071a0",
+    "results/serve-flashinfer-b1.json": "9b14af58d72d1cbfcea80d1274ad54c75e5d865c43a23ea9a7b5f93042298f3a",
+    "results/http/flashinfer-b1.json": "c78e325b9d7b376ca0a47c6250ea4790db50430a80aac89358333e7f269fa76a",
+    "results/http/flashinfer-b2-warmup-c1-r0.json": "8947bd4a1b233b6dcfa18873b807fa1511214b69acbbe8731a8f9bcadb18704c",
+    "results/http/flashinfer-b2-warmup-c8-r0.json": "386a86f00eb9aafd04ccb88e6d0b68516bc2bbd6f53cb919e9b5b5cdcefbac46",
+    "results/http/flashinfer-b2-measured-c1-r1.json": "62317bb65d1ebcdec5e595bb136130cb84d023e9c780fdd12a9a5bad54880414",
+    "results/http/flashinfer-b2-measured-c8-r1.json": "3f6beb646b1c967d96bb136a738c9627d611da5384c0924e497586666d477687",
+    "results/http/flashinfer-b2-measured-c8-r2.json": "f2d0ad064176c46c05c8da8722dfd53dea5e3be13aba18a68e4ec63c8cbb8f80",
+    "results/http/flashinfer-b2-measured-c1-r2.json": "79605fd5d6d19090cbd716a2a94f666d161db03b38352fc297f96bb4099e3a49",
+    "results/http/flashinfer-b2-measured-c1-r3.json": "547f7dc6685ed994763de549c47bcfcb39f4855cd3571afeb2edacefba872d67",
+    "results/http/flashinfer-b2-measured-c8-r3.json": "b5f521b13a3778dbfe7e3b58050a602f11c4641af5ca165e21af7e782e79446d",
+    "results/serve-flashinfer-b2.json": "b41b5ea6391a6f174ee6d5c6d42b6880490c8474edd62a2c5c0f191fce22b5f9",
+    "results/http/flashinfer-b2.json": "bfd38eca281b8c7f4c41cf6d58a157f96eabe325f924ebf0ddb55674e8ef33c9",
+    "results/http/triton-a2-warmup-c1-r0.json": "893dcc810b65ded2e232ddf6a6986b40137f7735c7971fd3ae3399d76f61fed3",
+    "results/http/triton-a2-warmup-c8-r0.json": "04d04fb64742a9e1c44cac9bcbe4904f07ce3842a92a677401cc8552b63ff002",
+    "results/http/triton-a2-measured-c1-r1.json": "fec2ab2598eeb8cd9a2157497042c38a5c37fb644397b5c0e84c9d4b7b67a52d",
+    "results/http/triton-a2-measured-c8-r1.json": "199ae30e64cbfcb6c513661d5892cd398b8e905cec1e0b017a2925599fa85bfd",
+    "results/http/triton-a2-measured-c8-r2.json": "2db0242f16a88aa4cb7ac7324a93d01e9c0a608169711cab924e6974ad377714",
+    "results/http/triton-a2-measured-c1-r2.json": "7723ec3747dde6822cd490734e9024b509360e94bb781cc8e71d27f8bc206d58",
+    "results/http/triton-a2-measured-c1-r3.json": "8ef091a5f673cb0b2aa9a5f6812b8160b5e16abd221fdf3c80ba3787bf13ae4f",
+    "results/http/triton-a2-measured-c8-r3.json": "bc7a94bb2014d75a737add8e3e3a22f1f05757481236a89c9ccc925c93a5695e",
+    "results/serve-triton-a2.json": "6db79a71803bb16f9829403279e179b89a94b98dc00142693b355509613a561d",
+    "results/http/triton-a2.json": "3701b7cd6de6660e69dff250925a778585651f9d7e1f77d60da3efc5b4a37560",
+    "results/http/flashinfer-b3-warmup-c1-r0.json": "148fead67d07d3961cf8da4a4f1a55534f0d0e6f334b28a712a9d2b1de309c40",
+    "results/http/flashinfer-b3-warmup-c8-r0.json": "981618bc4f42ba44ffbef79d606cb2f68f99e82c96027f8259089e64beb96989",
+    "results/http/flashinfer-b3-measured-c1-r1.json": "79d0915856cc4891207805527e0e03d7323d6e28b35c6e365ecb9d3f1dd3f826",
+    "results/http/flashinfer-b3-measured-c8-r1.json": "838188d1e1b35c45ad86fcfe1ee284c07d4b8a2cc9e2ba7c04316618eb31bbeb",
+    "results/http/flashinfer-b3-measured-c8-r2.json": "dbade01a3ed1680143e4544d9de419f7e490d2fad2bbc54222106b32845653d1",
+    "results/http/flashinfer-b3-measured-c1-r2.json": "03996c008353ddb3f0c3345366437c7db094e89158603152aec2dc1c815608cf",
+    "results/http/flashinfer-b3-measured-c1-r3.json": "3e2579312f1999e2438c9afb6bcbada11ccd1f45ce0d41433c44c379371167c5",
+    "results/http/flashinfer-b3-measured-c8-r3.json": "7a196bbf2bb5a2e3e3fca0a73b5396cb5de76e005a20295f86cdb509f54b93a8",
+    "results/serve-flashinfer-b3.json": "bc38e9e0a86483d407759d0d6ae2670520945669b222dc63975a0611658765e5",
+    "results/http/flashinfer-b3.json": "7ed54f3c1c236e540b30aacb4c26f473ca39ff95d28cd0321b673fcb3af9dc4c",
+    "results/http/triton-a3-warmup-c1-r0.json": "ebebcf1bca4f01b6689098956485d3354e4de95395b6eae8e15862ab0bee72c6",
+    "results/http/triton-a3-warmup-c8-r0.json": "7f540afd90086808a48d446fbb16d062c3ab5a1839b5185b5c252446f4747922",
+    "results/http/triton-a3-measured-c1-r1.json": "5e948acd89835fb2345fa9eba1815b714afa400b24336d2e7a78c4e1a09c592d",
+    "results/http/triton-a3-measured-c8-r1.json": "18b509940e0159f3f35a624f442e4c7b3d4f51cdea34298b3d63988c11e55ea1",
+    "results/http/triton-a3-measured-c8-r2.json": "5e13d6f6fa5164e75a43b003be4e956996cdd215a80dc67c863afa59a606950b",
+    "results/http/triton-a3-measured-c1-r2.json": "90c50f0cb6ad1da0bae1579bf75aee1e9a17cf4fb0754e175d4c688eb0329126",
+    "results/http/triton-a3-measured-c1-r3.json": "d66839cf970136619ff92f6cc303a9384d610f76cb54140bb4181b4f3c049d68",
+    "results/http/triton-a3-measured-c8-r3.json": "c0dc995aaa4df27065dc2776ed02ea7621b6f3f26985979fda3495c64463e575",
+    "results/serve-triton-a3.json": "95f4251a8bcca056860f2707942f33f93af590f3b47a5657c0540dc40ed07f8c",
+    "results/http/triton-a3.json": "d8138bcc0b1e948230bd91cadd052655d2a112fc5baac682d3db030ef99fbd5b",
+    "results/http/triton-a4-warmup-c1-r0.json": "f103d2e7afa36ca3474c70233cbc50c4f43a9bca20a127c02a9621407e69fa8f",
+    "results/http/triton-a4-warmup-c8-r0.json": "2a674c94a5cd6b6a2a810e0d1c9bd59882c4339e57edc68ed52a4be298195d0c",
+    "results/http/triton-a4-measured-c1-r1.json": "037e5a396b083ca69e56ca54f1d3b16d5d3c42f424e1c1ba7d8ebfbccc1413dc",
+    "results/http/triton-a4-measured-c8-r1.json": "7a94774336d3e2c997d9d6a1d917e67a9a71ec0aad1e2651dfc1570189b41d3b",
+    "results/http/triton-a4-measured-c8-r2.json": "e9e303778bc06760e41a42740197e6e0c1ae7fe63a490ca48ea502e29200867d",
+    "results/http/triton-a4-measured-c1-r2.json": "3549decaebde7c48d86235af4d61ae00b5ebf9ffc8fd1805dd6beaabd63bed04",
+    "results/http/triton-a4-measured-c1-r3.json": "b21307286976c3ad6b236d43c0566600522c3cb898266d976dbd7e578b852a17",
+    "results/http/triton-a4-measured-c8-r3.json": "8d927220fde0f2d7a9eb53520ef2daa5215442380d610da88c6c9f7dcf4ecdd2",
+    "results/serve-triton-a4.json": "eaa5ffbe540474e9366f7e47a2b65ae0a2c8b03eb5467bfcf9ca238523a8df5f",
+    "results/http/triton-a4.json": "a785df255deed18dbbb50b06b8dae321cdbbd7a6a86f1375d27aef6c21fd586c",
+    "results/http/flashinfer-b4-warmup-c1-r0.json": "4e88bc7cfc0ee31afd8fe0318f7b27f68b736ac0eb3f3f125c626556a1c952a2",
+    "results/http/flashinfer-b4-warmup-c8-r0.json": "c396c4cd67760d13b5ceda0bad349351708f8d76ec45283f55203c7df5b0517e",
+    "results/http/flashinfer-b4-measured-c1-r1.json": "7b59f82fdc1fb5e8a7078bd61feefcebffadf2d0b3468381e83e3909d1c6d95c",
+    "results/http/flashinfer-b4-measured-c8-r1.json": "69e644a217dfad241d02faa8d45005dc0eb71ae847c632f42e99bfe7637465fa",
+    "results/http/flashinfer-b4-measured-c8-r2.json": "e54c5d4cd648f365b09372a1c1e8092cd584cc6f28f5f85b7fed7e78606a3001",
+    "results/http/flashinfer-b4-measured-c1-r2.json": "ca0620766f864db0335f7698d3b786d07e118af239d5a25f2f312373375642d6",
+    "results/http/flashinfer-b4-measured-c1-r3.json": "082e101ad6923bafeaf8b1ec5e69665fb5a97fa84cb0fbbbd8444456c88dfa09",
+    "results/http/flashinfer-b4-measured-c8-r3.json": "d8ef300d6bd567a80f9a28867805412415ac424fa917fe6e6245760ba1822cec",
+    "results/serve-flashinfer-b4.json": "b8916974ffe8a955df4e2daae7836ebc643cec4990bb5fb9e01e22f3fd054eb1",
+    "results/http/flashinfer-b4.json": "7266e4a5cb2266262dfbd0edecedbbf22e3aac1150e40d1d761b9cce4316ccdf"
+  },
+  "auditor_sha256": "8ea22c49dee6caf24f5a0398324a8cb72d54a02779679f26bf2e337930585d8a",
+  "resource_audit": "Separate verdict required; mathematical/metric checks do not override unmatched PID observations",
+  "limits": [
+    "One synthetic 512/128 token workload; closed loop, loopback, no external network or natural-EOS evaluation",
+    "Four process launches per backend on the same shared host are descriptive replications, not a population confidence bound",
+    "TTFT uses first nonempty text SSE; token TTFT also retained. TPOT uses first/last token-ID chunk span; no pure ITL claim",
+    "Per-launch metrics are medians of three round metrics; request p95 is descriptive at 16 requests per round",
+    "Earlier graph quality differences and late-prefix REVIEW_REQUIRED remain separate"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "exit": 0,
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/extract_results.py",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010"
+  ],
+  "stdout": "{\"status\": \"ARCHIVE_INTEGRITY_AND_EXITS_PASS\", \"sha256\": \"952df6ee46cce8b132c827896e2e5a46e22789cc5215e406306b175152061d60\", \"bytes\": 6752928}\r\n",
+  "stderr": ""
+}

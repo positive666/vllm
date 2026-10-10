@@ -1,0 +1,940 @@
+{
+  "status": "TELEMETRY_WINDOWS_DESCRIBED",
+  "samples_total": 1056,
+  "measured_windows": [
+    {
+      "arm": "triton-a1",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 71.5,
+        "min": 63.0,
+        "max": 80.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a1",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 75.5,
+        "min": 66.0,
+        "max": 85.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a1",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 86.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 74.0,
+        "min": 68.0,
+        "max": 79.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a1",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 71.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 79.0,
+        "min": 73.0,
+        "max": 83.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b1",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 73.0,
+        "min": 71.0,
+        "max": 79.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b1",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 94.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 78.0,
+        "min": 76.0,
+        "max": 85.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b1",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 4,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 76.0,
+        "min": 73.0,
+        "max": 79.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b1",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 4,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 81.5,
+        "min": 78.0,
+        "max": 86.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b2",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 72.0,
+        "min": 66.0,
+        "max": 78.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b2",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 96.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 77.5,
+        "min": 71.0,
+        "max": 84.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b2",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 4,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 76.0,
+        "min": 71.0,
+        "max": 79.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b2",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 4,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 81.5,
+        "min": 76.0,
+        "max": 85.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a2",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 24,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 73.0,
+        "min": 69.0,
+        "max": 76.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a2",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 24,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 79.0,
+        "min": 74.0,
+        "max": 83.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a2",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 6,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 74.0,
+        "min": 72.0,
+        "max": 78.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a2",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 6,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 65.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 80.0,
+        "min": 78.0,
+        "max": 84.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b3",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 67.5,
+        "min": 64.0,
+        "max": 74.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b3",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 26,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 72.5,
+        "min": 68.0,
+        "max": 80.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b3",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 21.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 67.0,
+        "min": 64.0,
+        "max": 71.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b3",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 6.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 72.0,
+        "min": 68.0,
+        "max": 77.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a3",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 25,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 60.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 63.0,
+        "min": 55.0,
+        "max": 73.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a3",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 25,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 57.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 67.0,
+        "min": 59.0,
+        "max": 79.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a3",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 62.0,
+        "min": 59.0,
+        "max": 77.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a3",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 66.0,
+        "min": 63.0,
+        "max": 84.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a4",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 24,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 96.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 72.0,
+        "min": 66.0,
+        "max": 77.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a4",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 24,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 94.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 79.0,
+        "min": 72.0,
+        "max": 84.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a4",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 6,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 72.0,
+        "min": 68.0,
+        "max": 77.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "triton-a4",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 6,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17247.0,
+        "min": 17247.0,
+        "max": 17247.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 78.0,
+        "min": 74.0,
+        "max": 84.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b4",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 25,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 95.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 72.0,
+        "min": 70.0,
+        "max": 76.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b4",
+      "concurrency": 1,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 25,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 58.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 79.0,
+        "min": 77.0,
+        "max": 83.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b4",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 73.0,
+        "min": 72.0,
+        "max": 79.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    },
+    {
+      "arm": "flashinfer-b4",
+      "concurrency": 8,
+      "gpu_uuid": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+      "samples": 5,
+      "pstates": [
+        "P0"
+      ],
+      "memory_mib": {
+        "median": 17249.0,
+        "min": 17249.0,
+        "max": 17249.0
+      },
+      "utilization_pct": {
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0
+      },
+      "temperature_c": {
+        "median": 81.0,
+        "min": 79.0,
+        "max": 86.0
+      },
+      "sm_clock_mhz": {
+        "median": 2520.0,
+        "min": 2520.0,
+        "max": 2520.0
+      }
+    }
+  ],
+  "limits": [
+    "Five-second sequential sampling with second-resolution host timestamps; boundary assignment is approximate and transients between samples are not excluded",
+    "SM clocks and temperatures only; memory clocks and power are not continuously sampled",
+    "No clock, power or fan settings changed by these scripts; measurements are not clock-locked",
+    "Shared-host CPU/network/other-GPU activity is not eliminated by selected-GPU ownership checks"
+  ]
+}

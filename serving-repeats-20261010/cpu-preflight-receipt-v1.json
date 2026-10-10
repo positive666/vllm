@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "{\"status\": \"CPU_HARNESS_CONTRACT_PASS\", \"fixture_sha256\": \"5df1e1407620d71e4e539333c777a7373dfac5f8037497be4e00be3f24d365e4\", \"producer_archive_sha256\": \"1a35ee2cd06ccfbf50d8d13df81107129bc328fc2d823f5011242f7595b3898f\", \"producer_archive_bytes\": 19430, \"gpu_runs\": false}\r\n",
+  "stderr": ""
+}

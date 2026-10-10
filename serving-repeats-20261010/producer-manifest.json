@@ -1,0 +1,101 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "placement": {
+    "gpu_indices": [
+      4,
+      6
+    ],
+    "gpu_uuids": [
+      "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e"
+    ]
+  },
+  "host_scripts": {
+    "create_container.sh": {
+      "sha256": "1e861c8c2a9c41524102d9dbc2d10d10f706aec8851bedd42dc3c6ebcca30c61",
+      "bytes": 2390
+    },
+    "launch_matrix.sh": {
+      "sha256": "19032f98b19c59117d0d7c788ce06f3519e188f435d6443145082eb423c1c641",
+      "bytes": 525
+    },
+    "mock_wait_checks.sh": {
+      "sha256": "019c0c5ad2466c9c659d5c2434cb9db4cc2d5d7381346f4e78f933a4930fd31e",
+      "bytes": 2768
+    },
+    "monitor_host.sh": {
+      "sha256": "66d727af0ce3def07dabdf6b874bd6be7c8f85377b87e45fa0448192480eeef3",
+      "bytes": 1847
+    },
+    "prepare_and_launch.sh": {
+      "sha256": "0aeaa4cc0a2eb4ce8d351032becab19de2ab67d7f0a52bc2c05c2f8eebd9e8b7",
+      "bytes": 1730
+    },
+    "run_cells.sh": {
+      "sha256": "af3d973140fb9cd627482339b84ddb59ba58108b27e1184436aee645253e721b",
+      "bytes": 4795
+    }
+  },
+  "files": [
+    {
+      "path": "create_container.sh",
+      "sha256": "1e861c8c2a9c41524102d9dbc2d10d10f706aec8851bedd42dc3c6ebcca30c61",
+      "bytes": 2390
+    },
+    {
+      "path": "helpers/http_performance_client.py",
+      "sha256": "bfa16d914f66651ece1ba1c5ae862c5aa10e8fb8f3efd16c7d17cd5e463baa12",
+      "bytes": 17538
+    },
+    {
+      "path": "helpers/performance-source.json",
+      "sha256": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60",
+      "bytes": 1192
+    },
+    {
+      "path": "helpers/runtime_probe.py",
+      "sha256": "646190369bb882af37d293d356990fbe8a448ebb5a9e4d60ce9b77587a2e5edc",
+      "bytes": 9471
+    },
+    {
+      "path": "helpers/tp2_supervisor.py",
+      "sha256": "df9217d136285795c7a7339590668725b8b13ee77611a33504afa2dcd934f57f",
+      "bytes": 14598
+    },
+    {
+      "path": "http-fixture.json",
+      "sha256": "5df1e1407620d71e4e539333c777a7373dfac5f8037497be4e00be3f24d365e4",
+      "bytes": 5413
+    },
+    {
+      "path": "launch_matrix.sh",
+      "sha256": "19032f98b19c59117d0d7c788ce06f3519e188f435d6443145082eb423c1c641",
+      "bytes": 525
+    },
+    {
+      "path": "mock_wait_checks.sh",
+      "sha256": "019c0c5ad2466c9c659d5c2434cb9db4cc2d5d7381346f4e78f933a4930fd31e",
+      "bytes": 2768
+    },
+    {
+      "path": "monitor_host.sh",
+      "sha256": "66d727af0ce3def07dabdf6b874bd6be7c8f85377b87e45fa0448192480eeef3",
+      "bytes": 1847
+    },
+    {
+      "path": "prepare_and_launch.sh",
+      "sha256": "0aeaa4cc0a2eb4ce8d351032becab19de2ab67d7f0a52bc2c05c2f8eebd9e8b7",
+      "bytes": 1730
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "93860c009178e97b1c971b5c61c7c7b276e4a2f64564a153fb34a923637fa6f1",
+      "bytes": 4376
+    },
+    {
+      "path": "run_cells.sh",
+      "sha256": "af3d973140fb9cd627482339b84ddb59ba58108b27e1184436aee645253e721b",
+      "bytes": 4795
+    }
+  ]
+}

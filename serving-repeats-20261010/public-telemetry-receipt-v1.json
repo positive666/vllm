@@ -1,0 +1,18 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "D:\\code\\vllm\\artifacts\\gdn60403-review-20261008\\serving-repeats-v3-20261010\\publication-work-v1\\audit_telemetry.py",
+    "--root",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/publication-work-v1",
+    "--output",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/publication-work-v1/public-telemetry-summary-v1.json"
+  ],
+  "output": "{\"status\": \"TELEMETRY_WINDOWS_DESCRIBED\", \"samples_total\": 1056, \"groups\": 32}",
+  "exit": 0
+}

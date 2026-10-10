@@ -1,0 +1,9 @@
+{
+  "label": "v2",
+  "raw_archive_sha256": "3c989e24198e86dc910eced86e3fcde5bcd33eb4c08ac391d0aca282e17ea97e",
+  "actual_matrix_exit": 1,
+  "actual_cleanup_stop_exit": 0,
+  "completed_serving_launches": 3,
+  "pooled_into_v3": false,
+  "notes": "See README for recorded failure boundary and attribution limits."
+}

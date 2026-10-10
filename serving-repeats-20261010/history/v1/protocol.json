@@ -1,0 +1,97 @@
+{
+  "schema": "gdn60403-serving-repeats-v1",
+  "frozen_utc": "2026-10-10T03:39:07.877Z",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "tensor_parallel_size": 2,
+  "gpu_blocks": 64,
+  "expected_kv_capacity_tokens": 21845,
+  "gpu_uuids": [
+    "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+    "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e"
+  ],
+  "runtime_versions": {
+    "torch": "2.13.0+cu129",
+    "flashinfer-python": "0.7.0.post1",
+    "nvidia-cutlass-dsl": "4.8.0",
+    "triton": "3.7.1",
+    "transformers": "5.16.1",
+    "vllm": "0.30.1rc1.dev143+g29468dde8.cu129"
+  },
+  "native_files": {
+    "/source/vllm/_C_stable_libtorch.abi3.so": "3efc749cc7d32a0177376cdabc19d18f406ca2f5a002f933a48997882536d6d8"
+  },
+  "model_metadata": {
+    "generation_config.json": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+    "chat_template.jinja": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041",
+    "config.json": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc",
+    "model.safetensors.index.json": "f0838c766951bdfe76d6afbdb2771a8f67aaa2231dedb3d33cebd817729843a2",
+    "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+    "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3"
+  },
+  "producer_helpers": {
+    "tp2_supervisor.py": "df9217d136285795c7a7339590668725b8b13ee77611a33504afa2dcd934f57f",
+    "http_performance_client.py": "bfa16d914f66651ece1ba1c5ae862c5aa10e8fb8f3efd16c7d17cd5e463baa12",
+    "runtime_probe.py": "646190369bb882af37d293d356990fbe8a448ebb5a9e4d60ce9b77587a2e5edc",
+    "performance-source.json": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60"
+  },
+  "fixture_sha256": "5df1e1407620d71e4e539333c777a7373dfac5f8037497be4e00be3f24d365e4",
+  "order": [
+    "triton-a1",
+    "flashinfer-b1",
+    "flashinfer-b2",
+    "triton-a2",
+    "flashinfer-b3",
+    "triton-a3",
+    "triton-a4",
+    "flashinfer-b4"
+  ],
+  "paired_launches": [
+    [
+      "triton-a1",
+      "flashinfer-b1"
+    ],
+    [
+      "triton-a2",
+      "flashinfer-b2"
+    ],
+    [
+      "triton-a3",
+      "flashinfer-b3"
+    ],
+    [
+      "triton-a4",
+      "flashinfer-b4"
+    ]
+  ],
+  "serving": {
+    "input_tokens": 512,
+    "output_tokens": 128,
+    "requests_per_round": 16,
+    "warmup_per_concurrency": 8,
+    "rounds": 3,
+    "concurrency": [
+      1,
+      8
+    ],
+    "measured_total": 768,
+    "warmup_total": 128,
+    "independent_launches_per_backend": 4
+  },
+  "analysis": {
+    "unit": "Independent serving process; requests and timing rounds are nested observations, not independent launches",
+    "aggregation": "Median of three round metrics per launch; median and range across four launches per backend; four predeclared paired percent changes",
+    "metrics": [
+      "output_tokens_per_second",
+      "ttft_ms.p50",
+      "ttft_ms.p95",
+      "token_ttft_ms.p50",
+      "tpot_ms.p50",
+      "tpot_ms.p95",
+      "request_seconds.p50",
+      "request_seconds.p95"
+    ],
+    "inference": "Descriptive paired replication only; no confidence interval, significance, broad quality equivalence or general serving speedup claim",
+    "negative_results": "Retain every launch, failure and regression; do not remove slow runs or stop after favorable results"
+  },
+  "scope": "Loopback streaming completions, fixed synthetic workload; includes TP collectives/model/API/client; excludes startup and warmup; not natural-answer accuracy or external-network latency"
+}

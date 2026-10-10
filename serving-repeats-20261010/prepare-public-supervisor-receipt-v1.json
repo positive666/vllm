@@ -1,0 +1,16 @@
+{
+  "exit": null,
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010/prepare_public.py",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/serving-repeats-v3-20261010"
+  ],
+  "stdout": "",
+  "stderr": ""
+}
