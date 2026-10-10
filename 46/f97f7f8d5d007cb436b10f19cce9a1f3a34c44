@@ -1,0 +1,118 @@
+tp2-followup-20261008/.gitattributes
+  s_0dd0c9f7973d90::t_fb71db35da4ea6 1
+  s_0dd0c9f7973d90::t_6abc00639d1388 2
+tp2-followup-20261008/README.md
+  s_2d5564bc3d15c6::t_b86f19ff9c5c76 1-112
+tp2-followup-20261008/additional-logprob-results.md
+  s_2d5564bc3d15c6::t_7e051a9fdab1e5 1-51
+tp2-followup-20261008/archive-manifest.json
+  s_2d5564bc3d15c6::t_ddce7d4a889e4c 1-652
+tp2-followup-20261008/audit-diagnostics.json
+  s_2d5564bc3d15c6::t_d97f57431b5c41 1-1196
+tp2-followup-20261008/audit-logprobs.json
+  s_2d5564bc3d15c6::t_9f87f96fef82c3 1-5675
+tp2-followup-20261008/audit-quality-correctness.json
+  s_2d5564bc3d15c6::t_a236944a5f02a3 1-2675
+tp2-followup-20261008/audit-tp2.json
+  s_2d5564bc3d15c6::t_d7aad623ec51ee 1-11748
+tp2-followup-20261008/audit_tp2.py
+  s_2d5564bc3d15c6::t_bc21d10cd2cac9 1-748
+tp2-followup-20261008/audit_tp2_diagnostics.py
+  s_2d5564bc3d15c6::t_23d2dcab7b7361 1-658
+tp2-followup-20261008/audit_tp2_logprobs.py
+  s_2d5564bc3d15c6::t_2da1b3ac3541f1 1-428
+tp2-followup-20261008/audit_tp2_quality_correctness.py
+  s_2d5564bc3d15c6::t_fd8aa1f5304bec 1-750
+tp2-followup-20261008/benchmark_current_gdn.py
+  s_2d5564bc3d15c6::t_ba0a6000ab8717 1-740
+tp2-followup-20261008/build_log_closeout.py
+  s_2d5564bc3d15c6::t_b292d01fc21db1 1-188
+tp2-followup-20261008/cleanup-after-stop.txt
+  s_2d5564bc3d15c6::t_b36ffb461bb44e 1-8
+tp2-followup-20261008/collect_round_times.py
+  s_2d5564bc3d15c6::t_e0de23858020e7 1-54
+tp2-followup-20261008/evidence-file-manifest.json
+  s_2d5564bc3d15c6::t_c25734728bf4df 1-192
+tp2-followup-20261008/finalize_tp2_evidence.py
+  s_2d5564bc3d15c6::t_66e24f123c2249 1-953
+tp2-followup-20261008/freeze_tp2_after_diagnostics.py
+  s_2d5564bc3d15c6::t_2f7ec2ef7615a2 1-296
+tp2-followup-20261008/generated-manifest.json
+  s_2d5564bc3d15c6::t_b96219269b3311 1-29
+tp2-followup-20261008/gsm8k-test.jsonl
+  s_2d5564bc3d15c6::t_327c0ad6124bbd 1-1319
+tp2-followup-20261008/host_monitor_logprob.sh
+  s_2d5564bc3d15c6::t_04ad4977e05abb 1-15
+tp2-followup-20261008/host_monitor_tp2.sh
+  s_2d5564bc3d15c6::t_2b0e2e71c2e069 1-15
+tp2-followup-20261008/http_bench_client.py
+  s_2d5564bc3d15c6::t_7b2d04eb02e4b9 1-452
+tp2-followup-20261008/http_performance_client.py
+  s_2d5564bc3d15c6::t_2098f9698cf8fd 1-453
+tp2-followup-20261008/http_tp2_compatibility.py
+  s_2d5564bc3d15c6::t_10d9bdd15eaaee 1-73
+tp2-followup-20261008/model-config.json
+  s_2d5564bc3d15c6::t_93d3fa14d0e895 1-1033
+tp2-followup-20261008/package_tp2.py
+  s_2d5564bc3d15c6::t_08292b7577a87b 1-59
+tp2-followup-20261008/performance-source.json
+  s_2d5564bc3d15c6::t_940b8c05c466a5 1-31
+tp2-followup-20261008/quality-results.md
+  s_2d5564bc3d15c6::t_febe94a5b96569 1-89
+tp2-followup-20261008/quality_http.py
+  s_2d5564bc3d15c6::t_8b281c9c79f32d 1-263
+tp2-followup-20261008/review-alignment.md
+  s_2d5564bc3d15c6::t_f5efc7b2639359 1-34
+tp2-followup-20261008/review-update-draft.md
+  s_2d5564bc3d15c6::t_074b656b884617 1-10
+tp2-followup-20261008/run_tp2_logprobs_host.sh
+  s_2d5564bc3d15c6::t_0900493a4490ec 1-28
+tp2-followup-20261008/run_tp2_performance.sh
+  s_2d5564bc3d15c6::t_f4740a887cb55c 1-15
+tp2-followup-20261008/run_tp2_preflight.sh
+  s_2d5564bc3d15c6::t_496992693a6055 1-30
+tp2-followup-20261008/runtime-log-classification-all-servers.json
+  s_2d5564bc3d15c6::t_cebb9f6d4ad882 1-499
+tp2-followup-20261008/runtime-probe.json
+  s_2d5564bc3d15c6::t_b83fa3fc0edd88 1-263
+tp2-followup-20261008/runtime_probe.py
+  s_2d5564bc3d15c6::t_72b229eafcdb2c 1-264
+tp2-followup-20261008/serving-results.md
+  s_2d5564bc3d15c6::t_f3af9ef8e81f3d 1-89
+tp2-followup-20261008/tp2_diagnostic_supervisor.py
+  s_2d5564bc3d15c6::t_a9e667cc834890 1-236
+tp2-followup-20261008/tp2_gdn_correctness.py
+  s_2d5564bc3d15c6::t_35ff50695897ba 1-273
+tp2-followup-20261008/tp2_logprobs_supervisor.py
+  s_2d5564bc3d15c6::t_730333b5f039e7 1-252
+tp2-followup-20261008/tp2_quality_diagnostic.py
+  s_2d5564bc3d15c6::t_49614af18c047c 1-289
+tp2-followup-20261008/tp2_supervisor.py
+  s_2d5564bc3d15c6::t_a178fb2aaf6a80 1-365
+tp2-followup-20261008/tp2_top_logprobs.py
+  s_2d5564bc3d15c6::t_b6a116f3dd043b 1-389
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "46f97f7f8d5d007cb436b10f19cce9a1f3a34c44",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_2d5564bc3d15c6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11c1f-1a36-7571-9b5a-37cca04dfe39",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
