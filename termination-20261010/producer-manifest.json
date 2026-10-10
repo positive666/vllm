@@ -1,0 +1,46 @@
+{
+  "scope": "Unforced budget-extension TP2; model source unchanged; compare original prefix before attributing termination",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "files": [
+    {
+      "path": "helpers/long_free_driver.py",
+      "sha256": "9e96bc91995a656e224fd668f28dacbae2410b3c43d739fb13de2efe6432df82",
+      "bytes": 15475
+    },
+    {
+      "path": "helpers/long_free_common.py",
+      "sha256": "ff3023fd233164e940bc222986676d6758ace04c13fa8ad7c37c4ecce206a5de",
+      "bytes": 4755
+    },
+    {
+      "path": "helpers/frozen_quality_http.py",
+      "sha256": "885dab543e73369a8fab05603274fbf654add1eeeae9f0c70e4324c3e138b74e",
+      "bytes": 9364
+    },
+    {
+      "path": "helpers/http_bench_client.py",
+      "sha256": "858ca5fbeba25376476a9a43a2b1d100101ce3f99cc3d1785a273c7fdb4de464",
+      "bytes": 17144
+    },
+    {
+      "path": "create_container.sh",
+      "sha256": "911998a7ce8a00cf8941758b39f937b50b93794c38631cb0c5ead277238e7f2c",
+      "bytes": 2517
+    },
+    {
+      "path": "run_cells.sh",
+      "sha256": "1954e59e66dedc48e23c976565e7eb205ca6a1a41e7b0083e5477f917212df69",
+      "bytes": 3123
+    },
+    {
+      "path": "monitor_host.sh",
+      "sha256": "030fe8dff57915650c942d2220a39d04a51611bc93ab9f91ba3f05ec12dc6f19",
+      "bytes": 1847
+    },
+    {
+      "path": "launch_matrix.sh",
+      "sha256": "41fed3b72df8e002651b48e19d3e83e1ac89200da1dfa15539312308b7e0ae79",
+      "bytes": 484
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"status\": \"PASS\", \"strict_ownership\": true, \"counts\": {\"process_snapshots\": 8, \"compute_observations\": 8, \"matched_same_snapshot\": 8, \"unmatched\": 0, \"unknown_uuid\": 0, \"partial_frames\": 0}, \"mathematical_gate_evaluated\": false}\r\n",
+  "stderr": ""
+}

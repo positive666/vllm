@@ -1,0 +1,320 @@
+{
+  "status": "SIX_CONFIGURATIONS_AND_TIMING_RECORDS_PASS",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "scope": "Two independent single-GPU measurements of model TP2 per-rank H8/HV24 dimensions; no collectives/distributed or serving latency",
+  "correctness_configurations": 6,
+  "numerical_metric_count": 36,
+  "max_relative_l2": 2.78402312687831e-05,
+  "actual_timer_methods": [
+    "cuda_graph_events"
+  ],
+  "minimum_event_samples_per_round": 6,
+  "input_sha256": {
+    "results\\micro-gpu4.json": "5c239fb8805c990aaf3322c1b01d39e547ff5eaf19bef580d807da21c799c7f6",
+    "results\\micro-gpu6.json": "d64fdffb644039153da2d57b6bb4309046c5d042256d6f793d65c7929a7b0a17"
+  },
+  "auditor_sha256": "6040d6bd885b39e69c2c92eecddcc0f37762b3e2b93997b532940e813cb152bf",
+  "rows": [
+    {
+      "gpu": 4,
+      "batch": 1,
+      "state_cache": "warm",
+      "triton_us": 5.644800141453743,
+      "flashinfer_us": 4.0511999279260635,
+      "fi_latency_change_pct": -28.231295592287687,
+      "triton_round_medians_us": [
+        5.644800141453743,
+        5.644800141453743,
+        5.644800141453743,
+        5.648000165820122,
+        5.648000165820122
+      ],
+      "fi_round_medians_us": [
+        4.0511999279260635,
+        4.0511999279260635,
+        4.047999903559685,
+        4.047999903559685,
+        4.0511999279260635
+      ],
+      "rotated_active_state_bytes": 1572864,
+      "samples_per_round_triton": [
+        3472,
+        3452,
+        3468,
+        3473,
+        3472
+      ],
+      "samples_per_round_fi": [
+        4770,
+        4797,
+        4797,
+        4804,
+        4787
+      ]
+    },
+    {
+      "gpu": 4,
+      "batch": 1,
+      "state_cache": "cold",
+      "triton_us": 9.022135749412847,
+      "flashinfer_us": 7.168084735810943,
+      "fi_latency_change_pct": -20.550023465591995,
+      "triton_round_medians_us": [
+        9.02169723748418,
+        9.022574558436315,
+        9.022135749412847,
+        9.0208597272356,
+        9.022200516079817
+      ],
+      "fi_round_medians_us": [
+        7.1674566773982065,
+        7.16877756089065,
+        7.169206268690829,
+        7.168084735810943,
+        7.1679103411618055
+      ],
+      "rotated_active_state_bytes": 504889344,
+      "samples_per_round_triton": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "samples_per_round_fi": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "gpu": 4,
+      "batch": 8,
+      "state_cache": "warm",
+      "triton_us": 14.32960033416748,
+      "flashinfer_us": 11.321599781513214,
+      "fi_latency_change_pct": -20.991517435988737,
+      "triton_round_medians_us": [
+        14.32960033416748,
+        14.348800480365753,
+        14.342400431632996,
+        14.323200285434723,
+        14.319999516010284
+      ],
+      "fi_round_medians_us": [
+        11.321599781513214,
+        11.321599781513214,
+        11.324799805879593,
+        11.315199732780457,
+        11.302399635314941
+      ],
+      "rotated_active_state_bytes": 12582912,
+      "samples_per_round_triton": [
+        1378,
+        1377,
+        1378,
+        1375,
+        1378
+      ],
+      "samples_per_round_fi": [
+        1743,
+        1725,
+        1733,
+        1737,
+        1738
+      ]
+    },
+    {
+      "gpu": 4,
+      "batch": 8,
+      "state_cache": "cold",
+      "triton_us": 35.9736186702077,
+      "flashinfer_us": 38.010419287332674,
+      "fi_latency_change_pct": 5.661928636642255,
+      "triton_round_medians_us": [
+        35.95800864987257,
+        35.95160972781298,
+        35.98579546300376,
+        35.9736186702077,
+        35.98251807980421
+      ],
+      "fi_round_medians_us": [
+        38.02138537895389,
+        38.010419287332674,
+        38.00737567064239,
+        37.99722950632979,
+        38.02524892295279
+      ],
+      "rotated_active_state_bytes": 515899392,
+      "samples_per_round_triton": [
+        13,
+        13,
+        13,
+        13,
+        13
+      ],
+      "samples_per_round_fi": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ]
+    },
+    {
+      "gpu": 6,
+      "batch": 1,
+      "state_cache": "warm",
+      "triton_us": 5.6543998420238495,
+      "flashinfer_us": 4.064000025391579,
+      "fi_latency_change_pct": -28.126766077140864,
+      "triton_round_medians_us": [
+        5.6543998420238495,
+        5.657599866390228,
+        5.6543998420238495,
+        5.6543998420238495,
+        5.6543998420238495
+      ],
+      "fi_round_medians_us": [
+        4.064000025391579,
+        4.064000025391579,
+        4.064000025391579,
+        4.064000025391579,
+        4.0608000010252
+      ],
+      "rotated_active_state_bytes": 1572864,
+      "samples_per_round_triton": [
+        3471,
+        3431,
+        3435,
+        3461,
+        3464
+      ],
+      "samples_per_round_fi": [
+        4760,
+        4763,
+        4747,
+        4768,
+        4774
+      ]
+    },
+    {
+      "gpu": 6,
+      "batch": 1,
+      "state_cache": "cold",
+      "triton_us": 9.017041761927143,
+      "flashinfer_us": 7.15811571970907,
+      "fi_latency_change_pct": -20.615697379456066,
+      "triton_round_medians_us": [
+        9.017136238074377,
+        9.016323980884017,
+        9.017041761927143,
+        9.017899177527502,
+        9.016956792813595
+      ],
+      "fi_round_medians_us": [
+        7.158624346011153,
+        7.157981432858286,
+        7.157353077350747,
+        7.15811571970907,
+        7.1586344472344425
+      ],
+      "rotated_active_state_bytes": 504889344,
+      "samples_per_round_triton": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "samples_per_round_fi": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "gpu": 6,
+      "batch": 8,
+      "state_cache": "warm",
+      "triton_us": 14.364799857139587,
+      "flashinfer_us": 11.267200112342834,
+      "fi_latency_change_pct": -21.563821115524874,
+      "triton_round_medians_us": [
+        14.364799857139587,
+        14.368000626564026,
+        14.35520052909851,
+        14.374400675296783,
+        14.348800480365753
+      ],
+      "fi_round_medians_us": [
+        11.270400136709213,
+        11.247999966144562,
+        11.267200112342834,
+        11.264000087976456,
+        11.289600282907486
+      ],
+      "rotated_active_state_bytes": 12582912,
+      "samples_per_round_triton": [
+        1373,
+        1378,
+        1374,
+        1381,
+        1378
+      ],
+      "samples_per_round_fi": [
+        1748,
+        1749,
+        1745,
+        1749,
+        1741
+      ]
+    },
+    {
+      "gpu": 6,
+      "batch": 8,
+      "state_cache": "cold",
+      "triton_us": 35.976116831709696,
+      "flashinfer_us": 38.00838982186666,
+      "fi_latency_change_pct": 5.648950384677698,
+      "triton_round_medians_us": [
+        35.95637112129025,
+        35.972136985964895,
+        35.98673285507574,
+        35.976116831709696,
+        35.983141457162255
+      ],
+      "fi_round_medians_us": [
+        38.037112864052375,
+        38.00737567064239,
+        38.0145177608583,
+        37.991258574695124,
+        38.00838982186666
+      ],
+      "rotated_active_state_bytes": 515899392,
+      "samples_per_round_triton": [
+        13,
+        13,
+        13,
+        13,
+        13
+      ],
+      "samples_per_round_fi": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ]
+    }
+  ],
+  "limits": [
+    "One fresh process per GPU, five timed rounds per condition; public production defaults, no private tuning",
+    "State-only rotation; QKV/gates/output reused; no physical HBM or cache-hit counter measurement",
+    "No NCCL/TP critical-path, Python dispatch/detach CPU overhead, projection, convolution or serving timing"
+  ]
+}

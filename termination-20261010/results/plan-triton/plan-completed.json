@@ -1,0 +1,7 @@
+{
+  "status": "plan-only",
+  "fixture_sha256": "269c0d185dcd394319718a9993a7ab51ebf5f3a9e9549a873d7809480cf4f9b7",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "requests": 8,
+  "scope": "Eight selected long-generation diagnostic questions, including targets 209 and 255 and six controls. Unforced offline synchronous TP2; no population accuracy, statistical equivalence or serving performance claim. This phase raises only max_model_len=16384 and max_tokens=8192 to inspect native termination and verify overlap with the unchanged prior 3500-token run."
+}

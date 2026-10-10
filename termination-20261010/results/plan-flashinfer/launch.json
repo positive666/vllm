@@ -1,0 +1,195 @@
+{
+  "status": "prepared",
+  "backend": "flashinfer",
+  "mode": "eager",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source_files": {
+    "tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py": "7c9bf8e9d07f8d96d5e4bb9779d0031b8022e9b5edc687b7e489bf72bcf09ec6",
+    "tests/kernels/mamba/test_gdn_forward_core_split.py": "f9a1fb3653decdcfb432ebf4f8f9c58d7a66fcfc4441fa9c28ff058a5b00ac72",
+    "vllm/compilation/counter.py": "d8158c54dd36a357bf24f6f84dc22f572d3a27f4875f3d5779b12bc5d454ff76",
+    "vllm/compilation/cuda_graph.py": "6e34824d2e62cd3bbd2eaee615ebfae3db542ce2d6be9b14d1b012398087fe2e",
+    "vllm/config/compilation.py": "3fd071dafd63fea7186c28327ede58cadf5aabea824119cf0cd2890f390c1dc9",
+    "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+    "vllm/config/observability.py": "6ebc5cad34ab04e8a060c482e2f1267d996d909fa045b8cb055c3a7b96cd7657",
+    "vllm/engine/arg_utils.py": "7224cbde233e8e145498ef2f2fdbadf3b234e6712774616a495361a593c67877",
+    "vllm/entrypoints/llm.py": "ee46ff4aa766ac217bc0a5cc49bb6140fe3ae1121ef2bd8d8933f26b060b1010",
+    "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+    "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740",
+    "vllm/v1/metrics/loggers.py": "ea496be83251b8baa88ba6e28c648f737d9d22f72f151e955fe887ead6f236b3",
+    "vllm/v1/worker/gpu/cudagraph_utils.py": "ef2aae2eb3ec5ea97d4732f65c886b7a4688247721aacf23e536485e0ffc05ab",
+    "vllm/v1/worker/gpu/model_runner.py": "48ae64b57dae7e26599df3e2a967a5f3ac0ad91861f7b879da989da0f5c67cf3",
+    "vllm/v1/worker/gpu/sample/sampler.py": "620b0ff1bea504ebe61794b91ab07cdc243d3d05f8dea4c4044c374add76270b",
+    "vllm/v1/worker/gpu/sample/trace_replay.py": "d2a7d3b3b55379efabe4740a4b7f14030126dc11be36f6ea974164ce42316a50"
+  },
+  "source_manifest_sha256": "7ec9a3eb32cc2a50e5f5e340fa710a8845589bd32d160bd8b92eb60c30fa2f60",
+  "helper_sha256": {
+    "long_free_driver.py": "9e96bc91995a656e224fd668f28dacbae2410b3c43d739fb13de2efe6432df82",
+    "long_free_common.py": "ff3023fd233164e940bc222986676d6758ace04c13fa8ad7c37c4ecce206a5de",
+    "frozen_quality_http.py": "885dab543e73369a8fab05603274fbf654add1eeeae9f0c70e4324c3e138b74e",
+    "http_bench_client.py": "858ca5fbeba25376476a9a43a2b1d100101ce3f99cc3d1785a273c7fdb4de464"
+  },
+  "fixture_sha256": "269c0d185dcd394319718a9993a7ab51ebf5f3a9e9549a873d7809480cf4f9b7",
+  "reference_sha256": "d50b98019aeedf25bffcababa41bfc15f835edcfe578561f192193addf8c6327",
+  "model_files": {
+    "generation_config.json": {
+      "sha256": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e",
+      "bytes": 202
+    },
+    "chat_template.jinja": {
+      "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041",
+      "bytes": 8952
+    },
+    "config.json": {
+      "sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc",
+      "bytes": 51350
+    },
+    "model.safetensors.index.json": {
+      "sha256": "f0838c766951bdfe76d6afbdb2771a8f67aaa2231dedb3d33cebd817729843a2",
+      "bytes": 137335
+    },
+    "tokenizer_config.json": {
+      "sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+      "bytes": 17928
+    },
+    "tokenizer.json": {
+      "sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+      "bytes": 12809320
+    }
+  },
+  "model_hash_scope": "Configuration/tokenizer/index only, not all weight shards",
+  "runtime_versions": {
+    "torch": "2.13.0+cu129",
+    "flashinfer-python": "0.7.0.post1",
+    "nvidia-cutlass-dsl": "4.8.0",
+    "triton": "3.7.1",
+    "transformers": "5.16.1",
+    "vllm": "0.30.1rc1.dev143+g29468dde8.cu129"
+  },
+  "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "model_options": {
+    "model": "/model",
+    "language_model_only": true,
+    "dtype": "bfloat16",
+    "tensor_parallel_size": 2,
+    "max_model_len": 16384,
+    "max_num_seqs": 32,
+    "max_num_batched_tokens": 1024,
+    "gpu_memory_utilization": 0.9,
+    "enable_prefix_caching": false,
+    "mamba_ssm_cache_dtype": "float32",
+    "seed": 42,
+    "enforce_eager": true,
+    "async_scheduling": false,
+    "enable_trace_replay": false,
+    "disable_log_stats": false,
+    "cudagraph_metrics": true,
+    "attention_config": {
+      "backend": "FLASH_ATTN",
+      "flash_attn_version": 2
+    },
+    "kernel_config": {
+      "gdn_decode_backend": "flashinfer",
+      "linear_backend": "marlin"
+    },
+    "num_gpu_blocks_override": 128
+  },
+  "sampling_options": {
+    "temperature": 0,
+    "seed": 42,
+    "max_tokens": 8192,
+    "min_tokens": 0,
+    "ignore_eos": false,
+    "stop": [],
+    "stop_token_ids": [],
+    "logprobs": null,
+    "prompt_logprobs": null
+  },
+  "tokenization_options": {
+    "enable_thinking": false,
+    "add_generation_prompt": true
+  },
+  "cache_seed": "/seed-cache/tp2-diagnostic-flashinfer",
+  "cache_seed_kinds": [
+    "vllm",
+    "triton",
+    "cuda",
+    "flashinfer"
+  ],
+  "environment": {
+    "PYTHONPATH": "/long-helpers:/source",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "VLLM_CACHE_ROOT": "/cache/plan-flashinfer/vllm",
+    "TRITON_CACHE_DIR": "/cache/plan-flashinfer/triton",
+    "CUDA_CACHE_PATH": "/cache/plan-flashinfer/cuda",
+    "FLASHINFER_WORKSPACE_BASE": "/cache/plan-flashinfer/flashinfer",
+    "VLLM_WORKER_MULTIPROC_METHOD": "spawn",
+    "NCCL_DEBUG": "INFO",
+    "VLLM_USE_V2_MODEL_RUNNER": "1",
+    "VLLM_ENABLE_V1_MULTIPROCESSING": "0"
+  },
+  "command": [
+    "/cache/gdn-runtime/bin/python",
+    "/long-helpers/long_free_driver.py",
+    "--backend",
+    "flashinfer",
+    "--mode",
+    "eager",
+    "--run",
+    "plan-flashinfer",
+    "--plan-only"
+  ],
+  "engine_core_multiprocessing": false,
+  "all_requests_enqueued_before_step": true,
+  "scope": "Eight selected long-generation diagnostic questions, including targets 209 and 255 and six controls. Unforced offline synchronous TP2; no population accuracy, statistical equivalence or serving performance claim. This phase raises only max_model_len=16384 and max_tokens=8192 to inspect native termination and verify overlap with the unchanged prior 3500-token run.",
+  "graph_proof": "Per-rank actual capture state plus native CUDA graph runtime stats/log tables; configuration alone is insufficient.",
+  "runtime_binding_sha256": "3d70b3ff020676a2eda076c9652369adc810580ed4ce448d3e87a8e056a5136a",
+  "runtime_files": {
+    "torch": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/torch/__init__.py",
+      "sha256": "cf40c075c95864036e835795756d69b8cccfafa76f3bcde5eba9d06065ccd3d1",
+      "bytes": 111841
+    },
+    "vllm._custom_ops": {
+      "path": "/source/vllm/_custom_ops.py",
+      "sha256": "1b0c510619bc0391b5e81d7db64b385013027f85395ba0dbf20300f57adcd4b2",
+      "bytes": 137046
+    },
+    "flashinfer.gdn_decode": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/gdn_decode.py",
+      "sha256": "e5a5a796613a48f5750bed2e7cd4f9917a9580374ce3fa6bc0ea2aa47db3d280",
+      "bytes": 53749
+    },
+    "flashinfer.jit.env": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/flashinfer/jit/env.py",
+      "sha256": "9e1a52ff4ad23ab72ab2989826ce48a3b4d266c7fae60c68b6e89d9d2663ee18",
+      "bytes": 13853
+    },
+    "cutlass": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/__init__.py",
+      "sha256": "069beceb6181368405a5ebb9d9567296816c7bfce3c4afc9565c03133e9f009f",
+      "bytes": 5714
+    },
+    "cutlass.cute": {
+      "path": "/cache/gdn-runtime/lib/python3.12/site-packages/nvidia_cutlass_dsl/dsl_packages/cutlass/cute/__init__.py",
+      "sha256": "786af9d1cca111f65abab450d3fb173d62a30d7e09ff328820652e23f42b0b55",
+      "bytes": 9968
+    },
+    "vllm._C_stable_libtorch": {
+      "path": "/source/vllm/_C_stable_libtorch.abi3.so",
+      "sha256": "3efc749cc7d32a0177376cdabc19d18f406ca2f5a002f933a48997882536d6d8",
+      "bytes": 508948960
+    }
+  },
+  "prior_launch_sha256": "69967bcc38ca26dd41477b40b43108c819d4bf958e9e320146af6568ea5fd83d",
+  "intervention": {
+    "max_tokens": [
+      3500,
+      8192
+    ],
+    "max_model_len": [
+      4096,
+      16384
+    ]
+  }
+}

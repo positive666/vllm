@@ -1,0 +1,1328 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "source_file": "/source/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+  "source_file_sha256": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+  "source_binding": {
+    "root": "/source",
+    "verified_sha256": {
+      "vllm/config/kernel.py": "94f255b2ed929589ba28cbc24359eabc5ae682fa2d77df16e15133fe33ba1f66",
+      "vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py": "d4056cb0105ca7c13fb3fa41be8f8e2ba3a2ea4f1ac81115abe3f3f4e6b3b45d",
+      "vllm/v1/attention/backends/gdn_attn.py": "611d79eaa5c8d80446557a1c0528506b61f95eb32af660b4535123daf387f740"
+    }
+  },
+  "harness_sha256": "bd33503f0066ee037f90ce078df38925569b97b6ab7144dab23ff9179a02c075",
+  "started_utc": "2026-10-10T02:49:40Z",
+  "gpu": "_CudaDeviceProperties(name='NVIDIA L20', major=8, minor=9, total_memory=45589MB, multi_processor_count=92, uuid=a2be9350-e0b5-d8b0-9844-51c35161cd3e, pci_bus_id=154, pci_device_id=0, pci_domain_id=0, L2_cache_size=96MB)",
+  "gpu_capability": [
+    8,
+    9
+  ],
+  "packages": {
+    "torch": "2.13.0+cu129",
+    "triton": "3.7.1",
+    "flashinfer-python": "0.7.0.post1",
+    "nvidia-cutlass-dsl": "4.8.0",
+    "vllm": "0.30.1rc1.dev143+g29468dde8.cu129"
+  },
+  "required_runtime_versions": {
+    "torch": "2.13.0+cu129",
+    "triton": "3.7.1",
+    "flashinfer-python": "0.7.0.post1",
+    "nvidia-cutlass-dsl": "4.8.0"
+  },
+  "runtime_probe": {
+    "provided": false,
+    "scope": "Package versions below are observed in this process only."
+  },
+  "shape": {
+    "head_shapes": [
+      {
+        "H": 8,
+        "HV": 24
+      }
+    ],
+    "K": 128,
+    "V": 128,
+    "TP": 1,
+    "model_TP": 2,
+    "scope": "Each process uses one GPU. 8:24 is the model TP2 per-rank shape; no collectives or distributed latency are measured."
+  },
+  "boundary": "production GDNDecode + identical gated RMSNorm, post-convolution",
+  "included_adapter_work": "GPU work issued by the current wrapper, including HV%8 gate copies; Python dispatch and detach CPU overhead are not timed by CUDA graphs",
+  "excluded_work": "Model projections/convolution and mixed-prefill output assembly are outside this ordinary-decode microbenchmark. State allocation/reset, compilation, seed generation and checkpoint bias conversion are untimed.",
+  "metadata_boundary": "precomputed pad mapping outside per-layer boundary, measured separately",
+  "timing": "CUPTI with CUDA graphs by default; event fallback recorded per sample; state rotation for cold cache",
+  "tuning": "public production wrapper defaults; no private-kernel tuning or universal performance claim",
+  "thresholds": {
+    "relative_l2": 0.01,
+    "float32_state": {
+      "atol": 0.01,
+      "rtol": 0.01
+    },
+    "scope": "same dtype gate for raw output, state and normalized output; never relaxed for long trajectories"
+  },
+  "dt_bias_policy": "same BF16 checkpoint-representable values; Triton BF16 parameter and FI FP32 representation prepared once outside timed forward",
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e",
+    "CUTE_DSL_ENABLE_TVM_FFI": null,
+    "VLLM_ENABLE_FLA_PACKED_RECURRENT_DECODE": null,
+    "FLASHINFER_WORKSPACE_BASE": "/cache/gpu6/flashinfer",
+    "TRITON_CACHE_DIR": "/cache/gpu6/triton",
+    "PYTHONPATH": "/long-helpers:/source"
+  },
+  "args": {
+    "output": "/results/micro-gpu6.json",
+    "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+    "runtime_probe": null,
+    "head_shapes": "8:24",
+    "batches": "1,8",
+    "dtypes": "float32",
+    "index_dtypes": "int32",
+    "steps": 128,
+    "rounds": 5,
+    "seed": 43,
+    "repeat_ms": 200,
+    "l2_multiple": 5,
+    "timer": "cupti",
+    "correctness_only": false
+  },
+  "cases": [
+    {
+      "H": 8,
+      "HV": 24,
+      "batch": 1,
+      "state_dtype": "float32",
+      "index_dtype": "int32",
+      "padding": false,
+      "layouts": {
+        "qkv": {
+          "shape": [
+            1,
+            5120
+          ],
+          "stride": [
+            8192,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "a": {
+          "shape": [
+            1,
+            24
+          ],
+          "stride": [
+            48,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "b": {
+          "shape": [
+            1,
+            24
+          ],
+          "stride": [
+            48,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "A_log": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "dt_bias_triton": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "dt_bias_flashinfer": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "state": {
+          "shape": [
+            6,
+            24,
+            128,
+            128
+          ],
+          "stride": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        }
+      },
+      "correctness": {
+        "one_step": {
+          "triton": {
+            "raw_output": {
+              "finite": true,
+              "max_abs": 9.313225746154785e-10,
+              "relative_l2": 4.492161309599396e-09,
+              "pointwise_over_threshold": 0
+            },
+            "output": {
+              "finite": true,
+              "max_abs": 2.384185791015625e-07,
+              "relative_l2": 8.476266799561927e-09,
+              "pointwise_over_threshold": 0
+            },
+            "state": {
+              "finite": true,
+              "max_abs": 8.940696716308594e-08,
+              "relative_l2": 9.217245633408311e-08,
+              "pointwise_over_threshold": 0
+            }
+          },
+          "flashinfer": {
+            "raw_output": {
+              "finite": true,
+              "max_abs": 9.313225746154785e-10,
+              "relative_l2": 4.492161309599396e-09,
+              "pointwise_over_threshold": 0
+            },
+            "output": {
+              "finite": true,
+              "max_abs": 2.384185791015625e-07,
+              "relative_l2": 8.476266799561927e-09,
+              "pointwise_over_threshold": 0
+            },
+            "state": {
+              "finite": true,
+              "max_abs": 8.940696716308594e-08,
+              "relative_l2": 7.987346606341816e-08,
+              "pointwise_over_threshold": 0
+            }
+          }
+        },
+        "trajectory": {
+          "raw_output": {
+            "max_abs": 0.000244140625,
+            "max_abs_step": 91,
+            "relative_l2": 0.0004816091968677938,
+            "relative_l2_step": 91,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          },
+          "output": {
+            "max_abs": 0.0078125,
+            "max_abs_step": 79,
+            "relative_l2": 0.000471088889753446,
+            "relative_l2_step": 91,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          },
+          "state": {
+            "max_abs": 2.384185791015625e-07,
+            "max_abs_step": 14,
+            "relative_l2": 1.242028702108655e-07,
+            "relative_l2_step": 115,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          }
+        },
+        "steps": 128,
+        "graph_replay": true,
+        "metadata_remap": true,
+        "inactive_slots_bitwise_unchanged": true,
+        "cache_page_padding_bitwise_unchanged": true,
+        "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+      },
+      "passed": true,
+      "timings": {
+        "warm": {
+          "triton": [
+            {
+              "median_us": 5.6543998420238495,
+              "p10_us": 5.648000240325928,
+              "p90_us": 5.667200088500977,
+              "samples": 3471,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 556.3327829455488,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 5.657599866390228,
+              "p10_us": 5.648000240325928,
+              "p90_us": 5.667200088500977,
+              "samples": 3431,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 556.0181126784242,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 5.6543998420238495,
+              "p10_us": 5.648000240325928,
+              "p90_us": 5.667200088500977,
+              "samples": 3435,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 556.3327829455488,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 5.6543998420238495,
+              "p10_us": 5.648000240325928,
+              "p90_us": 5.667200088500977,
+              "samples": 3461,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 556.3327829455488,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 5.6543998420238495,
+              "p10_us": 5.644800186157227,
+              "p90_us": 5.664000034332275,
+              "samples": 3464,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 556.3327829455488,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ],
+          "flashinfer": [
+            {
+              "median_us": 4.064000025391579,
+              "p10_us": 4.0543999671936035,
+              "p90_us": 4.076800346374512,
+              "samples": 4760,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 774.0472392582969,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 4.064000025391579,
+              "p10_us": 4.057600021362305,
+              "p90_us": 4.076800346374512,
+              "samples": 4763,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 774.0472392582969,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 4.064000025391579,
+              "p10_us": 4.0543999671936035,
+              "p90_us": 4.0736002922058105,
+              "samples": 4747,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 774.0472392582969,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 4.064000025391579,
+              "p10_us": 4.051199913024902,
+              "p90_us": 4.0736002922058105,
+              "samples": 4768,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 774.0472392582969,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 4.0608000010252,
+              "p10_us": 4.051199913024902,
+              "p90_us": 4.070400238037109,
+              "samples": 4774,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 1572864,
+              "allocated_rotated_state_bytes": 9443328,
+              "state_read_write_GB_per_s": 774.6572102063193,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ]
+        },
+        "cold": {
+          "triton": [
+            {
+              "median_us": 9.017136238074377,
+              "p10_us": 9.015741348266602,
+              "p90_us": 9.018437385559082,
+              "samples": 6,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 348.8610925847312,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 9.016323980884017,
+              "p10_us": 9.015446662902832,
+              "p90_us": 9.018731117248535,
+              "samples": 6,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 348.89252057373085,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 9.017041761927143,
+              "p10_us": 9.01560115814209,
+              "p90_us": 9.018621444702148,
+              "samples": 6,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 348.86474778039485,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 9.017899177527502,
+              "p10_us": 9.015247344970703,
+              "p90_us": 9.019922256469727,
+              "samples": 6,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 348.8315779620953,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 9.016956792813595,
+              "p10_us": 9.015954971313477,
+              "p90_us": 9.019588470458984,
+              "samples": 6,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 348.86803522304854,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ],
+          "flashinfer": [
+            {
+              "median_us": 7.158624346011153,
+              "p10_us": 7.157538890838623,
+              "p90_us": 7.160661697387695,
+              "samples": 8,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 439.43191428292045,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 7.157981432858286,
+              "p10_us": 7.157486438751221,
+              "p90_us": 7.159628868103027,
+              "samples": 8,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 439.47138302981955,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 7.157353077350747,
+              "p10_us": 7.1567063331604,
+              "p90_us": 7.160741329193115,
+              "samples": 8,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 439.50996492747754,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 7.15811571970907,
+              "p10_us": 7.1572465896606445,
+              "p90_us": 7.159902095794678,
+              "samples": 8,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 439.4631385098442,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 7.1586344472344425,
+              "p10_us": 7.157650470733643,
+              "p90_us": 7.159912109375,
+              "samples": 8,
+              "rotations": 321,
+              "active_state_bytes_per_rotation": 1572864,
+              "rotated_active_state_bytes": 504889344,
+              "allocated_rotated_state_bytes": 3031308288,
+              "state_read_write_GB_per_s": 439.43129422054403,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata_mapping_timing": {
+        "median_us": 2.1536000072956085,
+        "scope": "one preallocated pad-index mapping per model step, shared by all layers",
+        "timer": {
+          "method": "cuda_graph_events",
+          "warnings": [
+            "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+          ]
+        }
+      }
+    },
+    {
+      "H": 8,
+      "HV": 24,
+      "batch": 8,
+      "state_dtype": "float32",
+      "index_dtype": "int32",
+      "padding": false,
+      "layouts": {
+        "qkv": {
+          "shape": [
+            8,
+            5120
+          ],
+          "stride": [
+            8192,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "a": {
+          "shape": [
+            8,
+            24
+          ],
+          "stride": [
+            48,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "b": {
+          "shape": [
+            8,
+            24
+          ],
+          "stride": [
+            48,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "A_log": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "dt_bias_triton": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "dt_bias_flashinfer": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "state": {
+          "shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "stride": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        }
+      },
+      "correctness": {
+        "one_step": {
+          "triton": {
+            "raw_output": {
+              "finite": true,
+              "max_abs": 1.1920928955078125e-07,
+              "relative_l2": 2.2515033037961985e-07,
+              "pointwise_over_threshold": 0
+            },
+            "output": {
+              "finite": true,
+              "max_abs": 0.0009765625,
+              "relative_l2": 1.1983438525930978e-05,
+              "pointwise_over_threshold": 0
+            },
+            "state": {
+              "finite": true,
+              "max_abs": 1.7881393432617188e-07,
+              "relative_l2": 9.480782381388053e-08,
+              "pointwise_over_threshold": 0
+            }
+          },
+          "flashinfer": {
+            "raw_output": {
+              "finite": true,
+              "max_abs": 1.1920928955078125e-07,
+              "relative_l2": 2.0175028225821734e-07,
+              "pointwise_over_threshold": 0
+            },
+            "output": {
+              "finite": true,
+              "max_abs": 0.0009765625,
+              "relative_l2": 1.1982019714196213e-05,
+              "pointwise_over_threshold": 0
+            },
+            "state": {
+              "finite": true,
+              "max_abs": 1.1920928955078125e-07,
+              "relative_l2": 7.787832601025002e-08,
+              "pointwise_over_threshold": 0
+            }
+          }
+        },
+        "trajectory": {
+          "raw_output": {
+            "max_abs": 0.000244140625,
+            "max_abs_step": 121,
+            "relative_l2": 0.0001558751246193424,
+            "relative_l2_step": 121,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          },
+          "output": {
+            "max_abs": 0.03125,
+            "max_abs_step": 96,
+            "relative_l2": 0.00034645452979020774,
+            "relative_l2_step": 96,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          },
+          "state": {
+            "max_abs": 2.980232238769531e-07,
+            "max_abs_step": 28,
+            "relative_l2": 1.2254614034645783e-07,
+            "relative_l2_step": 48,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          }
+        },
+        "steps": 128,
+        "graph_replay": true,
+        "metadata_remap": true,
+        "inactive_slots_bitwise_unchanged": true,
+        "cache_page_padding_bitwise_unchanged": true,
+        "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+      },
+      "passed": true,
+      "timings": {
+        "warm": {
+          "triton": [
+            {
+              "median_us": 14.364799857139587,
+              "p10_us": 14.287999153137207,
+              "p90_us": 14.438399314880371,
+              "samples": 1373,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 1751.9091285836532,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 14.368000626564026,
+              "p10_us": 14.281600952148438,
+              "p90_us": 14.441600799560547,
+              "samples": 1378,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 1751.5188545769277,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 14.35520052909851,
+              "p10_us": 14.284799575805664,
+              "p90_us": 14.425600051879883,
+              "samples": 1374,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 1753.0806308827218,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 14.374400675296783,
+              "p10_us": 14.297599792480469,
+              "p90_us": 14.454401016235352,
+              "samples": 1381,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 1750.739009470418,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 14.348800480365753,
+              "p10_us": 14.281600952148438,
+              "p90_us": 14.41919994354248,
+              "samples": 1378,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 1753.862563942942,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ],
+          "flashinfer": [
+            {
+              "median_us": 11.270400136709213,
+              "p10_us": 11.231999397277832,
+              "p90_us": 11.308799743652344,
+              "samples": 1748,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 2232.913090461759,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 11.247999966144562,
+              "p10_us": 11.212800025939941,
+              "p90_us": 11.28320026397705,
+              "samples": 1749,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 2237.3598929362374,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 11.267200112342834,
+              "p10_us": 11.228799819946289,
+              "p90_us": 11.311999320983887,
+              "samples": 1745,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 2233.5472654321366,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 11.264000087976456,
+              "p10_us": 11.231999397277832,
+              "p90_us": 11.302399635314941,
+              "samples": 1749,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 2234.181800731943,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 11.289600282907486,
+              "p10_us": 11.251199722290039,
+              "p90_us": 11.32800006866455,
+              "samples": 1741,
+              "rotations": 1,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 12582912,
+              "allocated_rotated_state_bytes": 20460544,
+              "state_read_write_GB_per_s": 2229.1155903988197,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ]
+        },
+        "cold": {
+          "triton": [
+            {
+              "median_us": 35.95637112129025,
+              "p10_us": 35.9249153137207,
+              "p90_us": 36.00900650024414,
+              "samples": 13,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 699.8988834303965,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 35.972136985964895,
+              "p10_us": 35.96503448486328,
+              "p90_us": 35.99332046508789,
+              "samples": 13,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 699.5921318163234,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 35.98673285507574,
+              "p10_us": 35.95017623901367,
+              "p90_us": 36.00074768066406,
+              "samples": 13,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 699.3083840466081,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 35.976116831709696,
+              "p10_us": 35.94609832763672,
+              "p90_us": 36.01003646850586,
+              "samples": 13,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 699.5147396735881,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 35.983141457162255,
+              "p10_us": 35.95460891723633,
+              "p90_us": 35.99427032470703,
+              "samples": 13,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 699.3781804726467,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ],
+          "flashinfer": [
+            {
+              "median_us": 38.037112864052375,
+              "p10_us": 38.01586151123047,
+              "p90_us": 38.0812873840332,
+              "samples": 12,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 661.6123597483496,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 38.00737567064239,
+              "p10_us": 37.98276138305664,
+              "p90_us": 38.02944564819336,
+              "samples": 12,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 662.1300091350047,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 38.0145177608583,
+              "p10_us": 37.97170639038086,
+              "p90_us": 38.02212905883789,
+              "samples": 12,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 662.0056094966967,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 37.991258574695124,
+              "p10_us": 37.95609664916992,
+              "p90_us": 38.015602111816406,
+              "samples": 12,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 662.410905669817,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            },
+            {
+              "median_us": 38.00838982186666,
+              "p10_us": 37.98762893676758,
+              "p90_us": 38.038978576660156,
+              "samples": 12,
+              "rotations": 41,
+              "active_state_bytes_per_rotation": 12582912,
+              "rotated_active_state_bytes": 515899392,
+              "allocated_rotated_state_bytes": 838882304,
+              "state_read_write_GB_per_s": 662.1123419840799,
+              "timer": {
+                "method": "cuda_graph_events",
+                "warnings": [
+                  "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata_mapping_timing": {
+        "median_us": 2.115200087428093,
+        "scope": "one preallocated pad-index mapping per model step, shared by all layers",
+        "timer": {
+          "method": "cuda_graph_events",
+          "warnings": [
+            "CUPTI is not installed. Try 'pip install -U cupti-python'. Falling back to CUDA events for benchmarking."
+          ]
+        }
+      }
+    },
+    {
+      "H": 8,
+      "HV": 24,
+      "batch": 8,
+      "state_dtype": "float32",
+      "index_dtype": "int32",
+      "padding": true,
+      "layouts": {
+        "qkv": {
+          "shape": [
+            8,
+            5120
+          ],
+          "stride": [
+            8192,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "a": {
+          "shape": [
+            8,
+            24
+          ],
+          "stride": [
+            48,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "b": {
+          "shape": [
+            8,
+            24
+          ],
+          "stride": [
+            48,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        },
+        "A_log": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "dt_bias_triton": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "dt_bias_flashinfer": {
+          "shape": [
+            24
+          ],
+          "stride": [
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": true
+        },
+        "state": {
+          "shape": [
+            13,
+            24,
+            128,
+            128
+          ],
+          "stride": [
+            393472,
+            16384,
+            128,
+            1
+          ],
+          "pointer_mod16": 0,
+          "requires_grad": false
+        }
+      },
+      "correctness": {
+        "one_step": {
+          "triton": {
+            "raw_output": {
+              "finite": true,
+              "max_abs": 1.1920928955078125e-07,
+              "relative_l2": 2.5724943952809554e-07,
+              "pointwise_over_threshold": 0
+            },
+            "output": {
+              "finite": true,
+              "max_abs": 0.0009765625,
+              "relative_l2": 1.3766329175268766e-05,
+              "pointwise_over_threshold": 0
+            },
+            "state": {
+              "finite": true,
+              "max_abs": 1.7881393432617188e-07,
+              "relative_l2": 9.197414385653246e-08,
+              "pointwise_over_threshold": 0
+            }
+          },
+          "flashinfer": {
+            "raw_output": {
+              "finite": true,
+              "max_abs": 1.1920928955078125e-07,
+              "relative_l2": 2.318812306612017e-07,
+              "pointwise_over_threshold": 0
+            },
+            "output": {
+              "finite": true,
+              "max_abs": 0.0009765625,
+              "relative_l2": 1.3764701179752592e-05,
+              "pointwise_over_threshold": 0
+            },
+            "state": {
+              "finite": true,
+              "max_abs": 1.1920928955078125e-07,
+              "relative_l2": 7.633973808651717e-08,
+              "pointwise_over_threshold": 0
+            }
+          }
+        },
+        "trajectory": {
+          "raw_output": {
+            "max_abs": 0.000244140625,
+            "max_abs_step": 121,
+            "relative_l2": 0.00017878269136417657,
+            "relative_l2_step": 121,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          },
+          "output": {
+            "max_abs": 0.03125,
+            "max_abs_step": 96,
+            "relative_l2": 0.0004036171594634652,
+            "relative_l2_step": 96,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          },
+          "state": {
+            "max_abs": 2.980232238769531e-07,
+            "max_abs_step": 28,
+            "relative_l2": 1.2224093381973944e-07,
+            "relative_l2_step": 48,
+            "pointwise_over_threshold": 0,
+            "pointwise_over_threshold_step": 1
+          }
+        },
+        "steps": 128,
+        "graph_replay": true,
+        "metadata_remap": true,
+        "inactive_slots_bitwise_unchanged": true,
+        "cache_page_padding_bitwise_unchanged": true,
+        "output_contract": "compare positive-index rows only; padded outputs are ignored by serving; inactive state including null slot 0 and all page padding stay exact"
+      },
+      "passed": true
+    }
+  ],
+  "all_correctness_passed": true,
+  "completed_utc": "2026-10-10T02:50:01Z"
+}

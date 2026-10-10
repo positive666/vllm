@@ -1,0 +1,5 @@
+{
+  "status": "shutdown-returned",
+  "generation_completed": true,
+  "engine_core_class": "InprocClient"
+}

@@ -1,0 +1,35 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "placement": {
+    "gpu_indices": [
+      4,
+      6
+    ],
+    "gpu_uuids": [
+      "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e"
+    ],
+    "scope": "Two independent single-GPU runs of TP2 per-rank dimensions, not distributed timing"
+  },
+  "host_scripts": {
+    "create_container.sh": {
+      "sha256": "a357c8941136fad60bac44855b0350dd339bd60a37aa15f29e9e063bb4e33faa",
+      "bytes": 2516
+    },
+    "run_cells.sh": {
+      "sha256": "3a2907196340e48cce3e056df2ec4ae47d9101de83a027026ae4036918e376f6",
+      "bytes": 3869
+    },
+    "monitor_host.sh": {
+      "sha256": "030fe8dff57915650c942d2220a39d04a51611bc93ab9f91ba3f05ec12dc6f19",
+      "bytes": 1847
+    },
+    "prepare_and_launch.sh": {
+      "sha256": "0a60b289583fc351baae97cd1b22ba8e7e2b5714f54dc23be239974788517b37",
+      "bytes": 634
+    }
+  },
+  "original_harness_sha256": "2d92c167e20a03b9180b2610e8df88dcecbfec56927c3f7e3c18e62cef07368c",
+  "harness_sha256": "bd33503f0066ee037f90ce078df38925569b97b6ab7144dab23ff9179a02c075",
+  "harness_changes": "Accept 8:24 head shape; label rank-local measurement; record explicit GPU UUID. Timing, correctness and tolerance implementation unchanged."
+}

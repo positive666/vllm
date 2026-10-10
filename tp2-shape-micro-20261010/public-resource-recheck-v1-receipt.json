@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "signal": null,
+  "killed": false,
+  "command": [
+    "uv",
+    "run",
+    "--offline",
+    "--no-project",
+    "D:/code/vllm/.venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/tp2-shape-micro-20261010/publication-stage-v1/resource_audit.py",
+    "--results",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/tp2-shape-micro-20261010/publication-stage-v1/results",
+    "--manifest",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/tp2-shape-micro-20261010/publication-stage-v1/producer-manifest.json",
+    "--expected-owner",
+    "gdn60403-tp2shape-20261010",
+    "--output",
+    "D:/code/vllm/artifacts/gdn60403-review-20261008/tp2-shape-micro-20261010/public-resource-recheck-v1.json"
+  ],
+  "stdout": "{\"status\": \"PASS\", \"strict_ownership\": true, \"counts\": {\"process_snapshots\": 8, \"compute_observations\": 8, \"matched_same_snapshot\": 8, \"unmatched\": 0, \"unknown_uuid\": 0, \"partial_frames\": 0}, \"mathematical_gate_evaluated\": false}\r\n",
+  "stderr": ""
+}

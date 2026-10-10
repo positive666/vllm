@@ -1,0 +1,37 @@
+{
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "placement": {
+    "gpu_indices": [
+      4,
+      6
+    ],
+    "gpu_uuids": [
+      "GPU-4af84168-6d29-6128-fee3-1b146cce9b47",
+      "GPU-a2be9350-e0b5-d8b0-9844-51c35161cd3e"
+    ],
+    "topology": "PIX",
+    "numa": 1
+  },
+  "host_scripts": {
+    "create_container.sh": {
+      "sha256": "911998a7ce8a00cf8941758b39f937b50b93794c38631cb0c5ead277238e7f2c",
+      "bytes": 2517
+    },
+    "run_cells.sh": {
+      "sha256": "1954e59e66dedc48e23c976565e7eb205ca6a1a41e7b0083e5477f917212df69",
+      "bytes": 3123
+    },
+    "monitor_host.sh": {
+      "sha256": "030fe8dff57915650c942d2220a39d04a51611bc93ab9f91ba3f05ec12dc6f19",
+      "bytes": 1847
+    },
+    "launch_matrix.sh": {
+      "sha256": "41fed3b72df8e002651b48e19d3e83e1ac89200da1dfa15539312308b7e0ae79",
+      "bytes": 484
+    },
+    "prepare_and_launch.sh": {
+      "sha256": "510ffe06cb86348423e1bd27d81ac26ce204c95fe1a3380ddc5ada1ea6026598",
+      "bytes": 1689
+    }
+  }
+}

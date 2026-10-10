@@ -1,0 +1,22 @@
+{
+  "scope": "No production source edit; two-parameter native termination diagnostic",
+  "source_head": "d8ae9e900e3c96a7c1b5cb53cc9f572ab0e20fd6",
+  "record_audit_exit": 0,
+  "resource_audit_exit": 0,
+  "archive_sha256": "194825c127b1655e6c9b0659fe9d3719ebba405e7538c96ad5c30d5083364ed7",
+  "cpu_protocol": "CPU_BUDGET_PROTOCOL_PASS",
+  "auditor_contract_cases": 3,
+  "all_prior_outputs_reproduced_both_backends": true,
+  "q255": {
+    "flashinfer_output_tokens": 7778,
+    "triton_output_tokens": 1217,
+    "eos_id": 248046,
+    "predicted_both": "176",
+    "gold": "192"
+  },
+  "limits": [
+    "single fresh extended-budget run per backend, prior two eager repeats retained",
+    "eight selected diagnostic examples, not population accuracy or serving performance",
+    "increasing budget is not a production code fix"
+  ]
+}
