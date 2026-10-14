@@ -1,0 +1,23 @@
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse_sm90.py
+  s_4950b657d66898::t_80abd50417d935 69,95
+  s_4950b657d66898::t_346a1a722716cc 66-68,92-94,96-97,115,126,136,261,265-269,319,352,409-412,423,439,479-482,490,562-595,691-706
+tests/v1/attention/test_flashinfer_mla_sparse_sm90.py
+  s_4950b657d66898::t_346a1a722716cc 5-6,68,133,172,174-176,195-196,199,207,542-643,645-651,658-667
+  s_4950b657d66898::t_80abd50417d935 644,652-657
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6b6f5a7f21120f1b8b7e08786956324818cc4d15",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": null
+    }
+  }
+}

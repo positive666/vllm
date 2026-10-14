@@ -1,0 +1,151 @@
+serving-repeats-20261010/PLAN.md
+  s_bd33e4c882c866::t_7da7f6d4ca7eb7 1-37
+serving-repeats-20261010/README.md
+  s_bd33e4c882c866::t_54c43a3589c766 1-56
+serving-repeats-20261010/archive-extract-receipt-v1.json
+  s_bd33e4c882c866::t_bb95f16476b015 1-16
+serving-repeats-20261010/audit-client-load-receipt-v1.json
+  s_bd33e4c882c866::t_dfc17bb00e7e3f 1-19
+serving-repeats-20261010/audit-idle-receipt-v1.json
+  s_bd33e4c882c866::t_001a47841b198d 1-19
+serving-repeats-20261010/audit-resource-receipt-v1.json
+  s_bd33e4c882c866::t_092cb4aaedd089 1-23
+serving-repeats-20261010/audit-serving-receipt-v1.json
+  s_bd33e4c882c866::t_05f44162511fc3 1-19
+serving-repeats-20261010/audit-telemetry-receipt-v1.json
+  s_bd33e4c882c866::t_3a5c91980ce67e 1-19
+serving-repeats-20261010/audit_client_load.py
+  s_bd33e4c882c866::t_d37315c8141e84 1-33
+serving-repeats-20261010/audit_idle_wait.py
+  s_bd33e4c882c866::t_4e0de8f71c3b63 1-93
+serving-repeats-20261010/audit_serving.py
+  s_bd33e4c882c866::t_fe9c19747b1fc3 1-123
+serving-repeats-20261010/audit_serving_public.py
+  s_bd33e4c882c866::t_df5e4141f2d3ca 1-130
+serving-repeats-20261010/audit_telemetry.py
+  s_bd33e4c882c866::t_beb8915333351b 1-33
+serving-repeats-20261010/client-load-summary-v1.json
+  s_bd33e4c882c866::t_731ba775b5335a 1-720
+serving-repeats-20261010/cpu-consumer-checks-receipt-v1.json
+  s_bd33e4c882c866::t_d05f2f117820d2 1-5
+serving-repeats-20261010/cpu-preflight-receipt-v1.json
+  s_bd33e4c882c866::t_106d5aafd3792b 1-5
+serving-repeats-20261010/cpu_consumer_checks.py
+  s_bd33e4c882c866::t_92acb718b10ed7 1-33
+serving-repeats-20261010/create_container.sh
+  s_bd33e4c882c866::t_b93875786c1614 1-37
+serving-repeats-20261010/finalize_public.py
+  s_bd33e4c882c866::t_11907ed640f1b1 1-47
+serving-repeats-20261010/helpers/http_performance_client.py
+  s_bd33e4c882c866::t_a7f09b145011f0 1-457
+serving-repeats-20261010/helpers/performance-source.json
+  s_bd33e4c882c866::t_7a7f278f15c79e 1-31
+serving-repeats-20261010/helpers/runtime_probe.py
+  s_bd33e4c882c866::t_7facf0e2afea23 1-264
+serving-repeats-20261010/helpers/tp2_supervisor.py
+  s_bd33e4c882c866::t_d91340b0e48648 1-380
+serving-repeats-20261010/history/v1/interruption.json
+  s_bd33e4c882c866::t_130c6a0152cfd8 1-9
+serving-repeats-20261010/history/v1/monitor_host.sh
+  s_bd33e4c882c866::t_0a5eb996b12829 1-34
+serving-repeats-20261010/history/v1/producer-manifest.json
+  s_bd33e4c882c866::t_e911fc5a32e47f 1-92
+serving-repeats-20261010/history/v1/protocol.json
+  s_bd33e4c882c866::t_2bd78c0f380e7d 1-97
+serving-repeats-20261010/history/v1/raw-public-map.json
+  s_bd33e4c882c866::t_34a61b48a3bfea 1-499
+serving-repeats-20261010/history/v1/run_cells.sh
+  s_bd33e4c882c866::t_30898b98523093 1-70
+serving-repeats-20261010/history/v2/interruption.json
+  s_bd33e4c882c866::t_e3322b653b1c35 1-9
+serving-repeats-20261010/history/v2/monitor_host.sh
+  s_bd33e4c882c866::t_0a82ee18da3dd2 1-34
+serving-repeats-20261010/history/v2/producer-manifest.json
+  s_bd33e4c882c866::t_300d9f1bd8941b 1-92
+serving-repeats-20261010/history/v2/protocol.json
+  s_bd33e4c882c866::t_ab6ff2f5ef6c45 1-99
+serving-repeats-20261010/history/v2/raw-public-map.json
+  s_bd33e4c882c866::t_010a7ffd5c90bb 1-641
+serving-repeats-20261010/history/v2/run_cells.sh
+  s_bd33e4c882c866::t_dccb07a2fd8ee5 1-93
+serving-repeats-20261010/http-fixture.json
+  s_bd33e4c882c866::t_6a68effe23b9c1 1-524
+serving-repeats-20261010/idle-summary-v1.json
+  s_bd33e4c882c866::t_88670ab157257b 1-138
+serving-repeats-20261010/launch_matrix.sh
+  s_bd33e4c882c866::t_e5a11d44132047 1-12
+serving-repeats-20261010/mock_wait_checks.sh
+  s_bd33e4c882c866::t_9a451fc510c73b 1-46
+serving-repeats-20261010/monitor_host.sh
+  s_bd33e4c882c866::t_22fdc977ea7c37 1-34
+serving-repeats-20261010/package-manifest.json
+  s_bd33e4c882c866::t_67262da5ed3cf8 1-373
+serving-repeats-20261010/preparation-supervision-note-v1.json
+  s_bd33e4c882c866::t_9afc7c2fd52973 1-7
+serving-repeats-20261010/prepare-public-supervisor-receipt-v1.json
+  s_bd33e4c882c866::t_e70598ef8d810c 1-16
+serving-repeats-20261010/prepare_and_launch.sh
+  s_bd33e4c882c866::t_105ff6e65a8d83 1-39
+serving-repeats-20261010/prepare_public.py
+  s_bd33e4c882c866::t_3c9a250729431d 1-62
+serving-repeats-20261010/producer-manifest.json
+  s_bd33e4c882c866::t_33fceb1b0cf295 1-101
+serving-repeats-20261010/protocol.json
+  s_bd33e4c882c866::t_6b002025308d18 1-99
+serving-repeats-20261010/public-client-load-receipt-v1.json
+  s_bd33e4c882c866::t_57641e15676c86 1-18
+serving-repeats-20261010/public-client-load-summary-v1.json
+  s_bd33e4c882c866::t_5a4cb836a27867 1-720
+serving-repeats-20261010/public-idle-receipt-v1.json
+  s_bd33e4c882c866::t_cc279edfb2b1a1 1-18
+serving-repeats-20261010/public-idle-summary-v1.json
+  s_bd33e4c882c866::t_4a25ae08ced0b1 1-138
+serving-repeats-20261010/public-resource-receipt-v1.json
+  s_bd33e4c882c866::t_9bc22dc6d2e299 1-22
+serving-repeats-20261010/public-resource-summary-v1.json
+  s_bd33e4c882c866::t_e57946d5ed9d13 1-6428
+serving-repeats-20261010/public-serving-receipt-v1.json
+  s_bd33e4c882c866::t_f9d5a2260f9a7d 1-18
+serving-repeats-20261010/public-serving-summary-v1.json
+  s_bd33e4c882c866::t_ad05b9ec8b95d5 1-2304
+serving-repeats-20261010/public-telemetry-receipt-v1.json
+  s_bd33e4c882c866::t_38665e41a740aa 1-18
+serving-repeats-20261010/public-telemetry-summary-v1.json
+  s_bd33e4c882c866::t_4c57c508b090a4 1-940
+serving-repeats-20261010/raw-public-map.json
+  s_bd33e4c882c866::t_11958d5edd7b74 1-1565
+serving-repeats-20261010/reference/audit_tp2.py
+  s_bd33e4c882c866::t_5655cf3082a502 1-748
+serving-repeats-20261010/reference/http_performance_client.py
+  s_bd33e4c882c866::t_f391b5a8a7a2dd 1-453
+serving-repeats-20261010/reference/runtime-probe.json
+  s_bd33e4c882c866::t_8ef51a9acf8072 1-263
+serving-repeats-20261010/reference/tp2_supervisor.py
+  s_bd33e4c882c866::t_1fa85f292afb36 1-365
+serving-repeats-20261010/resource-summary-v1.json
+  s_bd33e4c882c866::t_242975b060a2c8 1-6428
+serving-repeats-20261010/resource_audit.py
+  s_bd33e4c882c866::t_451b2ac65318cd 1-354
+serving-repeats-20261010/run_cells.sh
+  s_bd33e4c882c866::t_151e7d22c8bd94 1-92
+serving-repeats-20261010/serving-summary-v1.json
+  s_bd33e4c882c866::t_4b9cf8bdbd5747 1-2248
+serving-repeats-20261010/telemetry-summary-v1.json
+  s_bd33e4c882c866::t_4d7fb3c7391a16 1-940
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9fbb79eab61cf253baaa0f904b014d2addcf4d37",
+  "prompts": {},
+  "sessions": {
+    "s_bd33e4c882c866": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_bd33e4c882c866",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

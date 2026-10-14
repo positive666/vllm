@@ -1,0 +1,35 @@
+tests/models/test_fewhead_prefill_gate.py
+  s_4950b657d66898::t_34522532290b29 4-5,10-13,96-139
+vllm/models/deepseek_v41/nvidia/flashmla.py
+  s_4950b657d66898::t_28e5984fa47b7d 354-384
+vllm/models/deepseek_v41/nvidia/fewhead_flashmla.py
+  s_4950b657d66898::t_32ab8ac09e8a2d 18
+  s_4950b657d66898::t_76bcab61ab1632 1-17,19-56,59,61-100
+  s_4950b657d66898::t_34522532290b29 57-58,60
+vllm/models/deepseek_v41/nvidia/model.py
+  s_530a99824ab6f6::t_d207aecb0384d0 86-88,121-129,236,248
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2950c12fc603a51b72f62b4442637b7423f8777a",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": null
+    },
+    "s_530a99824ab6f6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fa53-b641-7930-a4b3-b86d7b4c6ddc",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

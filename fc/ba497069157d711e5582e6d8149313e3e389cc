@@ -1,0 +1,33 @@
+tests/kernels/attention/test_fewhead_sparse_prefill.py
+  s_003a0836e3e315::t_0cdb26a902cb08 1-54
+tests/models/test_fewhead_prefill_gate.py
+  s_003a0836e3e315::t_1dae949334ea33 1-62
+vllm/models/deepseek_v41/nvidia/fewhead_prefill.py
+  s_003a0836e3e315::t_69a06edfffb272 1-121
+vllm/models/deepseek_v41/nvidia/triton_fewhead_sparse_prefill.py
+  s_003a0836e3e315::t_a9d8998f017125 1-55,57-175
+  s_003a0836e3e315::t_4e472390cc8338 56
+vllm/models/deepseek_v41/nvidia/flashmla.py
+  s_003a0836e3e315::t_1de217920bdfc9 19-22
+  s_003a0836e3e315::t_cd4e99fe6fb37d 367-394
+vllm/envs.py
+  s_003a0836e3e315::t_923781fcd92df0 2197-2203
+  s_003a0836e3e315::t_3ec0de2de74760 328-329
+  s_003a0836e3e315::t_82330ef0fee904 371-378
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "fcba497069157d711e5582e6d8149313e3e389cc",
+  "prompts": {},
+  "sessions": {
+    "s_003a0836e3e315": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cb648348-41c8-40f3-a392-c5e9fc1f81da",
+        "model": "grok-4.6"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+CMakeLists.txt
+  s_fd9505cedc18b2::t_bf1016177cfa8f 1108-1109
+tests/kernels/mamba/test_gdn_fused_mtp.py
+  s_fd9505cedc18b2::t_07436bcad78e81 44,107,127,131,135-136,162-165,179-182,185-189,191,254,256,262,265-272,276,283,285,287,335,387-425,427,433-439,446-455
+vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py
+  s_fd9505cedc18b2::t_b5c16e408a76ca 534-541,1823-1885,1951-1961
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "09fcbef9706b2c279d1b03aaccf2c5ab29f99012",
+  "prompts": {},
+  "sessions": {
+    "s_fd9505cedc18b2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0e32e-70bd-7c51-96ac-e6f3b9090505",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
