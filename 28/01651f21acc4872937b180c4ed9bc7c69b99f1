@@ -1,0 +1,21 @@
+tests/models/glm5next/test_kda_paired_projection.py
+  s_7db3d90b7949bc::t_548d8ec5fcbfed 1-91
+vllm/models/glm5next/common/kda.py
+  s_7db3d90b7949bc::t_12f87236153285 300-303,389-421,514-519
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2801651f21acc4872937b180c4ed9bc7c69b99f1",
+  "prompts": {},
+  "sessions": {
+    "s_7db3d90b7949bc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a140a5-bf9e-7381-a2e6-eb14455a411b",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
