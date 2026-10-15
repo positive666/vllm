@@ -1,0 +1,743 @@
+{
+  "scope": "16 arithmetic smoke questions; not an accuracy benchmark",
+  "correct": 16,
+  "truncated": 0,
+  "records": [
+    {
+      "index": 0,
+      "question": "What is 17 plus 25?",
+      "gold": "42",
+      "parsed": "42",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-b5311cd8bbd4399d",
+        "object": "chat.completion",
+        "created": 1792059850,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "17 + 25 = 42\n\n#### 42",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 37,
+          "total_tokens": 53,
+          "completion_tokens": 16,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 1,
+      "question": "What is 13 multiplied by 9?",
+      "gold": "117",
+      "parsed": "117",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-a96091dffb763c91",
+        "object": "chat.completion",
+        "created": 1792059850,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "13 multiplied by 9 is 117.\n\n#### 117",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 37,
+          "total_tokens": 56,
+          "completion_tokens": 19,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 2,
+      "question": "A box has 12 pens. Seven are added, then four are taken out. How many remain?",
+      "gold": "15",
+      "parsed": "15",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-87defcd56b9cc4cd",
+        "object": "chat.completion",
+        "created": 1792059851,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "Start with 12 pens.\nAdd 7: $12 + 7 = 19$.\nTake out 4: $19 - 4 = 15$.\n\n15 remain.\n\n#### 15",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 49,
+          "total_tokens": 100,
+          "completion_tokens": 51,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 3,
+      "question": "A train travels 240 km in 3 hours. What is its average speed in km/h?",
+      "gold": "80",
+      "parsed": "80",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-818e49d7b1fc3502",
+        "object": "chat.completion",
+        "created": 1792059853,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "To find the average speed, divide the total distance by the total time.\n\n$$ \\text{Average Speed} = \\frac{\\text{Distance}}{\\text{Time}} = \\frac{240 \\text{ km}}{3 \\text{ hours}} = 80 \\text{ km/h} $$\n\n#### 80",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 49,
+          "total_tokens": 121,
+          "completion_tokens": 72,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 4,
+      "question": "Three notebooks cost 7 dollars each and five pens cost 3 dollars each. What is the total cost in dollars?",
+      "gold": "36",
+      "parsed": "36",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-a27ae3f2d963d6ba",
+        "object": "chat.completion",
+        "created": 1792059856,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "To find the total cost, we calculate the cost of the notebooks and the pens separately and then add them together.\n\n1.  **Cost of notebooks:**\n    3 notebooks $\\times$ $7 per notebook = $21\n\n2.  **Cost of pens:**\n    5 pens $\\times$ $3 per pen = $15\n\n3.  **Total cost:**\n    $21 + $15 = $36\n\n#### 36",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 51,
+          "total_tokens": 151,
+          "completion_tokens": 100,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 5,
+      "question": "A tank holds 80 liters. It is 35 percent full. How many liters does it contain?",
+      "gold": "28",
+      "parsed": "28",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-91d1c9690062c9bb",
+        "object": "chat.completion",
+        "created": 1792059859,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "To find the amount of liquid in the tank, calculate 35% of 80 liters.\n\n$$ 80 \\times 0.35 = 28 $$\n\nThe tank contains 28 liters.\n\n#### 28",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 50,
+          "total_tokens": 103,
+          "completion_tokens": 53,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 6,
+      "question": "Solve 4x + 9 = 37 for x.",
+      "gold": "7",
+      "parsed": "7",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-9bcb5b7b15f8eeba",
+        "object": "chat.completion",
+        "created": 1792059861,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "To solve the equation $4x + 9 = 37$ for $x$:\n\n1.  Subtract 9 from both sides:\n    $$4x = 37 - 9$$\n    $$4x = 28$$\n\n2.  Divide both sides by 4:\n    $$x = \\frac{28}{4}$$\n    $$x = 7$$\n\n#### 7",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 42,
+          "total_tokens": 133,
+          "completion_tokens": 91,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 7,
+      "question": "Two sides of a rectangle measure 12 and 5 cm. What is its area in square cm?",
+      "gold": "60",
+      "parsed": "60",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-b5e4cd0e70529ac2",
+        "object": "chat.completion",
+        "created": 1792059865,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "The area of a rectangle is calculated by multiplying its length by its width.\nArea = 12 cm \u00d7 5 cm = 60 cm\u00b2.\n\n#### 60",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 49,
+          "total_tokens": 88,
+          "completion_tokens": 39,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 8,
+      "question": "A fair six-sided die is rolled once. How many possible outcomes are even?",
+      "gold": "3",
+      "parsed": "3",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-9372186bd3d983a2",
+        "object": "chat.completion",
+        "created": 1792059866,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "A fair six-sided die has the outcomes {1, 2, 3, 4, 5, 6}.\nThe even numbers in this set are 2, 4, and 6.\nThere are 3 such outcomes.\n\n#### 3",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 43,
+          "total_tokens": 100,
+          "completion_tokens": 57,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 9,
+      "question": "What is the sum of all integers from 1 through 20?",
+      "gold": "210",
+      "parsed": "210",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-ab88f60757f68ca2",
+        "object": "chat.completion",
+        "created": 1792059869,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "The sum of the first $n$ integers is given by the formula $\\frac{n(n+1)}{2}$.\nFor $n=20$:\n$$ \\frac{20(20+1)}{2} = \\frac{20 \\times 21}{2} = 10 \\times 21 = 210 $$\n\n#### 210",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 42,
+          "total_tokens": 127,
+          "completion_tokens": 85,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 10,
+      "question": "A book costs 50 dollars before a 20 percent discount. What is the sale price in dollars?",
+      "gold": "40",
+      "parsed": "40",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-a1962101f365400c",
+        "object": "chat.completion",
+        "created": 1792059872,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "To find the sale price, first calculate the discount amount:\n$50 \\times 0.20 = 10$ dollars.\n\nSubtract the discount from the original price:\n$50 - 10 = 40$ dollars.\n\nAlternatively, calculate 80% of the original price:\n$50 \\times 0.80 = 40$ dollars.\n\n#### 40",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 50,
+          "total_tokens": 142,
+          "completion_tokens": 92,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 11,
+      "question": "An item costs 36 dollars for 9 kilograms. What is the price per kilogram in dollars?",
+      "gold": "4",
+      "parsed": "4",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-a4cd77d7d416cee1",
+        "object": "chat.completion",
+        "created": 1792059875,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "To find the price per kilogram, divide the total cost by the total weight:\n\n$$ \\frac{36 \\text{ dollars}}{9 \\text{ kilograms}} = 4 \\text{ dollars per kilogram} $$\n\n#### 4",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 48,
+          "total_tokens": 99,
+          "completion_tokens": 51,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 12,
+      "question": "\u5c0f\u660e\u670918\u5143\uff0c\u4e70\u4e863\u672c\u6bcf\u672c4\u5143\u7684\u7ec3\u4e60\u672c\u3002\u8fd8\u5269\u591a\u5c11\u5143\uff1f",
+      "gold": "6",
+      "parsed": "6",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-8577cf778e797d43",
+        "object": "chat.completion",
+        "created": 1792059877,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "\u5c0f\u660e\u82b1\u8d39\u4e86 $3 \\times 4 = 12$ \u5143\u3002\n\u5269\u4f59\u91d1\u989d\u4e3a $18 - 12 = 6$ \u5143\u3002\n\n#### 6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 47,
+          "total_tokens": 86,
+          "completion_tokens": 39,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 13,
+      "question": "\u4e00\u8f86\u8f66\u6bcf\u5c0f\u65f6\u884c\u9a7660\u516c\u91cc\uff0c\u884c\u9a762.5\u5c0f\u65f6\u3002\u5171\u884c\u9a76\u591a\u5c11\u516c\u91cc\uff1f",
+      "gold": "150",
+      "parsed": "150",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-ba0d4d27705f4aa7",
+        "object": "chat.completion",
+        "created": 1792059879,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "60 \u00d7 2.5 = 150\n\n#### 150",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 46,
+          "total_tokens": 65,
+          "completion_tokens": 19,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 14,
+      "question": "\u5b66\u6821\u67098\u4e2a\u73ed\uff0c\u6bcf\u73ed35\u4eba\uff0c\u4e00\u5171\u6709\u591a\u5c11\u540d\u5b66\u751f\uff1f",
+      "gold": "280",
+      "parsed": "280",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-994e119176272199",
+        "object": "chat.completion",
+        "created": 1792059879,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "\u5b66\u6821\u5171\u67098\u4e2a\u73ed\uff0c\u6bcf\u73ed35\u4eba\u3002\n\u603b\u5b66\u751f\u6570 = \u73ed\u7ea7\u6570 \u00d7 \u6bcf\u73ed\u4eba\u6570\n\u603b\u5b66\u751f\u6570 = 8 \u00d7 35 = 280\n\n#### 280",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 42,
+          "total_tokens": 88,
+          "completion_tokens": 46,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "index": 15,
+      "question": "\u4e00\u4e2a\u957f\u65b9\u5f62\u7684\u957f\u662f9\u5398\u7c73\uff0c\u5bbd\u662f4\u5398\u7c73\u3002\u5468\u957f\u662f\u591a\u5c11\u5398\u7c73\uff1f",
+      "gold": "26",
+      "parsed": "26",
+      "correct": true,
+      "response": {
+        "id": "chatcmpl-9ed0c6ee0f86e4ae",
+        "object": "chat.completion",
+        "created": 1792059881,
+        "model": "qwen27b-bf16",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "\u957f\u65b9\u5f62\u7684\u5468\u957f\u8ba1\u7b97\u516c\u5f0f\u4e3a\uff1a$C = 2 \\times (\u957f + \u5bbd)$\u3002\n\n\u4ee3\u5165\u6570\u503c\uff1a\n$C = 2 \\times (9 + 4) = 2 \\times 13 = 26$ \u5398\u7c73\u3002\n\n#### 26",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.27.1-tp2-8f34ee62",
+        "usage": {
+          "prompt_tokens": 44,
+          "total_tokens": 104,
+          "completion_tokens": 60,
+          "prompt_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "timing_windows": 36,
+  "kernel_variants": {
+    "base-a1": [
+      {
+        "BV": 32,
+        "compiler_hash": "0e9afa7849b5676a84c47798972362b7396a705df9aff62d85b31438fcdd7575",
+        "cubin_sha256": "bb6a80562139064f90bbb8fae1d9112830c37ff4107973caa6c5210895837e40",
+        "sections": {
+          ".shstrtab": "92d0b3bddd682e73546248867072a4ead166ce52dbafca45ee67d4a3ae727e5f",
+          ".strtab": "30079400107f0456815348b8201fcaede6561570f1d52405a141945acc93e213",
+          ".symtab": "26dd15027f80b54b4a0a8edd29c1271e1596746f2b01638e7a404df915039b80",
+          ".debug_frame": "f897920af870f4af759649d123b543233d9d2c20fb95804608246131c9691d9f",
+          ".debug_line": "a661b967c60d65491408060e98c318b6bdf7b239f3da7b3a07b52412b5bc47ca",
+          ".nv_debug_line_sass": "804912c202f30be07c9b52602d904ed64e91bb7e76e9e6ea2afe36f9079d0649",
+          ".nv_debug_ptx_txt": "9f54d6ea9cc87d814325d02a1bfa53a7d63ab069556771679b08f8bb1956d362",
+          ".nv.info": "f7d19afd80b658166c63466483ce38e6dfff13cda96f5833572b495eb6d12eab",
+          ".nv.info.fused_recurrent_gated_delta_rule_packed_decode_kernel": "056558fd2f0194b65f2790b46d25668f85124354f2a9f2808fff04dac2b3595a",
+          ".nv.callgraph": "d2313ca97ba98e17e54a058fe0aecb7130f81435d3d125fee2c88be205925201",
+          ".nv.rel.action": "f2ddd5db887b37b008c87a626c13ae9d5079cfa8feafd192603f0eab2c4def89",
+          ".rel.debug_line": "247a8cf161c8c806d0b1c8b7121958ac6a3b21f4afbd08a07ef42e1d170dbf41",
+          ".rel.nv_debug_line_sass": "1558c7cd1ca27a1400584bfe0987501f1fea0da203d41b164433865efe199df4",
+          ".rel.nv.constant4": "118658fae8fd7b0065bbef436266053f42c196e3c21e1335dbf5dda08f62c51b",
+          ".rel.debug_frame": "00e79e2568b23809bf29b35cb2d4526c7259416067e1fabc90ce7210bc83810f",
+          ".nv.constant4": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          ".nv.constant0.fused_recurrent_gated_delta_rule_packed_decode_kernel": "5c55c8f4db4010ba9203d83536d0609856af8c847ac039e37e7dde8fbd574b61",
+          ".text.fused_recurrent_gated_delta_rule_packed_decode_kernel": "b09a70e82d22946dc22cffd7e82026704d6e2a9dcf16fe8383c010e375ac69fb",
+          ".nv.global.init": "15b4b4d5e409e6ef9ca4dca44f2560ba35572fb377db5b0c00fa4e30c941577e"
+        },
+        "ttir_sha256": "7296078d6aa45c1ac00049d3e9694cc31956d2706eb43491a527e33aaf744b68"
+      }
+    ],
+    "candidate-b1": [
+      {
+        "BV": 32,
+        "compiler_hash": "0e9afa7849b5676a84c47798972362b7396a705df9aff62d85b31438fcdd7575",
+        "cubin_sha256": "baa90b731ae035598cd0f2e6fd6e5b42771a266f23a054f9f4b2f535ea75c3b9",
+        "sections": {
+          ".shstrtab": "92d0b3bddd682e73546248867072a4ead166ce52dbafca45ee67d4a3ae727e5f",
+          ".strtab": "30079400107f0456815348b8201fcaede6561570f1d52405a141945acc93e213",
+          ".symtab": "26dd15027f80b54b4a0a8edd29c1271e1596746f2b01638e7a404df915039b80",
+          ".debug_frame": "f897920af870f4af759649d123b543233d9d2c20fb95804608246131c9691d9f",
+          ".debug_line": "a45bf027c9f3281c6e357d886111b1f0e56ee90d88546313935150beffb9c77d",
+          ".nv_debug_line_sass": "804912c202f30be07c9b52602d904ed64e91bb7e76e9e6ea2afe36f9079d0649",
+          ".nv_debug_ptx_txt": "9f54d6ea9cc87d814325d02a1bfa53a7d63ab069556771679b08f8bb1956d362",
+          ".nv.info": "f7d19afd80b658166c63466483ce38e6dfff13cda96f5833572b495eb6d12eab",
+          ".nv.info.fused_recurrent_gated_delta_rule_packed_decode_kernel": "056558fd2f0194b65f2790b46d25668f85124354f2a9f2808fff04dac2b3595a",
+          ".nv.callgraph": "d2313ca97ba98e17e54a058fe0aecb7130f81435d3d125fee2c88be205925201",
+          ".nv.rel.action": "f2ddd5db887b37b008c87a626c13ae9d5079cfa8feafd192603f0eab2c4def89",
+          ".rel.debug_line": "247a8cf161c8c806d0b1c8b7121958ac6a3b21f4afbd08a07ef42e1d170dbf41",
+          ".rel.nv_debug_line_sass": "1558c7cd1ca27a1400584bfe0987501f1fea0da203d41b164433865efe199df4",
+          ".rel.nv.constant4": "118658fae8fd7b0065bbef436266053f42c196e3c21e1335dbf5dda08f62c51b",
+          ".rel.debug_frame": "00e79e2568b23809bf29b35cb2d4526c7259416067e1fabc90ce7210bc83810f",
+          ".nv.constant4": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          ".nv.constant0.fused_recurrent_gated_delta_rule_packed_decode_kernel": "5c55c8f4db4010ba9203d83536d0609856af8c847ac039e37e7dde8fbd574b61",
+          ".text.fused_recurrent_gated_delta_rule_packed_decode_kernel": "b09a70e82d22946dc22cffd7e82026704d6e2a9dcf16fe8383c010e375ac69fb",
+          ".nv.global.init": "15b4b4d5e409e6ef9ca4dca44f2560ba35572fb377db5b0c00fa4e30c941577e"
+        },
+        "ttir_sha256": "7296078d6aa45c1ac00049d3e9694cc31956d2706eb43491a527e33aaf744b68"
+      },
+      {
+        "BV": 4,
+        "compiler_hash": "6ca16ea06591137574147af2b788ff3abb5907e551b76d076e399461ac2967b3",
+        "cubin_sha256": "a52597a78261f0459117df4bb61977406e6cbea00f765a7e2999c19236d9a1c3",
+        "sections": {
+          ".shstrtab": "92d0b3bddd682e73546248867072a4ead166ce52dbafca45ee67d4a3ae727e5f",
+          ".strtab": "30079400107f0456815348b8201fcaede6561570f1d52405a141945acc93e213",
+          ".symtab": "e3ff422bd276411c63d03ceb14281d8abeb09cea7b1c584b25d3fc4cff6adb76",
+          ".debug_frame": "2847ed61b1adfa1963a5b72f68982d6c5544f21c564e9a3d39375f923491c999",
+          ".debug_line": "2fa2cf3be2c4f74934066477c88b5d7597b586780ee857bbbdd9986102bc72ac",
+          ".nv_debug_line_sass": "83f63655912a5e92b75dea92c1e08fb917e35674f2058e0eb85893dffd47f6ce",
+          ".nv_debug_ptx_txt": "3e9ed88ecc5c6d752febfdf6bbce99ef23ef818f734bac989d3027260726a364",
+          ".nv.info": "48f2a681e15dcf93b7ca91fbe0b94f9e971f47188063802fcc9d7a61ed68e0a6",
+          ".nv.info.fused_recurrent_gated_delta_rule_packed_decode_kernel": "bf2f323437e3a8828d441a400d7f06e3812c3b0a9a36cf988f911fa7c8962cdf",
+          ".nv.callgraph": "d2313ca97ba98e17e54a058fe0aecb7130f81435d3d125fee2c88be205925201",
+          ".nv.rel.action": "f2ddd5db887b37b008c87a626c13ae9d5079cfa8feafd192603f0eab2c4def89",
+          ".rel.debug_line": "247a8cf161c8c806d0b1c8b7121958ac6a3b21f4afbd08a07ef42e1d170dbf41",
+          ".rel.nv_debug_line_sass": "1558c7cd1ca27a1400584bfe0987501f1fea0da203d41b164433865efe199df4",
+          ".rel.nv.constant4": "118658fae8fd7b0065bbef436266053f42c196e3c21e1335dbf5dda08f62c51b",
+          ".rel.debug_frame": "00e79e2568b23809bf29b35cb2d4526c7259416067e1fabc90ce7210bc83810f",
+          ".nv.constant4": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          ".nv.constant0.fused_recurrent_gated_delta_rule_packed_decode_kernel": "5c55c8f4db4010ba9203d83536d0609856af8c847ac039e37e7dde8fbd574b61",
+          ".text.fused_recurrent_gated_delta_rule_packed_decode_kernel": "3d5c10a6cecc9623efcbd4782ac75f67436ce07e60866a12584935bd99b94180",
+          ".nv.global.init": "15b4b4d5e409e6ef9ca4dca44f2560ba35572fb377db5b0c00fa4e30c941577e"
+        },
+        "ttir_sha256": "e75f2bcc451ee22d3fceb78d6e9e2656539ce875a36709b8495fc3027acbb2fc"
+      }
+    ],
+    "candidate-b2": [
+      {
+        "BV": 32,
+        "compiler_hash": "0e9afa7849b5676a84c47798972362b7396a705df9aff62d85b31438fcdd7575",
+        "cubin_sha256": "02f6b7b95df103feb8854f34d03e34bfb2e4fa32feae1bfb6394394d75bd565e",
+        "sections": {
+          ".shstrtab": "92d0b3bddd682e73546248867072a4ead166ce52dbafca45ee67d4a3ae727e5f",
+          ".strtab": "30079400107f0456815348b8201fcaede6561570f1d52405a141945acc93e213",
+          ".symtab": "26dd15027f80b54b4a0a8edd29c1271e1596746f2b01638e7a404df915039b80",
+          ".debug_frame": "f897920af870f4af759649d123b543233d9d2c20fb95804608246131c9691d9f",
+          ".debug_line": "f50e9437c5dbefd30f84844edcf27a065d5c96abdd54251248de3e657ae192da",
+          ".nv_debug_line_sass": "804912c202f30be07c9b52602d904ed64e91bb7e76e9e6ea2afe36f9079d0649",
+          ".nv_debug_ptx_txt": "9f54d6ea9cc87d814325d02a1bfa53a7d63ab069556771679b08f8bb1956d362",
+          ".nv.info": "f7d19afd80b658166c63466483ce38e6dfff13cda96f5833572b495eb6d12eab",
+          ".nv.info.fused_recurrent_gated_delta_rule_packed_decode_kernel": "056558fd2f0194b65f2790b46d25668f85124354f2a9f2808fff04dac2b3595a",
+          ".nv.callgraph": "d2313ca97ba98e17e54a058fe0aecb7130f81435d3d125fee2c88be205925201",
+          ".nv.rel.action": "f2ddd5db887b37b008c87a626c13ae9d5079cfa8feafd192603f0eab2c4def89",
+          ".rel.debug_line": "247a8cf161c8c806d0b1c8b7121958ac6a3b21f4afbd08a07ef42e1d170dbf41",
+          ".rel.nv_debug_line_sass": "1558c7cd1ca27a1400584bfe0987501f1fea0da203d41b164433865efe199df4",
+          ".rel.nv.constant4": "118658fae8fd7b0065bbef436266053f42c196e3c21e1335dbf5dda08f62c51b",
+          ".rel.debug_frame": "00e79e2568b23809bf29b35cb2d4526c7259416067e1fabc90ce7210bc83810f",
+          ".nv.constant4": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          ".nv.constant0.fused_recurrent_gated_delta_rule_packed_decode_kernel": "5c55c8f4db4010ba9203d83536d0609856af8c847ac039e37e7dde8fbd574b61",
+          ".text.fused_recurrent_gated_delta_rule_packed_decode_kernel": "b09a70e82d22946dc22cffd7e82026704d6e2a9dcf16fe8383c010e375ac69fb",
+          ".nv.global.init": "15b4b4d5e409e6ef9ca4dca44f2560ba35572fb377db5b0c00fa4e30c941577e"
+        },
+        "ttir_sha256": "7296078d6aa45c1ac00049d3e9694cc31956d2706eb43491a527e33aaf744b68"
+      },
+      {
+        "BV": 4,
+        "compiler_hash": "6ca16ea06591137574147af2b788ff3abb5907e551b76d076e399461ac2967b3",
+        "cubin_sha256": "90f40ffd6455fe17461d07ac6da6b5cc8f49e5581a7358f628c0a89dbe06ffb6",
+        "sections": {
+          ".shstrtab": "92d0b3bddd682e73546248867072a4ead166ce52dbafca45ee67d4a3ae727e5f",
+          ".strtab": "30079400107f0456815348b8201fcaede6561570f1d52405a141945acc93e213",
+          ".symtab": "e3ff422bd276411c63d03ceb14281d8abeb09cea7b1c584b25d3fc4cff6adb76",
+          ".debug_frame": "2847ed61b1adfa1963a5b72f68982d6c5544f21c564e9a3d39375f923491c999",
+          ".debug_line": "1aae029e20b6dfb4ea116a6e1115e7683a44e1ef4779bed40867ee667737ada6",
+          ".nv_debug_line_sass": "83f63655912a5e92b75dea92c1e08fb917e35674f2058e0eb85893dffd47f6ce",
+          ".nv_debug_ptx_txt": "3e9ed88ecc5c6d752febfdf6bbce99ef23ef818f734bac989d3027260726a364",
+          ".nv.info": "48f2a681e15dcf93b7ca91fbe0b94f9e971f47188063802fcc9d7a61ed68e0a6",
+          ".nv.info.fused_recurrent_gated_delta_rule_packed_decode_kernel": "bf2f323437e3a8828d441a400d7f06e3812c3b0a9a36cf988f911fa7c8962cdf",
+          ".nv.callgraph": "d2313ca97ba98e17e54a058fe0aecb7130f81435d3d125fee2c88be205925201",
+          ".nv.rel.action": "f2ddd5db887b37b008c87a626c13ae9d5079cfa8feafd192603f0eab2c4def89",
+          ".rel.debug_line": "247a8cf161c8c806d0b1c8b7121958ac6a3b21f4afbd08a07ef42e1d170dbf41",
+          ".rel.nv_debug_line_sass": "1558c7cd1ca27a1400584bfe0987501f1fea0da203d41b164433865efe199df4",
+          ".rel.nv.constant4": "118658fae8fd7b0065bbef436266053f42c196e3c21e1335dbf5dda08f62c51b",
+          ".rel.debug_frame": "00e79e2568b23809bf29b35cb2d4526c7259416067e1fabc90ce7210bc83810f",
+          ".nv.constant4": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          ".nv.constant0.fused_recurrent_gated_delta_rule_packed_decode_kernel": "5c55c8f4db4010ba9203d83536d0609856af8c847ac039e37e7dde8fbd574b61",
+          ".text.fused_recurrent_gated_delta_rule_packed_decode_kernel": "3d5c10a6cecc9623efcbd4782ac75f67436ce07e60866a12584935bd99b94180",
+          ".nv.global.init": "15b4b4d5e409e6ef9ca4dca44f2560ba35572fb377db5b0c00fa4e30c941577e"
+        },
+        "ttir_sha256": "e75f2bcc451ee22d3fceb78d6e9e2656539ce875a36709b8495fc3027acbb2fc"
+      }
+    ],
+    "base-a2": [
+      {
+        "BV": 32,
+        "compiler_hash": "0e9afa7849b5676a84c47798972362b7396a705df9aff62d85b31438fcdd7575",
+        "cubin_sha256": "58703c4ee9042fcf6f311755b4879c7edb4db89dbf7cf7910b6483420265bad2",
+        "sections": {
+          ".shstrtab": "92d0b3bddd682e73546248867072a4ead166ce52dbafca45ee67d4a3ae727e5f",
+          ".strtab": "30079400107f0456815348b8201fcaede6561570f1d52405a141945acc93e213",
+          ".symtab": "26dd15027f80b54b4a0a8edd29c1271e1596746f2b01638e7a404df915039b80",
+          ".debug_frame": "f897920af870f4af759649d123b543233d9d2c20fb95804608246131c9691d9f",
+          ".debug_line": "40e0fc180814bd01c52def99fac373d3b59ce4d758382fd8d2a2ae062e301709",
+          ".nv_debug_line_sass": "804912c202f30be07c9b52602d904ed64e91bb7e76e9e6ea2afe36f9079d0649",
+          ".nv_debug_ptx_txt": "9f54d6ea9cc87d814325d02a1bfa53a7d63ab069556771679b08f8bb1956d362",
+          ".nv.info": "f7d19afd80b658166c63466483ce38e6dfff13cda96f5833572b495eb6d12eab",
+          ".nv.info.fused_recurrent_gated_delta_rule_packed_decode_kernel": "056558fd2f0194b65f2790b46d25668f85124354f2a9f2808fff04dac2b3595a",
+          ".nv.callgraph": "d2313ca97ba98e17e54a058fe0aecb7130f81435d3d125fee2c88be205925201",
+          ".nv.rel.action": "f2ddd5db887b37b008c87a626c13ae9d5079cfa8feafd192603f0eab2c4def89",
+          ".rel.debug_line": "247a8cf161c8c806d0b1c8b7121958ac6a3b21f4afbd08a07ef42e1d170dbf41",
+          ".rel.nv_debug_line_sass": "1558c7cd1ca27a1400584bfe0987501f1fea0da203d41b164433865efe199df4",
+          ".rel.nv.constant4": "118658fae8fd7b0065bbef436266053f42c196e3c21e1335dbf5dda08f62c51b",
+          ".rel.debug_frame": "00e79e2568b23809bf29b35cb2d4526c7259416067e1fabc90ce7210bc83810f",
+          ".nv.constant4": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          ".nv.constant0.fused_recurrent_gated_delta_rule_packed_decode_kernel": "5c55c8f4db4010ba9203d83536d0609856af8c847ac039e37e7dde8fbd574b61",
+          ".text.fused_recurrent_gated_delta_rule_packed_decode_kernel": "b09a70e82d22946dc22cffd7e82026704d6e2a9dcf16fe8383c010e375ac69fb",
+          ".nv.global.init": "15b4b4d5e409e6ef9ca4dca44f2560ba35572fb377db5b0c00fa4e30c941577e"
+        },
+        "ttir_sha256": "7296078d6aa45c1ac00049d3e9694cc31956d2706eb43491a527e33aaf744b68"
+      }
+    ]
+  },
+  "kv_capacities": {
+    "base-a1": "157,696",
+    "candidate-b1": "157,696",
+    "candidate-b2": "157,696",
+    "base-a2": "157,696"
+  },
+  "timing_log_concerns": [],
+  "gpu_monitor": {
+    "timing_samples_by_arm": {
+      "base-a1": 23,
+      "candidate-b1": 39,
+      "candidate-b2": 39,
+      "base-a2": 39
+    },
+    "unknown_gpu_process_samples": [],
+    "limit": "10-second sampling; monitor started after baseline A1 began, so early A1 intervals are not fully covered"
+  },
+  "retained_bv32_code_and_constant_sections_identical": true,
+  "retained_bv32_differing_sections": [
+    ".debug_line"
+  ]
+}

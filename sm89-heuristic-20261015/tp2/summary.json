@@ -1,0 +1,318 @@
+{
+  "scope": "BF16 27B TP2 supplemental; latest decode module with vLLM 0.27.1/CUDA12.9 dependencies",
+  "measured_requests": 576,
+  "failed": 0,
+  "fresh_process_order": [
+    "base-a1",
+    "candidate-b1",
+    "candidate-b2",
+    "base-a2"
+  ],
+  "model_config_sha256": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+  "source_hashes": {
+    "base-a1": "b065f160e94371192ce743bcd1ce3a9c75ddcecf31be243af4d55b39a898685e",
+    "candidate-b1": "bd51c3421cfb7ecb7d8d8b5eafd6536d9023f4269f6e8b6d8705ae457fd69a36",
+    "candidate-b2": "bd51c3421cfb7ecb7d8d8b5eafd6536d9023f4269f6e8b6d8705ae457fd69a36",
+    "base-a2": "b065f160e94371192ce743bcd1ce3a9c75ddcecf31be243af4d55b39a898685e"
+  },
+  "rows": [
+    {
+      "arm": "base-a1",
+      "concurrency": 1,
+      "throughput": 26.289286160192074,
+      "tpot_p50_ms": 36.98945966527218,
+      "tpot_p95_ms": 37.00494555404454,
+      "ttft_p50_ms": 171.27952724695206,
+      "ttft_p95_ms": 172.28510370478034,
+      "request_p50_s": 4.869037359021604,
+      "round_throughput": [
+        26.289286160192074,
+        26.289899376107016,
+        26.27907694388709
+      ]
+    },
+    {
+      "arm": "base-a1",
+      "concurrency": 2,
+      "throughput": 46.69928082096972,
+      "tpot_p50_ms": 40.76154989843059,
+      "tpot_p95_ms": 41.316701931600264,
+      "ttft_p50_ms": 302.5473430752754,
+      "ttft_p95_ms": 376.5719532966614,
+      "request_p50_s": 5.480332016944885,
+      "round_throughput": [
+        46.725842052412126,
+        46.69928082096972,
+        46.68946419052975
+      ]
+    },
+    {
+      "arm": "base-a1",
+      "concurrency": 8,
+      "throughput": 152.9657364807676,
+      "tpot_p50_ms": 45.735691182726015,
+      "tpot_p95_ms": 49.962905316254286,
+      "ttft_p50_ms": 833.8893949985504,
+      "ttft_p95_ms": 1334.1965153813362,
+      "request_p50_s": 6.613826551474631,
+      "round_throughput": [
+        152.9657364807676,
+        153.37978055524107,
+        152.71222244173475
+      ]
+    },
+    {
+      "arm": "candidate-b1",
+      "concurrency": 1,
+      "throughput": 26.373591316969424,
+      "tpot_p50_ms": 36.86727488076124,
+      "tpot_p95_ms": 36.88328058686196,
+      "ttft_p50_ms": 171.26188520342112,
+      "ttft_p95_ms": 172.07458289340138,
+      "request_p50_s": 4.853439866565168,
+      "round_throughput": [
+        26.378686950290458,
+        26.373591316969424,
+        26.365733521814924
+      ]
+    },
+    {
+      "arm": "candidate-b1",
+      "concurrency": 2,
+      "throughput": 46.837582816502106,
+      "tpot_p50_ms": 40.62892647650767,
+      "tpot_p95_ms": 41.181603428269696,
+      "ttft_p50_ms": 302.87501495331526,
+      "ttft_p95_ms": 376.7479583621025,
+      "request_p50_s": 5.46358884498477,
+      "round_throughput": [
+        46.837582816502106,
+        46.84258236858503,
+        46.83731787774499
+      ]
+    },
+    {
+      "arm": "candidate-b1",
+      "concurrency": 8,
+      "throughput": 152.81248286767985,
+      "tpot_p50_ms": 45.7918126004066,
+      "tpot_p95_ms": 50.04788708220434,
+      "ttft_p50_ms": 830.8790531009436,
+      "ttft_p95_ms": 1352.3662695661187,
+      "request_p50_s": 6.617804209701717,
+      "round_throughput": [
+        152.4683093045678,
+        152.81248286767985,
+        153.09998450438462
+      ]
+    },
+    {
+      "arm": "candidate-b2",
+      "concurrency": 1,
+      "throughput": 26.370392053532925,
+      "tpot_p50_ms": 36.86638170574594,
+      "tpot_p95_ms": 36.88122963122144,
+      "ttft_p50_ms": 171.1924010887742,
+      "ttft_p95_ms": 172.8197243064642,
+      "request_p50_s": 4.853575188666582,
+      "round_throughput": [
+        26.372222643730257,
+        26.370392053532925,
+        26.367663663197966
+      ]
+    },
+    {
+      "arm": "candidate-b2",
+      "concurrency": 2,
+      "throughput": 46.850999703126355,
+      "tpot_p50_ms": 40.64809684971655,
+      "tpot_p95_ms": 41.20098387338515,
+      "ttft_p50_ms": 293.00668369978666,
+      "ttft_p95_ms": 375.5385000258684,
+      "request_p50_s": 5.464563624933362,
+      "round_throughput": [
+        46.832123324937804,
+        46.850999703126355,
+        46.8562892530803
+      ]
+    },
+    {
+      "arm": "candidate-b2",
+      "concurrency": 8,
+      "throughput": 152.67647470611516,
+      "tpot_p50_ms": 45.76612918777025,
+      "tpot_p95_ms": 50.07497229298034,
+      "ttft_p50_ms": 828.6799164488912,
+      "ttft_p95_ms": 1341.5648876689374,
+      "request_p50_s": 6.636881250888109,
+      "round_throughput": [
+        153.30393929829089,
+        152.43325355632402,
+        152.67647470611516
+      ]
+    },
+    {
+      "arm": "base-a2",
+      "concurrency": 1,
+      "throughput": 26.289457176077747,
+      "tpot_p50_ms": 36.98673463008535,
+      "tpot_p95_ms": 37.0072305759811,
+      "ttft_p50_ms": 170.76901346445084,
+      "ttft_p95_ms": 172.08097223192453,
+      "request_p50_s": 4.868401649408042,
+      "round_throughput": [
+        26.289457176077747,
+        26.297990740107213,
+        26.288299880442082
+      ]
+    },
+    {
+      "arm": "base-a2",
+      "concurrency": 2,
+      "throughput": 46.739467079953734,
+      "tpot_p50_ms": 40.754236031587666,
+      "tpot_p95_ms": 41.30304015175564,
+      "ttft_p50_ms": 292.42657870054245,
+      "ttft_p95_ms": 375.2641868777573,
+      "request_p50_s": 5.478447393514216,
+      "round_throughput": [
+        46.739467079953734,
+        46.74371601474151,
+        46.7365832999994
+      ]
+    },
+    {
+      "arm": "base-a2",
+      "concurrency": 8,
+      "throughput": 153.08547667191195,
+      "tpot_p50_ms": 44.79903710170055,
+      "tpot_p95_ms": 50.07644128201046,
+      "ttft_p50_ms": 856.7640278488398,
+      "ttft_p95_ms": 1331.9773599505424,
+      "request_p50_s": 6.629388657398522,
+      "round_throughput": [
+        153.08547667191195,
+        153.09454105374564,
+        152.20438655008942
+      ]
+    }
+  ],
+  "aggregate": [
+    {
+      "concurrency": 1,
+      "base": {
+        "throughput": 26.289371668134912,
+        "tpot_p50_ms": 36.988097147678765,
+        "tpot_p95_ms": 37.00608806501282,
+        "ttft_p50_ms": 171.02427035570145,
+        "ttft_p95_ms": 172.18303796835244,
+        "request_p50_s": 4.868719504214823,
+        "throughput_run_range": [
+          26.289286160192074,
+          26.289457176077747
+        ]
+      },
+      "candidate": {
+        "throughput": 26.371991685251174,
+        "tpot_p50_ms": 36.86682829325359,
+        "tpot_p95_ms": 36.882255109041694,
+        "ttft_p50_ms": 171.22714314609766,
+        "ttft_p95_ms": 172.4471535999328,
+        "request_p50_s": 4.853507527615875,
+        "throughput_run_range": [
+          26.370392053532925,
+          26.373591316969424
+        ]
+      },
+      "throughput_change_pct": 0.3142715549052211,
+      "tpot_reduction_pct": 0.32785913246901055
+    },
+    {
+      "concurrency": 2,
+      "base": {
+        "throughput": 46.71937395046173,
+        "tpot_p50_ms": 40.75789296500913,
+        "tpot_p95_ms": 41.30987104167795,
+        "ttft_p50_ms": 297.48696088790894,
+        "ttft_p95_ms": 375.91807008720934,
+        "request_p50_s": 5.479389705229551,
+        "throughput_run_range": [
+          46.69928082096972,
+          46.739467079953734
+        ]
+      },
+      "candidate": {
+        "throughput": 46.84429125981423,
+        "tpot_p50_ms": 40.63851166311211,
+        "tpot_p95_ms": 41.19129365082742,
+        "ttft_p50_ms": 297.94084932655096,
+        "ttft_p95_ms": 376.14322919398546,
+        "request_p50_s": 5.464076234959066,
+        "throughput_run_range": [
+          46.837582816502106,
+          46.850999703126355
+        ]
+      },
+      "throughput_change_pct": 0.26737796076836684,
+      "tpot_reduction_pct": 0.29290351687096816
+    },
+    {
+      "concurrency": 8,
+      "base": {
+        "throughput": 153.02560657633978,
+        "tpot_p50_ms": 45.26736414221328,
+        "tpot_p95_ms": 50.01967329913237,
+        "ttft_p50_ms": 845.3267114236951,
+        "ttft_p95_ms": 1333.0869376659393,
+        "request_p50_s": 6.621607604436576,
+        "throughput_run_range": [
+          152.9657364807676,
+          153.08547667191195
+        ]
+      },
+      "candidate": {
+        "throughput": 152.7444787868975,
+        "tpot_p50_ms": 45.778970894088424,
+        "tpot_p95_ms": 50.06142968759234,
+        "ttft_p50_ms": 829.7794847749174,
+        "ttft_p95_ms": 1346.965578617528,
+        "request_p50_s": 6.627342730294913,
+        "throughput_run_range": [
+          152.67647470611516,
+          152.81248286767985
+        ]
+      },
+      "throughput_change_pct": -0.18371290644225713,
+      "tpot_reduction_pct": -1.1301889596837755
+    }
+  ],
+  "quality": {
+    "base-a1": {
+      "correct": 16,
+      "truncated": 0,
+      "scope": "16 arithmetic smoke questions; not an accuracy benchmark"
+    },
+    "candidate-b1": {
+      "correct": 16,
+      "truncated": 0,
+      "scope": "16 arithmetic smoke questions; not an accuracy benchmark"
+    },
+    "candidate-b2": {
+      "correct": 16,
+      "truncated": 0,
+      "scope": "16 arithmetic smoke questions; not an accuracy benchmark"
+    },
+    "base-a2": {
+      "correct": 16,
+      "truncated": 0,
+      "scope": "16 arithmetic smoke questions; not an accuracy benchmark"
+    }
+  },
+  "quality_text_identical_all_four_runs": 13,
+  "limits": [
+    "16 arithmetic smoke questions are not a model accuracy benchmark",
+    "Two starts per arm do not establish statistical significance of small changes",
+    "This is not the previous FP8 checkpoint or a full latest-main build",
+    "TPOT is a client streaming estimate, not isolated kernel time or per-token ITL distribution"
+  ]
+}
