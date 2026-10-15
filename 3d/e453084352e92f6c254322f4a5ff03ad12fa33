@@ -1,0 +1,375 @@
+rebase-20261010/README.md
+  s_a4551441972c31::t_8ab6b7896bbc14 1-33
+rebase-20261010/audit_rebase.py
+  s_a4551441972c31::t_a258d04ddb8634 1-82
+rebase-20261010/create_container.sh
+  s_a4551441972c31::t_19c0c44a6baa09 1-34
+rebase-20261010/helpers/benchmark_current_gdn.py
+  s_a4551441972c31::t_8030c59853cf28 1-740
+rebase-20261010/helpers/benchmark_gdn_takeover.py
+  s_a4551441972c31::t_ac584325340990 1-619
+rebase-20261010/helpers/frozen_quality_http.py
+  s_a4551441972c31::t_1581b0916212fb 1-263
+rebase-20261010/helpers/http_bench_client.py
+  s_a4551441972c31::t_0bf78352a1aa5b 1-452
+rebase-20261010/helpers/long_free_common.py
+  s_a4551441972c31::t_8081216f895650 1-134
+rebase-20261010/helpers/long_free_driver.py
+  s_a4551441972c31::t_ea43db3c4ba9bd 1-291
+rebase-20261010/helpers/performance-source.json
+  s_a4551441972c31::t_6b74172520dcd1 1-43
+rebase-20261010/helpers/run_review.py
+  s_a4551441972c31::t_f668fa67db2cf8 1-204
+rebase-20261010/helpers/run_review_v2.py
+  s_a4551441972c31::t_15733fd3b275ea 1-204
+rebase-20261010/helpers/runtime_probe.py
+  s_a4551441972c31::t_04d295d5388628 1-264
+rebase-20261010/helpers/tp2_gdn_correctness.py
+  s_a4551441972c31::t_a8970a6048494b 1-273
+rebase-20261010/import-compatibility.patch
+  s_a4551441972c31::t_756c9b4b76a6c4 1-16
+rebase-20261010/monitor_host.sh
+  s_a4551441972c31::t_39587a7bff2c03 1-34
+rebase-20261010/pr-checklist.md
+  s_a4551441972c31::t_8a535e29a7aa85 1-15
+rebase-20261010/pre-commit.exit
+  s_a4551441972c31::t_2824d8cda1a7c9 1
+rebase-20261010/pre-commit.log
+  s_a4551441972c31::t_1a29af8818ca92 1-42
+rebase-20261010/prepare_remote.sh
+  s_a4551441972c31::t_32331fa265b4f3 1-20
+rebase-20261010/range-diff-final.txt
+  s_a4551441972c31::t_cea04159363070 1-3
+rebase-20261010/raw-public-map.json
+  s_a4551441972c31::t_041faa4c718f1a 1-1265
+rebase-20261010/resource-audit.json
+  s_a4551441972c31::t_f3a946911f9304 1-7
+rebase-20261010/result-audit.json
+  s_a4551441972c31::t_a1af6da85be284 1-163
+rebase-20261010/results/cleanup-after.json
+  s_a4551441972c31::t_dc3eb364d191e3 1
+rebase-20261010/results/cleanup-before.json
+  s_a4551441972c31::t_1e2570dc1db6eb 1
+rebase-20261010/results/cleanup-stop.exit
+  s_a4551441972c31::t_ccb1eee93c9d4b 1
+rebase-20261010/results/cleanup-stop.log
+  s_a4551441972c31::t_99dd30cdd7d16b 1
+rebase-20261010/results/container-id.txt
+  s_a4551441972c31::t_e30fa175dbd2f3 1
+rebase-20261010/results/container-initial-state.json
+  s_a4551441972c31::t_7949894c9711b4 1
+rebase-20261010/results/container-inspect-after.json
+  s_a4551441972c31::t_e6946acbb1dfd6 1
+rebase-20261010/results/container-inspect-before.json
+  s_a4551441972c31::t_8dd7e7a37fec0a 1
+rebase-20261010/results/container-inspect-initial.json
+  s_a4551441972c31::t_8095c76857b0be 1
+rebase-20261010/results/final-gpus.csv
+  s_a4551441972c31::t_7a8c6f960c5212 1-3
+rebase-20261010/results/final-processes.csv
+  s_a4551441972c31::t_53cf2a19a72d47 1
+rebase-20261010/results/flashinfer-eager/completed.json
+  s_a4551441972c31::t_5da5a197b68509 1-8291
+rebase-20261010/results/flashinfer-eager/fixture.json
+  s_a4551441972c31::t_3cbd3e3728d2dc 1-767
+rebase-20261010/results/flashinfer-eager/helpers/frozen_quality_http.py
+  s_a4551441972c31::t_591e71984295b4 1-263
+rebase-20261010/results/flashinfer-eager/helpers/http_bench_client.py
+  s_a4551441972c31::t_f3630accea79a5 1-452
+rebase-20261010/results/flashinfer-eager/helpers/long_free_common.py
+  s_a4551441972c31::t_db6d23ac449056 1-134
+rebase-20261010/results/flashinfer-eager/helpers/long_free_driver.py
+  s_a4551441972c31::t_b4f7067134dc2a 1-291
+rebase-20261010/results/flashinfer-eager/launch.json
+  s_a4551441972c31::t_77ea453684c1d8 1-148
+rebase-20261010/results/flashinfer-eager/reference.json
+  s_a4551441972c31::t_9bbc7b44e33d70 1-14502
+rebase-20261010/results/flashinfer-eager/runtime-after.json
+  s_a4551441972c31::t_4010913b3964c0 1-1994
+rebase-20261010/results/flashinfer-eager/runtime-before.json
+  s_a4551441972c31::t_0bdb341724e7fa 1-1523
+rebase-20261010/results/flashinfer-eager/sampling-runtime.json
+  s_a4551441972c31::t_8ad7607b356726 1-45
+rebase-20261010/results/flashinfer-eager/shutdown.json
+  s_a4551441972c31::t_b665a3558bc1a9 1-5
+rebase-20261010/results/flashinfer-eager/source-manifest.json
+  s_a4551441972c31::t_26d74f6150a87d 1-43
+rebase-20261010/results/flashinfer-graph/completed.json
+  s_a4551441972c31::t_f014ec40fb1608 1-7448
+rebase-20261010/results/flashinfer-graph/fixture.json
+  s_a4551441972c31::t_0316e4e60f83e8 1-767
+rebase-20261010/results/flashinfer-graph/helpers/frozen_quality_http.py
+  s_a4551441972c31::t_8d634bfe916685 1-263
+rebase-20261010/results/flashinfer-graph/helpers/http_bench_client.py
+  s_a4551441972c31::t_37b0c5e21ad02d 1-452
+rebase-20261010/results/flashinfer-graph/helpers/long_free_common.py
+  s_a4551441972c31::t_60474c44800a0d 1-134
+rebase-20261010/results/flashinfer-graph/helpers/long_free_driver.py
+  s_a4551441972c31::t_8c91682031ad99 1-291
+rebase-20261010/results/flashinfer-graph/launch.json
+  s_a4551441972c31::t_7095189742c0b7 1-148
+rebase-20261010/results/flashinfer-graph/reference.json
+  s_a4551441972c31::t_3bd6f7ab2ea118 1-14502
+rebase-20261010/results/flashinfer-graph/runtime-after.json
+  s_a4551441972c31::t_110e513e6c8d1b 1-3450
+rebase-20261010/results/flashinfer-graph/runtime-before.json
+  s_a4551441972c31::t_07980badf09cb8 1-1731
+rebase-20261010/results/flashinfer-graph/sampling-runtime.json
+  s_a4551441972c31::t_1a73cb25a2267d 1-45
+rebase-20261010/results/flashinfer-graph/shutdown.json
+  s_a4551441972c31::t_c3676e4bc6f010 1-5
+rebase-20261010/results/flashinfer-graph/source-manifest.json
+  s_a4551441972c31::t_5f2677766019e1 1-43
+rebase-20261010/results/focused-completed.txt
+  s_a4551441972c31::t_5fd1c6c1121ade 1
+rebase-20261010/results/focused-started.txt
+  s_a4551441972c31::t_f8fc99843056fc 1
+rebase-20261010/results/focused.exit
+  s_a4551441972c31::t_71bfd21ca2dd13 1
+rebase-20261010/results/focused.log
+  s_a4551441972c31::t_d730e4e0fd0d0d 1-10
+rebase-20261010/results/focused/adapter-and-split.exit
+  s_a4551441972c31::t_235f0b6be320a2 1
+rebase-20261010/results/focused/adapter-and-split.log
+  s_a4551441972c31::t_791b23ce17735f 1-909
+rebase-20261010/results/focused/adapter-and-split.xml
+  s_a4551441972c31::t_8793042f6cf4b6 1-841
+rebase-20261010/results/focused/benchmark-help.exit
+  s_a4551441972c31::t_b552dd4b4d1d1d 1
+rebase-20261010/results/focused/benchmark-help.log
+  s_a4551441972c31::t_77cd49637595fa 1-51
+rebase-20261010/results/focused/gdn-config.exit
+  s_a4551441972c31::t_f62925f093249c 1
+rebase-20261010/results/focused/gdn-config.log
+  s_a4551441972c31::t_27f3ba4b82d504 1-76
+rebase-20261010/results/focused/gdn-config.xml
+  s_a4551441972c31::t_c8b3d7672dd82d 1
+rebase-20261010/results/focused/gdn-metadata.exit
+  s_a4551441972c31::t_0f171592a9c573 1
+rebase-20261010/results/focused/gdn-metadata.log
+  s_a4551441972c31::t_21e1482cf82bb3 1-4247
+rebase-20261010/results/focused/gdn-metadata.xml
+  s_a4551441972c31::t_83a113a0591632 1-3972
+rebase-20261010/results/focused/recheck-summary.json
+  s_a4551441972c31::t_5c89f0c5dc2522 1-578
+rebase-20261010/results/focused/runtime-probe.exit
+  s_a4551441972c31::t_c8c6afe62842be 1
+rebase-20261010/results/focused/runtime-probe.json
+  s_a4551441972c31::t_7b6c392d531163 1-263
+rebase-20261010/results/focused/runtime-probe.log
+  s_a4551441972c31::t_ca58224e6c5fb3 1-4
+rebase-20261010/results/host-gpus.csv
+  s_a4551441972c31::t_16e5be32af700a 1-42
+rebase-20261010/results/host-identities.log
+  s_a4551441972c31::t_dfefbb6947981f 1-21
+rebase-20261010/results/host-processes.log
+  s_a4551441972c31::t_f3976232bfb1a5 1-146
+rebase-20261010/results/launcher.pid
+  s_a4551441972c31::t_199c757506197b 1
+rebase-20261010/results/matrix-completed.txt
+  s_a4551441972c31::t_115c7179d50a28 1
+rebase-20261010/results/matrix.exit
+  s_a4551441972c31::t_888b49b8a30c68 1
+rebase-20261010/results/monitor-final.exit
+  s_a4551441972c31::t_5906fcbd73e56c 1
+rebase-20261010/results/prepare.exit
+  s_a4551441972c31::t_f9878ebc39bc0f 1
+rebase-20261010/results/prepare.log
+  s_a4551441972c31::t_8048446339000a 1
+rebase-20261010/results/triton-eager/completed.json
+  s_a4551441972c31::t_c51c4d0d806f2a 1-7687
+rebase-20261010/results/triton-eager/fixture.json
+  s_a4551441972c31::t_a167c9c375911a 1-767
+rebase-20261010/results/triton-eager/helpers/frozen_quality_http.py
+  s_a4551441972c31::t_14a30c2d77ca8d 1-263
+rebase-20261010/results/triton-eager/helpers/http_bench_client.py
+  s_a4551441972c31::t_3d746c13b15176 1-452
+rebase-20261010/results/triton-eager/helpers/long_free_common.py
+  s_a4551441972c31::t_e059d29ff20688 1-134
+rebase-20261010/results/triton-eager/helpers/long_free_driver.py
+  s_a4551441972c31::t_2184c021127e8e 1-291
+rebase-20261010/results/triton-eager/launch.json
+  s_a4551441972c31::t_37d413e46e6cf9 1-148
+rebase-20261010/results/triton-eager/reference.json
+  s_a4551441972c31::t_f7f915e6873ea7 1-14502
+rebase-20261010/results/triton-eager/runtime-after.json
+  s_a4551441972c31::t_237c177f7209af 1-1934
+rebase-20261010/results/triton-eager/runtime-before.json
+  s_a4551441972c31::t_3b498d282316fe 1-1523
+rebase-20261010/results/triton-eager/sampling-runtime.json
+  s_a4551441972c31::t_d0e5aa3a0cc9bc 1-45
+rebase-20261010/results/triton-eager/shutdown.json
+  s_a4551441972c31::t_4b7615ba17475b 1-5
+rebase-20261010/results/triton-eager/source-manifest.json
+  s_a4551441972c31::t_a9c517851c70b6 1-43
+rebase-20261010/results/triton-graph/completed.json
+  s_a4551441972c31::t_272fa5562f7b2a 1-5153
+rebase-20261010/results/triton-graph/fixture.json
+  s_a4551441972c31::t_5565f003cd80df 1-767
+rebase-20261010/results/triton-graph/helpers/frozen_quality_http.py
+  s_a4551441972c31::t_47fd351a2393b2 1-263
+rebase-20261010/results/triton-graph/helpers/http_bench_client.py
+  s_a4551441972c31::t_b16a578701a3fb 1-452
+rebase-20261010/results/triton-graph/helpers/long_free_common.py
+  s_a4551441972c31::t_78cfdbcc734a0d 1-134
+rebase-20261010/results/triton-graph/helpers/long_free_driver.py
+  s_a4551441972c31::t_a6fbf227997838 1-291
+rebase-20261010/results/triton-graph/launch.json
+  s_a4551441972c31::t_ee901f1167f71c 1-148
+rebase-20261010/results/triton-graph/reference.json
+  s_a4551441972c31::t_eb1023a1863588 1-14502
+rebase-20261010/results/triton-graph/runtime-after.json
+  s_a4551441972c31::t_c4270b48404f5f 1-2736
+rebase-20261010/results/triton-graph/runtime-before.json
+  s_a4551441972c31::t_51b5fc11bdf8c3 1-1731
+rebase-20261010/results/triton-graph/sampling-runtime.json
+  s_a4551441972c31::t_814e7f3763a251 1-45
+rebase-20261010/results/triton-graph/shutdown.json
+  s_a4551441972c31::t_ebb46042199955 1-5
+rebase-20261010/results/triton-graph/source-manifest.json
+  s_a4551441972c31::t_d9be32701d4e66 1-43
+rebase-20261010/results/uploaded-sha256.txt
+  s_a4551441972c31::t_37fe86a13ab469 1-2
+rebase-20261010/results/v2/cleanup-after.json
+  s_a4551441972c31::t_5da3fa944cea39 1
+rebase-20261010/results/v2/cleanup-before.json
+  s_a4551441972c31::t_3d5a6573b1903a 1
+rebase-20261010/results/v2/cleanup-stop.exit
+  s_a4551441972c31::t_cd8b10a033f115 1
+rebase-20261010/results/v2/cleanup-stop.log
+  s_a4551441972c31::t_e79f67047060d5 1
+rebase-20261010/results/v2/container-inspect-after.json
+  s_a4551441972c31::t_13e793757f1405 1
+rebase-20261010/results/v2/container-inspect-before.json
+  s_a4551441972c31::t_2cf619ee2d1f2d 1
+rebase-20261010/results/v2/final-gpus.csv
+  s_a4551441972c31::t_38619559672b95 1-3
+rebase-20261010/results/v2/final-processes.csv
+  s_a4551441972c31::t_0c4ad4754d68bc 1
+rebase-20261010/results/v2/flashinfer-eager-completed.txt
+  s_a4551441972c31::t_05bf705b89f7cd 1
+rebase-20261010/results/v2/flashinfer-eager-started.txt
+  s_a4551441972c31::t_747857d09f2e52 1
+rebase-20261010/results/v2/flashinfer-eager.exit
+  s_a4551441972c31::t_82e39508ee40bf 1
+rebase-20261010/results/v2/flashinfer-eager.log
+  s_a4551441972c31::t_c474d14bdef59a 1-1061
+rebase-20261010/results/v2/flashinfer-graph-completed.txt
+  s_a4551441972c31::t_963461d78a6e9f 1
+rebase-20261010/results/v2/flashinfer-graph-started.txt
+  s_a4551441972c31::t_342e6d2ffe3493 1
+rebase-20261010/results/v2/flashinfer-graph.exit
+  s_a4551441972c31::t_f4a16229009f8d 1
+rebase-20261010/results/v2/flashinfer-graph.log
+  s_a4551441972c31::t_de929cb700e7a6 1-879
+rebase-20261010/results/v2/focused-completed.txt
+  s_a4551441972c31::t_f7d0db07d09723 1
+rebase-20261010/results/v2/focused-started.txt
+  s_a4551441972c31::t_599cce83f1b4b9 1
+rebase-20261010/results/v2/focused.exit
+  s_a4551441972c31::t_a95ec239a0caf6 1
+rebase-20261010/results/v2/focused.log
+  s_a4551441972c31::t_a5043831dec935 1-10
+rebase-20261010/results/v2/focused/adapter-and-split.exit
+  s_a4551441972c31::t_964ad7fa269def 1
+rebase-20261010/results/v2/focused/adapter-and-split.log
+  s_a4551441972c31::t_76b13969d10b7a 1-23
+rebase-20261010/results/v2/focused/adapter-and-split.xml
+  s_a4551441972c31::t_4f3ffda2a64eff 1
+rebase-20261010/results/v2/focused/benchmark-help.exit
+  s_a4551441972c31::t_6ebccb03a7d5c8 1
+rebase-20261010/results/v2/focused/benchmark-help.log
+  s_a4551441972c31::t_1d0813fbaa4d15 1-51
+rebase-20261010/results/v2/focused/gdn-config.exit
+  s_a4551441972c31::t_c819bb4a6240ea 1
+rebase-20261010/results/v2/focused/gdn-config.log
+  s_a4551441972c31::t_b6898d97e15a96 1-76
+rebase-20261010/results/v2/focused/gdn-config.xml
+  s_a4551441972c31::t_aeed01f8a4cf12 1
+rebase-20261010/results/v2/focused/gdn-metadata.exit
+  s_a4551441972c31::t_48ed4d9f57eeff 1
+rebase-20261010/results/v2/focused/gdn-metadata.log
+  s_a4551441972c31::t_7d385873df2cc3 1-14
+rebase-20261010/results/v2/focused/gdn-metadata.xml
+  s_a4551441972c31::t_0d567ace21d79e 1
+rebase-20261010/results/v2/focused/recheck-summary.json
+  s_a4551441972c31::t_26c21f60ef0010 1-578
+rebase-20261010/results/v2/focused/runtime-probe.exit
+  s_a4551441972c31::t_dcd3061cbc5ef7 1
+rebase-20261010/results/v2/focused/runtime-probe.json
+  s_a4551441972c31::t_550dba4ec4122c 1-263
+rebase-20261010/results/v2/focused/runtime-probe.log
+  s_a4551441972c31::t_f4909eef2a7111 1-4
+rebase-20261010/results/v2/host-gpus.csv
+  s_a4551441972c31::t_d63d73aaf760fd 1-526
+rebase-20261010/results/v2/host-identities.log
+  s_a4551441972c31::t_70907dabe33e9f 1-263
+rebase-20261010/results/v2/host-processes.log
+  s_a4551441972c31::t_db7bb8577dc83f 1-2629
+rebase-20261010/results/v2/launcher.pid
+  s_a4551441972c31::t_67beee44268f6e 1
+rebase-20261010/results/v2/matrix-completed.txt
+  s_a4551441972c31::t_60f5528b5b468e 1
+rebase-20261010/results/v2/matrix.exit
+  s_a4551441972c31::t_18703e7d7b775e 1
+rebase-20261010/results/v2/monitor-final.exit
+  s_a4551441972c31::t_f3f89a1a8511f5 1
+rebase-20261010/results/v2/tp2-correctness-completed.txt
+  s_a4551441972c31::t_ec0c9d1f0ebea1 1
+rebase-20261010/results/v2/tp2-correctness-started.txt
+  s_a4551441972c31::t_8ae7f4e9607c02 1
+rebase-20261010/results/v2/tp2-correctness.exit
+  s_a4551441972c31::t_bc79042c87914e 1
+rebase-20261010/results/v2/tp2-correctness.log
+  s_a4551441972c31::t_8b9309361bc96f 1-75
+rebase-20261010/results/v2/tp2-correctness/distributed-correctness.json
+  s_a4551441972c31::t_98d16b50c56b3e 1-1783
+rebase-20261010/results/v2/tp2-correctness/rank-0.json
+  s_a4551441972c31::t_e026db3d7de4df 1-878
+rebase-20261010/results/v2/tp2-correctness/rank-1.json
+  s_a4551441972c31::t_1bd748f023be56 1-878
+rebase-20261010/results/v2/triton-eager-completed.txt
+  s_a4551441972c31::t_feaeb0c5620795 1
+rebase-20261010/results/v2/triton-eager-started.txt
+  s_a4551441972c31::t_d268af3fd7f292 1
+rebase-20261010/results/v2/triton-eager.exit
+  s_a4551441972c31::t_0452da0af38111 1
+rebase-20261010/results/v2/triton-eager.log
+  s_a4551441972c31::t_9b912587544a77 1-953
+rebase-20261010/results/v2/triton-graph-completed.txt
+  s_a4551441972c31::t_70924e2e5490fc 1
+rebase-20261010/results/v2/triton-graph-started.txt
+  s_a4551441972c31::t_cac0cb319b8d65 1
+rebase-20261010/results/v2/triton-graph.exit
+  s_a4551441972c31::t_3b85df1a76361e 1
+rebase-20261010/results/v2/triton-graph.log
+  s_a4551441972c31::t_5e3de1134ec8d1 1-757
+rebase-20261010/retained-setup-attempts.json
+  s_a4551441972c31::t_e87cafe57d9f77 1-21
+rebase-20261010/run_cells.sh
+  s_a4551441972c31::t_457f331c949540 1-79
+rebase-20261010/run_cells_v2.sh
+  s_a4551441972c31::t_a5cf960c8710e8 1-79
+rebase-20261010/source-manifest.json
+  s_a4551441972c31::t_542fe241672377 1-43
+rebase-20261010/source-rebase-notes.md
+  s_a4551441972c31::t_b6b53dbad86a98 1-12
+rebase-20261010/validation-plan-v2.json
+  s_a4551441972c31::t_74c25b9003e4a5 1-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3de453084352e92f6c254322f4a5ff03ad12fa33",
+  "prompts": {},
+  "sessions": {
+    "s_a4551441972c31": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_a4551441972c31",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
