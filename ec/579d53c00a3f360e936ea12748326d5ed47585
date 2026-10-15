@@ -1,0 +1,21 @@
+tests/v1/worker/test_gpu_target_dependent_ar_speculator.py
+  s_efedc559ca22a1::t_bd2a0e1b7d82e7 647-648,671-746,748-795
+vllm/v1/worker/gpu/spec_decode/target_dependent_ar/speculator.py
+  s_efedc559ca22a1::t_faba3f846ec3e8 342-353
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ec579d53c00a3f360e936ea12748326d5ed47585",
+  "prompts": {},
+  "sessions": {
+    "s_efedc559ca22a1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12eda-491b-7490-9d5a-559c699eb6d8",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
