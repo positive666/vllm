@@ -1,0 +1,7 @@
+{
+  "source": "UV cache for the official dd9e07a25 wheel",
+  "files_verified_against_record": 5486,
+  "local_repacked_wheel": "/work/cache/vllm-0.32.0rc1.dev274+gdd9e07a25-cp38-abi3-manylinux_2_28_x86_64.whl",
+  "local_repacked_wheel_sha256": "049bf0acf1638844799e81e9f67feb1fca3aae3b2c918d86382e7d483e3f095b",
+  "note": "ZIP repacked locally; RECORD-verified content preserved, not the original archive bytes"
+}

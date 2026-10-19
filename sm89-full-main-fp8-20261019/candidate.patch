@@ -1,0 +1,36 @@
+diff --git a/tests/kernels/fla/test_fused_recurrent_packed_decode.py b/tests/kernels/fla/test_fused_recurrent_packed_decode.py
+index 5ea66ce..54c592a 100644
+--- a/tests/kernels/fla/test_fused_recurrent_packed_decode.py
++++ b/tests/kernels/fla/test_fused_recurrent_packed_decode.py
+@@ -26,6 +26,9 @@ pytestmark = pytest.mark.skipif(
+         (32, 4, 8, torch.bfloat16, torch.bfloat16),
+         (32, 4, 8, torch.float32, torch.float32),
+         (1, 16, 64, torch.bfloat16, torch.float32),
++        (7, 4, 8, torch.bfloat16, torch.float32),
++        (8, 4, 8, torch.bfloat16, torch.float32),
++        (9, 4, 8, torch.bfloat16, torch.float32),
+         (9, 4, 12, torch.bfloat16, torch.float32),
+         (1, 4, 12, torch.bfloat16, torch.bfloat16),
+     ],
+diff --git a/vllm/third_party/flash_linear_attention/ops/fused_recurrent.py b/vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
+index 2f3997e..e1ecbaa 100644
+--- a/vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
++++ b/vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
+@@ -451,6 +451,17 @@ def fused_recurrent_gated_delta_rule_packed_decode(
+             BV = 4
+         elif initial_state.dtype == torch.float32:
+             BV = 8
++    elif (
++        K == V == 128
++        and B * HV <= 64
++        and mixed_qkv.dtype == torch.bfloat16
++        and initial_state.dtype == torch.float32
++        and use_qk_l2norm_in_kernel
++        and current_platform.is_cuda()
++        and current_platform.is_device_capability(89, device_id=dev.index)
++    ):
++        # Cold-cache tuning on L20; larger shapes retain BV32.
++        BV = 4
+     num_stages = 3
+     num_warps = 1
+ 

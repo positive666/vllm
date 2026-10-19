@@ -1,0 +1,10 @@
+{
+  "upstream_commit": "3ddc6702a8264da4cf2428aa5ca2e267d84a8841",
+  "upstream_tree": "5488cdff0b2f870445be5dc8def86e0ace513a2e",
+  "archive_sha256": "6c1acf0f3eb4ec308cd0f08d8bfbc6eb6d8a8345c3b2912d05b90d7b6e15ada4",
+  "patch_sha256": "924ad6e5957f6f226e2fd3440180fcb66d9beb7a4ebc604612faf7b42b78b290",
+  "candidate_files": {
+    "vllm/third_party/flash_linear_attention/ops/fused_recurrent.py": "bd51c3421cfb7ecb7d8d8b5eafd6536d9023f4269f6e8b6d8705ae457fd69a36",
+    "tests/kernels/fla/test_fused_recurrent_packed_decode.py": "22d31807b9341bb4c371bce59bbc20f8e4eb0e8d8bf4cdc7a4ed4ef88c59a851"
+  }
+}

@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.7.0 -- /work/runtime/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /work/source/candidate
+configfile: pyproject.toml
+collecting ... collected 20 items
+
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[32-4-8-dtype0-state_dtype0-False] PASSED [  5%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[32-4-8-dtype0-state_dtype0-True] PASSED [ 10%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[32-4-8-dtype1-state_dtype1-False] PASSED [ 15%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[32-4-8-dtype1-state_dtype1-True] PASSED [ 20%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[32-4-8-dtype2-state_dtype2-False] PASSED [ 25%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[32-4-8-dtype2-state_dtype2-True] PASSED [ 30%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[1-16-64-dtype3-state_dtype3-False] PASSED [ 35%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[1-16-64-dtype3-state_dtype3-True] PASSED [ 40%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[7-4-8-dtype4-state_dtype4-False] PASSED [ 45%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[7-4-8-dtype4-state_dtype4-True] PASSED [ 50%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[8-4-8-dtype5-state_dtype5-False] PASSED [ 55%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[8-4-8-dtype5-state_dtype5-True] PASSED [ 60%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[9-4-8-dtype6-state_dtype6-False] PASSED [ 65%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[9-4-8-dtype6-state_dtype6-True] PASSED [ 70%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[9-4-12-dtype7-state_dtype7-False] PASSED [ 75%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[9-4-12-dtype7-state_dtype7-True] PASSED [ 80%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[1-4-12-dtype8-state_dtype8-False] PASSED [ 85%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_fused_recurrent_packed_decode_matches_reference[1-4-12-dtype8-state_dtype8-True] PASSED [ 90%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_packed_decode_keeps_beta_in_fp32 PASSED [ 95%]
+tests/kernels/fla/test_fused_recurrent_packed_decode.py::test_packed_decode_supports_large_batch_head_grid PASSED [100%]
+
+--------------- generated xml file: /work/results/gpu-pytest.xml ---------------
+============================= 20 passed in 22.46s ==============================

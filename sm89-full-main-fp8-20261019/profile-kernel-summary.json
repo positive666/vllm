@@ -1,0 +1,314 @@
+[
+  {
+    "arm": "baseline",
+    "concurrency": 1,
+    "rank": 0,
+    "grid": [
+      4,
+      24,
+      1
+    ],
+    "calls": 1440,
+    "median_us": 5.12,
+    "mean_us": 5.119377777777778
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 1,
+    "rank": 1,
+    "grid": [
+      4,
+      24,
+      1
+    ],
+    "calls": 1440,
+    "median_us": 5.12,
+    "mean_us": 5.1302125
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 2,
+    "rank": 0,
+    "grid": [
+      4,
+      24,
+      1
+    ],
+    "calls": 288,
+    "median_us": 5.12,
+    "mean_us": 5.134489583333333
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 2,
+    "rank": 0,
+    "grid": [
+      4,
+      48,
+      1
+    ],
+    "calls": 1248,
+    "median_us": 7.168,
+    "mean_us": 7.16911217948718
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 2,
+    "rank": 1,
+    "grid": [
+      4,
+      24,
+      1
+    ],
+    "calls": 288,
+    "median_us": 5.12,
+    "mean_us": 5.140142361111111
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 2,
+    "rank": 1,
+    "grid": [
+      4,
+      48,
+      1
+    ],
+    "calls": 1248,
+    "median_us": 7.168,
+    "mean_us": 7.176250801282051
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 8,
+    "rank": 0,
+    "grid": [
+      4,
+      192,
+      1
+    ],
+    "calls": 1200,
+    "median_us": 21.024,
+    "mean_us": 20.389949166666668
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 8,
+    "rank": 0,
+    "grid": [
+      4,
+      96,
+      1
+    ],
+    "calls": 48,
+    "median_us": 11.808,
+    "mean_us": 11.827395833333334
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 8,
+    "rank": 0,
+    "grid": [
+      4,
+      48,
+      1
+    ],
+    "calls": 48,
+    "median_us": 7.168,
+    "mean_us": 7.1595
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 8,
+    "rank": 1,
+    "grid": [
+      4,
+      192,
+      1
+    ],
+    "calls": 1200,
+    "median_us": 21.056,
+    "mean_us": 20.423763333333333
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 8,
+    "rank": 1,
+    "grid": [
+      4,
+      96,
+      1
+    ],
+    "calls": 48,
+    "median_us": 11.8885,
+    "mean_us": 11.8894375
+  },
+  {
+    "arm": "baseline",
+    "concurrency": 8,
+    "rank": 1,
+    "grid": [
+      4,
+      48,
+      1
+    ],
+    "calls": 48,
+    "median_us": 7.2,
+    "mean_us": 7.188729166666667
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 1,
+    "rank": 0,
+    "grid": [
+      32,
+      24,
+      1
+    ],
+    "calls": 1440,
+    "median_us": 3.647,
+    "mean_us": 3.6390083333333334
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 1,
+    "rank": 1,
+    "grid": [
+      32,
+      24,
+      1
+    ],
+    "calls": 1440,
+    "median_us": 3.648,
+    "mean_us": 3.6370131944444446
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 2,
+    "rank": 0,
+    "grid": [
+      32,
+      24,
+      1
+    ],
+    "calls": 288,
+    "median_us": 3.648,
+    "mean_us": 3.6475659722222225
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 2,
+    "rank": 0,
+    "grid": [
+      32,
+      48,
+      1
+    ],
+    "calls": 1248,
+    "median_us": 5.728,
+    "mean_us": 5.7223317307692305
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 2,
+    "rank": 1,
+    "grid": [
+      32,
+      24,
+      1
+    ],
+    "calls": 288,
+    "median_us": 3.648,
+    "mean_us": 3.6446354166666666
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 2,
+    "rank": 1,
+    "grid": [
+      32,
+      48,
+      1
+    ],
+    "calls": 1248,
+    "median_us": 5.728,
+    "mean_us": 5.725052083333333
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 8,
+    "rank": 0,
+    "grid": [
+      4,
+      192,
+      1
+    ],
+    "calls": 1248,
+    "median_us": 20.961,
+    "mean_us": 20.162307692307692
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 8,
+    "rank": 0,
+    "grid": [
+      32,
+      24,
+      1
+    ],
+    "calls": 96,
+    "median_us": 3.6325000000000003,
+    "mean_us": 3.6443541666666666
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 8,
+    "rank": 0,
+    "grid": [
+      4,
+      96,
+      1
+    ],
+    "calls": 48,
+    "median_us": 9.568,
+    "mean_us": 9.596208333333333
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 8,
+    "rank": 1,
+    "grid": [
+      4,
+      192,
+      1
+    ],
+    "calls": 1248,
+    "median_us": 20.96,
+    "mean_us": 20.159383814102565
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 8,
+    "rank": 1,
+    "grid": [
+      4,
+      96,
+      1
+    ],
+    "calls": 48,
+    "median_us": 9.5845,
+    "mean_us": 9.5775
+  },
+  {
+    "arm": "candidate",
+    "concurrency": 8,
+    "rank": 1,
+    "grid": [
+      32,
+      24,
+      1
+    ],
+    "calls": 96,
+    "median_us": 3.648,
+    "mean_us": 3.6673645833333333
+  }
+]
