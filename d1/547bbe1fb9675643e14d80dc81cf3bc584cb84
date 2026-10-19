@@ -1,0 +1,345 @@
+termination-20261010/README.md
+  s_0d62ea1d67393f::t_950a14c2615b1f 1-44
+termination-20261010/audit/cpu_contracts.py
+  s_0d62ea1d67393f::t_46b45d36347761 1-13
+termination-20261010/audit/resource_audit.py
+  s_0d62ea1d67393f::t_9d1afef27032f6 1-354
+termination-20261010/audit/termination_audit.py
+  s_0d62ea1d67393f::t_df600a64f9e90e 1-113
+termination-20261010/create_container.sh
+  s_0d62ea1d67393f::t_c9a0a8cab0938c 1-39
+termination-20261010/helpers/frozen_quality_http.py
+  s_0d62ea1d67393f::t_00bead242f3331 1-263
+termination-20261010/helpers/http_bench_client.py
+  s_0d62ea1d67393f::t_704bd11c972900 1-452
+termination-20261010/helpers/long_free_common.py
+  s_0d62ea1d67393f::t_c6177e0ac60965 1-136
+termination-20261010/helpers/long_free_driver.py
+  s_0d62ea1d67393f::t_74380c5faada11 1-311
+termination-20261010/launch_matrix.sh
+  s_0d62ea1d67393f::t_4c9ed1a0aab3b6 1-12
+termination-20261010/monitor_host.sh
+  s_0d62ea1d67393f::t_5eb390ae250340 1-34
+termination-20261010/package-manifest.json
+  s_0d62ea1d67393f::t_b1de4ec26f0b41 1-568
+termination-20261010/prepare_and_launch.sh
+  s_0d62ea1d67393f::t_337cb745ace90f 1-39
+termination-20261010/producer-manifest.json
+  s_0d62ea1d67393f::t_5178a79e04f4e3 1-46
+termination-20261010/public-output-recheck-v1-receipt.json
+  s_0d62ea1d67393f::t_6188b2f14e2044 1-21
+termination-20261010/public-output-recheck-v1.json
+  s_0d62ea1d67393f::t_f4895455cae96a 1-460
+termination-20261010/public-resource-recheck-v1-receipt.json
+  s_0d62ea1d67393f::t_c2e867d563feac 1-25
+termination-20261010/public-resource-recheck-v1.json
+  s_0d62ea1d67393f::t_cc0e503c6caea6 1-2336
+termination-20261010/raw-public-map.json
+  s_0d62ea1d67393f::t_e5b3cae753a673 1-1003
+termination-20261010/reference/flashinfer/completed.json
+  s_0d62ea1d67393f::t_f2ae30e7b7325d 1-8291
+termination-20261010/reference/flashinfer/launch.json
+  s_0d62ea1d67393f::t_79ece8368dba61 1-145
+termination-20261010/reference/triton/completed.json
+  s_0d62ea1d67393f::t_28b1a8fb5254c0 1-7687
+termination-20261010/reference/triton/launch.json
+  s_0d62ea1d67393f::t_df6c313fc63e64 1-145
+termination-20261010/resource-audit-v1-receipt.json
+  s_0d62ea1d67393f::t_2a3388398afb54 1-7
+termination-20261010/resource-producer-manifest.json
+  s_0d62ea1d67393f::t_782151c331250c 1-37
+termination-20261010/resource-summary-v1.json
+  s_0d62ea1d67393f::t_554ccbe7d58f9d 1-2336
+termination-20261010/results/budget-flashinfer-completed.txt
+  s_0d62ea1d67393f::t_6996beed9068fc 1
+termination-20261010/results/budget-flashinfer-started.txt
+  s_0d62ea1d67393f::t_8da0686c5beffa 1
+termination-20261010/results/budget-flashinfer.exit
+  s_0d62ea1d67393f::t_a760ca2a817343 1
+termination-20261010/results/budget-flashinfer.log
+  s_0d62ea1d67393f::t_d06bb5b5771b84 1-1425
+termination-20261010/results/budget-flashinfer/completed.json
+  s_0d62ea1d67393f::t_b7e1a8be1cb15f 1-12569
+termination-20261010/results/budget-flashinfer/fixture.json
+  s_0d62ea1d67393f::t_9896ecaa633708 1-767
+termination-20261010/results/budget-flashinfer/helpers/frozen_quality_http.py
+  s_0d62ea1d67393f::t_1ff3178e04bfed 1-263
+termination-20261010/results/budget-flashinfer/helpers/http_bench_client.py
+  s_0d62ea1d67393f::t_e9c215476183a0 1-452
+termination-20261010/results/budget-flashinfer/helpers/long_free_common.py
+  s_0d62ea1d67393f::t_74842dcf7f0539 1-136
+termination-20261010/results/budget-flashinfer/helpers/long_free_driver.py
+  s_0d62ea1d67393f::t_8ddb605b4e7444 1-311
+termination-20261010/results/budget-flashinfer/launch.json
+  s_0d62ea1d67393f::t_2baca736d9120f 1-194
+termination-20261010/results/budget-flashinfer/reference.json
+  s_0d62ea1d67393f::t_2b66216b233e8c 1-14502
+termination-20261010/results/budget-flashinfer/runtime-after.json
+  s_0d62ea1d67393f::t_484a0a9744c481 1-1276
+termination-20261010/results/budget-flashinfer/runtime-before.json
+  s_0d62ea1d67393f::t_ec462a6150f9b7 1-1015
+termination-20261010/results/budget-flashinfer/sampling-runtime.json
+  s_0d62ea1d67393f::t_49c094cfd5cab7 1-45
+termination-20261010/results/budget-flashinfer/shutdown.json
+  s_0d62ea1d67393f::t_f720eff014982c 1-5
+termination-20261010/results/budget-flashinfer/source-manifest.json
+  s_0d62ea1d67393f::t_c08536b484bb78 1-31
+termination-20261010/results/budget-triton-completed.txt
+  s_0d62ea1d67393f::t_b4e2b0524ffa78 1
+termination-20261010/results/budget-triton-started.txt
+  s_0d62ea1d67393f::t_c882443a1b0f84 1
+termination-20261010/results/budget-triton.exit
+  s_0d62ea1d67393f::t_0823b55e0fa5ec 1
+termination-20261010/results/budget-triton.log
+  s_0d62ea1d67393f::t_025727eaa65cdf 1-959
+termination-20261010/results/budget-triton/completed.json
+  s_0d62ea1d67393f::t_aa719ee1d6e8b5 1-7687
+termination-20261010/results/budget-triton/fixture.json
+  s_0d62ea1d67393f::t_a815f9320c305b 1-767
+termination-20261010/results/budget-triton/helpers/frozen_quality_http.py
+  s_0d62ea1d67393f::t_f8de43124a03dc 1-263
+termination-20261010/results/budget-triton/helpers/http_bench_client.py
+  s_0d62ea1d67393f::t_683002c0a2b711 1-452
+termination-20261010/results/budget-triton/helpers/long_free_common.py
+  s_0d62ea1d67393f::t_977e977d48c426 1-136
+termination-20261010/results/budget-triton/helpers/long_free_driver.py
+  s_0d62ea1d67393f::t_b4bbe0ba4a1d52 1-311
+termination-20261010/results/budget-triton/launch.json
+  s_0d62ea1d67393f::t_b884a676fbc234 1-194
+termination-20261010/results/budget-triton/reference.json
+  s_0d62ea1d67393f::t_383cf509355340 1-14502
+termination-20261010/results/budget-triton/runtime-after.json
+  s_0d62ea1d67393f::t_7c049d2ef1b8b0 1-1030
+termination-20261010/results/budget-triton/runtime-before.json
+  s_0d62ea1d67393f::t_9f69058e0bf579 1-1015
+termination-20261010/results/budget-triton/sampling-runtime.json
+  s_0d62ea1d67393f::t_78d6e3890e997c 1-45
+termination-20261010/results/budget-triton/shutdown.json
+  s_0d62ea1d67393f::t_11121eb31d217c 1-5
+termination-20261010/results/budget-triton/source-manifest.json
+  s_0d62ea1d67393f::t_e060babc958aed 1-31
+termination-20261010/results/cleanup-after.json
+  s_0d62ea1d67393f::t_2b586a1c8f9ff9 1
+termination-20261010/results/cleanup-before.json
+  s_0d62ea1d67393f::t_91158abd1356a2 1
+termination-20261010/results/cleanup-stop.exit
+  s_0d62ea1d67393f::t_5b26e907b3b4bc 1
+termination-20261010/results/cleanup-stop.log
+  s_0d62ea1d67393f::t_2883e55e8615d8 1
+termination-20261010/results/container-id.txt
+  s_0d62ea1d67393f::t_1fe08694f7e70b 1
+termination-20261010/results/container-initial-state.json
+  s_0d62ea1d67393f::t_c4c5068a2d7257 1
+termination-20261010/results/container-inspect-after.json
+  s_0d62ea1d67393f::t_c21ff7292e7f46 1
+termination-20261010/results/container-inspect-before.json
+  s_0d62ea1d67393f::t_ba4150296fe8e6 1
+termination-20261010/results/container-inspect-initial.json
+  s_0d62ea1d67393f::t_091a72c1eb1d7d 1
+termination-20261010/results/create.exit
+  s_0d62ea1d67393f::t_96be4007f582df 1
+termination-20261010/results/create.log
+  s_0d62ea1d67393f::t_06223d9349018e 1
+termination-20261010/results/final-gpus.csv
+  s_0d62ea1d67393f::t_6556cf96676d92 1-3
+termination-20261010/results/final-processes.csv
+  s_0d62ea1d67393f::t_42765d4c276275 1
+termination-20261010/results/host-gpus.csv
+  s_0d62ea1d67393f::t_51a8682d854093 1-332
+termination-20261010/results/host-identities.log
+  s_0d62ea1d67393f::t_9240f103eebc40 1-166
+termination-20261010/results/host-processes.log
+  s_0d62ea1d67393f::t_d43e74b3a9237c 1-1639
+termination-20261010/results/launcher-started.txt
+  s_0d62ea1d67393f::t_53a64ebcef06b9 1
+termination-20261010/results/launcher.pid
+  s_0d62ea1d67393f::t_857cdb6da500b6 1
+termination-20261010/results/matrix-completed.txt
+  s_0d62ea1d67393f::t_984e73fb5c01fa 1
+termination-20261010/results/matrix.exit
+  s_0d62ea1d67393f::t_2f1950c7f40ead 1
+termination-20261010/results/monitor-final.exit
+  s_0d62ea1d67393f::t_d6503c9712e30a 1
+termination-20261010/results/plan-flashinfer.exit
+  s_0d62ea1d67393f::t_fde61833911cb3 1
+termination-20261010/results/plan-flashinfer.log
+  s_0d62ea1d67393f::t_6e1f5fb178c640 1
+termination-20261010/results/plan-flashinfer/fixture.json
+  s_0d62ea1d67393f::t_0b82c691a0343e 1-767
+termination-20261010/results/plan-flashinfer/helpers/frozen_quality_http.py
+  s_0d62ea1d67393f::t_b66ee7b938cfa3 1-263
+termination-20261010/results/plan-flashinfer/helpers/http_bench_client.py
+  s_0d62ea1d67393f::t_f38e7469a894c3 1-452
+termination-20261010/results/plan-flashinfer/helpers/long_free_common.py
+  s_0d62ea1d67393f::t_0346839310b7d3 1-136
+termination-20261010/results/plan-flashinfer/helpers/long_free_driver.py
+  s_0d62ea1d67393f::t_7c5466dc2feddf 1-311
+termination-20261010/results/plan-flashinfer/launch.json
+  s_0d62ea1d67393f::t_e744b60c6988d6 1-195
+termination-20261010/results/plan-flashinfer/plan-completed.json
+  s_0d62ea1d67393f::t_d16ff09409cd9b 1-7
+termination-20261010/results/plan-flashinfer/reference.json
+  s_0d62ea1d67393f::t_cc29f91621fffd 1-14502
+termination-20261010/results/plan-flashinfer/source-manifest.json
+  s_0d62ea1d67393f::t_5fbd430c3dde6a 1-31
+termination-20261010/results/plan-triton.exit
+  s_0d62ea1d67393f::t_bcfb0d412c9e65 1
+termination-20261010/results/plan-triton.log
+  s_0d62ea1d67393f::t_d788151c734101 1
+termination-20261010/results/plan-triton/fixture.json
+  s_0d62ea1d67393f::t_7e18dec3926a08 1-767
+termination-20261010/results/plan-triton/helpers/frozen_quality_http.py
+  s_0d62ea1d67393f::t_9e9df1dbfd65e0 1-263
+termination-20261010/results/plan-triton/helpers/http_bench_client.py
+  s_0d62ea1d67393f::t_388bdc6c8023d9 1-452
+termination-20261010/results/plan-triton/helpers/long_free_common.py
+  s_0d62ea1d67393f::t_5ee0398458838e 1-136
+termination-20261010/results/plan-triton/helpers/long_free_driver.py
+  s_0d62ea1d67393f::t_93999ff1ae7c0a 1-311
+termination-20261010/results/plan-triton/launch.json
+  s_0d62ea1d67393f::t_6b9eeea7fd0966 1-195
+termination-20261010/results/plan-triton/plan-completed.json
+  s_0d62ea1d67393f::t_b150d0894ac085 1-7
+termination-20261010/results/plan-triton/reference.json
+  s_0d62ea1d67393f::t_00770e599f516e 1-14502
+termination-20261010/results/plan-triton/source-manifest.json
+  s_0d62ea1d67393f::t_ba8b67cad21407 1-31
+termination-20261010/results/preflight.exit
+  s_0d62ea1d67393f::t_9c7ee1dbf25221 1
+termination-20261010/results/preparation.exit
+  s_0d62ea1d67393f::t_651839b00e8d3b 1
+termination-20261010/results/preparation.log
+  s_0d62ea1d67393f::t_db5206f1e41695 1
+termination-20261010/results/uploaded-sha256.txt
+  s_0d62ea1d67393f::t_2671e89691f5c6 1-8
+termination-20261010/run_cells.sh
+  s_0d62ea1d67393f::t_1f74cc7b99f232 1-70
+termination-20261010/termination-audit-v1-receipt.json
+  s_0d62ea1d67393f::t_ea0e7c1f8878f5 1-7
+termination-20261010/termination-summary-v1.json
+  s_0d62ea1d67393f::t_70c6cb252f3798 1-460
+termination-20261010/verification-receipt.json
+  s_0d62ea1d67393f::t_726cd179100c34 1-22
+termination-20261010/verify_budget_protocol.py
+  s_0d62ea1d67393f::t_bbcb1a95836f9d 1-14
+tp2-shape-micro-20261010/README.md
+  s_0d62ea1d67393f::t_7498b2c5a440f2 1-59
+tp2-shape-micro-20261010/audit_results.py
+  s_0d62ea1d67393f::t_88672bcdead3ee 1-69
+tp2-shape-micro-20261010/audit_results_v2.py
+  s_0d62ea1d67393f::t_73b916822b16e8 1-69
+tp2-shape-micro-20261010/create_container.sh
+  s_0d62ea1d67393f::t_a472fbf6238739 1-39
+tp2-shape-micro-20261010/helpers/benchmark_current_gdn.py
+  s_0d62ea1d67393f::t_b014204b3c42f5 1-742
+tp2-shape-micro-20261010/micro-audit-v1-receipt.json
+  s_0d62ea1d67393f::t_a106eae8ca9777 1-5
+tp2-shape-micro-20261010/micro-summary-v1.json
+  s_0d62ea1d67393f::t_530f59ba641faa 1-320
+tp2-shape-micro-20261010/monitor_host.sh
+  s_0d62ea1d67393f::t_d73979492844c4 1-34
+tp2-shape-micro-20261010/original-benchmark.py
+  s_0d62ea1d67393f::t_1c706adfd9d0b6 1-740
+tp2-shape-micro-20261010/package-manifest.json
+  s_0d62ea1d67393f::t_85bc72692498ac 1-268
+tp2-shape-micro-20261010/prepare_and_launch.sh
+  s_0d62ea1d67393f::t_3c211c9f750628 1-14
+tp2-shape-micro-20261010/producer-manifest.json
+  s_0d62ea1d67393f::t_e901ab8d23b378 1-35
+tp2-shape-micro-20261010/public-output-recheck-v1-receipt.json
+  s_0d62ea1d67393f::t_0b8a9071fb75f0 1-19
+tp2-shape-micro-20261010/public-output-recheck-v1.json
+  s_0d62ea1d67393f::t_63f7ade1ecf639 1-320
+tp2-shape-micro-20261010/public-resource-recheck-v1-receipt.json
+  s_0d62ea1d67393f::t_d61b9b4e56c6ca 1-25
+tp2-shape-micro-20261010/public-resource-recheck-v1.json
+  s_0d62ea1d67393f::t_95bdb5c3157e3e 1-271
+tp2-shape-micro-20261010/raw-public-map.json
+  s_0d62ea1d67393f::t_e724bd0ce8ed4c 1-413
+tp2-shape-micro-20261010/resource-audit-v1-receipt.json
+  s_0d62ea1d67393f::t_3a9fbcb1c57128 1-5
+tp2-shape-micro-20261010/resource-summary-v1.json
+  s_0d62ea1d67393f::t_be7472b5ac322d 1-271
+tp2-shape-micro-20261010/resource_audit.py
+  s_0d62ea1d67393f::t_30e648abcec208 1-354
+tp2-shape-micro-20261010/results/cleanup-after.json
+  s_0d62ea1d67393f::t_acbb2efd5ec83f 1
+tp2-shape-micro-20261010/results/cleanup-before.json
+  s_0d62ea1d67393f::t_905ce2a4f716be 1
+tp2-shape-micro-20261010/results/cleanup-stop.exit
+  s_0d62ea1d67393f::t_5e746028ccd5db 1
+tp2-shape-micro-20261010/results/cleanup-stop.log
+  s_0d62ea1d67393f::t_b3972bbe4e78cd 1
+tp2-shape-micro-20261010/results/container-id.txt
+  s_0d62ea1d67393f::t_2a3a08984c767a 1
+tp2-shape-micro-20261010/results/container-initial-state.json
+  s_0d62ea1d67393f::t_3491eabee92e00 1
+tp2-shape-micro-20261010/results/container-inspect-after.json
+  s_0d62ea1d67393f::t_03122ba9013fc4 1
+tp2-shape-micro-20261010/results/container-inspect-before.json
+  s_0d62ea1d67393f::t_a1dea648ce1cf0 1
+tp2-shape-micro-20261010/results/container-inspect-initial.json
+  s_0d62ea1d67393f::t_d287b551381abe 1
+tp2-shape-micro-20261010/results/create.exit
+  s_0d62ea1d67393f::t_3c95d9ecddbb31 1
+tp2-shape-micro-20261010/results/create.log
+  s_0d62ea1d67393f::t_30f16365efe553 1
+tp2-shape-micro-20261010/results/final-gpus.csv
+  s_0d62ea1d67393f::t_935e2e095c7bc0 1-3
+tp2-shape-micro-20261010/results/final-processes.csv
+  s_0d62ea1d67393f::t_7252130978f5f6 1
+tp2-shape-micro-20261010/results/host-gpus.csv
+  s_0d62ea1d67393f::t_2aa19f74058a77 1-16
+tp2-shape-micro-20261010/results/host-identities.log
+  s_0d62ea1d67393f::t_91eb397a9e2e90 1-8
+tp2-shape-micro-20261010/results/host-processes.log
+  s_0d62ea1d67393f::t_78cdad6e58a59c 1-78
+tp2-shape-micro-20261010/results/launcher.pid
+  s_0d62ea1d67393f::t_6bec6838908a08 1
+tp2-shape-micro-20261010/results/matrix-completed.txt
+  s_0d62ea1d67393f::t_33f0a376d8474e 1
+tp2-shape-micro-20261010/results/matrix.exit
+  s_0d62ea1d67393f::t_c0b906b109ff70 1
+tp2-shape-micro-20261010/results/micro-gpu4-completed.txt
+  s_0d62ea1d67393f::t_32446e4f93ecfc 1
+tp2-shape-micro-20261010/results/micro-gpu4-started.txt
+  s_0d62ea1d67393f::t_a0420afe387f47 1
+tp2-shape-micro-20261010/results/micro-gpu4.exit
+  s_0d62ea1d67393f::t_cf469a103ee4b7 1
+tp2-shape-micro-20261010/results/micro-gpu4.json
+  s_0d62ea1d67393f::t_1538985f4cbc49 1-1328
+tp2-shape-micro-20261010/results/micro-gpu4.log
+  s_0d62ea1d67393f::t_9a3c51f817f8b2 1-36
+tp2-shape-micro-20261010/results/micro-gpu6-completed.txt
+  s_0d62ea1d67393f::t_9fbe87884c9160 1
+tp2-shape-micro-20261010/results/micro-gpu6-started.txt
+  s_0d62ea1d67393f::t_0b180ee4d291e7 1
+tp2-shape-micro-20261010/results/micro-gpu6.exit
+  s_0d62ea1d67393f::t_3967329e19b238 1
+tp2-shape-micro-20261010/results/micro-gpu6.json
+  s_0d62ea1d67393f::t_aa5b4e2d143b8f 1-1328
+tp2-shape-micro-20261010/results/micro-gpu6.log
+  s_0d62ea1d67393f::t_b52ded12913acf 1-36
+tp2-shape-micro-20261010/results/monitor-final.exit
+  s_0d62ea1d67393f::t_af6adc8c28c838 1
+tp2-shape-micro-20261010/results/uploaded-sha256.txt
+  s_0d62ea1d67393f::t_8707b950192e16 1-4
+tp2-shape-micro-20261010/run_cells.sh
+  s_0d62ea1d67393f::t_184ad060d218c2 1-94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d1547bbe1fb9675643e14d80dc81cf3bc584cb84",
+  "prompts": {},
+  "sessions": {
+    "s_0d62ea1d67393f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_0d62ea1d67393f",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

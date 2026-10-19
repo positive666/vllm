@@ -1,0 +1,21 @@
+tests/v1/worker/test_gpu_thinking_budget.py
+  s_23deada145cdd4::t_4ee89309dd61f2 15,189-226
+vllm/v1/worker/gpu/sample/sampler.py
+  s_23deada145cdd4::t_4ee89309dd61f2 238-241
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "c762287122d3c08a5b036a25f3762b4e6e913224",
+  "prompts": {},
+  "sessions": {
+    "s_23deada145cdd4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcacc-52bf-7391-b911-db9e0ea2e8d1",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Rui Rui4 Cheng <chengrui4@lenovo.com>"
+    }
+  }
+}

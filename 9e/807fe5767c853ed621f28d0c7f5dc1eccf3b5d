@@ -1,0 +1,21 @@
+vllm/models/deepseek_v41/nvidia/triton_fewhead_sparse_prefill.py
+  s_4950b657d66898::t_8ef3092422c10e 35-42,59,63
+tests/models/test_fewhead_prefill_gate.py
+  s_4950b657d66898::t_8ef3092422c10e 368-391
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9e807fe5767c853ed621f28d0c7f5dc1eccf3b5d",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

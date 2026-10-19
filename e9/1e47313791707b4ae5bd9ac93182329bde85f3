@@ -1,0 +1,21 @@
+tests/models/glm5next/test_kda_recurrent.py
+  s_0db1ea0af07713::t_8ca480364cd7ec 1-208
+vllm/models/glm5next/nvidia/ops/third_party/kda/kernels.py
+  s_0db1ea0af07713::t_24eded97abb226 1-1399
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e91e47313791707b4ae5bd9ac93182329bde85f3",
+  "prompts": {},
+  "sessions": {
+    "s_0db1ea0af07713": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09f2b-5818-7e11-9875-7129c93f6e44",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

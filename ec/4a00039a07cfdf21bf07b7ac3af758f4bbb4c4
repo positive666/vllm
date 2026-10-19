@@ -1,0 +1,22 @@
+tests/models/test_fewhead_prefill_gate.py
+  s_003a0836e3e315::t_4a56623cf2d9d3 25-26
+tests/kernels/attention/test_fewhead_sparse_prefill.py
+  s_003a0836e3e315::t_5945e31d0abb07 7-12,14-25,32-33,35-49,59-81,83-92,95-111,115,117-133
+  s_003a0836e3e315::t_8e055c7c1e85ac 93-94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ec4a00039a07cfdf21bf07b7ac3af758f4bbb4c4",
+  "prompts": {},
+  "sessions": {
+    "s_003a0836e3e315": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cb648348-41c8-40f3-a392-c5e9fc1f81da",
+        "model": "grok-4.6"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

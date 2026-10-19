@@ -1,0 +1,22 @@
+tests/models/qwen4_exp/test_ple.py
+  s_4cd02b3f7ca5e2::t_2c9eb8a574c144 10-11,19,662-752,754
+  s_4cd02b3f7ca5e2::t_743158e8e10932 661,753,755,795-826
+vllm/models/qwen4_exp/nvidia/ple_layer.py
+  s_4cd02b3f7ca5e2::t_d080c7d36355c5 525-610,634-636,638-640,644,649-669,671-677,679-699,701-715
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "020a97c768b88cb61049abc3961ad9d7793ca10e",
+  "prompts": {},
+  "sessions": {
+    "s_4cd02b3f7ca5e2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04841-5b29-7b72-9c96-dfb9e64cdac3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
