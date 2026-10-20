@@ -1,0 +1,79 @@
+docs/deployment/glm53-b8-lmcache-release-20261021/deployment/image.env.example
+  s_d6988063cfa454::t_8a213633712211 1-2
+  s_d6988063cfa454::t_3d218d673775d2 3
+docs/deployment/glm53-b8-lmcache-release-20261021/.gitattributes
+  s_d6988063cfa454::t_939e0c9aae4df3 2-3
+  s_d6988063cfa454::t_3e4ec90d8edcd8 1
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/verify_bundle.py
+  s_d6988063cfa454::t_fb1684903015ad 1-64
+docs/deployment/glm53-b8-lmcache-release-20261021/README.md
+  s_d6988063cfa454::t_2fa5a7df8b0343 46-47,114,118-122
+  s_d6988063cfa454::t_5f00f4052b4d23 115-117
+  s_d6988063cfa454::t_19b38b0722374b 123-126
+  s_d6988063cfa454::t_b1bb8d0a04b1be 96,101-113
+  s_d6988063cfa454::t_3d218d673775d2 1-2,12-45,48-49,53-66,69-95,97-98,131
+  s_d6988063cfa454::t_36a841fae688f7 99-100,130
+  s_d6988063cfa454::t_8a213633712211 3-11,67-68,127-129
+  s_d6988063cfa454::t_3e38cba4389520 50-52
+docs/deployment/glm53-b8-lmcache-release-20261021/deployment/compose.yaml
+  s_d6988063cfa454::t_3d218d673775d2 1-101,104-149
+  s_d6988063cfa454::t_c697e82d1c281a 102-103
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/results.json
+  s_d6988063cfa454::t_3d218d673775d2 1-14
+  s_d6988063cfa454::t_e4b92274522a90 15-17
+  s_fdcf1bac37502e::t_34b686cda87025 18-443
+docs/deployment/glm53-b8-lmcache-release-20261021/deployment/entry.sh
+  s_d6988063cfa454::t_3d218d673775d2 1-22
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/README.md
+  s_d6988063cfa454::t_3d218d673775d2 1-23,28,30-45,50-56,65-79
+  s_d6988063cfa454::t_2d28f70bad3188 24-27,29,57-64
+  s_d6988063cfa454::t_1628ffb0c29284 46-49
+docs/deployment/glm53-b8-lmcache-release-20261021/deployment/kv-transfer-config.json
+  s_fdcf1bac37502e::t_5df0f139ea3855 1-13
+docs/deployment/glm53-b8-lmcache-release-20261021/patches/0001-vllm-mamba-prefill-handoff.patch
+  s_fdcf1bac37502e::t_258a16ed4bb2de 1-108
+docs/deployment/glm53-b8-lmcache-release-20261021/patches/0002-lmcache-exact-boundary.patch
+  s_fdcf1bac37502e::t_d013d4cdb26245 1-1103
+docs/deployment/glm53-b8-lmcache-release-20261021/patches/0003-lmcache-ordinary-store-lifetime.patch
+  s_fdcf1bac37502e::t_f2b5a21e1a8941 1-419
+docs/deployment/glm53-b8-lmcache-release-20261021/requirements/public34-runtime.lock.txt
+  s_fdcf1bac37502e::t_73b98ff47a10cc 1-443
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/cpu-regression.json
+  s_853042957b9c41::t_cc1fbbf81a7dbd 1-134
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/registry-verification.json
+  s_fdcf1bac37502e::t_0d997a44c37f57 1-35
+docs/deployment/glm53-b8-lmcache-release-20261021/versions.json
+  s_fdcf1bac37502e::t_5f89ea3a9cd66e 1-151
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3cd7f80614c963a7eb02319856a99a186257cf0e",
+  "prompts": {},
+  "sessions": {
+    "s_853042957b9c41": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a14281-9e4d-7612-843d-35c1e2938ddd",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_fdcf1bac37502e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a159f0-3aec-7470-a98e-c16a01e22b24",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
