@@ -1,0 +1,134 @@
+{
+  "schema": "glm53.b8.lmcache.public_cpu_regressions.v1",
+  "status": "PASS",
+  "image_config_sha256": "6d96026df6b185bef8b96e4d78181c4e8c44848b7a949c79dc9a84ccb8de6a2c",
+  "source_receipts": [
+    {
+      "role": "R1_LMCache186",
+      "raw_receipt_sha256": "ca4a4cacad9d250c0ab74a30e14dc07b48bd2a1bdf49be56618a5cc478d0932b"
+    },
+    {
+      "role": "R2_vLLM349plus42",
+      "raw_receipt_sha256": "7988e27631b9d50d414cb9d416c47cae2590edfb256fe6b5f25c5125a846069a"
+    }
+  ],
+  "suites": [
+    {
+      "mode": "lmcache",
+      "status": "PASS",
+      "pytest_exit": 0,
+      "suite": {
+        "tests": 186,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "torch": "2.14.0+cu130",
+      "lmcache": "0.5.7.dev0+glm53.v4.20261021",
+      "vllm": "0.32.1rc1+upstream.b8e9001bf",
+      "cuda_initialized": false,
+      "installed_payload_hash_count": 884,
+      "source_runtime_imports_allowed": false,
+      "pytest_args": [
+        "-q",
+        "--tb=short",
+        "--import-mode=importlib",
+        "-c",
+        "/validation/payload/pytest-installed.ini",
+        "-o",
+        "pythonpath=",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/validation/work/lmcache/lmcache.xml",
+        "--noconftest",
+        "--rootdir=/validation/payload/lmcache-tests",
+        "/validation/payload/lmcache-tests/test_vllm_mp_adapter.py",
+        "/validation/payload/lmcache-tests/test_mp_tracker_mamba_skipped_slots.py",
+        "/validation/payload/lmcache-tests/test_mp_connector_kv_roles.py"
+      ]
+    },
+    {
+      "mode": "producer-core",
+      "status": "PASS",
+      "pytest_exit": 0,
+      "suite": {
+        "tests": 349,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "torch": "2.14.0+cu130",
+      "lmcache": "0.5.7.dev0+glm53.v4.20261021",
+      "vllm": "0.32.1rc1+upstream.b8e9001bf",
+      "cuda_initialized": false,
+      "installed_payload_hash_count": 884,
+      "source_runtime_imports_allowed": false,
+      "pytest_args": [
+        "-q",
+        "--tb=short",
+        "--import-mode=importlib",
+        "-c",
+        "/validation/payload/pytest-installed.ini",
+        "-o",
+        "pythonpath=",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/validation/work/producer-core/producer-core.xml",
+        "--rootdir=/validation/payload/vllm-tests",
+        "/validation/payload/vllm-tests/tests/v1/core/prefix_cache/test_partial_prefix_cache_hits.py",
+        "/validation/payload/vllm-tests/tests/v1/core/test_prefix_caching.py"
+      ]
+    },
+    {
+      "mode": "producer-consumers",
+      "status": "PASS",
+      "pytest_exit": 0,
+      "suite": {
+        "tests": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "torch": "2.14.0+cu130",
+      "lmcache": "0.5.7.dev0+glm53.v4.20261021",
+      "vllm": "0.32.1rc1+upstream.b8e9001bf",
+      "cuda_initialized": false,
+      "installed_payload_hash_count": 884,
+      "source_runtime_imports_allowed": false,
+      "pytest_args": [
+        "-q",
+        "--tb=short",
+        "--import-mode=importlib",
+        "-c",
+        "/validation/payload/pytest-installed.ini",
+        "-o",
+        "pythonpath=",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/validation/work/producer-consumers/producer-consumers.xml",
+        "--rootdir=/validation/payload/vllm-tests",
+        "/validation/payload/vllm-tests/tests/v1/kv_connector/unit/test_mooncake_store_scheduler.py",
+        "/validation/payload/vllm-tests/tests/v1/kv_connector/unit/offloading_connector/test_scheduler.py",
+        "-k",
+        "boundary or handoff or partial_tail"
+      ]
+    }
+  ],
+  "total": {
+    "tests": 577,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "offline_fixture_correction": {
+    "bad_ref_bytes": 41,
+    "good_ref_bytes": 40,
+    "bad_ref_lookup_is_miss": true,
+    "AutoConfig_model_type": "opt",
+    "AutoConfig_hidden_size": 768,
+    "producer_or_tests_modified": false,
+    "original_failed_producer_cases": 8,
+    "original_failure_retained": true
+  },
+  "scope": "Frozen test-only payload, installed candidate runtime; no source runtime overlays. These CPU contracts do not establish model accuracy or throughput."
+}

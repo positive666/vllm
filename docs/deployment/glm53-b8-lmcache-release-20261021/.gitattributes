@@ -1,0 +1,3 @@
+* text eol=lf
+patches/*.patch -text -whitespace
+requirements/public34-runtime.lock.txt -text

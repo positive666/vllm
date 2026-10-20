@@ -1,0 +1,443 @@
+{
+  "status": "PUBLISHED_VALIDATED_EXPERIMENT_CANDIDATE_PRODUCTION_FALSE",
+  "source_basis": "fixed B8 plus the three bundled patches",
+  "flash_TP8_MTP3_local_LMCache_GiB": 256,
+  "cold_1K_32K": {
+    "status": "PASS",
+    "records": [
+      {
+        "phase": "cold_1k",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 1024,
+        "first_any_s": 3.298254,
+        "first_body_s": 3.407439,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 0,
+        "completed_external_chunk_loads": 0
+      },
+      {
+        "phase": "cold_32k",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 7.632299,
+        "first_body_s": 7.656845,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 0,
+        "completed_external_chunk_loads": 0
+      }
+    ]
+  },
+  "same_prompt_external_prefix_reuse_tokens": 32000,
+  "branch_exact_checkpoint_tokens": 16000,
+  "prefix_dependent_passkey_A_B_reverse_A": {
+    "status": "PASS",
+    "reverse_parent_revisit_passed": true,
+    "sequence": "A/keyA -> sameA/keyA -> branchB/keyB -> originalA/keyA",
+    "records": [
+      {
+        "phase": "passkey_cold",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 2.552463,
+        "first_body_s": 2.796687,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 0,
+        "completed_external_chunk_loads": 0
+      },
+      {
+        "phase": "passkey_full_restore",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 0.273828,
+        "first_body_s": 0.527153,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 32000,
+        "completed_external_chunk_loads": 408
+      },
+      {
+        "phase": "passkey_branch_restore",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32796,
+        "first_any_s": 1.486012,
+        "first_body_s": 1.709589,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 16000,
+        "completed_external_chunk_loads": 208
+      },
+      {
+        "phase": "passkey_parent_revisit_after_branch",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 0.280765,
+        "first_body_s": 0.506627,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 32000,
+        "completed_external_chunk_loads": 408
+      }
+    ],
+    "original_report_sha256": "cbae58728314e10b9873a8b4398a699facc30935ee82db27fec07a46478f35a3"
+  },
+  "completed_external_chunk_loads": {
+    "same_prompt_replay": 408,
+    "C1_branch": 208,
+    "passkey_restore_sequence": [
+      0,
+      408,
+      208,
+      408
+    ],
+    "counter_scope": "MP completed chunk loads, not unique tokens; sums across8workers and object groups"
+  },
+  "C32_load_acceptance": {
+    "status": "PASS_ONE_SYNTHETIC_WAVE_NOT_PRODUCTION_SLA",
+    "original_report_sha256": "83a2fd358d523e792b7c460f59820f44643d5928fbf4b1530f0988a771952684",
+    "requests": 32,
+    "short_1K": 24,
+    "long_32K": 8,
+    "cache_scope": "GPU APC reset; external cache retained; actual positive cached usage only one long request(index100,32000tokens); other31 requests cached usage0, including short0",
+    "checks": {
+      "client_report_PASS": true,
+      "all32_gold_SSE_stop_HTTP_usage_fixture": true,
+      "counter32": true,
+      "idle_and_counter_isolation": true,
+      "actual_prompt_tokens_match": true,
+      "GPU_APC_zero": true,
+      "external_hit_positive": true,
+      "actual_MP_chunk_load_positive": true,
+      "MTP3_seq32": true
+    },
+    "totals": {
+      "records": 32,
+      "success": 32,
+      "errors_or_missing": 0,
+      "gold_valid": 32,
+      "SSE_DONE": 32,
+      "transport_complete": 32,
+      "finish_stop": 32,
+      "HTTP_200": 32,
+      "usage_independently_consistent": 32,
+      "fixture_hash_matches": 32,
+      "prompt_tokens": 286720,
+      "prompt_tokens_missing": 0,
+      "completion_tokens": 960,
+      "completion_tokens_missing": 0,
+      "total_tokens": 287680,
+      "total_tokens_missing": 0,
+      "cached_prompt_tokens": 32000,
+      "cached_prompt_tokens_missing": 0,
+      "reasoning_tokens": 864,
+      "reasoning_tokens_missing": 0
+    },
+    "latency_s": {
+      "all": {
+        "first_any_s": {
+          "count": 32,
+          "p50": 13.791197,
+          "p95": 18.223267,
+          "max": 21.493669
+        },
+        "first_body_s": {
+          "count": 32,
+          "p50": 21.570524,
+          "p95": 21.75374,
+          "max": 21.899798
+        },
+        "first_reasoning_s": {
+          "count": 32,
+          "p50": 13.791197,
+          "p95": 18.223267,
+          "max": 21.493669
+        },
+        "elapsed_s": {
+          "count": 32,
+          "p50": 21.62845,
+          "p95": 21.788419,
+          "max": 21.917377
+        }
+      },
+      "short": {
+        "first_any_s": {
+          "count": 24,
+          "p50": 13.793992,
+          "p95": 17.143301,
+          "max": 17.150384
+        },
+        "first_body_s": {
+          "count": 24,
+          "p50": 21.589244,
+          "p95": 21.785226,
+          "max": 21.899798
+        },
+        "first_reasoning_s": {
+          "count": 24,
+          "p50": 13.793992,
+          "p95": 17.143301,
+          "max": 17.150384
+        },
+        "elapsed_s": {
+          "count": 24,
+          "p50": 21.642017,
+          "p95": 21.820813,
+          "max": 21.917377
+        }
+      },
+      "long": {
+        "first_any_s": {
+          "count": 8,
+          "p50": 13.785814,
+          "p95": 20.807984,
+          "max": 21.493669
+        },
+        "first_body_s": {
+          "count": 8,
+          "p50": 20.154619,
+          "p95": 21.653176,
+          "max": 21.656238
+        },
+        "first_reasoning_s": {
+          "count": 8,
+          "p50": 13.785814,
+          "p95": 20.807984,
+          "max": 21.493669
+        },
+        "elapsed_s": {
+          "count": 8,
+          "p50": 21.147018,
+          "p95": 21.702981,
+          "max": 21.711127
+        }
+      }
+    },
+    "observed_queue_max": 29,
+    "observed_running_max": 27,
+    "preemptions_delta": 0,
+    "max_any_output_gap_s": 2.388748,
+    "cache_counter_delta": {
+      "vllm:prefix_cache_hits_total": 0,
+      "vllm:external_prefix_cache_hits_total": 32000
+    },
+    "completed_external_chunk_loads": 408,
+    "mp_transfer_counter_delta": {
+      "lmcache_mp_num_submitted_stores_total": 536,
+      "lmcache_mp_num_finished_stores_total": 536,
+      "lmcache_mp_num_submitted_retrieves_total": 8,
+      "lmcache_mp_num_finished_retrieves_total": 8
+    },
+    "mp_device_stream_inflight": {
+      "stores": {
+        "before": 0,
+        "after": 0,
+        "submitted_delta": 536,
+        "finished_delta": 536
+      },
+      "retrieves": {
+        "before": 0,
+        "after": 0,
+        "submitted_delta": 8,
+        "finished_delta": 8
+      }
+    },
+    "MP_counter_scope": "global device-stream submitted/finished; finished may commit0 chunks; not per-request lifetime or failure-injection proof",
+    "actual_positive_cached_requests": [
+      {
+        "index": 100,
+        "synthetic_kind": "long",
+        "cached_prompt_tokens": 32000
+      }
+    ]
+  },
+  "FP8_two_node_TP16_acceptance": "NOT_VALIDATED_THIS_ROUND",
+  "registry_manifest_digest": "sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+  "scope": "No production logs, business prompts, credentials, host addresses or weights.",
+  "candidate_image": {
+    "image_config_sha256": "6d96026df6b185bef8b96e4d78181c4e8c44848b7a949c79dc9a84ccb8de6a2c",
+    "uncompressed_bytes": 27567599545,
+    "registry_manifest_digest": "sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+    "published": true,
+    "registry_tag": "ghcr.io/positive666/model:glm53-b8e9001bf956-lmc2a34fa8-v4-e8f751e2-20261021",
+    "digest_pinned_reference": "ghcr.io/positive666/model@sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+    "production": false,
+    "manifest_layers": 44,
+    "unique_manifest_blobs": 39
+  },
+  "GPU_native_smoke": {
+    "status": "PASS",
+    "GPU_devices_visible": 8,
+    "lmcache_native_module_imports": 4,
+    "vllm_native_libraries_verified_byte_for_byte": 11,
+    "host_to_device_and_device_to_host_bytes": 1048576,
+    "report_sha256": "7731c25b36204e0f65177c491cc176c650dc1cde26b60dfff656dc56eaa2bccd"
+  },
+  "Linux_installed_regressions": {
+    "status": "PASS",
+    "total_passed": 577,
+    "failures": 0,
+    "skipped": 0,
+    "installed_candidate_sources": true,
+    "suites": [
+      {
+        "name": "LMCache adapter, skipped Mamba slots and connector KV roles",
+        "passed": 186,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "name": "vLLM producer core partial-prefix and prefix-caching suites",
+        "passed": 349,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "name": "vLLM boundary/handoff/partial-tail consumer regressions",
+        "passed": 42,
+        "failures": 0,
+        "skipped": 0
+      }
+    ],
+    "fixture_correction": "The first producer run had8 offline OPT fixture failures before producer assertions. A refs/main SHA file contained a trailing newline (41bytes). Removing only that newline (40bytes), with unchanged image and frozen test bytes, restored cache resolution. Bad-ref miss and good-ref AutoConfig hidden_size768 controls were retained.",
+    "public_aggregate": {
+      "path": "cpu-regression.json",
+      "sha256": "ccb6197fda87f5629b8bfdde5dd2e02a5d044462b45c6c869fef56b7817a74b8",
+      "serialization": "Exact UTF8 file bytes; this is a new sanitized public aggregate, not an original suite-report SHA"
+    }
+  },
+  "pre_request_geometry": {
+    "status": "PASS_PREFLIGHT_BEFORE_REQUESTS",
+    "block_size_tokens": 640,
+    "mamba_cache_mode": "align",
+    "scheduler_token_budget": 16384,
+    "long_prefill_token_threshold": 0,
+    "max_num_seqs": 32,
+    "worker_ranks_verified": 8,
+    "all_worker_chunk_size_tokens": 640,
+    "expected_branch_checkpoint_tokens": 16000,
+    "proof_sha256": "b14f9e7a0032b749c754c69c57e566a3438cb7c415385c58238106631bdbddc2",
+    "model_branch_result": "PASS_16000_EXTERNAL_HIT_TOKENS"
+  },
+  "C1_single_request_observation": {
+    "status": "PASS_C1_COLD_RESTORE_AND_BRANCH_CHECKPOINT_GPU_APC_ZERO",
+    "concurrency": 1,
+    "records": [
+      {
+        "phase": "cold_1k",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 1024,
+        "first_any_s": 3.298254,
+        "first_body_s": 3.407439,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 0,
+        "completed_external_chunk_loads": 0
+      },
+      {
+        "phase": "cold_32k",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 7.632299,
+        "first_body_s": 7.656845,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 0,
+        "completed_external_chunk_loads": 0
+      },
+      {
+        "phase": "external_replay_32k",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 0.444183,
+        "first_body_s": 0.487061,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 32000,
+        "completed_external_chunk_loads": 408
+      },
+      {
+        "phase": "branch_after_16k_checkpoint",
+        "success": true,
+        "stream_done": true,
+        "measurement_valid": true,
+        "synthetic_answer_valid": true,
+        "prompt_tokens": 32768,
+        "first_any_s": 1.432924,
+        "first_body_s": 1.483773,
+        "gpu_APC_hit_tokens": 0,
+        "external_hit_tokens": 16000,
+        "completed_external_chunk_loads": 208
+      }
+    ],
+    "branch_LCP_tokens": 24564,
+    "original_report_sha256": "a05a3be0a052763ddd29a68a257d9e3e156498ee9eb9f946d27019d128dbc126",
+    "runtime_binding_original_sha256": "2477c6974caad52cf49033b151b1e15d331654c95d99ad406468267198e3f7dc"
+  },
+  "measurement_limitations": [
+    "Single C1 and passkey observations, not repeated stable performance estimates or SLA",
+    "Cold refers to uncached prefixes; JIT and warm-up can differ between phases",
+    "TTFT-any includes reasoning; visible-body latency is recorded separately",
+    "Same-prompt32000/32768 external prefix reuse, not complete32K full-hit",
+    "No FP8 two-node TP16 or cross-host cache acceptance in this round"
+  ],
+  "publication_ready": true,
+  "post_stress_drain": {
+    "status": "PASS_ORIGINAL_GATE_AFTER_AUTOMATIC_TTL_METADATA_CLEANUP",
+    "first_observation": {
+      "gate_result": "FAILED_RETAINED",
+      "samples_with_active_sessions_1": 12,
+      "other_observed_locks_buffers_tasks_and_transfers_zero": true
+    },
+    "TTL_cleanup": {
+      "session_TTL_seconds": 600,
+      "cleanup_interval_seconds": 60,
+      "cleanup_thread_healthy": true,
+      "cleanup_failures": 0,
+      "expired_sessions_cleaned": 1,
+      "cleanup_observed_UTC": "2026-10-20T17:25:54.645192192Z",
+      "proof_sha256": "65dfcddb761817e4e7d79ae4e126045914d8efadfa94d62953c77bc4d6858f51"
+    },
+    "recheck": {
+      "original_gate_unchanged": true,
+      "consecutive_all_zero_samples": 2,
+      "same_container_image_and_epoch": true,
+      "GPU_devices_visible": 8,
+      "health_passed": true,
+      "error_signatures": 0,
+      "proof_sha256": "e1e911cffb5fc3cb772f8e04e30eb4979e84af2bb61617fd828df304d30afa87"
+    },
+    "limitations": [
+      "Original failed observation retained",
+      "Session origin and triggering path not traced; do not attribute it to C32",
+      "TTL uses session created_at; cleanup was not proved to occur600seconds after request completion",
+      "Bounded metadata residue observed and automatically cleared; immediate END cleanup not fully established",
+      "No observed KV/DMA resource leak evidence; this is not general lifetime or failure-injection proof"
+    ]
+  },
+  "production_promoted": false,
+  "independent_registry_verification": {
+    "path": "registry-verification.json",
+    "sha256": "605476f88951ef3528cf42a4389fa6d3e3bce611c1bd453b845544a116fbc22c",
+    "status": "PASS_ANONYMOUS_TAG_DIGEST_CONFIG_AND_ORDERED_ROOTFS_VERIFIED"
+  }
+}

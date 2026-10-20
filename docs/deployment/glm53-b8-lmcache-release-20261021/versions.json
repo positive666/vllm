@@ -1,0 +1,151 @@
+{
+  "schema": "glm53.b8.lmcache.release_source_manifest.v1",
+  "release_state": "PUBLISHED_VALIDATED_EXPERIMENT_CANDIDATE_PRODUCTION_FALSE",
+  "date": "2026-10-21",
+  "sources": {
+    "vllm": "b8e9001bf9568c801985889deff34d3b9fe6d0b0",
+    "vllm_native_build_source": "e10ecb6bd65b94e7f281bd3f9d85fd440d7dd72b",
+    "lmcache": "2a34fa829b3c902c5b6393740239f6ff65bd0ff8"
+  },
+  "versions": {
+    "vllm": "0.32.1rc1+upstream.b8e9001bf",
+    "lmcache": "0.5.7.dev0+glm53.v4.20261021",
+    "lmcache_local_patchset": "exact-boundary port plus ordinary-store lifetime increment, installed as v4 wheel",
+    "torch": "2.14.0+cu130",
+    "triton": "3.8.0",
+    "cuda_base": "13.0.3",
+    "nvcc": "13.0.88",
+    "ptxas": "13.0.88",
+    "gcc": "13.3.0",
+    "rust_build_toolchain": "1.95.0",
+    "flashinfer": "0.7.2",
+    "deepgemm": "2.8.1",
+    "nccl": "2.30.7",
+    "deep_ep": "2.0.0+local",
+    "cudnn": "9.24.0.43",
+    "cudnn_frontend": "1.31.0",
+    "cutlass_dsl": "4.8.0",
+    "transformers": "5.20.2"
+  },
+  "kernel_sources": {
+    "deepgemm": "727f847082d2e7946f70dc02b94949db206310d3",
+    "flashmla": "5dceadbd9eabc9acfc547ef18ec8f7b14b980682",
+    "flashkda": "17a037d98da546deb4591e967cf961a43c034d8b"
+  },
+  "native_provenance": {
+    "vllm_shared_libraries": 11,
+    "compiled_targets_in_native_parent": 464,
+    "identical_tracked_native_build_compiler_inputs_between_e10_and_B8": 401,
+    "native_recompiled_for_B8": false,
+    "native_policy": "The11 source-built native libraries were reused byte-for-byte after proving401 tracked native/build/compiler inputs identical between the two fixed source revisions. B8 Python wheel and changed Rust sources were rebuilt. This is not a full fresh B8 CUDA rebuild or an unmodified upstream Docker image.",
+    "dependency_overlay": "The public34 dependency layer and newly compiled LMCache modules are separate later layers; pinned source identity alone does not validate their runtime integration.",
+    "lmcache_native_modules": [
+      "lmcache_native",
+      "lmcache_redis",
+      "lmcache_fs",
+      "cuda_ops"
+    ],
+    "lmcache_native_build_torch_cuda": "Built against the pinned Torch2.14/CUDA13 environment; no historical Torch2.13 LMCache wheel reused."
+  },
+  "patches": [
+    {
+      "path": "patches/0001-vllm-mamba-prefill-handoff.patch",
+      "sha256": "84f1278448aba1f87ba4a88a9fff1d34aebded1d006a530f40c8b480e711266b",
+      "bytes": 5450
+    },
+    {
+      "path": "patches/0002-lmcache-exact-boundary.patch",
+      "sha256": "0b3e1b1b4d3d8619578880060f202660beee45dfde0b300114429c445f4e6ed4",
+      "bytes": 49700
+    },
+    {
+      "path": "patches/0003-lmcache-ordinary-store-lifetime.patch",
+      "sha256": "e8f751e2231372efc4e1e1005c5f6f82081a0328be88f4ca44881fae819c98b1",
+      "bytes": 18488
+    }
+  ],
+  "public_runtime_lock": {
+    "path": "requirements/public34-runtime.lock.txt",
+    "sha256": "8f02c8232c9179c09f4c7d362c7129e0926b02ca7a55b58ea8e52b9fdfc6e8a7",
+    "bytes": 32842,
+    "changed_or_added_public_packages": 34,
+    "scope": "Complement to the preserved validated base, not a standalone full image lock. No inherited environment metadata or private wheels are included."
+  },
+  "layout": {
+    "model": "GLM-5.3-Flash",
+    "tensor_parallel": 8,
+    "pipeline_parallel": 1,
+    "data_parallel": 1,
+    "max_num_seqs": 32,
+    "MTP_tokens": 3,
+    "context_tokens": 1048576,
+    "gpu_KV_bytes_per_rank": 32212254720,
+    "max_num_batched_tokens": 16384,
+    "prefix_retention_interval": 0,
+    "local_LMCache_GiB": 256,
+    "allocation": "eager pinned host DRAM",
+    "cache_transfer": "same-host CUDA IPC",
+    "Mooncake_L2": false
+  },
+  "validation": {
+    "base_plain_Flash_C1": "Prior1K and32K gold/SSE accepted; does not establish new external-cache accuracy.",
+    "current_cache_candidate": "PUBLISHED_SCOPED_C1_PASSKEY_C32_TTL_DRAIN_VALIDATED_EXPERIMENT_CANDIDATE",
+    "FP8_two_node_TP16": "NOT_VALIDATED_IN_THIS_RELEASE_ROUND",
+    "C32_load_acceptance": "PASS_ONE_24short8long_SYNTHETIC_WAVE_NOT_PRODUCTION_SLA",
+    "registry_tag": "ghcr.io/positive666/model:glm53-b8e9001bf956-lmc2a34fa8-v4-e8f751e2-20261021",
+    "registry_manifest_digest": "sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+    "GPU_native_smoke": {
+      "status": "PASS",
+      "GPU_devices_visible": 8,
+      "lmcache_native_module_imports": 4,
+      "vllm_native_libraries_verified_byte_for_byte": 11,
+      "host_to_device_and_device_to_host_bytes": 1048576,
+      "report_sha256": "7731c25b36204e0f65177c491cc176c650dc1cde26b60dfff656dc56eaa2bccd"
+    },
+    "Linux_installed_regressions": {
+      "status": "PASS",
+      "passed": 577,
+      "failures": 0,
+      "skipped": 0,
+      "lmcache": 186,
+      "vllm_producer_core": 349,
+      "vllm_consumers": 42
+    },
+    "pre_request_geometry": {
+      "status": "PASS_PREFLIGHT_BEFORE_REQUESTS",
+      "block_size_tokens": 640,
+      "mamba_cache_mode": "align",
+      "scheduler_token_budget": 16384,
+      "long_prefill_token_threshold": 0,
+      "max_num_seqs": 32,
+      "worker_ranks_verified": 8,
+      "all_worker_chunk_size_tokens": 640,
+      "expected_branch_checkpoint_tokens": 16000,
+      "proof_sha256": "b14f9e7a0032b749c754c69c57e566a3438cb7c415385c58238106631bdbddc2",
+      "model_branch_result": "PASS_16000_EXTERNAL_HIT_TOKENS"
+    },
+    "publication_ready": true,
+    "production_promoted": false,
+    "independent_anonymous_registry": "PASS_TAG_DIGEST_CONFIG_LINUX_AMD64_ORDERED44_LAYER_DIFF_IDS"
+  },
+  "related_work": {
+    "vllm_existing_producer_PR": "https://github.com/vllm-project/vllm/pull/62479",
+    "lmcache_exact_ownership_draft": "https://github.com/LMCache/LMCache/pull/4844",
+    "lmcache_completion_PR": "https://github.com/LMCache/LMCache/pull/4836",
+    "lmcache_tracking_issue": "https://github.com/LMCache/LMCache/issues/4888",
+    "publication_policy": "This bundle preserves a local validation patchset. It is not a new upstream PR; do not open duplicate LMCache ownership/completion PRs."
+  },
+  "AI_assistance": true,
+  "image": {
+    "image_config_sha256": "6d96026df6b185bef8b96e4d78181c4e8c44848b7a949c79dc9a84ccb8de6a2c",
+    "uncompressed_bytes": 27567599545,
+    "registry_manifest_digest": "sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+    "published": true,
+    "registry_tag": "ghcr.io/positive666/model:glm53-b8e9001bf956-lmc2a34fa8-v4-e8f751e2-20261021",
+    "digest_pinned_reference": "ghcr.io/positive666/model@sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+    "production": false,
+    "manifest_layers": 44,
+    "unique_manifest_blobs": 39
+  },
+  "release_date_timezone": "Asia/Shanghai"
+}

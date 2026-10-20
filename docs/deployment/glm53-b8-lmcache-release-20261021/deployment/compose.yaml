@@ -1,0 +1,149 @@
+name: glm53-b8-lmcache-release
+
+x-common: &common
+  image: ${GLM_IMAGE:?set a verified immutable image reference}
+  network_mode: host
+  ipc: host
+  restart: "no"
+  entrypoint: ["/bin/bash", "/config/entry.sh"]
+  ulimits:
+    memlock: {soft: -1, hard: -1}
+    stack: 67108864
+    core: 0
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+
+x-environment: &environment
+  PYTHONHASHSEED: "0"
+  HF_HUB_OFFLINE: "1"
+  TRANSFORMERS_OFFLINE: "1"
+  LMCACHE_TRACK_USAGE: "false"
+  UV_CACHE_DIR: /work/cache/uv
+  XDG_CACHE_HOME: /work/cache/xdg
+  VLLM_CACHE_ROOT: /work/cache/vllm
+  TRITON_CACHE_DIR: /work/cache/triton
+  FLASHINFER_WORKSPACE_BASE: /work/cache/flashinfer
+  TORCH_EXTENSIONS_DIR: /work/cache/torch-extensions
+  TORCHINDUCTOR_CACHE_DIR: /work/cache/inductor
+  DG_JIT_CACHE_DIR: /work/cache/deepgemm
+  CUDA_CACHE_PATH: /work/cache/cuda
+
+services:
+  lmcache:
+    <<: *common
+    mem_limit: 320g
+    memswap_limit: 320g
+    environment:
+      <<: *environment
+      LMC_MODE: server
+    volumes:
+      - ./entry.sh:/config/entry.sh:ro
+      - lmc-work:/work
+    command:
+      - --transport
+      - zmq
+      - --host
+      - 127.0.0.1
+      - --port
+      - "28055"
+      - --http-host
+      - 127.0.0.1
+      - --http-port
+      - "28056"
+      - --max-gpu-workers
+      - "8"
+      - --max-cpu-workers
+      - "8"
+      - --chunk-size
+      - "256"
+      - --l1-size-gb
+      - "256"
+      - --no-l1-use-lazy
+      - --supported-transfer-mode
+      - lmcache_driven
+      - --separate-object-groups
+      - --no-isolated-ipc
+      - --eviction-policy
+      - LRU
+      - --shm-name
+      - ""
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -fsS --max-time 3 http://127.0.0.1:28056/healthcheck | grep -q healthy
+      interval: 5s
+      timeout: 4s
+      retries: 120
+
+  model:
+    <<: *common
+    depends_on:
+      lmcache:
+        condition: service_healthy
+    environment:
+      <<: *environment
+      LMC_MODE: model
+      NCCL_NVLS_ENABLE: "0"
+      VLLM_SERVER_DEV_MODE: "1"
+    volumes:
+      - ./entry.sh:/config/entry.sh:ro
+      - ./kv-transfer-config.json:/config/kv-transfer-config.json:ro
+      - ${MODEL_PATH:?absolute Flash checkpoint directory}:/model/GLM-5.3-Flash:ro
+      - model-work:/work
+    command:
+      - /model/GLM-5.3-Flash
+      - --served-model-name
+      - GLM-5.3-Flash
+      - --dtype
+      - bfloat16
+      - --host
+      - 127.0.0.1
+      - --port
+      - "28001"
+      - --tensor-parallel-size
+      - "8"
+      - --pipeline-parallel-size
+      - "1"
+      - --data-parallel-size
+      - "1"
+      - --gpu-memory-utilization
+      - "0.92"
+      - --kv-cache-memory-bytes
+      - "32212254720"
+      - --max-model-len
+      - "1048576"
+      - --max-num-seqs
+      - "32"
+      - --max-num-batched-tokens
+      - "16384"
+      - --prefix-cache-retention-interval
+      - "0"
+      - --trust-remote-code
+      - --enable-prefix-caching
+      - --enable-chunked-prefill
+      - --attention-backend
+      - FLASHMLA_SPARSE
+      - --kv-cache-dtype
+      - bfloat16
+      - --enable-auto-tool-choice
+      - --tool-call-parser
+      - glm47
+      - --reasoning-parser
+      - glm45
+      - --no-enable-flashinfer-autotune
+      - --moe-backend
+      - triton
+      - --spec-method
+      - glm5_next_mtp
+      - --spec-tokens
+      - "3"
+      - --enable-prompt-tokens-details
+
+volumes:
+  lmc-work:
+  model-work:

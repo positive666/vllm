@@ -1,0 +1,419 @@
+diff --git a/docs/design/integration/vllm/hybrid-kv-cache-groups.md b/docs/design/integration/vllm/hybrid-kv-cache-groups.md
+--- a/docs/design/integration/vllm/hybrid-kv-cache-groups.md
++++ b/docs/design/integration/vllm/hybrid-kv-cache-groups.md
+@@ -1,4 +1,15 @@
+ # Hybrid KV Cache Groups
++
++## Ordinary store lifetime candidate
++
++All chunks submitted for one request retain their own completion future and
++producer event; a later chunk does not replace an earlier remote reader.
++Normal and lazy offload report the request complete only after every chunk's
++device-aware future finishes. Preemption drains the same futures before a
++forward can reuse the source pages. Submission errors and lost server health
++with admitted stores raise without releasing events or reporting completion.
++This stops the engine; it does not implement transparent server recovery or
++the transfer-context close and re-registration protocol.
+ 
+ ## Summary
+ 
+diff --git a/lmcache/integration/vllm/vllm_multi_process_adapter.py b/lmcache/integration/vllm/vllm_multi_process_adapter.py
+--- a/lmcache/integration/vllm/vllm_multi_process_adapter.py
++++ b/lmcache/integration/vllm/vllm_multi_process_adapter.py
+@@ -1520,6 +1520,10 @@
+         # The IPC handle is not enough by itself; CUDA needs the exporting
+         # event object to stay alive until the consumer is done with it.
+         self.store_events: dict[str, _IpcEvent] = {}
++        # Every chunk retains its future and event until the request settles.
++        self._store_transfers: dict[
++            str, list[tuple[MessagingFuture[StoreResult] | None, _IpcEvent | None]]
++        ] = {}
+         # Exact-boundary transfers outlive requests; keep their IPC events alive.
+         self._boundary_stores: dict[
+             int, tuple[MessagingFuture[StoreResult] | None, _IpcEvent | None]
+@@ -1903,6 +1907,10 @@
+         completion immediately, because the scheduler unpins the request's
+         blocks only after collecting one receipt per worker rank.
+ 
++        Every admitted chunk retains its future and event until all stores for
++        the request complete. Unknown submission or completion stops progress;
++        heartbeat loss never establishes remote DMA completion.
++
+         Args:
+             request_id: The ID of the request
+             op: The LoadStoreOp describing the store operation.
+@@ -1912,6 +1920,7 @@
+             request_configs: Optional LMCache request configs to include in
+                 the IPC key.
+         """
++        self._raise_if_store_completion_unknown()
+         if op.is_partial_store:
+             self._disable_partial_store_events()
+         self._ensure_heartbeat_started()
+@@ -1948,6 +1957,10 @@
+                 "Transfer context is not initialized. "
+                 "Call register_kv_caches() before submitting store requests."
+             )
++        transfers = self._store_transfers.setdefault(request_id, [])
++        slot = len(transfers)
++        # Submission failure may occur after the server admitted the DMA.
++        transfers.append((None, event))
+         future = self.transfer_ctx.submit_store(
+             request_id,
+             key,
+@@ -1956,6 +1969,7 @@
+             event,
+             self.blocks_in_chunk,
+         )
++        transfers[slot] = (future, event)
+         self.store_futures[request_id] = future
+         if event is not None:
+             self.store_events[request_id] = event
+@@ -2245,16 +2259,21 @@
+                 including retrieves dropped at submit time while unhealthy
+                 (reported exactly once; blocks already in error_block_ids).
+ 
++        Raises:
++            RuntimeError: If an admitted store loses server health or its
++                submission outcome is unknown. Sources and events stay retained.
++
+         Notes:
+             When enabling async scheduling in vLLM, the same request ID may appear
+             multiple times in `finished_req_ids_from_engine`. The adapter should
+             take care of deduplicating the request IDs and only return the request
+             IDs that have not been returned before.
+         """
++        self._raise_if_store_completion_unknown()
+         if self.dispatcher is not None:
+             dispatch(self.dispatcher, "reclaim")
+ 
+-        # If unhealthy, drain all pending futures immediately
++        # No admitted stores remain when unhealthy receives are invalidated.
+         if not self.is_healthy:
+             finished_stores = set(self.store_futures.keys())
+             finished_retrieves = set()
+@@ -2293,11 +2312,10 @@
+ 
+         finished_stores = set()
+         finished_retrieves = set()
+-        for request_id, s_future in self.store_futures.items():
+-            if not s_future.query():
++        for request_id in self.store_futures:
++            s_result = self._get_store_result(request_id)
++            if s_result is None:
+                 continue
+-
+-            s_result = s_future.result(timeout=60)
+             finished_stores.add(request_id)
+ 
+             if not s_result:
+@@ -2331,6 +2349,7 @@
+         for request_id in finished_stores:
+             self.store_futures.pop(request_id, None)
+             self.store_events.pop(request_id, None)
++            self._store_transfers.pop(request_id)
+         for request_id in finished_retrieves:
+             self.retrieve_futures.pop(request_id, None)
+             self.retrieve_events.pop(request_id, None)
+@@ -2379,16 +2398,21 @@
+             - The second set contains the finished retrieve request ids,
+                 including retrieves dropped at submit time while unhealthy
+                 (reported exactly once; blocks already in error_block_ids).
++
++        Raises:
++            RuntimeError: If an admitted store loses server health or its
++                submission outcome is unknown. No store receipt is emitted.
+         """
+         if not self.lazy_offload:
+             raise ValueError(
+                 "get_finished_with_lazy_offload is only available in lazy offload mode"
+             )
+ 
++        self._raise_if_store_completion_unknown()
+         if self.dispatcher is not None:
+             dispatch(self.dispatcher, "reclaim")
+ 
+-        # If unhealthy, drain all pending futures immediately
++        # No admitted stores remain when unhealthy receives are invalidated.
+         if not self.is_healthy:
+             finished_stores = set(self.store_futures.keys())
+             finished_retrieves = set()
+@@ -2423,11 +2447,10 @@
+ 
+         finished_stores = set()
+         finished_retrieves = set()
+-        for request_id, s_future in self.store_futures.items():
+-            if not s_future.query():
++        for request_id in self.store_futures:
++            s_result = self._get_store_result(request_id)
++            if s_result is None:
+                 continue
+-
+-            s_result = s_future.result(timeout=60)
+             finished_stores.add(request_id)
+ 
+             if not s_result:
+@@ -2462,6 +2485,7 @@
+         for request_id in finished_stores:
+             self.store_futures.pop(request_id, None)
+             self.store_events.pop(request_id, None)
++            self._store_transfers.pop(request_id)
+         for request_id in finished_retrieves:
+             self.retrieve_futures.pop(request_id, None)
+             self.retrieve_events.pop(request_id, None)
+@@ -2574,16 +2598,33 @@
+     def handle_preemptions(self, need_flush_before_forward: bool) -> None:
+         """Handle worker-side preemption hints from connector metadata.
+ 
+-        When ``need_flush_before_forward`` is true, synchronize deferred
+-        engine-driven gather work before the next forward pass can overwrite
+-        paged KV blocks.
++        When ``need_flush_before_forward`` is true, wait for every submitted
++        store and deferred engine-driven gather before the next forward can
++        overwrite paged KV blocks. Unknown admission or completion raises
++        without releasing the retained sources or producer events.
+ 
+         Args:
+             need_flush_before_forward: When True, flush in-flight gather
+                 operations on the transfer context. When False, this is a no-op.
++
++        Raises:
++            RuntimeError: If store admission or completion cannot be established.
++            TimeoutError: If a remote store does not complete within mq_timeout.
+         """
+         if not need_flush_before_forward:
+             return
++        self._raise_if_store_completion_unknown()
++        if not self.is_healthy and self._boundary_stores:
++            raise RuntimeError("LMCache heartbeat lost with unfinished boundary stores")
++        for transfers in self._store_transfers.values():
++            for future, _ in transfers:
++                if future is None:
++                    raise RuntimeError("Store submission outcome unknown")
++                future.result(timeout=self._mq_timeout)
++        for future, _ in self._boundary_stores.values():
++            if future is None:
++                raise RuntimeError("Boundary store submission outcome unknown")
++            future.result(timeout=self._mq_timeout)
+         if not self.is_healthy or self.transfer_ctx is None:
+             return
+         self.transfer_ctx.flush_inflight_stores()
+@@ -2674,6 +2715,27 @@
+         self.request_telemetry.close()
+ 
+     # Helper functions
++    def _raise_if_store_completion_unknown(self) -> None:
++        if any(
++            future is None
++            for transfers in self._store_transfers.values()
++            for future, _ in transfers
++        ):
++            raise RuntimeError("Store submission outcome unknown")
++        if not self.is_healthy and self._store_transfers:
++            raise RuntimeError("LMCache heartbeat lost with unfinished store transfers")
++
++    def _get_store_result(self, request_id: str) -> bool | None:
++        transfers = self._store_transfers[request_id]
++        futures = [future for future, _ in transfers if future is not None]
++        if len(futures) != len(transfers):
++            raise RuntimeError("Store submission outcome unknown")
++        if not all(future.query() for future in futures):
++            return None
++        # Read every result before the caller releases any source or event.
++        results = [future.result(timeout=60) for future in futures]
++        return all(results)
++
+     def _disable_partial_store_events(self) -> None:
+         """Do not announce a model prefix from individual hybrid object groups."""
+         if not self._kv_events_enabled:
+diff --git a/tests/v1/test_vllm_mp_adapter.py b/tests/v1/test_vllm_mp_adapter.py
+--- a/tests/v1/test_vllm_mp_adapter.py
++++ b/tests/v1/test_vllm_mp_adapter.py
+@@ -979,6 +979,13 @@
+         if store_result is None:
+             # Lose server health while the store is pending.
+             FakeHeartbeatThread.instances[-1].health_event.clear()
++            with pytest.raises(RuntimeError, match="heartbeat lost"):
++                adapter.get_finished_with_lazy_offload()
++            assert adapter.get_kv_events() == []
++            assert adapter.get_completed_store_requests() is None
++            assert adapter.get_failed_store_requests() is None
++            assert "req-1" in adapter.store_futures
++            return
+ 
+         adapter.get_finished_with_lazy_offload()
+ 
+@@ -1068,7 +1075,9 @@
+         future.query.return_value = False
+         adapter.submit_store_request("interrupted", op, event=None)
+         FakeHeartbeatThread.instances[-1].health_event.clear()
+-        finish()
++        with pytest.raises(RuntimeError, match="heartbeat lost"):
++            finish()
++        assert "interrupted" in adapter.store_futures
+         assert metrics() == (buffered + count, generated + count, drained)
+ 
+         assert len(adapter.get_kv_events()) == count
+@@ -2277,3 +2286,162 @@
+         assert adapter.get_kv_events() == []
+     finally:
+         adapter.shutdown()
++
++
++@pytest.mark.parametrize("lazy", [False, True])
++def test_store_completion_waits_for_every_chunk_and_keeps_every_event(
++    fake_adapter, lazy: bool
++) -> None:
++    """A later chunk finishing cannot release an earlier remote reader."""
++    adapter, _, _ = fake_adapter
++    adapter.lazy_offload = lazy
++    first, second = MagicMock(), MagicMock()
++    first.query.return_value = False
++    second.query.return_value = True
++    first.result.return_value = second.result.return_value = True
++    adapter.transfer_ctx = MagicMock()
++    adapter.transfer_ctx.submit_store.side_effect = [first, second]
++    events = [FakeCudaEvent(), FakeCudaEvent()]
++    refs = [weakref.ref(event) for event in events]
++    for event in events:
++        adapter.submit_store_request("request", _op([[12]]), event)
++    adapter.transfer_ctx.reset_mock()
++    del events, event
++    gc.collect()
++
++    def poll():
++        if lazy:
++            adapter.get_finished_with_lazy_offload()
++            return adapter.get_completed_store_requests()
++        return adapter.get_finished({"request"})[0]
++
++    assert not poll()
++    assert all(ref() is not None for ref in refs)
++    first.query.return_value = True
++    assert poll() == ({"request": 1} if lazy else {"request"})
++    assert not poll()
++    gc.collect()
++    assert all(ref() is None for ref in refs)
++
++
++@pytest.mark.parametrize("lazy", [False, True])
++def test_heartbeat_loss_cannot_complete_an_admitted_store(
++    fake_adapter, lazy: bool
++) -> None:
++    """A lost heartbeat stops progress before any receipt or event release."""
++    adapter, _, _ = fake_adapter
++    adapter.lazy_offload = lazy
++    adapter.transfer_ctx = MagicMock()
++    future = adapter.transfer_ctx.submit_store.return_value
++    future.query.return_value = False
++    event = FakeCudaEvent()
++    ref = weakref.ref(event)
++    adapter.submit_store_request("request", _op([[12]]), event)
++    adapter.transfer_ctx.reset_mock()
++    del event
++    FakeHeartbeatThread.instances[-1].health_event.clear()
++    poll = (
++        adapter.get_finished_with_lazy_offload
++        if lazy
++        else lambda: adapter.get_finished({"request"})
++    )
++    with pytest.raises(RuntimeError, match="heartbeat lost"):
++        poll()
++    with pytest.raises(RuntimeError, match="heartbeat lost"):
++        adapter.handle_preemptions(True)
++    assert adapter.get_completed_store_requests() is None
++    assert adapter.get_failed_store_requests() is None
++    assert "request" in adapter.store_futures
++    gc.collect()
++    assert ref() is not None
++    adapter.transfer_ctx.flush_inflight_stores.assert_not_called()
++    FakeHeartbeatThread.instances[-1].health_event.set()
++    future.query.return_value = True
++    future.result.return_value = True
++    assert poll()[0] == (None if lazy else {"request"})
++    if lazy:
++        assert adapter.get_completed_store_requests() == {"request": 1}
++    gc.collect()
++    assert ref() is None
++
++
++@pytest.mark.parametrize("lazy", [False, True])
++@pytest.mark.parametrize("failure_at", ["query", "result"])
++def test_store_poll_error_retains_all_chunk_events(
++    fake_adapter, lazy: bool, failure_at: str
++) -> None:
++    """One terminal chunk does not settle another chunk's unknown outcome."""
++    adapter, _, _ = fake_adapter
++    adapter.lazy_offload = lazy
++    first, second = MagicMock(), MagicMock()
++    first.query.return_value = second.query.return_value = True
++    first.result.return_value = second.result.return_value = True
++    getattr(second, failure_at).side_effect = ConnectionError("completion unknown")
++    adapter.transfer_ctx = MagicMock()
++    adapter.transfer_ctx.submit_store.side_effect = [first, second]
++    events = [FakeCudaEvent(), FakeCudaEvent()]
++    refs = [weakref.ref(event) for event in events]
++    for event in events:
++        adapter.submit_store_request("request", _op([[12]]), event)
++    adapter.transfer_ctx.reset_mock()
++    del events, event
++    with pytest.raises(ConnectionError, match="completion unknown"):
++        if lazy:
++            adapter.get_finished_with_lazy_offload()
++        else:
++            adapter.get_finished({"request"})
++    assert adapter.get_completed_store_requests() is None
++    gc.collect()
++    assert all(ref() is not None for ref in refs)
++
++
++def test_store_submission_error_retains_event_and_blocks_preemption(
++    fake_adapter,
++) -> None:
++    """Unknown admission cannot be followed by source reuse or a new store."""
++    adapter, _, _ = fake_adapter
++    adapter.transfer_ctx = MagicMock()
++    adapter.transfer_ctx.submit_store.side_effect = ConnectionError("admission unknown")
++    event = FakeCudaEvent()
++    ref = weakref.ref(event)
++    with pytest.raises(ConnectionError, match="admission unknown"):
++        adapter.submit_store_request("request", _op([[12]]), event)
++    adapter.transfer_ctx.reset_mock()
++    del event
++    with pytest.raises(RuntimeError, match="submission outcome unknown"):
++        adapter.get_finished({"request"})
++    with pytest.raises(RuntimeError, match="submission outcome unknown"):
++        adapter.handle_preemptions(True)
++    with pytest.raises(RuntimeError, match="submission outcome unknown"):
++        adapter.submit_store_request("later", _op([[13]]), None)
++    gc.collect()
++    assert ref() is not None
++    adapter.transfer_ctx.flush_inflight_stores.assert_not_called()
++
++
++def test_preemption_waits_for_all_chunks_before_flushing_sources(
++    fake_adapter, monkeypatch
++) -> None:
++    """A timeout stops forward; a successful drain includes displaced chunks."""
++    adapter, _, _ = fake_adapter
++    adapter.transfer_ctx = MagicMock()
++    first, second = MagicMock(), MagicMock()
++    first.result.side_effect = TimeoutError("copy remains in flight")
++    second.result.return_value = True
++    adapter.transfer_ctx.submit_store.side_effect = [first, second]
++    for _ in range(2):
++        adapter.submit_store_request("request", _op([[12]]), FakeCudaEvent())
++    sync = MagicMock()
++    monkeypatch.setattr(adapter_mod.torch_dev, "synchronize", sync)
++    adapter.handle_preemptions(False)
++    first.result.assert_not_called()
++    with pytest.raises(TimeoutError, match="in flight"):
++        adapter.handle_preemptions(True)
++    adapter.transfer_ctx.flush_inflight_stores.assert_not_called()
++    sync.assert_not_called()
++    first.result.side_effect = None
++    first.result.return_value = True
++    adapter.handle_preemptions(True)
++    second.result.assert_called_once()
++    adapter.transfer_ctx.flush_inflight_stores.assert_called_once()
++    sync.assert_called_once()

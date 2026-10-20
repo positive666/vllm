@@ -1,0 +1,13 @@
+{
+  "kv_connector": "LMCacheMPConnector",
+  "kv_connector_module_path": "lmcache.integration.vllm.lmcache_mp_connector",
+  "kv_role": "kv_both",
+  "kv_connector_extra_config": {
+    "lmcache.mp.host": "127.0.0.1",
+    "lmcache.mp.port": 28055,
+    "lmcache.mp.autostart": false,
+    "lmcache.mp.mp_transfer_mode": "lmcache_driven",
+    "lmcache.mp.isolated_ipc": false,
+    "lmcache.mp.save_decode_cache": false
+  }
+}
