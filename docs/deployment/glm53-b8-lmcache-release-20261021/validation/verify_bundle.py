@@ -23,10 +23,14 @@ def main():
         assert hashlib.sha256(data).hexdigest() == item["sha256"], item["path"]
         checked.append(item["path"])
     results = json.loads((ROOT / "validation/results.json").read_text(encoding="utf-8"))
-    for item in (
+    aggregates = [
         results["Linux_installed_regressions"]["public_aggregate"],
         results["independent_registry_verification"],
-    ):
+    ]
+    fp8 = results.get("FP8_two_node_TP16_acceptance")
+    if isinstance(fp8, dict):
+        aggregates.append(fp8["public_aggregate"])
+    for item in aggregates:
         path = ROOT / "validation" / item["path"]
         assert not path.is_symlink() and path.resolve().is_relative_to(ROOT)
         assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"]

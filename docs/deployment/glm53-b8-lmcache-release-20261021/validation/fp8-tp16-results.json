@@ -1,0 +1,594 @@
+{
+  "schema": "glm53.b8.lmcache.fp8_tp16_validation.v1",
+  "status": "PASS_C1_A_A_B_A_AND_ONE_C32_FUNCTIONAL_WAVE_NOT_PRODUCTION_SLA",
+  "observed_UTC_start": "2026-10-21T04:10:18.438059+00:00",
+  "observed_UTC_end": "2026-10-21T04:17:22.721824+00:00",
+  "scope": "One synthetic C1 A/A/B/A sequence and one C32 mixed wave on two nodes; functional external-prefix restore acceptance only; no production traffic or prompt text included.",
+  "image_config_digest": "sha256:6d96026df6b185bef8b96e4d78181c4e8c44848b7a949c79dc9a84ccb8de6a2c",
+  "registry_manifest_digest": "sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
+  "image_source_and_patch_bytes_changed": false,
+  "layout": {
+    "model": "GLM-5.3-FP8",
+    "nodes": 2,
+    "GPUs_per_node": 8,
+    "tensor_parallel": 16,
+    "pipeline_parallel": 1,
+    "data_parallel": 1,
+    "MTP_tokens": 3,
+    "max_num_seqs": 32,
+    "cache_connector": "LMCacheMPConnector",
+    "cache_topology": "One local MP server per node; workers use their node-local server via CUDA IPC. This is not a shared cross-host cache pool or Mooncake L2.",
+    "configured_local_LMCache_GiB_per_node": 256,
+    "configured_aggregate_physical_LMCache_GiB": 512,
+    "unique_cache_capacity_not_proven_by_sum": true,
+    "actual_L1_capacity_bytes_per_node": [
+      274877906944,
+      274877906944
+    ],
+    "max_model_len": 262144,
+    "max_num_batched_tokens": 8192,
+    "long_prefill_token_threshold": 2048,
+    "enable_expert_parallel": true,
+    "kv_cache_dtype_CLI": "fp8",
+    "kv_cache_dtype_note": "The CLI requested fp8; the backend may normalize its resolved dtype to fp8_ds_mla. This field is not a claim of the server-reported resolved dtype."
+  },
+  "geometry": {
+    "mla_only": true,
+    "is_hybrid": false,
+    "boundary_state_groups": [],
+    "prefix_replay_tokens": 0,
+    "kv_world_size": 1,
+    "group_tokens_per_block": [
+      64
+    ],
+    "scheduler_block_size": 64,
+    "chunk_tokens": 256,
+    "mamba_cache_mode": "none",
+    "cacheable_object_group_count": 1
+  },
+  "branch_LCP_tokens": 24565,
+  "output_budget_tokens": 2048,
+  "association": {
+    "mode": "independent_worker_and_registration_sets",
+    "worker_processes_per_node": [
+      8,
+      8
+    ],
+    "registered_instances_per_node": [
+      8,
+      8
+    ],
+    "container_to_instance_sets_consistent": true,
+    "exact_instance_rank_join_verified": false
+  },
+  "records": [
+    {
+      "phase": "cold",
+      "prompt_tokens": 32768,
+      "completion_tokens": 585,
+      "total_tokens": 33353,
+      "first_any_s": 19.344,
+      "first_body_s": 23.984,
+      "elapsed_s": 24.079,
+      "external_hit_tokens": 0,
+      "cached_prompt_tokens": 0,
+      "GPU_APC_hit_tokens": 0,
+      "request_success_delta": 1,
+      "preemptions_delta": 0,
+      "checks": {
+        "HTTP_200": true,
+        "transport_complete": true,
+        "SSE_DONE": true,
+        "finish_stop": true,
+        "synthetic_passkey_valid": true,
+        "usage_complete": true,
+        "usage_consistent": true,
+        "measurement_valid": true,
+        "GPU_only_reset_success": true
+      },
+      "expected_completed_chunks_per_instance": 0,
+      "pools": [
+        {
+          "node_ordinal": 0,
+          "completed_loads": [],
+          "completed_load_instance_count": 0,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 0,
+            "lmcache_mp_num_submitted_stores_total": 4,
+            "lmcache_mp_num_finished_stores_total": 4,
+            "lmcache_mp_num_submitted_retrieves_total": 0,
+            "lmcache_mp_num_finished_retrieves_total": 0
+          }
+        },
+        {
+          "node_ordinal": 1,
+          "completed_loads": [],
+          "completed_load_instance_count": 0,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 0,
+            "lmcache_mp_num_submitted_stores_total": 4,
+            "lmcache_mp_num_finished_stores_total": 4,
+            "lmcache_mp_num_submitted_retrieves_total": 0,
+            "lmcache_mp_num_finished_retrieves_total": 0
+          }
+        }
+      ]
+    },
+    {
+      "phase": "full_restore",
+      "prompt_tokens": 32768,
+      "completion_tokens": 835,
+      "total_tokens": 33603,
+      "first_any_s": 0.312,
+      "first_body_s": 6.718,
+      "elapsed_s": 6.828,
+      "external_hit_tokens": 32767,
+      "cached_prompt_tokens": 32767,
+      "GPU_APC_hit_tokens": 0,
+      "request_success_delta": 1,
+      "preemptions_delta": 0,
+      "checks": {
+        "HTTP_200": true,
+        "transport_complete": true,
+        "SSE_DONE": true,
+        "finish_stop": true,
+        "synthetic_passkey_valid": true,
+        "usage_complete": true,
+        "usage_consistent": true,
+        "measurement_valid": true,
+        "GPU_only_reset_success": true
+      },
+      "expected_completed_chunks_per_instance": 128,
+      "pools": [
+        {
+          "node_ordinal": 0,
+          "completed_loads": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "completed_load_instance_count": 8,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 1024,
+            "lmcache_mp_num_submitted_stores_total": 0,
+            "lmcache_mp_num_finished_stores_total": 0,
+            "lmcache_mp_num_submitted_retrieves_total": 8,
+            "lmcache_mp_num_finished_retrieves_total": 8
+          }
+        },
+        {
+          "node_ordinal": 1,
+          "completed_loads": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "completed_load_instance_count": 8,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 1024,
+            "lmcache_mp_num_submitted_stores_total": 0,
+            "lmcache_mp_num_finished_stores_total": 0,
+            "lmcache_mp_num_submitted_retrieves_total": 8,
+            "lmcache_mp_num_finished_retrieves_total": 8
+          }
+        }
+      ]
+    },
+    {
+      "phase": "branch_restore",
+      "prompt_tokens": 32799,
+      "completion_tokens": 142,
+      "total_tokens": 32941,
+      "first_any_s": 5.766,
+      "first_body_s": 6.703,
+      "elapsed_s": 6.797,
+      "external_hit_tokens": 24320,
+      "cached_prompt_tokens": 24320,
+      "GPU_APC_hit_tokens": 0,
+      "request_success_delta": 1,
+      "preemptions_delta": 0,
+      "checks": {
+        "HTTP_200": true,
+        "transport_complete": true,
+        "SSE_DONE": true,
+        "finish_stop": true,
+        "synthetic_passkey_valid": true,
+        "usage_complete": true,
+        "usage_consistent": true,
+        "measurement_valid": true,
+        "GPU_only_reset_success": true
+      },
+      "expected_completed_chunks_per_instance": 95,
+      "pools": [
+        {
+          "node_ordinal": 0,
+          "completed_loads": [
+            95,
+            95,
+            95,
+            95,
+            95,
+            95,
+            95,
+            95
+          ],
+          "completed_load_instance_count": 8,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 760,
+            "lmcache_mp_num_submitted_stores_total": 2,
+            "lmcache_mp_num_finished_stores_total": 2,
+            "lmcache_mp_num_submitted_retrieves_total": 8,
+            "lmcache_mp_num_finished_retrieves_total": 8
+          }
+        },
+        {
+          "node_ordinal": 1,
+          "completed_loads": [
+            95,
+            95,
+            95,
+            95,
+            95,
+            95,
+            95,
+            95
+          ],
+          "completed_load_instance_count": 8,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 760,
+            "lmcache_mp_num_submitted_stores_total": 2,
+            "lmcache_mp_num_finished_stores_total": 2,
+            "lmcache_mp_num_submitted_retrieves_total": 8,
+            "lmcache_mp_num_finished_retrieves_total": 8
+          }
+        }
+      ]
+    },
+    {
+      "phase": "reverse_parent",
+      "prompt_tokens": 32768,
+      "completion_tokens": 650,
+      "total_tokens": 33418,
+      "first_any_s": 0.562,
+      "first_body_s": 5.859,
+      "elapsed_s": 5.969,
+      "external_hit_tokens": 32767,
+      "cached_prompt_tokens": 32767,
+      "GPU_APC_hit_tokens": 0,
+      "request_success_delta": 1,
+      "preemptions_delta": 0,
+      "checks": {
+        "HTTP_200": true,
+        "transport_complete": true,
+        "SSE_DONE": true,
+        "finish_stop": true,
+        "synthetic_passkey_valid": true,
+        "usage_complete": true,
+        "usage_consistent": true,
+        "measurement_valid": true,
+        "GPU_only_reset_success": true
+      },
+      "expected_completed_chunks_per_instance": 128,
+      "pools": [
+        {
+          "node_ordinal": 0,
+          "completed_loads": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "completed_load_instance_count": 8,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 1024,
+            "lmcache_mp_num_submitted_stores_total": 0,
+            "lmcache_mp_num_finished_stores_total": 0,
+            "lmcache_mp_num_submitted_retrieves_total": 8,
+            "lmcache_mp_num_finished_retrieves_total": 8
+          }
+        },
+        {
+          "node_ordinal": 1,
+          "completed_loads": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128
+          ],
+          "completed_load_instance_count": 8,
+          "counter_deltas": {
+            "lmcache_mp_num_chunks_loaded_total": 1024,
+            "lmcache_mp_num_submitted_stores_total": 0,
+            "lmcache_mp_num_finished_stores_total": 0,
+            "lmcache_mp_num_submitted_retrieves_total": 8,
+            "lmcache_mp_num_finished_retrieves_total": 8
+          }
+        }
+      ]
+    }
+  ],
+  "C32_load_acceptance": {
+    "status": "PASS_FP8_TP16_C32_GOLD_SSE_USAGE_DUAL_MP_LOAD_KV_WORK_DRAINED",
+    "performance_assessment": "FUNCTIONAL_PASS_LATENCY_NOT_ACCEPTABLE_AS_PRODUCTION_SLA",
+    "concurrency": 32,
+    "requests": 32,
+    "short_1K": 24,
+    "long_32K": 8,
+    "separate_seed_requests": 1,
+    "planned_generation_requests_including_seed": 33,
+    "output_budget_tokens": 2048,
+    "wave_elapsed_s": 154.594,
+    "checks": {
+      "all32_HTTP200_gold_SSE_DONE_stop_usage_and_fixture": true,
+      "request_success_delta": 32,
+      "GPU_APC_hit_tokens": 0,
+      "external_prefix_hit_tokens": 32767,
+      "preemptions_delta": 0,
+      "same_C1_model_and_MP_epochs": true
+    },
+    "totals": {
+      "prompt_tokens": 286720,
+      "completion_tokens": 11214,
+      "total_tokens": 297934,
+      "cached_prompt_tokens": 32767
+    },
+    "cache_scope": "Only long row100 is explicitly seeded; other31 fresh prefixes. GPU APC reset before wave.",
+    "actual_positive_cached_requests": [
+      {
+        "index": 100,
+        "kind": "long",
+        "prompt_tokens": 32768,
+        "cached_prompt_tokens": 32767,
+        "first_any_s": 65.188,
+        "first_body_s": 151.079,
+        "completion_tokens": 434,
+        "reasoning_tokens": 422,
+        "elapsed_s": 151.235
+      }
+    ],
+    "summary_all": {
+      "requests": 32,
+      "successes": 32,
+      "first_any_s": {
+        "count": 32,
+        "median": 13.204,
+        "p95": 128.30865,
+        "max": 133.829
+      },
+      "first_body_s": {
+        "count": 32,
+        "median": 147.477,
+        "p95": 152.75085,
+        "max": 154.313
+      },
+      "tpot_s_estimate": {
+        "count": 32,
+        "median": 0.32043,
+        "p95": 0.828268,
+        "max": 0.922227
+      },
+      "elapsed_s": {
+        "count": 32,
+        "median": 147.836,
+        "p95": 152.87585,
+        "max": 154.422
+      },
+      "thinking_without_body": 0,
+      "generation_cap_exhausted": 0
+    },
+    "summary_by_kind": {
+      "short": {
+        "requests": 24,
+        "successes": 24,
+        "first_any_s": {
+          "count": 24,
+          "median": 9.219,
+          "p95": 25.25215,
+          "max": 25.922
+        },
+        "first_body_s": {
+          "count": 24,
+          "median": 146.2035,
+          "p95": 151.8353,
+          "max": 152.547
+        },
+        "tpot_s_estimate": {
+          "count": 24,
+          "median": 0.392869,
+          "p95": 0.893563,
+          "max": 0.922227
+        },
+        "elapsed_s": {
+          "count": 24,
+          "median": 146.5545,
+          "p95": 151.9491,
+          "max": 152.672
+        },
+        "thinking_without_body": 0,
+        "generation_cap_exhausted": 0
+      },
+      "long": {
+        "requests": 8,
+        "successes": 8,
+        "first_any_s": {
+          "count": 8,
+          "median": 90.8675,
+          "p95": 133.68655,
+          "max": 133.829
+        },
+        "first_body_s": {
+          "count": 8,
+          "median": 148.8985,
+          "p95": 153.85345,
+          "max": 154.313
+        },
+        "tpot_s_estimate": {
+          "count": 8,
+          "median": 0.144511,
+          "p95": 0.316468,
+          "max": 0.324471
+        },
+        "elapsed_s": {
+          "count": 8,
+          "median": 149.1485,
+          "p95": 153.96805,
+          "max": 154.422
+        },
+        "thinking_without_body": 0,
+        "generation_cap_exhausted": 0
+      }
+    },
+    "max_any_output_gap_s": 4.578,
+    "observed_queue_max": 21,
+    "observed_running_max": 32,
+    "TTFT_any_includes_reasoning": true,
+    "TTFT_body_reported_separately": true,
+    "pools": [
+      {
+        "node_ordinal": 0,
+        "counter_deltas": {
+          "lmcache_mp_num_chunks_loaded_total": 1024,
+          "lmcache_mp_num_submitted_stores_total": 142,
+          "lmcache_mp_num_finished_stores_total": 142,
+          "lmcache_mp_num_submitted_retrieves_total": 8,
+          "lmcache_mp_num_finished_retrieves_total": 8
+        },
+        "completed_load_instance_count": 8,
+        "completed_loads": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ]
+      },
+      {
+        "node_ordinal": 1,
+        "counter_deltas": {
+          "lmcache_mp_num_chunks_loaded_total": 1024,
+          "lmcache_mp_num_submitted_stores_total": 142,
+          "lmcache_mp_num_finished_stores_total": 142,
+          "lmcache_mp_num_submitted_retrieves_total": 8,
+          "lmcache_mp_num_finished_retrieves_total": 8
+        },
+        "completed_load_instance_count": 8,
+        "completed_loads": [
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128,
+          128
+        ]
+      }
+    ],
+    "after_wave_KV_work_drain": {
+      "status": "PASS_BOUNDED_KV_WORK_DRAIN_NOT_GENERAL_LIFECYCLE_OR_TTL_ACCEPTANCE",
+      "pools": [
+        {
+          "node_ordinal": 0,
+          "is_healthy": true,
+          "active_sessions": 0,
+          "active_prefetch_jobs": 0,
+          "configured_L1_bytes": 274877906944,
+          "write_locked_count": 0,
+          "read_locked_count": 0,
+          "temporary_count": 0,
+          "staging_object_count": 0,
+          "staging_bytes": 0,
+          "store_pending_keys": 0,
+          "store_in_flight_tasks": 0,
+          "prefetch_submission_queue": 0,
+          "prefetch_pending_queue": 0,
+          "prefetch_in_flight_requests": 0,
+          "prefetch_lookup_phase": 0,
+          "prefetch_load_phase": 0,
+          "prefetch_completed_results": 0,
+          "num_L2_adapters": 0
+        },
+        {
+          "node_ordinal": 1,
+          "is_healthy": true,
+          "active_sessions": 0,
+          "active_prefetch_jobs": 0,
+          "configured_L1_bytes": 274877906944,
+          "write_locked_count": 0,
+          "read_locked_count": 0,
+          "temporary_count": 0,
+          "staging_object_count": 0,
+          "staging_bytes": 0,
+          "store_pending_keys": 0,
+          "store_in_flight_tasks": 0,
+          "prefetch_submission_queue": 0,
+          "prefetch_pending_queue": 0,
+          "prefetch_in_flight_requests": 0,
+          "prefetch_lookup_phase": 0,
+          "prefetch_load_phase": 0,
+          "prefetch_completed_results": 0,
+          "num_L2_adapters": 0
+        }
+      ]
+    },
+    "lifecycle_or_TTL_acceptance_claimed": false,
+    "original_report_sha256": "e31c10b04ac1cc5207c4fbd545ab14a37ae85074a4f7202208c797f9ac2baac7",
+    "C1_report_sha256": "3ad3c390e2ccb898a92545780edb1623486828c18c3c4f1b2cbdf29234ca36c2",
+    "driver_source_sha256": "c5289f4a65513ca51c8c691b97dc7516c66abac41a214d7860f99d8f8799829e",
+    "observed_UTC_start": "2026-10-21T04:14:16.946699+00:00",
+    "wave_observed_UTC_start": "2026-10-21T04:14:46.787477+00:00",
+    "wave_last_response_UTC": "2026-10-21T04:17:21.211610+00:00",
+    "post_wave_snapshot_UTC": "2026-10-21T04:17:22.721824+00:00"
+  },
+  "lifecycle_and_TTL_drain_acceptance_claimed": false,
+  "final_active_sessions": [
+    0,
+    0
+  ],
+  "provenance": {
+    "original_C1_report_sha256": "3ad3c390e2ccb898a92545780edb1623486828c18c3c4f1b2cbdf29234ca36c2",
+    "runtime_binding_sha256": "9bbd1af9fab5d315c908010cbe321f0eaf83b5054e476772e62571e43120aabd",
+    "frozen_client_sha256": "9c8552498e7caec53bb004e3416d0c3599e4f29e4731d4009a61f40b0066bd3a",
+    "collector_sha256": "d3aa0938566d2321f745b8bddff79ca044701d2b65f95a566d97b555bcd2c603",
+    "preregistered_expectations_sha256": "416c130c3b7169bdcb31a65c10a26364e1b5dada490c67ac4310054a4e77b4bb",
+    "original_C32_report_sha256": "e31c10b04ac1cc5207c4fbd545ab14a37ae85074a4f7202208c797f9ac2baac7"
+  },
+  "limitations": [
+    "Single C1 observation, not repeated stable performance estimates or a production SLA.",
+    "Cold32K TTFT-any was19.344seconds; cold prefill latency is not resolved by cached-prefix reuse.",
+    "TTFT-any includes reasoning; first visible body is reported separately.",
+    "Completion lengths differ across phases; do not attribute all body or end-to-end latency differences to caching.",
+    "The same-prompt external hit was32767 of32768 input tokens, not a claim of complete32K token reuse.",
+    "Physical worker/rank sets and cache registration sets were validated independently; no exact physical-rank-to-instance join was established.",
+    "One C32 mixed wave passed functional checks, but TTFT-any P95 was128.30865seconds and body P95 was152.75085seconds; production experience is not accepted.",
+    "The C32 wave observed no preemptions; this is not evidence of KV-exhaustion-driven preemption. Long cold-prefill and decode contention remains a performance concern, not an isolated causal experiment.",
+    "A bounded post-wave KV-work drain passed; full256K context, general lifecycle/TTL behavior and failure recovery remain unvalidated.",
+    "The Flash and FP8 waves have different completion lengths and workloads; they are not a controlled model-speed comparison.",
+    "The sole warm C32 request reused32767tokens but had TTFT-any65.188s and body151.079s (434completion tokens,422reasoning tokens); C1 warm TTFT must not be extrapolated to this mixed-concurrency workload."
+  ],
+  "production_promoted": false,
+  "C1_status": "PASS_FP8_TP16_DUAL_MP_PREFIX_RESTORE_A_A_B_A_FUNCTIONAL_ONLY",
+  "C1_observed_UTC_start": "2026-10-21T04:10:18.438059+00:00",
+  "C1_observed_UTC_end": "2026-10-21T04:11:15.337088+00:00"
+}

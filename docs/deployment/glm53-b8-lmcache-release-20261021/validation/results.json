@@ -264,7 +264,18 @@
       }
     ]
   },
-  "FP8_two_node_TP16_acceptance": "NOT_VALIDATED_THIS_ROUND",
+  "FP8_two_node_TP16_acceptance": {
+    "status": "PASS_C1_A_A_B_A_AND_ONE_C32_FUNCTIONAL_WAVE_NOT_PRODUCTION_SLA",
+    "public_aggregate": {
+      "path": "fp8-tp16-results.json",
+      "sha256": "2aae37270767092a4775bf977a4915ab3c61f56de01a337154ac215f42f31186",
+      "serialization": "Exact UTF8 public aggregate bytes; source reports and private host identifiers are excluded."
+    },
+    "C32_load_acceptance": "PASS_FP8_TP16_C32_GOLD_SSE_USAGE_DUAL_MP_LOAD_KV_WORK_DRAINED",
+    "lifecycle_and_TTL_drain_acceptance_claimed": false,
+    "production_promoted": false,
+    "bounded_after_wave_KV_work_drain": "PASS_NOT_GENERAL_LIFECYCLE_OR_TTL_ACCEPTANCE"
+  },
   "registry_manifest_digest": "sha256:cd85ebf238eb3c980d8e61ae7891b341446d5a3cd4d2e45f9a9b6e539083c172",
   "scope": "No production logs, business prompts, credentials, host addresses or weights.",
   "candidate_image": {
@@ -398,7 +409,10 @@
     "Cold refers to uncached prefixes; JIT and warm-up can differ between phases",
     "TTFT-any includes reasoning; visible-body latency is recorded separately",
     "Same-prompt32000/32768 external prefix reuse, not complete32K full-hit",
-    "No FP8 two-node TP16 or cross-host cache acceptance in this round"
+    "Flash TP8 results above are preserved as a separate historical acceptance; FP8 TP16 C1 is recorded in fp8-tp16-results.json.",
+    "Two node-local MP caches are not a shared cross-host cache pool; Mooncake L2 was not exercised.",
+    "FP8 TP16 C1 and one C32 functional wave passed. C32 TTFT-any P95=128.30865s and body P95=152.75085s do not establish acceptable production experience.",
+    "FP8 bounded KV-work drain passed; general lifecycle/TTL, failure recovery and full256K acceptance remain unvalidated."
   ],
   "publication_ready": true,
   "post_stress_drain": {
