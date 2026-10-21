@@ -1,0 +1,22 @@
+{
+  "model": "GLM-5.3-Flash",
+  "image_profile": "flash_producer",
+  "hosts": 1,
+  "GPUs_per_host": 8,
+  "GPU": "H20 96GB",
+  "tensor_parallel_size": 8,
+  "num_speculative_tokens": 3,
+  "max_model_len": 1048576,
+  "max_num_batched_tokens": 16384,
+  "long_prefill_token_threshold": 0,
+  "max_num_seqs": 32,
+  "mamba_cache_mode": "align",
+  "CPU_cache_GiB_per_host": 256,
+  "cache": "One LMCache MP pool; local CUDA IPC",
+  "Mooncake_L2": false,
+  "live_negotiated_chunk_tokens": 640,
+  "live_first_checkpoint_tokens": 16000,
+  "full_configured_context_load_tested": false,
+  "C32_tested_on_this_exact_image": false,
+  "production_SLO_accepted": false
+}

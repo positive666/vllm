@@ -1,0 +1,103 @@
+diff --git a/lmcache/integration/vllm/lmcache_mp_connector.py b/lmcache/integration/vllm/lmcache_mp_connector.py
+--- a/lmcache/integration/vllm/lmcache_mp_connector.py
++++ b/lmcache/integration/vllm/lmcache_mp_connector.py
+@@ -759,6 +759,9 @@
+             self.request_trackers: dict[str, LMCacheMPRequestTracker] = {}
+             # Worker events aggregated per step, awaiting take_events().
+             self._kv_cache_events: list[KVCacheEvent] = []
++            # Retrieves sent to the workers and not yet in finished_recving.
++            self._unreported_retrieves: set[str] = set()
++            self._finished_while_loading: set[str] = set()
+ 
+             # Align-mode Mamba keeps one speculative block per draft token at
+             # the tail of a request's block list.
+@@ -939,6 +942,7 @@
+         """
+         metadata = self._get_connector_metadata()
+         assert isinstance(metadata, LMCacheMPConnectorMetadata)
++        self.worker_adapter.skip_finished_sending(metadata.finished_while_loading)
+ 
+         request_ids = []
+         ops = []
+@@ -1609,6 +1613,8 @@
+         """
+         metadata = LMCacheMPConnectorMetadata()
+         metadata.need_flush_before_forward = _has_preemption_reqs(scheduler_output)
++        metadata.finished_while_loading = self._finished_while_loading
++        self._finished_while_loading = set()
+ 
+         self._process_retrieve_requests(metadata)
+         self._process_new_requests(scheduler_output, metadata)
+@@ -1639,6 +1645,10 @@
+             connector_output (KVConnectorOutput): the worker-side
+                 connectors output.
+         """
++        self._unreported_retrieves.difference_update(
++            connector_output.finished_recving or ()
++        )
++
+         # Worker metadata carries the events only when the hook is not called.
+         kv_cache_events = connector_output.kv_cache_events or getattr(
+             connector_output.kv_connector_worker_meta, "kv_events", None
+@@ -1713,6 +1723,13 @@
+                 "num_lmcache_cached_tokens": num_lmcache,
+                 "num_lmcache_extra_cached_tokens": max(0, num_lmcache - num_vllm),
+             }
++
++        # vLLM parks a request that finishes while its retrieve is unreported
++        # and frees it on the finished_recving report, asserting on any later
++        # report, so the worker must not also report it in finished_sending.
++        if request.request_id in self._unreported_retrieves:
++            self._unreported_retrieves.remove(request.request_id)
++            self._finished_while_loading.add(request.request_id)
+ 
+         # Clean up request tracker to prevent memory leak
+         self._cleanup_request_tracker(request.request_id)
+@@ -1885,6 +1902,7 @@
+             )
+             if r_metadata is not None:
+                 metadata.add_request_metadata(r_metadata)
++                self._unreported_retrieves.add(request_tracker.request_id)
+             request_tracker.state = LMCacheMPRequestState.READY
+ 
+     def _process_new_requests(
+diff --git a/lmcache/integration/vllm/lmcache_mp_metadata.py b/lmcache/integration/vllm/lmcache_mp_metadata.py
+--- a/lmcache/integration/vllm/lmcache_mp_metadata.py
++++ b/lmcache/integration/vllm/lmcache_mp_metadata.py
+@@ -509,6 +509,7 @@
+         super().__init__()
+         self.requests: list[LMCacheMPRequestMetadata] = []
+         self.need_flush_before_forward: bool = False
++        self.finished_while_loading: set[str] = set()
+         # Job IDs are independent of request lifetime and attention-store cursors.
+         self.boundary_stores: dict[int, LMCacheMPRequestMetadata] = {}
+ 
+diff --git a/lmcache/integration/vllm/vllm_multi_process_adapter.py b/lmcache/integration/vllm/vllm_multi_process_adapter.py
+--- a/lmcache/integration/vllm/vllm_multi_process_adapter.py
++++ b/lmcache/integration/vllm/vllm_multi_process_adapter.py
+@@ -2239,6 +2239,13 @@
+         self._returned_finished.update(ret_stores)
+         return ret_stores
+ 
++    def skip_finished_sending(self, request_ids: set[str]) -> None:
++        """Never report these requests in finished_sending.
++
++        The scheduler frees them on their finished_recving report instead.
++        """
++        self._returned_finished.update(request_ids)
++
+     @_lmcache_nvtx_annotate
+     def get_finished(
+         self, finished_req_ids_from_engine: set[str]
+@@ -2355,10 +2362,7 @@
+             self.retrieve_events.pop(request_id, None)
+ 
+         # Retrieves dropped while unhealthy still must be reported,
+-        # exactly once, or async loads hang in WAITING_FOR_REMOTE_KVS. No
+-        # finished_sending dedup is needed (unlike the unhealthy branch): a
+-        # dropped retrieve's request is parked in WAITING_FOR_REMOTE_KVS until
+-        # this report, so it cannot also be engine-finished in the same call.
++        # exactly once, or async loads hang in WAITING_FOR_REMOTE_KVS.
+         # Swap-drain so a concurrent submit_retrieve_request add is never lost.
+         dropped = self._dropped_retrieves
+         self._dropped_retrieves = set()

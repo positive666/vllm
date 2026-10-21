@@ -1,0 +1,22 @@
+{
+  "model": "GLM-5.3-FP8",
+  "image_profile": "clean_fp8",
+  "hosts": 2,
+  "GPUs_per_host": 8,
+  "GPU": "H20 96GB",
+  "tensor_parallel_size": 16,
+  "enable_expert_parallel": true,
+  "num_speculative_tokens": 3,
+  "max_model_len": 262144,
+  "max_num_batched_tokens": 8192,
+  "long_prefill_token_threshold": 2048,
+  "max_num_seqs": 32,
+  "CLI_kv_cache_dtype": "fp8",
+  "CPU_cache_GiB_per_host": 256,
+  "cache": "One LMCache MP pool per host; local CUDA IPC; two endpoints",
+  "server_urls_same_order_on_all_ranks": true,
+  "effective_deduplicated_cache_capacity_claimed": false,
+  "Mooncake_L2": false,
+  "full_configured_context_load_tested": false,
+  "production_SLO_accepted": false
+}

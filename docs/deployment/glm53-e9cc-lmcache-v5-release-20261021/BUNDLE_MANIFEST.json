@@ -1,0 +1,65 @@
+{
+  "schema": "glm53.e9cc.public_docs_files.v1",
+  "files": [
+    {
+      "path": "patches/0001-vllm-mamba-prefill-handoff.patch",
+      "bytes": 5450,
+      "sha256": "84f1278448aba1f87ba4a88a9fff1d34aebded1d006a530f40c8b480e711266b"
+    },
+    {
+      "path": "patches/0002-lmcache-exact-boundary.patch",
+      "bytes": 49700,
+      "sha256": "0b3e1b1b4d3d8619578880060f202660beee45dfde0b300114429c445f4e6ed4"
+    },
+    {
+      "path": "patches/0003-lmcache-ordinary-store-lifetime.patch",
+      "bytes": 18488,
+      "sha256": "e8f751e2231372efc4e1e1005c5f6f82081a0328be88f4ca44881fae819c98b1"
+    },
+    {
+      "path": "patches/0004-lmcache-pr5938-over-v4.patch",
+      "bytes": 5020,
+      "sha256": "e43338b8faf8cf1f4eefca9c5ec84a037ce75db9cf0a0a63ce305c6b903b269f"
+    },
+    {
+      "path": "patches/README.md",
+      "bytes": 1742,
+      "sha256": "19e1db5b8ad8968150694fb02839fb388ccbab6d900ed7684ad58fa99327d83c"
+    },
+    {
+      "path": "profiles/flash-tp8.json",
+      "bytes": 652,
+      "sha256": "029daa452ab68f8c6b55d1e2c134eeae4a157ca115c57ed59b8c7ee75a443346"
+    },
+    {
+      "path": "profiles/fp8-tp16.json",
+      "bytes": 687,
+      "sha256": "a9a503606e241c906516e71b5f918e4084e498ea0c9f081ad0126c0f45b2ddcb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4263,
+      "sha256": "76f25efa81583f858b61da3bf58d07e881fb49cdfe04fc3cbfc271056316362e"
+    },
+    {
+      "path": "validation/registry-verification.json",
+      "bytes": 2242,
+      "sha256": "6319d7165c148143c6338d3225fe0b2228d189c5330c7da64a4289c1c206b524"
+    },
+    {
+      "path": "validation/results.json",
+      "bytes": 7166,
+      "sha256": "0a5b65a8dab42e77baa3df559120b9b496ae6ee6ed5ddf0812d5ae1251042f3b"
+    },
+    {
+      "path": "validation/verify_bundle.py",
+      "bytes": 5717,
+      "sha256": "f49f102ba7167fb9746253b9c338339d82a82bc95bb34974c9b8dffbc2edc728"
+    },
+    {
+      "path": "versions.json",
+      "bytes": 15364,
+      "sha256": "35288b294239c313a4f81b7e6dfd17f787eebd6f34f2df140af49dabcffdb50e"
+    }
+  ]
+}

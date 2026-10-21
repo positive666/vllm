@@ -1,0 +1,44 @@
+{
+  "schema": "glm53.e9cc.two_profile.anonymous_registry_status.v1",
+  "status": "BOTH_PUSHED_AND_ANONYMOUS_MANIFEST_CONFIG_HASH_VERIFIED",
+  "profiles": {
+    "clean_fp8": {
+      "config_digest": "sha256:12e65dc97ab78d320689aad552f8e232ab74227f5ac1055e333c76b1aba76d45",
+      "proposed_tag": "ghcr.io/positive666/model:glm53-e9cc6244a009-lmc2a34fa8-v5-fp8tp16-12e65dc97ab7-20261021",
+      "registry_manifest_digest": "sha256:57fdef18ef5a65f9766621af870a530324635f179b3e7cf44b8f48b491b1e4c8",
+      "anonymous_verified": true,
+      "manifest_bytes": 9730,
+      "raw_config_bytes": 58103,
+      "rootfs_diffids_count": 45,
+      "source_receipt_sha256": "c323848723c7f219de0284210f94c669aa55281f900f204e530368c61a09fab3",
+      "raw_environment_fields_inspected_or_emitted": false,
+      "platform": "linux/amd64",
+      "platform_proof": "Exact config SHA linked to selected local image"
+    },
+    "flash_producer": {
+      "config_digest": "sha256:536d9bb5dd69adcb9306d90c4abbc592579bbd4efdbf263559eb049b2728eb5f",
+      "proposed_tag": "ghcr.io/positive666/model:glm53-e9cc6244a009-lmc2a34fa8-v5-flashtp8-p62479-536d9bb5dd69-20261021",
+      "registry_manifest_digest": "sha256:fa5f5c6d7dc9fed587d311e594457fb61dca9fcc066a11e5dc70656af4cf1da3",
+      "anonymous_verified": true,
+      "manifest_bytes": 9940,
+      "raw_config_bytes": 59489,
+      "rootfs_diffids_count": 46,
+      "source_receipt_sha256": "5995d453bc6faf241f6e75239ec3b3ce2b5d45b936b425781f0ecdfd400f5306",
+      "raw_environment_fields_inspected_or_emitted": false,
+      "platform": "linux/amd64",
+      "platform_proof": "Exact config SHA linked to selected local image",
+      "initial_attempt": {
+        "push_exit_code": 0,
+        "overall_success": false,
+        "anonymous_verification_error_class": "URLError",
+        "original_receipt_sha256": "4018568f808cff9dc3ec1583d375295629fa554bfa5665ebff34148e220d42b4",
+        "original_receipt_preserved": true,
+        "subsequent_separate_verify_only_passed": true,
+        "image_repushed_for_verification": false
+      }
+    }
+  },
+  "config_digest_is_not_manifest_digest": true,
+  "old_tags_and_old_v4_docs_must_not_be_overwritten": true,
+  "raw_config_environment_fields_inspected_or_emitted": false
+}

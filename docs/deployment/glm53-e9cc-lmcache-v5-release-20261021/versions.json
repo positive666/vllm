@@ -1,0 +1,277 @@
+{
+  "schema": "glm53.e9cc.lmcache_v5.public_source_manifest.v1",
+  "state": "REGISTRY_PUBLISHED_MODEL_VALIDATED_EXPERIMENT_PRODUCTION_FALSE",
+  "production": false,
+  "sources": {
+    "vllm_commit": "e9cc6244a0095ba6525230b49a8ecdc2cf7b0f01",
+    "vllm_distribution_version": "0.32.1rc1.dev217+ge9cc6244a",
+    "vllm_official_wheel_sha256": "f25ff2c44a1cf18aeac4e482bcfd731e2137176d6c6b38a59a2443296ea7ace0",
+    "lmcache_base_commit": "2a34fa829b3c902c5b6393740239f6ff65bd0ff8",
+    "lmcache_version": "0.5.7.dev0+glm53.v5.20261021",
+    "lmcache_v5_wheel_sha256": "d6eb04497ca4462fa3788a7c939c48e5c22a8d83d6ff44c292358d76cf097ed0",
+    "third_party_PR5938_author": "amd-lalithnc",
+    "third_party_PR5938_head": "0b16807a16eb6d101c99d903a2afd77fcc718336",
+    "runtime_development_head_upgraded": false
+  },
+  "versions": {
+    "vllm": "0.32.1rc1.dev217+ge9cc6244a",
+    "lmcache": "0.5.7.dev0+glm53.v5.20261021",
+    "torch": "2.14.0+cu130",
+    "triton": "3.8.0",
+    "flashinfer": "0.7.2",
+    "cuda_base": "13.0.3",
+    "deepgemm": "2.8.1"
+  },
+  "native_provenance": {
+    "vllm": "Official exact-e9cc wheel; not a reused B8 native carrier",
+    "main_python_sources_verified": 2842,
+    "official_wheel_additional_python_files": 241,
+    "vllm_native": [
+      {
+        "path": "vllm/_C_stable_libtorch.abi3.so",
+        "bytes": 91644760,
+        "sha256": "8752e10e9603a9cb9b8c4c5829524054e0fd35dca7aa38e19a8404ebef4ad08d"
+      },
+      {
+        "path": "vllm/_deepselect_C.abi3.so",
+        "bytes": 4419360,
+        "sha256": "7310e3202fbe747308a246b97ee9f28b5d9b489fe0f92a56860ff4b15078df3a"
+      },
+      {
+        "path": "vllm/_flashkda_C.abi3.so",
+        "bytes": 5422576,
+        "sha256": "2f10bcce0114256411e18a70c64ce61cdb80fd54ada49dcc65a7f7994736f047"
+      },
+      {
+        "path": "vllm/_flashmla_C.abi3.so",
+        "bytes": 3744144,
+        "sha256": "c27faa0bc7c60bf1aefef29d2b52f2d4e7dfeeaf418673b9937967032eb1cbd1"
+      },
+      {
+        "path": "vllm/_flashmla_extension_C.abi3.so",
+        "bytes": 219736,
+        "sha256": "178e6b3d2d698d20f30c68bcb38d9569513e4334e6be24ca52cc462cfa24eb1f"
+      },
+      {
+        "path": "vllm/_moe_C_stable_libtorch.abi3.so",
+        "bytes": 45654776,
+        "sha256": "5d57ee737bcdfdbb453f2c0d0f633b8159de6e613c1efffbcdabcacf72d259b0"
+      },
+      {
+        "path": "vllm/_qutlass_C.abi3.so",
+        "bytes": 1426016,
+        "sha256": "3ec23a3319af97f3090b1bb240ddd09445eb8287de923d7cc03a3b3af6436e97"
+      },
+      {
+        "path": "vllm/cumem_allocator.abi3.so",
+        "bytes": 27264,
+        "sha256": "92ad21a86537952bd9229c2ecd88ac66a5787f37ec60ddf8b26be3ff04205c32"
+      },
+      {
+        "path": "vllm/fs_io_C.abi3.so",
+        "bytes": 27592,
+        "sha256": "33a2230eee458b5585a1da6a02fa3a2927891e7c29608e2cab1490bec1e9a3f5"
+      },
+      {
+        "path": "vllm/spinloop.abi3.so",
+        "bytes": 16872,
+        "sha256": "d9611e3b08ab8ed4ec80c28d483371aad10b212ab597603e60452ab0e8549b7f"
+      },
+      {
+        "path": "vllm/vllm-rs",
+        "bytes": 59821408,
+        "sha256": "9abd3c03d3bb5cf819d6f3fef6fd56d56729aba10cafad1dcbdbc87be2c5f2fc"
+      },
+      {
+        "path": "vllm/third_party/deep_gemm/_C_extension.abi3.so",
+        "bytes": 28590504,
+        "sha256": "694ba258e72921531a6dd5a031c9ff3763e5a536ccd5904a53544c026109a16a"
+      },
+      {
+        "path": "vllm/vllm_flash_attn/_vllm_fa2_C.abi3.so",
+        "bytes": 307960648,
+        "sha256": "134ee357f35cbe60c334d1b4e65981890b21d5a72d6cdaa6992641340253a0c0"
+      },
+      {
+        "path": "vllm/vllm_flash_attn/_vllm_fa3_C.abi3.so",
+        "bytes": 172594888,
+        "sha256": "bcea1246912ed71467b008749057c798877fbf6fcee63eb056c5cc4b0beace17"
+      }
+    ],
+    "five_required_Hopper_ELFs_verified": true,
+    "DeepGEMM_host_JIT_shim_is_not_AOT_device_ELF": true,
+    "rust_version": "vllm-rs 0.32.1rc1.dev217+ge9cc6244a",
+    "lmcache_native_unchanged_from_validated_v4": {
+      "cuda_ops": {
+        "bytes": 22595752,
+        "path": "lmcache/cuda_ops.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "47315938a974ecf289d3e1022ad3e035c52dc7e0fc5fce655a397c7b23f6bdfa"
+      },
+      "lmcache_fs": {
+        "bytes": 7168536,
+        "path": "lmcache/lmcache_fs.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "855ca9abf3dac8ea041631172678f37aa7bf11214d7536beaaf9bea550f894f4"
+      },
+      "lmcache_native": {
+        "bytes": 8753520,
+        "path": "lmcache/lmcache_native.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "c7160c3e3daeb3e6298ddb387e860c9b3ea5de4683c4a2944d20f95e7e545a35"
+      },
+      "lmcache_redis": {
+        "bytes": 7026048,
+        "path": "lmcache/lmcache_redis.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "c04eaab699d58b49f98317ec34a7b3fb87c5131b4a9d6c2aab1992700deb9ffc"
+      }
+    },
+    "lmcache_v5_native_rebuilt": false
+  },
+  "lmcache_installed_runtime_sha256": {
+    "lmcache/_version.py": "a26a110b1539e167bbcd0f4f5795c4c8289a2d09a52c5593c1c47e1f64346438",
+    "lmcache/integration/vllm/lmcache_mp_connector.py": "36a410a11316296dce2d4475909cdda54fd719fea7668ac423ee57b763b34492",
+    "lmcache/integration/vllm/lmcache_mp_metadata.py": "b5795b423647f44cf5d779df2be9cf4bf0d55a4ab63d1a9bb26196375ed8716f",
+    "lmcache/integration/vllm/vllm_multi_process_adapter.py": "780a4740595e8c6ffba18a13ba22827ebbf370ac67d09f568726ca2443a771b2"
+  },
+  "profiles": {
+    "clean_fp8": {
+      "config_digest": "sha256:12e65dc97ab78d320689aad552f8e232ab74227f5ac1055e333c76b1aba76d45",
+      "proposed_tag": "ghcr.io/positive666/model:glm53-e9cc6244a009-lmc2a34fa8-v5-fp8tp16-12e65dc97ab7-20261021",
+      "registry_manifest_digest": "sha256:57fdef18ef5a65f9766621af870a530324635f179b3e7cf44b8f48b491b1e4c8",
+      "anonymous_registry_verified": true,
+      "platform": "linux/amd64",
+      "rootfs_diffids": [
+        "sha256:5e732af9e7c568c9b41ecabc76ac93a58471934d5155070dfd64a9567667fd9d",
+        "sha256:f5b49b5386a3c18aca8dccc85784c57d64b182f621a632374c44daeb7822e9ca",
+        "sha256:2950e5ad5b560d8a4561ea596a8589f9be34eb485ad04ae521438c978d98a212",
+        "sha256:f56f6d7fecabd59c6ae0104489b7e42e0b1c538ba1246f0019b099a12cca8cd6",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:6756a6579040c1541966a48c3e4d3bac9500de08ee027795439141ee0ba0eecd",
+        "sha256:fdb5c9bcf16b58539209a7e6a469bea3a5b5434d2c4e9d4719968e22fe0ef1d7",
+        "sha256:1b9743aeb9a71a0a40ad986cc23dd9f5caf83b5987762bd1c2184f1870435bb7",
+        "sha256:ec4b146c2d428fe2927950a8c1cacab30a3fe2004c30956ebbed15cc4eb151a7",
+        "sha256:63fb432432f8684d6a9cd033df28a1c09e5477d92528b19826538e6b8370cbf0",
+        "sha256:a3aa4d26ee6fffe3ce6acf61eb2e2c8a08045b0afebc8cc4b8e5b29db3f0b17d",
+        "sha256:1e76017bcaf00bc489d16264b801ae1262d242308dc6d958bcdbf2772df8948a",
+        "sha256:c6b6e5cb196664b1c6c03659fd40fabdd56ecd041dc272c21c49ad60666a3157",
+        "sha256:c15027f7efe4d1e64216ae32f782d1108e2fc9adebd607be9a0fb2ed39547d94",
+        "sha256:ec6cb66e6c56374ae7f60b2cde1f7636433a20e799620a4f5e7bb996a1c24505",
+        "sha256:427e47872020ae80360ce9659d647b6a9951ebc15193c5d4d70e602a63707151",
+        "sha256:2707f54207a7fff9f8f6d4af64a91a123a0845dc1476b8ec645888d0444e221c",
+        "sha256:8d160c8157cc0331ea80a5b850b2e46d29fad773f26d505b5b2d996715870ab6",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:0659fafaf6301d5353e39895397f23d1b0fb0745f07945c5c6673bf1704bcae1",
+        "sha256:e67ff6737bdbdd976becaa8d2db7d3be958bc36d1636a610f36c1df1e41b0c3c",
+        "sha256:71d885632e9ff0ac06cc09a11384179ab6308dd3d91897840d7d1d67562f203c",
+        "sha256:2c6b2049005e161ec38d89bb0ce227cf8bab4190ee22ae914b51ab3b8ef89a48",
+        "sha256:c1d04c213266645f18a51d2c0ee99f8fb173f6c689c285f83500f5474f7df016",
+        "sha256:d9bfc8e029b92326e47120f4a3371ebee1c9d4b6531b557afcee72198afd0a10",
+        "sha256:9248d0ddd5ccc0ede573c86af601e5def87294b1bae784e1c259a950c4a060b4",
+        "sha256:4956ef24462991ded48f3810e883e3c5e48cfa2fbb0e377c8d582b100df6ff9a",
+        "sha256:cc2a2b2c1e279a8870298d87e7c8e7a55ba3a10f0a8dca4d067ed6d73a07d558",
+        "sha256:e15a4ff9356c6a46917f360122929131fa66948e23829f3c4c82b687147e788e",
+        "sha256:de9bf5978852826b53ebcea71b216e25063d6f1d9d7a130cc9bb6cea84cb8d09",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:818c05a739e956c1fb338ddc04bc98dc4421604e8fe923641570951b117c1aed",
+        "sha256:03a9a34e52f6eaf01f9bda29d170b5486d87c927e180970471c5f1dffc172c8b",
+        "sha256:56706ad6a95b571e858c8cdee23483a1f49576a58c06c68ed457a68a540191a1",
+        "sha256:7a2a90cd60539687bb9d3cd0aab2f46284b8249e70fd95fd3fc35155b69dc22a",
+        "sha256:4cf80292f8141d24c0c5b2f45fe7ec8861f21169b04d11bb7daa831ca87ef6d5",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:f8b8115fad22808cba6d33ae191249d0e1db09c69c3d6315a60fc5302276a38a",
+        "sha256:ed525e8995a094ee2d97a6df144ffc63a444fec7b14e4f5c3c23db34b0bf7b17",
+        "sha256:dde597f527b6877cca289a78e5373f8ef94d96f8bea179adc04c2bb46ba8914f",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:60b3c519832da3158b8bc8f35dc259b8e34075e2475f799114ad6833d24fea13",
+        "sha256:6f85331f5d8bada671e02fe8f1125427b059b7acaa5672c69322cbdd70178e9d",
+        "sha256:b12423c098dd99a440d068daa399a0cdc1ec9bd796feacfe88d6dd7cb28cc35e"
+      ],
+      "rootfs_diffids_count": 45,
+      "rootfs_diffids_canonical_json_sha256": "3d985918b55f4a0239b785078f195c61e36b887f5eb9e42178231f967c6451c4",
+      "vllm_private_runtime_files": 0,
+      "pinned_reference": "ghcr.io/positive666/model@sha256:57fdef18ef5a65f9766621af870a530324635f179b3e7cf44b8f48b491b1e4c8"
+    },
+    "flash_producer": {
+      "config_digest": "sha256:536d9bb5dd69adcb9306d90c4abbc592579bbd4efdbf263559eb049b2728eb5f",
+      "proposed_tag": "ghcr.io/positive666/model:glm53-e9cc6244a009-lmc2a34fa8-v5-flashtp8-p62479-536d9bb5dd69-20261021",
+      "registry_manifest_digest": "sha256:fa5f5c6d7dc9fed587d311e594457fb61dca9fcc066a11e5dc70656af4cf1da3",
+      "anonymous_registry_verified": true,
+      "platform": "linux/amd64",
+      "rootfs_diffids": [
+        "sha256:5e732af9e7c568c9b41ecabc76ac93a58471934d5155070dfd64a9567667fd9d",
+        "sha256:f5b49b5386a3c18aca8dccc85784c57d64b182f621a632374c44daeb7822e9ca",
+        "sha256:2950e5ad5b560d8a4561ea596a8589f9be34eb485ad04ae521438c978d98a212",
+        "sha256:f56f6d7fecabd59c6ae0104489b7e42e0b1c538ba1246f0019b099a12cca8cd6",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:6756a6579040c1541966a48c3e4d3bac9500de08ee027795439141ee0ba0eecd",
+        "sha256:fdb5c9bcf16b58539209a7e6a469bea3a5b5434d2c4e9d4719968e22fe0ef1d7",
+        "sha256:1b9743aeb9a71a0a40ad986cc23dd9f5caf83b5987762bd1c2184f1870435bb7",
+        "sha256:ec4b146c2d428fe2927950a8c1cacab30a3fe2004c30956ebbed15cc4eb151a7",
+        "sha256:63fb432432f8684d6a9cd033df28a1c09e5477d92528b19826538e6b8370cbf0",
+        "sha256:a3aa4d26ee6fffe3ce6acf61eb2e2c8a08045b0afebc8cc4b8e5b29db3f0b17d",
+        "sha256:1e76017bcaf00bc489d16264b801ae1262d242308dc6d958bcdbf2772df8948a",
+        "sha256:c6b6e5cb196664b1c6c03659fd40fabdd56ecd041dc272c21c49ad60666a3157",
+        "sha256:c15027f7efe4d1e64216ae32f782d1108e2fc9adebd607be9a0fb2ed39547d94",
+        "sha256:ec6cb66e6c56374ae7f60b2cde1f7636433a20e799620a4f5e7bb996a1c24505",
+        "sha256:427e47872020ae80360ce9659d647b6a9951ebc15193c5d4d70e602a63707151",
+        "sha256:2707f54207a7fff9f8f6d4af64a91a123a0845dc1476b8ec645888d0444e221c",
+        "sha256:8d160c8157cc0331ea80a5b850b2e46d29fad773f26d505b5b2d996715870ab6",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:0659fafaf6301d5353e39895397f23d1b0fb0745f07945c5c6673bf1704bcae1",
+        "sha256:e67ff6737bdbdd976becaa8d2db7d3be958bc36d1636a610f36c1df1e41b0c3c",
+        "sha256:71d885632e9ff0ac06cc09a11384179ab6308dd3d91897840d7d1d67562f203c",
+        "sha256:2c6b2049005e161ec38d89bb0ce227cf8bab4190ee22ae914b51ab3b8ef89a48",
+        "sha256:c1d04c213266645f18a51d2c0ee99f8fb173f6c689c285f83500f5474f7df016",
+        "sha256:d9bfc8e029b92326e47120f4a3371ebee1c9d4b6531b557afcee72198afd0a10",
+        "sha256:9248d0ddd5ccc0ede573c86af601e5def87294b1bae784e1c259a950c4a060b4",
+        "sha256:4956ef24462991ded48f3810e883e3c5e48cfa2fbb0e377c8d582b100df6ff9a",
+        "sha256:cc2a2b2c1e279a8870298d87e7c8e7a55ba3a10f0a8dca4d067ed6d73a07d558",
+        "sha256:e15a4ff9356c6a46917f360122929131fa66948e23829f3c4c82b687147e788e",
+        "sha256:de9bf5978852826b53ebcea71b216e25063d6f1d9d7a130cc9bb6cea84cb8d09",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:818c05a739e956c1fb338ddc04bc98dc4421604e8fe923641570951b117c1aed",
+        "sha256:03a9a34e52f6eaf01f9bda29d170b5486d87c927e180970471c5f1dffc172c8b",
+        "sha256:56706ad6a95b571e858c8cdee23483a1f49576a58c06c68ed457a68a540191a1",
+        "sha256:7a2a90cd60539687bb9d3cd0aab2f46284b8249e70fd95fd3fc35155b69dc22a",
+        "sha256:4cf80292f8141d24c0c5b2f45fe7ec8861f21169b04d11bb7daa831ca87ef6d5",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:f8b8115fad22808cba6d33ae191249d0e1db09c69c3d6315a60fc5302276a38a",
+        "sha256:ed525e8995a094ee2d97a6df144ffc63a444fec7b14e4f5c3c23db34b0bf7b17",
+        "sha256:dde597f527b6877cca289a78e5373f8ef94d96f8bea179adc04c2bb46ba8914f",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:60b3c519832da3158b8bc8f35dc259b8e34075e2475f799114ad6833d24fea13",
+        "sha256:6f85331f5d8bada671e02fe8f1125427b059b7acaa5672c69322cbdd70178e9d",
+        "sha256:b12423c098dd99a440d068daa399a0cdc1ec9bd796feacfe88d6dd7cb28cc35e",
+        "sha256:1f489adb31fb88ca33cbbfb30ada7bfc2699aef7048c52cf3a42553eeb1a7de1"
+      ],
+      "rootfs_diffids_count": 46,
+      "rootfs_diffids_canonical_json_sha256": "e5335b02437f13d1963d27df40660391f31a7ff2ef955e30059fc2bdea164f07",
+      "vllm_private_runtime_files": 1,
+      "pinned_reference": "ghcr.io/positive666/model@sha256:fa5f5c6d7dc9fed587d311e594457fb61dca9fcc066a11e5dc70656af4cf1da3"
+    }
+  },
+  "patches": [
+    {
+      "path": "patches/0001-vllm-mamba-prefill-handoff.patch",
+      "sha256": "84f1278448aba1f87ba4a88a9fff1d34aebded1d006a530f40c8b480e711266b",
+      "bytes": 5450
+    },
+    {
+      "path": "patches/0002-lmcache-exact-boundary.patch",
+      "sha256": "0b3e1b1b4d3d8619578880060f202660beee45dfde0b300114429c445f4e6ed4",
+      "bytes": 49700
+    },
+    {
+      "path": "patches/0003-lmcache-ordinary-store-lifetime.patch",
+      "sha256": "e8f751e2231372efc4e1e1005c5f6f82081a0328be88f4ca44881fae819c98b1",
+      "bytes": 18488
+    },
+    {
+      "path": "patches/0004-lmcache-pr5938-over-v4.patch",
+      "sha256": "e43338b8faf8cf1f4eefca9c5ec84a037ce75db9cf0a0a63ce305c6b903b269f",
+      "bytes": 5020
+    }
+  ],
+  "full_image_rebuild_lock_included": false,
+  "old_public34_lock_is_not_a_new_main_full_rebuild_lock": true
+}

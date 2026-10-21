@@ -1,0 +1,108 @@
+diff --git a/tests/v1/core/prefix_cache/test_partial_prefix_cache_hits.py b/tests/v1/core/prefix_cache/test_partial_prefix_cache_hits.py
+index 4bffe91..c8c1084 100644
+--- a/tests/v1/core/prefix_cache/test_partial_prefix_cache_hits.py
++++ b/tests/v1/core/prefix_cache/test_partial_prefix_cache_hits.py
+@@ -681,7 +681,7 @@ def test_internal_checkpoint_uses_partial_hash_lifecycle():
+ def test_internal_checkpoint_publication_respects_retention(
+     retention_interval, hash_block_size, use_eagle
+ ):
+-    """Publish only retained block boundaries and the final prompt checkpoint."""
++    """GPU retention must not suppress full-chunk handoff to an external cache."""
+     manager = make_full_mamba_manager(
+         dcp_world_size=1,
+         hash_block_size=hash_block_size,
+@@ -689,6 +689,7 @@ def test_internal_checkpoint_publication_respects_retention(
+         mamba_block_size=32,
+         num_prefill_checkpoint_blocks=1,
+         use_eagle=use_eagle,
++        num_speculative_blocks=3 if use_eagle else 0,
+     )
+     manager.coordinator.retention_interval = retention_interval
+ 
+@@ -711,17 +712,34 @@ def test_internal_checkpoint_publication_respects_retention(
+     assert any(position == checkpoint for _, _, position in offloads) == (
+         retained_checkpoint
+     )
++    # A complete prefill chunk also hands off its running state to the
++    # external cache. Its GPU hash still follows the retention policy.
++    mamba_manager = manager.coordinator.single_type_managers[1]
++    running_block = manager.get_blocks(request.request_id).blocks[1][
++        -mamba_manager.num_speculative_blocks - 1
++    ]
++    assert [entry for entry in offloads if entry[2] == 128] == [
++        (1, running_block.block_id, 128)
++    ]
+     assert all(
+         position % 32 == 0
+         and (
+-            retention_interval is None
++            position == 128
++            or retention_interval is None
+             or (retention_interval > 0 and position % retention_interval == 0)
+         )
+         for _, _, position in offloads
+     )
+-    if retention_interval in (None, 32, 64):
+-        retained_hash = request.block_hashes[128 // hash_block_size - 1]
+-        assert manager.block_pool.get_cached_block(retained_hash, [1]) is not None
++    retained_hash = request.block_hashes[128 // hash_block_size - 1]
++    retained_hit = manager.block_pool.get_cached_block(retained_hash, [1])
++    retained_running = retention_interval is None or (
++        retention_interval > 0 and 128 % retention_interval == 0
++    )
++    assert (retained_hit is not None) == retained_running
++    if retained_running:
++        assert retained_hit[0] is running_block
++    else:
++        assert running_block.block_hash is None
+ 
+     request.num_computed_tokens = 128
+     manager.new_step_starts()
+diff --git a/vllm/v1/core/single_type_kv_cache_manager.py b/vllm/v1/core/single_type_kv_cache_manager.py
+index 2369eac..3672edb 100644
+--- a/vllm/v1/core/single_type_kv_cache_manager.py
++++ b/vllm/v1/core/single_type_kv_cache_manager.py
+@@ -1996,24 +1996,32 @@ class MambaManager(SingleTypeKVCacheManager):
+             blocks = self.req_to_blocks[request.request_id]
+             for idx in range(num_cached_blocks_before, num_cached_blocks_after):
+                 block = blocks[idx]
+-                # Skip null blocks (align-mode skipped states) and blocks that
+-                # were not cached this step — with sparse retention
+-                # (reachable_block_mask) the intermediate state snapshots carry
+-                # no hash and must not be recorded as cached-this-step.
+-                if block.is_null or block.block_hash is None:
++                if block.is_null:
++                    continue
++                boundary_tokens = block.block_hash_num_tokens
++                if block.block_hash is not None:
++                    self.cached_blocks_this_step.add(block.block_hash)
++                elif (
++                    self.mamba_cache_mode == "align"
++                    and idx == len(blocks) - self.num_speculative_blocks - 1
++                    and request.num_computed_tokens
++                    < (idx + 1) * self.block_size
++                    < request.num_prompt_tokens
++                ):
++                    # A full prefill chunk's running state stays valid for
++                    # offload even when GPU retention omits its hash. Internal
++                    # checkpoints and partial running blocks are not positional.
++                    boundary_tokens = (idx + 1) * self.block_size
++                else:
+                     continue
+-                self.cached_blocks_this_step.add(block.block_hash)
+                 if self.mamba_cache_mode == "align":
+-                    assert block.block_hash_num_tokens is not None
+-                    # Offer every retained boundary with its exact block.
+-                    # The connector filters against its save window, which may
+-                    # extend past the original prompt during resumed prefill.
++                    assert boundary_tokens is not None
+                     self._pending_boundary_state_offloads.append(
+                         (
+                             request.request_id,
+                             self.kv_cache_group_id,
+                             block,
+-                            block.block_hash_num_tokens,
++                            boundary_tokens,
+                         )
+                     )
+ 

@@ -1,0 +1,251 @@
+{
+  "schema": "glm53.e9cc.lmcache_v5.public_scoped_validation.v1",
+  "production_SLO_accepted": false,
+  "CPU": {
+    "main_official_Python_files": 2842,
+    "main_native_files": 14,
+    "lmcache_lifecycle": {
+      "passed": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "lmcache_adapter_tracker": {
+      "tests": 121,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "producer_core": 349,
+    "producer_consumer": 42,
+    "producer_failures_or_skips": 0,
+    "GPU_tests_are_separate_from_CPU_test_counts": true
+  },
+  "GPU": {
+    "hosts_validated": 2,
+    "native_H2D_D2H_GPUs_per_host": 8,
+    "copy_bytes_per_GPU": 1048576,
+    "official_TopK_numerical_cases_per_host": 168
+  },
+  "FP8_TP16": {
+    "C1": {
+      "records": [
+        {
+          "phase": "cold",
+          "prompt_tokens": 32768,
+          "cached_prompt_tokens": 0,
+          "first_any_s": 18.265,
+          "first_body_s": 19.5,
+          "completion_tokens": 154,
+          "reasoning_tokens": 143
+        },
+        {
+          "phase": "full_restore",
+          "prompt_tokens": 32768,
+          "cached_prompt_tokens": 32767,
+          "first_any_s": 0.375,
+          "first_body_s": 1.453,
+          "completion_tokens": 169,
+          "reasoning_tokens": 158
+        },
+        {
+          "phase": "branch_restore",
+          "prompt_tokens": 32796,
+          "cached_prompt_tokens": 24320,
+          "first_any_s": 5.672,
+          "first_body_s": 6.438,
+          "completion_tokens": 123,
+          "reasoning_tokens": 113
+        },
+        {
+          "phase": "reverse_parent",
+          "prompt_tokens": 32768,
+          "cached_prompt_tokens": 32767,
+          "first_any_s": 0.313,
+          "first_body_s": 2.266,
+          "completion_tokens": 276,
+          "reasoning_tokens": 265
+        }
+      ],
+      "same_epoch_binding": true,
+      "actual_rank_to_IID_exact_join_claimed": false
+    },
+    "C32": {
+      "summary_all": {
+        "requests": 32,
+        "successes": 32,
+        "first_any_s": {
+          "count": 32,
+          "median": 5.375,
+          "p95": 120.641,
+          "max": 122.0
+        },
+        "first_body_s": {
+          "count": 32,
+          "median": 130.2575,
+          "p95": 136.65995,
+          "max": 137.188
+        },
+        "tpot_s_estimate": {
+          "count": 32,
+          "median": 0.305104,
+          "p95": 0.927769,
+          "max": 1.087617
+        },
+        "elapsed_s": {
+          "count": 32,
+          "median": 130.601,
+          "p95": 136.771,
+          "max": 137.265
+        },
+        "thinking_without_body": 0,
+        "generation_cap_exhausted": 0
+      },
+      "summary_by_kind": {
+        "short": {
+          "requests": 24,
+          "successes": 24,
+          "first_any_s": {
+            "count": 24,
+            "median": 3.563,
+            "p95": 9.141,
+            "max": 12.984
+          },
+          "first_body_s": {
+            "count": 24,
+            "median": 128.6715,
+            "p95": 136.087,
+            "max": 137.188
+          },
+          "tpot_s_estimate": {
+            "count": 24,
+            "median": 0.502561,
+            "p95": 0.970876,
+            "max": 1.087617
+          },
+          "elapsed_s": {
+            "count": 24,
+            "median": 128.9995,
+            "p95": 136.2008,
+            "max": 137.265
+          },
+          "thinking_without_body": 0,
+          "generation_cap_exhausted": 0
+        },
+        "long": {
+          "requests": 8,
+          "successes": 8,
+          "first_any_s": {
+            "count": 8,
+            "median": 85.75,
+            "p95": 121.52435,
+            "max": 122.0
+          },
+          "first_body_s": {
+            "count": 8,
+            "median": 132.7265,
+            "p95": 136.73815,
+            "max": 136.875
+          },
+          "tpot_s_estimate": {
+            "count": 8,
+            "median": 0.15222,
+            "p95": 0.262199,
+            "max": 0.27088
+          },
+          "elapsed_s": {
+            "count": 8,
+            "median": 132.9375,
+            "p95": 136.843,
+            "max": 136.969
+          },
+          "thinking_without_body": 0,
+          "generation_cap_exhausted": 0
+        }
+      },
+      "wave_elapsed_s": 137.406,
+      "warm_long_row100": {
+        "cached_prompt_tokens": 32767,
+        "first_any_s": 90.266,
+        "first_body_s": 133.703,
+        "completion_tokens": 307,
+        "reasoning_tokens": 297
+      },
+      "maximum_output_gap_s": 6.312,
+      "observed_queue_max": 23.0,
+      "observed_running_max": 32.0,
+      "preemptions": 0,
+      "all_gold_SSE_usage_correct": true
+    },
+    "cancel_after_first_reasoning_output": {
+      "four_drain_samples_all_gates": true,
+      "normal_finish_counts": [
+        37,
+        37,
+        38,
+        38
+      ],
+      "each_server_cancel_submitted_and_finished_stores": 4,
+      "recovery_external_hit_tokens": 32767,
+      "each_server_recovery_chunks_loaded": 1024,
+      "each_registered_IID_recovery_chunks": 128,
+      "same_epoch_as_model_MP_actual_start_receipts": true,
+      "backend_abort_ack_directly_observed": false,
+      "finished_sending_exactly_once_directly_observed": false,
+      "R1_FAIL_preserved": true
+    },
+    "limits": [
+      "Loading-phase cancellation not covered",
+      "Heartbeat/server-failure injection not covered",
+      "Long TTL cleanup and universal leak freedom not claimed",
+      "Single synthetic C32 wave does not establish production SLA",
+      "Cold long prefill/decode competition and late final-body output remain material"
+    ],
+    "after_Flash_experiment_restore": {
+      "one_short_gold_SSE_usage_same_epoch_passed": true,
+      "report_sha256": "f0b531b61e1dc136749b15f733e4eb6dbe12aa38a36a17f7d60e72279dd4d8db",
+      "C32_reexecuted": false,
+      "production_SLA_claimed": false
+    }
+  },
+  "Flash_TP8": {
+    "C1_external_tokens": [
+      0,
+      0,
+      32000,
+      16000
+    ],
+    "C1_32K_cold_full_branch_first_any_s": [
+      7.139,
+      0.342,
+      1.474
+    ],
+    "passkey_sequence": "A cold, A restored, B changed, A restored",
+    "passkey_external_tokens": [
+      0,
+      32000,
+      16000,
+      32000
+    ],
+    "passkey_first_any_s": [
+      2.562,
+      0.28,
+      1.481,
+      0.282
+    ],
+    "requests_correct": 8,
+    "HTTP200_SSE_DONE_stop_gold_usage_correct": true,
+    "GPU_APC_hits": 0,
+    "MP_completed_chunk_counter_increased_on_restore": true,
+    "per_request_per_IID_DMA_claimed": false,
+    "model_C32_or_loading_cancel_or_TTL_long_run_tested": false,
+    "raw_logits_or_all_kernel_NaN_freedom_proven": false,
+    "acceptance_sha256": "973da1204de0b1a94231426e790cd094d9ad8a7095a0ddc93ca693e5158f97a4",
+    "C1_sha256": "0ec6c2f2e05a70c17deb6b8866b96aef84bfd0fc01196bc9a75297abc89dba5b",
+    "passkey_sha256": "c4e0ba17fb8744de865572f7406dec72f1180cf8bfeb6e43c72281701510265b",
+    "checkpoint_sha256": "4defa62ba8284a9330d6cf3f1b4ff1853faefe61975bc605d6bdfddc67cead46"
+  },
+  "raw_evidence_published": false,
+  "raw_prompts_logs_host_identity_and_environment_excluded": true,
+  "TTFT_any_includes_reasoning_and_is_not_first_final_body": true
+}
