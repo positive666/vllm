@@ -1,0 +1,24 @@
+tests/models/glm5next/test_kda_paired_projection.py
+  s_d6988063cfa454::t_676232ca9af264 15,64-67
+  s_d6988063cfa454::t_b29d6d7a5b9b37 70-71,123
+  s_d6988063cfa454::t_8d0523c6e6649f 1-14,16-63,68-69,72-122,124-136,138-158,160-191
+  s_d6988063cfa454::t_c6f95d90f111b7 137,159
+vllm/models/glm5next/common/kda.py
+  s_d6988063cfa454::t_10cbd1aab8c356 300-304,390-431,524-529
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "47895f99d0b9e52a850285e223f597327691e6a8",
+  "prompts": {},
+  "sessions": {
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}
