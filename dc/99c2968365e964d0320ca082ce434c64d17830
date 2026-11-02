@@ -1,0 +1,25 @@
+csrc/quantization/marlin/kernel.h
+  s_8ac9d707bc8c46::t_af48cbd5e160a6 19
+csrc/quantization/marlin/marlin.cu
+  s_8ac9d707bc8c46::t_21a6329d55c7e8 404-409,415
+csrc/quantization/marlin/marlin_template.h
+  s_8ac9d707bc8c46::t_284cede6bf08f9 241,469-483
+tests/kernels/quantization/test_marlin_gemm.py
+  s_8ac9d707bc8c46::t_d068e49b052164 538-550,553-554,556-557,559-564
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dc99c2968365e964d0320ca082ce434c64d17830",
+  "prompts": {},
+  "sessions": {
+    "s_8ac9d707bc8c46": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1573f-e8ca-7c73-9df6-e466f6502fea",
+        "model": "unknown"
+      },
+      "human_author": "OpenAI Codex <codex@openai.com>"
+    }
+  }
+}
