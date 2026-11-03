@@ -4,7 +4,7 @@
   "install-receipt.json": "c4c72301bdc6465c7bfb096b9ed72bc743c8e73fbb2a75d8444caf5bf1e0a081",
   "patches.json": "549516a15f20ac642b7a03cacb90a1986b2aee345d838d703b73b454052efd09",
   "published.json": "a15c86eb21c08e4b77cfdb9c613c47ec2a065599215d466ddda5522e5d044576",
-  "README.md": "a2bea557f22023770017121273fee8ccccf25a6d0197b662ef8ed9d7cfbf6c0c",
+  "README.md": "614097f72ca6093dbc5b8bce269593497e4c3adc9df77d6c6c008c2043e1e05c",
   "registry-manifest.json": "db697d2c5111267d3730b5043f37798a01b419ba245213eec4010a9ab0661001",
   "registry-object-checks.json": "c102dd7e1df80492fc23110bfa0f3a5f8e7d90e45d40a2561c85c946d89904b9",
   "versions.json": "904c1828418531559f987b1526c5a97486de7661238fa6828872ea5b27d298db",
@@ -17,5 +17,6 @@
   "validation/components.json": "9bcc8ff91ef8b59c037d6350b1b6427e449844314cc3d6f2a997f8ca4315605d",
   "validation/installed-runtime-recheck.json": "64ccb435c4696575d683f76f9cc3ca16a6c1fb24853eb66f091e31fc3a326813",
   "validation/label-normalization.json": "d2677965b9ac7526d4be25a6c4742dcd064eaa0601661c0c63ad7015b7506a99",
-  "validation/service-summary.json": "2126f9c7d12b195dcb4df38c28e66b128ff349f07659aeb9cffe053c0550825f"
+  "validation/service-summary.json": "2126f9c7d12b195dcb4df38c28e66b128ff349f07659aeb9cffe053c0550825f",
+  "validation/fleet-delivery.json": "28b27a4c96d70b766f6f9728c36015caa4646fb765b421f3bb419ac6f213a635"
 }

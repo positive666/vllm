@@ -41,3 +41,20 @@ See [versions.json](versions.json), [published.json](published.json), [component
 `build-record/` preserves the installer and audit logic as `.py.txt` source records, preventing vLLM hooks from rewriting foreign build evidence. The LMCache diff applies to the pinned upstream source; it is not a new standalone upstream PR. The Dockerfile base reference is normalized to its verified digest. The directory is **not a standalone turnkey build context**: the source archives, full context, prebuilt input wheels and rebuilt LMCache/Humming/DeepEP wheels named and hashed in `versions.json` are required. They are not committed as large binary files. The published digest is the delivery artifact.
 
 AI assistance was used for integration, conflict resolution, validation and these records. Unmerged third-party fixes retain attribution in the change record; this release branch is not a proposal to merge all patches into upstream vLLM.
+
+## Subsequent LAN delivery verification (2026-11-04)
+
+The identical rc2 manifest was imported on nodes 26, 27, 28, 29 and 176.
+Each target verified all 87 unique content objects, 7,090 installed RECORD files,
+18 Python patch files, 14 native libraries and 273 dependency versions.
+A separate initially empty content store imported the full OCI archive successfully;
+this distribution is not a manifest-only or thin archive.
+
+Existing model and LMCache services retained their image IDs and start times.
+29 stopped experiment containers had their writable changes archived before removal;
+one obsolete build image and about 169 GiB of temporary transfer/export and isolated import files were removed.
+The complete offline archive remains on the source node. Rollback images and active
+containers were retained. This is image distribution, not a production rollout.
+
+See [per-node verification and cleanup totals](validation/fleet-delivery.json).
+The L2 STORE protection from #6171 is still excluded; L1 service tests do not validate it.

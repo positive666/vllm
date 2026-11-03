@@ -1,0 +1,193 @@
+{
+  "status": "PASS_FIVE_TARGETS_COMPLETE_IMAGE_AND_RUNNING_SERVICES_UNCHANGED",
+  "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+  "archive": {
+    "status": "COMPLETE_OCI_ALL_SOURCE_BYTES_VERIFIED",
+    "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+    "tag": "ghcr.io/positive666/model:glm53-febcc8ca7-lmc386473dad-h145b-mtp63432-cu130-sm90-20261103-rc2",
+    "bytes": 23211642880,
+    "sha256": "e7d9ecf571130b75943a0822fd966cd80ef831df3aa6bb74eac0f6143f6a85c0",
+    "unique_objects": 87
+  },
+  "empty_store_gate": {
+    "status": "EMPTY_STORE_IMPORT_ALL_BLOBS_VERIFIED",
+    "expected_objects": 87,
+    "unpacked": false,
+    "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+    "receipt_count_corrected_from_prior_template": true
+  },
+  "nodes": [
+    {
+      "node": "23",
+      "services_unchanged": true,
+      "containers_removed": 9,
+      "images_removed": 1,
+      "root_free_gib": 118.1,
+      "data_free_gib": 9413.7,
+      "verification": {
+        "status": "PASS_INSTALLED_RUNTIME_RECHECK",
+        "l2_store_6171_included": false,
+        "upstream_l2_store_files": {
+          "lmcache/v1/distributed/storage_controllers/store_controller.py": "c5811d1873337eaff0dd7ce03f61961af2b748e71e144a2cfceeaf8cc116750a",
+          "lmcache/v1/distributed/l2_adapters/base.py": "363a6872fcff1539d22e892bf14e27cbed965e1578ed0a05d20085d589018c5e",
+          "lmcache/v1/distributed/l2_adapters/bigtable_l2_adapter.py": "872001574449497f056349ecd96babdced8553fb37d1f620a42b59fae0a98397"
+        },
+        "runtime_audit": {
+          "status": "PASS",
+          "errors": [],
+          "dependency_nodes": 249,
+          "record_files": 7090,
+          "patch_files": 18,
+          "runtime_interpreter": "/opt/glm53-image-gn/.venv/bin/python",
+          "accepted_official_overrides": [
+            {
+              "parent": "torch",
+              "requirement": "nvidia-nccl-cu13==2.30.7; platform_system == \"Linux\"",
+              "installed": "2.31.2",
+              "reason": "vLLM Dockerfile NCCL_VERSION=2.31.2; DeepEP rebuilt with same version"
+            }
+          ],
+          "nccl_runtime": {
+            "/usr/local/lib/python3.12/dist-packages/nvidia/nccl/lib/libnccl.so.2": 23102
+          },
+          "torch_compiled_nccl": [
+            2,
+            30,
+            7
+          ],
+          "deep_ep_native": "/opt/glm53-image-gn/.venv/lib/python3.12/site-packages/deep_ep/_C.cpython-312-x86_64-linux-gnu.so",
+          "vllm_version": "0.33.0rc1.dev607+gfebcc8ca7",
+          "lmcache_version": "0.5.7.dev264+glm53.386473dad.align3",
+          "humming_version": "0.1.19.post1+g145bed148",
+          "native_imports": true,
+          "default_workarounds_added": false,
+          "note": "Runtime includes system site packages; uv pip check sees only the venv-owned subset."
+        }
+      }
+    },
+    {
+      "node": "26",
+      "services_unchanged": true,
+      "containers_removed": 0,
+      "images_removed": 0,
+      "root_free_gib": 243.0,
+      "data_free_gib": 243.0,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+        "config_digest": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+        "docker_available": true,
+        "unique_objects": 87,
+        "layer_references": 91,
+        "all_object_sha256_verified": true,
+        "record_files": 7090,
+        "patch_files": 18,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      }
+    },
+    {
+      "node": "27",
+      "services_unchanged": true,
+      "containers_removed": 0,
+      "images_removed": 0,
+      "root_free_gib": 325.4,
+      "data_free_gib": 325.4,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+        "config_digest": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+        "docker_available": true,
+        "unique_objects": 87,
+        "layer_references": 91,
+        "all_object_sha256_verified": true,
+        "record_files": 7090,
+        "patch_files": 18,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      }
+    },
+    {
+      "node": "28",
+      "services_unchanged": true,
+      "containers_removed": 1,
+      "images_removed": 0,
+      "root_free_gib": 84.7,
+      "data_free_gib": 632.5,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+        "config_digest": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+        "docker_available": true,
+        "unique_objects": 87,
+        "layer_references": 91,
+        "all_object_sha256_verified": true,
+        "record_files": 7090,
+        "patch_files": 18,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      }
+    },
+    {
+      "node": "29",
+      "services_unchanged": true,
+      "containers_removed": 4,
+      "images_removed": 0,
+      "root_free_gib": 60.8,
+      "data_free_gib": 60.8,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+        "config_digest": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+        "docker_available": true,
+        "unique_objects": 87,
+        "layer_references": 91,
+        "all_object_sha256_verified": true,
+        "record_files": 7090,
+        "patch_files": 18,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      }
+    },
+    {
+      "node": "176",
+      "services_unchanged": true,
+      "containers_removed": 15,
+      "images_removed": 0,
+      "root_free_gib": 51.5,
+      "data_free_gib": 11192.6,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+        "config_digest": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+        "docker_available": true,
+        "unique_objects": 87,
+        "layer_references": 91,
+        "all_object_sha256_verified": true,
+        "record_files": 7090,
+        "patch_files": 18,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      }
+    }
+  ],
+  "temporary_bytes_removed": 181206731757,
+  "containers_removed": 29,
+  "images_removed": 1,
+  "scope": "Image distribution only. No production service replacement, model performance claim or long-duration load certification.",
+  "l2_store_6171_included": false,
+  "isolated_temporary_bytes_removed": 23211740653,
+  "host_inventory_caveat": {
+    "nodes": [
+      "26",
+      "27",
+      "28"
+    ],
+    "observation": "Docker writable-snapshot size queries fail for old dcgm-exporter containers. Read-only container metadata remains accessible. This is outside the new image content checks; no monitor repair or restart was performed."
+  }
+}
