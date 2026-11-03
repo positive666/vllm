@@ -1,0 +1,40 @@
+{
+  "status": "PASS_INSTALLED_RUNTIME_RECHECK",
+  "l2_store_6171_included": false,
+  "upstream_l2_store_files": {
+    "lmcache/v1/distributed/storage_controllers/store_controller.py": "c5811d1873337eaff0dd7ce03f61961af2b748e71e144a2cfceeaf8cc116750a",
+    "lmcache/v1/distributed/l2_adapters/base.py": "363a6872fcff1539d22e892bf14e27cbed965e1578ed0a05d20085d589018c5e",
+    "lmcache/v1/distributed/l2_adapters/bigtable_l2_adapter.py": "872001574449497f056349ecd96babdced8553fb37d1f620a42b59fae0a98397"
+  },
+  "runtime_audit": {
+    "status": "PASS",
+    "errors": [],
+    "dependency_nodes": 249,
+    "record_files": 7090,
+    "patch_files": 18,
+    "runtime_interpreter": "/opt/glm53-image-gn/.venv/bin/python",
+    "accepted_official_overrides": [
+      {
+        "parent": "torch",
+        "requirement": "nvidia-nccl-cu13==2.30.7; platform_system == \"Linux\"",
+        "installed": "2.31.2",
+        "reason": "vLLM Dockerfile NCCL_VERSION=2.31.2; DeepEP rebuilt with same version"
+      }
+    ],
+    "nccl_runtime": {
+      "/usr/local/lib/python3.12/dist-packages/nvidia/nccl/lib/libnccl.so.2": 23102
+    },
+    "torch_compiled_nccl": [
+      2,
+      30,
+      7
+    ],
+    "deep_ep_native": "/opt/glm53-image-gn/.venv/lib/python3.12/site-packages/deep_ep/_C.cpython-312-x86_64-linux-gnu.so",
+    "vllm_version": "0.33.0rc1.dev607+gfebcc8ca7",
+    "lmcache_version": "0.5.7.dev264+glm53.386473dad.align3",
+    "humming_version": "0.1.19.post1+g145bed148",
+    "native_imports": true,
+    "default_workarounds_added": false,
+    "note": "Runtime includes system site packages; uv pip check sees only the venv-owned subset."
+  }
+}

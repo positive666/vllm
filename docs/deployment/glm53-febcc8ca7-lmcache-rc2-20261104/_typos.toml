@@ -1,0 +1,4 @@
+# Preserve the exact upstream deletion hunk containing RETRIEVEs.
+[default.extend-words]
+RETRIEV = "RETRIEV"
+certifi = "certifi"

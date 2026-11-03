@@ -1,0 +1,104 @@
+"""Install preserved backports and verify exact upstream binary provenance."""
+import base64
+import csv
+import hashlib
+import importlib.metadata as md
+import io
+import json
+from pathlib import Path
+import zipfile
+
+ROOT = Path("/opt/image-main-realign-20261103-r3")
+BUILD = Path("/build")
+VLLM = "febcc8ca793b3bbea52e5dabc0ca4f491a3fd3fc"
+LMCACHE = "386473dad97fdad4112a7333bc6604185acfd084"
+HUMMING = "145bed14896b34b35bd6934dc35063975b47ee28"
+EXPECTED = {"vllm": "0.33.0rc1.dev607+gfebcc8ca7",
+            "lmcache": "0.5.7.dev264+glm53.386473dad.align3",
+            "humming-kernels": "0.1.19.post1+g145bed148",
+            "nvidia-nccl-cu13": "2.31.2", "deep-ep": "2.0.0+local"}
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+for name, version in EXPECTED.items():
+    assert md.version(name) == version, (name, md.version(name))
+dist = md.distribution("vllm")
+site = Path(dist.locate_file(""))
+patches = json.loads((ROOT / "PATCHES.json").read_text())
+changes = {}
+for row in patches:
+    target = site / row["path"]
+    if row["project"] == "vllm":
+        assert sha(target) == row["upstream_sha256"], row["path"]
+        content = (ROOT / "overlay/vllm" / row["path"]).read_bytes()
+        assert hashlib.sha256(content).hexdigest() == row["candidate_sha256"]
+        compile(content, str(target), "exec")
+        target.write_bytes(content)
+        changes[row["path"]] = content
+    assert sha(target) == row["candidate_sha256"], row["path"]
+header = "vllm/third_party/deep_gemm/include/deep_gemm/impls/sm90_tf32_hc_prenorm_gemm.cuh"
+target = site / header
+text = target.read_text()
+old1 = "            ptx::warpgroup_wait<0>();\n            if (s > 0)"
+old2 = "            ptx::warpgroup_commit_batch();\n            #pragma unroll"
+new2 = "            ptx::warpgroup_commit_batch();\n            // Keep register A operands live until the asynchronous WGMMA completes.\n            ptx::warpgroup_wait<0>();\n            #pragma unroll"
+assert text.count(old1) == text.count(old2) == 1
+content = text.replace(old1, "            if (s > 0)").replace(old2, new2).encode()
+assert hashlib.sha256(content).hexdigest() == "b90beeaed11e279d3451ad3d438b8a64a41fd003c4b7f4d5e0a8fb79a20ad80b"
+target.write_bytes(content)
+changes[header] = content
+metadata = Path(dist._path) / "METADATA"
+text = metadata.read_text()
+requires = [x for x in text.splitlines() if x.lower().startswith("requires-dist: humming-kernels")]
+assert len(requires) == 1 and "==0.1.18" in requires[0]
+replacement = requires[0].replace("==0.1.18", "==" + EXPECTED["humming-kernels"])
+metadata.write_text(text.replace(requires[0], replacement))
+changes[metadata.relative_to(site).as_posix()] = metadata.read_bytes()
+record = Path(dist._path) / "RECORD"
+rows = [r for r in csv.reader(io.StringIO(record.read_text())) if r[0] not in changes]
+for name, content in changes.items():
+    digest = base64.urlsafe_b64encode(hashlib.sha256(content).digest()).decode().rstrip("=")
+    rows.append([name, "sha256=" + digest, str(len(content))])
+buffer = io.StringIO()
+csv.writer(buffer, lineterminator="\n").writerows(rows)
+record.write_text(buffer.getvalue())
+native = {}
+checked = 0
+wheel = next((BUILD / "inputs").glob("vllm-*.whl"))
+assert sha(wheel) == "a0526ec2daa2578ab9ef782e3d44d3db918140cc57e1854c6df4ac718a8ac7bd"
+with zipfile.ZipFile(wheel) as package:
+    for name in package.namelist():
+        if not name.startswith("vllm/") or name.endswith("/") or name in changes:
+            continue
+        expected = hashlib.sha256(package.read(name)).hexdigest()
+        assert sha(site / name) == expected, name
+        checked += 1
+        if name.endswith(".so") or name.endswith("/vllm-rs"):
+            native[name] = expected
+lock = json.loads((ROOT / "BASE_SOURCE_LOCK.json").read_text())
+expected_dependencies = dict(lock["dependencies"])
+expected_dependencies.update(EXPECTED)
+for name, version in expected_dependencies.items():
+    assert md.version(name) == version, ("Unexpected dependency change", name, md.version(name), version)
+lock.update(vllm_source_commit=VLLM, vllm_native_commit=VLLM,
+            vllm_version=EXPECTED["vllm"], lmcache_source_commit=LMCACHE,
+            lmcache_version=EXPECTED["lmcache"], humming_commit=HUMMING,
+            humming_version=EXPECTED["humming-kernels"],
+            deep_ep_commit="d4f41e4e93602a15e95f55f6ee8df8f1aaa0e4bb",
+            deep_ep_build_nccl="2.31.2", deep_ep_build_nvshmem="3.4.5",
+            base_image="ghcr.io/positive666/model@sha256:8f4d9c6e79eec0444a88b855b4af05be631bfcf3ca93ec625b9c4380b5ea0fe0",
+            patches=patches, dependencies=expected_dependencies, native=native,
+            jit_headers={header: sha(target)},
+            dependency_overrides=[{"upstream": requires[0], "integrated": replacement},
+                                  {"source": "official vLLM Dockerfile", "requirement": "nvidia-nccl-cu13==2.31.2"}],
+            update_kind="pinned-upstream-official-wheel-plus-rebuilt-lmcache-humming-deepep",
+            model_validation="pending")
+inputs = {}
+for folder in ("inputs", "wheels", "humming-wheels", "deepep-wheels"):
+    for path in (BUILD / folder).glob("*.whl"):
+        inputs[path.name] = sha(path)
+lock["wheel_sha256"] = inputs
+(ROOT / "SOURCE_LOCK.json").write_text(json.dumps(lock, indent=2))
+result = dict(status="PASS_INSTALL", upstream_files_checked=checked, native_files=len(native),
+              patches=len(patches), dependency_versions_checked=len(expected_dependencies),
+              changed_versions=EXPECTED, model_validation="pending")
+(ROOT / "INSTALL_RECEIPT.json").write_text(json.dumps(result, indent=2))
+print(json.dumps(result))

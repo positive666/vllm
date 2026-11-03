@@ -1,0 +1,4100 @@
+--- a/lmcache/integration/vllm/lmcache_mp_connector.py
++++ b/lmcache/integration/vllm/lmcache_mp_connector.py
+@@ -46,6 +46,7 @@
+ from vllm.v1.attention.backend import AttentionMetadata
+ from vllm.v1.core.kv_cache_utils import BlockHash, maybe_convert_block_hash
+ from vllm.v1.core.sched.output import SchedulerOutput
++from vllm.v1.kv_cache_interface import MambaSpec
+ from vllm.v1.outputs import KVConnectorOutput
+ from vllm.v1.request import RequestStatus
+ import torch
+@@ -602,6 +603,19 @@
+         # while current vLLM's type declaration requires it.
+         super().__init__(vllm_config, role, kv_cache_config)  # type: ignore[arg-type]
+         self._connector_stats = LMCacheMPConnectorStats()
++        self._boundary_state_groups = frozenset(
++            group_id
++            for group_id, group in enumerate(
++                kv_cache_config.kv_cache_groups if kv_cache_config else ()
++            )
++            if isinstance(group.kv_cache_spec, MambaSpec)
++            and group.kv_cache_spec.mamba_cache_mode == "align"
++            and getattr(group.kv_cache_spec, "num_prefill_checkpoint_blocks", 0)
++        )
++        # Each pending job owns one BlockPool reference per unique source block.
++        self._boundary_store_jobs: dict[int, tuple[list[int], int, str]] = {}
++        self._next_boundary_store_id = 0
++        self._boundary_store_workers = vllm_config.parallel_config.world_size
+ 
+         # Fail fast, before the server handshake below.
+         kv_cache_config = getattr(self, "_kv_cache_config", None)
+@@ -638,6 +652,11 @@
+             getattr(vllm_config, "kv_events_config", None) is not None
+             and vllm_config.kv_events_config.enable_kv_cache_events
+         )
++        if self._boundary_state_groups and self._enable_kv_events:
++            raise ValueError(
++                "Exact-checkpoint stores require KV cache events to be disabled: "
++                "server events do not join all hybrid object groups"
++            )
+ 
+         self._eager_prefetch: bool = bool(
+             vllm_config.kv_transfer_config.get_from_extra_config(
+@@ -762,6 +781,11 @@
+             self.request_trackers: dict[str, LMCacheMPRequestTracker] = {}
+             # Worker events aggregated per step, awaiting take_events().
+             self._kv_cache_events: list[KVCacheEvent] = []
++            # Retrieves sent to the workers and not yet in finished_recving.
++            self._unreported_retrieves: set[str] = set()
++            self._finished_while_loading: set[str] = set()
++            self._closing_eager_sessions: set[str] = set()
++            self._pending_eager_sends: set[str] = set()
+ 
+             # Align-mode Mamba keeps one speculative block per draft token at
+             # the tail of a request's block list.
+@@ -845,6 +869,11 @@
+                         f"a multiple of group {engine_group_idx} "
+                         f"tokens_per_block {tokens_per_block}"
+                     )
++            for group_id in self._boundary_state_groups:
++                if self._group_tokens_per_block[group_id] != lmcache_tokens_per_chunk:
++                    raise ValueError(
++                        "Boundary state groups require one block per chunk"
++                    )
+             if self.lazy_offload:
+                 self._lazy_offload_manager = LazyOffloadManager(
+                     vllm_config.kv_transfer_config.kv_connector_extra_config,
+@@ -947,6 +976,7 @@
+         """
+         metadata = self._get_connector_metadata()
+         assert isinstance(metadata, LMCacheMPConnectorMetadata)
++        self.worker_adapter.skip_finished_sending(metadata.finished_while_loading)
+ 
+         request_ids = []
+         ops = []
+@@ -1017,13 +1047,12 @@
+             )
+         return
+ 
+-    def wait_for_save(self):
+-        """
+-        Block until all the save operations is done. This is called
+-        as the forward context exits to ensure that the async saving
+-        from save_kv_layer is complete before finishing the forward.
+-
+-        This prevents overwrites of paged KV buffer before saving done.
++    def wait_for_save(self) -> None:
++        """Enqueue stores after model execution using a recorded device event.
++
++        Request stores complete through the adapter's normal delayed-free path.
++        Exact-boundary stores report independent per-worker completion receipts
++        so the scheduler can release their pinned state blocks.
+         """
+         metadata = self._get_connector_metadata()
+         assert isinstance(metadata, LMCacheMPConnectorMetadata)
+@@ -1040,6 +1069,18 @@
+             cache_salts.append(meta.cache_salt)
+             request_configs_list.append(meta.request_configs)
+ 
++        if metadata.boundary_stores:
++            boundary_event = self.worker_adapter.create_recorded_event()
++            for job_id, meta in metadata.boundary_stores.items():
++                self.worker_adapter.submit_boundary_store(
++                    job_id,
++                    meta.request_id,
++                    meta.op,
++                    boundary_event,
++                    meta.cache_salt,
++                    meta.request_configs,
++                )
++
+         if len(request_ids) == 0:
+             if self.dispatcher is not None:
+                 dispatch(self.dispatcher, "wait_for_save", event=None)
+@@ -1134,40 +1175,44 @@
+         )
+ 
+     def build_connector_worker_meta(self) -> LMCacheMPWorkerMetadata | None:
+-        """Build this step's worker-to-scheduler metadata.
+-
+-        Carries lazy-offload store results, and the step's KV events when vLLM
+-        did not call ``get_kv_connector_kv_cache_events`` first (e.g. as a
+-        ``MultiConnector`` child, which never forwards that hook).
++        """Drain worker store receipts and preserve MultiConnector KV events.
+ 
+         Returns:
+-            The worker metadata, or None when there is nothing to report.
+-        """
+-        # TODO: Remove this KV event fallback (and LMCacheMPWorkerMetadata.kv_events)
+-        # once upstream vLLM forwards get_kv_connector_kv_cache_events through
+-        # MultiConnector and our minimum supported vLLM includes it.
++            Newly completed request/boundary stores and buffered KV events,
++            or None when this worker has nothing to report.
++        """
+         kv_events = (
+             None
+             if self._kv_events_hook_called
+             else self.get_kv_connector_kv_cache_events()
+         )
+         self._kv_events_hook_called = False
+-        if not self.lazy_offload:
+-            if kv_events is None:
+-                return None
+-            return LMCacheMPWorkerMetadata(
+-                completed_store_requests={}, kv_events=kv_events
+-            )
+-        completed_store_requests = self.worker_adapter.get_completed_store_requests()
+-        failed_store_requests = self.worker_adapter.get_failed_store_requests()
+-        if completed_store_requests or failed_store_requests or kv_events:
++        completed_boundaries = self.worker_adapter.get_completed_boundary_stores()
++        completed_store_requests = (
++            self.worker_adapter.get_completed_store_requests()
++            if self.lazy_offload
++            else {}
++        )
++        failed_store_requests = (
++            self.worker_adapter.get_failed_store_requests()
++            if self.lazy_offload
++            else set()
++        )
++        if (
++            completed_boundaries
++            or completed_store_requests
++            or failed_store_requests
++            or kv_events
++        ):
+             return LMCacheMPWorkerMetadata(
+                 completed_store_requests=completed_store_requests or {},
+                 failed_store_requests=failed_store_requests or set(),
++                completed_boundary_stores={
++                    job_id: 1 for job_id in completed_boundaries
++                },
+                 kv_events=kv_events,
+             )
+-        else:
+-            return None
++        return None
+ 
+     def get_block_ids_with_load_errors(self) -> set[int]:
+         """
+@@ -1471,7 +1516,7 @@
+                 chunk = self.scheduler_adapter.lmcache_tokens_per_chunk
+                 aligned = max(0, (ret - 1) // chunk * chunk)
+                 if aligned < ret:
+-                    tracker.pending_free_ranges.append((aligned, ret))
++                    tracker.pending_replay_tail = (aligned, ret)
+                     tracker.num_lmcache_hit_tokens = aligned
+                 need_to_load = max(0, aligned - num_computed_tokens)
+             else:
+@@ -1597,6 +1642,17 @@
+                     0,
+                     free_end,
+                 )
++            if tracker.pending_replay_tail is not None:
++                tail_start, tail_end = tracker.pending_replay_tail
++                self.scheduler_adapter.free_lookup_locks(
++                    packed_token_ids=tracker.packed_token_ids(),
++                    start=tail_start,
++                    end=tail_end,
++                    request_id=request.request_id,
++                    cache_salt=tracker.cache_salt,
++                    request_configs=tracker.request_configs,
++                )
++                tracker.pending_replay_tail = None
+ 
+     def build_connector_meta(
+         self, scheduler_output: SchedulerOutput
+@@ -1612,10 +1668,14 @@
+         """
+         metadata = LMCacheMPConnectorMetadata()
+         metadata.need_flush_before_forward = _has_preemption_reqs(scheduler_output)
++        metadata.finished_while_loading = self._finished_while_loading
++        self._finished_while_loading = set()
+ 
+         self._process_retrieve_requests(metadata)
+         self._process_new_requests(scheduler_output, metadata)
+         self._process_cached_requests(scheduler_output, metadata)
++        if self._can_store and self._boundary_state_groups:
++            self._process_boundary_stores(scheduler_output, metadata)
+ 
+         if self.lazy_offload:
+             actions = self._lazy_offload_manager.on_scheduler_step(scheduler_output)
+@@ -1632,14 +1692,24 @@
+ 
+         return metadata
+ 
+-    def update_connector_output(self, connector_output: KVConnectorOutput):
+-        """
+-        Update KVConnector state from worker-side connectors output.
++    def update_connector_output(self, connector_output: KVConnectorOutput) -> None:
++        """
++        Update state from aggregated worker output and retire successful sessions.
++
++        Eligible eager session removal waits for the ordinary send barrier and
++        every boundary job owned by the request. Loading and lazy paths are unchanged.
+ 
+         Args:
+             connector_output (KVConnectorOutput): the worker-side
+                 connectors output.
+         """
++        self._unreported_retrieves.difference_update(
++            connector_output.finished_recving or ()
++        )
++        self._pending_eager_sends.difference_update(
++            connector_output.finished_sending or ()
++        )
++
+         # Worker metadata carries the events only when the hook is not called.
+         kv_cache_events = connector_output.kv_cache_events or getattr(
+             connector_output.kv_connector_worker_meta, "kv_events", None
+@@ -1648,9 +1718,34 @@
+             # One aggregated batch per step keeps the workers' event order.
+             self._kv_cache_events.extend(kv_cache_events.aggregate().get_all_events())
+ 
++        meta = connector_output.kv_connector_worker_meta
++        if isinstance(meta, LMCacheMPWorkerMetadata):
++            for job_id, count in meta.completed_boundary_stores.items():
++                pending = self._boundary_store_jobs.get(job_id)
++                if (
++                    pending is None
++                    or type(count) is not int
++                    or not 0 < count <= pending[1]
++                ):
++                    raise ValueError("Invalid boundary-store completion receipts")
++            for job_id, count in meta.completed_boundary_stores.items():
++                block_ids, remaining, request_id = self._boundary_store_jobs[job_id]
++                remaining -= count
++                if remaining:
++                    self._boundary_store_jobs[job_id] = (
++                        block_ids,
++                        remaining,
++                        request_id,
++                    )
++                else:
++                    assert self._gpu_block_pool is not None
++                    self._gpu_block_pool.free_blocks(
++                        [self._gpu_block_pool.blocks[bid] for bid in block_ids]
++                    )
++                    del self._boundary_store_jobs[job_id]
+         if not self.lazy_offload:
++            self._maybe_end_successful_eager_sessions()
+             return
+-        meta = connector_output.kv_connector_worker_meta
+         if not isinstance(meta, LMCacheMPWorkerMetadata):
+             return
+         actions = self._lazy_offload_manager.on_store_results(
+@@ -1669,8 +1764,11 @@
+         Called exactly once when a request has finished, before its blocks are
+         freed.
+ 
+-        The connector may assumes responsibility for freeing the blocks
+-        asynchronously by returning True.
++        The connector may assume responsibility for freeing the blocks
++        asynchronously by returning True. Eager stopped, length-capped and aborted
++        requests not finishing while loading wait for ordinary and boundary STORE
++        receipts before END_SESSION. Loading, other errors and lazy cleanup
++        remain unchanged.
+ 
+         Returns:
+             True if the request is being saved/sent asynchronously and blocks
+@@ -1697,13 +1795,31 @@
+                 "num_lmcache_extra_cached_tokens": max(0, num_lmcache - num_vllm),
+             }
+ 
++        # vLLM parks a request that finishes while its retrieve is unreported
++        # and frees it on the finished_recving report, asserting on any later
++        # report, so the worker must not also report it in finished_sending.
++        was_loading = request.request_id in self._unreported_retrieves
++        if was_loading:
++            self._unreported_retrieves.remove(request.request_id)
++            self._finished_while_loading.add(request.request_id)
++
+         # Clean up request tracker to prevent memory leak
+         self._cleanup_request_tracker(request.request_id)
+ 
+-        # Drop lookup state for a request aborted before its lookup was
+-        # consumed (update_state_after_alloc never ran for it). Both the eager
+-        # and the lazy path need this, so it runs before they diverge.
+-        self.scheduler_adapter.cleanup_lookup_result(request.request_id)
++        if (
++            not self.lazy_offload
++            and self._can_store
++            and not was_loading
++            and request.status
++            in (
++                RequestStatus.FINISHED_STOPPED,
++                RequestStatus.FINISHED_LENGTH_CAPPED,
++                RequestStatus.FINISHED_ABORTED,
++            )
++        ):
++            self._closing_eager_sessions.add(request.request_id)
++            self._pending_eager_sends.add(request.request_id)
++            return True, (return_params or None)
+ 
+         if self.lazy_offload:
+             # Blocks return to the free queue (False) and remain observable;
+@@ -1712,10 +1828,12 @@
+             actions = self._lazy_offload_manager.on_request_finished(request.request_id)
+             for request_id in actions.sessions_to_end:
+                 self.scheduler_adapter.end_session(request_id)
++            self.scheduler_adapter.cleanup_lookup_result(request.request_id)
+             return False, (return_params or None)
+ 
+         # Notify LMCache to end the session for this request
+         self.scheduler_adapter.end_session(request.request_id)
++        self.scheduler_adapter.cleanup_lookup_result(request.request_id)
+         return self._can_store, (return_params or None)
+ 
+     def request_finished_all_groups(
+@@ -1745,13 +1863,16 @@
+             True when scheduler-side lazy offload has submitted stores waiting
+             for worker completion. Queued stores are intentionally excluded:
+             they require a model-token step for submission and cannot progress
+-            during a connector-only step. Non-lazy mode uses vLLM's normal
+-            delayed-free path and does not need this keepalive.
+-        """
+-        if self.role != KVConnectorRole.SCHEDULER or not self.lazy_offload:
++            during a connector-only step. Exact-boundary stores also keep the
++            engine stepping until all workers release their pinned state blocks.
++        """
++        if self.role != KVConnectorRole.SCHEDULER:
+             return False
+-
+-        return self._lazy_offload_manager.has_inflight_store_work()
++        if self._boundary_store_jobs:
++            return True
++        return (
++            self.lazy_offload and self._lazy_offload_manager.has_inflight_store_work()
++        )
+ 
+     @classmethod
+     def get_required_kvcache_layout(cls, vllm_config: "VllmConfig") -> str | None:
+@@ -1808,6 +1929,61 @@
+     ##############################
+     # Helper functions
+     ##############################
++    def _maybe_end_successful_eager_sessions(self) -> None:
++        """End eligible eager sessions after ordinary and boundary transfers."""
++        boundary_requests = {
++            request_id for _, _, request_id in self._boundary_store_jobs.values()
++        }
++        ready = (
++            self._closing_eager_sessions - self._pending_eager_sends - boundary_requests
++        )
++        for request_id in ready:
++            self.scheduler_adapter.end_session(request_id)
++            self.scheduler_adapter.cleanup_lookup_result(request_id)
++            self._closing_eager_sessions.remove(request_id)
++
++    def _process_boundary_stores(
++        self,
++        scheduler_output: SchedulerOutput,
++        metadata: LMCacheMPConnectorMetadata,
++    ) -> None:
++        """Pin exact state handoffs before the scheduler can retire their blocks."""
++        block_state = scheduler_output.kv_connector_block_state
++        if block_state is None:
++            if scheduler_output.total_num_scheduled_tokens:
++                raise RuntimeError(
++                    "Checkpoint stores require vLLM boundary-state handoffs"
++                )
++            return
++        assert self._gpu_block_pool is not None
++        for request_id, handoffs in block_state.boundary_state_offloads.items():
++            tracker = self.request_trackers.get(request_id)
++            if tracker is None:
++                continue
++            stores = LMCacheMPRequestMetadata.GetBoundaryStoreMetadata(
++                tracker,
++                handoffs,
++                self.scheduler_adapter.lmcache_tokens_per_chunk,
++                self._group_tokens_per_block,
++                self._boundary_state_groups,
++                save_decode_cache=self._save_decode_cache,
++            )
++            for store in stores:
++                block_ids = sorted(
++                    {bid for ids in store.op.block_ids for bid in ids if bid != 0}
++                )
++                self._gpu_block_pool.touch(
++                    [self._gpu_block_pool.blocks[bid] for bid in block_ids]
++                )
++                job_id = self._next_boundary_store_id
++                self._next_boundary_store_id += 1
++                self._boundary_store_jobs[job_id] = (
++                    block_ids,
++                    self._boundary_store_workers,
++                    request_id,
++                )
++                metadata.boundary_stores[job_id] = store
++
+     def _process_retrieve_requests(
+         self,
+         metadata: LMCacheMPConnectorMetadata,
+@@ -1824,6 +2000,7 @@
+             )
+             if r_metadata is not None:
+                 metadata.add_request_metadata(r_metadata)
++                self._unreported_retrieves.add(request_tracker.request_id)
+             request_tracker.state = LMCacheMPRequestState.READY
+ 
+     def _process_new_requests(
+@@ -1850,6 +2027,7 @@
+                 lmcache_tokens_per_chunk,
+                 self._group_tokens_per_block,
+                 save_decode_cache=self._save_decode_cache,
++                boundary_state_groups=self._boundary_state_groups,
+             )
+             if r_meta is not None:
+                 # In lazy_offload mode, add to pending queue instead of immediate store
+@@ -1892,6 +2070,7 @@
+                 lmcache_tokens_per_chunk,
+                 self._group_tokens_per_block,
+                 save_decode_cache=self._save_decode_cache,
++                boundary_state_groups=self._boundary_state_groups,
+             )
+ 
+             if r_meta is not None:
+--- a/lmcache/integration/vllm/lmcache_mp_metadata.py
++++ b/lmcache/integration/vllm/lmcache_mp_metadata.py
+@@ -97,6 +97,9 @@
+     # Lock ranges left by abandoned lookups, released with the next FREE.
+     pending_free_ranges: list[tuple[int, int]] = field(default_factory=list)
+ 
++    # A replay tail belongs to the current lookup, not an abandoned attempt.
++    pending_replay_tail: tuple[int, int] | None = None
++
+     mm_adjusted_prompt_ids: list[int] = field(default_factory=list)
+ 
+     # Packed prefix of `get_token_ids()`, grown in place. A request emits one
+@@ -122,6 +125,7 @@
+         self.apc_covered_tokens = 0
+         self.need_full_lookup = False
+         self.pending_free_ranges = []
++        self.pending_replay_tail = None
+         self.state = LMCacheMPRequestState.PREFETCHING
+         self.packed_tokens = bytearray()
+         self.mm_adjusted_prompt_ids = []
+@@ -306,6 +310,7 @@
+         group_tokens_per_block: list[int],
+         *,
+         save_decode_cache: bool = False,
++        boundary_state_groups: frozenset[int] = frozenset(),
+     ) -> "LMCacheMPRequestMetadata | None":
+         """
+         Generate the store metadata for the current request tracker.
+@@ -321,6 +326,8 @@
+             save_decode_cache: Whether to store chunks containing generated
+                 tokens. Defaults to storing only complete chunks within the
+                 initial prompt, including when decode fills its partial tail.
++            boundary_state_groups: Groups exported separately from exact boundary
++                handoffs. Their physical block-table positions are not token keys.
+ 
+         Returns:
+             Metadata for newly storable chunks, or None when no complete
+@@ -391,12 +398,15 @@
+                 start_token_idx,
+                 end_token_idx,
+             )
++            for group_id in boundary_state_groups:
++                block_ids[group_id] = [0] * len(block_ids[group_id])
+             token_bytes = tracker.packed_token_ids()
+             op = LoadStoreOp(
+                 token_bytes=token_bytes,
+                 block_ids=block_ids,
+                 start=start_token_idx,
+                 end=end_token_idx,
++                is_partial_store=bool(boundary_state_groups),
+             )
+ 
+             ret = LMCacheMPRequestMetadata(
+@@ -412,6 +422,86 @@
+             return ret
+ 
+         return None
++
++    @staticmethod
++    def GetBoundaryStoreMetadata(
++        tracker: LMCacheMPRequestTracker,
++        boundary_states: list[tuple[int, int, int]],
++        lmcache_tokens_per_chunk: int,
++        group_tokens_per_block: list[int],
++        boundary_state_groups: frozenset[int],
++        *,
++        save_decode_cache: bool = False,
++    ) -> list["LMCacheMPRequestMetadata"]:
++        """Build state-only stores from vLLM's exact boundary handoffs.
++
++        This can backfill an earlier chunk after the attention store cursor has
++        advanced. The caller must pin every non-null block until all workers
++        finish the transfer, and fence reads after the step's model/CoW writes.
++
++        Args:
++            tracker: Request identity, tokens, computed-prefix end, and offload
++                limits.
++            boundary_states: Scheduler handoffs as (group, block, token boundary).
++            lmcache_tokens_per_chunk: Server chunk size, in tokens.
++            group_tokens_per_block: Engine group geometry; zero denotes scratch.
++            boundary_state_groups: Checkpoint groups excluded from positional
++                stores. Each must have a block size equal to the server chunk.
++            save_decode_cache: Whether generated-token chunks may be stored.
++
++        Returns:
++            One store per eligible chunk boundary, with all unrelated groups
++            null. Boundaries inside a server chunk are skipped, never rounded.
++
++        Raises:
++            ValueError: If a checkpoint group does not span exactly one chunk.
++        """
++        for group_id in boundary_state_groups:
++            if group_tokens_per_block[group_id] != lmcache_tokens_per_chunk:
++                raise ValueError("Boundary state groups require one block per chunk")
++        limit = max(
++            tracker.num_scheduled_tokens
++            + max(tracker.num_vllm_hit_tokens, tracker.num_lmcache_hit_tokens),
++            tracker.num_engine_computed_tokens,
++        )
++        token_bytes = tracker.packed_token_ids()
++        limit = min(limit, num_packed_tokens(token_bytes))
++        if not save_decode_cache:
++            limit = min(limit, tracker.num_prompt_tokens)
++        if tracker.max_offload_tokens is not None:
++            limit = min(limit, tracker.max_offload_tokens)
++        chunks: dict[int, list[list[int]]] = {}
++        for group_id, block_id, boundary in boundary_states:
++            if (
++                group_id not in boundary_state_groups
++                or block_id == 0
++                or boundary <= 0
++                or boundary > limit
++                or boundary % lmcache_tokens_per_chunk
++            ):
++                continue
++            if boundary not in chunks:
++                chunks[boundary] = [
++                    [0] * (lmcache_tokens_per_chunk // span) if span else []
++                    for span in group_tokens_per_block
++                ]
++            chunks[boundary][group_id] = [block_id]
++        return [
++            LMCacheMPRequestMetadata(
++                request_id=tracker.request_id,
++                direction="STORE",
++                op=LoadStoreOp(
++                    token_bytes=token_bytes,
++                    block_ids=blocks,
++                    start=boundary - lmcache_tokens_per_chunk,
++                    end=boundary,
++                    is_partial_store=True,
++                ),
++                cache_salt=tracker.cache_salt,
++                request_configs=tracker.request_configs,
++            )
++            for boundary, blocks in sorted(chunks.items())
++        ]
+ 
+     @staticmethod
+     def GetRetrieveMetadata(
+@@ -494,12 +584,15 @@
+         super().__init__()
+         self.requests: list[LMCacheMPRequestMetadata] = []
+         self.need_flush_before_forward: bool = False
++        self.finished_while_loading: set[str] = set()
++        # Job IDs are independent of request lifetime and attention-store cursors.
++        self.boundary_stores: dict[int, LMCacheMPRequestMetadata] = {}
+ 
+     def add_request_metadata(self, request_metadata: LMCacheMPRequestMetadata):
+         self.requests.append(request_metadata)
+ 
+-    def __len__(self):
+-        return len(self.requests)
++    def __len__(self) -> int:
++        return len(self.requests) + len(self.boundary_stores)
+ 
+     # For debugging
+     def __str__(self):
+@@ -531,6 +624,8 @@
+             workers of one step; the scheduler-side manager accumulates
+             across steps and settles a store only once its count reaches
+             ``world_size``.
++        completed_boundary_stores: Exact-boundary job completion counts, summed
++            across workers and steps independently of the request store cursor.
+         failed_store_requests: Requests whose store did not succeed on this
+             worker, either with a failed result or dropped while unhealthy.
+             Their completion receipts are still counted -- the pinned blocks
+@@ -547,6 +642,7 @@
+ 
+     completed_store_requests: dict[str, int]
+     failed_store_requests: set[str] = field(default_factory=set)
++    completed_boundary_stores: dict[int, int] = field(default_factory=dict)
+     kv_events: KVConnectorKVEvents | None = None
+ 
+     def aggregate(
+@@ -566,6 +662,9 @@
+         merged = dict(self.completed_store_requests)
+         for k, v in other.completed_store_requests.items():
+             merged[k] = merged.get(k, 0) + v
++        boundary_merged = dict(self.completed_boundary_stores)
++        for job_id, count in other.completed_boundary_stores.items():
++            boundary_merged[job_id] = boundary_merged.get(job_id, 0) + count
+         kv_events = self.kv_events
+         if kv_events is None:
+             kv_events = other.kv_events
+@@ -578,4 +677,5 @@
+                 self.failed_store_requests | other.failed_store_requests
+             ),
+             kv_events=kv_events,
+-        )
++            completed_boundary_stores=boundary_merged,
++        )
+--- a/lmcache/integration/vllm/mp_lookup_state.py
++++ b/lmcache/integration/vllm/mp_lookup_state.py
+@@ -126,6 +126,9 @@
+ 
+         # Progress of every server, keyed by URL.
+         self._servers = {url: _Server(client) for url, client in clients.items()}
++        self._rpc_futures: dict[str, set[_RpcFuture]] = {url: set() for url in clients}
++        self._failed_rpcs: dict[str, _RpcFuture] = {}
++        self._rpcs_taken = False
+ 
+         # Matched token count; None until final, then never changes.
+         self._result: int | None = None
+@@ -133,25 +136,65 @@
+         # Guards ``_servers`` and ``_result``; every send happens under it.
+         self._lock = threading.Lock()
+ 
+-    def submit(self) -> None:
+-        """Send LOOKUP to every server."""
++    def submit(self) -> bool:
++        """Send LOOKUP to every server unless already closed.
++
++        Returns:
++            Whether LOOKUP was submitted before the lookup became final.
++        """
+         deadline = time.monotonic() + self._timeout
+         sent_lookups: list[tuple[str, MessagingFuture[None]]] = []
+         with self._lock:
++            if self._result is not None:
++                return False
+             for url, server in self._servers.items():
+                 future = server.client.lookup(self._key, self._tp_size)
+                 server.future = future
++                self._rpc_futures[url].add(future)
+                 server.deadline = deadline
+                 sent_lookups.append((url, future))
+ 
+         for url, future in sent_lookups:
+             future.add_done_callback(functools.partial(self.on_lookup_finished, url))
++        return True
+ 
+     def close(self) -> None:
+         """Stop sending RPCs; an unresolved result becomes 0."""
+         with self._lock:
+             if self._result is None:
+                 self._result = 0
++
++    def close_and_take_pending_rpcs(self) -> dict[str, tuple[_RpcFuture, ...]]:
++        """Stop new RPCs and transfer unconfirmed handler acknowledgements once.
++
++        The caller owns ordering END_SESSION after these futures. A local
++        timeout does not cancel a remote handler, and failed futures do not
++        establish successful handler completion.
++
++        Returns:
++            Per-server pending or failed LOOKUP, status and tail-release
++            futures. Subsequent calls return an empty mapping.
++        """
++        with self._lock:
++            if self._result is None:
++                self._result = 0
++            if self._rpcs_taken:
++                return {}
++            for url, futures in self._rpc_futures.items():
++                for future in tuple(futures):
++                    if future.query():
++                        self._complete_rpc(url, future)
++            pending = {
++                url: tuple(futures)
++                + ((self._failed_rpcs[url],) if url in self._failed_rpcs else ())
++                for url, futures in self._rpc_futures.items()
++                if futures or url in self._failed_rpcs
++            }
++            self._rpcs_taken = True
++            for futures in self._rpc_futures.values():
++                futures.clear()
++            self._failed_rpcs.clear()
++            return pending
+ 
+     def drain(self) -> str | None:
+         """Close, then wait for the LOOKUP and QUERY_PREFETCH_STATUS RPCs
+@@ -187,6 +230,7 @@
+             future: The completed LOOKUP future.
+         """
+         with self._lock:
++            self._complete_rpc(url, future)
+             server = self._servers[url]
+             if (
+                 self._result is not None
+@@ -213,6 +257,7 @@
+             future: The completed QUERY_PREFETCH_STATUS future.
+         """
+         with self._lock:
++            self._complete_rpc(url, future)
+             server = self._servers[url]
+             if (
+                 self._result is not None
+@@ -314,6 +359,7 @@
+         self, url: str, server: _Server, future: _RpcFuture
+     ) -> list[tuple[str, _QueryPrefetchStatusFuture]]:
+         """Send QUERY_PREFETCH_STATUS after the LOOKUP; caller holds the lock."""
++        self._complete_rpc(url, future)
+         if future.exception_ is not None:
+             logger.warning(
+                 "LOOKUP for request %s to %s failed: %s; querying its status anyway",
+@@ -329,6 +375,7 @@
+     ) -> list[tuple[str, _QueryPrefetchStatusFuture]]:
+         """Resolve the server or re-query it after a QUERY_PREFETCH_STATUS
+         reply; caller holds the lock."""
++        self._complete_rpc(url, future)
+         if future.exception_ is not None:
+             logger.warning(
+                 "QUERY_PREFETCH_STATUS for request %s to %s failed: %s; re-querying",
+@@ -357,6 +404,7 @@
+     ) -> tuple[str, _QueryPrefetchStatusFuture]:
+         """Send QUERY_PREFETCH_STATUS to one server; caller holds the lock."""
+         future = server.client.query_prefetch_status(self._key.request_id)
++        self._rpc_futures[url].add(future)
+         server.phase = _Phase.QUERY_PREFETCH_STATUS_IN_FLIGHT
+         server.future = future
+         server.deadline = time.monotonic() + self._timeout
+@@ -394,7 +442,17 @@
+                         num_packed_tokens(self._key.token_bytes),
+                     ),
+                 )
+-                server.client.free_lookup_locks(tail_key, self._tp_size)
++                try:
++                    future = server.client.free_lookup_locks(tail_key, self._tp_size)
++                except Exception as error:
++                    logger.exception(
++                        "Tail lock release submission has an unknown outcome"
++                    )
++                    failed: MessagingFuture[None] = MessagingFuture()
++                    failed.set_exception(error)
++                    self._rpc_futures[url].add(failed)
++                    raise
++                self._rpc_futures[url].add(future)
+ 
+         self._result = min_chunks * self._tokens_per_chunk
+ 
+@@ -418,3 +476,11 @@
+             future.add_done_callback(
+                 functools.partial(self.on_query_prefetch_status_finished, url)
+             )
++
++    def _complete_rpc(self, url: str, future: _RpcFuture) -> None:
++        """Retain one failed-outcome witness per server; caller holds the lock."""
++        if self._rpcs_taken:
++            return
++        self._rpc_futures[url].discard(future)
++        if future.exception_ is not None:
++            self._failed_rpcs.setdefault(url, future)
+--- a/lmcache/integration/vllm/vllm_multi_process_adapter.py
++++ b/lmcache/integration/vllm/vllm_multi_process_adapter.py
+@@ -670,6 +670,9 @@
+     """Number of tokens to skip writing at the beginning of the retrieve
+     range. Used to avoid overwriting APC-shared GPU blocks during retrieve."""
+ 
++    is_partial_store: bool = False
++    """Whether this store omits model groups and cannot advertise a full hit."""
++
+     @property
+     def flat_block_ids(self) -> list[int]:
+         """Return all block IDs flattened for group-blind error paths.
+@@ -695,6 +698,76 @@
+ StoreResult = bool
+ RetrieveResult = bool
+ LookupResult = int
++
++
++_SessionRpcFuture = MessagingFuture[None] | MessagingFuture[int | None]
++
++
++@dataclass
++class _DeferredLookup:
++    """An active request waiting to replace its cleaned-up lookup."""
++
++    deadline: float
++    failed: bool = False
++
++
++class _OrderedSessionEnd:
++    """Let admitted RPC callbacks retain a server's deferred END submission."""
++
++    def __init__(
++        self,
++        request_id: str,
++        client: RequestClient,
++        predecessors: set[_SessionRpcFuture],
++    ) -> None:
++        self._request_id = request_id
++        self._client = client
++        self._pending = predecessors.copy()
++        self._failed = False
++        self._submitted = False
++        self._lock = threading.Lock()
++
++    def start(self) -> None:
++        """Register completion callbacks without waiting on the scheduler thread."""
++        with self._lock:
++            futures = tuple(self._pending)
++            if not futures:
++                self._submitted = True
++        if not futures:
++            self._send_end()
++            return
++        for future in futures:
++            future.add_done_callback(self._on_predecessor_done)
++
++    def _on_predecessor_done(self, future: _SessionRpcFuture) -> None:
++        with self._lock:
++            self._pending.discard(future)
++            error = future.exception_
++            if error is not None:
++                self._failed = True
++            ready = not self._pending and not self._failed and not self._submitted
++            if ready:
++                self._submitted = True
++        if error is not None:
++            logger.error(
++                "Cannot order END_SESSION for request %s after failed RPC: %s",
++                self._request_id,
++                error,
++            )
++        if ready:
++            self._send_end()
++
++    def _send_end(self) -> None:
++        future = self._client.end_session(self._request_id)
++        future.add_done_callback(self._on_end_done)
++
++    def _on_end_done(self, future: MessagingFuture[None]) -> None:
++        if future.exception_ is not None:
++            logger.error(
++                "END_SESSION for request %s failed: %s",
++                self._request_id,
++                future.exception_,
++            )
+ 
+ 
+ class LMCacheMPSchedulerAdapter:
+@@ -768,6 +841,12 @@
+         # once resolved, so repeated checks return the same value after the
+         # server has handed the hit count over (exactly once).
+         self._lookups: dict[str, LookupState] = {}
++        # Cleanup may precede END in the connector. Keep only admitted RPCs
++        # until that once-only request-finished notification transfers them.
++        self._closed_lookup_rpcs: dict[str, dict[str, set[_SessionRpcFuture]]] = {}
++        # Only requests whose replacement was attempted are tracked. Cleanup
++        # or END cancels the wait; a failure stays final until that boundary.
++        self._deferred_lookups: dict[str, _DeferredLookup] = {}
+ 
+         self.model_name = model_name
+         self.parallel_strategy = parallel_strategy
+@@ -897,6 +976,10 @@
+         scheduler thread is not blocked here. Each server's prefetch status
+         is queried as soon as that server acks, and ``check_lookup_result``
+         reports the result.
++
++        After cleanup, a replacement waits for successful acknowledgements
++        of the old LOOKUP, status and FREE RPCs. Call again on scheduler ticks;
++        no replacement is sent by a completion callback.
+ 
+         Args:
+             request_id: The ID of the lookup request. The same ID indicates it's
+@@ -934,6 +1017,10 @@
+             # Skip if there is already a lookup request
+             return False
+ 
++        if not self._lookup_predecessors_complete(request_id):
++            return False
++        self._deferred_lookups.pop(request_id, None)
++
+         lookup_tokens = max(
+             0, num_packed_tokens(packed_token_ids) - int(reserve_last_token)
+         )
+@@ -981,6 +1068,10 @@
+         marks that server unhealthy and makes this return 0 from then on,
+         matching the behaviour of a timed-out synchronous submit.
+ 
++        A replacement deferred behind cleanup also returns None, including
++        after its prerequisites finish until maybe_submit_lookup_request is
++        called again. Failed prerequisites or an expired wait return 0.
++
+         Args:
+             request_id: The ID of the lookup request submitted in
+                 `maybe_submit_lookup_request`
+@@ -990,8 +1081,13 @@
+             in LMCache (prefix matching), or
+             None if the lookup request is not finished yet.
+         """
++        if not self.is_healthy:
++            return 0
++        if request_id in self._deferred_lookups:
++            self._lookup_predecessors_complete(request_id)
++            return 0 if self._deferred_lookups[request_id].failed else None
+         lookup = self._lookups.get(request_id)
+-        if lookup is None or not self.is_healthy:
++        if lookup is None:
+             # No job (unhealthy at submit time or already cleaned up), or a
+             # server went down: give up on this lookup.
+             return 0
+@@ -1008,18 +1104,20 @@
+         return self.blocks_in_chunk
+ 
+     def cleanup_lookup_result(self, request_id: str) -> None:
+-        """
+-        Clean up lookup state for a finished request to prevent memory leak.
+-
+-        The request's lookup stops sending RPCs, and replies still in flight
+-        are ignored.
++        """Forget a lookup result while retaining its outstanding RPC ordering.
+ 
+         Args:
+-            request_id: The ID of the finished request.
+-        """
++            request_id: Request whose result or deferred replacement is no longer
++                needed. A later lookup or final end_session call still orders
++                itself after any unconfirmed handler acknowledgements.
++        """
++        self._deferred_lookups.pop(request_id, None)
+         lookup = self._lookups.pop(request_id, None)
+-        if lookup is not None:
+-            lookup.close()
++        if lookup is None:
++            return
++        for url, futures in lookup.close_and_take_pending_rpcs().items():
++            pending = self._closed_lookup_rpcs.setdefault(request_id, {})
++            pending.setdefault(url, set()).update(futures)
+ 
+     def reset_cache(self) -> bool:
+         """Ask every backing LMCache server to best-effort clear idle cache.
+@@ -1087,6 +1185,9 @@
+         Or use this when a request is cancelled or aborted after lookup but
+         before retrieve to avoid holding read locks until TTL expiry.
+ 
++        Returns without waiting. The final end_session call also waits for
++        these server acknowledgements before submitting END_SESSION.
++
+         When ``start`` or ``end`` is not aligned to the chunk size, the
+         entire chunk containing start boundary is freed but not end boundary.
+         It is caller's responsibility to properly align the boundaries.
+@@ -1116,35 +1217,37 @@
+             cache_salt=cache_salt,
+             request_configs=request_configs,
+         ).no_worker_id_version()
++        pending = self._closed_lookup_rpcs.setdefault(request_id, {})
+         for url in self._server_urls:
+-            self.req_clients[url].free_lookup_locks(
++            future = self.req_clients[url].free_lookup_locks(
+                 base_key, self.tp_size, extra_ranges
+             )
++            pending.setdefault(url, set()).add(future)
+ 
+     def end_session(self, request_id: str) -> None:
+-        """
+-        Notify LMCache server to remove the session for a finished request.
+-
+-        If the request's lookup is still tracked, it stops sending RPCs, and
+-        this function blocks until its LOOKUP and status RPCs already in
+-        flight complete, so their handlers cannot recreate the session after
+-        END_SESSION.
++        """Submit END after each server acknowledges its admitted lookup RPCs.
++
++        Returns without waiting for LOOKUP, status or FREE replies, including
++        after a local timeout marks a server unhealthy. A failed predecessor
++        is logged and prevents END on that server; it is not a successful ACK.
++        Pending transport futures retain the ordering callbacks. No completed
++        request identities are retained by the adapter.
++        A deferred, unsent replacement is cancelled.
+ 
+         Args:
+-            request_id: The ID of the finished request.
+-        """
+-        if not self.is_healthy:
+-            return
+-
+-        lookup = self._lookups.get(request_id)
++            request_id: Finished request. As with request_finished, callers
++                notify once and do not reuse the identity while RPCs remain.
++        """
++        self._deferred_lookups.pop(request_id, None)
++        pending = self._closed_lookup_rpcs.pop(request_id, {})
++        lookup = self._lookups.pop(request_id, None)
+         if lookup is not None:
+-            url = lookup.drain()
+-            if url is not None:
+-                self._mark_lookup_timed_out(url)
+-                return
+-
++            for url, futures in lookup.close_and_take_pending_rpcs().items():
++                pending.setdefault(url, set()).update(futures)
+         for url in self._server_urls:
+-            self.req_clients[url].end_session(request_id)
++            _OrderedSessionEnd(
++                request_id, self.req_clients[url], pending.get(url, set())
++            ).start()
+ 
+     def report_block_allocations(
+         self,
+@@ -1224,6 +1327,47 @@
+         else:
+             self._store_request_pending_counts[req_id] = total
+             return False
++
++    def _lookup_predecessors_complete(self, request_id: str) -> bool:
++        """Poll cleanup RPCs without losing unconfirmed END obligations."""
++        deferred = self._deferred_lookups.get(request_id)
++        if deferred is not None and deferred.failed:
++            return False
++        predecessors = self._closed_lookup_rpcs.get(request_id)
++        if not predecessors:
++            return True
++        if deferred is None:
++            deferred = _DeferredLookup(time.monotonic() + self._mq_timeout)
++            self._deferred_lookups[request_id] = deferred
++
++        waiting_urls: list[str] = []
++        for url, futures in predecessors.items():
++            for future in tuple(futures):
++                if not future.query():
++                    continue
++                if future.exception_ is not None:
++                    deferred.failed = True
++                    logger.error(
++                        "Cannot replace lookup for request %s after failed RPC "
++                        "to %s: %s",
++                        request_id,
++                        url,
++                        future.exception_,
++                    )
++                else:
++                    futures.remove(future)
++            if futures:
++                waiting_urls.append(url)
++        if deferred.failed:
++            return False
++        if not waiting_urls:
++            self._closed_lookup_rpcs.pop(request_id, None)
++            return True
++        if time.monotonic() >= deferred.deadline:
++            deferred.failed = True
++            for url in waiting_urls:
++                self._mark_lookup_timed_out(url)
++        return False
+ 
+     def _mark_lookup_timed_out(self, url: str) -> None:
+         """Log and mark ``url`` unhealthy after an unanswered lookup RPC."""
+@@ -1368,6 +1512,15 @@
+         # The IPC handle is not enough by itself; CUDA needs the exporting
+         # event object to stay alive until the consumer is done with it.
+         self.store_events: dict[str, _IpcEvent] = {}
++        # Every chunk retains its future and event until the request settles.
++        self._store_transfers: dict[
++            str, list[tuple[MessagingFuture[StoreResult] | None, _IpcEvent | None]]
++        ] = {}
++        # Exact-boundary transfers outlive requests; keep their IPC events alive.
++        self._boundary_stores: dict[
++            int, tuple[MessagingFuture[StoreResult] | None, _IpcEvent | None]
++        ] = {}
++        self._completed_boundary_stores: set[int] = set()
+         self.retrieve_events: dict[str, _IpcEvent] = {}
+ 
+         # Alternative error reports, drained together by either public getter.
+@@ -1415,6 +1568,7 @@
+         self._kv_events: list[CacheEvent] = []
+         self._kv_event_lock = threading.RLock()
+         self._kv_event_server_source = False
++        self._kv_events_have_partial_stores = False
+         self._kv_event_incarnation: int | None = None
+         self._kv_event_subscription: MPKVEventSubscriber | None = None
+         # CPU chunks this worker has announced and not withdrawn.
+@@ -1793,6 +1947,10 @@
+         completion immediately, because the scheduler unpins the request's
+         blocks only after collecting one receipt per worker rank.
+ 
++        Every admitted chunk retains its future and event until all stores for
++        the request complete. Unknown submission or completion stops progress;
++        heartbeat loss never establishes remote DMA completion.
++
+         Args:
+             request_id: The ID of the request
+             op: The LoadStoreOp describing the store operation.
+@@ -1802,6 +1960,9 @@
+             request_configs: Optional LMCache request configs to include in
+                 the IPC key.
+         """
++        self._raise_if_store_completion_unknown()
++        if op.is_partial_store:
++            self._disable_partial_store_events()
+         self._ensure_heartbeat_started()
+ 
+         if not self.is_kv_writer:
+@@ -1836,6 +1997,10 @@
+                 "Transfer context is not initialized. "
+                 "Call register_kv_caches() before submitting store requests."
+             )
++        transfers = self._store_transfers.setdefault(request_id, [])
++        slot = len(transfers)
++        # Submission failure may occur after the server admitted the DMA.
++        transfers.append((None, event))
+         future = transfer_ctx.submit_store(
+             request_id,
+             key,
+@@ -1844,10 +2009,16 @@
+             event,
+             self.blocks_in_chunk,
+         )
++        transfers[slot] = (future, event)
+         self.store_futures[request_id] = future
+         if event is not None:
+             self.store_events[request_id] = event
+-        if self._kv_events_enabled and not self._kv_event_server_source:
++        if (
++            self._kv_events_enabled
++            and not self._kv_event_server_source
++            and not op.is_partial_store
++            and not self._kv_events_have_partial_stores
++        ):
+             # Own completion events are the fallback when the server's
+             # cache-event log is not the source. A successful store result
+             # only means the request completed without a fatal error: chunks
+@@ -1857,6 +2028,79 @@
+             self._pending_store_kv_events.setdefault(request_id, []).extend(
+                 self._build_store_kv_events(key)
+             )
++
++    def submit_boundary_store(
++        self,
++        job_id: int,
++        request_id: str,
++        op: LoadStoreOp,
++        event: _IpcEvent | None,
++        cache_salt: str = "",
++        request_configs: dict[str, Any] | None = None,
++    ) -> None:
++        """Submit a pinned checkpoint independently of request completion.
++
++        Args:
++            job_id: Unique scheduler job ID, shared by all ranks.
++            request_id: Request identity for token hashing and cache isolation.
++            op: State-only store with null blocks in unrelated object groups.
++            event: Event recorded after model and CoW writes; retained until done.
++            cache_salt: Per-user isolation salt.
++            request_configs: Per-request cache configuration.
++
++        Raises:
++            RuntimeError: If KV caches have not been registered.
++        """
++        if job_id in self._boundary_stores or job_id in self._completed_boundary_stores:
++            raise ValueError(f"Boundary store job {job_id} was already submitted")
++        self._disable_partial_store_events()
++        self._ensure_heartbeat_started()
++        if not self.is_kv_writer or not self.is_healthy:
++            self._completed_boundary_stores.add(job_id)
++            return
++        if self.transfer_ctx is None:
++            raise RuntimeError("Register KV caches before submitting boundary stores")
++        key = self._create_key(
++            op.token_bytes, op.start, op.end, request_id, cache_salt, request_configs
++        )
++        self._boundary_stores[job_id] = (None, event)
++        future = self.transfer_ctx.submit_store(
++            request_id,
++            key,
++            self.kv_caches,
++            self._block_ids_per_group(op),
++            event,
++            self.blocks_in_chunk,
++        )
++        self._boundary_stores[job_id] = (future, event)
++
++    def get_completed_boundary_stores(self) -> set[int]:
++        """Drain job IDs whose state pages can be unpinned by this worker.
++
++        A missed heartbeat does not prove that an already submitted GPU copy
++        stopped. Such jobs remain pinned until their transfer future completes.
++
++        Returns:
++            Newly completed or unsubmitted job IDs, each reported once.
++
++        Raises:
++            Exception: If transfer completion cannot be established. All jobs and
++                producer events remain retained; no completion receipt is emitted.
++        """
++        completed = set(self._completed_boundary_stores)
++        for job_id, (future, _) in self._boundary_stores.items():
++            if future is None:
++                raise RuntimeError(
++                    f"Boundary store submission outcome unknown for job {job_id}"
++                )
++            if future.query():
++                if not future.result(timeout=60):
++                    logger.error("Boundary store failed for job %d", job_id)
++                completed.add(job_id)
++        self._completed_boundary_stores.clear()
++        for job_id in completed:
++            self._boundary_stores.pop(job_id, None)
++        return completed
+ 
+     @_lmcache_nvtx_annotate
+     def submit_retrieve_request(
+@@ -2035,6 +2279,13 @@
+         self._returned_finished.update(ret_stores)
+         return ret_stores
+ 
++    def skip_finished_sending(self, request_ids: set[str]) -> None:
++        """Never report these requests in finished_sending.
++
++        The scheduler frees them on their finished_recving report instead.
++        """
++        self._returned_finished.update(request_ids)
++
+     @_lmcache_nvtx_annotate
+     def get_finished(
+         self, finished_req_ids_from_engine: set[str]
+@@ -2055,16 +2306,21 @@
+                 including retrieves dropped at submit time while unhealthy
+                 (reported exactly once; blocks already in error_block_ids).
+ 
++        Raises:
++            RuntimeError: If an admitted store loses server health or its
++                submission outcome is unknown. Sources and events stay retained.
++
+         Notes:
+             When enabling async scheduling in vLLM, the same request ID may appear
+             multiple times in `finished_req_ids_from_engine`. The adapter should
+             take care of deduplicating the request IDs and only return the request
+             IDs that have not been returned before.
+         """
++        self._raise_if_store_completion_unknown()
+         if self.dispatcher is not None:
+             dispatch(self.dispatcher, "reclaim")
+ 
+-        # If unhealthy, drain all pending futures immediately
++        # No admitted stores remain when unhealthy receives are invalidated.
+         if not self.is_healthy:
+             finished_stores = set(self.store_futures.keys())
+             finished_retrieves = set()
+@@ -2103,11 +2359,10 @@
+ 
+         finished_stores = set()
+         finished_retrieves = set()
+-        for request_id, s_future in self.store_futures.items():
+-            if not s_future.query():
++        for request_id in self.store_futures:
++            s_result = self._get_store_result(request_id)
++            if s_result is None:
+                 continue
+-
+-            s_result = s_future.result(timeout=60)
+             finished_stores.add(request_id)
+ 
+             if not s_result:
+@@ -2141,6 +2396,7 @@
+         for request_id in finished_stores:
+             self.store_futures.pop(request_id, None)
+             self.store_events.pop(request_id, None)
++            self._store_transfers.pop(request_id)
+         for request_id in finished_retrieves:
+             self.retrieve_futures.pop(request_id, None)
+             self.retrieve_events.pop(request_id, None)
+@@ -2189,16 +2445,21 @@
+             - The second set contains the finished retrieve request ids,
+                 including retrieves dropped at submit time while unhealthy
+                 (reported exactly once; blocks already in error_block_ids).
++
++        Raises:
++            RuntimeError: If an admitted store loses server health or its
++                submission outcome is unknown. No store receipt is emitted.
+         """
+         if not self.lazy_offload:
+             raise ValueError(
+                 "get_finished_with_lazy_offload is only available in lazy offload mode"
+             )
+ 
++        self._raise_if_store_completion_unknown()
+         if self.dispatcher is not None:
+             dispatch(self.dispatcher, "reclaim")
+ 
+-        # If unhealthy, drain all pending futures immediately
++        # No admitted stores remain when unhealthy receives are invalidated.
+         if not self.is_healthy:
+             finished_stores = set(self.store_futures.keys())
+             finished_retrieves = set()
+@@ -2233,11 +2494,10 @@
+ 
+         finished_stores = set()
+         finished_retrieves = set()
+-        for request_id, s_future in self.store_futures.items():
+-            if not s_future.query():
++        for request_id in self.store_futures:
++            s_result = self._get_store_result(request_id)
++            if s_result is None:
+                 continue
+-
+-            s_result = s_future.result(timeout=60)
+             finished_stores.add(request_id)
+ 
+             if not s_result:
+@@ -2272,15 +2532,13 @@
+         for request_id in finished_stores:
+             self.store_futures.pop(request_id, None)
+             self.store_events.pop(request_id, None)
++            self._store_transfers.pop(request_id)
+         for request_id in finished_retrieves:
+             self.retrieve_futures.pop(request_id, None)
+             self.retrieve_events.pop(request_id, None)
+ 
+         # Retrieves dropped while unhealthy still must be reported,
+-        # exactly once, or async loads hang in WAITING_FOR_REMOTE_KVS. No
+-        # finished_sending dedup is needed (unlike the unhealthy branch): a
+-        # dropped retrieve's request is parked in WAITING_FOR_REMOTE_KVS until
+-        # this report, so it cannot also be engine-finished in the same call.
++        # exactly once, or async loads hang in WAITING_FOR_REMOTE_KVS.
+         # Swap-drain so a concurrent submit_retrieve_request add is never lost.
+         dropped = self._dropped_retrieves
+         self._dropped_retrieves = set()
+@@ -2383,16 +2641,33 @@
+     def handle_preemptions(self, need_flush_before_forward: bool) -> None:
+         """Handle worker-side preemption hints from connector metadata.
+ 
+-        When ``need_flush_before_forward`` is true, synchronize deferred
+-        engine-driven gather work before the next forward pass can overwrite
+-        paged KV blocks.
++        When ``need_flush_before_forward`` is true, wait for every submitted
++        store and deferred engine-driven gather before the next forward can
++        overwrite paged KV blocks. Unknown admission or completion raises
++        without releasing the retained sources or producer events.
+ 
+         Args:
+             need_flush_before_forward: When True, flush in-flight gather
+                 operations on the transfer context. When False, this is a no-op.
++
++        Raises:
++            RuntimeError: If store admission or completion cannot be established.
++            TimeoutError: If a remote store does not complete within mq_timeout.
+         """
+         if not need_flush_before_forward:
+             return
++        self._raise_if_store_completion_unknown()
++        if not self.is_healthy and self._boundary_stores:
++            raise RuntimeError("LMCache heartbeat lost with unfinished boundary stores")
++        for transfers in self._store_transfers.values():
++            for future, _ in transfers:
++                if future is None:
++                    raise RuntimeError("Store submission outcome unknown")
++                future.result(timeout=self._mq_timeout)
++        for future, _ in self._boundary_stores.values():
++            if future is None:
++                raise RuntimeError("Boundary store submission outcome unknown")
++            future.result(timeout=self._mq_timeout)
+         transfer_ctx = self.transfer_ctx
+         if not self.is_healthy or transfer_ctx is None:
+             return
+@@ -2460,12 +2735,14 @@
+             if self._heartbeat is not None:
+                 self._heartbeat.stop()
+ 
++        release_kv_caches = False
+         if self.transfer_ctx is not None:
+             logger.info("Unregistering kv caches")
+             try:
+                 future = self.transfer_ctx.unregister()
+                 if future is not None:
+                     future.result(timeout=self._mq_timeout)
++                release_kv_caches = True
+             except TimeoutError:
+                 logger.warning(
+                     "LMCache server did not respond to unregister within %ss. "
+@@ -2482,8 +2759,45 @@
+ 
+         self.req_client.close()
+         self.request_telemetry.close()
++        if release_kv_caches:
++            self.kv_caches = {}
+ 
+     # Helper functions
++    def _raise_if_store_completion_unknown(self) -> None:
++        if any(
++            future is None
++            for transfers in self._store_transfers.values()
++            for future, _ in transfers
++        ):
++            raise RuntimeError("Store submission outcome unknown")
++        if not self.is_healthy and self._store_transfers:
++            raise RuntimeError("LMCache heartbeat lost with unfinished store transfers")
++
++    def _get_store_result(self, request_id: str) -> bool | None:
++        transfers = self._store_transfers[request_id]
++        futures = [future for future, _ in transfers if future is not None]
++        if len(futures) != len(transfers):
++            raise RuntimeError("Store submission outcome unknown")
++        if not all(future.query() for future in futures):
++            return None
++        # Read every result before the caller releases any source or event.
++        results = [future.result(timeout=60) for future in futures]
++        return all(results)
++
++    def _disable_partial_store_events(self) -> None:
++        """Do not announce a model prefix from individual hybrid object groups."""
++        if not self._kv_events_enabled:
++            return
++        with self._kv_event_lock:
++            self._kv_events_have_partial_stores = True
++            self._pending_store_kv_events.clear()
++            self._kv_events = [
++                event
++                for event in self._kv_events
++                if not isinstance(event, CacheStoreEvent)
++            ]
++            self._kv_events_buffered.set(len(self._kv_events))
++
+     def _publish_store_kv_events(self, request_id: str) -> None:
+         """Buffer successful store events and update metrics without a drain."""
+         self._buffer_kv_events(self._pending_store_kv_events.pop(request_id, []))
+@@ -2570,6 +2884,8 @@
+                 [CacheRemoveEvent(block_hashes=list(hashes), medium=record.medium)]
+             )
+         elif record.kind == KV_EVENT_KIND_STORED:
++            if self._kv_events_have_partial_stores:
++                return
+             hashes = [h for h in record.block_hashes if h not in announced]
+             if not hashes or not record.token_ids:
+                 return
+@@ -2610,7 +2926,9 @@
+         """Converge the internal states about finished stores
+         and returns the 'safe finished store request ids' back
+         """
+-        safe_finished_s = self.finished_stores.intersection(self.previously_finished)
++        safe_finished_s = self.finished_stores.intersection(
++            self.previously_finished
++        ).difference(self.store_futures)
+         self.finished_stores.difference_update(self.previously_finished)
+         self.previously_finished.difference_update(safe_finished_s)
+ 
+--- a/lmcache/v1/distributed/api.py
++++ b/lmcache/v1/distributed/api.py
+@@ -752,6 +752,8 @@
+     they are not persisted. Tags name configured L1s for affinity and reporting
+     and are the appropriate identity at process boundaries.
+     """
++    read_generations: dict[ObjectKey, int] = field(default_factory=dict)
++    """Lock generations retained by this prefetch, for conditional cleanup."""
+     _l1_hit_count: int = field(init=False, repr=False, compare=False)
+     _l2_hit_count: int = field(init=False, repr=False, compare=False)
+ 
+--- a/lmcache/v1/distributed/internal_api.py
++++ b/lmcache/v1/distributed/internal_api.py
+@@ -27,6 +27,23 @@
+ 
+ 
+ @dataclass(frozen=True)
++class L1ReadReservation:
++    """Read shares transferred out of a lookup's cancellation authority.
++
++    Attributes:
++        key: Exact object whose reader count was acquired.
++        generation: Original shared L1 read-lock generation.
++        owner: Original L1 manager, or None for the single-L1 configuration.
++        count: Number of shares exclusively owned by this receipt.
++    """
++
++    key: ObjectKey
++    generation: int
++    owner: int | None
++    count: int
++
++
++@dataclass(frozen=True)
+ class L1MemoryDesc:
+     """Describe the contiguous L1 memory arena exposed to external backends.
+ 
+@@ -281,19 +298,49 @@
+         ...
+ 
+     def reserve_read(
+-        self, keys: list[ObjectKey], read_locks: int = 1
++        self,
++        keys: list[ObjectKey],
++        read_locks: int = 1,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> dict[ObjectKey, L1OperationResult]:
+-        """Take ``read_locks`` read locks on each resident key."""
++        """Take read locks and optionally record acquired generations by key."""
+         ...
+ 
+     def unsafe_read(self, keys: list[ObjectKey]) -> dict[ObjectKey, L1OperationResult]:
+         """Return already read-locked objects without new locks."""
+         ...
+ 
++    def pin_read_buffers(
++        self,
++        keys: list[ObjectKey],
++        read_generations: dict[ObjectKey, int],
++        tag: str,
++    ) -> dict[ObjectKey, L1OperationResult]:
++        """Atomically validate original leases and pin buffers for a unique transfer.
++
++        Pins survive read TTL expiry and FREE until finish_read_transfer. A stale
++        generation must return KEY_NOT_READABLE without exposing the buffer.
++        """
++        ...
++
++    def finish_read_transfer(
++        self, keys: list[ObjectKey], tag: str
++    ) -> dict[ObjectKey, L1Error]:
++        """Release only this transfer's pins and original reservations, at most once."""
++        ...
++
+     def finish_read(
+-        self, keys: list[ObjectKey], read_locks: int = 1
+-    ) -> dict[ObjectKey, L1Error]:
+-        """Release ``read_locks`` read locks on each key."""
++        self,
++        keys: list[ObjectKey],
++        read_locks: int = 1,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
++    ) -> dict[ObjectKey, L1Error]:
++        """Release read locks only if supplied acquisition generations match.
++
++        With no generation map, retain the ordinary key-only completion path.
++        """
+         ...
+ 
+     def reserve_write(
+@@ -306,6 +353,40 @@
+         """Reserve a write buffer per key for the writer ``tag``."""
+         ...
+ 
++    def pin_write_buffers(
++        self, keys: list[ObjectKey], tag: str = ""
++    ) -> dict[ObjectKey, L1Error]:
++        """Keep writer-owned staging buffers alive until asynchronous I/O ends.
++
++        Each successful call acquires one non-expiring pin per key, independent
++        of its write TTL. Pins prevent admission, discard and normal eviction.
++
++        Args:
++            keys: Object keys whose staging buffers will be borrowed.
++            tag: The writer tag used to reserve these buffers.
++
++        Returns:
++            SUCCESS per pinned key, or KEY_NOT_EXIST when this writer has no
++            staging buffer. Other writers and resident objects are unaffected.
++        """
++        ...
++
++    def unpin_write_buffers(
++        self, keys: list[ObjectKey], tag: str = ""
++    ) -> dict[ObjectKey, L1Error]:
++        """Release one completed I/O borrow per writer-owned staging buffer.
++
++        Args:
++            keys: Object keys whose I/O has completed.
++            tag: The writer tag passed to pin_write_buffers.
++
++        Returns:
++            SUCCESS per released pin, KEY_NOT_EXIST after force deletion, or
++            KEY_IN_WRONG_STATE when no pin is held. Buffers remain staged for
++            admission or explicit discard.
++        """
++        ...
++
+     def finish_write(
+         self, keys: list[ObjectKey], tag: str = ""
+     ) -> dict[ObjectKey, L1Error]:
+@@ -313,15 +394,20 @@
+         ...
+ 
+     def finish_write_and_reserve_read(
+-        self, keys: list[ObjectKey], read_locks: int = 1, tag: str = ""
++        self,
++        keys: list[ObjectKey],
++        read_locks: int = 1,
++        tag: str = "",
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> dict[ObjectKey, L1OperationResult]:
+-        """Commit ``tag``'s buffers and read-lock the resident objects."""
++        """Commit tagged buffers, take read locks and optionally record generations."""
+         ...
+ 
+     def finish_write_and_delete(
+         self, keys: list[ObjectKey], tag: str = ""
+     ) -> dict[ObjectKey, L1Error]:
+-        """Discard ``tag``'s write reservations without committing them."""
++        """Discard ``tag``'s reservations, including expired ones, after I/O ends."""
+         ...
+ 
+     def delete(
+--- a/lmcache/v1/distributed/l1_manager/base.py
++++ b/lmcache/v1/distributed/l1_manager/base.py
+@@ -4,8 +4,9 @@
+ # Standard
+ from abc import abstractmethod
+ from collections.abc import Callable
+-from dataclasses import dataclass
++from dataclasses import dataclass, field
+ from itertools import count
++from time import monotonic
+ import threading
+ import weakref
+ 
+@@ -35,6 +36,36 @@
+ 
+ logger = init_logger(__name__)
+ _l1_manager_ids = count()
++_read_generations = count(1)
++
++
++@dataclass(slots=True)
++class _ReadLock:
++    """Shared reader count and TTL, mutated under the L1 manager mutex.
++
++    Expiry and generation renewal use one clock sample so a new lifetime
++    cannot accidentally inherit an expired reader's generation.
++    """
++
++    ttl_seconds: int
++    generation: int = 0
++    _count: int = 0
++    _expires_at: float = 0.0
++
++    def lock(self, count: int = 1) -> None:
++        now = monotonic()
++        if self._count == 0 or now >= self._expires_at:
++            self._count = 0
++            self.generation = next(_read_generations)
++        self._count += count
++        self._expires_at = now + self.ttl_seconds
++
++    def unlock(self, count: int = 1) -> None:
++        self._count = max(0, self._count - count)
++
++    def is_locked(self) -> bool:
++        return self._count > 0 and monotonic() < self._expires_at
++
+ 
+ # Upper bound for the count parameter in reserve_read / finish_read
+ # to prevent a single call from holding the global lock for too long.
+@@ -88,7 +119,7 @@
+     write_lock: TTLLock
+     """ The writer's reservation; held while the object is staged. """
+ 
+-    read_lock: TTLLock
++    read_lock: _ReadLock
+     """ The read lock with TTL for the object. """
+ 
+     is_temporary: bool
+@@ -101,6 +132,16 @@
+     ``_pop_staging``, so a buffer whose logical size is narrowed in
+     between (``MemoryObj.set_used_size`` after serialization) does not
+     leave phantom staging bytes behind. """
++
++    read_buffer_pins: dict[str, int] = field(default_factory=dict)
++    """Transfer-owned original generations; pins do not expire with read TTL."""
++
++    write_buffer_pins: int = 0
++    """Active I/O borrowers of this writer's staging buffer, without a TTL.
++
++    Each pin is released after its I/O completes. Normal reclamation cannot
++    free this buffer while the count is nonzero.
++    """
+ 
+ 
+ def l1_mgr_synchronized(func):
+@@ -297,6 +338,8 @@
+         self,
+         keys: list[ObjectKey],
+         read_locks: int = 1,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> dict[ObjectKey, L1OperationResult]:
+         """Reserve read access for the given keys.
+ 
+@@ -307,6 +350,7 @@
+                 one per worker that consumes a read lock
+                 for the same key (e.g. MLA models with
+                 TP > 1).
++            read_generations: Optional output mapping of acquired lock generations.
+ 
+         Returns:
+             A dictionary mapping each object key to a tuple
+@@ -328,11 +372,9 @@
+                 ret[key] = (L1Error.KEY_NOT_EXIST, None)
+                 continue
+ 
+-            # TODO(perf): support a count argument in
+-            # TTLLock.lock() to avoid Python for-loop
+-            # overhead (TTLLock is C++ std::atomic).
+-            for _ in range(total):
+-                entry.read_lock.lock()
++            entry.read_lock.lock(total)
++            if read_generations is not None:
++                read_generations[key] = entry.read_lock.generation
+             ret[key] = (L1Error.SUCCESS, entry.memory_obj)
+             successful_keys.append(key)
+ 
+@@ -378,10 +420,101 @@
+         return ret
+ 
+     @l1_mgr_synchronized
++    def pin_read_buffers(
++        self,
++        keys: list[ObjectKey],
++        read_generations: dict[ObjectKey, int],
++        tag: str,
++    ) -> dict[ObjectKey, L1OperationResult]:
++        """Validate original leases and retain their buffers until transfer completion.
++
++        Args:
++            keys: Resident objects about to be used by asynchronous I/O.
++            read_generations: Generations acquired by the original lookup.
++            tag: Process-unique transfer identity, never reused.
++
++        Returns:
++            Objects protected against normal reclamation, or KEY_NOT_READABLE
++            for expired, missing-generation or repeated transfer claims.
++        """
++        ret: dict[ObjectKey, L1OperationResult] = {}
++        for key in keys:
++            entry = self._objects.get(key)
++            if entry is None:
++                ret[key] = (L1Error.KEY_NOT_EXIST, None)
++            elif (
++                not tag
++                or tag in entry.read_buffer_pins
++                or not entry.read_lock.is_locked()
++                or read_generations.get(key) != entry.read_lock.generation
++            ):
++                ret[key] = (L1Error.KEY_NOT_READABLE, None)
++            else:
++                entry.read_buffer_pins[tag] = entry.read_lock.generation
++                ret[key] = (L1Error.SUCCESS, entry.memory_obj)
++        return ret
++
++    @l1_mgr_synchronized
++    def finish_read_transfer(
++        self, keys: list[ObjectKey], tag: str
++    ) -> dict[ObjectKey, L1Error]:
++        """Release a transfer's pin and its original reservation at most once.
++
++        Args:
++            keys: Objects the completed transfer attempted to pin.
++            tag: The identity passed to pin_read_buffers.
++
++        Returns:
++            SUCCESS when the original read count was released. Expired or absent
++            claims return KEY_IN_WRONG_STATE; any owned pin is still released.
++        """
++        ret: dict[ObjectKey, L1Error] = {}
++        finished: list[ObjectKey] = []
++        deleted: list[ObjectKey] = []
++        freed: list[MemoryObj] = []
++        for key in keys:
++            entry = self._objects.get(key)
++            if entry is None:
++                ret[key] = L1Error.KEY_NOT_EXIST
++                continue
++            generation = entry.read_buffer_pins.pop(tag, None)
++            if generation is None:
++                ret[key] = L1Error.KEY_IN_WRONG_STATE
++                continue
++            released = (
++                generation == entry.read_lock.generation and entry.read_lock.is_locked()
++            )
++            if released:
++                entry.read_lock.unlock()
++            if (
++                entry.is_temporary
++                and not entry.read_lock.is_locked()
++                and not entry.read_buffer_pins
++            ):
++                freed.append(entry.memory_obj)
++                deleted.append(key)
++                del self._objects[key]
++            ret[key] = L1Error.SUCCESS if released else L1Error.KEY_IN_WRONG_STATE
++            if released:
++                finished.append(key)
++        for listener in self._registered_listeners:
++            listener.on_l1_keys_read_finished(finished)
++        self._event_bus.publish(
++            Event(
++                event_type=EventType.L1_READ_FINISHED,
++                metadata={"l1_tag": self._config.tag, "keys": finished},
++            )
++        )
++        self._free_and_report_deleted(deleted, freed)
++        return ret
++
++    @l1_mgr_synchronized
+     def finish_read(
+         self,
+         keys: list[ObjectKey],
+         read_locks: int = 1,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> dict[ObjectKey, L1Error]:
+         """Finish read access for the given keys.
+ 
+@@ -396,6 +529,8 @@
+                 default); the reservation owner releasing the
+                 whole reservation passes the ``reserve_read``
+                 total.
++            read_generations: If supplied, release only matching generations;
++                missing keys are rejected. Omit for legacy key-only completion.
+ 
+         Returns:
+             A dictionary mapping each object key to an
+@@ -423,6 +558,11 @@
+                 ret[key] = L1Error.KEY_NOT_EXIST
+                 continue
+ 
++            if read_generations is not None and (
++                read_generations.get(key) != entry.read_lock.generation
++            ):
++                ret[key] = L1Error.KEY_IN_WRONG_STATE
++                continue
+             if not entry.read_lock.is_locked():
+                 logger.warning(
+                     "L1Manager: finish read on non-read-locked key %s, "
+@@ -432,12 +572,12 @@
+                 ret[key] = L1Error.KEY_IN_WRONG_STATE
+                 continue
+ 
+-            # TODO(perf): support a count argument in
+-            # TTLLock.unlock() to avoid Python for-loop
+-            # overhead (TTLLock is C++ std::atomic).
+-            for _ in range(total):
+-                entry.read_lock.unlock()
+-            if entry.is_temporary and not entry.read_lock.is_locked():
++            entry.read_lock.unlock(total)
++            if (
++                entry.is_temporary
++                and not entry.read_lock.is_locked()
++                and not entry.read_buffer_pins
++            ):
+                 need_to_free.append(entry.memory_obj)
+                 need_to_free_keys.append(key)
+                 del self._objects[key]
+@@ -523,7 +663,7 @@
+ 
+             staged = self._get_staging(key, tag)
+             if staged is not None:
+-                if staged.write_lock.is_locked():
++                if staged.write_lock.is_locked() or staged.write_buffer_pins:
+                     ret[key] = (L1Error.KEY_NOT_WRITABLE, None)
+                     continue
+                 # The previous reservation expired: hand the buffer over.
+@@ -565,7 +705,7 @@
+                 entry = L1ObjectState(
+                     memory_obj=mem_obj,
+                     write_lock=TTLLock(self._write_ttl_seconds),
+-                    read_lock=TTLLock(self._read_ttl_seconds),
++                    read_lock=_ReadLock(self._read_ttl_seconds),
+                     is_temporary=is_temp,
+                 )
+                 entry.write_lock.lock()
+@@ -588,6 +728,60 @@
+         return ret
+ 
+     @l1_mgr_synchronized
++    def pin_write_buffers(
++        self, keys: list[ObjectKey], tag: str = ""
++    ) -> dict[ObjectKey, L1Error]:
++        """Keep this writer's staging buffers alive while asynchronous I/O uses them.
++
++        Pins do not expire with the write TTL. Acquire a pin before handing a
++        buffer to an adapter and release it only after the adapter completes.
++
++        Args:
++            keys: Object keys whose staging buffers will be borrowed.
++            tag: The writer tag used at reservation.
++
++        Returns:
++            SUCCESS per pinned key, or KEY_NOT_EXIST if the tag has no staging
++            buffer. Resident objects and other writers' buffers are unaffected.
++        """
++        ret: dict[ObjectKey, L1Error] = {}
++        for key in keys:
++            entry = self._get_staging(key, tag)
++            if entry is None:
++                ret[key] = L1Error.KEY_NOT_EXIST
++                continue
++            entry.write_buffer_pins += 1
++            ret[key] = L1Error.SUCCESS
++        return ret
++
++    @l1_mgr_synchronized
++    def unpin_write_buffers(
++        self, keys: list[ObjectKey], tag: str = ""
++    ) -> dict[ObjectKey, L1Error]:
++        """Release one completed I/O borrow of each writer-owned staging buffer.
++
++        Args:
++            keys: Object keys whose I/O has completed.
++            tag: The writer tag passed to :meth:`pin_write_buffers`.
++
++        Returns:
++            SUCCESS per released pin, KEY_NOT_EXIST when the staging buffer was
++            force-cleared, or KEY_IN_WRONG_STATE when this writer has no pin.
++            The buffer stays staged for admission or explicit discard.
++        """
++        ret: dict[ObjectKey, L1Error] = {}
++        for key in keys:
++            entry = self._get_staging(key, tag)
++            if entry is None:
++                ret[key] = L1Error.KEY_NOT_EXIST
++            elif entry.write_buffer_pins == 0:
++                ret[key] = L1Error.KEY_IN_WRONG_STATE
++            else:
++                entry.write_buffer_pins -= 1
++                ret[key] = L1Error.SUCCESS
++        return ret
++
++    @l1_mgr_synchronized
+     def finish_write(
+         self,
+         keys: list[ObjectKey],
+@@ -611,6 +805,7 @@
+ 
+         Errors:
+             KEY_NOT_EXIST: ``tag`` stages nothing for the key.
++            KEY_IS_LOCKED: I/O still holds a staging buffer pin.
+             KEY_IN_WRONG_STATE: The staging object is not write-locked (its
+                 reservation expired), which means the writer may have
+                 caused inconsistent data.
+@@ -667,6 +862,8 @@
+         keys: list[ObjectKey],
+         read_locks: int = 1,
+         tag: str = "",
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> dict[ObjectKey, L1OperationResult]:
+         """Atomically finish write and acquire read lock for the given keys.
+ 
+@@ -681,6 +878,7 @@
+                 worker that consumes a read lock for the same key
+                 (e.g. MLA models with TP > 1).
+             tag: The writer's tag passed to ``reserve_write``.
++            read_generations: Optional output mapping of acquired lock generations.
+ 
+         Returns:
+             A dictionary mapping each object key to a tuple of
+@@ -689,6 +887,7 @@
+ 
+         Errors:
+             KEY_NOT_EXIST: ``tag`` stages nothing for the key.
++            KEY_IS_LOCKED: I/O still holds a staging buffer pin.
+             KEY_IN_WRONG_STATE: The staging object is not write-locked (its
+                 reservation expired).
+ 
+@@ -725,8 +924,9 @@
+                 discarded.append(entry.memory_obj)
+                 resident_keys.append(key)
+                 entry = resident
+-            for _ in range(total):
+-                entry.read_lock.lock()
++            entry.read_lock.lock(total)
++            if read_generations is not None:
++                read_generations[key] = entry.read_lock.generation
+             ret[key] = (L1Error.SUCCESS, entry.memory_obj)
+ 
+         self._memory_manager.free(discarded)
+@@ -754,7 +954,8 @@
+         """Delete the given keys from L1 cache.
+ 
+         Deletes the resident object and reclaims the key's staging objects
+-        whose write lock expired (all of them when ``force`` is True).
++        whose write lock expired and whose I/O pins have been released
++        (all of them when ``force`` is True).
+ 
+         Args:
+             keys: The list of object keys to delete.
+@@ -768,9 +969,8 @@
+ 
+         Errors:
+             KEY_NOT_EXIST: The key does not exist.
+-            KEY_IS_LOCKED: The key is read-locked, or a live staging object
+-                exists for it, so it cannot be deleted. Never returned when
+-                ``force`` is True.
++            KEY_IS_LOCKED: The key is read-locked, or a staging object is
++                write-locked or I/O-pinned. Never returned when ``force`` is True.
+         """
+         need_to_free: list[MemoryObj] = []
+         ret: dict[ObjectKey, L1Error] = {}
+@@ -794,7 +994,7 @@
+                 gone_keys.append(key)
+                 continue
+ 
+-            locked = entry.read_lock.is_locked()
++            locked = entry.read_lock.is_locked() or bool(entry.read_buffer_pins)
+             if locked and not force:
+                 ret[key] = L1Error.KEY_IS_LOCKED
+                 continue
+@@ -818,10 +1018,11 @@
+     ) -> dict[ObjectKey, L1Error]:
+         """Atomically finish write access and discard the staging objects.
+ 
+-        Unlock and discard happen in one critical section, so no other
++        Discard happens in one critical section, so no other
+         component can observe or lock the object in between. The staging
+         objects never become resident, and no write-finished notification is
+-        emitted.
++        emitted. Expired reservations can also be discarded: expiry prevents
++        admission, but does not prevent their writer from releasing memory.
+ 
+         Args:
+             keys: The list of object keys whose staging objects to discard.
+@@ -832,18 +1033,27 @@
+ 
+         Errors:
+             KEY_NOT_EXIST: ``tag`` stages nothing for the key.
+-            KEY_IN_WRONG_STATE: The staging object is not write-locked (its
+-                reservation expired).
++            KEY_IS_LOCKED: An I/O borrower still pins the staging buffer.
++
++        Note:
++            The caller must ensure any I/O against these objects has finished.
++            Only this writer's staging objects are removed; resident objects
++            and other tags' staging objects are unaffected.
+         """
+         ret: dict[ObjectKey, L1Error] = {}
+         discarded: list[MemoryObj] = []
+         gone_keys: list[ObjectKey] = []
+ 
+         for key in keys:
+-            err, entry = self._take_staging(key, tag, "finish_write_and_delete")
+-            ret[key] = err
+-            if err != L1Error.SUCCESS or entry is None:
+-                continue
++            staged = self._get_staging(key, tag)
++            if staged is None:
++                ret[key] = L1Error.KEY_NOT_EXIST
++                continue
++            if staged.write_buffer_pins:
++                ret[key] = L1Error.KEY_IS_LOCKED
++                continue
++            entry = self._pop_staging(key, tag)
++            ret[key] = L1Error.SUCCESS
+             logger.debug(
+                 "L1Manager: discarding staging object for key %s (tag %r)",
+                 key,
+@@ -882,8 +1092,8 @@
+                 every staging object. This may corrupt in-flight
+                 store/prefetch operations. If False (default), only clear
+                 unlocked resident objects and staging objects whose write
+-                lock expired, keeping read-locked objects and live staging
+-                objects intact.
++                lock expired and whose I/O pins were released, keeping
++                read-locked objects and borrowed staging buffers intact.
+         """
+         if force:
+             staging_count = sum(len(per_tag) for per_tag in self._staging.values())
+@@ -928,7 +1138,7 @@
+         locked_count = 0
+ 
+         for key, entry in list(self._objects.items()):
+-            if entry.read_lock.is_locked():
++            if entry.read_lock.is_locked() or entry.read_buffer_pins:
+                 locked_count += 1
+                 continue
+             keys_to_clear.append(key)
+@@ -960,7 +1170,9 @@
+         )
+ 
+     def is_key_evictable(self, key: ObjectKey) -> bool:
+-        """Check if a key is eligible for eviction (not locked).
++        """Check if a resident or staging object is eligible for eviction.
++
++        I/O-pinned staging buffers remain ineligible after their write TTL.
+ 
+         This method does NOT acquire the global L1Manager lock.
+         ``delete()`` will check again and safely reject a key
+@@ -971,17 +1183,23 @@
+ 
+         Returns:
+             True if the key has a resident object that is not read-locked,
+-            or a staging object whose write lock expired; False otherwise.
++            or a staging object whose write lock expired and has no I/O pins;
++            False otherwise.
+         """
+         entry = self._objects.get(key, None)
+-        if entry is not None and not entry.read_lock.is_locked():
++        if (
++            entry is not None
++            and not entry.read_lock.is_locked()
++            and not entry.read_buffer_pins
++        ):
+             return True
+         per_tag = self._staging.get(key, None)
+         if per_tag is None:
+             return False
+         # Snapshot: this runs without the manager lock.
+         return any(
+-            not staged.write_lock.is_locked() for staged in list(per_tag.values())
++            not staged.write_lock.is_locked() and not staged.write_buffer_pins
++            for staged in list(per_tag.values())
+         )
+ 
+     def get_memory_usage(self) -> tuple[int, int]:
+@@ -1176,12 +1394,16 @@
+         Returns:
+             (SUCCESS, entry) with the entry removed from the staging table;
+             (KEY_NOT_EXIST, None) when ``tag`` stages nothing for ``key``;
++            (KEY_IS_LOCKED, None) while I/O still pins the staging buffer;
+             (KEY_IN_WRONG_STATE, None) when the reservation's write lock
+             expired (the object stays staged for eviction to reclaim).
+         """
+         staged = self._get_staging(key, tag)
+         if staged is None:
+             return L1Error.KEY_NOT_EXIST, None
++
++        if staged.write_buffer_pins:
++            return L1Error.KEY_IS_LOCKED, None
+ 
+         if not staged.write_lock.is_locked():
+             logger.warning(
+@@ -1197,12 +1419,12 @@
+         return L1Error.SUCCESS, self._pop_staging(key, tag)
+ 
+     def _reclaim_staging(self, key: ObjectKey, force: bool) -> int:
+-        """Free ``key``'s staging objects whose write lock expired.
++        """Free expired staging objects after their I/O pins are released.
+ 
+         Args:
+             key: The object key.
+-            force: When True, free live (still write-locked) staging objects
+-                too, with a warning.
++            force: When True, free write-locked or I/O-pinned staging objects
++                too, with a warning. This can invalidate an active adapter.
+ 
+         Returns:
+             The number of staging objects freed.
+@@ -1212,7 +1434,7 @@
+             return 0
+         freed: list[MemoryObj] = []
+         for tag, staged in list(per_tag.items()):
+-            if staged.write_lock.is_locked():
++            if staged.write_lock.is_locked() or staged.write_buffer_pins:
+                 if not force:
+                     continue
+                 logger.warning(
+--- a/lmcache/v1/distributed/storage_manager.py
++++ b/lmcache/v1/distributed/storage_manager.py
+@@ -39,6 +39,7 @@
+ from lmcache.v1.distributed.internal_api import (
+     L1ManagerInterface,
+     L1OperationResult,
++    L1ReadReservation,
+     L2AdapterListener,
+ )
+ from lmcache.v1.distributed.l1_manager import DevDaxL1Manager, create_l1_managers
+@@ -103,6 +104,8 @@
+ # Owner/key groups of the deprecated read-completion API (see
+ # ``prepare_read_completion``). No MemoryObj or device pointer crosses msgpack.
+ L1WriteCompletion = list[tuple[int, list[ObjectKey]]]
++L1ReadGenerationCompletion = tuple[tuple[int, tuple[tuple[ObjectKey, int], ...]], ...]
++L1ReadTransferCompletion = tuple[str, L1ReadGenerationCompletion]
+ 
+ _DEVDAX_L1_TAGS = MemoryTags(segment=MemorySegment.CXL, residency=MemoryResidency.LOCAL)
+ 
+@@ -504,12 +507,13 @@
+                     {"keys": keys},
+                 )
+ 
+-    @enable_tracing(redact=("l1_owners",))
+     def finish_read_prefetched(
+         self,
+         keys: list[ObjectKey],
+         read_locks: int = 1,
+         l1_owners: dict[ObjectKey, int] | None = None,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> None:
+         """Finish reading prefetched objects.
+ 
+@@ -517,19 +521,15 @@
+             keys: Object keys that have been read.
+             read_locks: Read locks to release per key (the whole
+                 reservation when releasing a lookup's locks).
+-        """
+-        finish_result = self._finish_read_objects(keys, read_locks, l1_owners)
+-        successful_keys = [k for k, e in finish_result.items() if e == L1Error.SUCCESS]
+-        failed_keys = [k for k, e in finish_result.items() if e != L1Error.SUCCESS]
+-        self._event_bus.publish(
+-            Event(
+-                event_type=EventType.SM_READ_PREFETCHED_FINISHED,
+-                metadata={
+-                    "succeeded_keys": successful_keys,
+-                    "failed_keys": failed_keys,
+-                },
+-            )
++            l1_owners: Runtime L1 manager IDs retained by prefetch; required
++                when multiple L1 managers are configured.
++            read_generations: Optional generations captured at acquisition;
++                supplied missing or stale generations cannot release a lock.
++        """
++        finish_result = self._finish_read_objects(
++            keys, read_locks, l1_owners, read_generations=read_generations
+         )
++        self._report_read_finished(finish_result, read_locks)
+ 
+     @enable_tracing()
+     def submit_prefetch_task(
+@@ -609,6 +609,26 @@
+                 handle.prefetch_request_id,
+             )
+         return result
++
++    def discard_prefetch_task(self, handle: PrefetchHandle) -> bool:
++        """Return sole ownership of an unconsumed prefetch to its controller.
++
++        Completed results release their retained locks immediately. Pending
++        work retains its buffers until completion, then discards its result.
++        No QUERY, WAIT, or RETRIEVE may use this handle after a successful call.
++
++        Args:
++            handle: Handle returned by submit_prefetch_task.
++
++        Returns:
++            Whether ownership was transferred; False for an already consumed,
++            discarded, unknown, or empty handle. This is not an I/O drain ack.
++        """
++        if handle.prefetch_request_id == -1:
++            return False
++        return self._prefetch_controller.discard_prefetch_result(
++            handle.prefetch_request_id
++        )
+ 
+     def wait_prefetch_status(
+         self,
+@@ -1435,6 +1455,133 @@
+             len(self._l1_managers),
+         )
+ 
++    def prepare_read_generation_completion(
++        self,
++        reservations: tuple[L1ReadReservation, ...],
++    ) -> L1ReadGenerationCompletion:
++        """Capture known lookup reservations for stream-ordered release.
++
++        Args:
++            reservations: Original shares exclusively claimed by this transfer.
++
++        Returns:
++            Immutable serializable owner/key/generation groups.
++
++        Raises:
++            ValueError: A retained key has no registered L1 owner.
++        """
++        groups: dict[int, list[tuple[ObjectKey, int]]] = defaultdict(list)
++        for reservation in reservations:
++            if reservation.count != 1:
++                raise ValueError("A transfer must own exactly one read share per key")
++            owners = (
++                {reservation.key: reservation.owner}
++                if reservation.owner is not None
++                else None
++            )
++            for owner in self._read_groups([reservation.key], owners):
++                groups[owner].append((reservation.key, reservation.generation))
++        return tuple((owner, tuple(keys)) for owner, keys in groups.items())
++
++    def finish_read_reservations(
++        self, reservations: tuple[L1ReadReservation, ...]
++    ) -> None:
++        """Settle exclusively claimed, unpinned lookup shares exactly once.
++
++        Args:
++            reservations: Shares removed from Session cancellation authority.
++                The caller must not reuse a receipt or pass a pinned share here.
++        """
++        groups: dict[tuple[int | None, int], list[L1ReadReservation]] = defaultdict(
++            list
++        )
++        for reservation in reservations:
++            groups[(reservation.owner, reservation.count)].append(reservation)
++        for (owner, count), group in groups.items():
++            keys = [item.key for item in group]
++            self.finish_read_prefetched(
++                keys,
++                read_locks=count,
++                l1_owners=dict.fromkeys(keys, owner) if owner is not None else None,
++                read_generations={item.key: item.generation for item in group},
++            )
++
++    def pin_read_buffers(
++        self, completion: L1ReadGenerationCompletion, tag: str
++    ) -> dict[ObjectKey, MemoryObj]:
++        """Retain known original lookup generations before asynchronous reads.
++
++        Args:
++            completion: Original owner/key/generation groups captured by lookup.
++            tag: Process-unique transfer identity.
++
++        Returns:
++            Only objects whose original leases were live at pin acquisition.
++
++        Raises:
++            ValueError: An owner is unregistered. The caller must always submit
++                finish_read_transfer for these groups after any queued device work.
++        """
++        if any(owner not in self._l1_managers_by_id for owner, _ in completion):
++            raise ValueError("Read transfer requires a registered L1 owner")
++        objects: dict[ObjectKey, MemoryObj] = {}
++        for owner, reservations in completion:
++            result = self._l1_managers_by_id[owner].pin_read_buffers(
++                [key for key, _ in reservations], dict(reservations), tag
++            )
++            for key, (error, obj) in result.items():
++                if error == L1Error.SUCCESS and obj is not None:
++                    objects[key] = obj
++                else:
++                    self.finish_read_prefetched(
++                        [key],
++                        l1_owners={key: owner},
++                        read_generations=dict(reservations),
++                    )
++        return objects
++
++    def finish_read_transfer(self, completion: L1ReadTransferCompletion) -> None:
++        """Release transfer pins after stream completion without consulting Sessions.
++
++        Args:
++            completion: The unique transfer tag and its captured lookup groups.
++
++        Raises:
++            ValueError: A captured L1 owner is no longer registered.
++        """
++        tag, groups = completion
++        if any(owner not in self._l1_managers_by_id for owner, _ in groups):
++            raise ValueError("Read completion requires a registered L1 owner")
++        results: dict[ObjectKey, L1Error] = {}
++        for owner, reservations in groups:
++            results.update(
++                self._l1_managers_by_id[owner].finish_read_transfer(
++                    [key for key, _ in reservations], tag
++                )
++            )
++        self._report_read_finished(results, 1)
++
++    def _report_read_finished(
++        self, finish_result: dict[ObjectKey, L1Error], read_locks: int
++    ) -> None:
++        successful_keys = [k for k, e in finish_result.items() if e == L1Error.SUCCESS]
++        failed_keys = [k for k, e in finish_result.items() if e != L1Error.SUCCESS]
++        # Trace effects, not rejected stale releases or process-local generations.
++        if successful_keys:
++            publish_call_event(
++                "lmcache.v1.distributed.storage_manager.StorageManager.finish_read_prefetched",
++                {"keys": successful_keys, "read_locks": read_locks},
++            )
++        self._event_bus.publish(
++            Event(
++                event_type=EventType.SM_READ_PREFETCHED_FINISHED,
++                metadata={
++                    "succeeded_keys": successful_keys,
++                    "failed_keys": failed_keys,
++                },
++            )
++        )
++
+     def _read_groups(
+         self, keys: list[ObjectKey], owners: dict[ObjectKey, int] | None
+     ) -> dict[int, list[ObjectKey]]:
+@@ -1499,13 +1646,20 @@
+         return results
+ 
+     def _finish_read_objects(
+-        self, keys: list[ObjectKey], count: int, owners: dict[ObjectKey, int] | None
++        self,
++        keys: list[ObjectKey],
++        count: int,
++        owners: dict[ObjectKey, int] | None,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> dict[ObjectKey, L1Error]:
+         """Release ``count`` read locks per key on the L1 that holds it."""
+         results: dict[ObjectKey, L1Error] = {key: L1Error.KEY_NOT_EXIST for key in keys}
+         for owner, group in self._read_groups(keys, owners).items():
+             results.update(
+-                self._l1_managers_by_id[owner].finish_read(group, read_locks=count)
++                self._l1_managers_by_id[owner].finish_read(
++                    group, read_locks=count, read_generations=read_generations
++                )
+             )
+         return results
+ 
+--- a/lmcache/v1/multiprocess/session.py
++++ b/lmcache/v1/multiprocess/session.py
+@@ -14,6 +14,8 @@
+ # First Party
+ from lmcache.logging import init_logger
+ from lmcache.v1.distributed.api import ObjectKey
++from lmcache.v1.distributed.internal_api import L1ReadReservation
++from lmcache.v1.distributed.l1_manager import validate_read_locks
+ from lmcache.v1.multiprocess.custom_types import IPCCacheServerKey
+ from lmcache.v1.multiprocess.token_codec import TOKEN_STRIDE, num_packed_tokens
+ from lmcache.v1.multiprocess.token_hasher import TokenHasher
+@@ -28,6 +30,23 @@
+ logger = init_logger(__name__)
+ 
+ 
++@dataclass(frozen=True)
++class AbandonedPrefetch:
++    """Original lookup metadata and unclaimed shares retained by an APC retry.
++
++    Worker-owned shares remain with their transfer receipts. Only
++    ``unclaimed_reads`` may be released by abandoned-lookup cancellation.
++    """
++
++    key: IPCCacheServerKey
++    hit_chunks: int
++    locked_gids: tuple[int, ...]
++    group_windows: tuple[int, ...]
++    l1_owners: dict[ObjectKey, int]
++    read_generations: dict[ObjectKey, int]
++    unclaimed_reads: tuple[L1ReadReservation, ...]
++
++
+ @dataclass
+ class Session:
+     """Tracks accumulated token IDs and computed chunk hashes for a request.
+@@ -50,11 +69,15 @@
+     lookup_ipc_key: Optional[IPCCacheServerKey] = None
+     prefetch_hit_chunks: int = -1
+     prefetch_locked_gids: tuple = ()
++    prefetch_read_generations: dict[ObjectKey, int] = field(default_factory=dict)
+     prefetch_group_windows: tuple[int, ...] = ()
+     _prefetch_owners: dict[ObjectKey, int] = field(default_factory=dict, repr=False)
++    # One APC shrink is supported until its original reservation is released.
++    _abandoned_prefetch: AbandonedPrefetch | None = field(default=None, repr=False)
+     extras: dict[str, Any] = field(default_factory=dict)
+     _lookup_generation: int = field(default=0, repr=False)
+-    _failed_retrieve_releases: set[tuple[int, int, int, int, int]] = field(
++    _unclaimed_reads: dict[ObjectKey, int] = field(default_factory=dict, repr=False)
++    _claimed_worker_reads: set[tuple[int, int, ObjectKey]] = field(
+         default_factory=set, repr=False
+     )
+     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False)
+@@ -155,28 +178,140 @@
+         self,
+         key: IPCCacheServerKey,
+         group_windows: tuple[int, ...],
+-    ) -> None:
+-        """Record a new lookup and reset its per-lookup release state."""
+-        with self._lock:
++    ) -> bool:
++        """Start a lookup while preserving a completed APC-shrink reservation.
++
++        Snapshot only shares not already claimed by FREE or a worker. A
++        worker's existing completion receipt survives the lookup replacement.
++
++        Args:
++            key: Lookup key. A full-prefix retry replaces a nonzero APC start.
++            group_windows: Attention windows of the admitted lookup.
++
++        Returns:
++            Whether the lookup was admitted. While an abandoned reservation
++            awaits cleanup, reject further lookups without overwriting it.
++            Callers must report a cache miss instead of submitting prefetch.
++        """
++        with self._lock:
++            if self._abandoned_prefetch is not None:
++                return False
++            old_key = self.lookup_ipc_key
++            if (
++                old_key is not None
++                and old_key.start > 0
++                and key.start == 0
++                and self.prefetch_read_generations
++            ):
++                self._abandoned_prefetch = AbandonedPrefetch(
++                    old_key,
++                    self.prefetch_hit_chunks,
++                    self.prefetch_locked_gids,
++                    self.prefetch_group_windows,
++                    self._prefetch_owners.copy(),
++                    self.prefetch_read_generations.copy(),
++                    tuple(
++                        L1ReadReservation(
++                            obj_key,
++                            self.prefetch_read_generations[obj_key],
++                            self._prefetch_owners.get(obj_key),
++                            count,
++                        )
++                        for obj_key, count in self._unclaimed_reads.items()
++                        if count
++                    ),
++                )
+             self.lookup_ipc_key = key
+             self.prefetch_hit_chunks = -1
+             self.prefetch_locked_gids = ()
++            self.prefetch_read_generations = {}
+             self.prefetch_group_windows = group_windows
+             self._lookup_generation += 1
+-            self._failed_retrieve_releases.clear()
++            self._unclaimed_reads.clear()
++            self._claimed_worker_reads.clear()
+             self._prefetch_owners.clear()
++            return True
+ 
+     def record_prefetch_result(
+         self,
+         hit_chunks: int,
+         locked_gids: tuple[int, ...],
+         l1_owners: dict[ObjectKey, int] | None = None,
++        *,
++        read_generations: dict[ObjectKey, int] | None = None,
+     ) -> None:
+-        """Record the lock set acquired by the current lookup."""
++        """Record the lookup's retained L1 owners and acquired lock generations."""
+         with self._lock:
+             self.prefetch_hit_chunks = hit_chunks
+             self.prefetch_locked_gids = locked_gids
+             self._prefetch_owners = dict(l1_owners) if l1_owners is not None else {}
++            self.prefetch_read_generations = read_generations or {}
++            count = (
++                validate_read_locks(self.lookup_ipc_key.require_num_kv_readers())
++                if self.lookup_ipc_key is not None
++                else 0
++            )
++            self._unclaimed_reads = {
++                key: count for key in self.prefetch_read_generations
++            }
++
++    def get_read_generations(self, keys: list[ObjectKey]) -> dict[ObjectKey, int]:
++        """Snapshot the lookup's original lock generations for cleanup."""
++        with self._lock:
++            return {
++                k: self.prefetch_read_generations[k]
++                for k in keys
++                if k in self.prefetch_read_generations
++            }
++
++    def get_abandoned_prefetch(
++        self, key: IPCCacheServerKey, start: int, end: int
++    ) -> AbandonedPrefetch | None:
++        """Find the original APC reservation without consuming its release.
++
++        Args:
++            key: Cleanup identity, including packed tokens, model and salt.
++            start: The abandoned lookup's original APC boundary.
++            end: Client hit boundary, no larger than this server's old hit.
++
++        Returns:
++            Matching ownership, or None. Resolve its keys, then call
++            claim_abandoned_prefetch before attempting any release.
++        """
++        with self._lock:
++            pending = self._abandoned_prefetch
++            if pending is not None:
++                old = pending.key
++                if (
++                    old.request_id != key.request_id
++                    or old.model_name != key.model_name
++                    or old.world_size != key.world_size
++                    or old.worker_id != key.worker_id
++                    or old.token_bytes != key.token_bytes
++                    or old.cache_salt != key.cache_salt
++                    or start != old.start
++                    or not start < end <= pending.hit_chunks * self.hasher.chunk_size
++                    or end % self.hasher.chunk_size
++                ):
++                    pending = None
++            return pending
++
++    def claim_abandoned_prefetch(self, reservation: AbandonedPrefetch) -> bool:
++        """Authorize one release attempt after its object keys have resolved.
++
++        Args:
++            reservation: Snapshot returned by get_abandoned_prefetch.
++
++        Returns:
++            Whether this caller owns the release. Once claimed, a partially
++            failed release cannot be retried: its outcome may be unknown and
++            unreleased locks must expire instead of consuming another reader.
++        """
++        with self._lock:
++            if self._abandoned_prefetch is not reservation:
++                return False
++            self._abandoned_prefetch = None
++            return True
+ 
+     def get_prefetch_owners(self) -> dict[ObjectKey, int]:
+         """Snapshot the L1 owners whose read locks this session's lookup retained."""
+@@ -215,55 +350,103 @@
+                 self._lookup_generation,
+             )
+ 
+-    def claim_failed_retrieve_release(
++    def claim_worker_read(
+         self,
++        key: IPCCacheServerKey,
+         instance_id: int,
+-        key: IPCCacheServerKey,
+-        lookup_generation: int,
+-    ) -> bool:
+-        """Atomically claim one failed worker's prepared lock release.
+-
+-        A scheduler lookup acquires read locks for every KV worker (or one
+-        reader count per TP worker for MLA), while RETRIEVE responses are
+-        per worker instance.  When a worker has lost its GPU registration,
+-        only that instance's share may be released.  Claiming after key
+-        resolution makes duplicate failed RETRIEVEs idempotent without
+-        consuming the claim when resolution itself fails.
+-
+-        ``False`` is also returned when the session cannot prove ownership of
+-        the requested range.  In that case it is safer to leave the lock to
+-        its TTL than to decrement a concurrent request's anonymous L1 count.
+-        """
+-        if key.worker_id is None:
+-            return False
+-
+-        with self._lock:
+-            lookup_key = self.lookup_ipc_key
+-            if lookup_key is None or lookup_generation != self._lookup_generation:
+-                return False
+-
+-            same_lookup = (
+-                key.model_name == lookup_key.model_name
+-                and key.world_size == lookup_key.world_size
+-                and key.token_bytes == lookup_key.token_bytes
+-                and key.cache_salt == lookup_key.cache_salt
+-                and key.start >= lookup_key.start
+-                and key.end <= lookup_key.end
+-            )
+-            if not same_lookup:
+-                return False
+-
+-            owner = (
+-                lookup_generation,
+-                instance_id,
+-                key.worker_id,
+-                key.start,
+-                key.end,
+-            )
+-            if owner in self._failed_retrieve_releases:
+-                return False
+-            self._failed_retrieve_releases.add(owner)
+-            return True
++        keys: list[ObjectKey],
++        *,
++        lookup_generation: int | None = None,
++    ) -> tuple[L1ReadReservation, ...] | None:
++        """Transfer one share per key to a worker, excluding subsequent FREE.
++
++        MLA TP instances share a KV worker ID, so the existing protocol's
++        instance ID distinguishes their shares. A repeated/overlapping call
++        from one instance cannot claim twice; disjoint ranges remain valid.
++
++        Args:
++            key: Worker request matching this lookup's model and token identity.
++            instance_id: Worker incarnation carried by the RETRIEVE protocol.
++            keys: Exact retained objects this worker will consume or abandon.
++            lookup_generation: Optional epoch captured before key resolution.
++
++        Returns:
++            Immutable original reservations, or None if any share is unavailable.
++            The owner must settle every returned share, including failed pins.
++        """
++        with self._lock:
++            if (
++                not self._matches_lookup(key)
++                or key.worker_id is None
++                or not 0 <= key.worker_id < key.world_size
++                or (
++                    lookup_generation is not None
++                    and lookup_generation != self._lookup_generation
++                )
++            ):
++                return None
++            unique_keys = list(dict.fromkeys(keys))
++            if any(
++                self._unclaimed_reads.get(obj_key, 0) == 0
++                or (instance_id, key.worker_id, obj_key) in self._claimed_worker_reads
++                for obj_key in unique_keys
++            ):
++                return None
++            claimed = tuple(
++                L1ReadReservation(
++                    obj_key,
++                    self.prefetch_read_generations[obj_key],
++                    self._prefetch_owners.get(obj_key),
++                    1,
++                )
++                for obj_key in unique_keys
++            )
++            for obj_key in unique_keys:
++                self._unclaimed_reads[obj_key] -= 1
++                self._claimed_worker_reads.add((instance_id, key.worker_id, obj_key))
++            return claimed
++
++    def claim_free_reads(
++        self, key: IPCCacheServerKey, keys: list[ObjectKey]
++    ) -> tuple[L1ReadReservation, ...]:
++        """Take only lookup shares not already transferred to a worker.
++
++        Args:
++            key: Cancellation request with this lookup's model/token identity.
++            keys: Resolved objects in the canceled ranges, possibly overlapping.
++
++        Returns:
++            Original per-key shares to release exactly once. A repeated FREE
++            returns no shares. Already claimed transfers retain their ownership.
++        """
++        with self._lock:
++            if not self._matches_lookup(key):
++                return ()
++            claims = []
++            for obj_key in dict.fromkeys(keys):
++                count = self._unclaimed_reads.pop(obj_key, 0)
++                if count:
++                    claims.append(
++                        L1ReadReservation(
++                            obj_key,
++                            self.prefetch_read_generations[obj_key],
++                            self._prefetch_owners.get(obj_key),
++                            count,
++                        )
++                    )
++            return tuple(claims)
++
++    def _matches_lookup(self, key: IPCCacheServerKey) -> bool:
++        lookup = self.lookup_ipc_key
++        return (
++            lookup is not None
++            and self.prefetch_hit_chunks >= 0
++            and key.request_id == self.request_id
++            and key.model_name == lookup.model_name
++            and key.world_size == lookup.world_size
++            and key.token_bytes == lookup.token_bytes
++            and key.cache_salt == lookup.cache_salt
++        )
+ 
+ 
+ class SessionManager:
+--- a/lmcache/v1/distributed/storage_controllers/prefetch_controller.py
++++ b/lmcache/v1/distributed/storage_controllers/prefetch_controller.py
+@@ -379,6 +379,7 @@
+     # Keys that read-locked in L1 (i.e. finished prefetch)
+     # Mapping from l1 manager index to the global bitmap
+     l1_locked_keys: MapState = field(default_factory=MapState)
++    l1_read_generations: dict[int, dict[ObjectKey, int]] = field(default_factory=dict)
+ 
+     # Keys that read-locked in L2 (i.e. finished L2 lookup and lock)
+     # Mapping from l2 adapter index to the global bitmap
+@@ -411,6 +412,9 @@
+     # to use; None allows all (immutable)
+     allowed_l1_memory_tags: frozenset[MemoryTags] | None
+     allowed_l2_memory_tags: frozenset[MemoryTags] | None
++
++    # Aborted requests retain adapter-owned buffers until submitted I/O drains.
++    aborted: bool = field(default=False, init=False)
+ 
+     # What the L2 lookups pinned; reported as found_cells at finish.
+     l2_found_cells: "Bitmap2D | None" = None
+@@ -567,6 +571,9 @@
+         self._prefetch_results_lock = threading.Lock()
+         self._prefetch_results_cv = threading.Condition(self._prefetch_results_lock)
+         self._completed_results: dict[PrefetchRequestId, PrefetchResult] = {}
++        # Sole-consumer ownership lasts until query or discard, including L1 hits.
++        self._unconsumed_readers: dict[PrefetchRequestId, int] = {}
++        self._discarded_requests: set[PrefetchRequestId] = set()
+ 
+         # Map eventfds to adapter indices for quick lookup in poll.
+         # Relies on the L2AdapterInterface contract that every adapter
+@@ -644,6 +651,9 @@
+         Returns:
+             A request ID for tracking via query_prefetch_result.
+ 
++        Raises:
++            RuntimeError: If shutdown has started.
++
+         Note:
+             When the spec allows no L2 adapter (an empty
+             ``allowed_l2_memory_tags``), or no L2 adapter is attached, the
+@@ -651,22 +661,24 @@
+             is queryable via query_prefetch_result once this returns.
+         """
+         with self._submission_lock:
++            if self._stop_flag.is_set():
++                raise RuntimeError("Cannot submit prefetch requests during shutdown")
+             request_id = self._next_request_id
+             self._next_request_id += 1
+-
+-        allows_no_l2 = spec.allowed_l2_memory_tags == frozenset()
+-        if allows_no_l2 or not self._l2_adapters:
++            with self._prefetch_results_lock:
++                self._unconsumed_readers[request_id] = spec.num_kv_readers
++            allows_no_l2 = spec.allowed_l2_memory_tags == frozenset()
++            if not allows_no_l2 and self._l2_adapters:
++                self._submission_queue.append((request_id, spec))
++                self._submission_efd.notify()
++                return request_id
++
+             request = _build_request(request_id, spec)
+             self._lock_l1_keys(request)
+             self._plan_load(request, {})
+             self._finish_request(request)
+             return request_id
+ 
+-        with self._submission_lock:
+-            self._submission_queue.append((request_id, spec))
+-            self._submission_efd.notify()
+-        return request_id
+-
+     def query_prefetch_result(
+         self, request_id: PrefetchRequestId
+     ) -> PrefetchResult | None:
+@@ -686,7 +698,38 @@
+             already retrieved.
+         """
+         with self._prefetch_results_lock:
+-            return self._completed_results.pop(request_id, None)
++            result = self._completed_results.pop(request_id, None)
++            if result is not None:
++                self._unconsumed_readers.pop(request_id)
++            return result
++
++    def discard_prefetch_result(self, request_id: PrefetchRequestId) -> bool:
++        """Relinquish an unconsumed result and its retained read locks.
++
++        This is mutually exclusive with consuming the result through query.
++        Pending I/O runs to completion; only its published result is released.
++        The caller must not query or retrieve this request after discarding it.
++
++        Args:
++            request_id: ID returned by submit_prefetch_request.
++
++        Returns:
++            True if ownership was transferred, False if already discarded,
++            consumed, or unknown. True does not mean pending I/O has drained.
++        """
++        with self._prefetch_results_lock:
++            if (
++                request_id not in self._unconsumed_readers
++                or request_id in self._discarded_requests
++            ):
++                return False
++            result = self._completed_results.pop(request_id, None)
++            if result is None:
++                self._discarded_requests.add(request_id)
++                return True
++            readers = self._unconsumed_readers.pop(request_id)
++        self._release_discarded_result(result, readers)
++        return True
+ 
+     def wait_prefetch_result(
+         self, request_id: PrefetchRequestId, timeout: float
+@@ -811,13 +854,17 @@
+ 
+     def stop(self) -> None:
+         """
+-        Signal the loop to stop and wait for the thread to join.
+-
+-        Cleans up any in-flight requests (releases L1 write locks,
+-        L2 locks) before returning.
+-        """
+-        self._stop_flag.set()
+-        self._submission_efd.notify()
++        Stop admission, drain outstanding adapter tasks, and join the loop.
++
++        Queued and in-flight requests publish misses. L1 staging buffers and
++        L2 locks are released only after every submitted lookup/load reports
++        completion, so adapters cannot access reclaimed buffers or strand
++        locks acquired by a late lookup. This may wait for a stalled adapter;
++        a timeout alone does not prove its I/O has stopped.
++        """
++        with self._submission_lock:
++            self._stop_flag.set()
++            self._submission_efd.notify()
+         self._thread.join()
+         self._cleanup_in_flight_requests()
+         self._submission_efd.close()
+@@ -901,7 +948,17 @@
+         for efd in self._load_efd_to_adapter:
+             poller.register(efd, select.POLLIN)
+ 
+-        while not self._stop_flag.is_set():
++        while True:
++            if self._stop_flag.is_set():
++                self._drain_submission_queue()
++                while self._pending_queue:
++                    request_id, spec = self._pending_queue.popleft()
++                    self._abort_request(_build_request(request_id, spec))
++                for request in list(self._in_flight_requests.values()):
++                    self._abort_request(request)
++                if not self._in_flight_requests:
++                    break
++
+             # First, apply runtime add/remove of the L2 adapters.
+             self._apply_pending_adapter_ops(poller)
+ 
+@@ -939,6 +996,8 @@
+             if any(signaled_adapters.values()):
+                 for request in list(self._in_flight_requests.values()):
+                     try:
++                        if self._stop_flag.is_set():
++                            self._abort_request(request)
+                         self._advance_request(request, signaled_adapters)
+                     except Exception:
+                         logger.exception(
+@@ -949,7 +1008,8 @@
+                         self._abort_request(request)
+ 
+             try:
+-                self._start_pending_requests()
++                if not self._stop_flag.is_set():
++                    self._start_pending_requests()
+             except Exception:
+                 logger.exception(
+                     "Unexpected error in prefetch loop while starting pending requests"
+@@ -967,6 +1027,9 @@
+         """State-transition dispatcher by phase: poll signaled adapters for
+         the request's current phase via the per-phase helper, then trigger
+         the phase transition when done."""
++        if request.aborted:
++            self._drain_aborted_request(request, signaled_adapters)
++            return
+         phase_adapters = signaled_adapters[request.phase]
+         if not phase_adapters:
+             return
+@@ -1072,8 +1135,10 @@
+     def _start_pending_requests(self) -> None:
+         """Start pending requests in arrival order while L1 can admit the
+         head of the queue (see ``_can_admit_new_prefetch``)."""
+-        while self._pending_queue and self._can_admit_new_prefetch(
+-            self._pending_queue[0][1]
++        while (
++            self._pending_queue
++            and not self._stop_flag.is_set()
++            and self._can_admit_new_prefetch(self._pending_queue[0][1])
+         ):
+             request_id, spec = self._pending_queue.popleft()
+             try:
+@@ -1206,7 +1271,12 @@
+                     l1_manager.get_memory_tags(), request.allowed_l1_memory_tags
+                 ):
+                     continue
+-                result = l1_manager.reserve_read(flattened_keys, request.num_kv_readers)
++                generations = request.key_states.l1_read_generations.setdefault(
++                    l1_idx, {}
++                )
++                result = l1_manager.reserve_read(
++                    flattened_keys, request.num_kv_readers, read_generations=generations
++                )
+                 res_bitmap = Bitmap(len(flattened_keys))
+                 for i, key in enumerate(flattened_keys):
+                     error, _obj = result[key]
+@@ -1253,7 +1323,11 @@
+         for l1_idx, cells in l1_dropped.items():
+             keys = _gather_keys(request.key_groups, cells)
+             if keys:
+-                self._l1_managers[l1_idx].finish_read(keys, request.num_kv_readers)
++                self._l1_managers[l1_idx].finish_read(
++                    keys,
++                    request.num_kv_readers,
++                    read_generations=states.l1_read_generations[l1_idx],
++                )
+         for l2_idx, cells in l2_dropped.items():
+             keys = _gather_keys(request.key_groups, cells)
+             if keys:
+@@ -1407,7 +1481,8 @@
+ 
+         Records the reserved bytes per adapter and publishes one
+         ``L2_LOAD_TASK_SUBMITTED`` event per adapter plus one
+-        ``L2_PREFETCH_LOAD_SUBMITTED`` event for the batch.
++        ``L2_PREFETCH_LOAD_SUBMITTED`` event for the batch. Each submitted load
++        holds non-expiring, writer-owned L1 buffer pins until it completes.
+ 
+         Args:
+             request: The in-flight request being loaded.
+@@ -1419,8 +1494,20 @@
+             if not keys:
+                 continue
+             objects = [reserved_objs[key] for key in keys]
+-            task_id = self._l2_adapters[l2_idx].submit_load_task(keys, objects)
+-            request.inflight_load_tasks[l2_idx] = task_id
++            l1_manager = self._l1_managers[self._get_l2_affinity_manager(l2_idx)]
++            tag = _get_prefetch_write_tag(request.request_id)
++            pin_results = l1_manager.pin_write_buffers(keys, tag=tag)
++            pinned = [key for key in keys if pin_results[key] == L1Error.SUCCESS]
++            submitted = False
++            try:
++                if len(pinned) != len(keys):
++                    raise RuntimeError("L1 buffers disappeared before load submission")
++                task_id = self._l2_adapters[l2_idx].submit_load_task(keys, objects)
++                request.inflight_load_tasks[l2_idx] = task_id
++                submitted = True
++            finally:
++                if not submitted:
++                    l1_manager.unpin_write_buffers(pinned, tag=tag)
+             plan_keys.extend(keys)
+ 
+             # Groups may differ in object size, so sum per object.
+@@ -1535,8 +1622,10 @@
+         finished adapter's load into L1.
+ 
+         For the finished loads, we will update the L1 object states accordingly.
+-        - Successfully loaded objects: become read-locked.
++        - Successfully loaded and admitted objects: become read-locked.
+         - Failed objects: delete the staging buffers.
++        L2 success alone is not a hit: a reservation may have expired or been
++        cleared before admission.
+ 
+         Args:
+             request: The in-flight prefetch request to poll.
+@@ -1552,23 +1641,35 @@
+             result = self._l2_adapters[adapter_idx].query_load_result(task_id)
+             if result is None:
+                 continue
++            self._complete_load_task(request, adapter_idx)
+ 
+             # The load task was submitted with the keys of ``planned`` in
+             # row-major order, so ``result`` is a flat bitmap over them.
+             planned = states.l2_locked_keys[adapter_idx]
+             loaded = _scatter_bitmaps(planned, result)
+-            failed = planned - loaded
++            load_failed = planned - loaded
+             l1_idx = self._get_l2_affinity_manager(adapter_idx)
+             l1_manager = self._l1_managers[l1_idx]
+ 
+             loaded_keys = _gather_keys(request.key_groups, loaded)
+-            failed_keys = _gather_keys(request.key_groups, failed)
++            admission_failed_keys: list[ObjectKey] = []
+ 
+             # Update L1 key status
+             if loaded_keys:
+-                l1_manager.finish_write_and_reserve_read(
+-                    loaded_keys, read_locks=request.num_kv_readers, tag=tag
++                admission = l1_manager.finish_write_and_reserve_read(
++                    loaded_keys,
++                    read_locks=request.num_kv_readers,
++                    tag=tag,
++                    read_generations=states.l1_read_generations.setdefault(l1_idx, {}),
+                 )
++                for row_idx, row in enumerate(loaded):
++                    for col_idx in row.get_indices_list():
++                        key = request.key_groups[row_idx].keys[col_idx]
++                        if admission[key][0] != L1Error.SUCCESS:
++                            row.clear(col_idx)
++                            admission_failed_keys.append(key)
++                loaded_keys = _gather_keys(request.key_groups, loaded)
++            failed_keys = _gather_keys(request.key_groups, planned - loaded)
+             if failed_keys:
+                 l1_manager.finish_write_and_delete(failed_keys, tag=tag)
+ 
+@@ -1588,20 +1689,6 @@
+                 request.l2_loaded_cells += loaded
+             states.l1_reserved_keys[l1_idx] -= planned
+             del states.l2_locked_keys[adapter_idx]
+-            del request.inflight_load_tasks[adapter_idx]
+-            request.load_bytes_by_adapter.pop(adapter_idx, None)
+-
+-            self._event_bus.publish(
+-                Event(
+-                    event_type=EventType.L2_LOAD_TASK_COMPLETED,
+-                    metadata={
+-                        "request_id": request.request_id,
+-                        "adapter_index": adapter_idx,
+-                        "task_id": task_id,
+-                        "l2_name": self._adapter_descriptors[adapter_idx].type_name,
+-                    },
+-                )
+-            )
+             self._event_bus.publish(
+                 Event(
+                     event_type=EventType.L2_PREFETCH_LOAD_COMPLETED,
+@@ -1615,16 +1702,52 @@
+                     },
+                 )
+             )
+-            if failed_keys:
++            load_failed_keys = _gather_keys(request.key_groups, load_failed)
++            if load_failed_keys:
+                 # Reserved in L1 for this adapter but absent from its load
+                 # result. Serde failures will get their own reason once
+                 # adapters can report them.
+                 self._event_bus.publish(
+                     Event(
+                         event_type=EventType.L2_PREFETCH_FAILED,
+-                        metadata={"reason": "not_found", "keys": failed_keys},
++                        metadata={"reason": "not_found", "keys": load_failed_keys},
+                     )
+                 )
++            if admission_failed_keys:
++                self._event_bus.publish(
++                    Event(
++                        event_type=EventType.L2_PREFETCH_FAILED,
++                        metadata={
++                            "reason": "l1_admission_failed",
++                            "keys": admission_failed_keys,
++                        },
++                    )
++                )
++
++    def _complete_load_task(
++        self, request: InFlightPrefetchRequest, adapter_idx: int
++    ) -> None:
++        """Release a completed load's buffer pins and close its task event."""
++        l1_manager = self._l1_managers[self._get_l2_affinity_manager(adapter_idx)]
++        keys = _gather_keys(
++            request.key_groups, request.key_states.l2_locked_keys[adapter_idx]
++        )
++        l1_manager.unpin_write_buffers(
++            keys, tag=_get_prefetch_write_tag(request.request_id)
++        )
++        task_id = request.inflight_load_tasks.pop(adapter_idx)
++        request.load_bytes_by_adapter.pop(adapter_idx, None)
++        self._event_bus.publish(
++            Event(
++                event_type=EventType.L2_LOAD_TASK_COMPLETED,
++                metadata={
++                    "request_id": request.request_id,
++                    "adapter_index": adapter_idx,
++                    "task_id": task_id,
++                    "l2_name": self._adapter_descriptors[adapter_idx].type_name,
++                },
++            )
++        )
+ 
+     # =========================================================================
+     # Completion and cleanup
+@@ -1661,6 +1784,7 @@
+         else:
+             hit_cells = found
+ 
++        read_generations: dict[ObjectKey, int] = {}
+         for l1_idx, locked in states.l1_locked_keys.items():
+             if request.lock_mode == PrefetchLockMode.NO_LOCK:
+                 release = locked
+@@ -1669,13 +1793,22 @@
+             release_keys = _gather_keys(request.key_groups, release)
+             if release_keys:
+                 self._l1_managers[l1_idx].finish_read(
+-                    release_keys, read_locks=request.num_kv_readers
++                    release_keys,
++                    read_locks=request.num_kv_readers,
++                    read_generations=states.l1_read_generations[l1_idx],
+                 )
+ 
+             # Notify the eviction module
+             hit_keys = _gather_keys(request.key_groups, locked & hit_cells)
+             if hit_keys:
+                 self._l1_managers[l1_idx].touch_keys(hit_keys)
++                if request.lock_mode == PrefetchLockMode.LOCK:
++                    generations = states.l1_read_generations[l1_idx]
++                    read_generations.update(
++                        (key, generations[key])
++                        for key in hit_keys
++                        if key in generations
++                    )
+ 
+         if len(request.l2_loaded_cells) > 0:
+             l2_hit_cells = hit_cells & request.l2_loaded_cells
+@@ -1704,6 +1837,7 @@
+                 }
+                 if request.lock_mode == PrefetchLockMode.LOCK
+                 else {},
++                read_generations=read_generations,
+             ),
+         )
+         logger.debug(
+@@ -1717,16 +1851,39 @@
+     def _publish_result(
+         self, request: InFlightPrefetchRequest, result: PrefetchResult
+     ) -> None:
+-        """Store the request's result and wake any waiter."""
++        """Publish a result, or release it if its sole consumer has left."""
+         with self._prefetch_results_lock:
+-            self._completed_results[request.request_id] = result
++            discarded = request.request_id in self._discarded_requests
++            if discarded:
++                self._discarded_requests.remove(request.request_id)
++                readers = self._unconsumed_readers.pop(request.request_id)
++            else:
++                self._completed_results[request.request_id] = result
+             # Wake any WAIT_PREFETCH_STATUS handler blocked on this result.
+             self._prefetch_results_cv.notify_all()
++        if discarded:
++            self._release_discarded_result(result, readers)
++
++    def _release_discarded_result(self, result: PrefetchResult, readers: int) -> None:
++        """Release only the retained keys on their original L1 owners."""
++        for manager in self._l1_managers.values():
++            keys = [
++                key
++                for key, owner in result.l1_owners.items()
++                if owner == manager.l1_manager_id
++            ]
++            if keys:
++                manager.finish_read(
++                    keys,
++                    read_locks=readers,
++                    read_generations=result.read_generations,
++                )
+ 
+     def _abort_request(self, request: InFlightPrefetchRequest) -> None:
+-        """Give up on a request after an error: return everything it holds,
+-        report a miss for every cell, and drop it from the in-flight table."""
+-        self._release_all_locks(request)
++        """Publish one miss, retaining resources until outstanding I/O drains."""
++        if request.aborted:
++            return
++        request.aborted = True
+         empty = Bitmap2D.zeros(len(request.key_groups), len(request.key_groups[0].keys))
+         self._publish_result(
+             request,
+@@ -1736,7 +1893,32 @@
+                 l2_hit_cells=empty.zeros_like().to_list(),
+             ),
+         )
+-        self._retire_request(request)
++        if request.all_lookups_done() and request.all_loads_done():
++            self._release_all_locks(request)
++            self._retire_request(request)
++
++    def _drain_aborted_request(
++        self,
++        request: InFlightPrefetchRequest,
++        signaled_adapters: dict[PrefetchPhase, set[int]],
++    ) -> None:
++        """Collect late results without admitting objects or republishing hits.
++
++        Lookup results record the L2 locks that must be returned. Load results
++        are completion fences for borrowed L1 buffers, irrespective of which
++        keys the adapter reports as loaded.
++        """
++        self._poll_lookup_results(request, signaled_adapters[PrefetchPhase.LOOKUP])
++        for adapter_idx in list(request.inflight_load_tasks):
++            if adapter_idx not in signaled_adapters[PrefetchPhase.PLAN_AND_LOAD]:
++                continue
++            task_id = request.inflight_load_tasks[adapter_idx]
++            result = self._l2_adapters[adapter_idx].query_load_result(task_id)
++            if result is not None:
++                self._complete_load_task(request, adapter_idx)
++        if request.all_lookups_done() and request.all_loads_done():
++            self._release_all_locks(request)
++            self._retire_request(request)
+ 
+     def _retire_request(self, request: InFlightPrefetchRequest) -> None:
+         """Remove a finished request from the in-flight table."""
+@@ -1746,9 +1928,10 @@
+         """Return every lock and buffer the request's key states record.
+ 
+         L2 read locks are returned, reserved L1 staging buffers are deleted,
+-        and L1 read locks are released. Outstanding adapter tasks are left
+-        to complete on their own.
+-        """
++        and L1 read locks are released. The caller must have collected every
++        outstanding adapter task before reclaiming these buffers.
++        """
++        assert request.all_lookups_done() and request.all_loads_done()
+         states = request.key_states
+         tag = _get_prefetch_write_tag(request.request_id)
+         for l2_idx, cells in states.l2_locked_keys.items():
+@@ -1763,7 +1946,9 @@
+             keys = _gather_keys(request.key_groups, cells)
+             if keys:
+                 self._l1_managers[l1_idx].finish_read(
+-                    keys, read_locks=request.num_kv_readers
++                    keys,
++                    read_locks=request.num_kv_readers,
++                    read_generations=states.l1_read_generations[l1_idx],
+                 )
+ 
+         request.key_states = PrefetchKeyState()
+--- a/lmcache/v1/mp_observability/subscribers/metrics/l2_failures.py
++++ b/lmcache/v1/mp_observability/subscribers/metrics/l2_failures.py
+@@ -13,9 +13,11 @@
+     * ``not_found``    — L2 reported the key present during lookup but the
+       load returned no data (adapter-level inconsistency, e.g. concurrent
+       delete).
++    * ``l1_admission_failed`` — L2 loaded the data, but L1 could not admit and
++      read-lock it (for example, its reservation expired or was force-cleared).
+ 
+ The ``serde_failure`` reason is intentionally omitted until the serde PR
+-lands; once it does, it becomes an additive third value of the same tag
++lands; once it does, it becomes an additional value of the same tag
+ with no breaking change to dashboards.
+ 
+ All emissions carry ``model_name`` extracted from each ``ObjectKey``.
+@@ -46,7 +48,7 @@
+             description=(
+                 "Count of keys that were expected in L2 but failed to load "
+                 "into L1. Tagged by ``reason`` = l1_oom | l1_contended | "
+-                "not_found and ``model_name``."
++                "not_found | l1_admission_failed and ``model_name``."
+             ),
+             unit="chunks",
+         )
+--- a/lmcache/v1/multiprocess/modules/lmcache_driven_transfer.py
++++ b/lmcache/v1/multiprocess/modules/lmcache_driven_transfer.py
+@@ -18,7 +18,13 @@
+     MemoryLayoutDesc,
+     ObjectKey,
+ )
+-from lmcache.v1.distributed.storage_manager import L1WriteCompletion, l1_owners_of
++from lmcache.v1.distributed.internal_api import L1ReadReservation
++from lmcache.v1.distributed.storage_manager import (
++    L1ReadGenerationCompletion,
++    L1ReadTransferCompletion,
++    L1WriteCompletion,
++    l1_owners_of,
++)
+ from lmcache.v1.gpu_connector.utils import LayoutHints
+ from lmcache.v1.kv_layer_groups import ObjectGroupInfo
+ from lmcache.v1.memory_management import MemoryObj
+@@ -215,6 +221,11 @@
+             payload_type=L1WriteCompletion,
+         )
+         self._device_host_func_dispatcher.register(
++            "finish_read_transfer",
++            self._ctx.storage_manager.finish_read_transfer,
++            payload_type=L1ReadTransferCompletion,
++        )
++        self._device_host_func_dispatcher.register(
+             "release_imported_event",
+             self._release_imported_event,
+             payload_type=tuple[int, int],
+@@ -283,8 +294,8 @@
+         The lookup session is the ownership record.  If it is absent or does
+         not match the RETRIEVE range, no release is attempted: L1 locks are
+         anonymous refcounts, so guessing could consume a concurrent reader's
+-        lock.  ``claim_failed_retrieve_release`` also makes duplicate failure
+-        responses idempotent.
++        lock. The same per-worker claim is used by successful RETRIEVE and
++        FREE, so a duplicate failure cannot consume another worker's share.
+         """
+         session = self._ctx.session_manager.get(key.request_id)
+         if session is None:
+@@ -307,20 +318,11 @@
+             locked_gids,
+             group_windows=group_windows,
+         )
+-        if not session.claim_failed_retrieve_release(
+-            instance_id, key, lookup_generation
+-        ):
+-            return
+-        if obj_keys:
+-            # One failed RETRIEVE owns one read lock per key.  In
+-            # particular, do not release the scheduler's whole MLA
+-            # reservation here: the remaining TP workers and concurrent
+-            # requests still own their independent read locks.
+-            self._ctx.storage_manager.finish_read_prefetched(
+-                obj_keys,
+-                read_locks=1,
+-                l1_owners=self._ctx.get_read_owners(key.request_id),
+-            )
++        claims = session.claim_worker_read(
++            key, instance_id, obj_keys, lookup_generation=lookup_generation
++        )
++        if claims:
++            self._ctx.storage_manager.finish_read_reservations(claims)
+ 
+     def context_entries_snapshot(self) -> dict[int, ContextEntry]:
+         """Return a shallow copy of the registry for iteration or status.
+@@ -449,12 +451,14 @@
+ 
+     def close(self) -> None:
+         """Release GPU resources owned by this module."""
+-        # Stop the drain thread before storage_manager.close() so any
+-        # in-flight completions reach a live storage manager.
+-        self._device_host_func_dispatcher.stop()
+-
++        # Device callbacks must be recorded before the dispatcher's final drain.
+         with self._lock:
+             entries = list(self._cache_contexts.values())
++        for entry in entries:
++            entry.cache_context.stream.synchronize()
++            del entry
++        self._device_host_func_dispatcher.stop()
++        with self._lock:
+             self._cache_contexts.clear()
+         self._release_entries(entries)
+ 
+@@ -1066,7 +1070,6 @@
+             )
+ 
+             prefetched_keys: list[ObjectKey] = []
+-            read_owners = self._ctx.get_read_owners(key.request_id)
+             retained_keys = [
+                 obj_key
+                 for group, keys in enumerate(obj_keys_per_obj_group)
+@@ -1075,22 +1078,37 @@
+             ]
+             # Capture every retained lock before enqueuing GPU work, including
+             # groups that a later transfer failure may leave unvisited.
+-            read_completion = self._ctx.storage_manager.prepare_read_completion(
+-                retained_keys, read_owners
+-            )
++            claims: tuple[L1ReadReservation, ...] = ()
++            read_completion: L1ReadGenerationCompletion = ()
+             total_bytes = 0
+             retrieve_succeeded = True
+             try:
++                session = self._ctx.session_manager.get(key.request_id)
++                claimed = (
++                    session.claim_worker_read(key, instance_id, retained_keys)
++                    if session is not None
++                    else None
++                )
++                if claimed is None:
++                    raise ValueError(
++                        "RETRIEVE read shares are already claimed or freed"
++                    )
++                claims = claimed
++                read_completion = (
++                    self._ctx.storage_manager.prepare_read_generation_completion(claims)
++                )
++                pinned = self._ctx.storage_manager.pin_read_buffers(
++                    read_completion, transfer_key
++                )
++                if any(obj_key not in pinned for obj_key in retained_keys):
++                    raise ValueError("RETRIEVE original read lease is unavailable")
+                 for obj_group_id in range(num_object_groups):
+                     if obj_group_id in skipped_groups:
+                         continue
+                     skip = group_skips[obj_group_id]
+                     in_window_keys = obj_keys_per_obj_group[obj_group_id][skip:]
+-                    found_keys, window_objs = self._ctx.storage_manager.unsafe_read(
+-                        in_window_keys, l1_owners=read_owners
+-                    )
+-                    if not window_objs or found_keys != in_window_keys:
+-                        logger.error("Some keys not found during retrieve!")
++                    window_objs = [pinned[obj_key] for obj_key in in_window_keys]
++                    if not window_objs:
+                         retrieve_succeeded = False
+                         break
+ 
+@@ -1110,15 +1128,27 @@
+                     prefetched_keys.extend(in_window_keys)
+             except Exception:
+                 logger.exception("Cannot retrieve keys due to exception")
++                if claims and not read_completion:
++                    self._ctx.storage_manager.finish_read_reservations(claims)
+                 retrieve_succeeded = False
+             finally:
+-                event_backend.record_event(event, cache_context.stream)
+-                if retained_keys:
+-                    submit_callback_to_stream(
+-                        cache_context.cupy_stream,
+-                        "finish_read_by_owner",
+-                        read_completion,
+-                    )
++                try:
++                    event_backend.record_event(event, cache_context.stream)
++                    if read_completion:
++                        submit_callback_to_stream(
++                            cache_context.cupy_stream,
++                            "finish_read_transfer",
++                            (transfer_key, read_completion),
++                        )
++                except Exception:
++                    logger.exception("Cannot publish RETRIEVE completion")
++                    # A failed synchronization must leave the pins in place.
++                    cache_context.stream.synchronize()
++                    if read_completion:
++                        self._ctx.storage_manager.finish_read_transfer(
++                            (transfer_key, read_completion)
++                        )
++                    raise
+                 num_tokens = (
+                     num_chunks * self._ctx.chunk_size
+                     if len(prefetched_keys) == expected_retained
+--- a/lmcache/v1/multiprocess/modules/lookup.py
++++ b/lmcache/v1/multiprocess/modules/lookup.py
+@@ -124,6 +124,8 @@
+     # Names the ``lookup()`` branch that returned before submitting a prefetch
+     # task; empty on the normal path.
+     early_exit_reason: str = ""
++    # Declined replacements must not overwrite the still-owned lookup result.
++    record_session_result: bool = True
+ 
+ 
+ class LookupModule(DiscoverableModule):
+@@ -162,7 +164,7 @@
+         self._ctx = ctx
+         self._load_policy = load_policy
+         self._prefetch_jobs: dict[str, _PrefetchJob] = {}
+-        self._prefetch_job_lock = threading.Lock()
++        self._prefetch_job_lock = threading.RLock()
+         self._setup_metrics()
+ 
+     @property
+@@ -280,7 +282,14 @@
+         # The engine-covered prefix is never looked up, so it is excluded from
+         # the hit-rate denominator and reported separately.
+         looked_up_tokens = requested_tokens - start_chunk * self._ctx.chunk_size
+-        session.begin_lookup(key, tuple(attn_desc.num_chunks_in_sw))
++        if not session.begin_lookup(key, tuple(attn_desc.num_chunks_in_sw)):
++            self._register_empty_prefetch_job(
++                key,
++                requested_tokens=looked_up_tokens,
++                early_exit_reason="pending_apc_cleanup",
++                record_session_result=False,
++            )
++            return
+ 
+         group_layout_descs = self._ctx.layout_desc_registry.find_group_layout_descs(
+             model_name, world_size
+@@ -468,8 +477,8 @@
+         key's range is floored to the current lookup's ``start``, and each
+         extra range resolves against its own boundaries.
+ 
+-        Releases the same per-object count the lookup reserved
+-        (``key.num_kv_readers``).
++        Release only the original per-object shares not already claimed by
++        another FREE or a worker's transfer completion.
+ 
+         The release is derived from the lookup result recorded on the
+         session (hit length, lock model, L1 owners). If that result has not
+@@ -484,12 +493,15 @@
+                 abandoned lookups, as ``(start, end)`` token pairs. Each end
+                 must be that lookup's hit boundary, so the range resolves to
+                 exactly the keys it locked (sliding-window groups translate
+-                from the hit).
++                from the hit). These ranges identify abandoned APC attempts;
++                current-lookup tails use the key's ordinary range.
+         """
+         if key.start >= key.end and not extra_ranges:
+             return
+ 
+-        session = self._ctx.session_manager.get_or_create(key.request_id)
++        session = self._ctx.session_manager.get(key.request_id)
++        if session is None:
++            return
+         if session.prefetch_hit_chunks < 0:
+             # The lookup result has not reached the session yet (no
+             # QUERY/WAIT_PREFETCH_STATUS consumed it). Hand it over now so
+@@ -535,32 +547,37 @@
+                     session.prefetch_locked_gids,
+                 )
+             )
++        if obj_keys:
++            self._ctx.storage_manager.finish_read_reservations(
++                session.claim_free_reads(key, obj_keys)
++            )
+         for range_start, range_end in extra_ranges:
+-            if range_start >= range_end:
++            old = session.get_abandoned_prefetch(key, range_start, range_end)
++            if old is None:
+                 continue
+-            # An abandoned lookup's range ends at its hit boundary, so the
+-            # range is its own lock model: resolve with that hit, not the
+-            # current lookup's.
+-            obj_keys.extend(
+-                resolve_prefetched_obj_keys(
+-                    self._ctx,
+-                    replace(key, start=range_start, end=range_end),
+-                    range_end // self._ctx.chunk_size,
+-                    session.prefetch_locked_gids,
++            old_keys = resolve_prefetched_obj_keys(
++                self._ctx,
++                replace(old.key, start=range_start, end=range_end),
++                range_end // self._ctx.chunk_size,
++                old.locked_gids,
++                old.group_windows,
++            )
++            if session.claim_abandoned_prefetch(old) and old_keys:
++                resolved = set(old_keys)
++                self._ctx.storage_manager.finish_read_reservations(
++                    tuple(
++                        claim for claim in old.unclaimed_reads if claim.key in resolved
++                    )
+                 )
+-            )
+-        if not obj_keys:
+-            return
+-
+-        self._ctx.storage_manager.finish_read_prefetched(
+-            obj_keys,
+-            read_locks=key.require_num_kv_readers(),
+-            l1_owners=self._ctx.get_read_owners(key.request_id),
+-        )
+ 
+     @request_handler(HandlerType.BLOCKING)
+     def end_session(self, request_id: str) -> None:
+-        """Remove the session for a finished request.
++        """Remove the session and relinquish any unconsumed prefetch job.
++
++        Pending prefetch I/O retains its resources until completion. A result
++        already handed to the client remains the client's responsibility.
++        The caller must drain prior LOOKUP/QUERY RPCs before sending END;
++        this method does not fence a LOOKUP that has not registered its job.
+ 
+         Args:
+             request_id: The request ID whose session should be removed.
+@@ -571,7 +588,12 @@
+                 metadata={"request_id": request_id},
+             )
+         )
+-        session = self._ctx.session_manager.remove(request_id)
++        with self._prefetch_job_lock:
++            job = self._prefetch_jobs.get(request_id)
++            if job is not None:
++                self._ctx.storage_manager.discard_prefetch_task(job.handle)
++                self._prefetch_jobs.pop(request_id)
++            session = self._ctx.session_manager.remove(request_id)
+         self._ctx.event_bus.publish(
+             Event(
+                 event_type=EventType.MP_REQUEST_END,
+@@ -637,6 +659,7 @@
+         start_chunk: int = 0,
+         engine_covered_chunks: int = 0,
+         early_exit_reason: str = "",
++        record_session_result: bool = True,
+     ) -> None:
+         """Register a job that resolves immediately without a prefetch.
+ 
+@@ -652,6 +675,8 @@
+             early_exit_reason: The ``lookup()`` branch that returned before
+                 submitting a prefetch; empty when the lookup simply had
+                 nothing to fetch.
++            record_session_result: Whether this admitted lookup may replace
++                the session's result. False for a declined replacement.
+         """
+         self._register_prefetch_job(
+             _PrefetchJob(
+@@ -677,6 +702,7 @@
+                 model_name=key.model_name,
+                 cache_salt=key.cache_salt,
+                 early_exit_reason=early_exit_reason,
++                record_session_result=record_session_result,
+             )
+         )
+ 
+@@ -694,76 +720,80 @@
+             The hit chunk count, or None while the prefetch is still running
+             (the job is kept so a later call can resolve it).
+         """
+-        result = self._ctx.storage_manager.query_prefetch_status(job.handle)
+-        if result is None:
+-            return None
+-        if job.row_windows:
+-            found_count, _retain = fold_unfold_grouped(
+-                result.hit_cells, job.row_windows
+-            )
+-            l1_found_count, _l1_retain = fold_unfold_grouped(
+-                result.l1_hit_cells, job.row_windows
+-            )
+-        else:
+-            # Nothing was submitted (early exit), so nothing can be hit.
+-            found_count = 0
+-            l1_found_count = 0
+-
+-        # The fold covers only the looked-up sub-range: the tier split is
+-        # attributed on it, so the covered prefix never counts as an L1 hit.
+-        l1_chunks = min(l1_found_count, found_count)
+-        l2_chunks = found_count - l1_chunks
+-        # The engine resolves the hit in absolute chunks; shift it back.
+-        found_count += job.start_chunk
+-
+-        # Record the model-wide hit length on the session so a later
+-        # free_lookup_locks can reconstruct which keys the prefetch
+-        # read-locked (see ``unfold``: full-attention groups lock the whole
+-        # hit prefix, sliding-window groups only its in-window suffix).
+-        session = self._ctx.session_manager.get_or_create(job.request_id)
+-        session.record_prefetch_result(
+-            found_count,
+-            tuple(range(job.attn_desc.num_object_groups)),
+-            result.l1_owners,
+-        )
+-
+-        chunk_size = self._ctx.chunk_size
+-        covered_tokens = job.engine_covered_chunks * chunk_size
+-        hit_tokens = (l1_chunks + l2_chunks) * chunk_size
+-        # Prefix served by either cache: both ranges start at 0 and overlap in
+-        # the sub-chunk gap below the lookup start, so take the longer, not the sum.
+-        request_hit_tokens = max(job.engine_hit_tokens, covered_tokens + hit_tokens)
+-        self._ctx.event_bus.publish(
+-            Event(
+-                event_type=EventType.MP_LOOKUP_PREFETCH_END,
+-                session_id=job.request_id,
+-                metadata={
+-                    "found_count": found_count,
+-                    "requested_tokens": job.requested_tokens,
+-                    # Hit-rate counters cover only the looked-up range; the
+-                    # engine-covered prefix gets its own field.
+-                    "apc_covered_tokens": covered_tokens,
+-                    "hit_tokens": hit_tokens,
+-                    "l1_hit_tokens": l1_chunks * chunk_size,
+-                    "l2_hit_tokens": l2_chunks * chunk_size,
+-                    # Request-level view: the whole prompt as denominator and
+-                    # what the engine plus LMCache served as numerator.
+-                    "prompt_tokens": job.prompt_tokens,
+-                    "engine_hit_tokens": job.engine_hit_tokens,
+-                    "request_hit_tokens": request_hit_tokens,
+-                    "l1_hit_keys": result.l1_hit_count,
+-                    "l2_hit_keys": result.l2_hit_count,
+-                    "early_exit_reason": job.early_exit_reason,
+-                    "model_name": job.model_name,
+-                    "cache_salt": job.cache_salt,
+-                },
+-            )
+-        )
+-
+         with self._prefetch_job_lock:
++            if self._prefetch_jobs.get(job.request_id) is not job:
++                return 0
++            result = self._ctx.storage_manager.query_prefetch_status(job.handle)
++            if result is None:
++                return None
++            if job.row_windows:
++                found_count, _retain = fold_unfold_grouped(
++                    result.hit_cells, job.row_windows
++                )
++                l1_found_count, _l1_retain = fold_unfold_grouped(
++                    result.l1_hit_cells, job.row_windows
++                )
++            else:
++                # Nothing was submitted (early exit), so nothing can be hit.
++                found_count = 0
++                l1_found_count = 0
++
++            # The fold covers only the looked-up sub-range: the tier split is
++            # attributed on it, so the covered prefix never counts as an L1 hit.
++            l1_chunks = min(l1_found_count, found_count)
++            l2_chunks = found_count - l1_chunks
++            # The engine resolves the hit in absolute chunks; shift it back.
++            found_count += job.start_chunk
++
++            # Record the model-wide hit length on the session so a later
++            # free_lookup_locks can reconstruct which keys the prefetch
++            # read-locked (see ``unfold``: full-attention groups lock the whole
++            # hit prefix, sliding-window groups only its in-window suffix).
++            if job.record_session_result:
++                session = self._ctx.session_manager.get_or_create(job.request_id)
++                session.record_prefetch_result(
++                    found_count,
++                    tuple(range(job.attn_desc.num_object_groups)),
++                    result.l1_owners,
++                    read_generations=result.read_generations,
++                )
++
++            chunk_size = self._ctx.chunk_size
++            covered_tokens = job.engine_covered_chunks * chunk_size
++            hit_tokens = (l1_chunks + l2_chunks) * chunk_size
++            # Prefix served by either cache: both ranges start at 0 and overlap in
++            # the sub-chunk gap below the lookup start, so take the longer, not the sum.
++            request_hit_tokens = max(job.engine_hit_tokens, covered_tokens + hit_tokens)
++            self._ctx.event_bus.publish(
++                Event(
++                    event_type=EventType.MP_LOOKUP_PREFETCH_END,
++                    session_id=job.request_id,
++                    metadata={
++                        "found_count": found_count,
++                        "requested_tokens": job.requested_tokens,
++                        # Hit-rate counters cover only the looked-up range; the
++                        # engine-covered prefix gets its own field.
++                        "apc_covered_tokens": covered_tokens,
++                        "hit_tokens": hit_tokens,
++                        "l1_hit_tokens": l1_chunks * chunk_size,
++                        "l2_hit_tokens": l2_chunks * chunk_size,
++                        # Request-level view: the whole prompt as denominator and
++                        # what the engine plus LMCache served as numerator.
++                        "prompt_tokens": job.prompt_tokens,
++                        "engine_hit_tokens": job.engine_hit_tokens,
++                        "request_hit_tokens": request_hit_tokens,
++                        "l1_hit_keys": result.l1_hit_count,
++                        "l2_hit_keys": result.l2_hit_count,
++                        "early_exit_reason": job.early_exit_reason,
++                        "model_name": job.model_name,
++                        "cache_salt": job.cache_salt,
++                    },
++                )
++            )
++
+             self._prefetch_jobs.pop(job.request_id, None)
+ 
+-        return found_count
++            return found_count
+ 
+     def _active_prefetch_count(self) -> int:
+         """Return the number of active prefetch jobs (thread-safe)."""
+--- a/lmcache/v1/multiprocess/modules/blend/lookup.py
++++ b/lmcache/v1/multiprocess/modules/blend/lookup.py
+@@ -48,9 +48,9 @@
+ 
+ 
+ #: ``_submit_prefix_leg`` result: ``(handle, prefix_gids, row_windows,
+-#: n_chunks, no_gpu_context)``.
++#: n_chunks, no_gpu_context, admitted)``.
+ _PrefixLegSubmit = tuple[
+-    PrefetchHandle | None, tuple[int, ...], tuple[int, ...], int, bool
++    PrefetchHandle | None, tuple[int, ...], tuple[int, ...], int, bool, bool
+ ]
+ 
+ 
+@@ -70,6 +70,7 @@
+     prefix_lock_gids: tuple = ()  # the gids the prefix keys cover (lock model)
+     prefix_windows: tuple = ()  # per-row cross-chunk windows (fold input)
+     prefix_num_chunks: int = 0  # chunks in the submitted prefix key list
++    prefix_admitted: bool = True  # declined replacements retain the old result
+     prefix_chunks: int | None = None  # stashed when the prefix poll completes
+     retained_chunks: list[int] | None = None  # SEGMENTED_PREFIX: full gapped set
+     sparse_started: bool = False  # prefix done -> sparse leg submitted/skipped
+@@ -340,11 +341,13 @@
+             tp_size: Tensor-parallel size for MLA multi-reader locking.
+ 
+         Returns:
+-            ``(handle, prefix_gids, row_windows, n_chunks, no_gpu_context)``.
++            ``(handle, prefix_gids, row_windows, n_chunks, no_gpu_context, admitted)``.
+             ``row_windows`` holds the sliding window of each submitted key
+             row, in row order. ``handle`` is None when there is no GPU context
+             or no full chunk (the poll then reports 0 coverage);
+             ``no_gpu_context`` is True only for the former.
++            ``admitted`` is False when no session lookup was started; polling
++            must not replace that session's retained ownership with an empty result.
+         """
+         rid = key.request_id
+         model_name, world_size = key.model_name, key.world_size
+@@ -359,7 +362,7 @@
+                 model_name,
+                 world_size,
+             )
+-            return None, (), (), 0, True
++            return None, (), (), 0, True, False
+         read, layouts, attn_desc = resolved
+         layout_desc = layouts[read.attn_gid]
+ 
+@@ -367,7 +370,7 @@
+             key.token_bytes
+         )
+         if not chunk_hashes:
+-            return None, (), (), 0, False
++            return None, (), (), 0, False, False
+ 
+         # Build the metadata dict only when a subscriber is listening.
+         if self._event_bus.has_subscribers(EventType.MP_LOOKUP):
+@@ -401,7 +404,8 @@
+         row_windows = tuple(row.sliding_window_size for row in spec.key_groups)
+         session = self._ctx.session_manager.get_or_create(rid)
+         session.set_tokens(key.token_bytes)
+-        session.begin_lookup(key, tuple(attn_desc.num_chunks_in_sw))
++        if not session.begin_lookup(key, tuple(attn_desc.num_chunks_in_sw)):
++            return None, (), (), 0, False, False
+         handle = self._ctx.storage_manager.submit_prefetch_task(
+             spec,
+             external_request_id=rid,
+@@ -412,6 +416,7 @@
+             row_windows,
+             len(chunk_hashes),
+             False,
++            True,
+         )
+ 
+     def _poll_prefix_leg(
+@@ -426,10 +431,12 @@
+             under SEGMENTED_PREFIX, else None.
+         """
+         owners: dict[ObjectKey, int] = {}
++        read_generations: dict[ObjectKey, int] = {}
+         if job.prefix_handle is not None:
+             result = self._ctx.storage_manager.query_prefetch_status(job.prefix_handle)
+             if result is None:
+                 return None  # still loading
++            read_generations = result.read_generations
+             rows = result.hit_cells
+             owners = result.l1_owners
+             # Window-aware fold: a windowed group's out-of-window keys are
+@@ -451,8 +458,11 @@
+             leading, retained = 0, ([] if segmented else None)
+         # Publish the lock model so free_lookup_locks releases exactly what
+         # this leg locked.
+-        session = self._ctx.session_manager.get_or_create(rid)
+-        session.record_prefetch_result(leading, job.prefix_lock_gids, owners)
++        if job.prefix_admitted:
++            session = self._ctx.session_manager.get_or_create(rid)
++            session.record_prefetch_result(
++                leading, job.prefix_lock_gids, owners, read_generations=read_generations
++            )
+         self._event_bus.publish(
+             Event(
+                 event_type=EventType.CB_PREFIX_LOOKUP_END,
+@@ -509,6 +519,7 @@
+                 prefix_windows,
+                 prefix_n_chunks,
+                 prefix_no_ctx,
++                prefix_admitted,
+             ) = self._submit_prefix_leg(key, tp_size)
+             # With a coordinator the fleet directory is the only match source;
+             # skip the local matcher.
+@@ -538,6 +549,7 @@
+                 prefix_windows=prefix_windows,
+                 prefix_num_chunks=prefix_n_chunks,
+                 no_gpu_context=prefix_no_ctx,
++                prefix_admitted=prefix_admitted,
+             )
+             job.segmented = use_segmented
+             job.coord_submitted = self._submit_coordinator_match(key)
+--- a/lmcache/v1/multiprocess/transport/zmq_impl/mq.py
++++ b/lmcache/v1/multiprocess/transport/zmq_impl/mq.py
+@@ -132,6 +132,7 @@
+     kind: _OpKind
+     client: "MessageQueueClient"
+     done: threading.Event
++    error: Exception | None = None
+ 
+ 
+ class ClientPollingLoop:
+@@ -206,9 +207,12 @@
+             client: The MessageQueueClient to register.
+         """
+         done = threading.Event()
+-        self._ops_queue.put(_PollOp(kind=_OpKind.REGISTER, client=client, done=done))
++        op = _PollOp(kind=_OpKind.REGISTER, client=client, done=done)
++        self._ops_queue.put(op)
+         self._notifier.notify()
+         done.wait()
++        if op.error is not None:
++            raise op.error
+ 
+     def unregister(self, client: "MessageQueueClient") -> None:
+         """Unregister a client's DEALER socket from the shared poller.
+@@ -219,9 +223,12 @@
+             client: The MessageQueueClient to unregister.
+         """
+         done = threading.Event()
+-        self._ops_queue.put(_PollOp(kind=_OpKind.UNREGISTER, client=client, done=done))
++        op = _PollOp(kind=_OpKind.UNREGISTER, client=client, done=done)
++        self._ops_queue.put(op)
+         self._notifier.notify()
+         done.wait()
++        if op.error is not None:
++            raise op.error
+ 
+     def notify(self) -> None:
+         """Wake the polling loop to process outbound tasks."""
+@@ -232,22 +239,35 @@
+         try:
+             while True:
+                 op = self._ops_queue.get_nowait()
+-                if op.kind is _OpKind.REGISTER:
+-                    self._poller.register(op.client.socket, zmq.POLLIN)
+-                    self._socket_to_client[op.client.socket] = op.client
+-                    self._poller.register(op.client.monitor, zmq.POLLIN)
+-                    self._monitor_to_client[op.client.monitor] = op.client
+-                    logger.debug("Registered client socket %s", op.client.socket)
+-                elif op.kind is _OpKind.UNREGISTER:
+-                    op.client.cancel_streams()
+-                    op.client.process_outbound_task()
+-                    self._poller.unregister(op.client.socket)
+-                    self._socket_to_client.pop(op.client.socket, None)
+-                    self._waiting_to_send.discard(op.client.socket)
+-                    self._poller.unregister(op.client.monitor)
+-                    self._monitor_to_client.pop(op.client.monitor, None)
+-                    logger.debug("Unregistered client socket %s", op.client.socket)
+-                op.done.set()
++                try:
++                    if op.kind is _OpKind.REGISTER:
++                        self._poller.register(op.client.socket, zmq.POLLIN)
++                        try:
++                            self._poller.register(op.client.monitor, zmq.POLLIN)
++                        except Exception:
++                            self._poller.unregister(op.client.socket)
++                            raise
++                        self._socket_to_client[op.client.socket] = op.client
++                        self._monitor_to_client[op.client.monitor] = op.client
++                        logger.debug("Registered client socket %s", op.client.socket)
++                    elif op.kind is _OpKind.UNREGISTER:
++                        op.client.cancel_streams()
++                        op.client.process_outbound_task()
++                        if op.client.socket in self._socket_to_client:
++                            self._poller.unregister(op.client.socket)
++                            self._socket_to_client.pop(op.client.socket)
++                        self._waiting_to_send.discard(op.client.socket)
++                        if op.client.monitor in self._monitor_to_client:
++                            self._poller.unregister(op.client.monitor)
++                            self._monitor_to_client.pop(op.client.monitor)
++                        logger.debug("Unregistered client socket %s", op.client.socket)
++                except Exception as exc:
++                    op.error = exc
++                    logger.exception(
++                        "Client polling operation %s failed", op.kind.value
++                    )
++                finally:
++                    op.done.set()
+         except queue.Empty:
+             pass
+ 
+@@ -339,6 +359,8 @@
+         self.input_queue: queue.Queue = queue.Queue()
+         # Encoded messages the socket had no room for, in send order.
+         self._unsent: deque[list[bytes]] = deque()
++        self._close_lock = threading.Lock()
++        self._closed = False
+ 
+         # Pending job's futures
+         self._request_counter = itertools.count()
+@@ -349,7 +371,16 @@
+ 
+         # Register with the shared polling loop
+         self._polling_loop = ClientPollingLoop.get_instance()
+-        self._polling_loop.register(self)
++        try:
++            self._polling_loop.register(self)
++        except BaseException:
++            self._closed = True
++            try:
++                ClientPollingLoop.release_instance()
++            finally:
++                self.monitor.close(linger=0)
++                self.socket.close(linger=0)
++            raise
+ 
+     def process_outbound_task(self) -> bool:
+         """Send queued requests without blocking the shared polling loop.
+@@ -559,10 +590,16 @@
+         self.pending_streams.clear()
+ 
+     def close(self) -> None:
+-        self._polling_loop.unregister(self)
+-        ClientPollingLoop.release_instance()
+-        self.monitor.close(linger=0)
+-        self.socket.close()
++        with self._close_lock:
++            if self._closed:
++                return
++            self._polling_loop.unregister(self)
++            self._closed = True
++            try:
++                ClientPollingLoop.release_instance()
++            finally:
++                self.monitor.close(linger=0)
++                self.socket.close()
+ 
+     def _send(self, frames: list[bytes]) -> bool:
+         """Send frames now, or keep them for the next call if there is no room.
+@@ -831,10 +868,13 @@
+                 raise ValueError("Unknown handler type")
+ 
+     def _handle_request(self, msg: list[bytes]) -> None:
+-        assert len(msg) >= 3, (
+-            "Expected at least 3 message parts "
+-            "[identity, request_uid, operation, *payloads]"
+-        )
++        if len(msg) < 3:
++            logger.error(
++                "Malformed request: expected at least 3 message parts "
++                "[identity, request_uid, operation, *payloads], got %d",
++                len(msg),
++            )
++            return
+ 
+         identity, b_request_uid, b_operation, *payloads = msg
+         if b_operation == b"":

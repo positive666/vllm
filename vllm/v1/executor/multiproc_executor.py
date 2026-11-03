@@ -80,6 +80,8 @@ from vllm.v1.worker.worker_base import WorkerWrapperBase
 
 logger = init_logger(__name__)
 
+_ASYNC_OUTPUT_SHUTDOWN = object()
+
 
 class ExceptionWithKVConnectorOutput(Exception):
     """Carries a worker's KV connector output along with its failure."""
@@ -791,7 +793,7 @@ class WorkerProc:
         self.use_async_scheduling = scheduler_config.async_scheduling
         if self.use_async_scheduling:
             self.async_output_queue: queue.Queue = queue.Queue()
-            self.async_output_copy_thread = Thread(
+            self.async_output_copy_thread: Thread | None = Thread(
                 target=self.async_output_busy_loop,
                 daemon=True,
                 name="WorkerAsyncOutputCopy",
@@ -922,6 +924,11 @@ class WorkerProc:
         return cast(list[WorkerProcHandle], ready_proc_handles)
 
     def shutdown(self):
+        output_thread = getattr(self, "async_output_copy_thread", None)
+        if output_thread is not None:
+            self.async_output_queue.put(_ASYNC_OUTPUT_SHUTDOWN)
+            output_thread.join()
+            self.async_output_copy_thread = None
         if self.rpc_broadcast_mq is not None:
             self.rpc_broadcast_mq.shutdown()
         if self.worker_response_mq is not None:
@@ -1149,7 +1156,10 @@ class WorkerProc:
 
         while True:
             output = self.async_output_queue.get()
+            if output is _ASYNC_OUTPUT_SHUTDOWN:
+                return
             self.enqueue_output(output)
+            del output
 
     def worker_busy_loop(self):
         """Main busy loop for Multiprocessing Workers."""

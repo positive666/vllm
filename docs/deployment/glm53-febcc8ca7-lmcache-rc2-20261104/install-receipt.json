@@ -1,0 +1,15 @@
+{
+  "status": "PASS_INSTALL",
+  "upstream_files_checked": 5980,
+  "native_files": 14,
+  "patches": 18,
+  "dependency_versions_checked": 273,
+  "changed_versions": {
+    "vllm": "0.33.0rc1.dev607+gfebcc8ca7",
+    "lmcache": "0.5.7.dev264+glm53.386473dad.align3",
+    "humming-kernels": "0.1.19.post1+g145bed148",
+    "nvidia-nccl-cu13": "2.31.2",
+    "deep-ep": "2.0.0+local"
+  },
+  "model_validation": "pending"
+}

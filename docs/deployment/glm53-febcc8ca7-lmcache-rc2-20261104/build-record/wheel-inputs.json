@@ -1,0 +1,14 @@
+[
+  {
+    "filename": "vllm-0.33.0rc1.dev607+gfebcc8ca7-cp38-abi3-manylinux_2_28_x86_64.whl",
+    "bytes": 346626400,
+    "sha256": "a0526ec2daa2578ab9ef782e3d44d3db918140cc57e1854c6df4ac718a8ac7bd",
+    "url": "https://wheels.vllm.ai/febcc8ca793b3bbea52e5dabc0ca4f491a3fd3fc/vllm-0.33.0rc1.dev607%2Bgfebcc8ca7-cp38-abi3-manylinux_2_28_x86_64.whl"
+  },
+  {
+    "filename": "nvidia_nccl_cu13-2.31.2-py3-none-manylinux_2_18_x86_64.whl",
+    "bytes": 252442223,
+    "sha256": "0bcaf0308854cb55fcc35af72e2c83143f3b71e65a4e865e2c586b1cdcdb5ae0",
+    "url": "https://files.pythonhosted.org/packages/14/fb/94933e00bb3dcfdf66ea3456739c6a51d322353f7cc64fa1f5f660e695ac/nvidia_nccl_cu13-2.31.2-py3-none-manylinux_2_18_x86_64.whl"
+  }
+]

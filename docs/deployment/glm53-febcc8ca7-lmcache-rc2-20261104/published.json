@@ -1,0 +1,14 @@
+{
+  "status": "PUBLISHED_MANIFEST_CONFIG_AND_ALL_BLOBS_VERIFIED",
+  "tag": "ghcr.io/positive666/model:glm53-febcc8ca7-lmc386473dad-h145b-mtp63432-cu130-sm90-20261103-rc2",
+  "digest": "sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+  "reference": "ghcr.io/positive666/model@sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+  "config_digest": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+  "unique_objects": 87,
+  "layer_references": 91,
+  "component_tests_passed": 890,
+  "component_tests_skipped": 13,
+  "service_acceptance": "PASS_SERVICE_AND_RESTORED",
+  "verified_utc": "2026-11-03T16:00:10Z",
+  "note": "Blob HEAD verifies presence and size; config and manifest hashes verified. Not a second full download of every layer."
+}

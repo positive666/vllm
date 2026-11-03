@@ -1,0 +1,68 @@
+{
+  "status": "PASS_COMPONENTS",
+  "image_id": "sha256:1478bf8a1c2efb305428c959593a85f0c1ed896ade5fc1231788c5ae08db7f7e",
+  "groups": [
+    {
+      "name": "runtime",
+      "exit": 0,
+      "seconds": 10.59905665833503,
+      "tests": 0,
+      "failures": 0,
+      "skipped": 0,
+      "evidence": "quality-r1"
+    },
+    {
+      "name": "gpu",
+      "exit": 0,
+      "seconds": 50.974048470146954,
+      "tests": 195,
+      "failures": 0,
+      "skipped": 0,
+      "evidence": "quality-r1"
+    },
+    {
+      "name": "upstream-mq",
+      "exit": 0,
+      "seconds": 54.93221199139953,
+      "tests": 31,
+      "failures": 0,
+      "skipped": 0,
+      "evidence": "quality-r1"
+    },
+    {
+      "name": "qwen-draft",
+      "exit": 0,
+      "seconds": 7.285860777832568,
+      "tests": 12,
+      "failures": 0,
+      "skipped": 0,
+      "evidence": "quality-r1"
+    },
+    {
+      "name": "humming",
+      "exit": 0,
+      "seconds": 195.1325457021594,
+      "tests": 93,
+      "failures": 0,
+      "skipped": 13,
+      "evidence": "quality-r1"
+    },
+    {
+      "name": "cpu",
+      "exit": 0,
+      "seconds": 161.49273556657135,
+      "tests": 538,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lifecycle",
+      "exit": 0,
+      "seconds": 28.700596868991852,
+      "tests": 34,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "model_gate": "PENDING"
+}

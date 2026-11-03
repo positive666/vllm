@@ -1,0 +1,28 @@
+{
+  "status": "PASS_SERVICE_AND_RESTORED",
+  "image": "sha256:c96dc3a429693e1e046877d5ab899d53638baad2473833d7db57012640ac55b5",
+  "component_passed": 890,
+  "component_skipped": 13,
+  "complete_synthetic_requests": 19,
+  "intentional_cancellation": 1,
+  "cache_modes": [
+    "cold",
+    "CPU restore with zero GPU hits",
+    "branches",
+    "C4",
+    "C8",
+    "cancel then canary",
+    "model restart reuse"
+  ],
+  "CPU_restore_external_tokens": 3840,
+  "CPU_restore_rank_chunks": 48,
+  "collectives": "8 ranks, four message sizes; mapped NCCL runtime 2.31.2",
+  "model": "DeepSeek-V4.1-Flash-1017",
+  "performance_benchmark": false,
+  "new_Qwen_full_model_rerun": false,
+  "qwen_config_regressions": 12,
+  "prior_Qwen_full_model_requests": 13,
+  "original_validation_service_restored": true,
+  "production_rollout_performed": false,
+  "L2_STORE_PR6171_included": false
+}
