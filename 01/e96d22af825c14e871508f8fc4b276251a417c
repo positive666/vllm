@@ -1,0 +1,54 @@
+tests/kernels/attention/test_fewhead_sparse_prefill.py
+  s_4950b657d66898::t_059c0de098d02a 1-608
+  s_4950b657d66898::t_6ef5b512d43d18 609-611
+  s_530a99824ab6f6::t_eb7459499ddc4b 612-618
+.buildkite/test_areas/kernels.yaml
+  s_4950b657d66898::t_79b33b27c37c4d 389-401,407
+vllm/models/deepseek_v41/nvidia/triton_sparse.py
+  s_4950b657d66898::t_5c5d77e7ad5f4d 1-419
+tests/models/test_fewhead_prefill_gate.py
+  s_4950b657d66898::t_059c0de098d02a 45-46,49,73-96
+  s_4950b657d66898::t_5c5d77e7ad5f4d 1-44,47-48,50-72,97-556
+docs/design/attention_backends.md
+  s_4950b657d66898::t_059c0de098d02a 59-91
+vllm/models/deepseek_v41/nvidia/fewhead_prefill.py
+  s_530a99824ab6f6::t_d02f2c73159dbb 1-72
+vllm/models/deepseek_v41/nvidia/model.py
+  s_530a99824ab6f6::t_53504a9dfed1f4 207-213
+vllm/models/deepseek_v41/nvidia/ops/small_head_decode_warmup.py
+  s_530a99824ab6f6::t_bef29217471ff3 1-151
+vllm/models/deepseek_v41/nvidia/ops/small_head_paired_decode.py
+  s_530a99824ab6f6::t_9a20d9abe2b8e6 1-187
+vllm/models/deepseek_v41/nvidia/ops/small_head_query_union.py
+  s_530a99824ab6f6::t_21edb8aeb323ad 1-136
+vllm/models/deepseek_v41/nvidia/paired_decode.py
+  s_530a99824ab6f6::t_67ef892a8dc5da 1-170
+vllm/models/deepseek_v41/nvidia/triton_fewhead_sparse_prefill.py
+  s_530a99824ab6f6::t_e78589d6576c55 1-252
+vllm/v1/attention/backends/registry.py
+  s_530a99824ab6f6::t_f9c7c51ab98d41 113-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "01e96d22af825c14e871508f8fc4b276251a417c",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_530a99824ab6f6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0fa53-b641-7930-a4b3-b86d7b4c6ddc",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

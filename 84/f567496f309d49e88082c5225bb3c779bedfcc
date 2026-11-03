@@ -1,0 +1,57 @@
+tests/kernels/mamba/test_gdn_forward_core_split.py
+  s_0dd0c9f7973d90::t_d0bccffe09dbab 154-161
+  s_0dd0c9f7973d90::t_477f424be2cf6b 176-178
+  s_0dd0c9f7973d90::t_18b8b714f882a6 7-8,24-26,40,42,55,86,89,95-101,126,169,171-172,175
+  s_0dd0c9f7973d90::t_abf9edaefe6ee9 210-213
+vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py
+  s_0dd0c9f7973d90::t_b3905f46a9f1bf 496-501,509,512,514-515
+  s_0dd0c9f7973d90::t_a26b1576bc288d 510-511,513
+  s_0dd0c9f7973d90::t_ae198611eb2d9e 470-473
+  s_0dd0c9f7973d90::t_fba7d9cd1644d0 5,456-469,474-495,502-508,516-586,736-742,1715-1717,1719-1731,1931-1937,1945
+  s_0dd0c9f7973d90::t_60da3c210049dc 686-690,692
+  s_0dd0c9f7973d90::t_f91b1f65223749 7,455,1515-1518,1718
+tests/test_config.py
+  s_0dd0c9f7973d90::t_f1744f400b7166 61-69
+tests/kernels/mamba/test_gdn_fused_mtp.py
+  s_0dd0c9f7973d90::t_80fa4a3b3d6b1a 31,127
+vllm/config/kernel.py
+  s_0dd0c9f7973d90::t_b3905f46a9f1bf 337,339-340,346
+  s_0dd0c9f7973d90::t_a26b1576bc288d 338,341
+  s_0dd0c9f7973d90::t_fba7d9cd1644d0 333-336,342-343,348-349
+  s_0dd0c9f7973d90::t_ae198611eb2d9e 344-345,347
+tests/v1/attention/test_gdn_metadata_builder.py
+  s_0dd0c9f7973d90::t_5d103e8261114e 289-291,297-298,305,310
+  s_0dd0c9f7973d90::t_a077244293f42f 9,153,163,250,269-275,279-280,283,286-288,294-296,299-304,306-309,314-318
+  s_0dd0c9f7973d90::t_206dfd2da1355b 276-278,281-282,284-285,292-293,311-313
+  s_0dd0c9f7973d90::t_f04b1a3ecc2ab3 319-320
+tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py
+  s_0dd0c9f7973d90::t_f0b71831a6a8ee 123,126,129-131
+  s_0dd0c9f7973d90::t_68165feb57a527 4,107-112
+  s_0dd0c9f7973d90::t_a28aeda0ab7b0e 77-79,124
+  s_0dd0c9f7973d90::t_3d51cb7fbfc2c2 75,80-86,88-106,113-115
+  s_0dd0c9f7973d90::t_c5a7ef137b2f49 69-71,218,220-221,224,226-227,247,249-250,253,261,263-264,267
+  s_0dd0c9f7973d90::t_3c1108010f6bf8 28,40,72,76,87,125,207,211,215,219,225,243,248,262
+  s_0dd0c9f7973d90::t_7cba6d8da8fc16 5-7,12,23,29-32,34,36-39,41-68,73-74,200-206,208-210,212-214,216-217,222-223,228-242,244-246,251-252,254-260,265-266,268
+  s_0dd0c9f7973d90::t_845a1b7869013e 18,146-197
+  s_0dd0c9f7973d90::t_30be7da1b91a68 24-27,33,35,116-122,127-128,132-145,198-199
+  s_0dd0c9f7973d90::t_61ac36bda47984 269-270
+vllm/v1/attention/backends/gdn_attn.py
+  s_0dd0c9f7973d90::t_f91b1f65223749 68,164,166,170-179,617-621,642,655-664,672-673,755-759
+  s_0dd0c9f7973d90::t_a3b56d3ca8d88a 165,167-169,665-671
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "84f567496f309d49e88082c5225bb3c779bedfcc",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

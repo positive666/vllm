@@ -1,0 +1,23 @@
+vllm/entrypoints/openai/chat_completion/serving.py
+  s_1e6a752c55300c::t_d06ca83b87d067 675,677-682,820-826
+tests/entrypoints/openai/chat_completion/test_serving_chat.py
+  s_1e6a752c55300c::t_250e8190b8620b 801-802,804-810,817-819,824-825,830-833,843-844,849-851,893,915-916
+  s_1e6a752c55300c::t_d7bb4687734d59 799-800,803,811-816,820-823,827-828,834-842,845-848,852,859-862,864,868,873,879-892,894-914
+  s_1e6a752c55300c::t_3a44dca318957d 917-918
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "7b5a75ed7b54496e2e357e17da01a138a3b7e6be",
+  "prompts": {},
+  "sessions": {
+    "s_1e6a752c55300c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a00e9d-9b6d-7b42-a8e4-54eb6705ee76",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

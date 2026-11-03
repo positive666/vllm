@@ -1,0 +1,32 @@
+vllm/v1/worker/gpu/block_table.py
+  s_4950b657d66898::t_ec17907de88cb8 77,155-156,160-161,165-166,187-192
+tests/v1/worker/test_gpu_block_table.py
+  s_4950b657d66898::t_28b25d88a56fab 344-345,360-362,373-376,383-402
+  s_4950b657d66898::t_9ccf829d638be0 308-343,346-359,363-372,377-382,403
+  s_4950b657d66898::t_e2e24acf7c6023 404-406
+  s_2d5564bc3d15c6::t_db089c70358253 407-408
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ca8788ed4a2fec54d265c7e5fab2560116e521f6",
+  "prompts": {},
+  "sessions": {
+    "s_2d5564bc3d15c6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11c1f-1a36-7571-9b5a-37cca04dfe39",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": null
+    }
+  }
+}

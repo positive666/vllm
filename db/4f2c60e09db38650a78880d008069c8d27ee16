@@ -1,0 +1,289 @@
+divergence-20261010/README.md
+  s_7daaf4ddad068f::t_9bb138a5acce7e 1-42
+divergence-20261010/consumers/bias_load_cpu_probe.py
+  s_7daaf4ddad068f::t_87e90f90eb72c5 1-174
+divergence-20261010/consumers/bias_load_cpu_probe_v2.py
+  s_7daaf4ddad068f::t_04f42fe72d0985 1-175
+divergence-20261010/consumers/cpu_short_pair_audit.py
+  s_7daaf4ddad068f::t_134e24833fafb0 1-116
+divergence-20261010/consumers/cpu_short_pair_audit_v2.py
+  s_7daaf4ddad068f::t_01279665d3a5d6 1-85
+divergence-20261010/consumers/cpu_supervisor_audit.py
+  s_7daaf4ddad068f::t_627551bc48f126 1-64
+divergence-20261010/consumers/short_pair_audit.py
+  s_7daaf4ddad068f::t_a3edcce8bdd52e 1-771
+divergence-20261010/consumers/short_pair_audit_v2.py
+  s_7daaf4ddad068f::t_8054d1c23790f9 1-835
+divergence-20261010/consumers/supervisor_audit.py
+  s_7daaf4ddad068f::t_ef0d69be505798 1-354
+divergence-20261010/context/natural-history-review.json
+  s_7daaf4ddad068f::t_7e27af4841b2f4 1-349
+divergence-20261010/context/natural-history-review.md
+  s_7daaf4ddad068f::t_0f20e8ba50d21e 1-9
+divergence-20261010/context/natural-token-decoding.json
+  s_7daaf4ddad068f::t_e53257cb84bdd8 1-162
+divergence-20261010/helpers/cpu_divergence_contracts.py
+  s_7daaf4ddad068f::t_bb5d86729835ba 1-175
+divergence-20261010/helpers/cpu_short_force.py
+  s_7daaf4ddad068f::t_2474a73b82859d 1-112
+divergence-20261010/helpers/cpu_short_normalize.py
+  s_7daaf4ddad068f::t_238bef6917b487 1-141
+divergence-20261010/helpers/divergence_bootstrap.py
+  s_7daaf4ddad068f::t_1078df935d4d88 1-77
+divergence-20261010/helpers/divergence_capture.py
+  s_7daaf4ddad068f::t_c98c3c84ebfc5a 1-464
+divergence-20261010/helpers/divergence_contract.py
+  s_7daaf4ddad068f::t_cf96389f54c06f 1-107
+divergence-20261010/helpers/divergence_leaf.py
+  s_7daaf4ddad068f::t_5b40444b8723d7 1-125
+divergence-20261010/helpers/short_driver.py
+  s_7daaf4ddad068f::t_dfd3c43ee5bac0 1-310
+divergence-20261010/helpers/short_force.py
+  s_7daaf4ddad068f::t_050b9677087a8d 1-362
+divergence-20261010/helpers/short_normalize.py
+  s_7daaf4ddad068f::t_b70dd5efc28a94 1-184
+divergence-20261010/helpers/short_site/sitecustomize.py
+  s_7daaf4ddad068f::t_934742ef16efea 1-5
+divergence-20261010/history/cpu-audit-v1/audit-completed.txt
+  s_7daaf4ddad068f::t_a3bca076d861da 1
+divergence-20261010/history/cpu-audit-v1/audit-started.txt
+  s_7daaf4ddad068f::t_3137eed76a78af 1
+divergence-20261010/history/cpu-audit-v1/audit.exit
+  s_7daaf4ddad068f::t_4d8f528a6069b3 1
+divergence-20261010/history/cpu-audit-v1/audit.log
+  s_7daaf4ddad068f::t_6b562ff283871b 1-10
+divergence-20261010/history/cpu-audit-v1/cleanup-after.json
+  s_7daaf4ddad068f::t_f59593fc16fb9b 1
+divergence-20261010/history/cpu-audit-v1/cleanup-before.json
+  s_7daaf4ddad068f::t_81fd2da368e7fb 1
+divergence-20261010/history/cpu-audit-v1/cleanup-processes-before.txt
+  s_7daaf4ddad068f::t_95e646ee67d92d 1-2
+divergence-20261010/history/cpu-audit-v1/cleanup-stop.exit
+  s_7daaf4ddad068f::t_a8550d894a94f3 1
+divergence-20261010/history/cpu-audit-v1/cleanup-stop.log
+  s_7daaf4ddad068f::t_6865c8e4e3e54d 1
+divergence-20261010/history/cpu-audit-v1/completed.txt
+  s_7daaf4ddad068f::t_90fdddc86da2a2 1
+divergence-20261010/history/cpu-audit-v1/consumer.sha256
+  s_7daaf4ddad068f::t_2ece2d05664e38 1
+divergence-20261010/history/cpu-audit-v1/container-create.exit
+  s_7daaf4ddad068f::t_44de51db590607 1
+divergence-20261010/history/cpu-audit-v1/container-id.txt
+  s_7daaf4ddad068f::t_9c49eaed14cb35 1
+divergence-20261010/history/cpu-audit-v1/container-inspect.json
+  s_7daaf4ddad068f::t_dcb3254883ad94 1-492
+divergence-20261010/history/cpu-audit-v1/orchestration.exit
+  s_7daaf4ddad068f::t_545340b7fac820 1
+divergence-20261010/history/cpu-audit-v1/probe-skipped.txt
+  s_7daaf4ddad068f::t_d873554114efa2 1
+divergence-20261010/history/cpu-audit-v1/probe.sha256
+  s_7daaf4ddad068f::t_54562d7fc64f98 1
+divergence-20261010/history/cpu-audit-v1/resource-summary.json
+  s_7daaf4ddad068f::t_5d9ea45dff59de 1-442
+divergence-20261010/history/cpu-audit-v1/resource.exit
+  s_7daaf4ddad068f::t_a7f3ad80817bae 1
+divergence-20261010/history/cpu-audit-v1/resource.log
+  s_7daaf4ddad068f::t_f9fe3ea500d5c4 1
+divergence-20261010/history/cpu-audit-v1/short-pair-audit-v1/failure.json
+  s_7daaf4ddad068f::t_473ef7d6c4c4a8 1-8
+divergence-20261010/history/cpu-audit-v1/started.txt
+  s_7daaf4ddad068f::t_02a8604c87d4e7 1
+divergence-20261010/history/native-attempt-v4/receipt.json
+  s_7daaf4ddad068f::t_31375b7ae18eb1 1-14
+divergence-20261010/history/native-attempt-v4/short-A.log
+  s_7daaf4ddad068f::t_d34090b5066f1d 1-815
+divergence-20261010/hostscripts/create_container.sh
+  s_7daaf4ddad068f::t_0d5adc4d853e09 1-37
+divergence-20261010/hostscripts/launch_matrix.sh
+  s_7daaf4ddad068f::t_41d9eb0c1c9c9b 1-12
+divergence-20261010/hostscripts/monitor_host.sh
+  s_7daaf4ddad068f::t_783d4767fc6b8a 1-34
+divergence-20261010/hostscripts/run_cells.sh
+  s_7daaf4ddad068f::t_812fbbeb6c690e 1-72
+divergence-20261010/package-manifest.json
+  s_7daaf4ddad068f::t_49da072a49599e 1-1214
+divergence-20261010/protocol.json
+  s_7daaf4ddad068f::t_6d09f49301fa33 1-45
+divergence-20261010/provenance/bias_load_cpu_probe-compile-receipt.json
+  s_7daaf4ddad068f::t_ec4ad7955898b5 1-21
+divergence-20261010/provenance/bias_load_cpu_probe_v2-compile-receipt.json
+  s_7daaf4ddad068f::t_32b82746e4df92 1-32
+divergence-20261010/provenance/cpu-short-normalize-v5-source-bound.json
+  s_7daaf4ddad068f::t_00ac5d3f76d951 1-17
+divergence-20261010/provenance/cpu-supervisor-audit-receipt.json
+  s_7daaf4ddad068f::t_d9f5e3b93179f8 1-31
+divergence-20261010/provenance/cpu_short_pair_audit_v2.py
+  s_7daaf4ddad068f::t_56c963c08ed56a 1-85
+divergence-20261010/provenance/helpers-v5-manifest.json
+  s_7daaf4ddad068f::t_288dc4595f1472 1-33
+divergence-20261010/provenance/producer-manifest.json
+  s_7daaf4ddad068f::t_99dd44e5bca557 1-94
+divergence-20261010/provenance/publication-build-receipt-v1.json
+  s_7daaf4ddad068f::t_a769df910ed97c 1-16
+divergence-20261010/provenance/root-cpu-short-force-v3.json
+  s_7daaf4ddad068f::t_849a231e516123 1-16
+divergence-20261010/provenance/root-cpu-v2-receipts.json
+  s_7daaf4ddad068f::t_eccf83f48470d5 1-20
+divergence-20261010/provenance/root-cpu-v3-receipt.json
+  s_7daaf4ddad068f::t_1fecc2ff23acd3 1-5
+divergence-20261010/provenance/short-pair-cpu-v2-receipt.json
+  s_7daaf4ddad068f::t_e523efa425e081 1-21
+divergence-20261010/provenance/short-pair-cpu-v5-final-receipt.json
+  s_7daaf4ddad068f::t_4b23ac9a9be77a 1-22
+divergence-20261010/provenance/source-findings.md
+  s_7daaf4ddad068f::t_8fce110b394db3 1-62
+divergence-20261010/raw-to-public-map.json
+  s_7daaf4ddad068f::t_87e4505b3965a3 1-13511
+divergence-20261010/reports/cpu-audit-v2/audit-completed.txt
+  s_7daaf4ddad068f::t_05d69f518721b4 1
+divergence-20261010/reports/cpu-audit-v2/audit-started.txt
+  s_7daaf4ddad068f::t_a2bc3330ca042a 1
+divergence-20261010/reports/cpu-audit-v2/audit.exit
+  s_7daaf4ddad068f::t_1d6def159c3500 1
+divergence-20261010/reports/cpu-audit-v2/audit.log
+  s_7daaf4ddad068f::t_a3ab0dceb2b869 1
+divergence-20261010/reports/cpu-audit-v2/cleanup-after.json
+  s_7daaf4ddad068f::t_02ee0745f4bd51 1
+divergence-20261010/reports/cpu-audit-v2/cleanup-before.json
+  s_7daaf4ddad068f::t_2540fa510cfedc 1
+divergence-20261010/reports/cpu-audit-v2/cleanup-processes-before.txt
+  s_7daaf4ddad068f::t_f029866ae2eb61 1-4
+divergence-20261010/reports/cpu-audit-v2/cleanup-stop.exit
+  s_7daaf4ddad068f::t_80c4b203bcb7b9 1
+divergence-20261010/reports/cpu-audit-v2/cleanup-stop.log
+  s_7daaf4ddad068f::t_d354d21ca327b7 1
+divergence-20261010/reports/cpu-audit-v2/completed.txt
+  s_7daaf4ddad068f::t_8468441a32f7dc 1
+divergence-20261010/reports/cpu-audit-v2/consumer.sha256
+  s_7daaf4ddad068f::t_618d638c5ba49f 1
+divergence-20261010/reports/cpu-audit-v2/container-create.exit
+  s_7daaf4ddad068f::t_ca97019547b203 1
+divergence-20261010/reports/cpu-audit-v2/container-id.txt
+  s_7daaf4ddad068f::t_dd5f9d2d32dd1a 1
+divergence-20261010/reports/cpu-audit-v2/container-inspect.json
+  s_7daaf4ddad068f::t_6506f46c806afe 1-492
+divergence-20261010/reports/cpu-audit-v2/orchestration.exit
+  s_7daaf4ddad068f::t_aa0d526e4f2671 1
+divergence-20261010/reports/cpu-audit-v2/probe-completed.txt
+  s_7daaf4ddad068f::t_177ff8a928b41c 1
+divergence-20261010/reports/cpu-audit-v2/probe-started.txt
+  s_7daaf4ddad068f::t_84d889f624683e 1
+divergence-20261010/reports/cpu-audit-v2/probe.exit
+  s_7daaf4ddad068f::t_cce1435718805e 1
+divergence-20261010/reports/cpu-audit-v2/probe.log
+  s_7daaf4ddad068f::t_f022ece1abad1f 1-19
+divergence-20261010/reports/cpu-audit-v2/probe.sha256
+  s_7daaf4ddad068f::t_32e70cac7fa5f7 1
+divergence-20261010/reports/cpu-audit-v2/resource-summary.json
+  s_7daaf4ddad068f::t_4ebc84a7ed0036 1-442
+divergence-20261010/reports/cpu-audit-v2/resource.exit
+  s_7daaf4ddad068f::t_cf7a94657b7e31 1
+divergence-20261010/reports/cpu-audit-v2/resource.log
+  s_7daaf4ddad068f::t_8e233c727a348c 1
+divergence-20261010/reports/cpu-audit-v2/short-pair-audit-v1/capture-comparisons.json
+  s_7daaf4ddad068f::t_1757c1d9460be9 1-52133
+divergence-20261010/reports/cpu-audit-v2/short-pair-audit-v1/raw-logit-comparisons.json
+  s_7daaf4ddad068f::t_052a4738b70c3a 1-1637
+divergence-20261010/reports/cpu-audit-v2/short-pair-audit-v1/receipt.json
+  s_7daaf4ddad068f::t_759fce88936895 1-8
+divergence-20261010/reports/cpu-audit-v2/short-pair-audit-v1/summary.json
+  s_7daaf4ddad068f::t_9f81b7d751896d 1-1009
+divergence-20261010/reports/cpu-audit-v2/started.txt
+  s_7daaf4ddad068f::t_5e79b384b0d3ee 1
+divergence-20261010/reports/cpu-load-probe-v3/bias-load-source-copy.json
+  s_7daaf4ddad068f::t_8ee49be8ddfb1b 1-188
+divergence-20261010/reports/cpu-load-probe-v3/cleanup-after.json
+  s_7daaf4ddad068f::t_25f523866431c7 1
+divergence-20261010/reports/cpu-load-probe-v3/cleanup-before.json
+  s_7daaf4ddad068f::t_f85bb169a41b55 1
+divergence-20261010/reports/cpu-load-probe-v3/cleanup-processes-before.txt
+  s_7daaf4ddad068f::t_3055ce5e7012bd 1-4
+divergence-20261010/reports/cpu-load-probe-v3/cleanup-stop.exit
+  s_7daaf4ddad068f::t_66f3488df5772f 1
+divergence-20261010/reports/cpu-load-probe-v3/cleanup-stop.log
+  s_7daaf4ddad068f::t_d759b32af49fd4 1
+divergence-20261010/reports/cpu-load-probe-v3/completed.txt
+  s_7daaf4ddad068f::t_ce480385ed8e85 1
+divergence-20261010/reports/cpu-load-probe-v3/container-create.exit
+  s_7daaf4ddad068f::t_565a07c409f927 1
+divergence-20261010/reports/cpu-load-probe-v3/container-id.txt
+  s_7daaf4ddad068f::t_5da00f320a9f77 1
+divergence-20261010/reports/cpu-load-probe-v3/container-inspect.json
+  s_7daaf4ddad068f::t_1c1efd3b271c4b 1-492
+divergence-20261010/reports/cpu-load-probe-v3/orchestration.exit
+  s_7daaf4ddad068f::t_6162ac25b5b873 1
+divergence-20261010/reports/cpu-load-probe-v3/probe-completed.txt
+  s_7daaf4ddad068f::t_264922b503bc50 1
+divergence-20261010/reports/cpu-load-probe-v3/probe-started.txt
+  s_7daaf4ddad068f::t_3a1abde5c144fa 1
+divergence-20261010/reports/cpu-load-probe-v3/probe.exit
+  s_7daaf4ddad068f::t_6ae43315d4ac9e 1
+divergence-20261010/reports/cpu-load-probe-v3/probe.log
+  s_7daaf4ddad068f::t_91d5e046c991b8 1-7
+divergence-20261010/reports/cpu-load-probe-v3/probe.sha256
+  s_7daaf4ddad068f::t_4a855a107e3499 1
+divergence-20261010/reports/cpu-load-probe-v3/started.txt
+  s_7daaf4ddad068f::t_7177738dffac40 1
+divergence-20261010/reports/paired-summary-v2.json
+  s_7daaf4ddad068f::t_ae5a43ed65c49e 1-1009
+divergence-20261010/selected-binary-index.json
+  s_7daaf4ddad068f::t_79da1c7bdc73b8 1-1882
+divergence-20261010/source/d8/tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py
+  s_7daaf4ddad068f::t_8b970d63ec2386 1-475
+divergence-20261010/source/d8/tests/kernels/mamba/test_gdn_forward_core_split.py
+  s_7daaf4ddad068f::t_9f2465431017a6 1-319
+divergence-20261010/source/d8/vllm/config/kernel.py
+  s_7daaf4ddad068f::t_cad28735143176 1-478
+divergence-20261010/source/d8/vllm/model_executor/layers/attention/attention.py
+  s_7daaf4ddad068f::t_0466ea82fd1504 1-801
+divergence-20261010/source/d8/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py
+  s_7daaf4ddad068f::t_23615215ca129d 1-2232
+divergence-20261010/source/d8/vllm/model_executor/model_loader/weight_utils.py
+  s_7daaf4ddad068f::t_ca42af54081eb1 1-1794
+divergence-20261010/source/d8/vllm/sampling_params.py
+  s_7daaf4ddad068f::t_753a21c38bc8f2 1-1497
+divergence-20261010/source/d8/vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
+  s_7daaf4ddad068f::t_b5b3d5f227e0ba 1-626
+divergence-20261010/source/d8/vllm/v1/attention/backends/flash_attn.py
+  s_7daaf4ddad068f::t_4c55a921bfe64b 1-2130
+divergence-20261010/source/d8/vllm/v1/attention/backends/gdn_attn.py
+  s_7daaf4ddad068f::t_e5bf371f40ab15 1-787
+divergence-20261010/source/d8/vllm/v1/attention/backends/triton_attn.py
+  s_7daaf4ddad068f::t_093bcdd2d369ac 1-885
+divergence-20261010/source/d8/vllm/v1/engine/input_processor.py
+  s_7daaf4ddad068f::t_36ac8cb639df83 1-657
+divergence-20261010/source/d8/vllm/v1/engine/llm_engine.py
+  s_7daaf4ddad068f::t_0eee8217105821 1-523
+divergence-20261010/source/d8/vllm/v1/worker/gpu/input_batch.py
+  s_7daaf4ddad068f::t_92ad7dd8f11512 1-725
+divergence-20261010/source/d8/vllm/v1/worker/gpu/model_runner.py
+  s_7daaf4ddad068f::t_ee41534a431439 1-2455
+divergence-20261010/source/d8/vllm/v1/worker/gpu/sample/sampler.py
+  s_7daaf4ddad068f::t_48427c372e74c9 1-356
+divergence-20261010/source/d8/vllm/v1/worker/gpu/sample/trace_replay.py
+  s_7daaf4ddad068f::t_f01717e911f03e 1-113
+divergence-20261010/source/d8/vllm/v1/worker/gpu/states.py
+  s_7daaf4ddad068f::t_04fecb28966708 1-133
+divergence-20261010/source/flashinfer/gdn_decode.py
+  s_7daaf4ddad068f::t_cfe0ef9371b855 1-1386
+divergence-20261010/source/flashinfer/gdn_kernels_gdn_decode_nontranspose.py
+  s_7daaf4ddad068f::t_bcec2cf4d9a71d 1-848
+divergence-20261010/source/flashinfer/gdn_kernels_gdn_decode_pretranspose.py
+  s_7daaf4ddad068f::t_2b863272905417 1-1135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "db4f2c60e09db38650a78880d008069c8d27ee16",
+  "prompts": {},
+  "sessions": {
+    "s_7daaf4ddad068f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_7daaf4ddad068f",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

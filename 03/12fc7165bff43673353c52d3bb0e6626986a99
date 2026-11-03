@@ -1,0 +1,23 @@
+tests/utils_/test_mem_utils.py
+  s_ce4a908a5c9ffa::t_66f25f8c623342 3,9-14,19-50,189-261
+vllm/utils/mem_utils.py
+  s_ce4a908a5c9ffa::t_66f25f8c623342 6,327-364
+vllm/v1/worker/gpu_worker.py
+  s_ce4a908a5c9ffa::t_66f25f8c623342 69-73,522-524,526,528
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "0312fc7165bff43673353c52d3bb0e6626986a99",
+  "prompts": {},
+  "sessions": {
+    "s_ce4a908a5c9ffa": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fac2e12c-8456-4657-92c6-c74d534fe3a3",
+        "model": "grok-4.6"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

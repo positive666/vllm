@@ -1,0 +1,31 @@
+vllm/model_executor/layers/quantization/utils/configs/N=5120,K=17408,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_57b7c9ef996031::t_54b9c256bfc89b 1-154
+vllm/model_executor/layers/quantization/utils/configs/N=34816,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_57b7c9ef996031::t_1770b4cf1699c4 1-154
+tests/kernels/quantization/test_scaled_mm_kernel_selection.py
+  s_57b7c9ef996031::t_4db03f3fdf383f 17,23,25,27,103-138
+vllm/model_executor/layers/quantization/utils/configs/N=14336,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_57b7c9ef996031::t_2747603360a313 1-154
+vllm/model_executor/layers/quantization/utils/configs/N=16384,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_57b7c9ef996031::t_7548d9fca4412a 1-154
+vllm/model_executor/kernels/linear/__init__.py
+  s_57b7c9ef996031::t_6989bbd3dc2158 483-504,743
+vllm/model_executor/layers/quantization/utils/configs/N=5120,K=6144,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_57b7c9ef996031::t_89d602bb698108 1-154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8f5f3b1bd5b74fb67717758784723fed0d993146",
+  "prompts": {},
+  "sessions": {
+    "s_57b7c9ef996031": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0eb36-ca8c-71a0-bc3f-04917a7cb849",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+tests/kernels/mamba/test_gdn_fused_mtp.py
+  s_8eacc2070c4a64::t_d17b5fde991e45 125,132-133,253-255,265
+vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py
+  s_13482efb4422ed::t_db08ac36964a92 506-513,1823-1896,1961-1971
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "238200d307e71e4f5538ff312c598c88b081bce0",
+  "prompts": {},
+  "sessions": {
+    "s_13482efb4422ed": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01f08-8486-7b93-9ae9-c12f7c8e890f",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_8eacc2070c4a64": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a02242-ceba-7be3-8254-c4cc686659b7",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

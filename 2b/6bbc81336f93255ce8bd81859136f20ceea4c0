@@ -1,0 +1,19 @@
+tests/kernels/quantization/test_marlin_gemm.py
+  s_0dd0c9f7973d90::t_006b8a1f4c86a3 538-550,553-554,556-557,559-564
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2b6bbc81336f93255ce8bd81859136f20ceea4c0",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

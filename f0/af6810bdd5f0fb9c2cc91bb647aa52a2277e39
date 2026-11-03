@@ -1,0 +1,31 @@
+CMakeLists.txt
+  s_4cd02b3f7ca5e2::t_7886e59dbdb1d4 1124-1125
+tests/kernels/mamba/test_gdn_fused_mtp.py
+  s_b67d402bd7501b::t_eddfae0872c418 21-31,126,133-134,254-256,268
+vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py
+  s_b67d402bd7501b::t_8d25e07ff5f7f2 520-527,1841-1914,1980-1990
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "f0af6810bdd5f0fb9c2cc91bb647aa52a2277e39",
+  "prompts": {},
+  "sessions": {
+    "s_4cd02b3f7ca5e2": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04841-5b29-7b72-9c96-dfb9e64cdac3",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_b67d402bd7501b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_b67d402bd7501b",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+tests/models/glm5next/test_kda_recurrent.py
+  s_1f2f2f2a5c061a::t_09f93eea24e21c 19-22,170-190
+  s_1f2f2f2a5c061a::t_6591644dea7857 191-193
+  s_1f2f2f2a5c061a::t_6219f70c7f0243 194-195
+vllm/models/glm5next/nvidia/ops/third_party/kda/kernels.py
+  s_1f2f2f2a5c061a::t_e0416c4414bce8 35-44,74-85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "38f0e370764af9dd13f9ac7b1bd68b9782eb765d",
+  "prompts": {},
+  "sessions": {
+    "s_1f2f2f2a5c061a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a139a2-0f59-76b0-a5cb-6841a9dc52ee",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Rui Rui4 Cheng <chengrui4@lenovo.com>"
+    }
+  }
+}

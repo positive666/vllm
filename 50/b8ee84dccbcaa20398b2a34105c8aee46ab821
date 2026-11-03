@@ -1,0 +1,91 @@
+decode-shadow-20261009/.gitattributes
+  s_30550b4daf3286::t_0e1a1dbcf7e562 1-2
+decode-shadow-20261009/README.md
+  s_30550b4daf3286::t_064d468ab9b9f3 1-56
+decode-shadow-20261009/archive-independent-review.json
+  s_30550b4daf3286::t_b3337be6f40d9c 1-25
+decode-shadow-20261009/audit-guard-verification-v2.json
+  s_30550b4daf3286::t_8b4c49abda62c7 1-34
+decode-shadow-20261009/capture-and-replay/capture-config.json
+  s_30550b4daf3286::t_5dc7665dd665da 1-26
+decode-shadow-20261009/capture-and-replay/replay-full-v2-summary.json
+  s_30550b4daf3286::t_5dcc52e88a8165 1-160
+decode-shadow-20261009/capture-and-replay/replay-full-v2.json
+  s_30550b4daf3286::t_cf9ea12b17ebba 1-253026
+decode-shadow-20261009/capture-and-replay/replay-smoke-v2-summary.json
+  s_30550b4daf3286::t_4d2fc35144fb35 1-160
+decode-shadow-20261009/capture-and-replay/server.json
+  s_30550b4daf3286::t_0ca1889b9d6409 1-426
+decode-shadow-20261009/capture-and-replay/snapshot-manifest.json
+  s_30550b4daf3286::t_ab773ac15cdc74 1-51486
+decode-shadow-20261009/capture-results.md
+  s_30550b4daf3286::t_0af95a4c3b5569 1-19
+decode-shadow-20261009/cleanup-after-stop.txt
+  s_30550b4daf3286::t_87d839d45d0c25 1-4
+decode-shadow-20261009/commands.md
+  s_30550b4daf3286::t_695c1933ae675b 1-52
+decode-shadow-20261009/export-manifest.json
+  s_30550b4daf3286::t_5477309f254485 1-1979
+decode-shadow-20261009/export-receipt.json
+  s_30550b4daf3286::t_36139266eed7ae 1-7
+decode-shadow-20261009/forced-decode-results.md
+  s_30550b4daf3286::t_2d622d0c40e1fd 1-48
+decode-shadow-20261009/helpers/audit_force.py
+  s_30550b4daf3286::t_a6c018fc0f41c4 1-1036
+decode-shadow-20261009/helpers/create_container.sh
+  s_30550b4daf3286::t_fceef6e4e2495c 1-33
+decode-shadow-20261009/helpers/export_shadow.py
+  s_30550b4daf3286::t_eb276f6ebc3c07 1-96
+decode-shadow-20261009/helpers/force_decode.py
+  s_30550b4daf3286::t_728943cad7ddad 1-323
+decode-shadow-20261009/helpers/force_decode_v2.py
+  s_30550b4daf3286::t_763b7f66678361 1-301
+decode-shadow-20261009/helpers/force_driver.py
+  s_30550b4daf3286::t_0bd4471743034a 1-146
+decode-shadow-20261009/helpers/force_site/sitecustomize.py
+  s_30550b4daf3286::t_493ef8a77bbe74 1-20
+decode-shadow-20261009/helpers/inspect_capture.py
+  s_30550b4daf3286::t_b320a3748c3111 1-66
+decode-shadow-20261009/helpers/launch_capture.py
+  s_30550b4daf3286::t_3b025d5a292d3d 1-328
+decode-shadow-20261009/helpers/monitor_host.sh
+  s_30550b4daf3286::t_cad6e910bf7a04 1-20
+decode-shadow-20261009/helpers/probe_model.py
+  s_30550b4daf3286::t_2499528ddf3fd2 1-31
+decode-shadow-20261009/helpers/replay_capture.py
+  s_30550b4daf3286::t_d9b29fc46c73d9 1-778
+decode-shadow-20261009/helpers/shadow_supervisor.py
+  s_30550b4daf3286::t_1ad0e21c432a6a 1-179
+decode-shadow-20261009/helpers/sitecustomize.py
+  s_30550b4daf3286::t_ee2fab31fa7f08 1-15
+decode-shadow-20261009/helpers/summarize_replay.py
+  s_30550b4daf3286::t_e6645f9e1d4e06 1-51
+decode-shadow-20261009/independent-review.md
+  s_30550b4daf3286::t_bd4be0d22068ca 1-81
+decode-shadow-20261009/publication-verification.json
+  s_30550b4daf3286::t_634a6fdc51faae 1-9
+decode-shadow-20261009/run-records/force-audit-v2.json
+  s_30550b4daf3286::t_f4393ad5c80c22 1-9161
+decode-shadow-20261009/run-records/force-audit-v3.json
+  s_30550b4daf3286::t_1520148224a8a7 1-3278
+decode-shadow-20261009/run-records/model-bias-probe.json
+  s_30550b4daf3286::t_a63c06bd7f6c33 1-440
+decode-shadow-20261009/source-manifest.json
+  s_30550b4daf3286::t_2c5977afb14bc1 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "50b8ee84dccbcaa20398b2a34105c8aee46ab821",
+  "prompts": {},
+  "sessions": {
+    "s_30550b4daf3286": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_30550b4daf3286",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

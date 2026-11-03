@@ -1,0 +1,29 @@
+tests/kernels/quantization/test_triton_scaled_mm.py
+  s_2d5564bc3d15c6::t_30dd87eb09066c 13-16,18,131-186
+vllm/model_executor/layers/quantization/utils/configs/N=14336,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_2d5564bc3d15c6::t_f18749de3e397f 1-266
+vllm/model_executor/layers/quantization/utils/configs/N=16384,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_2d5564bc3d15c6::t_5e9b4405801815 1-266
+vllm/model_executor/layers/quantization/utils/configs/N=34816,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_2d5564bc3d15c6::t_b7d71403b89d08 1-266
+vllm/model_executor/layers/quantization/utils/configs/N=5120,K=17408,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_2d5564bc3d15c6::t_25b057b5b29ea8 1-266
+vllm/model_executor/layers/quantization/utils/configs/N=5120,K=6144,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_2d5564bc3d15c6::t_2497be28ade9a0 1-266
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c4578329218e9c0a626f8381715d6c3d7bb976f0",
+  "prompts": {},
+  "sessions": {
+    "s_2d5564bc3d15c6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11c1f-1a36-7571-9b5a-37cca04dfe39",
+        "model": "unknown"
+      },
+      "human_author": "Rui Rui4 Cheng <chengrui4@lenovo.com>"
+    }
+  }
+}

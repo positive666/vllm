@@ -1,0 +1,21 @@
+vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
+  s_0dd0c9f7973d90::t_eb8406b31d0b96 454-464
+tests/kernels/fla/test_fused_recurrent_packed_decode.py
+  s_0dd0c9f7973d90::t_eb8406b31d0b96 29-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3b44df0954b2f7cf46b8e78aec7f796205c2d03a",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

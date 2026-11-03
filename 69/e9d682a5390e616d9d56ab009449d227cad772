@@ -1,0 +1,63 @@
+performance-followup-20261008/audit_performance.py
+  s_19ff2908b646f9::t_00dfdadc2e00ec 1-569
+performance-followup-20261008/audit_telemetry.py
+  s_19ff2908b646f9::t_072673ace89ee3 1-299
+performance-followup-20261008/README.md
+  s_19ff2908b646f9::t_874938c7b78c2b 1-76
+performance-followup-20261008/model-config.json
+  s_19ff2908b646f9::t_b147a11bb09657 1-1033
+performance-followup-20261008/archive-manifest.json
+  s_19ff2908b646f9::t_4d8767d56b7c26 1-312
+performance-followup-20261008/archive_performance.py
+  s_19ff2908b646f9::t_029c36a93a0aea 1-20
+performance-followup-20261008/review-update.md
+  s_19ff2908b646f9::t_24a9ac1b0f66ab 1-6
+performance-followup-20261008/pr-description.md
+  s_19ff2908b646f9::t_10aa621fd8e8ff 1-86
+performance-followup-20261008/extract_evidence.py
+  s_19ff2908b646f9::t_89fbb666ed798b 1-34
+performance-followup-20261008/performance_supervisor.py
+  s_19ff2908b646f9::t_efad3ca3ceb56c 1-144
+performance-followup-20261008/micro-results.md
+  s_19ff2908b646f9::t_a030dbe704a070 1-45
+performance-followup-20261008/performance-source.json
+  s_19ff2908b646f9::t_37e1c79ec7e745 1-31
+performance-followup-20261008/run_performance.sh
+  s_19ff2908b646f9::t_0ae11ce25e2ab4 1-17
+performance-followup-20261008/runtime_probe.py
+  s_19ff2908b646f9::t_ca023c2f6ce880 1-264
+performance-followup-20261008/telemetry-audit.json
+  s_19ff2908b646f9::t_fc91883c74ba2d 1-2304
+performance-followup-20261008/SHA256SUMS
+  s_19ff2908b646f9::t_4db4c597682a98 1-23
+performance-followup-20261008/cleanup-record.json
+  s_19ff2908b646f9::t_939adee4803e4e 1-13
+performance-followup-20261008/protocol.json
+  s_19ff2908b646f9::t_619a3f56b129cb 1-48
+performance-followup-20261008/benchmark_current_gdn.py
+  s_19ff2908b646f9::t_391e5a90b94b1c 1-740
+performance-followup-20261008/http_performance_client.py
+  s_19ff2908b646f9::t_5149c11257744c 1-453
+performance-followup-20261008/audit.json
+  s_19ff2908b646f9::t_5bcefd82a8e4fa 1-1490
+performance-followup-20261008/serving-results.md
+  s_19ff2908b646f9::t_f2a669da734a50 1-69
+performance-followup-20261008/collect_round_times.py
+  s_19ff2908b646f9::t_b20f7f6e87d7a4 1-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "69e9d682a5390e616d9d56ab009449d227cad772",
+  "prompts": {},
+  "sessions": {
+    "s_19ff2908b646f9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_19ff2908b646f9",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
