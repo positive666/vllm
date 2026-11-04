@@ -1,0 +1,42 @@
+{
+  "previous_lmcache_base": "386473dad97fdad4112a7333bc6604185acfd084",
+  "upstream_base": "ca439cad3ea983ae8dc6197379070f6b71bfee61",
+  "pr6067": "553752cb10c7e40b38d71a1b11edab3040770699",
+  "pr6068": "4a4a1bbcb99d6d8b319fa0578dc7b3b8e6d11561",
+  "pr6171": "69fae0bdd70785198d4b6a10e3f029bef89fb149",
+  "upstream_files_since_rc2": [
+    "docs/design/v1/distributed/l2_adapters/valkey.md",
+    "docs/design/v1/distributed/l2_adapters/valkey_rdma.md",
+    "docs/design/v1/platform/device-plugin-architecture.md",
+    "docs/design/v1/platform/device_ops_design.md",
+    "docs/source/mp/l2_storage/valkey.rst",
+    "lmcache/integration/vllm/lmcache_mp_connector.py",
+    "lmcache/v1/distributed/l2_adapters/valkey/rdma_worker_pool.py",
+    "lmcache/v1/distributed/l2_adapters/valkey/worker_pool.py",
+    "lmcache/v1/distributed/l2_adapters/valkey_l2_adapter.py",
+    "lmcache/v1/multiprocess/modules/blend/lookup.py",
+    "lmcache/v1/multiprocess/modules/lmcache_driven_transfer.py",
+    "lmcache/v1/multiprocess/modules/lookup.py",
+    "lmcache/v1/multiprocess/session.py",
+    "lmcache/v1/platform/__init__.py",
+    "tests/v1/distributed/test_valkey_l2_adapter_rdma.py",
+    "tests/v1/distributed/test_valkey_l2_adapter_rdma_integration.py",
+    "tests/v1/multiprocess/test_apc_covered_lookup.py",
+    "tests/v1/multiprocess/test_lmcache_driven_missing_registration.py",
+    "tests/v1/platform/test_device_ops.py"
+  ],
+  "native_or_build_changes_since_rc2": [],
+  "vllm_changed": false,
+  "base_image": "ghcr.io/positive666/model@sha256:ea31ef16a4f389f30f6ec7651814e4a3aeda7fa54b2dc012e43323313b6965fb",
+  "source_tree": "93eb709e1fe5ea8b07f0dd357a7ec426e7788018",
+  "lmcache_version": "0.5.7.dev267+glm53.ca439cad.life1",
+  "source_archive_sha256": "bd2b55faad23343ea9f16c374c26e732c784b12fe432360c2a417cb08af5432e",
+  "source_files": 942,
+  "runtime_patch_files": 18,
+  "native_rebuilt": true,
+  "other_native_packages_changed": false,
+  "release_metadata": {
+    "release-pyproject.toml": "104cf51d4b10c59b3da908e9c3d02e4316c78cf9e972e0ca6463d86a6f5a4e35",
+    "release-version.py": "970a13f4d51d9363c00257c5526d3a3acad48719fb727ea73223705b3620395d"
+  }
+}

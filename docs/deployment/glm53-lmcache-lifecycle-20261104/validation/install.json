@@ -1,0 +1,10 @@
+{
+  "status": "PASS_INSTALL",
+  "lmcache_source_files_checked": 912,
+  "parent_native_files_unchanged": 14,
+  "lmcache_native_files": 4,
+  "patch_files": 21,
+  "dependency_versions_checked": 273,
+  "default_workarounds_added": false,
+  "model_validation": "pending"
+}

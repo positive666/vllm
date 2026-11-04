@@ -1,0 +1,121 @@
+{
+  "status": "PASS_ALL_FIVE_COMPLETE_AND_UNCHANGED_SERVICES",
+  "image": "ghcr.io/positive666/model:glm53-febcc8ca7-lmcca439cad-h145b-lifecycle-cu130-sm90-20261104-rc1",
+  "digest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+  "nodes": [
+    {
+      "node": 26,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+        "config_digest": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+        "docker_available": true,
+        "unique_objects": 89,
+        "layer_references": 93,
+        "all_object_sha256_verified": true,
+        "record_files": 7091,
+        "patch_files": 21,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      },
+      "existing_services_preserved": true,
+      "existing_running_containers": 4,
+      "new_image_started_only_for_integrity_check": true,
+      "persistent_service_rollout": false
+    },
+    {
+      "node": 27,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+        "config_digest": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+        "docker_available": true,
+        "unique_objects": 89,
+        "layer_references": 93,
+        "all_object_sha256_verified": true,
+        "record_files": 7091,
+        "patch_files": 21,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      },
+      "existing_services_preserved": true,
+      "existing_running_containers": 3,
+      "new_image_started_only_for_integrity_check": true,
+      "persistent_service_rollout": false
+    },
+    {
+      "node": 28,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+        "config_digest": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+        "docker_available": true,
+        "unique_objects": 89,
+        "layer_references": 93,
+        "all_object_sha256_verified": true,
+        "record_files": 7091,
+        "patch_files": 21,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      },
+      "existing_services_preserved": true,
+      "existing_running_containers": 3,
+      "new_image_started_only_for_integrity_check": true,
+      "persistent_service_rollout": false
+    },
+    {
+      "node": 29,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+        "config_digest": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+        "docker_available": true,
+        "unique_objects": 89,
+        "layer_references": 93,
+        "all_object_sha256_verified": true,
+        "record_files": 7091,
+        "patch_files": 21,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      },
+      "existing_services_preserved": true,
+      "existing_running_containers": 2,
+      "new_image_started_only_for_integrity_check": true,
+      "persistent_service_rollout": false
+    },
+    {
+      "node": 176,
+      "verification": {
+        "status": "COMPLETE_CAS_AND_INSTALLED_FILES_VERIFIED",
+        "manifest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+        "config_digest": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+        "docker_available": true,
+        "unique_objects": 89,
+        "layer_references": 93,
+        "all_object_sha256_verified": true,
+        "record_files": 7091,
+        "patch_files": 21,
+        "native_files": 14,
+        "dependency_versions": 273,
+        "validation": "No model restart or model performance test on target"
+      },
+      "existing_services_preserved": true,
+      "existing_running_containers": 12,
+      "new_image_started_only_for_integrity_check": true,
+      "persistent_service_rollout": false
+    }
+  ],
+  "empty_store_import": {
+    "status": "EMPTY_STORE_IMPORT_ALL_BLOBS_VERIFIED",
+    "expected_objects": 89,
+    "manifest_sha256_verified": true,
+    "unpacked": false,
+    "validation_resumed_after": "CRLF descriptor size parsing corrected; original successful fresh-store import preserved"
+  },
+  "archive_strategy": "Complete OCI assembled on each target from SHA256-verified parent objects and new objects fetched over LAN; no thin archive is imported.",
+  "production_services_restarted": false
+}

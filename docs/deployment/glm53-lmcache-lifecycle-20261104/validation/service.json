@@ -1,0 +1,1035 @@
+{
+  "status": "PASS_SERVICE_AND_RESTORED",
+  "image": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+  "collectives": "PASS_8_RANK_4_SIZES_NCCL_23102",
+  "original_experiment_service_restored": true,
+  "cache_checks": [
+    {
+      "status": "PASS_BOUNDED_L1_COLD_RESTORE_BRANCH_C4_C8_CANCEL_CANARY_NOT_PERFORMANCE",
+      "model": "DeepSeek-V4.1-Flash-1017",
+      "performance_measured": false,
+      "phases": [
+        {
+          "phase": "cold",
+          "concurrency": 1,
+          "requests": [
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 0.0,
+            "external_hits": 0.0,
+            "loaded_chunks": 0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 0,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 0,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 0.0,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 0.0,
+            "loaded_chunks": 0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 0.0,
+            "loaded_chunks": 0,
+            "preemptions": 0.0
+          }
+        },
+        {
+          "phase": "CPU_restore_APC_reset",
+          "concurrency": 1,
+          "requests": [
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 0.0,
+            "external_hits": 3840.0,
+            "loaded_chunks": 48.0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 0.0,
+            "loaded_chunks": 0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 3840.0,
+            "loaded_chunks": 48.0,
+            "preemptions": 0.0
+          }
+        },
+        {
+          "phase": "branch_alpha",
+          "concurrency": 1,
+          "requests": [
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 0.0,
+            "external_hits": 3840.0,
+            "loaded_chunks": 48.0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 3840.0,
+            "loaded_chunks": 48.0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 7680.0,
+            "loaded_chunks": 96.0,
+            "preemptions": 0.0
+          }
+        },
+        {
+          "phase": "branch_beta",
+          "concurrency": 1,
+          "requests": [
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 0.0,
+            "external_hits": 3840.0,
+            "loaded_chunks": 48.0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 7680.0,
+            "loaded_chunks": 96.0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 11520.0,
+            "loaded_chunks": 144.0,
+            "preemptions": 0.0
+          }
+        },
+        {
+          "phase": "shared_prefix_C4",
+          "concurrency": 4,
+          "requests": [
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            },
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            },
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            },
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 0.0,
+            "external_hits": 15360.0,
+            "loaded_chunks": 192.0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 11520.0,
+            "loaded_chunks": 144.0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 26880.0,
+            "loaded_chunks": 336.0,
+            "preemptions": 0.0
+          }
+        },
+        {
+          "phase": "shared_prefix_C8",
+          "concurrency": 8,
+          "requests": [
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            },
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            },
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            },
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            },
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            },
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            },
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            },
+            {
+              "id": "beta",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4095,
+                "total_tokens": 4098,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+              "synthetic_answer": "286503"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 4032.0,
+            "external_hits": 26880.0,
+            "loaded_chunks": 336.0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 0.0,
+            "external_hits": 26880.0,
+            "loaded_chunks": 336.0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 4032.0,
+            "external_hits": 53760.0,
+            "loaded_chunks": 672.0,
+            "preemptions": 0.0
+          }
+        },
+        {
+          "phase": "canary_after_cancel",
+          "concurrency": 1,
+          "requests": [
+            {
+              "id": "alpha",
+              "cancel_requested": false,
+              "pass": true,
+              "request_max_tokens": 128,
+              "thinking_mode": "thinking_false",
+              "http_status": 200,
+              "done": true,
+              "finish_reason": "stop",
+              "usage": {
+                "prompt_tokens": 4096,
+                "total_tokens": 4099,
+                "completion_tokens": 3,
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "event_count": 4,
+              "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+              "synthetic_answer": "731942"
+            }
+          ],
+          "delta": {
+            "gpu_hits": 0.0,
+            "external_hits": 3840.0,
+            "loaded_chunks": 48.0,
+            "preemptions": 0.0
+          },
+          "before": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 8064.0,
+            "external_hits": 53760.0,
+            "loaded_chunks": 672.0,
+            "preemptions": 0.0
+          },
+          "after": {
+            "healthy": true,
+            "sessions": 0,
+            "prefetch_jobs": 0,
+            "registered_workers": 8,
+            "l1": {
+              "is_healthy": true,
+              "total_object_count": 6,
+              "write_locked_count": 0,
+              "read_locked_count": 0,
+              "temporary_count": 0,
+              "staging_object_count": 0,
+              "staging_bytes": 0,
+              "memory_used_bytes": 6881280,
+              "memory_total_bytes": 274877906944,
+              "memory_configured_bytes": 274877906944,
+              "backend": "dram",
+              "memory_usage_ratio": 2.5033950805664062e-05,
+              "write_ttl_seconds": 600,
+              "read_ttl_seconds": 300
+            },
+            "running": 0.0,
+            "waiting": 0.0,
+            "gpu_hits": 8064.0,
+            "external_hits": 57600.0,
+            "loaded_chunks": 720.0,
+            "preemptions": 0.0
+          }
+        }
+      ],
+      "cancel": {
+        "id": "alpha",
+        "cancel_requested": true,
+        "pass": true,
+        "request_max_tokens": 2048,
+        "thinking_mode": "thinking_false",
+        "http_status": 200,
+        "pass_expected_transport_abort": true,
+        "first_content_or_thinking_seen": true,
+        "engine_running_before_disconnect": 1.0,
+        "done": false,
+        "finish_reason": null,
+        "usage": null,
+        "event_count": 2,
+        "answer_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c",
+        "synthetic_answer": "I"
+      },
+      "final": {
+        "healthy": true,
+        "sessions": 0,
+        "prefetch_jobs": 0,
+        "registered_workers": 8,
+        "l1": {
+          "is_healthy": true,
+          "total_object_count": 6,
+          "write_locked_count": 0,
+          "read_locked_count": 0,
+          "temporary_count": 0,
+          "staging_object_count": 0,
+          "staging_bytes": 0,
+          "memory_used_bytes": 6881280,
+          "memory_total_bytes": 274877906944,
+          "memory_configured_bytes": 274877906944,
+          "backend": "dram",
+          "memory_usage_ratio": 2.5033950805664062e-05,
+          "write_ttl_seconds": 600,
+          "read_ttl_seconds": 300
+        },
+        "running": 0.0,
+        "waiting": 0.0,
+        "gpu_hits": 8064.0,
+        "external_hits": 57600.0,
+        "loaded_chunks": 720.0,
+        "preemptions": 0.0
+      }
+    },
+    {
+      "status": "PASS_RESTART_PERSISTENT_L1_NO_APC_RESET_NOT_PERFORMANCE",
+      "model": "DeepSeek-V4.1-Flash-1017",
+      "performance_measured": false,
+      "phases": [],
+      "warm": {
+        "id": "alpha",
+        "cancel_requested": false,
+        "pass": true,
+        "request_max_tokens": 128,
+        "thinking_mode": "thinking_false",
+        "http_status": 200,
+        "done": true,
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 4096,
+          "total_tokens": 4099,
+          "completion_tokens": 3,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "event_count": 4,
+        "answer_sha256": "b7f4fff9b569a0bc87e6b1ef6c0e4c49c08777c9c9aa5eb6c0727edd840a24b8",
+        "synthetic_answer": "731942"
+      },
+      "delta": {
+        "gpu_hits": 0.0,
+        "external_hits": 3840.0,
+        "loaded_chunks": 48.0,
+        "preemptions": 0.0
+      },
+      "canary": {
+        "id": "beta",
+        "cancel_requested": false,
+        "pass": true,
+        "request_max_tokens": 128,
+        "thinking_mode": "thinking_false",
+        "http_status": 200,
+        "done": true,
+        "finish_reason": "stop",
+        "usage": {
+          "prompt_tokens": 4095,
+          "total_tokens": 4098,
+          "completion_tokens": 3,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "event_count": 4,
+        "answer_sha256": "0ddf7186063d849a86ab7422f3b3398ddb301d9c181e6567c616a418b773492d",
+        "synthetic_answer": "286503"
+      },
+      "before": {
+        "healthy": true,
+        "sessions": 0,
+        "prefetch_jobs": 0,
+        "registered_workers": 8,
+        "l1": {
+          "is_healthy": true,
+          "total_object_count": 6,
+          "write_locked_count": 0,
+          "read_locked_count": 0,
+          "temporary_count": 0,
+          "staging_object_count": 0,
+          "staging_bytes": 0,
+          "memory_used_bytes": 6881280,
+          "memory_total_bytes": 274877906944,
+          "memory_configured_bytes": 274877906944,
+          "backend": "dram",
+          "memory_usage_ratio": 2.5033950805664062e-05,
+          "write_ttl_seconds": 600,
+          "read_ttl_seconds": 300
+        },
+        "running": 0.0,
+        "waiting": 0.0,
+        "gpu_hits": 0.0,
+        "external_hits": 0.0,
+        "loaded_chunks": 720.0,
+        "preemptions": 0.0
+      },
+      "after": {
+        "healthy": true,
+        "sessions": 0,
+        "prefetch_jobs": 0,
+        "registered_workers": 8,
+        "l1": {
+          "is_healthy": true,
+          "total_object_count": 6,
+          "write_locked_count": 0,
+          "read_locked_count": 0,
+          "temporary_count": 0,
+          "staging_object_count": 0,
+          "staging_bytes": 0,
+          "memory_used_bytes": 6881280,
+          "memory_total_bytes": 274877906944,
+          "memory_configured_bytes": 274877906944,
+          "backend": "dram",
+          "memory_usage_ratio": 2.5033950805664062e-05,
+          "write_ttl_seconds": 600,
+          "read_ttl_seconds": 300
+        },
+        "running": 0.0,
+        "waiting": 0.0,
+        "gpu_hits": 0.0,
+        "external_hits": 3840.0,
+        "loaded_chunks": 768.0,
+        "preemptions": 0.0
+      },
+      "final": {
+        "healthy": true,
+        "sessions": 0,
+        "prefetch_jobs": 0,
+        "registered_workers": 8,
+        "l1": {
+          "is_healthy": true,
+          "total_object_count": 6,
+          "write_locked_count": 0,
+          "read_locked_count": 0,
+          "temporary_count": 0,
+          "staging_object_count": 0,
+          "staging_bytes": 0,
+          "memory_used_bytes": 6881280,
+          "memory_total_bytes": 274877906944,
+          "memory_configured_bytes": 274877906944,
+          "backend": "dram",
+          "memory_usage_ratio": 2.5033950805664062e-05,
+          "write_ttl_seconds": 600,
+          "read_ttl_seconds": 300
+        },
+        "running": 0.0,
+        "waiting": 0.0,
+        "gpu_hits": 4032.0,
+        "external_hits": 3840.0,
+        "loaded_chunks": 768.0,
+        "preemptions": 0.0
+      },
+      "reset_endpoint_called": false,
+      "complete_requests": 2
+    }
+  ],
+  "stop_drain": "PASS_WITH_PERSISTENT_L1",
+  "scope": "Synthetic DeepSeek TP8 + independent LMCache MP/L1; no new Qwen full-model run or multi-node production rollout."
+}

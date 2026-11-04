@@ -1,0 +1,67 @@
+{
+  "status": "PASS_COMPONENTS",
+  "image_id": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+  "groups": [
+    {
+      "name": "runtime",
+      "exit": 0,
+      "seconds": 10.344443674199283,
+      "tests": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "cpu",
+      "exit": 1,
+      "seconds": 176.7087528342381,
+      "tests": 614,
+      "failures": 0,
+      "skipped": 1,
+      "acceptance": "All pytest suites exited 0; runner rejected one CPU-only accelerator skip, now passed on GPU."
+    },
+    {
+      "name": "gpu",
+      "exit": 0,
+      "seconds": 41.59260058682412,
+      "tests": 193,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "lifecycle",
+      "exit": 0,
+      "seconds": 27.197792791761458,
+      "tests": 34,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "upstream-mq",
+      "exit": 0,
+      "seconds": 58.951895396225154,
+      "tests": 31,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "platform-gpu",
+      "exit": 0,
+      "tests": 1,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "model_gate": "PASS_SERVICE_AND_RESTORED",
+  "collectives_gate": "PASS_8_RANK_4_SIZES_NCCL_23102",
+  "cpu_skip": [
+    [
+      "test_unregistered_accelerator_fails_fast",
+      {
+        "type": "pytest.skip",
+        "message": "Requires available cpu runtime"
+      }
+    ]
+  ],
+  "skip_gpu_coverage": true,
+  "service_evidence": "service.json"
+}

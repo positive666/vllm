@@ -1,0 +1,7 @@
+{
+  "status": "PASS_OLD_FAILS_NEW_PASSES",
+  "old_assertion_failures": 2,
+  "old_setup_errors": 0,
+  "new_passes": 2,
+  "scope": "Installed images, real L1 manager and STORE controller with a controlled asynchronous MockL2 adapter; not a Mooncake network stress test."
+}

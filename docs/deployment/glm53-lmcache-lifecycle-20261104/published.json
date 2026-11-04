@@ -1,0 +1,14 @@
+{
+  "status": "PUBLISHED_MANIFEST_CONFIG_AND_ALL_BLOBS_VERIFIED",
+  "tag": "ghcr.io/positive666/model:glm53-febcc8ca7-lmcca439cad-h145b-lifecycle-cu130-sm90-20261104-rc1",
+  "digest": "sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+  "reference": "ghcr.io/positive666/model@sha256:e800a684027450cc58b1251c30a7c3357bc0876f51f11ae08ed3677a3059f930",
+  "config_digest": "sha256:c7cf0e818e30cb8fdf3ff09da6b95252ba8a0b5a7f245cba3d0978e0db11f081",
+  "unique_objects": 89,
+  "layer_references": 93,
+  "service_acceptance": "PASS_SERVICE_AND_RESTORED",
+  "component_tests": 872,
+  "component_skips": 1,
+  "verified_utc": "2026-11-04T06:45:51Z",
+  "note": "Registry blob presence/size checked; complete SHA256 validation follows during LAN delivery."
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "project": "vllm",
+    "path": "vllm/v1/core/single_type_kv_cache_manager.py",
+    "upstream_sha256": "a21bef180d221926130f5dcffd974875d8eb2e2cceda0d61e79e03baca5da6c9",
+    "previous_sha256": "2cc3fd3cbb39da3208ac88e75fa327f8944dd7514a28d86f481636738b0c9511",
+    "candidate_sha256": "2cc3fd3cbb39da3208ac88e75fa327f8944dd7514a28d86f481636738b0c9511",
+    "resolved_conflicts": 0
+  },
+  {
+    "project": "vllm",
+    "path": "vllm/v1/executor/multiproc_executor.py",
+    "upstream_sha256": "d1de4acfa99d63325c7449e61aef24dbe96c16291ef7347836695faee8faa3fc",
+    "previous_sha256": "0fa3b8c87214477fd6444ecf479703943298789c89ea425f623ca542486d8ab5",
+    "candidate_sha256": "0fa3b8c87214477fd6444ecf479703943298789c89ea425f623ca542486d8ab5",
+    "resolved_conflicts": 0
+  },
+  {
+    "project": "vllm",
+    "path": "vllm/v1/worker/gpu/spec_decode/speculator_config.py",
+    "upstream_sha256": "507fa8540940f15846b53536dc81588f6e6b9c47e78a1ae973972a2942abaa04",
+    "previous_sha256": "17e515c8e7b256c608c7f492f18d9f7c86c13ba4dfeb8cba66162d748580b1de",
+    "candidate_sha256": "17e515c8e7b256c608c7f492f18d9f7c86c13ba4dfeb8cba66162d748580b1de",
+    "resolved_conflicts": 0
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/integration/vllm/lmcache_mp_connector.py",
+    "upstream_sha256": "c3ea1093ef2d08c8348b0a89f4a24470101c9957ddcd273774e366eb8fb6ddc9",
+    "candidate_sha256": "436b134b4b6f9d6d3e0d1ce443a4ef76d30bb7b5ab2a4c19f340160e9cc61daf"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/integration/vllm/lmcache_mp_metadata.py",
+    "upstream_sha256": "b618859d4a5f70b6827e12c5208bb045bd3cd0da475cf8384f738b852423e9cb",
+    "candidate_sha256": "8c85e4adf8ed923dcf54397e3c0ecc173c75f165359d086a745205dc77b25406"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/integration/vllm/mp_lookup_state.py",
+    "upstream_sha256": "f61074f2a16156ed32460ddbf36ff664b1ecf2e76969635d6c94d2977465e26b",
+    "candidate_sha256": "402a83f6b0404b54c8fbec0cf9e4f9df8f6e30d324e7cb645915c35cdc9141c4"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/integration/vllm/vllm_multi_process_adapter.py",
+    "upstream_sha256": "e7e111823cab1eba7086e39d63670175c818f65e1e1f8bf67d64a2eeee6f5603",
+    "candidate_sha256": "6965ec1e278bc87468881fe0b3136a822270827a604996d63adf4f9868b8f143"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/api.py",
+    "upstream_sha256": "bbb215a39f259dc6fb21b05061c25fc5eb9568ff73e84591ec4b43e14c5cc1b6",
+    "candidate_sha256": "31609d3f40f863596780e7c6d91df7d5cf788acbed9b5e64235d8659f2c1e7b2"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/internal_api.py",
+    "upstream_sha256": "df80f9d16c315353395f64964e9a28bd055559a43f17dda000a011b63dad9d0d",
+    "candidate_sha256": "4271bac9907d863ed9ae8a8cfeb5f89bab5454758d7df83419115d3cb9c02945"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/l1_manager/base.py",
+    "upstream_sha256": "7d888046bf50e01fafc0529e36cc6f46187fb9962e50cd3ea958e349191f8c84",
+    "candidate_sha256": "dbcc0a025448ed0a1deee6bbd4f14ec32d3949e18b497f49f5d82571c8ac4038"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/l2_adapters/base.py",
+    "upstream_sha256": "363a6872fcff1539d22e892bf14e27cbed965e1578ed0a05d20085d589018c5e",
+    "candidate_sha256": "fee2a660fcb9f40207dcff8115351aac503b95c403b8bcdaa9237a56c3ec1e03"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/l2_adapters/bigtable_l2_adapter.py",
+    "upstream_sha256": "872001574449497f056349ecd96babdced8553fb37d1f620a42b59fae0a98397",
+    "candidate_sha256": "8c3cc50160157c338337e4e068b412cf16e7e495350ebb7389b49cbf324ae7dd"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/storage_controllers/prefetch_controller.py",
+    "upstream_sha256": "e8ce96093ee30162b5770fcedd78ddb7ea20d830f22800a4763fcb8ccd620c88",
+    "candidate_sha256": "ebb89ffa8980067556f20d0f11b27135ea1573297843cdf32fd5bee21b200c9f"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/storage_controllers/store_controller.py",
+    "upstream_sha256": "c5811d1873337eaff0dd7ce03f61961af2b748e71e144a2cfceeaf8cc116750a",
+    "candidate_sha256": "38b1c4d93ad99b052f54fe4098287f8761c9480118a62065f6c2990fa39d9f06"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/distributed/storage_manager.py",
+    "upstream_sha256": "43c4080ff515f71dec7dab62de79e4c6b06a3059113e645904ec0b9d7e8b5fcc",
+    "candidate_sha256": "8dc2b480e3ca9d05ec2d4083e856e29708d0be5f3e8822dd2459d6df2b3a2308"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/mp_observability/subscribers/metrics/l2_failures.py",
+    "upstream_sha256": "4d8dce27ca00b5c97243f2521872f8ec4f27e1b9b10b61c601fd764283fdc957",
+    "candidate_sha256": "53b65193604f2bc53444dd021c71f985b7a7b3d3f485036adc5bbc65838458b3"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/multiprocess/modules/blend/lookup.py",
+    "upstream_sha256": "4040fd2af6a1c2f2b68b1980a335f30a3261d991110775f91726b1af75e20bf6",
+    "candidate_sha256": "5eedffd0deed8c20c3b6bbd413d71097f0cb766f33377eba4562a7ec86eeacc8"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/multiprocess/modules/lmcache_driven_transfer.py",
+    "upstream_sha256": "7183fa0314a769791d7756dffc11d411d345c584c581eee84f0a7aa8e1866e1a",
+    "candidate_sha256": "9baaadb4418176a225d2a25b00f332a78b0be842f55d9f80346458bdc7529157"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/multiprocess/modules/lookup.py",
+    "upstream_sha256": "14b42f412dea6f35d8552f220c95b51565720a2989dcffb058d8d85cdc0110ce",
+    "candidate_sha256": "16664357808d4980c1b25aa978af0fd3f3490fc4f2dd114b21278542a40c14f0"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/multiprocess/session.py",
+    "upstream_sha256": "e5874f71e70853ce400d0cc2294533806b1ba8db066c42117c9cc3d1936fb4e3",
+    "candidate_sha256": "f301f74d338e765cf60434e9c625209c77eaf12d5a3720865627b29dc5782f7f"
+  },
+  {
+    "project": "lmcache",
+    "path": "lmcache/v1/multiprocess/transport/zmq_impl/mq.py",
+    "upstream_sha256": "b6cd4b1a6fa917df45e2956c81a90194af84d0630ba48f0cea6939d022da9d68",
+    "candidate_sha256": "b30597a2fb8a89476e587973412989d2dfc717696d3a0808e30ac4a594c2ab0b"
+  }
+]
