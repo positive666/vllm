@@ -1,0 +1,37 @@
+.buildkite/test_areas/models_basic.yaml
+  s_d9ae7b39f0a330::t_23470903b19c28 80,102,127,152
+tests/models/test_deepseek_v41_shardq.py
+  s_d9ae7b39f0a330::t_07f20470394200 1-282
+vllm/models/deepseek_v41/attention.py
+  s_d9ae7b39f0a330::t_46926228fe8f43 73,80-83,93,318,320-325,364,1151-1192,1406,1459-1461,1476-1498,1748-1749,1754
+vllm/models/deepseek_v41/nvidia/flashmla.py
+  s_d9ae7b39f0a330::t_bb0de1ecf38ca8 8-9,35-41,87-88,98-198,218,258-260,314-387,478-479,482-483,488-491,509,581,585,587
+vllm/models/deepseek_v41/nvidia/model.py
+  s_d9ae7b39f0a330::t_1b5bbed7985a79 283-303,939-947
+vllm/models/deepseek_v41/nvidia/model_state.py
+  s_d9ae7b39f0a330::t_22c375943a3119 771-772,774,780-785
+vllm/models/deepseek_v41/shardq.py
+  s_d9ae7b39f0a330::t_462348cc113e23 1-201
+vllm/models/deepseek_v41/sparse_mla.py
+  s_d9ae7b39f0a330::t_47aca0f37a16d1 13,79-84,97-119,125-128,248-253,289-315
+vllm/v1/attention/backends/mla/indexer.py
+  s_d9ae7b39f0a330::t_ddb029837e5d5f 51,67-88,1022-1025,1559-1568,1585
+vllm/v1/attention/ops/shardq.py
+  s_d9ae7b39f0a330::t_4e5d2a79c09e98 19,109-113,115-118,123-124,153-158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b6668d54423b651455b142e794a348106bccb522",
+  "prompts": {},
+  "sessions": {
+    "s_d9ae7b39f0a330": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19a37-5ad5-7781-a53c-602c4a10d794",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
