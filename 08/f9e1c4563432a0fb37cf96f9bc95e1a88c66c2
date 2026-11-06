@@ -1,0 +1,28 @@
+tests/models/qwen4_exp/test_tpsp.py
+  s_d6988063cfa454::t_fdc04271dc44df 318,326,332-334,336,409-413
+  s_d6988063cfa454::t_513a817941c59b 414
+.buildkite/test_areas/models_basic.yaml
+  s_d6988063cfa454::t_fdc04271dc44df 424-425,427
+vllm/models/qwen4_exp/nvidia/qsa_indexer.py
+  s_d6988063cfa454::t_fdc04271dc44df 100,119
+tests/models/qwen4_exp/test_qsa_reference.py
+  s_d6988063cfa454::t_fdc04271dc44df 1447,1480-1481
+docs/configuration/optimization.md
+  s_d6988063cfa454::t_fdc04271dc44df 84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "08f9e1c4563432a0fb37cf96f9bc95e1a88c66c2",
+  "prompts": {},
+  "sessions": {
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
