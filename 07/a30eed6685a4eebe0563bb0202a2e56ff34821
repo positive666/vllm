@@ -1,0 +1,145 @@
+vllm/distributed/device_communicators/shm_broadcast.py
+  s_d9ae7b39f0a330::t_cdebc5096ea0ef 72-74,84-87,1012,1014,1019-1039,1045
+vllm/distributed/parallel_state.py
+  s_d9ae7b39f0a330::t_8dbcea22451329 28,317-384,548-556,567-572,586-590,593,595,2078
+vllm/entrypoints/launchers/utils/server_utils.py
+  s_d9ae7b39f0a330::t_4d0defc291bc17 4,78,97,111-112
+vllm/model_executor/layers/quantization/compressed_tensors/compressed_tensors_moe/compressed_tensors_moe_w4a4_mxfp4.py
+  s_d9ae7b39f0a330::t_f3928b5bf0cc0d 64-66,68-72,209-212
+vllm/model_executor/layers/quantization/utils/humming/moe.py
+  s_d9ae7b39f0a330::t_fdb5cf2493e20d 223,278
+vllm/models/deepseek_v41/nvidia/model.py
+  s_d9ae7b39f0a330::t_f9e45f442149a3 38,171
+vllm/models/deepseek_v41/nvidia/specialized_decode/moe/routed_expert_gemm.py
+  s_d9ae7b39f0a330::t_494454c369c4d0 7,478,483-485
+vllm/models/deepseek_v41/nvidia/specialized_decode/moe/step.py
+  s_d9ae7b39f0a330::t_8963f103b3def5 25,64
+vllm/v1/worker/gpu/spec_decode/gemma4/speculator.py
+  s_d9ae7b39f0a330::t_05e5b9df0127f5 1-187
+vllm/v1/worker/gpu/spec_decode/lilicorr/__init__.py
+  s_d9ae7b39f0a330::t_e88fb2b2d1203f 1-2
+vllm/v1/worker/gpu/spec_decode/lilicorr/config.py
+  s_d9ae7b39f0a330::t_69b821712520c1 1-11
+vllm/v1/worker/gpu/spec_decode/lilicorr/speculator.py
+  s_d9ae7b39f0a330::t_378ae8f228942c 1-102
+vllm/v1/worker/gpu/spec_decode/mtp/__init__.py
+  s_d9ae7b39f0a330::t_1af2a1524227bf 1-2
+vllm/v1/worker/gpu/spec_decode/mtp/config.py
+  s_d9ae7b39f0a330::t_f2f18fb0f864a4 1-126
+vllm/v1/worker/gpu/spec_decode/mtp/speculator.py
+  s_d9ae7b39f0a330::t_4c24c6c79e08a8 1-59
+vllm/v1/worker/gpu/spec_decode/multi_module_mtp/__init__.py
+  s_d9ae7b39f0a330::t_a004a042b5120a 1-2
+vllm/v1/worker/gpu/spec_decode/multi_module_mtp/config.py
+  s_d9ae7b39f0a330::t_7b13014500de8c 1-18
+vllm/v1/worker/gpu/spec_decode/multi_module_mtp/speculator.py
+  s_d9ae7b39f0a330::t_30bb62d324fcb4 1-1129
+vllm/v1/worker/gpu/spec_decode/ngram/config.py
+  s_d9ae7b39f0a330::t_fa4f8d25b63a3c 1-47
+vllm/v1/worker/gpu/spec_decode/ngram/speculator.py
+  s_d9ae7b39f0a330::t_baf708506f428d 1-276
+vllm/v1/worker/gpu/spec_decode/rejection_sampler.py
+  s_d9ae7b39f0a330::t_799ca4ee3116bb 1-472
+vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py
+  s_d9ae7b39f0a330::t_e2501b8c44efc3 1-1444
+vllm/v1/worker/gpu/spec_decode/speculator.py
+  s_d9ae7b39f0a330::t_d04dc2eda7072b 1-753
+vllm/v1/worker/gpu/spec_decode/speculator_config.py
+  s_d9ae7b39f0a330::t_a6fb9de3891d76 168-169,225
+vllm/v1/worker/gpu/spec_decode/standalone_ar/__init__.py
+  s_d9ae7b39f0a330::t_367eac91cf1ca4 1-2
+vllm/v1/worker/gpu/spec_decode/standalone_ar/config.py
+  s_d9ae7b39f0a330::t_7ac11940a1db09 1-30
+vllm/v1/worker/gpu/spec_decode/standalone_ar/speculator.py
+  s_d9ae7b39f0a330::t_3eb529d56b64c9 1-547
+vllm/v1/worker/gpu/spec_decode/suffix/config.py
+  s_d9ae7b39f0a330::t_dbf94b72f43e5a 1-61
+vllm/v1/worker/gpu/spec_decode/suffix/speculator.py
+  s_d9ae7b39f0a330::t_5a9b8dc641cbc1 1-776
+vllm/v1/worker/gpu/spec_decode/target_dependent_ar/__init__.py
+  s_d9ae7b39f0a330::t_2296a990bc30e6 1-2
+vllm/v1/worker/gpu/spec_decode/target_dependent_ar/cudagraph_utils.py
+  s_d9ae7b39f0a330::t_e2e4f1914367b3 1-117
+vllm/v1/worker/gpu/spec_decode/target_dependent_ar/speculator.py
+  s_d9ae7b39f0a330::t_a6ba06ea0eef2a 1-1017
+vllm/v1/worker/gpu/spec_decode/utils.py
+  s_d9ae7b39f0a330::t_3b55f22e4f1b73 1-156
+vllm/v1/worker/gpu/spec_decode/v1_speculator_configs.py
+  s_d9ae7b39f0a330::t_c80e7ccb87877c 1-43
+vllm/v1/worker/gpu/spec_decode/xpress/__init__.py
+  s_d9ae7b39f0a330::t_43a3629c1a478f 1-2
+vllm/v1/worker/gpu/spec_decode/xpress/config.py
+  s_d9ae7b39f0a330::t_811b3178ae3264 1-29
+vllm/v1/worker/gpu/spec_decode/xpress/kernels.py
+  s_d9ae7b39f0a330::t_da97830b030a16 1-382
+vllm/v1/worker/gpu/spec_decode/xpress/speculator.py
+  s_d9ae7b39f0a330::t_8520bbff2df734 1-109
+vllm/v1/worker/gpu/states.py
+  s_d9ae7b39f0a330::t_2c538d7ba3813a 1-134
+vllm/v1/worker/gpu/structured_outputs.py
+  s_d9ae7b39f0a330::t_088c3a773d041d 1-134
+vllm/v1/worker/gpu/ubatch_utils.py
+  s_d9ae7b39f0a330::t_4f0703ffec4197 1-604
+vllm/v1/worker/gpu/warmup.py
+  s_d9ae7b39f0a330::t_32119b53b7f60f 1-631
+vllm/v1/worker/gpu_input_batch.py
+  s_d9ae7b39f0a330::t_18d722b5b12b39 1-1144
+vllm/v1/worker/gpu_model_runner.py
+  s_d9ae7b39f0a330::t_113a92ba382b6a 1-7182
+vllm/v1/worker/gpu_ubatch_wrapper.py
+  s_d9ae7b39f0a330::t_fdebf338bd1586 1-456
+vllm/v1/worker/gpu_worker.py
+  s_d9ae7b39f0a330::t_bbb8b89dd64f7c 1-1940
+vllm/v1/worker/kv_connector_model_runner_mixin.py
+  s_d9ae7b39f0a330::t_02454173f73637 1-107
+vllm/v1/worker/lora_model_runner_mixin.py
+  s_d9ae7b39f0a330::t_73376836f0cd95 1-310
+vllm/v1/worker/mamba_utils.py
+  s_d9ae7b39f0a330::t_f22a794942f95a 1-1654
+vllm/v1/worker/mm_encoder_model_runner.py
+  s_d9ae7b39f0a330::t_cbe9c7729c46f1 1-175
+vllm/v1/worker/sentinel/eplb_redistribute.py
+  s_d9ae7b39f0a330::t_0c144c6afe46d2 1-288
+vllm/v1/worker/sentinel/expert_reload.py
+  s_d9ae7b39f0a330::t_cb490aeae23a71 1-40
+vllm/v1/worker/sentinel/gpu_worker_sentinel.py
+  s_d9ae7b39f0a330::t_19cfc08c70852e 1-301
+vllm/v1/worker/startup_plan.py
+  s_d9ae7b39f0a330::t_d7707d144d94c6 1-191
+vllm/v1/worker/ubatch_utils.py
+  s_d9ae7b39f0a330::t_3138aaa3349bfe 1-356
+vllm/v1/worker/ubatching.py
+  s_d9ae7b39f0a330::t_d3d76dcc95153f 1-254
+vllm/v1/worker/utils.py
+  s_d9ae7b39f0a330::t_ba7691cc90d03e 1-1036
+vllm/v1/worker/worker_base.py
+  s_d9ae7b39f0a330::t_13316aa97792ee 1-417
+vllm/v1/worker/workspace.py
+  s_d9ae7b39f0a330::t_b0413f64bb41e0 1-421
+vllm/v1/worker/xpu_model_runner.py
+  s_d9ae7b39f0a330::t_b8b60862155110 1-75
+vllm/v1/worker/xpu_worker.py
+  s_d9ae7b39f0a330::t_703de1be0e7e4a 1-243
+vllm/version.py
+  s_d9ae7b39f0a330::t_bd9bf6d42bad0d 1-37
+vllm/vllm_flash_attn/__init__.py
+  s_d9ae7b39f0a330::t_1e9cd5a7251fd7 1-45
+vllm/vllm_flash_attn/flash_attn_interface.py
+  s_d9ae7b39f0a330::t_fef7dac64b7ec2 1-769
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "07a30eed6685a4eebe0563bb0202a2e56ff34821",
+  "prompts": {},
+  "sessions": {
+    "s_d9ae7b39f0a330": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19a37-5ad5-7781-a53c-602c4a10d794",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
