@@ -1,0 +1,25 @@
+.buildkite/test_areas/kernels.yaml
+  s_d9ae7b39f0a330::t_134792cabdb639 808-830
+docs/configuration/optimization.md
+  s_d9ae7b39f0a330::t_3a1b7aae5f41cb 138-150
+tests/kernels/moe/test_flashinfer_moe_ep.py
+  s_d9ae7b39f0a330::t_7da412367e1558 22,244,246,389,393-398,404-406,410-411,416-417,443-445,514-565,800-807,810-811,816-818
+vllm/model_executor/layers/fused_moe/flashinfer_moe_ep.py
+  s_d9ae7b39f0a330::t_c5b6a58ff4a6c3 19,459-468,515-549
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "947e66c5c9fc592286e937d89028cd88a72ec62b",
+  "prompts": {},
+  "sessions": {
+    "s_d9ae7b39f0a330": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19a37-5ad5-7781-a53c-602c4a10d794",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
