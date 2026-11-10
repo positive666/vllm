@@ -1,0 +1,29 @@
+tests/models/qwen4_exp/test_hc_ops.py
+  s_83918c4b48d1d5::t_5011875b3e00e4 37-44,173-174
+vllm/models/qwen4_exp/nvidia/ops/hc.py
+  s_37d1d432c29c37::t_3fc35f2e265110 193-269,272-278,288,290,292-316
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b07c6bb5ccf73882ad3515ff1dbbf5ae3bf9670a",
+  "prompts": {},
+  "sessions": {
+    "s_37d1d432c29c37": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a214-fe2b-7351-a031-384e57ba640b",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
