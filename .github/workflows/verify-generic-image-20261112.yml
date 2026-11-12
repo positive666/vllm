@@ -1,0 +1,40 @@
+name: Verify generic image 2026-11-12
+on:
+  push:
+    branches: ['codex/verify-generic-image-20261112-r1']
+permissions:
+  contents: read
+  packages: read
+jobs:
+  complete-readback:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          sparse-checkout: docs/deployment/generic-image-20261112
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        with:
+          version: '0.11.23'
+      - name: Validate the verifier and read every compressed and decoded byte
+        env:
+          REGISTRY_READ_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -Eeuo pipefail
+          uv venv --python 3.12 .venv
+          uv run --offline --no-project .venv/bin/python -m unittest discover -v -s docs/deployment/generic-image-20261112 -p test_release_tools.py
+          printf '%s\n' "$REGISTRY_READ_TOKEN" | uv run --offline --no-project .venv/bin/python \
+            docs/deployment/generic-image-20261112/verify_manifest.py \
+            --registry-reference ghcr.io/positive666/model@sha256:2141a4db9dc36a4f6f2489fe31a3da131b8e203555bc35f48111599effeafeb2 \
+            --manifest-digest sha256:2141a4db9dc36a4f6f2489fe31a3da131b8e203555bc35f48111599effeafeb2 \
+            --expected-config-digest sha256:4ddbc400e1647adc69bf4e2d942a75985ffacf68b369816b46064f5195272338 \
+            --expected-plan docs/deployment/generic-image-20261112/REPACK_PLAN-reviewed.json \
+            --username positive666 --credential-stdin --workers 4 \
+            --output REGISTRY_FULL_VERIFICATION.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: generic-image-full-readback-20261112
+          path: REGISTRY_FULL_VERIFICATION.json
+          if-no-files-found: error
+          retention-days: 30

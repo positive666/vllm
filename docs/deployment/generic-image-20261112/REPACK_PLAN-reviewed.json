@@ -1,0 +1,144 @@
+{
+  "architecture": "amd64",
+  "expected_runtime_config": {
+    "ArgsEscaped": false,
+    "Entrypoint": [
+      "/opt/glm53-image-gn/.venv/bin/vllm",
+      "serve"
+    ],
+    "Env": [
+      "PATH=/opt/glm53-image-gn/.venv/bin:/opt/glm53-image-gn/bin:/opt/glm53-image-gn/.venv/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "NVARCH=x86_64",
+      "NVIDIA_REQUIRE_CUDA=cuda>=13.0 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=575,driver<576 brand=grid,driver>=575,driver<576 brand=tesla,driver>=575,driver<576 brand=nvidia,driver>=575,driver<576 brand=quadro,driver>=575,driver<576 brand=quadrortx,driver>=575,driver<576 brand=nvidiartx,driver>=575,driver<576 brand=vapps,driver>=575,driver<576 brand=vpc,driver>=575,driver<576 brand=vcs,driver>=575,driver<576 brand=vws,driver>=575,driver<576 brand=cloudgaming,driver>=575,driver<576",
+      "NV_CUDA_CUDART_VERSION=13.0.96-1",
+      "CUDA_VERSION=13.0.3",
+      "LD_LIBRARY_PATH=/usr/local/nvidia/lib64:/usr/local/cuda/lib64:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
+      "NVIDIA_VISIBLE_DEVICES=all",
+      "NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+      "DEBIAN_FRONTEND=noninteractive",
+      "CUDA_HOME=/usr/local/cuda",
+      "CRIU_CUDA_PLUGIN_DIR=/usr/local/lib/criu",
+      "UV_HTTP_TIMEOUT=500",
+      "UV_INDEX_STRATEGY=unsafe-best-match",
+      "UV_LINK_MODE=copy",
+      "UV_PYTHON_INSTALL_DIR=/opt/uv/python",
+      "UV_CACHE_DIR=/opt/uv/cache",
+      "UV_COMPILE_BYTECODE=1",
+      "UV_OVERRIDE=/etc/uv-overrides.txt",
+      "VLLM_ENABLE_CUDA_COMPATIBILITY=0",
+      "TORCH_CUDA_ARCH_LIST=7.5;8.0;8.6;8.9;9.0;10.0;11.0;12.0",
+      "VLLM_USAGE_SOURCE=production-docker-image",
+      "VLLM_BUILD_COMMIT=7a90549f7e1e40a6fd61854812bdd90b5dc290f1",
+      "VLLM_BUILD_PIPELINE=h20-native-alignment-20261108-r1",
+      "VLLM_BUILD_URL=",
+      "VLLM_IMAGE_TAG=glm53-main-candidate:79d5-lmc-v5-20261022fd",
+      "SETUPTOOLS_SCM_PRETEND_VERSION=0.32.1rc1.dev268+g79d5c9379",
+      "TRITON_DEFAULT_FP_FUSION=1",
+      "VIRTUAL_ENV=/opt/glm53-image-gn/.venv"
+    ],
+    "Labels": {
+      "ai.positive666.cuda.sdk": "13.2.86",
+      "ai.positive666.deepep.revision": "a56d6156febcd9976e55adc85b5155bfac9f28f8",
+      "ai.positive666.lmcache.architectures": "75,80,86,89,90,100,120+PTX",
+      "ai.positive666.lmcache.pr6107": "62a2a1dffd2c23d35dae3ea75d8c4787f49c40d4-adapted",
+      "ai.positive666.lmcache.revision": "f0fbadc8533c5dc3b403115716699888cd142f71",
+      "ai.positive666.lmcache.version": "0.5.7.dev0+gf0fbadc.pr6107g62a2a1df.r3",
+      "ai.positive666.nixl.version": "1.5.2",
+      "ai.positive666.torch.architectures": "75,80,86,90,100,120",
+      "ai.positive666.validated-hardware": "H20-SM90; other architecture SASS coverage is not hardware validation",
+      "org.opencontainers.image.revision": "ba0ef8297d880efcc46b7d187cff15fa880759c0",
+      "org.opencontainers.image.source": "https://github.com/positive666/vllm",
+      "org.opencontainers.image.title": "vLLM + LMCache NVIDIA multiarchitecture",
+      "org.opencontainers.image.version": "0.34.0rc1.dev202+gba0ef8297.generic.r1"
+    },
+    "User": "0:0",
+    "WorkingDir": "/vllm-workspace"
+  },
+  "layer_partitions": [
+    "opt/glm53-image-gn/.venv/lib/python3.12/site-packages/flashinfer_cubin",
+    "opt/glm53-image-gn/.venv/lib/python3.12/site-packages/flashinfer_jit_cache",
+    "opt/glm53-image-gn/.venv/lib/python3.12/site-packages/torch",
+    "opt/glm53-image-gn/.venv/lib/python3.12/site-packages/triton",
+    "opt/glm53-image-gn/.venv/lib/python3.12/site-packages/vllm",
+    "usr/local/lib/python3.12/dist-packages/nvidia",
+    "usr/local/cuda-13.0"
+  ],
+  "os": "linux",
+  "policy_sha256": "7044102b9b79310845086c38f973546fa52c30d70e413fe5bafdcbf6c5da4152",
+  "removed_paths": [
+    "usr/local/lib/python3.12/dist-packages/flashinfer_cubin",
+    "usr/local/lib/python3.12/dist-packages/flashinfer_jit_cache",
+    "var/cache/apt/archives"
+  ],
+  "snapshot_sha256": "13a2f8dc4aa9d2430fd09b7a73ac0b86c0fb1db110c32246b93baff41061ac59",
+  "source_image_id": "sha256:80b2f157a3abb59b26ffc546164b4e0bc0a254f22a7b43e046d46b3b9cfba6e9",
+  "source_ref": "h20-local/candidate:vba0ef8297-lf0fbadc8-generic-20261112-r4",
+  "explicit_metadata_normalizations": [
+    {
+      "path": ".dockerenv",
+      "changes": {
+        "mtime": [
+          1794418135,
+          1794418688
+        ]
+      },
+      "reason": "Docker create/export regenerates this container-owned timestamp"
+    },
+    {
+      "path": "dev/console",
+      "changes": {
+        "mtime": [
+          1794418135,
+          1794418688
+        ]
+      },
+      "reason": "Docker create/export regenerates this container-owned timestamp"
+    },
+    {
+      "path": "etc/hostname",
+      "changes": {
+        "mtime": [
+          1794418135,
+          1794418688
+        ]
+      },
+      "reason": "Docker create/export regenerates this container-owned timestamp"
+    },
+    {
+      "path": "etc/hosts",
+      "changes": {
+        "mtime": [
+          1794418135,
+          1794418688
+        ]
+      },
+      "reason": "Docker create/export regenerates this container-owned timestamp"
+    },
+    {
+      "path": "etc/mtab",
+      "changes": {
+        "mtime": [
+          1794418135,
+          1794418688
+        ]
+      },
+      "reason": "Docker create/export regenerates this container-owned timestamp"
+    },
+    {
+      "path": "etc/resolv.conf",
+      "changes": {
+        "mtime": [
+          1794418135,
+          1794418688
+        ]
+      },
+      "reason": "Docker create/export regenerates this container-owned timestamp"
+    },
+    {
+      "config_key": "ArgsEscaped",
+      "before": true,
+      "after": false,
+      "reason": "Deprecated Windows argv escape flag is ignored on Linux; actual exec argv verified"
+    }
+  ]
+}
