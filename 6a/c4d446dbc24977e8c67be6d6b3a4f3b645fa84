@@ -1,0 +1,33 @@
+csrc/moe/moe_permute_unpermute_op.cu
+  s_83918c4b48d1d5::t_bf62bb295c5d69 115-124
+csrc/moe/permute_unpermute_kernels/moe_permute_unpermute_kernel.cu
+  s_83918c4b48d1d5::t_00982966e5d4f1 184-240
+csrc/moe/permute_unpermute_kernels/moe_permute_unpermute_kernel.h
+  s_83918c4b48d1d5::t_87f041bd91c0d1 80-86
+tests/kernels/moe/test_moe_permute_unpermute.py
+  s_787adb6774f463::t_cae9d23a6d8578 563-603
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6ac4d446dbc24977e8c67be6d6b3a4f3b645fa84",
+  "prompts": {},
+  "sessions": {
+    "s_787adb6774f463": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1ce38-d123-7db2-ad0d-cac567e9476e",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
