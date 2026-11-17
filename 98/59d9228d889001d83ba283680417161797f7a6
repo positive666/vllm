@@ -1,0 +1,33 @@
+vllm/models/deepseek_v41/nvidia/ops/small_head_decode_warmup.py
+  s_4950b657d66898::t_403c1f7c25f48a 1-118
+vllm/models/deepseek_v41/nvidia/triton_sparse.py
+  s_4950b657d66898::t_403c1f7c25f48a 121
+  s_d6988063cfa454::t_4f66051615d835 112-114
+tests/models/test_fewhead_prefill_gate.py
+  s_4950b657d66898::t_08a706c9cdddf7 283-365
+  s_4950b657d66898::t_bff54ca043068a 366-367
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9859d9228d889001d83ba283680417161797f7a6",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

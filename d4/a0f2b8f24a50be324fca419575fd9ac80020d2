@@ -1,0 +1,25 @@
+csrc/quantization/marlin/kernel.h
+  s_60fefc8d84b640::t_dd4b575081a1cd 19
+csrc/quantization/marlin/marlin.cu
+  s_60fefc8d84b640::t_3a4d9b63046493 404-409,415
+csrc/quantization/marlin/marlin_template.h
+  s_60fefc8d84b640::t_0ff3a2c1f1affb 241,469-483
+tests/kernels/quantization/test_marlin_gemm.py
+  s_60fefc8d84b640::t_083a80a5f18257 538-550,553-554,556-557,559-564
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d4a0f2b8f24a50be324fca419575fd9ac80020d2",
+  "prompts": {},
+  "sessions": {
+    "s_60fefc8d84b640": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19f48-98b8-7313-9925-235d87ca75d8",
+        "model": "unknown"
+      },
+      "human_author": "Rui Rui4 Cheng <chengrui4@lenovo.com>"
+    }
+  }
+}

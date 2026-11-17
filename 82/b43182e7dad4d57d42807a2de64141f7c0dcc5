@@ -1,0 +1,45 @@
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/verify_bundle.py
+  s_d6988063cfa454::t_1db064e67a9370 26,29-33
+docs/deployment/glm53-b8-lmcache-release-20261021/README.md
+  s_8ac9d707bc8c46::t_7c7b11f0efb490 1,13-16,87-91,106-107,136-185
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/README.md
+  s_fdcf1bac37502e::t_1df36901275cff 4-7,59-95,119-120
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/fp8-tp16-results.json
+  s_8ac9d707bc8c46::t_d445751d4873f7 1-594
+docs/deployment/glm53-b8-lmcache-release-20261021/validation/results.json
+  s_8ac9d707bc8c46::t_7716ba61979acf 267-278,412-415
+docs/deployment/glm53-b8-lmcache-release-20261021/versions.json
+  s_8ac9d707bc8c46::t_91541f54b7ed59 93,129-133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "82b43182e7dad4d57d42807a2de64141f7c0dcc5",
+  "prompts": {},
+  "sessions": {
+    "s_8ac9d707bc8c46": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1573f-e8ca-7c73-9df6-e466f6502fea",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_fdcf1bac37502e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a159f0-3aec-7470-a98e-c16a01e22b24",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

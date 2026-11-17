@@ -1,0 +1,21 @@
+tests/kernels/fla/test_fused_recurrent_packed_decode.py
+  s_57b7c9ef996031::t_cf0c160faa9f03 29-31
+vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
+  s_57b7c9ef996031::t_bd455b7573e6ea 454-464
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ace90f5da27db3198e0d0a2c599ab6fc3035720a",
+  "prompts": {},
+  "sessions": {
+    "s_57b7c9ef996031": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0eb36-ca8c-71a0-bc3f-04917a7cb849",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
