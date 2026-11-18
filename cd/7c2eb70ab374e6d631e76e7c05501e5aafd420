@@ -1,0 +1,29 @@
+tests/v1/core/prefix_cache/test_partial_prefix_cache_hits.py
+  s_4950b657d66898::t_63e962792eef4e 684,692,715-723,727-728,733-742
+vllm/v1/core/single_type_kv_cache_manager.py
+  s_e4d5607782747c::t_69554a794cebab 1999-2015,2018,2024
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cd7c2eb70ab374e6d631e76e7c05501e5aafd420",
+  "prompts": {},
+  "sessions": {
+    "s_4950b657d66898": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09521-6cc0-7270-8ce5-4d00ff40c13c",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_e4d5607782747c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a152bc-ae34-7ae3-85fb-fa57b91a6afe",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

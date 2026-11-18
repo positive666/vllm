@@ -1,0 +1,29 @@
+tests/v1/kv_offload/cpu/test_manager.py
+  s_3e57c93da2791b::t_8e9382e9bac481 968-989
+vllm/v1/kv_offload/cpu/manager.py
+  s_1e6a752c55300c::t_6969e32899bf21 106-107,109-119,121-122,124,186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "9ae70da554e2c37ecdb5e932b9510b2e1ab2072d",
+  "prompts": {},
+  "sessions": {
+    "s_1e6a752c55300c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a00e9d-9b6d-7b42-a8e4-54eb6705ee76",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_3e57c93da2791b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "af356f81-08fd-43a1-83e2-13f05ec0d68d",
+        "model": "grok-4.6"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

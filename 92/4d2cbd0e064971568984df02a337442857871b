@@ -1,0 +1,64 @@
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse_sm90.py
+  s_83918c4b48d1d5::t_7dafea87325f11 69-71,94-98,121,132,142,267,271-275,325,358,415-418,429,445,493-496,504,576-609,709-724
+docs/design/attention_backends.md
+  s_83918c4b48d1d5::t_04f993a9d86abe 108,118
+  s_83918c4b48d1d5::t_79cf970c7f5d71 111-113,116-117
+  s_83918c4b48d1d5::t_eb1e3b0b7ac5eb 110,114-115
+  s_83918c4b48d1d5::t_7dc2163c055883 109
+tests/v1/attention/test_flashinfer_mla_sparse_sm90.py
+  s_83918c4b48d1d5::t_6783fc1d44b163 33,653-655,712-775
+  s_83918c4b48d1d5::t_0b649669daee2e 856-864
+  s_83918c4b48d1d5::t_fa7cc550f0a365 22-23,594-596,603,611
+  s_83918c4b48d1d5::t_2aeb45ec2c9b1c 832-834,837-848,850-854
+  s_83918c4b48d1d5::t_dc9ca7a6ed5d45 574
+  s_83918c4b48d1d5::t_bdb939e9e35423 599
+  s_83918c4b48d1d5::t_b2953811065a7a 16-18,30,559-561,571,575,577-578,580,583,589,600,602,612,778-831,835-836,849,855
+  s_83918c4b48d1d5::t_f9ae57445412e9 25,590-593,610
+  s_83918c4b48d1d5::t_e33d55b72683fb 690-696,698-699,701
+  s_83918c4b48d1d5::t_ea0c64cb5e5d68 14-15
+  s_83918c4b48d1d5::t_a935149fe87b5c 19-21
+  s_83918c4b48d1d5::t_218fe118b022c6 24
+  s_83918c4b48d1d5::t_5a2a10ef6dcfe6 26-29
+  s_83918c4b48d1d5::t_7c088fc8991602 31-32
+  s_83918c4b48d1d5::t_fc2c80ecd530d7 562-564,568-570
+  s_83918c4b48d1d5::t_06a74de3f8242f 572-573
+  s_83918c4b48d1d5::t_dca4e090dee329 576
+  s_83918c4b48d1d5::t_7efd176801ab11 579
+  s_83918c4b48d1d5::t_b42ae376ec6bcc 581-582
+  s_83918c4b48d1d5::t_0a8206ad4487a0 584-588
+  s_83918c4b48d1d5::t_2e9463d672e3ae 597-598
+  s_83918c4b48d1d5::t_0e69ca903c439c 601
+  s_83918c4b48d1d5::t_cf01f07e900087 604-609
+  s_83918c4b48d1d5::t_b3d1038bf3ca25 613-615,650-652
+  s_83918c4b48d1d5::t_1df826ee98014a 656-658,687-689
+  s_83918c4b48d1d5::t_553c3f138fbaf1 697
+  s_83918c4b48d1d5::t_211a960e5b7aa6 700
+  s_83918c4b48d1d5::t_566e54242695d7 702-704,709-711
+  s_83918c4b48d1d5::t_5ed4609626b928 776-777
+  s_83918c4b48d1d5::t_cdffcd32a7a9c0 865-866
+  s_8ebed98655b478::t_b0b9ae77c2a6fd 5-6,88,153,565-567,616-649,659-686,705-708
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "924d2cbd0e064971568984df02a337442857871b",
+  "prompts": {},
+  "sessions": {
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_8ebed98655b478": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e750-c220-7f42-b5cf-98b50100edce",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

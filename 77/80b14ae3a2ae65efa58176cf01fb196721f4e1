@@ -1,0 +1,23 @@
+tests/compile/test_aot_compile.py
+  s_0dd0c9f7973d90::t_8414502f0893d8 119-123,133
+  s_0dd0c9f7973d90::t_11a4b1826f047e 124-132,134-135,138,140,142-146,149-151,243-256,259,261-265,268-269,271-272,298-300,305,315-338
+vllm/compilation/decorators.py
+  s_0dd0c9f7973d90::t_1f9c04d88900ff 275-278,280-281,286-288,294-302
+  s_0dd0c9f7973d90::t_28245f837be77c 285,289-293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7780b14ae3a2ae65efa58176cf01fb196721f4e1",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

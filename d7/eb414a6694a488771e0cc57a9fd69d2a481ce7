@@ -1,0 +1,59 @@
+tests/models/qwen4_exp/test_qsa_reference.py
+  s_83918c4b48d1d5::t_0c8abe17102843 1437,1467-1468,1473,1475,1480,1482-1496
+  s_83918c4b48d1d5::t_7c692e05988a00 1472
+  s_83918c4b48d1d5::t_6a9137a2e4bf42 1434-1436
+  s_83918c4b48d1d5::t_bd89a3fd6ae7e9 1438-1440,1464-1466
+  s_83918c4b48d1d5::t_e028a61b85a5ab 1469-1471
+  s_83918c4b48d1d5::t_71fba57244b200 1474
+  s_83918c4b48d1d5::t_3dc7da7ddfbb90 1476-1479
+  s_83918c4b48d1d5::t_330be73faa037e 1481
+  s_97ee8104da398c::t_e910806b05726f 1413-1433,1441-1463
+docs/configuration/optimization.md
+  s_83918c4b48d1d5::t_e0d8e900ff45f4 87
+  s_83918c4b48d1d5::t_5ef4d6a310e6b4 84-86
+  s_97ee8104da398c::t_082aad46082ae0 82-83
+vllm/models/qwen4_exp/nvidia/qsa_indexer.py
+  s_83918c4b48d1d5::t_0c8abe17102843 11,13-14,20,94-130,155,475-483,495
+benchmarks/kernels/benchmark_qsa_tp_prefill.py
+  s_83918c4b48d1d5::t_354d69aa4eb973 42,95
+  s_83918c4b48d1d5::t_a9bde0ce96ee62 1-13,15-33,37-41,43,47-59,66,76-77,93-94,96-106,110,119-120,131,147-152
+  s_83918c4b48d1d5::t_20763c53c20365 14,34-36,44-46,60-65,67-75,78-92,107-109,111-118,121-130,132-146
+.buildkite/test_areas/models_basic.yaml
+  s_83918c4b48d1d5::t_69fcd6197faf17 398-411
+tests/models/qwen4_exp/test_tpsp.py
+  s_97ee8104da398c::t_d4d7789a8cb454 316-406
+vllm/models/qwen4_exp/nvidia/ops/qsa_indexer.py
+  s_d9ae7b39f0a330::t_dd9c8e89195b69 5-6,17-20,596-597,614,639-648,667,671-673
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d7eb414a6694a488771e0cc57a9fd69d2a481ce7",
+  "prompts": {},
+  "sessions": {
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_97ee8104da398c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a081-549e-7d73-8940-992c1f252620",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_d9ae7b39f0a330": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19a37-5ad5-7781-a53c-602c4a10d794",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
