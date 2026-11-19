@@ -1,0 +1,33 @@
+tests/kernels/quantization/test_marlin_gemm.py
+  s_0dd0c9f7973d90::t_006b8a1f4c86a3 538-550,553-554,556-557,559-564
+csrc/libtorch_stable/quantization/marlin/kernel.h
+  s_82e30d09ae8f87::t_30082d14f0c234 19
+csrc/libtorch_stable/quantization/marlin/marlin.cu
+  s_82e30d09ae8f87::t_3bd0397c9d580e 404-409,415
+csrc/libtorch_stable/quantization/marlin/marlin_template.h
+  s_82e30d09ae8f87::t_16508e5e579509 241,469-483
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "12c437f9b1f4897329a0aaef22a61585405ad38a",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_82e30d09ae8f87": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10258-7181-7853-bc65-798104f35e67",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

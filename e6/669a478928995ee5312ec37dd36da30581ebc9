@@ -1,0 +1,52 @@
+vllm/third_party/flash_linear_attention/ops/utils.py
+  s_2155aa209685f8::t_ce699bef41a5e4 34-85
+vllm/third_party/flash_linear_attention/ops/chunk_scaled_dot_kkt.py
+  s_2155aa209685f8::t_65387094def6fc 162
+  s_2155aa209685f8::t_9ad5c03f0e62d8 18
+vllm/third_party/flash_linear_attention/ops/wy_fast.py
+  s_2155aa209685f8::t_ed878d3a48bfc1 17
+  s_2155aa209685f8::t_c140d9a16b09f8 140-141
+vllm/v1/worker/gpu_worker.py
+  s_2155aa209685f8::t_9ee6f97cd468f7 531-532,535-537,541-549,571-592
+  s_2155aa209685f8::t_02de82bb1bd729 533-534
+  s_2155aa209685f8::t_d53c3b42a147c2 628,631-634
+vllm/model_executor/layers/mamba/gdn/chunk_workspace.py
+  s_2155aa209685f8::t_7d3a4d5ae48a0c 22
+  s_2155aa209685f8::t_42cbb316766e30 346-349
+  s_2155aa209685f8::t_6b5df61c0b1dd1 1-21,25-174,182-188,195,197,201,207-211,215-240,245-257,261-320,323-327,330-331,334-345,350-351
+  s_2155aa209685f8::t_1427f8d83f5856 175-181
+  s_2155aa209685f8::t_5f122f76b83aa2 258-260
+  s_2155aa209685f8::t_c65bc1c3d01bda 202-206
+  s_2155aa209685f8::t_51a148aebeb278 322,328-329,332-333
+  s_2155aa209685f8::t_128ee09fe2f2ee 189-194,196,198-200
+  s_2155aa209685f8::t_bf5db7773ee6cb 23-24
+  s_2155aa209685f8::t_755506a543f663 241-244
+  s_2155aa209685f8::t_eee2522ff3abdf 212-214
+  s_2155aa209685f8::t_2e901bd43bc78c 321
+vllm/third_party/flash_linear_attention/ops/chunk.py
+  s_2155aa209685f8::t_5ade0e35e08cf6 19-24
+  s_2155aa209685f8::t_c0259f69c9c71d 42-96
+tests/model_executor/layers/mamba/test_gdn_chunk_workspace.py
+  s_2155aa209685f8::t_b2b33c67ef76a1 122-126
+  s_2155aa209685f8::t_107e03eafc8a43 1-10,12-121,127-250
+  s_2155aa209685f8::t_f208b3d1400c30 11
+vllm/third_party/flash_linear_attention/ops/chunk_delta_h.py
+  s_2155aa209685f8::t_68d932c3073cf0 353,359
+  s_2155aa209685f8::t_a54ac2592e454c 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "e6669a478928995ee5312ec37dd36da30581ebc9",
+  "prompts": {},
+  "sessions": {
+    "s_2155aa209685f8": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0336360e-caf0-416f-9d08-7e8323712f1b",
+        "model": "grok-4.6"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

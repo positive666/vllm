@@ -1,0 +1,20 @@
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse_sm90.py
+  s_5813086519c688::t_ca22009342f564 92
+  s_5813086519c688::t_a25230e82a30d7 66-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e72e0a8a1fc79eaf379e2a945af343bbd43288ed",
+  "prompts": {},
+  "sessions": {
+    "s_5813086519c688": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4e2b1d47-d1c4-4f13-afb7-0c8c19de11cf",
+        "model": "grok-4.7"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+tests/kernels/moe/test_moe_permute_unpermute.py
+  s_d6988063cfa454::t_d93c8a8ad6c62b 566-577,582-584,589
+  s_d6988063cfa454::t_ebffaadab9bfd2 590
+  s_d6988063cfa454::t_1611cefe2fe290 596,612-615,617
+csrc/moe/moe_permute_unpermute_op.cu
+  s_d6988063cfa454::t_d93c8a8ad6c62b 115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8518cc4c2fcbf8808da809b7f1f66b21681406b5",
+  "prompts": {},
+  "sessions": {
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

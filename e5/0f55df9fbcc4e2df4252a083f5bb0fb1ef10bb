@@ -1,0 +1,41 @@
+tests/kernels/quantization/test_triton_scaled_mm.py
+  s_0dd0c9f7973d90::t_e54e8ee7cfc7d8 135
+vllm/model_executor/layers/quantization/utils/configs/N=14336,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_8ac9d707bc8c46::t_0a901352715a12 4,12,14,20,22,28,36,44,52,60,68,76,84,92,100,108,116,124,131-132,134-136,139-140,142-144,147-148,150-152,155-156,158-160
+vllm/model_executor/layers/quantization/utils/configs/N=16384,K=5120,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_853042957b9c41::t_c280732eb6c0ba 4,6,12,14,20,22,28,36,44,52,60,68,76,84,92,100,108,116,124,131-132,134-136,139-140,142-144,147-148,150-152,155-156,158-160
+vllm/model_executor/layers/quantization/utils/configs/N=5120,K=17408,device_name=NVIDIA_L20,dtype=fp8_w8a8,block_shape=[128,128].json
+  s_8ac9d707bc8c46::t_3f4be3604d5eca 6,8,16,24,30,32,38,40,46,48,56,64,72,80,88,96,102,104,110,112,118,120,126,128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e50f55df9fbcc4e2df4252a083f5bb0fb1ef10bb",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_853042957b9c41": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a14281-9e4d-7612-843d-35c1e2938ddd",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_8ac9d707bc8c46": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1573f-e8ca-7c73-9df6-e466f6502fea",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

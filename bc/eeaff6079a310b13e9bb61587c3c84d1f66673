@@ -1,0 +1,25 @@
+vllm/v1/worker/gpu/warmup.py
+  s_2499f117543f0a::t_bf5f95c88ad68a 225,412-427
+  s_2499f117543f0a::t_83a38b876323fe 428
+tests/v1/spec_decode/test_rejection_sampler_utils.py
+  s_2499f117543f0a::t_4c1967c868c8e8 209
+  s_2499f117543f0a::t_83a38b876323fe 210-217,219,222-223,225,233,236,254-261,265,271
+tests/v1/worker/test_gpu_warmup_blocks.py
+  s_2499f117543f0a::t_83a38b876323fe 132-143,174-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "bceeaff6079a310b13e9bb61587c3c84d1f66673",
+  "prompts": {},
+  "sessions": {
+    "s_2499f117543f0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01d82-f6ae-7d52-a799-ade86760b4ad",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": null
+    }
+  }
+}

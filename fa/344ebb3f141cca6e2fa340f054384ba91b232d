@@ -1,0 +1,37 @@
+quality-followup-20261008/README.md
+  s_2d159b4685f0be::t_9fc12f6e024238 1-57
+quality-followup-20261008/SHA256SUMS
+  s_2d159b4685f0be::t_ccf71fca7a3ee4 1-10
+quality-followup-20261008/archive-manifest.json
+  s_2d159b4685f0be::t_306743ab7566a9 1-84
+quality-followup-20261008/audit.json
+  s_2d159b4685f0be::t_24b3b4ea1e9e43 1-2374
+quality-followup-20261008/audit_quality.py
+  s_2d159b4685f0be::t_8b67a1e369f0cf 1-584
+quality-followup-20261008/cleanup-record.json
+  s_2d159b4685f0be::t_64d01893daef3e 1-12
+quality-followup-20261008/pr-description.md
+  s_2d159b4685f0be::t_f59ea8acce2d8c 1-80
+quality-followup-20261008/quality-results.md
+  s_2d159b4685f0be::t_fcdc000ff4da02 1-55
+quality-followup-20261008/review-update.md
+  s_2d159b4685f0be::t_0cc4813d8eec51 1-13
+quality-followup-20261008/source-manifest.json
+  s_2d159b4685f0be::t_28993d7c980eba 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fa344ebb3f141cca6e2fa340f054384ba91b232d",
+  "prompts": {},
+  "sessions": {
+    "s_2d159b4685f0be": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "s_2d159b4685f0be",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

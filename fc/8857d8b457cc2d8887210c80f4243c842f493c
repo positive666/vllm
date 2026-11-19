@@ -1,0 +1,21 @@
+tests/kernels/fla/test_fused_recurrent_packed_decode.py
+  s_d9ae7b39f0a330::t_3b7e8661c9978c 29-31
+vllm/third_party/flash_linear_attention/ops/fused_recurrent.py
+  s_d9ae7b39f0a330::t_042b05b61bfe67 463-473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fc8857d8b457cc2d8887210c80f4243c842f493c",
+  "prompts": {},
+  "sessions": {
+    "s_d9ae7b39f0a330": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19a37-5ad5-7781-a53c-602c4a10d794",
+        "model": "unknown"
+      },
+      "human_author": "Rui Rui4 Cheng <chengrui4@lenovo.com>"
+    }
+  }
+}

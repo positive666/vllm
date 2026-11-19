@@ -1,0 +1,29 @@
+vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py
+  s_0dd0c9f7973d90::t_7281fa9ec4b6e1 455-456,485,487,494-498,500,502,504-509,512-516,578,1782-1786
+  s_0dd0c9f7973d90::t_b2ca437149a94f 563
+tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py
+  s_0dd0c9f7973d90::t_64fea23616a8b0 233
+  s_0dd0c9f7973d90::t_2228a1ba279c8b 38-43,45,54,57-58,78,217,219,221,224-229,234-246
+  s_0dd0c9f7973d90::t_484a9b11dbdd0a 28,35,101,106,109-135,141,155,212-213,230-231,251-252
+  s_0dd0c9f7973d90::t_d6cd75674fe385 254-255,259-261,264,266,269,281,283
+tests/kernels/mamba/test_gdn_forward_core_split.py
+  s_0dd0c9f7973d90::t_7281fa9ec4b6e1 40,42
+vllm/config/kernel.py
+  s_0dd0c9f7973d90::t_7281fa9ec4b6e1 336-337
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d39a65d192453331585a7f4cbd9b5d627fb87f98",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": null
+    }
+  }
+}

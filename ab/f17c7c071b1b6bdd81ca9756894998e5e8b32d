@@ -1,0 +1,19 @@
+tests/kernels/fla/test_fused_sigmoid_gating_delta_rule.py
+  s_0dd0c9f7973d90::t_b655280fbbdfc0 162-163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "abf17c7c071b1b6bdd81ca9756894998e5e8b32d",
+  "prompts": {},
+  "sessions": {
+    "s_0dd0c9f7973d90": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0faf8-9cd7-7ec2-aa36-721e47a1014f",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

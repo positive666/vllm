@@ -1,0 +1,51 @@
+.buildkite/test_areas/distributed.yaml
+  s_d9ae7b39f0a330::t_b22cb8fa6a3b08 524
+tests/kernels/attention/test_rocm_aiter_mla_sparse_index_remap.py
+  s_d9ae7b39f0a330::t_3287fdcb00077e 74-75
+tests/kernels/attention/test_rocm_aiter_mla_sparse_metadata_sync.py
+  s_d9ae7b39f0a330::t_9c9656850a9918 145
+tests/v1/attention/test_indexer_deepseek_v4_slot_mapping.py
+  s_d9ae7b39f0a330::t_3d57ee56b7f965 390,420
+tests/v1/attention/test_sparse_mla_backends.py
+  s_d9ae7b39f0a330::t_1ed9d7a6cf9f3c 254,4008,4145,4193,4441,4758
+vllm/config/attention.py
+  s_d9ae7b39f0a330::t_922a1dd3bfb0b6 10,14-15,132-150,209-214
+vllm/model_executor/layers/attention/mla_attention.py
+  s_d9ae7b39f0a330::t_225f425c943846 302,466,602-622,1140-1141,1156-1164,1169-1171,1255-1257
+vllm/model_executor/layers/attention/sparse_mla_attention.py
+  s_d9ae7b39f0a330::t_bf5907fd58e8aa 6,14,36,54,168-171,177-209,297-300,463,483-487,690-691,766-780,818-819,838-846
+vllm/model_executor/layers/mla.py
+  s_d9ae7b39f0a330::t_7031ee7110d7c7 81,141
+vllm/model_executor/layers/sparse_attn_indexer.py
+  s_d9ae7b39f0a330::t_bf3428ffbea676 742-748,783-788,811,846,856
+vllm/models/deepseek_v32/attention.py
+  s_d9ae7b39f0a330::t_b9c7f5d69cb5d4 44,213-215,584-585,596-604,606,608-609
+vllm/models/glm5next/common/attention.py
+  s_d9ae7b39f0a330::t_73dbd2a034f90d 410,576
+vllm/models/glm5next/common/model.py
+  s_d9ae7b39f0a330::t_0307a8561b8bb7 414-416
+vllm/models/glm5next/nvidia/sparse_indexer.py
+  s_d9ae7b39f0a330::t_e877556920b939 313-321,352-357,396,413,454,458
+vllm/models/hy_v4/nvidia/flashmla_sparse.py
+  s_d9ae7b39f0a330::t_7b53517d7432c8 23,54-57,188
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse.py
+  s_d9ae7b39f0a330::t_1e4398b60820cc 451
+vllm/v1/attention/backends/mla/flashmla_sparse.py
+  s_d9ae7b39f0a330::t_cec02fcb7086aa 707-713,719,777-783,1324,1474-1477
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "efeea41c6c8f7c44ccc5ac72a32c61c3662aed6e",
+  "prompts": {},
+  "sessions": {
+    "s_d9ae7b39f0a330": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a19a37-5ad5-7781-a53c-602c4a10d794",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
