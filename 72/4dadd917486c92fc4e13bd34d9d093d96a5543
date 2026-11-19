@@ -1,0 +1,23 @@
+tests/v1/attention/test_flashinfer_mla_sparse_sm90.py
+  s_d6988063cfa454::t_cf772e9047b65f 203
+  s_d6988063cfa454::t_e40150fb3c2bbb 610,652,668-671
+  s_d6988063cfa454::t_14d9a9583aa5b2 651,879,881-884,886-887
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse_sm90.py
+  s_d6988063cfa454::t_14d9a9583aa5b2 326,332,527-530,532-533,611-613,615,617,626
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "724dadd917486c92fc4e13bd34d9d093d96a5543",
+  "prompts": {},
+  "sessions": {
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.2-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
