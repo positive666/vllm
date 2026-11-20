@@ -1,0 +1,19 @@
+tests/v1/engine/test_kv_cache_group_metadata.py
+  s_d6988063cfa454::t_77caefcb155a0c 57-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7111c2f5a853c2d3e2859d3ac8d7e958e2bbcc7b",
+  "prompts": {},
+  "sessions": {
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.2-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}

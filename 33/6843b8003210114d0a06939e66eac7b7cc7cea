@@ -1,0 +1,72 @@
+tests/v1/worker/test_attn_utils.py
+  s_d6988063cfa454::t_974ea024be176f 84-121
+  s_d6988063cfa454::t_386f5f30a6ff7c 83
+  s_d6988063cfa454::t_49db7a023a1b01 122-123
+  s_18ad662be0efb5::t_86456f01dae965 1586
+vllm/v1/worker/gpu/attn_utils.py
+  s_d6988063cfa454::t_974ea024be176f 209,211,216,264-281
+  s_d6988063cfa454::t_8642a10d8abc99 31,201-202,204-206,282-317,330-342,348-349
+vllm/v1/worker/gpu/model_runner.py
+  s_d6988063cfa454::t_974ea024be176f 713
+  s_d6988063cfa454::t_f1d73e18dbd0af 87,112,118,214-215,689-712,714-730,780-782,795
+tests/v1/attention/test_flashinfer_mla_sparse_sm90.py
+  s_d6988063cfa454::t_76abda79fc0199 775-793,822-843,888,895-897
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse_sm90.py
+  s_d6988063cfa454::t_15c7f7c0f99c6f 189-205,508-509,512-529,549,564-565,567-569
+tests/v1/core/test_kv_cache_config_builder.py
+  s_51d7c3ebaf6edd::t_df84066a362fd2 192,206
+tests/v1/core/test_kv_cache_planning.py
+  s_51d7c3ebaf6edd::t_3525d5ec301b0f 768,775,785,812,841
+tests/v1/engine/test_kv_cache_group_metadata.py
+  s_51d7c3ebaf6edd::t_408ff38c83a14e 25,60,65-67,94-99
+tests/v1/worker/test_gpu_worker.py
+  s_51d7c3ebaf6edd::t_5f55a95720fcc6 409,471-481
+vllm/v1/core/kv_cache_planning.py
+  s_51d7c3ebaf6edd::t_0705923768ef2b 1410,1492
+vllm/v1/engine/core.py
+  s_51d7c3ebaf6edd::t_1bb37b61411326 312-314
+vllm/v1/executor/abstract.py
+  s_18ad662be0efb5::t_40f16361d14baf 25,222-225,227,229-230
+vllm/v1/worker/gpu/cudagraph_utils.py
+  s_51d7c3ebaf6edd::t_c4a44e80e9b8f7 1122-1126
+vllm/v1/worker/gpu/spec_decode/speculator.py
+  s_18ad662be0efb5::t_64ec6e1b713a4d 31,180,429
+vllm/v1/worker/startup_plan.py
+  s_51d7c3ebaf6edd::t_6ba1690ea09dc0 47-52,86-87,92-102,169,197
+vllm/v1/worker/utils.py
+  s_51d7c3ebaf6edd::t_d69f674ac9e765 291,331-332,340,342
+vllm/v1/worker/worker_base.py
+  s_51d7c3ebaf6edd::t_e1b8ae47463120 27,128-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "336843b8003210114d0a06939e66eac7b7cc7cea",
+  "prompts": {},
+  "sessions": {
+    "s_18ad662be0efb5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1f2e9-29d4-79e3-8c6a-b7e9f9f1d6af",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_51d7c3ebaf6edd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1ed4e-f959-7693-bab3-4b6321621285",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_d6988063cfa454": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f1cb-29bf-7ea3-8651-a9a0ec4a111b",
+        "model": "gpt-6.2-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
