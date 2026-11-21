@@ -1,0 +1,48 @@
+vllm/models/qwen4_exp/nvidia/qsa_indexer.py
+  s_83918c4b48d1d5::t_d25f01c853e305 237,399
+vllm/models/qwen4_exp/nvidia/ops/qsa_dense.py
+  s_83918c4b48d1d5::t_9ec83e61b9cf25 1-48
+  s_83918c4b48d1d5::t_d8d3ae516c79b7 49-51
+  s_18ad662be0efb5::t_0ded9f5c3d25f7 52-74
+vllm/models/qwen4_exp/nvidia/qsa.py
+  s_83918c4b48d1d5::t_1153c4ace74492 219-315,348,430,448-478,808-821,920-925
+  s_83918c4b48d1d5::t_406da96d008304 926
+  s_18ad662be0efb5::t_2ddaaf225daee1 935,961
+tests/models/qwen4_exp/test_qsa_reference.py
+  s_83918c4b48d1d5::t_5632907497fe4d 431
+  s_83918c4b48d1d5::t_7f793be9e9d19d 24-28,117-118,120,138,190,342-375,377-387,389-409,411-414,416-417,419-430,432-434,436-472,474-478
+  s_83918c4b48d1d5::t_5af0ae6b00470b 376
+  s_83918c4b48d1d5::t_bd9bc8f65cb31e 388
+  s_83918c4b48d1d5::t_ff178e1e0708b8 410
+  s_83918c4b48d1d5::t_0cbc2ddb1f03e3 415
+  s_83918c4b48d1d5::t_62d69c2d9ce04a 418
+  s_83918c4b48d1d5::t_9109aa02fef037 435
+  s_83918c4b48d1d5::t_3d81d8fcb54ad1 473
+  s_83918c4b48d1d5::t_a25c3bab2c9f51 479-480
+vllm/models/qwen4_exp/nvidia/ops/qsa.py
+  s_18ad662be0efb5::t_31536bca0571de 689,795,813,826-830
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "104c7f2cfebf28352f98ea79a900350e9ffec73b",
+  "prompts": {},
+  "sessions": {
+    "s_18ad662be0efb5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1f2e9-29d4-79e3-8c6a-b7e9f9f1d6af",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    },
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6.2-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
