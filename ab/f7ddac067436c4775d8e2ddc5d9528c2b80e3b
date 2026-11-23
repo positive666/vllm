@@ -1,0 +1,22 @@
+vllm/v1/worker/gpu/spec_decode/adaptive_verification.py
+  s_83918c4b48d1d5::t_8816c62564fb30 90-91,437-442
+tests/v1/spec_decode/test_adaptive_verification.py
+  s_83918c4b48d1d5::t_8816c62564fb30 346-355,524-533
+  s_83918c4b48d1d5::t_82713c5c8decd9 534-535
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "abf7ddac067436c4775d8e2ddc5d9528c2b80e3b",
+  "prompts": {},
+  "sessions": {
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6.2-astra"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
