@@ -1,0 +1,21 @@
+vllm/models/inkling2/nvidia/ops/attention_sm90.py
+  s_83918c4b48d1d5::t_92ce3a244b161c 19,292-302
+tests/models/inkling2/test_attention.py
+  s_83918c4b48d1d5::t_6804ddc12e304e 28,182-183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d93fac8d6b5e8e874a593c4b7d5f3ea0bbb3f22f",
+  "prompts": {},
+  "sessions": {
+    "s_83918c4b48d1d5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a166c1-2361-7882-b12b-8e2a719564ad",
+        "model": "gpt-6.2-sol"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
