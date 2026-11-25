@@ -1,0 +1,21 @@
+tests/v1/attention/test_flashinfer_mla_sparse_sm90.py
+  s_e2527d8d839ebd::t_dcf3e291545480 431,435,577-578,687-690,698,706,708-718
+vllm/v1/attention/backends/mla/flashinfer_mla_sparse_sm90.py
+  s_e2527d8d839ebd::t_6a332180769742 661
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c8f7d067a68a755613c50f98c04afa3b351d6cc1",
+  "prompts": {},
+  "sessions": {
+    "s_e2527d8d839ebd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a20c5e-94d4-70d3-98a2-ebf9aede3d04",
+        "model": "unknown"
+      },
+      "human_author": "Cheng Rui <286040359@qq.com>"
+    }
+  }
+}
